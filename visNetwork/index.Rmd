@@ -3,14 +3,14 @@ title: "visNetwork"
 output: html_document
 ---
 
-**visNetwork** is a R package for network visualization, using **vis.js** javascript library (http://visjs.org/). All the remarks and bug returns are welcome on github : https://github.com/bthieurmel/visNetwork.
+**visNetwork** is a R package for network visualization, using **vis.js** javascript library (http://visjs.org/). All the remarks and bugs returns are welcome on github : https://github.com/DataKnowledge/visNetwork.
 
 ## Installation
 
 Package is actually only available on github. You can install it with :
 
 ```{r, eval=FALSE}
-devtools::install_github("bthieurmel/visNetwork")
+devtools::install_github("DataKnowledge/visNetwork")
 ```
 
 ## Minimal example

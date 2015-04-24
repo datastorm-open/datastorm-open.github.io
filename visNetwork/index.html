@@ -68,11 +68,11 @@ img {
 </div>
 
 
-<p><strong>visNetwork</strong> is a R package for network visualization, using <strong>vis.js</strong> javascript library (<a href="http://visjs.org/">http://visjs.org/</a>). All the remarks and bug returns are welcome on github : <a href="https://github.com/bthieurmel/visNetwork">https://github.com/bthieurmel/visNetwork</a>.</p>
+<p><strong>visNetwork</strong> is a R package for network visualization, using <strong>vis.js</strong> javascript library (<a href="http://visjs.org/" class="uri">http://visjs.org/</a>). All the remarks and bugs returns are welcome on github : <a href="https://github.com/DataKnowledge/visNetwork" class="uri">https://github.com/DataKnowledge/visNetwork</a>.</p>
 <div id="installation" class="section level2">
 <h2>Installation</h2>
 <p>Package is actually only available on github. You can install it with :</p>
-<pre class="r"><code>devtools::install_github(&quot;bthieurmel/visNetwork&quot;)</code></pre>
+<pre class="r"><code>devtools::install_github(&quot;DataKnowledge/visNetwork&quot;)</code></pre>
 </div>
 <div id="minimal-example" class="section level2">
 <h2>Minimal example</h2>
@@ -86,8 +86,8 @@ img {
 nodes &lt;- data.frame(id = 1:3)
 edges &lt;- data.frame(from = c(1,2), to = c(1,3))
 visNetwork(nodes, edges, width = &quot;100%&quot;)</code></pre>
-<p><div id="htmlwidget-1429" style="width:100%;height:480px;" class="visNetwork"></div>
-<script type="application/json" data-for="htmlwidget-1429">{ "x": {
+<p><div id="htmlwidget-8983" style="width:100%;height:480px;" class="visNetwork"></div>
+<script type="application/json" data-for="htmlwidget-8983">{ "x": {
  "nodes": [
  {
  "id": 1 
@@ -144,8 +144,8 @@ edges &lt;- data.frame(from = trunc(runif(nb)*(nb-1))+1,
  title = paste0(&quot;&lt;p&gt;&quot;, 1:nb,&quot;&lt;br&gt;Edge Tooltip !&lt;/p&gt;&quot;))
 
 visNetwork(nodes, edges, width = &quot;100%&quot;)</code></pre>
-<p><div id="htmlwidget-3172" style="width:100%;height:480px;" class="visNetwork"></div>
-<script type="application/json" data-for="htmlwidget-3172">{ "x": {
+<p><div id="htmlwidget-1797" style="width:100%;height:480px;" class="visNetwork"></div>
+<script type="application/json" data-for="htmlwidget-1797">{ "x": {
  "nodes": [
  {
  "id": 1,
@@ -157,7 +157,7 @@ visNetwork(nodes, edges, width = &quot;100%&quot;)</code></pre>
 {
  "id": 2,
 "label": "Label 2",
-"group": "B",
+"group": "C",
 "value": 2,
 "title": "<p>2<br>Tooltip !</p>" 
 },
@@ -171,42 +171,42 @@ visNetwork(nodes, edges, width = &quot;100%&quot;)</code></pre>
 {
  "id": 4,
 "label": "Label 4",
-"group": "B",
+"group": "A",
 "value": 4,
 "title": "<p>4<br>Tooltip !</p>" 
 },
 {
  "id": 5,
 "label": "Label 5",
-"group": "A",
+"group": "C",
 "value": 5,
 "title": "<p>5<br>Tooltip !</p>" 
 },
 {
  "id": 6,
 "label": "Label 6",
-"group": "C",
+"group": "A",
 "value": 6,
 "title": "<p>6<br>Tooltip !</p>" 
 },
 {
  "id": 7,
 "label": "Label 7",
-"group": "B",
+"group": "C",
 "value": 7,
 "title": "<p>7<br>Tooltip !</p>" 
 },
 {
  "id": 8,
 "label": "Label 8",
-"group": "B",
+"group": "A",
 "value": 8,
 "title": "<p>8<br>Tooltip !</p>" 
 },
 {
  "id": 9,
 "label": "Label 9",
-"group": "C",
+"group": "B",
 "value": 9,
 "title": "<p>9<br>Tooltip !</p>" 
 },
@@ -220,72 +220,72 @@ visNetwork(nodes, edges, width = &quot;100%&quot;)</code></pre>
 ],
 "edges": [
  {
- "from":                 7,
-"to":                 7,
-"value": 9.834225399299839,
+ "from":                 9,
+"to":                 5,
+"value":  9.86571150723211,
 "label": "Edge 1",
 "title": "<p>1<br>Edge Tooltip !</p>" 
 },
 {
- "from":                 5,
-"to":                 7,
-"value": 9.943578626135766,
+ "from":                 8,
+"to":                 8,
+"value": 9.918413946665504,
 "label": "Edge 2",
 "title": "<p>2<br>Edge Tooltip !</p>" 
 },
 {
- "from":                 5,
-"to":                 9,
-"value": 11.92479612936449,
+ "from":                 6,
+"to":                 6,
+"value": 8.612711962333922,
 "label": "Edge 3",
 "title": "<p>3<br>Edge Tooltip !</p>" 
 },
 {
- "from":                 3,
-"to":                 6,
-"value": 10.28609929555089,
+ "from":                 2,
+"to":                 7,
+"value": 9.341174167842148,
 "label": "Edge 4",
 "title": "<p>4<br>Edge Tooltip !</p>" 
 },
 {
- "from":                 3,
-"to":                 3,
-"value": 10.19933755673616,
+ "from":                 9,
+"to":                 7,
+"value":  11.3978996798998,
 "label": "Edge 5",
 "title": "<p>5<br>Edge Tooltip !</p>" 
 },
 {
- "from":                 6,
-"to":                 3,
-"value": 9.681793253367335,
+ "from":                 8,
+"to":                 6,
+"value": 9.803856245456014,
 "label": "Edge 6",
 "title": "<p>6<br>Edge Tooltip !</p>" 
 },
 {
- "from":                 2,
+ "from":                 5,
 "to":                 2,
-"value": 9.372214386974926,
+"value": 9.952997942167382,
 "label": "Edge 7",
 "title": "<p>7<br>Edge Tooltip !</p>" 
 },
 {
- "from":                 5,
+ "from":                 8,
 "to":                 7,
-"value":  9.46642053655383,
+"value": 11.07799939975855,
 "label": "Edge 8",
 "title": "<p>8<br>Edge Tooltip !</p>" 
 },
 {
- "from":                 9,
-"to":                 6,
-"value": 9.100792206768535,
+ "from":                 1,
+"to":                 2,
+"value": 10.66641107494695,
 "label": "Edge 9",
 "title": "<p>9<br>Edge Tooltip !</p>" 
 },
 {
- "from":                 8,
-"to":                 3,
-"value": 8.740193761742802,
+ "from":                 1,
+"to":                 7,
+"value": 10.80857286864071,
 "label": "Edge 10",
 "title": "<p>10<br>Edge Tooltip !</p>" 
 } 
@@ -297,7 +297,7 @@ visNetwork(nodes, edges, width = &quot;100%&quot;)</code></pre>
  "shape": "dot" 
 } 
 },
-"groups": [ "A", "B", "C" ],
+"groups": [ "A", "C", "B" ],
 "legend": false,
 "legendWidth":                 1,
 "width": "100%",
@@ -314,8 +314,8 @@ edges &lt;- data.frame(from = c(1,2), to = c(3,3))
 visNetwork(nodes, edges) %&gt;% 
   visNodes(shape = &quot;square&quot;, color = &quot;darkblue&quot;) %&gt;%
   visEdges(style =&quot;dash-line&quot;)</code></pre>
-<p><div id="htmlwidget-1268" style="width:672px;height:480px;" class="visNetwork"></div>
-<script type="application/json" data-for="htmlwidget-1268">{ "x": {
+<p><div id="htmlwidget-1828" style="width:672px;height:480px;" class="visNetwork"></div>
+<script type="application/json" data-for="htmlwidget-1828">{ "x": {
  "nodes": [
  {
  "id": 1 
@@ -365,8 +365,8 @@ edges &lt;- data.frame(from = c(2,5,3), to = c(1,2,4))
 visNetwork(nodes, edges, width = &quot;100%&quot;) %&gt;%
  visGroups(groupname = &quot;A&quot;, color = &quot;red&quot;, shape = &quot;database&quot;) %&gt;%
  visGroups(groupname = &quot;B&quot;, color = &quot;yellow&quot;, shape = &quot;label&quot;)</code></pre>
-<p><div id="htmlwidget-4359" style="width:100%;height:480px;" class="visNetwork"></div>
-<script type="application/json" data-for="htmlwidget-4359">{ "x": {
+<p><div id="htmlwidget-7659" style="width:100%;height:480px;" class="visNetwork"></div>
+<script type="application/json" data-for="htmlwidget-7659">{ "x": {
  "nodes": [
  {
  "id": 1,
@@ -374,7 +374,7 @@ visNetwork(nodes, edges, width = &quot;100%&quot;) %&gt;%
 },
 {
  "id": 2,
-"group": "B" 
+"group": "A" 
 },
 {
  "id": 3,
@@ -382,7 +382,7 @@ visNetwork(nodes, edges, width = &quot;100%&quot;) %&gt;%
 },
 {
  "id": 4,
-"group": "A" 
+"group": "B" 
 },
 {
  "id": 5,
@@ -434,13 +434,13 @@ visNetwork(nodes, edges, width = &quot;100%&quot;) %&gt;%
 <h2>Highlight nearest</h2>
 <p>Highlight nearest nodes and edges clicking on a node :</p>
 <pre class="r"><code>visNetwork(nodes, edges, width = &quot;100%&quot;) %&gt;% visOptions(highlightNearest = TRUE)</code></pre>
-<p><div id="htmlwidget-4305" style="width:100%;height:480px;" class="visNetwork"></div>
-<script type="application/json" data-for="htmlwidget-4305">{ "x": {
+<p><div id="htmlwidget-6026" style="width:100%;height:480px;" class="visNetwork"></div>
+<script type="application/json" data-for="htmlwidget-6026">{ "x": {
  "nodes": [
  {
  "id": 1,
 "label": "Label 1",
-"group": "B",
+"group": "C",
 "value": 1,
 "title": "<p>1<br>Tooltip !</p>" 
 },
@@ -461,28 +461,28 @@ visNetwork(nodes, edges, width = &quot;100%&quot;) %&gt;%
 {
  "id": 4,
 "label": "Label 4",
-"group": "A",
+"group": "C",
 "value": 4,
 "title": "<p>4<br>Tooltip !</p>" 
 },
 {
  "id": 5,
 "label": "Label 5",
-"group": "C",
+"group": "B",
 "value": 5,
 "title": "<p>5<br>Tooltip !</p>" 
 },
 {
  "id": 6,
 "label": "Label 6",
-"group": "B",
+"group": "C",
 "value": 6,
 "title": "<p>6<br>Tooltip !</p>" 
 },
 {
  "id": 7,
 "label": "Label 7",
-"group": "A",
+"group": "C",
 "value": 7,
 "title": "<p>7<br>Tooltip !</p>" 
 },
@@ -496,7 +496,7 @@ visNetwork(nodes, edges, width = &quot;100%&quot;) %&gt;%
 {
  "id": 9,
 "label": "Label 9",
-"group": "C",
+"group": "B",
 "value": 9,
 "title": "<p>9<br>Tooltip !</p>" 
 },
@@ -510,72 +510,72 @@ visNetwork(nodes, edges, width = &quot;100%&quot;) %&gt;%
 ],
 "edges": [
  {
- "from":                 1,
-"to":                 6,
-"value": 9.557362036911616,
+ "from":                 6,
+"to":                 9,
+"value": 10.10047121628136,
 "label": "Edge 1",
 "title": "<p>1<br>Edge Tooltip !</p>" 
 },
 {
- "from":                 4,
-"to":                 3,
-"value": 9.629114155362315,
+ "from":                 7,
+"to":                 9,
+"value": 11.05872246209587,
 "label": "Edge 2",
 "title": "<p>2<br>Edge Tooltip !</p>" 
 },
 {
- "from":                 7,
-"to":                 3,
-"value": 11.22288232600056,
+ "from":                 2,
+"to":                 9,
+"value": 9.217449021140421,
 "label": "Edge 3",
 "title": "<p>3<br>Edge Tooltip !</p>" 
 },
 {
- "from":                 6,
-"to":                 1,
-"value":    9.329729294797,
+ "from":                 2,
+"to":                 5,
+"value": 12.47449662310284,
 "label": "Edge 4",
 "title": "<p>4<br>Edge Tooltip !</p>" 
 },
 {
  "from":                 1,
-"to":                 5,
-"value":  9.61864621513738,
+"to":                 4,
+"value": 11.68153594940944,
 "label": "Edge 5",
 "title": "<p>5<br>Edge Tooltip !</p>" 
 },
 {
- "from":                 7,
-"to":                 4,
-"value": 10.08974037163913,
+ "from":                 4,
+"to":                 2,
+"value": 9.573280108432359,
 "label": "Edge 6",
 "title": "<p>6<br>Edge Tooltip !</p>" 
 },
 {
- "from":                 2,
-"to":                 5,
-"value": 11.57847304259711,
+ "from":                 8,
+"to":                 7,
+"value": 10.95446643533714,
 "label": "Edge 7",
 "title": "<p>7<br>Edge Tooltip !</p>" 
 },
 {
- "from":                 1,
-"to":                 6,
-"value":  9.53552531316366,
+ "from":                 6,
+"to":                 4,
+"value": 8.958367379237226,
 "label": "Edge 8",
 "title": "<p>8<br>Edge Tooltip !</p>" 
 },
 {
  "from":                 2,
 "to":                 6,
-"value": 9.732776009518682,
+"value": 8.775695584617981,
 "label": "Edge 9",
 "title": "<p>9<br>Edge Tooltip !</p>" 
 },
 {
- "from":                 9,
-"to":                 9,
-"value": 11.09065604573428,
+ "from":                 6,
+"to":                 7,
+"value":  10.4727300758076,
 "label": "Edge 10",
 "title": "<p>10<br>Edge Tooltip !</p>" 
 } 
@@ -587,7 +587,7 @@ visNetwork(nodes, edges, width = &quot;100%&quot;) %&gt;%
  "shape": "dot" 
 } 
 },
-"groups": [ "B", "A", "C" ],
+"groups": [ "C", "A", "B" ],
 "legend": false,
 "legendWidth":                 1,
 "width": "100%",
@@ -599,13 +599,13 @@ visNetwork(nodes, edges, width = &quot;100%&quot;) %&gt;%
 <div id="add-legend-on-groups" class="section level2">
 <h2>Add legend on groups</h2>
 <pre class="r"><code>visNetwork(nodes, edges, width = &quot;100%&quot;,  legend = TRUE)</code></pre>
-<p><div id="htmlwidget-8270" style="width:100%;height:480px;" class="visNetwork"></div>
-<script type="application/json" data-for="htmlwidget-8270">{ "x": {
+<p><div id="htmlwidget-3105" style="width:100%;height:480px;" class="visNetwork"></div>
+<script type="application/json" data-for="htmlwidget-3105">{ "x": {
  "nodes": [
  {
  "id": 1,
 "label": "Label 1",
-"group": "B",
+"group": "C",
 "value": 1,
 "title": "<p>1<br>Tooltip !</p>" 
 },
@@ -626,28 +626,28 @@ visNetwork(nodes, edges, width = &quot;100%&quot;) %&gt;%
 {
  "id": 4,
 "label": "Label 4",
-"group": "A",
+"group": "C",
 "value": 4,
 "title": "<p>4<br>Tooltip !</p>" 
 },
 {
  "id": 5,
 "label": "Label 5",
-"group": "C",
+"group": "B",
 "value": 5,
 "title": "<p>5<br>Tooltip !</p>" 
 },
 {
  "id": 6,
 "label": "Label 6",
-"group": "B",
+"group": "C",
 "value": 6,
 "title": "<p>6<br>Tooltip !</p>" 
 },
 {
  "id": 7,
 "label": "Label 7",
-"group": "A",
+"group": "C",
 "value": 7,
 "title": "<p>7<br>Tooltip !</p>" 
 },
@@ -661,7 +661,7 @@ visNetwork(nodes, edges, width = &quot;100%&quot;) %&gt;%
 {
  "id": 9,
 "label": "Label 9",
-"group": "C",
+"group": "B",
 "value": 9,
 "title": "<p>9<br>Tooltip !</p>" 
 },
@@ -675,72 +675,72 @@ visNetwork(nodes, edges, width = &quot;100%&quot;) %&gt;%
 ],
 "edges": [
  {
- "from":                 1,
-"to":                 6,
-"value": 9.557362036911616,
+ "from":                 6,
+"to":                 9,
+"value": 10.10047121628136,
 "label": "Edge 1",
 "title": "<p>1<br>Edge Tooltip !</p>" 
 },
 {
- "from":                 4,
-"to":                 3,
-"value": 9.629114155362315,
+ "from":                 7,
+"to":                 9,
+"value": 11.05872246209587,
 "label": "Edge 2",
 "title": "<p>2<br>Edge Tooltip !</p>" 
 },
 {
- "from":                 7,
-"to":                 3,
-"value": 11.22288232600056,
+ "from":                 2,
+"to":                 9,
+"value": 9.217449021140421,
 "label": "Edge 3",
 "title": "<p>3<br>Edge Tooltip !</p>" 
 },
 {
- "from":                 6,
-"to":                 1,
-"value":    9.329729294797,
+ "from":                 2,
+"to":                 5,
+"value": 12.47449662310284,
 "label": "Edge 4",
 "title": "<p>4<br>Edge Tooltip !</p>" 
 },
 {
  "from":                 1,
-"to":                 5,
-"value":  9.61864621513738,
+"to":                 4,
+"value": 11.68153594940944,
 "label": "Edge 5",
 "title": "<p>5<br>Edge Tooltip !</p>" 
 },
 {
- "from":                 7,
-"to":                 4,
-"value": 10.08974037163913,
+ "from":                 4,
+"to":                 2,
+"value": 9.573280108432359,
 "label": "Edge 6",
 "title": "<p>6<br>Edge Tooltip !</p>" 
 },
 {
- "from":                 2,
-"to":                 5,
-"value": 11.57847304259711,
+ "from":                 8,
+"to":                 7,
+"value": 10.95446643533714,
 "label": "Edge 7",
 "title": "<p>7<br>Edge Tooltip !</p>" 
 },
 {
- "from":                 1,
-"to":                 6,
-"value":  9.53552531316366,
+ "from":                 6,
+"to":                 4,
+"value": 8.958367379237226,
 "label": "Edge 8",
 "title": "<p>8<br>Edge Tooltip !</p>" 
 },
 {
  "from":                 2,
 "to":                 6,
-"value": 9.732776009518682,
+"value": 8.775695584617981,
 "label": "Edge 9",
 "title": "<p>9<br>Edge Tooltip !</p>" 
 },
 {
- "from":                 9,
-"to":                 9,
-"value": 11.09065604573428,
+ "from":                 6,
+"to":                 7,
+"value":  10.4727300758076,
 "label": "Edge 10",
 "title": "<p>10<br>Edge Tooltip !</p>" 
 } 
@@ -752,7 +752,7 @@ visNetwork(nodes, edges, width = &quot;100%&quot;) %&gt;%
  "shape": "dot" 
 } 
 },
-"groups": [ "B", "A", "C" ],
+"groups": [ "C", "A", "B" ],
 "legend": true,
 "legendWidth":                 1,
 "width": "100%",
@@ -762,13 +762,13 @@ visNetwork(nodes, edges, width = &quot;100%&quot;) %&gt;%
 <div id="select-by-node-id" class="section level2">
 <h2>Select by node id</h2>
 <pre class="r"><code>visNetwork(nodes, edges, width = &quot;100%&quot;) %&gt;% visOptions(highlightNearest = TRUE, nodesIdSelection = TRUE)</code></pre>
-<p><div id="htmlwidget-962" style="width:100%;height:480px;" class="visNetwork"></div>
-<script type="application/json" data-for="htmlwidget-962">{ "x": {
+<p><div id="htmlwidget-2242" style="width:100%;height:480px;" class="visNetwork"></div>
+<script type="application/json" data-for="htmlwidget-2242">{ "x": {
  "nodes": [
  {
  "id": 1,
 "label": "Label 1",
-"group": "B",
+"group": "C",
 "value": 1,
 "title": "<p>1<br>Tooltip !</p>" 
 },
@@ -789,28 +789,28 @@ visNetwork(nodes, edges, width = &quot;100%&quot;) %&gt;%
 {
  "id": 4,
 "label": "Label 4",
-"group": "A",
+"group": "C",
 "value": 4,
 "title": "<p>4<br>Tooltip !</p>" 
 },
 {
  "id": 5,
 "label": "Label 5",
-"group": "C",
+"group": "B",
 "value": 5,
 "title": "<p>5<br>Tooltip !</p>" 
 },
 {
  "id": 6,
 "label": "Label 6",
-"group": "B",
+"group": "C",
 "value": 6,
 "title": "<p>6<br>Tooltip !</p>" 
 },
 {
  "id": 7,
 "label": "Label 7",
-"group": "A",
+"group": "C",
 "value": 7,
 "title": "<p>7<br>Tooltip !</p>" 
 },
@@ -824,7 +824,7 @@ visNetwork(nodes, edges, width = &quot;100%&quot;) %&gt;%
 {
  "id": 9,
 "label": "Label 9",
-"group": "C",
+"group": "B",
 "value": 9,
 "title": "<p>9<br>Tooltip !</p>" 
 },
@@ -838,72 +838,72 @@ visNetwork(nodes, edges, width = &quot;100%&quot;) %&gt;%
 ],
 "edges": [
  {
- "from":                 1,
-"to":                 6,
-"value": 9.557362036911616,
+ "from":                 6,
+"to":                 9,
+"value": 10.10047121628136,
 "label": "Edge 1",
 "title": "<p>1<br>Edge Tooltip !</p>" 
 },
 {
- "from":                 4,
-"to":                 3,
-"value": 9.629114155362315,
+ "from":                 7,
+"to":                 9,
+"value": 11.05872246209587,
 "label": "Edge 2",
 "title": "<p>2<br>Edge Tooltip !</p>" 
 },
 {
- "from":                 7,
-"to":                 3,
-"value": 11.22288232600056,
+ "from":                 2,
+"to":                 9,
+"value": 9.217449021140421,
 "label": "Edge 3",
 "title": "<p>3<br>Edge Tooltip !</p>" 
 },
 {
- "from":                 6,
-"to":                 1,
-"value":    9.329729294797,
+ "from":                 2,
+"to":                 5,
+"value": 12.47449662310284,
 "label": "Edge 4",
 "title": "<p>4<br>Edge Tooltip !</p>" 
 },
 {
  "from":                 1,
-"to":                 5,
-"value":  9.61864621513738,
+"to":                 4,
+"value": 11.68153594940944,
 "label": "Edge 5",
 "title": "<p>5<br>Edge Tooltip !</p>" 
 },
 {
- "from":                 7,
-"to":                 4,
-"value": 10.08974037163913,
+ "from":                 4,
+"to":                 2,
+"value": 9.573280108432359,
 "label": "Edge 6",
 "title": "<p>6<br>Edge Tooltip !</p>" 
 },
 {
- "from":                 2,
-"to":                 5,
-"value": 11.57847304259711,
+ "from":                 8,
+"to":                 7,
+"value": 10.95446643533714,
 "label": "Edge 7",
 "title": "<p>7<br>Edge Tooltip !</p>" 
 },
 {
- "from":                 1,
-"to":                 6,
-"value":  9.53552531316366,
+ "from":                 6,
+"to":                 4,
+"value": 8.958367379237226,
 "label": "Edge 8",
 "title": "<p>8<br>Edge Tooltip !</p>" 
 },
 {
  "from":                 2,
 "to":                 6,
-"value": 9.732776009518682,
+"value": 8.775695584617981,
 "label": "Edge 9",
 "title": "<p>9<br>Edge Tooltip !</p>" 
 },
 {
- "from":                 9,
-"to":                 9,
-"value": 11.09065604573428,
+ "from":                 6,
+"to":                 7,
+"value":  10.4727300758076,
 "label": "Edge 10",
 "title": "<p>10<br>Edge Tooltip !</p>" 
 } 
@@ -915,7 +915,7 @@ visNetwork(nodes, edges, width = &quot;100%&quot;) %&gt;%
  "shape": "dot" 
 } 
 },
-"groups": [ "B", "A", "C" ],
+"groups": [ "C", "A", "B" ],
 "legend": false,
 "legendWidth":                 1,
 "width": "100%",
@@ -927,128 +927,128 @@ visNetwork(nodes, edges, width = &quot;100%&quot;) %&gt;%
 <div id="directed-network" class="section level2">
 <h2>Directed Network</h2>
 <pre class="r"><code>visNetwork(nodes, edges, width = &quot;100%&quot;) %&gt;% visEdges(style = &quot;arrow&quot;)</code></pre>
-<p><div id="htmlwidget-4323" style="width:100%;height:480px;" class="visNetwork"></div>
-<script type="application/json" data-for="htmlwidget-4323">{ "x": {
+<p><div id="htmlwidget-2760" style="width:100%;height:480px;" class="visNetwork"></div>
+<script type="application/json" data-for="htmlwidget-2760">{ "x": {
  "nodes": [
  {
  "id": 1,
 "label": "Label 1",
-"group": 2,
+"group": 3,
 "value": 1,
 "title": "<p>1<br>Tooltip !</p>" 
 },
 {
  "id": 2,
 "label": "Label 2",
-"group": 10,
+"group": 6,
 "value": 2,
 "title": "<p>2<br>Tooltip !</p>" 
 },
 {
  "id": 3,
 "label": "Label 3",
-"group": 3,
+"group": 10,
 "value": 3,
 "title": "<p>3<br>Tooltip !</p>" 
 },
 {
  "id": 4,
 "label": "Label 4",
-"group": 2,
+"group": 1,
 "value": 4,
 "title": "<p>4<br>Tooltip !</p>" 
 },
 {
  "id": 5,
 "label": "Label 5",
-"group": 3,
+"group": 6,
 "value": 5,
 "title": "<p>5<br>Tooltip !</p>" 
 },
 {
  "id": 6,
 "label": "Label 6",
-"group": 2,
+"group": 3,
 "value": 6,
 "title": "<p>6<br>Tooltip !</p>" 
 },
 {
  "id": 7,
 "label": "Label 7",
-"group": 9,
+"group": 5,
 "value": 7,
 "title": "<p>7<br>Tooltip !</p>" 
 },
 {
  "id": 8,
 "label": "Label 8",
-"group": 3,
+"group": 5,
 "value": 8,
 "title": "<p>8<br>Tooltip !</p>" 
 },
 {
  "id": 9,
 "label": "Label 9",
-"group": 7,
+"group": 4,
 "value": 9,
 "title": "<p>9<br>Tooltip !</p>" 
 },
 {
  "id": 10,
 "label": "Label 10",
-"group": 8,
+"group": 6,
 "value": 10,
 "title": "<p>10<br>Tooltip !</p>" 
 } 
 ],
 "edges": [
  {
- "from":                 1,
+ "from":                 5,
 "to":                 5,
 "title": "<p>1<br>Edge Tooltip !</p>" 
 },
 {
- "from":                 3,
-"to":                 3,
+ "from":                 6,
+"to":                 1,
 "title": "<p>2<br>Edge Tooltip !</p>" 
 },
 {
- "from":                 2,
-"to":                 8,
+ "from":                 6,
+"to":                 3,
 "title": "<p>3<br>Edge Tooltip !</p>" 
 },
 {
- "from":                 9,
-"to":                 8,
+ "from":                 3,
+"to":                 7,
 "title": "<p>4<br>Edge Tooltip !</p>" 
-},
-{
- "from":                 1,
-"to":                 6,
-"title": "<p>5<br>Edge Tooltip !</p>" 
-},
-{
- "from":                 4,
-"to":                 3,
-"title": "<p>6<br>Edge Tooltip !</p>" 
-},
-{
- "from":                 6,
-"to":                 6,
-"title": "<p>7<br>Edge Tooltip !</p>" 
 },
 {
  "from":                 5,
 "to":                 4,
-"title": "<p>8<br>Edge Tooltip !</p>" 
+"title": "<p>5<br>Edge Tooltip !</p>" 
 },
 {
  "from":                 7,
-"to":                 7,
+"to":                 9,
+"title": "<p>6<br>Edge Tooltip !</p>" 
+},
+{
+ "from":                 1,
+"to":                 2,
+"title": "<p>7<br>Edge Tooltip !</p>" 
+},
+{
+ "from":                 3,
+"to":                 6,
+"title": "<p>8<br>Edge Tooltip !</p>" 
+},
+{
+ "from":                 8,
+"to":                 6,
 "title": "<p>9<br>Edge Tooltip !</p>" 
 },
 {
- "from":                 2,
+ "from":                 9,
 "to":                 9,
 "title": "<p>10<br>Edge Tooltip !</p>" 
 } 
@@ -1063,7 +1063,7 @@ visNetwork(nodes, edges, width = &quot;100%&quot;) %&gt;%
  "style": "arrow" 
 } 
 },
-"groups": [ "2", "10", "3", "9", "7", "8" ],
+"groups": [ "3", "6", "10", "1", "5", "4" ],
 "legend": false,
 "legendWidth":                 1,
 "width": "100%",
@@ -1074,128 +1074,128 @@ visNetwork(nodes, edges, width = &quot;100%&quot;) %&gt;%
 <h2>Custom navigation</h2>
 <p><em>vis.js</em> propose some navigation tools :</p>
 <pre class="r"><code>visNetwork(nodes, edges, width = &quot;100%&quot;) %&gt;% visOptions(navigation = TRUE)</code></pre>
-<p><div id="htmlwidget-1099" style="width:100%;height:480px;" class="visNetwork"></div>
-<script type="application/json" data-for="htmlwidget-1099">{ "x": {
+<p><div id="htmlwidget-5904" style="width:100%;height:480px;" class="visNetwork"></div>
+<script type="application/json" data-for="htmlwidget-5904">{ "x": {
  "nodes": [
  {
  "id": 1,
 "label": "Label 1",
-"group": 2,
+"group": 3,
 "value": 1,
 "title": "<p>1<br>Tooltip !</p>" 
 },
 {
  "id": 2,
 "label": "Label 2",
-"group": 10,
+"group": 6,
 "value": 2,
 "title": "<p>2<br>Tooltip !</p>" 
 },
 {
  "id": 3,
 "label": "Label 3",
-"group": 3,
+"group": 10,
 "value": 3,
 "title": "<p>3<br>Tooltip !</p>" 
 },
 {
  "id": 4,
 "label": "Label 4",
-"group": 2,
+"group": 1,
 "value": 4,
 "title": "<p>4<br>Tooltip !</p>" 
 },
 {
  "id": 5,
 "label": "Label 5",
-"group": 3,
+"group": 6,
 "value": 5,
 "title": "<p>5<br>Tooltip !</p>" 
 },
 {
  "id": 6,
 "label": "Label 6",
-"group": 2,
+"group": 3,
 "value": 6,
 "title": "<p>6<br>Tooltip !</p>" 
 },
 {
  "id": 7,
 "label": "Label 7",
-"group": 9,
+"group": 5,
 "value": 7,
 "title": "<p>7<br>Tooltip !</p>" 
 },
 {
  "id": 8,
 "label": "Label 8",
-"group": 3,
+"group": 5,
 "value": 8,
 "title": "<p>8<br>Tooltip !</p>" 
 },
 {
  "id": 9,
 "label": "Label 9",
-"group": 7,
+"group": 4,
 "value": 9,
 "title": "<p>9<br>Tooltip !</p>" 
 },
 {
  "id": 10,
 "label": "Label 10",
-"group": 8,
+"group": 6,
 "value": 10,
 "title": "<p>10<br>Tooltip !</p>" 
 } 
 ],
 "edges": [
  {
- "from":                 1,
+ "from":                 5,
 "to":                 5,
 "title": "<p>1<br>Edge Tooltip !</p>" 
 },
 {
- "from":                 3,
-"to":                 3,
+ "from":                 6,
+"to":                 1,
 "title": "<p>2<br>Edge Tooltip !</p>" 
 },
 {
- "from":                 2,
-"to":                 8,
+ "from":                 6,
+"to":                 3,
 "title": "<p>3<br>Edge Tooltip !</p>" 
 },
 {
- "from":                 9,
-"to":                 8,
+ "from":                 3,
+"to":                 7,
 "title": "<p>4<br>Edge Tooltip !</p>" 
-},
-{
- "from":                 1,
-"to":                 6,
-"title": "<p>5<br>Edge Tooltip !</p>" 
-},
-{
- "from":                 4,
-"to":                 3,
-"title": "<p>6<br>Edge Tooltip !</p>" 
-},
-{
- "from":                 6,
-"to":                 6,
-"title": "<p>7<br>Edge Tooltip !</p>" 
 },
 {
  "from":                 5,
 "to":                 4,
-"title": "<p>8<br>Edge Tooltip !</p>" 
+"title": "<p>5<br>Edge Tooltip !</p>" 
 },
 {
  "from":                 7,
-"to":                 7,
+"to":                 9,
+"title": "<p>6<br>Edge Tooltip !</p>" 
+},
+{
+ "from":                 1,
+"to":                 2,
+"title": "<p>7<br>Edge Tooltip !</p>" 
+},
+{
+ "from":                 3,
+"to":                 6,
+"title": "<p>8<br>Edge Tooltip !</p>" 
+},
+{
+ "from":                 8,
+"to":                 6,
 "title": "<p>9<br>Edge Tooltip !</p>" 
 },
 {
- "from":                 2,
+ "from":                 9,
 "to":                 9,
 "title": "<p>10<br>Edge Tooltip !</p>" 
 } 
@@ -1208,7 +1208,7 @@ visNetwork(nodes, edges, width = &quot;100%&quot;) %&gt;%
 },
 "navigation": true 
 },
-"groups": [ "2", "10", "3", "9", "7", "8" ],
+"groups": [ "3", "6", "10", "1", "5", "4" ],
 "legend": false,
 "legendWidth":                 1,
 "width": "100%",
@@ -1221,128 +1221,128 @@ visNetwork(nodes, edges, width = &quot;100%&quot;) %&gt;%
 <h2>Data Manipulation</h2>
 <p>And some data manipulation tools :</p>
 <pre class="r"><code>visNetwork(nodes, edges, width = &quot;100%&quot;) %&gt;% visOptions(dataManipulation = TRUE)</code></pre>
-<p><div id="htmlwidget-743" style="width:100%;height:480px;" class="visNetwork"></div>
-<script type="application/json" data-for="htmlwidget-743">{ "x": {
+<p><div id="htmlwidget-8912" style="width:100%;height:480px;" class="visNetwork"></div>
+<script type="application/json" data-for="htmlwidget-8912">{ "x": {
  "nodes": [
  {
  "id": 1,
 "label": "Label 1",
-"group": 2,
+"group": 3,
 "value": 1,
 "title": "<p>1<br>Tooltip !</p>" 
 },
 {
  "id": 2,
 "label": "Label 2",
-"group": 10,
+"group": 6,
 "value": 2,
 "title": "<p>2<br>Tooltip !</p>" 
 },
 {
  "id": 3,
 "label": "Label 3",
-"group": 3,
+"group": 10,
 "value": 3,
 "title": "<p>3<br>Tooltip !</p>" 
 },
 {
  "id": 4,
 "label": "Label 4",
-"group": 2,
+"group": 1,
 "value": 4,
 "title": "<p>4<br>Tooltip !</p>" 
 },
 {
  "id": 5,
 "label": "Label 5",
-"group": 3,
+"group": 6,
 "value": 5,
 "title": "<p>5<br>Tooltip !</p>" 
 },
 {
  "id": 6,
 "label": "Label 6",
-"group": 2,
+"group": 3,
 "value": 6,
 "title": "<p>6<br>Tooltip !</p>" 
 },
 {
  "id": 7,
 "label": "Label 7",
-"group": 9,
+"group": 5,
 "value": 7,
 "title": "<p>7<br>Tooltip !</p>" 
 },
 {
  "id": 8,
 "label": "Label 8",
-"group": 3,
+"group": 5,
 "value": 8,
 "title": "<p>8<br>Tooltip !</p>" 
 },
 {
  "id": 9,
 "label": "Label 9",
-"group": 7,
+"group": 4,
 "value": 9,
 "title": "<p>9<br>Tooltip !</p>" 
 },
 {
  "id": 10,
 "label": "Label 10",
-"group": 8,
+"group": 6,
 "value": 10,
 "title": "<p>10<br>Tooltip !</p>" 
 } 
 ],
 "edges": [
  {
- "from":                 1,
+ "from":                 5,
 "to":                 5,
 "title": "<p>1<br>Edge Tooltip !</p>" 
 },
 {
- "from":                 3,
-"to":                 3,
+ "from":                 6,
+"to":                 1,
 "title": "<p>2<br>Edge Tooltip !</p>" 
 },
 {
- "from":                 2,
-"to":                 8,
+ "from":                 6,
+"to":                 3,
 "title": "<p>3<br>Edge Tooltip !</p>" 
 },
 {
- "from":                 9,
-"to":                 8,
+ "from":                 3,
+"to":                 7,
 "title": "<p>4<br>Edge Tooltip !</p>" 
-},
-{
- "from":                 1,
-"to":                 6,
-"title": "<p>5<br>Edge Tooltip !</p>" 
-},
-{
- "from":                 4,
-"to":                 3,
-"title": "<p>6<br>Edge Tooltip !</p>" 
-},
-{
- "from":                 6,
-"to":                 6,
-"title": "<p>7<br>Edge Tooltip !</p>" 
 },
 {
  "from":                 5,
 "to":                 4,
-"title": "<p>8<br>Edge Tooltip !</p>" 
+"title": "<p>5<br>Edge Tooltip !</p>" 
 },
 {
  "from":                 7,
-"to":                 7,
+"to":                 9,
+"title": "<p>6<br>Edge Tooltip !</p>" 
+},
+{
+ "from":                 1,
+"to":                 2,
+"title": "<p>7<br>Edge Tooltip !</p>" 
+},
+{
+ "from":                 3,
+"to":                 6,
+"title": "<p>8<br>Edge Tooltip !</p>" 
+},
+{
+ "from":                 8,
+"to":                 6,
 "title": "<p>9<br>Edge Tooltip !</p>" 
 },
 {
- "from":                 2,
+ "from":                 9,
 "to":                 9,
 "title": "<p>10<br>Edge Tooltip !</p>" 
 } 
@@ -1355,7 +1355,7 @@ visNetwork(nodes, edges, width = &quot;100%&quot;) %&gt;%
 },
 "dataManipulation": true 
 },
-"groups": [ "2", "10", "3", "9", "7", "8" ],
+"groups": [ "3", "6", "10", "1", "5", "4" ],
 "legend": false,
 "legendWidth":                 1,
 "width": "100%",
@@ -1370,8 +1370,8 @@ visNetwork(nodes, edges, width = &quot;100%&quot;) %&gt;%
 <p>You can use and control hierarchical layout with <em>visHierarchicalLayout</em> :</p>
 <pre class="r"><code>visNetwork(nodes, edges, width = &quot;100%&quot;) %&gt;% visEdges(style = &quot;arrow&quot;) %&gt;% 
   visHierarchicalLayout(layout = &quot;direction&quot;)</code></pre>
-<p><div id="htmlwidget-9746" style="width:100%;height:480px;" class="visNetwork"></div>
-<script type="application/json" data-for="htmlwidget-9746">{ "x": {
+<p><div id="htmlwidget-1777" style="width:100%;height:480px;" class="visNetwork"></div>
+<script type="application/json" data-for="htmlwidget-1777">{ "x": {
  "nodes": [
  {
  "id": 1 
@@ -1443,8 +1443,8 @@ visNetwork(nodes, edges, width = &quot;100%&quot;) %&gt;%
 },"evals": [  ] }</script></p>
 <pre class="r"><code>visNetwork(nodes, edges, width = &quot;100%&quot;) %&gt;% visEdges(style = &quot;arrow&quot;) %&gt;% 
   visHierarchicalLayout(direction = &quot;LR&quot;, layout = &quot;direction&quot;)</code></pre>
-<p><div id="htmlwidget-7911" style="width:100%;height:480px;" class="visNetwork"></div>
-<script type="application/json" data-for="htmlwidget-7911">{ "x": {
+<p><div id="htmlwidget-7370" style="width:100%;height:480px;" class="visNetwork"></div>
+<script type="application/json" data-for="htmlwidget-7370">{ "x": {
  "nodes": [
  {
  "id": 1 
@@ -1519,8 +1519,8 @@ visNetwork(nodes, edges, width = &quot;100%&quot;) %&gt;%
 <div id="freeze-network" class="section level2">
 <h2>Freeze network</h2>
 <pre class="r"><code>visNetwork(nodes, edges, width = &quot;100%&quot;) %&gt;% visOptions(dragNetwork = FALSE, dragNodes = FALSE)</code></pre>
-<p><div id="htmlwidget-3350" style="width:100%;height:480px;" class="visNetwork"></div>
-<script type="application/json" data-for="htmlwidget-3350">{ "x": {
+<p><div id="htmlwidget-1970" style="width:100%;height:480px;" class="visNetwork"></div>
+<script type="application/json" data-for="htmlwidget-1970">{ "x": {
  "nodes": [
  {
  "id": 1 
@@ -1595,8 +1595,8 @@ edges &lt;- data.frame(from = round(runif(12)*10), to = round(runif(12)*10))
 
 visNetwork(nodes, edges, width = &quot;100%&quot;) %&gt;%
  visClustering(initialMaxNodes = 5, nodeScaling = list(width = 50, height = 50, radius = 50))</code></pre>
-<p><div id="htmlwidget-6225" style="width:100%;height:480px;" class="visNetwork"></div>
-<script type="application/json" data-for="htmlwidget-6225">{ "x": {
+<p><div id="htmlwidget-1908" style="width:100%;height:480px;" class="visNetwork"></div>
+<script type="application/json" data-for="htmlwidget-1908">{ "x": {
  "nodes": [
  {
  "id": 1 
@@ -1631,52 +1631,52 @@ visNetwork(nodes, edges, width = &quot;100%&quot;) %&gt;%
 ],
 "edges": [
  {
- "from":                 3,
+ "from":                 5,
+"to":                 6 
+},
+{
+ "from":                 2,
+"to":                 9 
+},
+{
+ "from":                 9,
 "to":                 8 
+},
+{
+ "from":                 4,
+"to":                 9 
+},
+{
+ "from":                 1,
+"to":                 9 
+},
+{
+ "from":                 4,
+"to":                 2 
 },
 {
  "from":                 6,
 "to":                 6 
 },
 {
- "from":                 6,
-"to":                 0 
-},
-{
- "from":                 6,
-"to":                 3 
-},
-{
- "from":                 4,
-"to":                 8 
-},
-{
- "from":                 2,
-"to":                 3 
-},
-{
- "from":                 5,
-"to":                 5 
-},
-{
- "from":                 2,
-"to":                 3 
-},
-{
- "from":                 1,
+ "from":                 3,
 "to":                 1 
 },
 {
- "from":                 9,
+ "from":                 8,
 "to":                 4 
 },
 {
- "from":                 4,
-"to":                 1 
+ "from":                 7,
+"to":                 2 
 },
 {
- "from":                 7,
-"to":                 1 
+ "from":                 2,
+"to":                 6 
+},
+{
+ "from":                 1,
+"to":                 3 
 } 
 ],
 "options": {
@@ -1712,8 +1712,8 @@ htmlwidgets::saveWidget(network, &quot;network.html&quot;)</code></pre>
 <div id="use-dot-language-data" class="section level2">
 <h2>Use DOT language data</h2>
 <pre class="r"><code>visNetwork(dot = 'dinetwork {1 -&gt; 1 -&gt; 2; 2 -&gt; 3; 2 -- 4; 2 -&gt; 1 }', width = &quot;100%&quot;)</code></pre>
-<p><div id="htmlwidget-5315" style="width:100%;height:480px;" class="visNetwork"></div>
-<script type="application/json" data-for="htmlwidget-5315">{ "x": {
+<p><div id="htmlwidget-4429" style="width:100%;height:480px;" class="visNetwork"></div>
+<script type="application/json" data-for="htmlwidget-4429">{ "x": {
  "dot": "dinetwork {1 -> 1 -> 2; 2 -> 3; 2 -- 4; 2 -> 1 }",
 "options": {
  "width": "100%",
