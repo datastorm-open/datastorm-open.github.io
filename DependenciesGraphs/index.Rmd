@@ -9,41 +9,38 @@ output: html_document
 
 Package is actually only available on github. You can install it with :
 
-```{r, eval=FALSE}
+```{r,eval=FALSE}
 devtools::install_github("DataKnowledge/DependenciesGraphs")
 ```
 
-## Minimal example
 
-**DependenciesGraphs** make types of graphs :
 
-#Dependdencies between functions in a package
-Can choose a specific function
-```{r}
-require(DependenciesGraphs, quietly = TRUE)
-library(plyr)
+#**DependenciesGraphs** make differents types of graphs :
 
+###Dependdencies between functions in a package
+####Specific function
+```{r,message=FALSE}
+require(DependenciesGraphs)
+library(plyr,quietly = TRUE)
 dep <- funDependencies("package:plyr","count")
 plot(dep)
-
 ```
 
 
-
-
-Can choose all functions in a specific package or environnement
+<p><br><br><br><br></p>
+####All functions in a specific package or environnement
 ```{r}
  dep <- envirDependencies("package:plyr")
  plot(dep,block=TRUE)
 ```
 
-#Dependdencies between packages
+###Dependdencies between packages
 ```{r}
 dep <- Pck.load.to.vis("plyr")
 plot(dep)
 ```
 
-##Shiny application for fast visualisation
+###Shiny application for fast visualisation
 
 
 ```{r,eval=FALSE}
