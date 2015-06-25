@@ -79,7 +79,7 @@ visNetwork(nodes = nodes, edges = edges)
 ```{r, echo = FALSE}
 nodes <- data.frame(id = 1:3)
 edges <- data.frame(from = c(1,2), to = c(1,3))
-visNetwork(nodes = nodes, edges = edges, width = "100%", height = "300px") %>%
+visNetwork(nodes = nodes, edges = edges, width = "100%", height = "350px") %>%
   visPhysics(stabilization = FALSE)
 ```
 
@@ -90,8 +90,8 @@ visNetwork(nodes = nodes, edges = edges, width = "100%", height = "300px") %>%
 ```{r}
 nodes <- data.frame(id = 1:10, 
                     label = paste("Node", 1:10),                                 # add labels on nodes
-                    group = c("GrA", "GrB"),                                     # control groups on nodes 
-                    value = 1:10,                                                # control size adding value
+                    group = c("GrA", "GrB"),                                     # add groups on nodes 
+                    value = 1:10,                                                # size adding value
                     shape = c("square", "triangle", "box", "circle", "dot", "star",
                     "ellipse", "database", "text", "diamond"),                   # control shape of nodes
                     title = paste0("<p><b>", 1:10,"</b><br>Node !</p>"),         # tooltip (html or character)
@@ -111,7 +111,7 @@ head(nodes)
 <br>
 ```{r}
 edges <- data.frame(from = sample(1:10,8), to = sample(1:10, 8),
-                    label = paste("Edges", 1:8),                                # add labels on edges
+                    label = paste("Edge", 1:8),                                 # add labels on edges
                     length = c(100,500),                                        # length
                     arrows = c("to", "from", "middle", "middle;to"),            # arrows
                     dashes = c(TRUE, FALSE),                                    # dashes
@@ -129,7 +129,7 @@ head(edges)
 ----
 
 ```{r, echo = FALSE}
-visNetwork(nodes, edges, width = "100%", height = "700px")%>%
+visNetwork(nodes, edges, width = "100%", height = "800px")%>%
   visPhysics(stabilization = FALSE)
 ```
 
@@ -152,7 +152,7 @@ visNetwork(nodes, edges) %>%
 nodes <- data.frame(id = 1:5, group = c(rep("A", 2), rep("B", 3)))
 edges <- data.frame(from = c(2,5,3,3), to = c(1,2,4,2))
 
-visNetwork(nodes, edges, width = "100%", height = "300px") %>% 
+visNetwork(nodes, edges, width = "100%", height = "350px") %>% 
   visNodes(shape = "square") %>%
   visEdges(arrow ="from") %>%
   visGroups(groupname = "A", color = "darkblue") %>%
@@ -182,7 +182,7 @@ visNetwork(nodes, edges) %>% visOptions(highlightNearest = TRUE, nodesIdSelectio
 ```
 
 ```{r, echo = FALSE}
-visNetwork(nodes, edges, width = "100%", height = "500px") %>% visOptions(highlightNearest = TRUE, nodesIdSelection = TRUE) %>%
+visNetwork(nodes, edges, width = "100%", height = "450px") %>% visOptions(highlightNearest = TRUE, nodesIdSelection = TRUE) %>%
   visPhysics(stabilization = FALSE)
 ```
 
@@ -216,7 +216,7 @@ visNetwork(nodes, edges) %>% visEdges(arrow = "to") %>%
 ```
 
 ```{r, echo = FALSE}
-visNetwork(nodes, edges, width = "100%", height = "400px") %>% visEdges(arrow = "to") %>% 
+visNetwork(nodes, edges, width = "100%", height = "450px") %>% visEdges(arrow = "to") %>% 
   visHierarchicalLayout(levelSeparation = 100) %>%
   visPhysics(stabilization = FALSE)
 ```
@@ -584,7 +584,7 @@ visNetwork(nodes, edges) %>% visInteraction(dragNodes = FALSE, hideEdgesOnDrag =
 ```
 
 ```{r, echo = FALSE}
-visNetwork(nodes, edges, width = "100%", height = "650px") %>% visOptions( highlightNearest = TRUE, nodesIdSelection = TRUE)  %>%
+visNetwork(nodes, edges, width = "100%", height = "550px") %>% visOptions( highlightNearest = TRUE, nodesIdSelection = TRUE)  %>%
   visInteraction(dragNodes = FALSE, hideEdgesOnDrag = TRUE, hover = TRUE) %>%
   visPhysics(solver = "forceAtlas2Based", stabilization = FALSE)
 ```
@@ -592,9 +592,43 @@ visNetwork(nodes, edges, width = "100%", height = "650px") %>% visOptions( highl
 ## And also
 
 * Physics options are available on **_visPhysics_** (solver and stabilization controls)
-* Use of javascript event with **_visEvents_** :
+* Use of javascript event with **_visEvents_**
 * help for network configuration with **_visConfigure_**
 * some first clustering functions... (**_visClusteringByColor_**, **_visClusteringByGroup_**)
+* Using on shiny (**_renderVisNetwork_**, **_visNetworkOutput_**), with additional features
+```{r, eval = FALSE}
+#  using nodesIdSelection, you can access to current id of selected node with a new input
+output$mynetwork <- renderVisNetwork({
+  visNetwork(nodes, edges)%>%
+  ... %>%visOptions(nodesIdSelection = TRUE)
+}) 
+# created input$mynetwork_selected, with id of current selected node
+```
+
+* related project : **DependenciesGraphs**, an R package for dependencies visualization between packages and functions, available on [DataKnowledge github (https://github.com/DataKnowledge)](https://github.com/DataKnowledge)
+
+----
+
+* **DependenciesGraphs** example : **plyr** functions dependencies
+
+```{r, eval = FALSE}
+dep <- envirDependencies("package:plyr")
+plot(dep)
+```
+
+```{r, echo = FALSE, message = FALSE}
+require(DependenciesGraphs,  quietly = TRUE)
+library(plyr)
+dep <- envirDependencies("package:plyr")
+visNetwork(dep[[1]], dep[[2]], width = "100%", height = "550px") %>% visEdges(arrow = "from") %>%
+    visOptions(highlightNearest = TRUE, nodesIdSelection = TRUE)%>%
+    visInteraction(dragNodes = TRUE)%>%
+    visPhysics(stabilization = FALSE)
+```
+
+----
+
+* Clustering and event example 
 
 ```{r, echo = FALSE}
 nodes <- data.frame(id = 1:10, label = paste("Label", 1:10), group = c("A", "A", "A", "B", "A","B","A","B","A","A"),
@@ -609,10 +643,26 @@ visNetwork(nodes, edges) %>% visClusteringByGroup(groups = c("A","B")) %>%
 ```
 
 ```{r, echo = FALSE}
-visNetwork(nodes, edges, width = "100%", height = "300px") %>% visInteraction(hover = TRUE) %>%
+visNetwork(nodes, edges, width = "100%", height = "550px") %>% visInteraction(hover = TRUE) %>%
   visClusteringByGroup(groups = c("A","B")) %>%
   visEvents(zoom = "function(properties) {
      alert('zoom scale : ' + properties.scale);}") %>%
   visPhysics(stabilization = FALSE)
 ```
 
+----
+
+## Next Steps
+
+* Improve clustering for R users
+* Add tools/support for **igraph**/**arules**/... objects
+* Develop shiny features 
+* Write more documentation
+* CRAN submission...
+
+<div style="text-align:center" markdown="1">
+<h2>Takes time : any help is welcome, by participating via github !</h2>
+<h1>Thanks for your attention</h1>
+<img src="images/R.jpg" alt="Drawing" style="width: 100px;"/>
+<img src="images/data_medium.png" alt="Drawing" style="width: 200px;"/>
+</div>

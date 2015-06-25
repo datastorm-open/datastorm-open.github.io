@@ -31,51 +31,55 @@ visNetwork(nodes, edges, width = "100%")
 ```
 
 
-## More variables
-You can add informations and customize network simply using more variables on nodes and edges data.frames. For example :
+## Simple individual nodes and edges customization
 
-* *label* column : add labels on nodes / edges
-* *value* column : control size on nodes / edges
-* *title* column : add tooltip  on nodes / edges (html, or character)
-* *group* column : Only for nodes. Add nodes groups.
-* ...
+* Adding more variables on nodes data.frame. See **_visNodes_** for available options.
 
 ```{r}
-nb <- 10
-nodes <- data.frame(id = 1:nb, label = paste("Label", 1:nb),
- group = sample(LETTERS[1:3], nb, replace = TRUE), value = 1:nb,
- title = paste0("<p>", 1:nb,"<br>Tooltip !</p>"), stringsAsFactors = FALSE)
+nodes <- data.frame(id = 1:10, 
+                    label = paste("Node", 1:10),                                 # add labels on nodes
+                    group = c("GrA", "GrB"),                                     # add groups on nodes 
+                    value = 1:10,                                                # size adding value
+                    shape = c("square", "triangle", "box", "circle", "dot", "star",
+                    "ellipse", "database", "text", "diamond"),                   # control shape of nodes
+                    title = paste0("<p><b>", 1:10,"</b><br>Node !</p>"),         # tooltip (html or character)
+                    color = c("darkred", "grey", "orange", "darkblue", "purple"),# color
+                    shadow = c(FALSE, TRUE, FALSE, TRUE, TRUE))                  # shadow
 
-edges <- data.frame(from = trunc(runif(nb)*(nb-1))+1,
- to = trunc(runif(nb)*(nb-1))+1,
- value = rnorm(nb, 10), label = paste("Edge", 1:nb),
- title = paste0("<p>", 1:nb,"<br>Edge Tooltip !</p>"))
+head(nodes)
+```
 
+* Adding more variables on edges data.frame. See **_visEdges_** for available options.
+
+```{r}
+edges <- data.frame(from = sample(1:10,8), to = sample(1:10, 8),
+                    label = paste("Edge", 1:8),                                 # add labels on edges
+                    length = c(100,500),                                        # length
+                    arrows = c("to", "from", "middle", "middle;to"),            # arrows
+                    dashes = c(TRUE, FALSE),                                    # dashes
+                    title = paste("Edge", 1:8),                                 # tooltip (html or character)
+                    smooth = c(FALSE, TRUE),                                    # smooth
+                    shadow = c(FALSE, TRUE, FALSE, TRUE))                       # shadow
+head(edges)
+```
+
+```{r}
 visNetwork(nodes, edges, width = "100%")
 ```
 
-## Nodes / edges options
-Several global options are available for nodes and edges using *visNodes* and *visEdges*.
-```{r net}
-# change shape and color of nodes
-# and style of edges
-nodes <- data.frame(id = 1:3)
-edges <- data.frame(from = c(1,2), to = c(3,3))
-visNetwork(nodes, edges) %>% 
-  visNodes(shape = "square", color = "darkblue") %>%
-  visEdges(shadow = TRUE)
-```
+## Global nodes/edges configuration
 
-## Groups options
-You can use options per group using *visGroups*.
+* Set global options for nodes and edges using **_visNodes_** and **_visEdges_**, and use options per group using **_visGroups_**.
+
 ```{r}
-nodes <- data.frame(id = 1:5,  
-                    group = sample(c("A", "B"), 5, replace = TRUE))
-edges <- data.frame(from = c(2,5,3), to = c(1,2,4))
+nodes <- data.frame(id = 1:5, group = c(rep("A", 2), rep("B", 3)))
+edges <- data.frame(from = c(2,5,3,3), to = c(1,2,4,2))
 
-visNetwork(nodes, edges, width = "100%") %>%
- visGroups(groupname = "A", color = "red", shape = "database") %>%
- visGroups(groupname = "B", color = "yellow", shape = "label")
+visNetwork(nodes, edges) %>% 
+  visNodes(shape = "square") %>%                        # square for all nodes
+  visEdges(arrow ="to") %>%                             # arrow "to" for all edges
+  visGroups(groupname = "A", color = "darkblue") %>%    # darkblue for group "A"
+  visGroups(groupname = "B", color = "red")             # red for group "B"
 ```
 
 # Network configuration
