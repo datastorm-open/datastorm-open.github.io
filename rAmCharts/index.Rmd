@@ -1,0 +1,594 @@
+---
+title: "rAmCharts package"
+output:
+  html_document:
+    toc: true
+    theme: flatly
+    highlight: tango
+---
+
+The package rAmCharts allows you to draw JavaScript charts wich are by nature interactive.
+Its architecture is based on S4 classes and corresponds almost exactly to the
+original library [AmCharts][url_amcharts].
+
+For readability matters, we do not detail much **htmlwidgets** features on the present website. For more details consult directly <http://www.htmlwidgets.org>.
+
+# Getting started
+
+## pipeR
+
+When loading the packge, you note that it is fully compatible with other plot methods since it uses S4 signature for each functionnality.
+```{r,echo=FALSE}
+library(rAmCharts)
+```
+
+In the rest of this short introduction, you will always see the symbol
+`%>>%` introduced by the package [*pipeR*][home_pipeR].  For more details, please refer to the official tutorial.
+
+For the present quick introduction on rAmCharts, we just have to keep in mind that using this syntax, the left hand code is evaluated and passed as the first argument of the function which follow `%>>%` (or alternatively it can can be any argument by indicating a `.` using `()` or `{}` ).
+
+For example:
+```{r}
+data(iris)
+summary(iris, digits = 2)
+```
+is equivalent to:
+```{r}
+library(pipeR)
+data(iris)
+iris %>>% summary( digits = 2 )
+```
+or even
+```{r}
+library(pipeR)
+data(iris)
+iris %>>% ( summary(object = ., digits = 2) )
+```
+
+---
+
+## Quick tour:
+
+### Example
+
+Start with a simple pie chart
+
+```{r, message=FALSE}
+library(rAmCharts)
+amPieChart(theme ="light", titleField = "key", valueField = "value"
+) %>>% setDataProvider(data.frame(key = c("FR", "US"), value = c(20,10))
+) %>>% setLegend( position = "right"
+) %>>% plot
+```
+
+### Details...
+
+If you look at the corresponding pie chart example from the original JavaScript library on <http://www.amcharts.com/demos/>, you notice that the javascript source code looks like:
+
+```
+{
+"type": "pie",
+"theme": "light",
+"dataProvider": [ {
+"country": "FR",
+"litres": 20
+}, {
+"country": "US",
+"litres": 10
+}],
+"valueField": "litres",
+"titleField": "country",
+}
+```
+
+Although the syntax appears very different, it has similarities. If you observe the result before calling the `plot` method, you see a global list containing each parameter mentionned in the code:
+
+```{r, message=FALSE}
+library(rAmCharts)
+amPieChart(theme ="light", titleField = "key", valueField = "value"
+) %>>% setDataProvider(data.frame(key = c("FR", "US"), value = c(20,10))
+)
+```
+
+This list can be easily mapped to the previous JavaScript code with the following tips:
+
+* A JavaScript object corresponds to a __R__ list
+* A JavaScript array (a wrapper for an object) also corresponds to a __R__ list
+
+This structure and mapping are fundamental to the how we construct charts with the package.
+
+The key is to imagine the function call as a list containing every properties for an S4 class initializer:
+
+```{r, message=FALSE}
+library(rAmCharts)
+class(
+  amPieChart(theme ="light", titleField = "key", valueField = "value")
+)
+```
+
+* Each element from the function call is a first level property.
+* Other complex first level properties have their own dedicated functions for which the first argument is always the inherited S4 class object.
+
+To illustrate, `setDataProvider` is a valid method for setting chart data of classes AmChart and DatSet:
+
+```{r}
+showMethods("setDataProvider")
+```
+
+Therefore, it can be used in those contexts:
+
+```{r, eval = FALSE}
+amChart([first level properties]) %>>% setDataProvider(dataProvider = ...)
+
+dataSet([first level properties]) %>>% setDataProvider(dataProvider = ...)
+```
+
+### Customization...
+
+Currently you can draw any object derived from: 
+
+* AmCharts API: <http://docs.amcharts.com/3/javascriptcharts>
+* AmStockCharts API: <http://docs.amcharts.com/3/javascriptstockchart>
+
+This means you can customize you chart in various ways !
+
+For instance, we can move the default linked label *JS chart by amCharts* (which must be kept if using the library without license). We also can switch the theme:
+
+```{r, message=FALSE}
+library(rAmCharts)
+amPieChart(theme ="chalk", titleField = "key", valueField = "value",
+           creditsPosition = "bottom-left"
+) %>>% setDataProvider(data.frame(key = c("FR", "US"), value = c(20,10))
+) %>>% setLegend( position = "right"
+) %>>% plot
+```
+
+# Few demos
+
+## Basics
+
+### amXYChart
+
+```{r, message=FALSE}
+library(rAmCharts)
+amXYChart(theme = "default", startDuration = 0.5, marginLeft = 46, marginBottom = 35
+) %>>% setDataProvider(data.frame( y = c(10,5,-10,-6,15,13,1),  x = c(14,3,8,5,-4,1,6),
+                                   value = c(59,50,19,65,92,8,16), y2 = c(-5,-15,-4,-5,-10,-2,0),
+                                   x2 = c(-3,-8,6,-6,-8,0,-3), value2 = c(44,12,35,168,102,41,16))
+) %>>% addValueAxes(position = "bottom", axisAlpha = 0
+) %>>% addValueAxes(minMaxMultiplier = 1.2, position = "left", axisAlpha = 0
+) %>>% addGraph(balloonText = "x:<b>[[x]]</b> y:<b>[[y]]</b><br>value:<b>[[value]]</b>",
+                bullet = "circle", bulletBorderAlpha = 0.2, bulletAlpha = 0.8, lineAlpha=0,
+                fillAlphas = 0, valueField = "value", xField = "x",yField = "y", maxBulletSize = 100
+) %>>% addGraph(balloonText = "x:<b>[[x]]</b>y:<b>[[y]]</b><br>value:<b>[[value]]</b>",
+                bullet="diamond",bulletBorderAlpha=0.2, bulletAlpha = 0.8, lineAlpha = 0,
+                fillAlphas = 0,valueField = "value2", xField = "x2", yField = "y2",
+                maxBulletSize = 100
+) %>>% setExport %>>% plot
+```
+
+### gaugeChart
+
+```{r, message=FALSE}
+library(rAmCharts)
+amAngularGaugeChart(theme = "light"
+) %>>% addArrow(value = 100
+) %>>% addAxe(gaugeAxis (bottomText = "100 km/h", endValue = 220, valueInterval = 10
+) %>>% addBand(color = "#00CC00", endValue = 90, startValue = 0
+) %>>% addBand(color = "#ffac29", endValue = 130, startValue = 90
+) %>>% addBand(color = "#ea3838", endValue = 220, startValue = 130, innerRadius = "95%")
+) %>>% setExport %>>% plot
+```
+
+### funnelChart
+
+```{r, message=FALSE}
+library(rAmCharts)
+library(pipeR)
+amFunnelChart(theme = "light", neckHeight = "30%", neckWidth = "40%", titleField = "title",
+              valueField = "value", creditsPosition = "bottom-left", 
+              dataProvider = data.frame(title = c("Website visits", "Downloads"),
+                                        value = c(300, 123))
+) %>>% plot
+```
+
+## Elaborated
+
+### Column and line mix
+
+See <http://www.amcharts.com/demos/column-and-line-mix/>
+
+```{r, message=FALSE}
+library(rAmCharts)
+library(pipeR)
+amSerialChart(addClassNames = TRUE, theme = "light", autoMargins = FALSE, marginLeft = 30,
+              marginRight = 8, marginTop = 10, marginBottom = 26, startDuration = 1,
+              categoryField = "year"
+) %>>% setDataProvider(data.frame(year  =  c(2010, 2011, 2012, 2013, 2014),
+                                  income  =  c(20.4, 20.6, 24.3, 21.5, 22.3), 
+                                  expenses  =  c(31.5, 32.4, 25.6, 22.6, 24.9),
+                                  dashLengthColumn = c(NA, NA, NA, NA, 5), 
+                                  alpha = c(NA, NA, NA, NA, 0.2), 
+                                  additional = c("", "", "", "", "(projection)"))
+) %>>% setBalloon(adjustBorderColor = FALSE, horizontalPadding = 10,
+                  verticalPadding = 8,color = "#ffffff"
+) %>>% addValueAxes(axisAlpha = 0, position = "left"
+) %>>% addGraph(alphaField = "alpha", fillAlphas = 1, title = "Income",
+                type = "column", valueField = "income",
+                balloonText = "<span style = 'font-size:12px;'>[[title]] in [[category]]:<br><span style = 'font-size:20px;'>[[value]]</span> [[additional]]</span>", 
+                 dashLengthField = "dashLengthColumn"
+) %>>% addGraph(id = "graph2", bullet = "round", lineThickness = 3, bulletSize = 7,
+                balloonText = "<span style = 'font-size:12px;'>[[title]] in [[category]]:<br><span style = 'font-size:20px;'>[[value]]</span> [[additional]]</span>", 
+                bulletBorderAlpha = 1, bulletColor = "#FFFFFF",
+                useLineColorForBulletBorder = TRUE, bulletBorderThickness = 3, 
+                fillAlphas = 0, lineAlpha = 1, title = "Expenses", valueField = "expenses"
+) %>>% setCategoryAxis(gridPosition = "start", axisAlpha = 0, tickLength = 0
+) %>>% setExport %>>% plot
+```
+
+### Column with rotated series
+
+See <http://www.amcharts.com/demos/exporting-chart-to-image/>
+
+```{r, message=FALSE}
+library(rAmCharts)
+library(pipeR)
+
+amSerialChart(theme = "dark", startDuration = 2, categoryField = "country", depth3D = 40,
+               angle = 30
+) %>>% setDataProvider(data.frame(
+  country = c("USA", "China", "Japan", "Germany", "UK", "France", "India", "Spain", "Netherlands", "Russia"), 
+  visits = c(3025, 1882, 1809, 1322, 1122, 1114, 984, 711, 665, 580), 
+  color = c("#FF0F00", "#FF6600", "#FF9E01", "#FCD202", "#F8FF01", "#B0DE09", "#04D215", "#0D8ECF", "#0D52D1", "#2A0CD0"))
+) %>>% addGraph(balloonText = "<b>[[category]]: [[value]]</b>", fillColorsField = "color", 
+                 fillAlphas = 0.85, lineAlpha = 0.1, type = "column", valueField = "visits"
+) %>>% setChartCursor(categoryBalloonEnabled = FALSE, cursorAlpha = 0, zoomable = FALSE
+) %>>% setCategoryAxis(gridPosition = "start", labelRotation = 45, axisAlpha = 0, gridAlpha = 0
+) %>>% setExport %>>% plot
+```
+
+### Stacked areas
+
+See <http://www.amcharts.com/demos/stacked-area/>
+
+```{r, message=FALSE}
+library(rAmCharts)
+library(pipeR)
+
+amSerialChart(theme = "light", marginRight = 30, plotAreaBorderAlpha = 0,
+               categoryField = "year"
+) %>>% setDataProvider(data.frame(
+  year  =  1994:2012, 
+  cars  =  c(15, 13, 14, 15, 16, 18, 19, 22, 24, 20, 24, 25, 26, 35, 36, 37, 38, 39, 40), 
+  motorcycles  =  c(15, 13, 14, 15, 16, 18, 19, 22, 24, 20, 24, 25, 26, 35, 36, 37, 38, 39, 40), 
+  bicycles  =  c(15, 13, 14, 15, 16, 18, 19, 22, 24, 20, 24, 25, 26, 35, 36, 37, 38, 39, 40))
+) %>>% setLegend(equalWidths = FALSE, periodValueText = "total: [[value.sum]]", position = "top", valueAlign = "left", valueWidth = 100
+) %>>% addValueAxes(stackType = "regular", gridAlpha = 0.07, position = "left",
+                    title = "Traffic incidents"
+) %>>% addGraph(balloonText = "<img src = 'http://www.amcharts.com/lib/3/images/car.png' style = 'vertical-align:bottom; margin-right: 10px; width:28px; height:21px;'><span style = 'font-size:14px; color:#000000;'><b>[[value]]</b></span>", 
+                 fillAlphas = 0.6, hidden = TRUE, lineAlpha = 0.4, title = "Cars",
+                valueField = "cars"
+) %>>% addGraph(balloonText = "<img src = 'http://www.amcharts.com/lib/3/images/motorcycle.png' style = 'vertical-align:bottom; margin-right: 10px; width:28px; height:21px;'><span style = 'font-size:14px; color:#000000;'><b>[[value]]</b></span>", 
+                 fillAlphas = 0.6, lineAlpha = 0.4, title = "Motorcycles", valueField = "motorcycles"
+) %>>% addGraph(balloonText = "<img src = 'http://www.amcharts.com/lib/3/images/bicycle.png' style = 'vertical-align:bottom; margin-right: 10px; width:28px; height:21px;'><span style = 'font-size:14px; color:#000000;'><b>[[value]]</b></span>", 
+                 fillAlphas = 0.6, lineAlpha = 0.4, title = "Bicycles", valueField = "bicycles"
+) %>>% setChartCursor(cursorAlpha = 0
+) %>>% setChartScrollbar(
+) %>>% setCategoryAxis(startOnAxis = TRUE, axisColor = "#DADADA", gridAlpha = 0.07
+) %>>% setGuides(list(guide(category = "2001", toCategory = "2003", lineColor = "#CC0000",
+                            lineAlpha = 1, fillAlpha = 0.2, fillColor = "#CC0000", dashLength = 2,
+                            inside = TRUE, labelRotation = 90,
+                            label = "fines for speeding increased"),
+                      guide(category = "2007", lineColor = "#CC0000", lineAlpha = 1,
+                            dashLength = 2, inside = TRUE, labelRotation = 90,
+                            label =  "motorcycle fee introduced"))
+) %>>% setExport %>>% plot
+```
+
+### Waterfall chart
+
+See <http://www.amcharts.com/demos/waterfall-chart/>
+
+```{r, message=FALSE}
+library(rAmCharts)
+library(pipeR)
+
+amSerialChart(theme = "light", startDuration = 1, columnWidth = 0.6, categoryField = "name", pathToImages = "http://www.amcharts.com/lib/3/images/"
+) %>>% setDataProvider( data.frame(
+  name = c("Income A", "Income B", "Total Income", "Expenses A", "Expenses B", "Revenue"), 
+  open  =  c(0, 11.13, 0, 12.92, 8.64, 0), 
+  close =  c(11.13, 15.81, 15.81, 15.81, 12.92, 8.64), 
+  color  =  c("#54cb6a", "#54cb6a", "#169b2f", "#cc4b48", "#cc4b48", "#1c8ceb"), 
+  balloonValue  =  c(11.13, 4.68, 15.81, 2.89, 4.24, 11.13) )
+) %>>% addValueAxes(axisAlpha = 0, gridAlpha = 0.1, position = "left"
+) %>>% addGraph(balloonText = "<span style = 'color:[[color]]'>[[category]]</span><br><b>$[[balloonValue]] Mln</b>", 
+                 colorField = "color", fillAlphas = 0.8, labelText = "$[[balloonValue]]",
+                lineColor = "#BBBBBB", openField = "open", type = "column", valueField = "close"
+) %>>% addTrendLine(dashLength = 3, finalCategory = "Income B",
+                    finalValue = 11.13, initialCategory = "Income A",
+                    initialValue = 11.13, lineColor = "#888888"
+) %>>% addTrendLine(dashLength = 3, finalCategory = "Expenses A", finalValue = 15.81, initialCategory = "Income B", initialValue = 15.81, lineColor = "#888888"
+) %>>% addTrendLine(dashLength = 3, finalCategory = "Expenses A",
+                    finalValue = 15.81, initialCategory = "Income B",
+                    initialValue = 15.81, lineColor = "#888888"
+) %>>% addTrendLine(dashLength = 3, finalCategory = "Expenses B",
+                    finalValue = 12.92, initialCategory = "Expenses A",
+                    initialValue = 12.92, lineColor = "#888888"
+) %>>% addTrendLine(dashLength = 3, finalCategory = "Revenue", finalValue = 8.64,
+                    initialCategory = "Expenses B", initialValue = 8.64, lineColor = "#888888"
+) %>>% setCategoryAxis(gridPosition = "start", axisAlpha = 0, gridAlpha = 0.1
+) %>>% setExport %>>% plot
+```
+
+---
+
+### Candle stick chart
+
+See <http://www.amcharts.com/demos/candlestick-chart/>
+
+```{r, message=FALSE}
+library(rAmCharts)
+library(pipeR)
+library(data.table)
+
+# ---------------------------
+# Create the dataProvider ---
+# ---------------------------
+start <- as.POSIXct("01-01-2015", format = "%d-%m-%Y")
+end <- as.POSIXct("31-12-2015", format = "%d-%m-%Y")
+date <- seq.POSIXt(from = start, to = end, by = "day")
+date <- format(date, "%m-%d-%Y")
+low <- c() ; open <- c() ; close <- c() ; high <- c() ; median <- c()
+
+n <- 100
+invisible(
+  sapply(1:length(date), function(i)
+  {
+    sample <- rnorm(n, mean = sample(1:10, 1), sd = sample(1:10/10, 1))
+    quant <- boxplot(sample, plot = FALSE)$stats
+    low <<- c(low, quant[1])
+    open <<- c(open, quant[2])
+    median <<- c(median, quant[3])
+    close <<- c(close, quant[4])
+    high <<- c(high, quant[5])
+  })
+)
+dp <- data.table(date = date, low = round(low, 2), open = round(open, 2), 
+                 close = round(close, 2), high = round(high, 2), median = round(median, 2)) 
+
+# --------------
+# Draw chart ---
+# --------------
+amSerialChart(categoryField = "date", theme = "light",
+              dataDateFormat = "MM-DD-YYYY", dataProvider = dp
+) %>>% setCategoryAxis(parseDates = TRUE
+) %>>% addValueAxes(position = "left"
+) %>>% addGraph(id = "g1", type = "candlestick", lineColor = "#7f8da9",
+                lowField = "low", closeField = "close",
+                highField = "high", openField = "open", valueField = "median",
+                balloonText = "Open : <b>[[open]]</b><br>Low =<b>[[low]]</b><br>High =<b>[[high]]</b><br>Close =<b>[[close]]</b><br>",
+                lineColor = "#7f8da9", lineAlpha = 1, fillAlphas = 0.9, negativeBase = 5,
+                negativeFillColors = "#db4c3c", negativeLineColor = "#db4c3c",
+                title = "Price: "
+) %>>% setChartCursor(valueLineEnabled = TRUE, valueLineBalloonEnabled = TRUE
+) %>>% setChartScrollbar(graph = "g1", graphType = "line"
+) %>>% addListener("rendered", "function(event) { event.chart.zoomToIndexes(event.chart.dataProvider.length - 10, event.chart.dataProvider.length - 1) }"
+) %>>% setExport(position = "bottom-right") %>>% plot
+```
+
+---
+
+### AmSerialChart: example of boxPlot
+
+```{r, message=FALSE}
+library(rAmCharts)
+library(pipeR)
+library(data.table)
+
+# ---------------------------
+# Create the dataProvider ---
+# ---------------------------
+start <- as.POSIXct("01-01-2015", format = "%d-%m-%Y")
+end <- as.POSIXct("31-12-2015", format = "%d-%m-%Y")
+date <- seq.POSIXt(from = start, to = end, by = "day")
+date <- format(date, "%m-%d-%Y")
+n <- 100
+low_outlier <- c() ; low <- c() ; open <- c()
+close <- c() ; high <- c() ; high_outlier <- c() 
+median <- c()
+invisible(
+  sapply(1:length(date), function(i)
+  {
+    sample <- rnorm(n, mean = sample(1:10, 1), sd = sample(1:10/10, 1))
+    quant <- boxplot(sample, plot = FALSE)$stats
+    low_outlier <<- c(low_outlier, quant[1])
+    low <<- c(low, quant[1])
+    open <<- c(open, quant[2])
+    median <<- c(median, quant[3])
+    close <<- c(close, quant[4])
+    high <<- c(high, quant[5])
+    high_outlier <<- c(high_outlier, quant[5])
+  })
+)
+dp <- data.table(date = date, low_outlier = round(low_outlier, 2), low = round(low, 2),
+                 open = round(open, 2), median = round(median, 2), close = round(close, 2),
+                 high = round(high, 2), high_outlier = round(high_outlier, 2) )
+
+# --------------
+# Draw chart ---
+# --------------
+amSerialChart(categoryField = "date", theme = "light",
+              dataDateFormat = "MM-DD-YYYY", dataProvider = dp
+) %>>% setCategoryAxis(parseDates = TRUE
+) %>>% addValueAxes(position = "left"
+) %>>% addGraph(id = "g1", type = "candlestick",
+                balloonText = "Low = <b>[[low_outlier]]</b><br/>1st quart. = <b>[[open]]</b><br/>Median = <b>[[median]]</b><br/>3rd quart. = <b>[[close]]</b><br/>High = <b>[[high_outlier]]</b><br/>",
+                closeField = "close", fillColors = "#7f8da9", highField = "high",
+                lineColor = "#7f8da9", lineAlpha = 1, lowField = "low",
+                fillAlphas = "0.9",  negativeFillColors = "#db4c3c", negativeLineColor = "#db4c3c",
+                openField = "open", title = "Price:", valueField = "close"
+) %>>% addGraph(id = "g2", type = "step", valueField = "median",
+                noStepRisers = TRUE, balloonText = ""
+) %>>% addGraph(id = "g3", type = "step", valueField = "low_outlier",
+                noStepRisers = TRUE, balloonText = ""
+) %>>% addGraph(id = "g4", type = "step", valueField = "high_outlier",
+                noStepRisers = TRUE, balloonText = ""
+) %>>% setChartCursor(valueLineEnabled = TRUE, valueLineBalloonEnabled = TRUE
+) %>>% setChartScrollbar(parseDates = TRUE
+) %>>% addListener("rendered", "function(event) { event.chart.zoomToIndexes(event.chart.dataProvider.length - 10, event.chart.dataProvider.length - 1) }"
+) %>>% setExport(position = "bottom-right") %>>% plot()
+```
+
+---
+
+### Stock chart with multiple data sets
+
+See <http://www.amcharts.com/demos/multiple-data-sets/>
+
+```{r, message=FALSE}
+library(rAmCharts)
+library(pipeR)
+
+# ---------------------------
+# Create the dataProvider ---
+# ---------------------------
+firstDate <- Sys.Date()
+chartData1 <- as.data.frame(t(sapply(0:20, FUN = function(i)
+{
+  date <- format(firstDate + i, "%m/%d/%Y")
+  a <- round(runif(1) * (40 + i)) + 100 + i
+  b <- round(runif(1) * (1000 + i)) + 500 + i * 2
+  c(date = date, value = a,  volume = b)
+})))
+
+chartData2 <- as.data.frame(t(sapply(0:20, FUN = function(i)
+{
+  date <- format(firstDate + i, "%m/%d/%Y")
+  a <- round(runif(1) * (100 + i)) + 200 + i
+  b <- round(runif(1) * (1000 + i)) + 600 + i * 2
+  c(date = date, value = a,  volume = b)
+})))
+
+chartData3 <- as.data.frame(t(sapply(0:20, FUN = function(i)
+{
+  date <- format(firstDate + i, "%m/%d/%Y")
+  a <- round(runif(1) * (100 + i)) + 200 + i
+  b <- round(runif(1) * (1000 + i)) + 600 + i * 2
+  c(date = date, value = a,  volume = b)
+})))
+
+chartData4 <- as.data.frame(t(sapply(0:20, FUN = function(i)
+{
+  date <- format(firstDate + i, "%m/%d/%Y")
+  a <- round(runif(1) * (100 + i)) + 200 + i
+  b <- round(runif(1) * (1000 + i)) + 600 + i * 2
+  c(date = date, value = a,  volume = b)
+})))
+
+# --------------
+# Draw chart ---
+# --------------
+amStockChart(theme = "light"
+) %>>% addDataSet(dataSet(title = "first data set", categoryField = "date",
+                            dataProvider = chartData1) %>>%
+                     addFieldMapping(fromField = "value", toField = "value") %>>%
+                     addFieldMapping(fromField = "volume", toField = "volume")
+) %>>% addDataSet(dataSet(title = "second data set", categoryField = "date",
+                            dataProvider = chartData2) %>>%
+                     addFieldMapping(fromField = "value", toField = "value") %>>%
+                     addFieldMapping(fromField = "volume", toField = "volume")
+) %>>% addDataSet(dataSet(title = "third data set", categoryField = "date",
+                            dataProvider = chartData3) %>>%
+                     addFieldMapping(fromField = "value", toField = "value") %>>%
+                     addFieldMapping(fromField = "volume", toField = "volume")
+) %>>% addDataSet(dataSet(title = "fourth data set", categoryField = "date",
+                            dataProvider = chartData4) %>>%
+                     addFieldMapping(fromField = "value", toField = "value") %>>%
+                     addFieldMapping(fromField = "volume", toField = "volume")
+) %>>% addPanel(stockPanel(showCategoryAxis = FALSE, title = "Value", percentHeight = 70) %>>%
+                   addStockGraph(id = "g1", valueField = "value", comparable = TRUE,
+                                 compareField = "value", balloonText = "[[title]] =<b>[[value]]</b>",
+                                 compareGraphBalloonText = "[[title]] =<b>[[value]]</b>"
+                  ) %>>% setStockLegend(periodValueTextComparing = "[[percents.value.close]]%",
+                                          periodValueTextRegular = "[[value.close]]")
+) %>>% addPanel(stockPanel(title = "Volume", percentHeight = 30) %>>%
+                   addStockGraph(valueField = "volume", type = "column",
+                                 fillAlphas = 1) %>>%
+                   setStockLegend(periodValueTextRegular = "[[value.close]]")
+) %>>% setChartScrollbarSettings(graph = "g1"
+) %>>% setChartCursorSettings(valueBalloonsEnabled = TRUE, fullWidth = TRUE,
+                               cursorAlpha = 0.1, valueLineBalloonEnabled = TRUE,
+                               valueLineEnabled = TRUE, valueLineAlpha = 0.5
+) %>>% setPeriodSelector(periodSelector(position = "left") %>>%
+                            addPeriod(period = "MM", selected = TRUE, count = 1, label = "1 month") %>>%
+                            addPeriod(period = "MAX", label = "MAX")
+) %>>% setDataSetSelector(position = "left"
+) %>>% setPanelsSettings(recalculateToPercents = FALSE
+) %>>% plot
+```
+
+### Stock chart with dates
+
+See <http://www.amcharts.com/demos/multiple-data-sets/>
+
+```{r, message=FALSE}
+library(rAmCharts)
+library(pipeR)
+library(data.table)
+
+# ---------------------------
+# Create the dataProvider ---
+# ---------------------------
+start <- as.POSIXct("01-01-2015", format = "%d-%m-%Y")
+end <- as.POSIXct("31-12-2015", format = "%d-%m-%Y")
+period <- seq.POSIXt(from = start, to = end, by = "10 min")
+n <- length(period)
+periodTemp <- seq.POSIXt(from = start, to = end, by = "3 hour")
+nTemp <- length(periodTemp)
+### Generate mesures ----
+charge <- rnorm(n, mean = 500, sd= 200)
+charge[ which(charge < 0) ] <- rnorm(length(which(charge < 0)), mean = 200, sd = 10)
+temp <- rnorm(nTemp, mean = 15, sd = 10)
+dtCharge <- data.table::data.table(charge, date = period)
+setkey(dtCharge, date)
+dtTemp <- data.table::data.table(temperature = temp, date = periodTemp)
+setkey(dtTemp , date)
+dp <- dtTemp[dtCharge]
+dp <- dp[, date := format(date, "%m-%d-%Y %H:%M:%S")][1:10000]
+
+# --------------
+# Draw chart ---
+# --------------
+amStockChart(theme = "default" , dataDateFormat = "MM-DD-YYYY JJ:NN:SS"
+) %>>% addDataSet(dataSet(title = "Courbe de charge", categoryField = "date") %>>%
+                    setDataProvider(dp, keepNA = FALSE) %>>%
+                    addFieldMapping(fromField = "charge", toField = "charge") %>>%
+                    addFieldMapping(fromField = "temperature", toField = "temperature") %>>%
+                    addStockEvent( date = "01-02-2015 23:00:00", type = "sign", graph ="g1",
+                                    text = "I am a stockEvent", description = "I am a property of a DataSet")
+) %>>% addPanel(stockPanel(showCategoryAxis = FALSE, title = "Charge", percentHeight = 70) %>>%
+                   addStockGraph(id = "g1", valueField = "charge", comparable = TRUE,
+                                 compareField = "charge", balloonText = "[[title]] =<b>[[value]]</b>",
+                                 compareGraphBalloonText = "[[title]] =<b>[[value]]</b>"
+                  ) %>>% setStockLegend(periodValueTextComparing = "[[percents.value.close]]%",
+                                          periodValueTextRegular = "[[value.close]]")
+) %>>% addPanel(stockPanel(title = "Temperature", percentHeight = 30) %>>%
+                   addStockGraph(valueField = "temperature", fillAlphas = 1) %>>%
+                   setStockLegend(periodValueTextRegular = "[[value.close]]")
+) %>>% setChartScrollbarSettings(graph = "g1"
+) %>>% setChartCursorSettings(valueBalloonsEnabled = TRUE, fullWidth = TRUE,
+                               cursorAlpha = 0.1, valueLineBalloonEnabled = TRUE,
+                               valueLineEnabled = TRUE, valueLineAlpha = 0.5
+) %>>% setPeriodSelector(periodSelector(position = "left") %>>%
+                            addPeriod(period = "MM", selected = TRUE,
+                                      count = 1, label = "1 month") %>>%
+                            addPeriod(period = "MAX", label = "MAX")
+) %>>% setDataSetSelector(position = "left"
+) %>>% setCategoryAxesSettings(minPeriod = "ss"
+) %>>% setPanelsSettings(recalculateToPercents = FALSE
+) %>>% plot
+
+```
+
+[url_amcharts]: http://www.amcharts.com
+[home_pipeR]: http://renkun.me/pipeR-tutorial/
