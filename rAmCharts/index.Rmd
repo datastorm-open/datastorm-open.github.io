@@ -51,7 +51,7 @@ Start with a simple pie chart
 
 ```{r, echo=FALSE, message=FALSE}
 library(rAmCharts)
-data("data_gdp")
+# data("data_gdp")
 pipeR::pipeline(
   amPieChart(valueField = 'gdp', titleField = 'country',
              dataProvider = data_gdp, startDuration = 0),
@@ -61,10 +61,10 @@ pipeR::pipeline(
 
 ```{r, echo=FALSE, eval=FALSE}
 library(rAmCharts)
-data("data_gdp")
+# data("data_gdp")
 pipeR::pipeline(
   amPieChart(valueField = 'gdp', titleField = 'country',
-             dataProvider = data_gdp, startDuration = 0),
+  ""           dataProvider = data_gdp, startDuration = 0),
   plot()
 )
 ```
@@ -91,7 +91,7 @@ Although the syntax appears very different, it has similarities. If you observe 
 
 ```{r, message = FALSE}
 library(rAmCharts)
-data("data_gdp")
+# data("data_gdp")
 pipeR::pipeline(
   amPieChart(valueField = 'gdp', titleField = 'country',
              dataProvider = data_gdp[1:2,]),
@@ -110,7 +110,7 @@ The key is to imagine the function call as a list containing every properties fo
 
 ```{r, message=FALSE}
 library(rAmCharts)
-data("data_gdp")
+# data("data_gdp")
 pipeR::pipeline(
   amPieChart(valueField = 'gdp', titleField = 'country',
              dataProvider = data_gdp),
@@ -156,7 +156,7 @@ The type of the chart is determined with the call constructor. The argument to p
 
 ```{r, message=FALSE}
 library(rAmCharts)
-data("data_gdp")
+# data("data_gdp")
 pipeR::pipeline(
   amSerialChart(dataProvider = data_gdp, startDuration = 0, categoryField = 'country'),
   addGraph(valueField = 'gdp'),
@@ -168,7 +168,7 @@ However, you can easily obtain columns with the argument `type`:
 
 ```{r, message=FALSE, highlight=TRUE}
 library(rAmCharts)
-data("data_gdp")
+# data("data_gdp")
 pipeR::pipeline(
   amSerialChart(dataProvider = data_gdp, startDuration = 0, categoryField = 'country'),
   addGraph(valueField = 'gdp', type = 'column'),
@@ -183,7 +183,7 @@ Moreover, you can custom the column:
 
 ```{r, message=FALSE}
 library(rAmCharts)
-data("data_gdp")
+# data("data_gdp")
 pipeR::pipeline(
   amSerialChart(dataProvider = data_gdp, startDuration = 0, categoryField = 'country'),
   addGraph(valueField = 'gdp', type = 'column', fillAlphas = .5),
@@ -191,7 +191,7 @@ pipeR::pipeline(
 )
 
 library(rAmCharts)
-data("data_gdp")
+# data("data_gdp")
 pipeR::pipeline(
   amSerialChart(dataProvider = data_gdp, startDuration = 0, categoryField = 'country'),
   addGraph(valueField = 'gdp', type = 'column', fillAlphas = .5, lineAlpha = 0),
@@ -203,7 +203,7 @@ This example is the occasion to introduce the chart setters. We have just added 
 
 ```{r, eval=FALSE}
 library(rAmCharts)
-data("data_gdp")
+# data("data_gdp")
 graph <- graph(valueField = 'gdp', type = 'column', fillAlphas = .5, lineAlpha = 0)
 # graph an amGraph are constructors for the same class 
 pipeR::pipeline(
@@ -219,7 +219,7 @@ Thus the function "api" can be used to find out the right arguments. In this cas
 
 ```{r, eval=FALSE}
 library(rAmCharts)
-data("data_gdp")
+# data("data_gdp")
 graph <- graph(valueField = 'gdp', type = 'column', fillAlphas = .5, lineAlpha = 0)
 graphs <- list(graph)
 
@@ -242,7 +242,7 @@ As you may have noticed, for each case where we have to provide a list, we can a
 
 ---
 
-### Add features, custom existing !
+### Add features !
 
 Currently you can draw any object derived from: 
 
@@ -255,7 +255,7 @@ For instance, we can move the default linked label *JS chart by amCharts* (which
 
 ```{r, message=FALSE}
 library(rAmCharts)
-data("data_gdp")
+# data("data_gdp")
 pipeR::pipeline(
   amPieChart(valueField = 'gdp', titleField = 'country',
              dataProvider = data_gdp, startDuration = 0,
@@ -282,7 +282,7 @@ Notice that, some setters have default parameters. Consequently, you can you the
 
 ```{r, message=FALSE}
 library(rAmCharts)
-data("data_gdp")
+# data("data_gdp")
 pipeR::pipeline(
   amSerialChart(dataProvider = data_gdp, startDuration = 0,
                 categoryField = 'country'),
@@ -300,7 +300,7 @@ pipeR::pipeline(
 
 ```{r, message=FALSE}
 library(rAmCharts)
-data("data_gdp")
+# data("data_gdp")
 pipeR::pipeline(
   amSerialChart(dataProvider = data_gdp, startDuration = 0,
                 categoryField = 'country'),
@@ -319,7 +319,7 @@ Set color for all columns:
 
 ```{r, message=FALSE}
 library(rAmCharts)
-data("data_gdp")
+# data("data_gdp")
 pipeR::pipeline(
   amSerialChart(dataProvider = data_gdp, startDuration = 0,
                 categoryField = 'country'),
@@ -334,7 +334,7 @@ Set different colors:
 
 ```{r, message=FALSE}
 library(rAmCharts)
-data("data_gdp")
+# data("data_gdp")
 colors <- colorRampPalette(c("green", "blue"))(nrow(data_gdp))
 data_color <- cbind(data_gdp, colors = colors)
 
@@ -354,7 +354,7 @@ For any chart, it is also possible to choose a theme among "light", "dark", "cha
   
 ```{r, message=FALSE}
 library(rAmCharts)
-data("data_gdp")
+# data("data_gdp")
 path <- "http://cdn.amcharts.com/lib/3/" # required for independant online html file
 pipeR::pipeline(
   amPieChart(valueField = 'gdp', titleField = 'country', startDuration = 0,
@@ -365,7 +365,7 @@ pipeR::pipeline(
 
 ```{r, echo = FALSE, message=FALSE}
 library(rAmCharts)
-data("data_gdp")
+# data("data_gdp")
 pipeR::pipeline(
   amPieChart(valueField = 'gdp', titleField = 'country', startDuration = 0,
              dataProvider = data_gdp, theme = "light"),
@@ -375,7 +375,7 @@ pipeR::pipeline(
 
 ```{r, echo = FALSE, message=FALSE}
 library(rAmCharts)
-data("data_gdp")
+# data("data_gdp")
 pipeR::pipeline(
   amPieChart(valueField = 'gdp', titleField = 'country', startDuration = 0,
              dataProvider = data_gdp, theme = "dark"),
@@ -385,7 +385,7 @@ pipeR::pipeline(
 
 ```{r, echo = FALSE, message=FALSE}
 library(rAmCharts)
-data("data_gdp")
+# data("data_gdp")
 pipeR::pipeline(
   amPieChart(valueField = 'gdp', titleField = 'country', startDuration = 0,
              dataProvider = data_gdp, theme = "chalk"),
@@ -398,7 +398,7 @@ pipeR::pipeline(
 By default a legend set to a pie chart is clickable and the figures are recalculated automatically:
 ```{r, echo = FALSE, message=FALSE}
 library(rAmCharts)
-data("data_gdp")
+# data("data_gdp")
 pipeR::pipeline(
   amPieChart(valueField = 'gdp', titleField = 'country', startDuration = 0,
              dataProvider = data_gdp, theme = "patterns"),

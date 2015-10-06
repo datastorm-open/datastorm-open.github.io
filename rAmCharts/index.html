@@ -155,8 +155,8 @@ iris %&gt;&gt;%<span class="st"> </span><span class="kw">summary</span>( <span c
 <div id="example" class="section level3">
 <h3>Example</h3>
 <p>Start with a simple pie chart</p>
-<p><div id="htmlwidget-6915" style="width:100%;height:500px;" class="amPieChart"></div>
-<script type="application/json" data-for="htmlwidget-6915">{"x":{"chartData":{"valueField":"gdp","titleField":"country","startDuration":0,"dataProvider":[{"country":"China","gdp":18.976},{"country":"United States","gdp":18.125},{"country":"India","gdp":7.997},{"country":"Japan","gdp":4.843},{"country":"Germany","gdp":3.815},{"country":"Russia","gdp":3.458},{"country":"Brazil","gdp":3.259},{"country":"Indonesia","gdp":2.84},{"country":"United Kingdom","gdp":2.641},{"country":"France","gdp":2.634}],"type":"pie"},"background":"#ffffff"},"evals":[]}</script></p>
+<p><div id="htmlwidget-1501" style="width:100%;height:500px;" class="amPieChart"></div>
+<script type="application/json" data-for="htmlwidget-1501">{"x":{"chartData":{"valueField":"gdp","titleField":"country","startDuration":0,"dataProvider":[{"country":"China","gdp":18.976},{"country":"United States","gdp":18.125},{"country":"India","gdp":7.997},{"country":"Japan","gdp":4.843},{"country":"Germany","gdp":3.815},{"country":"Russia","gdp":3.458},{"country":"Brazil","gdp":3.259},{"country":"Indonesia","gdp":2.84},{"country":"United Kingdom","gdp":2.641},{"country":"France","gdp":2.634}],"type":"pie"},"background":"#ffffff"},"evals":[]}</script></p>
 </div>
 <div id="details" class="section level3">
 <h3>Details…</h3>
@@ -271,8 +271,8 @@ pipeR::<span class="kw">pipeline</span>(
   <span class="kw">addGraph</span>(<span class="dt">valueField =</span> <span class="st">'gdp'</span>),
   <span class="kw">plot</span>(<span class="dt">height =</span> <span class="st">&quot;250&quot;</span>)
 )</code></pre>
-<p><div id="htmlwidget-4283" style="width:100%;height:250px;" class="amSerialChart"></div>
-<script type="application/json" data-for="htmlwidget-4283">{"x":{"chartData":{"startDuration":0,"categoryField":"country","dataProvider":[{"country":"China","gdp":18.976},{"country":"United States","gdp":18.125},{"country":"India","gdp":7.997},{"country":"Japan","gdp":4.843},{"country":"Germany","gdp":3.815},{"country":"Russia","gdp":3.458},{"country":"Brazil","gdp":3.259},{"country":"Indonesia","gdp":2.84},{"country":"United Kingdom","gdp":2.641},{"country":"France","gdp":2.634}],"graphs":[{"valueField":"gdp"}],"type":"serial"},"background":"#ffffff"},"evals":[]}</script></p>
+<p><div id="htmlwidget-5935" style="width:100%;height:250px;" class="amSerialChart"></div>
+<script type="application/json" data-for="htmlwidget-5935">{"x":{"chartData":{"startDuration":0,"categoryField":"country","dataProvider":[{"country":"China","gdp":18.976},{"country":"United States","gdp":18.125},{"country":"India","gdp":7.997},{"country":"Japan","gdp":4.843},{"country":"Germany","gdp":3.815},{"country":"Russia","gdp":3.458},{"country":"Brazil","gdp":3.259},{"country":"Indonesia","gdp":2.84},{"country":"United Kingdom","gdp":2.641},{"country":"France","gdp":2.634}],"graphs":[{"valueField":"gdp"}],"type":"serial"},"background":"#ffffff"},"evals":[]}</script></p>
 <p>However, you can easily obtain columns with the argument <code>type</code>:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(rAmCharts)
 <span class="kw">data</span>(<span class="st">&quot;data_gdp&quot;</span>)
@@ -281,8 +281,8 @@ pipeR::<span class="kw">pipeline</span>(
   <span class="kw">addGraph</span>(<span class="dt">valueField =</span> <span class="st">'gdp'</span>, <span class="dt">type =</span> <span class="st">'column'</span>),
   <span class="kw">plot</span>()
 )</code></pre>
-<p><div id="htmlwidget-8308" style="width:100%;height:500px;" class="amSerialChart"></div>
-<script type="application/json" data-for="htmlwidget-8308">{"x":{"chartData":{"startDuration":0,"categoryField":"country","dataProvider":[{"country":"China","gdp":18.976},{"country":"United States","gdp":18.125},{"country":"India","gdp":7.997},{"country":"Japan","gdp":4.843},{"country":"Germany","gdp":3.815},{"country":"Russia","gdp":3.458},{"country":"Brazil","gdp":3.259},{"country":"Indonesia","gdp":2.84},{"country":"United Kingdom","gdp":2.641},{"country":"France","gdp":2.634}],"graphs":[{"type":"column","valueField":"gdp"}],"type":"serial"},"background":"#ffffff"},"evals":[]}</script></p>
+<p><div id="htmlwidget-3115" style="width:100%;height:500px;" class="amSerialChart"></div>
+<script type="application/json" data-for="htmlwidget-3115">{"x":{"chartData":{"startDuration":0,"categoryField":"country","dataProvider":[{"country":"China","gdp":18.976},{"country":"United States","gdp":18.125},{"country":"India","gdp":7.997},{"country":"Japan","gdp":4.843},{"country":"Germany","gdp":3.815},{"country":"Russia","gdp":3.458},{"country":"Brazil","gdp":3.259},{"country":"Indonesia","gdp":2.84},{"country":"United Kingdom","gdp":2.641},{"country":"France","gdp":2.634}],"graphs":[{"type":"column","valueField":"gdp"}],"type":"serial"},"background":"#ffffff"},"evals":[]}</script></p>
 <p>Moreover, you can custom the column:</p>
 <ul>
 <li><code>fillAlphas</code> is used to adjust the opacity in the columns;</li>
@@ -295,8 +295,8 @@ pipeR::<span class="kw">pipeline</span>(
   <span class="kw">addGraph</span>(<span class="dt">valueField =</span> <span class="st">'gdp'</span>, <span class="dt">type =</span> <span class="st">'column'</span>, <span class="dt">fillAlphas =</span> .<span class="dv">5</span>),
   <span class="kw">plot</span>()
 )</code></pre>
-<p><div id="htmlwidget-3875" style="width:100%;height:500px;" class="amSerialChart"></div>
-<script type="application/json" data-for="htmlwidget-3875">{"x":{"chartData":{"startDuration":0,"categoryField":"country","dataProvider":[{"country":"China","gdp":18.976},{"country":"United States","gdp":18.125},{"country":"India","gdp":7.997},{"country":"Japan","gdp":4.843},{"country":"Germany","gdp":3.815},{"country":"Russia","gdp":3.458},{"country":"Brazil","gdp":3.259},{"country":"Indonesia","gdp":2.84},{"country":"United Kingdom","gdp":2.641},{"country":"France","gdp":2.634}],"graphs":[{"fillAlphas":0.5,"type":"column","valueField":"gdp"}],"type":"serial"},"background":"#ffffff"},"evals":[]}</script></p>
+<p><div id="htmlwidget-7028" style="width:100%;height:500px;" class="amSerialChart"></div>
+<script type="application/json" data-for="htmlwidget-7028">{"x":{"chartData":{"startDuration":0,"categoryField":"country","dataProvider":[{"country":"China","gdp":18.976},{"country":"United States","gdp":18.125},{"country":"India","gdp":7.997},{"country":"Japan","gdp":4.843},{"country":"Germany","gdp":3.815},{"country":"Russia","gdp":3.458},{"country":"Brazil","gdp":3.259},{"country":"Indonesia","gdp":2.84},{"country":"United Kingdom","gdp":2.641},{"country":"France","gdp":2.634}],"graphs":[{"fillAlphas":0.5,"type":"column","valueField":"gdp"}],"type":"serial"},"background":"#ffffff"},"evals":[]}</script></p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(rAmCharts)
 <span class="kw">data</span>(<span class="st">&quot;data_gdp&quot;</span>)
 pipeR::<span class="kw">pipeline</span>(
@@ -304,8 +304,8 @@ pipeR::<span class="kw">pipeline</span>(
   <span class="kw">addGraph</span>(<span class="dt">valueField =</span> <span class="st">'gdp'</span>, <span class="dt">type =</span> <span class="st">'column'</span>, <span class="dt">fillAlphas =</span> .<span class="dv">5</span>, <span class="dt">lineAlpha =</span> <span class="dv">0</span>),
   <span class="kw">plot</span>()
 )</code></pre>
-<p><div id="htmlwidget-6770" style="width:100%;height:500px;" class="amSerialChart"></div>
-<script type="application/json" data-for="htmlwidget-6770">{"x":{"chartData":{"startDuration":0,"categoryField":"country","dataProvider":[{"country":"China","gdp":18.976},{"country":"United States","gdp":18.125},{"country":"India","gdp":7.997},{"country":"Japan","gdp":4.843},{"country":"Germany","gdp":3.815},{"country":"Russia","gdp":3.458},{"country":"Brazil","gdp":3.259},{"country":"Indonesia","gdp":2.84},{"country":"United Kingdom","gdp":2.641},{"country":"France","gdp":2.634}],"graphs":[{"fillAlphas":0.5,"lineAlpha":0,"type":"column","valueField":"gdp"}],"type":"serial"},"background":"#ffffff"},"evals":[]}</script></p>
+<p><div id="htmlwidget-5003" style="width:100%;height:500px;" class="amSerialChart"></div>
+<script type="application/json" data-for="htmlwidget-5003">{"x":{"chartData":{"startDuration":0,"categoryField":"country","dataProvider":[{"country":"China","gdp":18.976},{"country":"United States","gdp":18.125},{"country":"India","gdp":7.997},{"country":"Japan","gdp":4.843},{"country":"Germany","gdp":3.815},{"country":"Russia","gdp":3.458},{"country":"Brazil","gdp":3.259},{"country":"Indonesia","gdp":2.84},{"country":"United Kingdom","gdp":2.641},{"country":"France","gdp":2.634}],"graphs":[{"fillAlphas":0.5,"lineAlpha":0,"type":"column","valueField":"gdp"}],"type":"serial"},"background":"#ffffff"},"evals":[]}</script></p>
 <p>This example is the occasion to introduce the chart setters. We have just added a graph to a serial chart with a call to <code>addGraph</code>. Typically this kind of function can either take into account a argument of a specific class or just its properties. Whereas the first case is usefull to generate many charts (factor the code), the second one will be more common. Hence the above example is equivalent to:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(rAmCharts)
 <span class="kw">data</span>(<span class="st">&quot;data_gdp&quot;</span>)
@@ -354,8 +354,8 @@ pipeR::<span class="kw">pipeline</span>(
              <span class="dt">creditsPosition =</span> <span class="st">&quot;bottom-right&quot;</span>),
   <span class="kw">plot</span>()
 )</code></pre>
-<p><div id="htmlwidget-3172" style="width:100%;height:500px;" class="amPieChart"></div>
-<script type="application/json" data-for="htmlwidget-3172">{"x":{"chartData":{"valueField":"gdp","titleField":"country","startDuration":0,"creditsPosition":"bottom-right","dataProvider":[{"country":"China","gdp":18.976},{"country":"United States","gdp":18.125},{"country":"India","gdp":7.997},{"country":"Japan","gdp":4.843},{"country":"Germany","gdp":3.815},{"country":"Russia","gdp":3.458},{"country":"Brazil","gdp":3.259},{"country":"Indonesia","gdp":2.84},{"country":"United Kingdom","gdp":2.641},{"country":"France","gdp":2.634}],"type":"pie"},"background":"#ffffff"},"evals":[]}</script></p>
+<p><div id="htmlwidget-3376" style="width:100%;height:500px;" class="amPieChart"></div>
+<script type="application/json" data-for="htmlwidget-3376">{"x":{"chartData":{"valueField":"gdp","titleField":"country","startDuration":0,"creditsPosition":"bottom-right","dataProvider":[{"country":"China","gdp":18.976},{"country":"United States","gdp":18.125},{"country":"India","gdp":7.997},{"country":"Japan","gdp":4.843},{"country":"Germany","gdp":3.815},{"country":"Russia","gdp":3.458},{"country":"Brazil","gdp":3.259},{"country":"Indonesia","gdp":2.84},{"country":"United Kingdom","gdp":2.641},{"country":"France","gdp":2.634}],"type":"pie"},"background":"#ffffff"},"evals":[]}</script></p>
 <div id="scrollbar" class="section level4">
 <h4>Scrollbar</h4>
 <pre class="sourceCode r"><code class="sourceCode r">pipeR::<span class="kw">pipeline</span>(
@@ -366,8 +366,8 @@ pipeR::<span class="kw">pipeline</span>(
   <span class="kw">plot</span>()
 )</code></pre>
 <pre><code>## default 'chartScrollbar' added</code></pre>
-<p><div id="htmlwidget-5988" style="width:100%;height:500px;" class="amSerialChart"></div>
-<script type="application/json" data-for="htmlwidget-5988">{"x":{"chartData":{"startDuration":0,"categoryField":"country","chartScrollbar":{"enabled":true},"dataProvider":[{"country":"China","gdp":18.976},{"country":"United States","gdp":18.125},{"country":"India","gdp":7.997},{"country":"Japan","gdp":4.843},{"country":"Germany","gdp":3.815},{"country":"Russia","gdp":3.458},{"country":"Brazil","gdp":3.259},{"country":"Indonesia","gdp":2.84},{"country":"United Kingdom","gdp":2.641},{"country":"France","gdp":2.634}],"graphs":[{"fillAlphas":0.5,"lineAlpha":0,"type":"column","valueField":"gdp"}],"type":"serial"},"background":"#ffffff"},"evals":[]}</script></p>
+<p><div id="htmlwidget-1982" style="width:100%;height:500px;" class="amSerialChart"></div>
+<script type="application/json" data-for="htmlwidget-1982">{"x":{"chartData":{"startDuration":0,"categoryField":"country","chartScrollbar":{"enabled":true},"dataProvider":[{"country":"China","gdp":18.976},{"country":"United States","gdp":18.125},{"country":"India","gdp":7.997},{"country":"Japan","gdp":4.843},{"country":"Germany","gdp":3.815},{"country":"Russia","gdp":3.458},{"country":"Brazil","gdp":3.259},{"country":"Indonesia","gdp":2.84},{"country":"United Kingdom","gdp":2.641},{"country":"France","gdp":2.634}],"graphs":[{"fillAlphas":0.5,"lineAlpha":0,"type":"column","valueField":"gdp"}],"type":"serial"},"background":"#ffffff"},"evals":[]}</script></p>
 <p>Notice that, some setters have default parameters. Consequently, you can you them as function without parameters.</p>
 </div>
 <div id="cursor" class="section level4">
@@ -385,8 +385,8 @@ pipeR::<span class="kw">pipeline</span>(
   <span class="kw">setChartScrollbar</span>(),
   <span class="kw">plot</span>()
 )</code></pre>
-<p><div id="htmlwidget-6840" style="width:100%;height:500px;" class="amSerialChart"></div>
-<script type="application/json" data-for="htmlwidget-6840">{"x":{"chartData":{"startDuration":0,"categoryField":"country","chartCursor":{"animationDuration":0.3},"chartScrollbar":{"enabled":true},"dataProvider":[{"country":"China","gdp":18.976},{"country":"United States","gdp":18.125},{"country":"India","gdp":7.997},{"country":"Japan","gdp":4.843},{"country":"Germany","gdp":3.815},{"country":"Russia","gdp":3.458},{"country":"Brazil","gdp":3.259},{"country":"Indonesia","gdp":2.84},{"country":"United Kingdom","gdp":2.641},{"country":"France","gdp":2.634}],"graphs":[{"fillAlphas":0.5,"lineAlpha":0,"color":"blue","type":"column","valueField":"gdp"}],"titles":[{"text":"Main title"},{"text":"Sub-title"}],"type":"serial"},"background":"#ffffff"},"evals":[]}</script></p>
+<p><div id="htmlwidget-1415" style="width:100%;height:500px;" class="amSerialChart"></div>
+<script type="application/json" data-for="htmlwidget-1415">{"x":{"chartData":{"startDuration":0,"categoryField":"country","chartCursor":{"animationDuration":0.3},"chartScrollbar":{"enabled":true},"dataProvider":[{"country":"China","gdp":18.976},{"country":"United States","gdp":18.125},{"country":"India","gdp":7.997},{"country":"Japan","gdp":4.843},{"country":"Germany","gdp":3.815},{"country":"Russia","gdp":3.458},{"country":"Brazil","gdp":3.259},{"country":"Indonesia","gdp":2.84},{"country":"United Kingdom","gdp":2.641},{"country":"France","gdp":2.634}],"graphs":[{"fillAlphas":0.5,"lineAlpha":0,"color":"blue","type":"column","valueField":"gdp"}],"titles":[{"text":"Main title"},{"text":"Sub-title"}],"type":"serial"},"background":"#ffffff"},"evals":[]}</script></p>
 </div>
 <div id="titles" class="section level4">
 <h4>Titles</h4>
@@ -402,8 +402,8 @@ pipeR::<span class="kw">pipeline</span>(
   <span class="kw">setChartCursor</span>(),
   <span class="kw">plot</span>()
 )</code></pre>
-<p><div id="htmlwidget-8800" style="width:100%;height:500px;" class="amSerialChart"></div>
-<script type="application/json" data-for="htmlwidget-8800">{"x":{"chartData":{"startDuration":0,"categoryField":"country","chartCursor":{"animationDuration":0.3},"dataProvider":[{"country":"China","gdp":18.976},{"country":"United States","gdp":18.125},{"country":"India","gdp":7.997},{"country":"Japan","gdp":4.843},{"country":"Germany","gdp":3.815},{"country":"Russia","gdp":3.458},{"country":"Brazil","gdp":3.259},{"country":"Indonesia","gdp":2.84},{"country":"United Kingdom","gdp":2.641},{"country":"France","gdp":2.634}],"graphs":[{"fillAlphas":0.5,"lineAlpha":0,"type":"column","valueField":"gdp"}],"titles":[{"text":"Main title"},{"text":"Sub-title"}],"type":"serial"},"background":"#ffffff"},"evals":[]}</script></p>
+<p><div id="htmlwidget-9675" style="width:100%;height:500px;" class="amSerialChart"></div>
+<script type="application/json" data-for="htmlwidget-9675">{"x":{"chartData":{"startDuration":0,"categoryField":"country","chartCursor":{"animationDuration":0.3},"dataProvider":[{"country":"China","gdp":18.976},{"country":"United States","gdp":18.125},{"country":"India","gdp":7.997},{"country":"Japan","gdp":4.843},{"country":"Germany","gdp":3.815},{"country":"Russia","gdp":3.458},{"country":"Brazil","gdp":3.259},{"country":"Indonesia","gdp":2.84},{"country":"United Kingdom","gdp":2.641},{"country":"France","gdp":2.634}],"graphs":[{"fillAlphas":0.5,"lineAlpha":0,"type":"column","valueField":"gdp"}],"titles":[{"text":"Main title"},{"text":"Sub-title"}],"type":"serial"},"background":"#ffffff"},"evals":[]}</script></p>
 </div>
 </div>
 <div id="colors" class="section level3">
@@ -419,8 +419,8 @@ pipeR::<span class="kw">pipeline</span>(
   <span class="kw">setChartCursor</span>(),
   <span class="kw">plot</span>()
 )</code></pre>
-<p><div id="htmlwidget-55" style="width:100%;height:500px;" class="amSerialChart"></div>
-<script type="application/json" data-for="htmlwidget-55">{"x":{"chartData":{"startDuration":0,"categoryField":"country","chartCursor":{"animationDuration":0.3},"dataProvider":[{"country":"China","gdp":18.976},{"country":"United States","gdp":18.125},{"country":"India","gdp":7.997},{"country":"Japan","gdp":4.843},{"country":"Germany","gdp":3.815},{"country":"Russia","gdp":3.458},{"country":"Brazil","gdp":3.259},{"country":"Indonesia","gdp":2.84},{"country":"United Kingdom","gdp":2.641},{"country":"France","gdp":2.634}],"graphs":[{"fillAlphas":0.5,"lineAlpha":0,"fillColors":"#3c8dbc","type":"column","valueField":"gdp"}],"type":"serial"},"background":"#ffffff"},"evals":[]}</script></p>
+<p><div id="htmlwidget-8608" style="width:100%;height:500px;" class="amSerialChart"></div>
+<script type="application/json" data-for="htmlwidget-8608">{"x":{"chartData":{"startDuration":0,"categoryField":"country","chartCursor":{"animationDuration":0.3},"dataProvider":[{"country":"China","gdp":18.976},{"country":"United States","gdp":18.125},{"country":"India","gdp":7.997},{"country":"Japan","gdp":4.843},{"country":"Germany","gdp":3.815},{"country":"Russia","gdp":3.458},{"country":"Brazil","gdp":3.259},{"country":"Indonesia","gdp":2.84},{"country":"United Kingdom","gdp":2.641},{"country":"France","gdp":2.634}],"graphs":[{"fillAlphas":0.5,"lineAlpha":0,"fillColors":"#3c8dbc","type":"column","valueField":"gdp"}],"type":"serial"},"background":"#ffffff"},"evals":[]}</script></p>
 <p>Set different colors:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(rAmCharts)
 <span class="kw">data</span>(<span class="st">&quot;data_gdp&quot;</span>)
@@ -435,8 +435,8 @@ pipeR::<span class="kw">pipeline</span>(
   <span class="kw">setChartCursor</span>(),
   <span class="kw">plot</span>()
 )</code></pre>
-<p><div id="htmlwidget-4277" style="width:100%;height:500px;" class="amSerialChart"></div>
-<script type="application/json" data-for="htmlwidget-4277">{"x":{"chartData":{"startDuration":0,"categoryField":"country","chartCursor":{"animationDuration":0.3},"dataProvider":[{"country":"China","gdp":18.976,"colors":"#00FF00"},{"country":"United States","gdp":18.125,"colors":"#00E21C"},{"country":"India","gdp":7.997,"colors":"#00C638"},{"country":"Japan","gdp":4.843,"colors":"#00AA55"},{"country":"Germany","gdp":3.815,"colors":"#008D71"},{"country":"Russia","gdp":3.458,"colors":"#00718D"},{"country":"Brazil","gdp":3.259,"colors":"#0055AA"},{"country":"Indonesia","gdp":2.84,"colors":"#0038C6"},{"country":"United Kingdom","gdp":2.641,"colors":"#001CE2"},{"country":"France","gdp":2.634,"colors":"#0000FF"}],"graphs":[{"fillAlphas":0.5,"lineAlpha":0,"fillColorsField":"colors","type":"column","valueField":"gdp"}],"type":"serial"},"background":"#ffffff"},"evals":[]}</script></p>
+<p><div id="htmlwidget-3176" style="width:100%;height:500px;" class="amSerialChart"></div>
+<script type="application/json" data-for="htmlwidget-3176">{"x":{"chartData":{"startDuration":0,"categoryField":"country","chartCursor":{"animationDuration":0.3},"dataProvider":[{"country":"China","gdp":18.976,"colors":"#00FF00"},{"country":"United States","gdp":18.125,"colors":"#00E21C"},{"country":"India","gdp":7.997,"colors":"#00C638"},{"country":"Japan","gdp":4.843,"colors":"#00AA55"},{"country":"Germany","gdp":3.815,"colors":"#008D71"},{"country":"Russia","gdp":3.458,"colors":"#00718D"},{"country":"Brazil","gdp":3.259,"colors":"#0055AA"},{"country":"Indonesia","gdp":2.84,"colors":"#0038C6"},{"country":"United Kingdom","gdp":2.641,"colors":"#001CE2"},{"country":"France","gdp":2.634,"colors":"#0000FF"}],"graphs":[{"fillAlphas":0.5,"lineAlpha":0,"fillColorsField":"colors","type":"column","valueField":"gdp"}],"type":"serial"},"background":"#ffffff"},"evals":[]}</script></p>
 </div>
 <div id="themes" class="section level3">
 <h3>Themes</h3>
@@ -449,19 +449,19 @@ pipeR::<span class="kw">pipeline</span>(
              <span class="dt">dataProvider =</span> data_gdp, <span class="dt">theme =</span> <span class="st">&quot;patterns&quot;</span>),
   <span class="kw">plot</span>()
 )</code></pre>
-<p><div id="htmlwidget-2817" style="width:100%;height:500px;" class="amPieChart"></div>
-<script type="application/json" data-for="htmlwidget-2817">{"x":{"chartData":{"valueField":"gdp","titleField":"country","startDuration":0,"dataProvider":[{"country":"China","gdp":18.976},{"country":"United States","gdp":18.125},{"country":"India","gdp":7.997},{"country":"Japan","gdp":4.843},{"country":"Germany","gdp":3.815},{"country":"Russia","gdp":3.458},{"country":"Brazil","gdp":3.259},{"country":"Indonesia","gdp":2.84},{"country":"United Kingdom","gdp":2.641},{"country":"France","gdp":2.634}],"theme":"patterns","type":"pie"},"background":"#ffffff"},"evals":[]}</script></p>
-<p><div id="htmlwidget-874" style="width:100%;height:500px;" class="amPieChart"></div>
-<script type="application/json" data-for="htmlwidget-874">{"x":{"chartData":{"valueField":"gdp","titleField":"country","startDuration":0,"dataProvider":[{"country":"China","gdp":18.976},{"country":"United States","gdp":18.125},{"country":"India","gdp":7.997},{"country":"Japan","gdp":4.843},{"country":"Germany","gdp":3.815},{"country":"Russia","gdp":3.458},{"country":"Brazil","gdp":3.259},{"country":"Indonesia","gdp":2.84},{"country":"United Kingdom","gdp":2.641},{"country":"France","gdp":2.634}],"theme":"light","type":"pie"},"background":"#ffffff"},"evals":[]}</script></p>
-<p><div id="htmlwidget-8649" style="width:100%;height:500px;" class="amPieChart"></div>
-<script type="application/json" data-for="htmlwidget-8649">{"x":{"chartData":{"valueField":"gdp","titleField":"country","startDuration":0,"dataProvider":[{"country":"China","gdp":18.976},{"country":"United States","gdp":18.125},{"country":"India","gdp":7.997},{"country":"Japan","gdp":4.843},{"country":"Germany","gdp":3.815},{"country":"Russia","gdp":3.458},{"country":"Brazil","gdp":3.259},{"country":"Indonesia","gdp":2.84},{"country":"United Kingdom","gdp":2.641},{"country":"France","gdp":2.634}],"theme":"dark","type":"pie"},"background":"#3f3f4f"},"evals":[]}</script></p>
-<p><div id="htmlwidget-8904" style="width:100%;height:500px;" class="amPieChart"></div>
-<script type="application/json" data-for="htmlwidget-8904">{"x":{"chartData":{"valueField":"gdp","titleField":"country","startDuration":0,"dataProvider":[{"country":"China","gdp":18.976},{"country":"United States","gdp":18.125},{"country":"India","gdp":7.997},{"country":"Japan","gdp":4.843},{"country":"Germany","gdp":3.815},{"country":"Russia","gdp":3.458},{"country":"Brazil","gdp":3.259},{"country":"Indonesia","gdp":2.84},{"country":"United Kingdom","gdp":2.641},{"country":"France","gdp":2.634}],"theme":"chalk","type":"pie"},"background":"#282828"},"evals":[]}</script></p>
+<p><div id="htmlwidget-75" style="width:100%;height:500px;" class="amPieChart"></div>
+<script type="application/json" data-for="htmlwidget-75">{"x":{"chartData":{"valueField":"gdp","titleField":"country","startDuration":0,"dataProvider":[{"country":"China","gdp":18.976},{"country":"United States","gdp":18.125},{"country":"India","gdp":7.997},{"country":"Japan","gdp":4.843},{"country":"Germany","gdp":3.815},{"country":"Russia","gdp":3.458},{"country":"Brazil","gdp":3.259},{"country":"Indonesia","gdp":2.84},{"country":"United Kingdom","gdp":2.641},{"country":"France","gdp":2.634}],"theme":"patterns","type":"pie"},"background":"#ffffff"},"evals":[]}</script></p>
+<p><div id="htmlwidget-7809" style="width:100%;height:500px;" class="amPieChart"></div>
+<script type="application/json" data-for="htmlwidget-7809">{"x":{"chartData":{"valueField":"gdp","titleField":"country","startDuration":0,"dataProvider":[{"country":"China","gdp":18.976},{"country":"United States","gdp":18.125},{"country":"India","gdp":7.997},{"country":"Japan","gdp":4.843},{"country":"Germany","gdp":3.815},{"country":"Russia","gdp":3.458},{"country":"Brazil","gdp":3.259},{"country":"Indonesia","gdp":2.84},{"country":"United Kingdom","gdp":2.641},{"country":"France","gdp":2.634}],"theme":"light","type":"pie"},"background":"#ffffff"},"evals":[]}</script></p>
+<p><div id="htmlwidget-9840" style="width:100%;height:500px;" class="amPieChart"></div>
+<script type="application/json" data-for="htmlwidget-9840">{"x":{"chartData":{"valueField":"gdp","titleField":"country","startDuration":0,"dataProvider":[{"country":"China","gdp":18.976},{"country":"United States","gdp":18.125},{"country":"India","gdp":7.997},{"country":"Japan","gdp":4.843},{"country":"Germany","gdp":3.815},{"country":"Russia","gdp":3.458},{"country":"Brazil","gdp":3.259},{"country":"Indonesia","gdp":2.84},{"country":"United Kingdom","gdp":2.641},{"country":"France","gdp":2.634}],"theme":"dark","type":"pie"},"background":"#3f3f4f"},"evals":[]}</script></p>
+<p><div id="htmlwidget-9704" style="width:100%;height:500px;" class="amPieChart"></div>
+<script type="application/json" data-for="htmlwidget-9704">{"x":{"chartData":{"valueField":"gdp","titleField":"country","startDuration":0,"dataProvider":[{"country":"China","gdp":18.976},{"country":"United States","gdp":18.125},{"country":"India","gdp":7.997},{"country":"Japan","gdp":4.843},{"country":"Germany","gdp":3.815},{"country":"Russia","gdp":3.458},{"country":"Brazil","gdp":3.259},{"country":"Indonesia","gdp":2.84},{"country":"United Kingdom","gdp":2.641},{"country":"France","gdp":2.634}],"theme":"chalk","type":"pie"},"background":"#282828"},"evals":[]}</script></p>
 </div>
 <div id="legend" class="section level3">
 <h3>Legend</h3>
-<p>By default a legend set to a pie chart is clickable and the figures are recalculated automatically: <div id="htmlwidget-6662" style="width:100%;height:500px;" class="amPieChart"></div>
-<script type="application/json" data-for="htmlwidget-6662">{"x":{"chartData":{"valueField":"gdp","titleField":"country","startDuration":0,"dataProvider":[{"country":"China","gdp":18.976},{"country":"United States","gdp":18.125},{"country":"India","gdp":7.997},{"country":"Japan","gdp":4.843},{"country":"Germany","gdp":3.815},{"country":"Russia","gdp":3.458},{"country":"Brazil","gdp":3.259},{"country":"Indonesia","gdp":2.84},{"country":"United Kingdom","gdp":2.641},{"country":"France","gdp":2.634}],"legend":{"position":"right","useGraphSettings":true},"theme":"patterns","type":"pie"},"background":"#ffffff"},"evals":[]}</script></p>
+<p>By default a legend set to a pie chart is clickable and the figures are recalculated automatically: <div id="htmlwidget-2394" style="width:100%;height:500px;" class="amPieChart"></div>
+<script type="application/json" data-for="htmlwidget-2394">{"x":{"chartData":{"valueField":"gdp","titleField":"country","startDuration":0,"dataProvider":[{"country":"China","gdp":18.976},{"country":"United States","gdp":18.125},{"country":"India","gdp":7.997},{"country":"Japan","gdp":4.843},{"country":"Germany","gdp":3.815},{"country":"Russia","gdp":3.458},{"country":"Brazil","gdp":3.259},{"country":"Indonesia","gdp":2.84},{"country":"United Kingdom","gdp":2.641},{"country":"France","gdp":2.634}],"legend":{"position":"right","useGraphSettings":true},"theme":"patterns","type":"pie"},"background":"#ffffff"},"evals":[]}</script></p>
 </div>
 </div>
 </div>
