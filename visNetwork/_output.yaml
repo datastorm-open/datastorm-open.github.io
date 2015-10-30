@@ -1,5 +1,5 @@
 html_document:
-  theme: flatly
+  theme: cosmo
   self_contained: no
   lib_dir: libs
   fig_width: 5.5
