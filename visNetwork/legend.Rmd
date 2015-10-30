@@ -1,0 +1,51 @@
+---
+pagetitle: Legend
+---
+
+```{r, eval=TRUE, echo = FALSE}
+require("visNetwork", quietly = TRUE)
+```
+
+## On groups
+
+* We can add a legend, based on groups definition, using *visLegend** : 
+
+```{r}
+nodes <- data.frame(id = 1:3, group = c("B", "A", "B"))
+edges <- data.frame(from = c(1,2), to = c(2,3))
+
+# default, on group
+visNetwork(nodes, edges, width = "100%") %>%
+  visGroups(groupname = "A", color = "red") %>%
+  visGroups(groupname = "B", color = "lightblue") %>%
+  visLegend()
+```
+
+## Placement
+
+* It's also possible to adjust position (left or right), and width : 
+
+```{r}
+visNetwork(nodes, edges, width = "100%") %>%
+  visGroups(groupname = "A", color = "red") %>%
+  visGroups(groupname = "B", color = "lightblue") %>%
+  visLegend(width = 0.05, position = "right")
+```
+
+## Custom nodes/edges
+
+* Since 0.1.2, you can add custom nodes and/or edges on the legend : 
+
+```{r}
+lnodes <- data.frame(label = c("Group A", "Group B"),
+ shape = c( "ellipse"), color = c("red", "lightblue"),
+ title = "Informations", id = 1:2)
+
+ledges <- data.frame(color = c("lightblue", "red"),
+ label = c("reverse", "depends"), arrows =c("to", "from"))
+ 
+visNetwork(nodes, edges, width = "100%") %>%
+  visGroups(groupname = "A", color = "red") %>%
+  visGroups(groupname = "B", color = "lightblue") %>%
+  visLegend(addEdges = ledges,useGroups = TRUE)
+```

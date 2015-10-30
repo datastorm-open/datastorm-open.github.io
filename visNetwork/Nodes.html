@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+<title>Nodes</title>
+
+<script src="libs/jquery-1.11.0/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="libs/bootstrap-3.3.1/css/flatly.min.css" rel="stylesheet" />
+<script src="libs/bootstrap-3.3.1/js/bootstrap.min.js"></script>
+<script src="libs/bootstrap-3.3.1/shim/html5shiv.min.js"></script>
+<script src="libs/bootstrap-3.3.1/shim/respond.min.js"></script>
+<script src="libs/htmlwidgets-0.5/htmlwidgets.js"></script>
+<link href="libs/vis-4.9.0/vis.min.css" rel="stylesheet" />
+<script src="libs/vis-4.9.0/vis.min.js"></script>
+<script src="libs/visNetwork-binding-0.1.2/visNetwork.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<link rel="stylesheet"
+      href="libs/highlight/default.css"
+      type="text/css" />
+<script src="libs/highlight/highlight.js"></script>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs && document.readyState && document.readyState === "complete") {
+   window.setTimeout(function() {
+      hljs.initHighlighting();
+   }, 0);
+}
+</script>
+
+
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img { 
+  max-width:100%; 
+  height: auto; 
+}
+</style>
+<div class="container-fluid main-container">
+
+<style type="text/css">
+  body {
+    padding-top: 20px;
+  }
+  .navbar-brand {
+    font-weight: bold;
+  }
+  footer {
+    border-top: 1px solid #CCC;
+    margin-top: 60px;
+    margin-bottom: 48px;
+    opacity: 0.75;
+  }
+  .content-body>:first-child, .content-body>:first-child>:first-child {
+    margin-top: 0 !important;
+  }
+  p code {
+    white-space: inherit;
+  }
+</style>
+
+<div class="fluid-row">
+  <div class="col-sm-12">
+    <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <a class="navbar-brand" href="./">visNetwork, an R package for interactive network visualization</a>
+        </div>
+      </div>
+    </nav>
+  </div>
+</div>
+
+<div class="fluid-row">
+  <div class="col-sm-3">
+    <div class="list-group">
+      <a class="list-group-item" href="./">Introduction</a>
+      <a class="list-group-item" href="nodes.html">Nodes</a>
+      <a class="list-group-item" href="edges.html">Edges</a>
+      <a class="list-group-item" href="groups.html">Groups</a>
+      <a class="list-group-item" href="legend.html">Legend</a>
+      <a class="list-group-item" href="options.html">Options</a>
+      <a class="list-group-item" href="interaction.html">Interactions</a>
+      <a class="list-group-item" href="physic.html">Physics</a>
+      <a class="list-group-item" href="layout.html">Layout</a>
+      <a class="list-group-item" href="shiny.html">Shiny</a>
+      <a class="list-group-item" href="more.html">More...</a>
+    </div>
+    <script>
+      // manage active state of toc based on current page
+      var href = window.location.pathname;
+      href = href.substr(href.lastIndexOf('/') + 1);
+      if (href === "" || href === "index.html")
+        href = "./";
+      $('a.list-group-item[href="' + href + '"]').addClass('active');
+    </script>
+  </div>
+  <div class="col-sm-9 content-body">
+
+
+
+<div id="individual-configuration" class="section level2">
+<h2>Individual configuration</h2>
+<ul>
+<li>Adding more variables on nodes data.frame. See <strong>visNodes</strong> for available options.</li>
+</ul>
+<pre class="r"><code>nodes &lt;- data.frame(id = 1:10,
+                    
+  # add labels on nodes
+  label = paste(&quot;Node&quot;, 1:10),
+  
+  # add groups on nodes 
+  group = c(&quot;GrA&quot;, &quot;GrB&quot;),
+  
+  # size adding value
+  value = 1:10,          
+  
+  # control shape of nodes
+  shape = c(&quot;square&quot;, &quot;triangle&quot;, &quot;box&quot;, &quot;circle&quot;, &quot;dot&quot;, &quot;star&quot;,
+  &quot;ellipse&quot;, &quot;database&quot;, &quot;text&quot;, &quot;diamond&quot;),
+  
+  # tooltip (html or character)
+  title = paste0(&quot;&lt;p&gt;&lt;b&gt;&quot;, 1:10,&quot;&lt;/b&gt;&lt;br&gt;Node !&lt;/p&gt;&quot;),
+  
+  # color
+  color = c(&quot;darkred&quot;, &quot;grey&quot;, &quot;orange&quot;, &quot;darkblue&quot;, &quot;purple&quot;),
+  
+  # shadow
+  shadow = c(FALSE, TRUE, FALSE, TRUE, TRUE))             
+
+# head(nodes)
+# id  label group value    shape                     title    color shadow
+#  1 Node 1   GrA     1   square &lt;p&gt;&lt;b&gt;1&lt;/b&gt;&lt;br&gt;Node !&lt;/p&gt;  darkred  FALSE
+#  2 Node 2   GrB     2 triangle &lt;p&gt;&lt;b&gt;2&lt;/b&gt;&lt;br&gt;Node !&lt;/p&gt;     grey   TRUE
+
+edges &lt;- data.frame(from = c(1,2,5,7,8,10), to = c(9,3,1,6,4,7))</code></pre>
+<pre class="r"><code>visNetwork(nodes, edges, height = &quot;500px&quot;, width = &quot;100%&quot;)</code></pre>
+<p><div id="htmlwidget-8102" style="width:100%;height:500px;" class="visNetwork"></div>
+<script type="application/json" data-for="htmlwidget-8102">{"x":{"nodes":{"id":[1,2,3,4,5,6,7,8,9,10],"label":["Node 1","Node 2","Node 3","Node 4","Node 5","Node 6","Node 7","Node 8","Node 9","Node 10"],"group":["GrA","GrB","GrA","GrB","GrA","GrB","GrA","GrB","GrA","GrB"],"value":[1,2,3,4,5,6,7,8,9,10],"shape":["square","triangle","box","circle","dot","star","ellipse","database","text","diamond"],"title":["<p><b>1</b><br>Node !</p>","<p><b>2</b><br>Node !</p>","<p><b>3</b><br>Node !</p>","<p><b>4</b><br>Node !</p>","<p><b>5</b><br>Node !</p>","<p><b>6</b><br>Node !</p>","<p><b>7</b><br>Node !</p>","<p><b>8</b><br>Node !</p>","<p><b>9</b><br>Node !</p>","<p><b>10</b><br>Node !</p>"],"color":["darkred","grey","orange","darkblue","purple","darkred","grey","orange","darkblue","purple"],"shadow":[false,true,false,true,true,false,true,false,true,true]},"edges":{"from":[1,2,5,7,8,10],"to":[9,3,1,6,4,7]},"options":{"width":"100%","height":"100%","nodes":{"shape":"dot"},"manipulation":{"enabled":false}},"groups":["GrA","GrB"],"width":"100%","height":"500px"},"evals":[]}</script></p>
+</div>
+<div id="global-configuration" class="section level2">
+<h2>Global configuration</h2>
+<ul>
+<li>Set global options for nodes using directly <strong>visNodes</strong> function :</li>
+</ul>
+<pre class="r"><code>nodes &lt;- data.frame(id = 1:4)
+edges &lt;- data.frame(from = c(2,4,3,3), to = c(1,2,4,2))
+
+visNetwork(nodes, edges, width = &quot;100%&quot;) %&gt;% 
+  visNodes(shape = &quot;square&quot;, 
+           color = list(background = &quot;lightblue&quot;, border = &quot;darkblue&quot;,highlight = &quot;yellow&quot;),
+           shadow = list(enabled = TRUE, size = 50))            </code></pre>
+<p><div id="htmlwidget-6601" style="width:100%;height:216px;" class="visNetwork"></div>
+<script type="application/json" data-for="htmlwidget-6601">{"x":{"nodes":{"id":[1,2,3,4]},"edges":{"from":[2,4,3,3],"to":[1,2,4,2]},"options":{"width":"100%","height":"100%","nodes":{"shape":"square","color":{"background":"lightblue","border":"darkblue","highlight":"yellow"},"shadow":{"enabled":true,"size":50}},"manipulation":{"enabled":false}},"groups":null,"width":"100%","height":null},"evals":[]}</script></p>
+<ul>
+<li>You can also combine individual and global options :</li>
+</ul>
+<pre class="r"><code>nodes &lt;- data.frame(id = 1:4, shape = c(&quot;circle&quot;, &quot;square&quot;), label = LETTERS[1:4])
+edges &lt;- data.frame(from = c(2,4,3,3), to = c(1,2,4,2))
+
+visNetwork(nodes, edges, width = &quot;100%&quot;) %&gt;% 
+  visNodes(color = list(background = &quot;lightblue&quot;, border = &quot;darkblue&quot;,
+                        highlight = &quot;yellow&quot;),
+           shadow = list(enabled = TRUE, size = 50))            </code></pre>
+<p><div id="htmlwidget-9555" style="width:100%;height:216px;" class="visNetwork"></div>
+<script type="application/json" data-for="htmlwidget-9555">{"x":{"nodes":{"id":[1,2,3,4],"shape":["circle","square","circle","square"],"label":["A","B","C","D"]},"edges":{"from":[2,4,3,3],"to":[1,2,4,2]},"options":{"width":"100%","height":"100%","nodes":{"shape":"dot","color":{"background":"lightblue","border":"darkblue","highlight":"yellow"},"shadow":{"enabled":true,"size":50}},"manipulation":{"enabled":false}},"groups":null,"width":"100%","height":null},"evals":[]}</script></p>
+</div>
+
+<footer>
+<p><small> © 2015-2016 DataKnowledge</small></p>
+</footer>
+
+  </div>
+</div>
+
+<a href="https://github.com/DataKnowledge/visNetwork"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+$(document).ready(function () {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+});
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

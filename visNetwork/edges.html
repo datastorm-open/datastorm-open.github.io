@@ -10,7 +10,7 @@
 
 
 
-<title>Introduction</title>
+<title>Edges</title>
 
 <script src="libs/jquery/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -126,42 +126,58 @@ img {
 
 
 
-<div id="introduction" class="section level2">
-<h2>Introduction</h2>
-<p><strong>visNetwork</strong> is a R package for network visualization, using <strong>vis.js</strong> javascript library (<a href="http://visjs.org/" class="uri">http://visjs.org/</a>). All the remarks and bugs returns are welcome on github : <a href="https://github.com/DataKnowledge/visNetwork" class="uri">https://github.com/DataKnowledge/visNetwork</a>.</p>
-</div>
-<div id="features" class="section level2">
-<h2>Features</h2>
-</div>
-<div id="installation" class="section level2">
-<h2>Installation</h2>
-<p>Package is now available on CRAN.</p>
-<pre class="r"><code>install.packages(&quot;visNetwork&quot;)
-
-# can have new features in developpement version 
-devtools::install_github(&quot;dataknowledge/visNetwork&quot;)</code></pre>
-</div>
-<div id="how-its-works" class="section level2">
-<h2>How it’s works ?</h2>
-<p><strong>visNetwork</strong> needs at least two informations :</p>
+<div id="individual-configuration" class="section level2">
+<h2>Individual configuration</h2>
 <ul>
-<li>a nodes data.frame, with <em>id</em> column</li>
-<li>a edges data.frame, with <em>from</em> and <em>to</em> columns</li>
+<li>Adding more variables on edges data.frame. See <strong>visEdges</strong> for available options.</li>
 </ul>
-<pre class="r"><code>require(visNetwork, quietly = TRUE)
-# minimal example
-nodes &lt;- data.frame(id = 1:3)
-edges &lt;- data.frame(from = c(1,2), to = c(1,3))
-visNetwork(nodes, edges, width = &quot;100%&quot;)</code></pre>
-<p><div id="htmlwidget-5716" style="width:100%;height:216px;" class="visNetwork"></div>
-<script type="application/json" data-for="htmlwidget-5716">{
+<pre class="r"><code>edges &lt;- data.frame(from = sample(1:10,8), to = sample(1:10, 8),
+                    
+  # add labels on edges                  
+  label = paste(&quot;Edge&quot;, 1:8),
+  
+  # length
+  length = c(100,500),
+  
+  # arrows
+  arrows = c(&quot;to&quot;, &quot;from&quot;, &quot;middle&quot;, &quot;middle;to&quot;),
+  
+  # dashes
+  dashes = c(TRUE, FALSE),
+  
+  # tooltip (html or character)
+  title = paste(&quot;Edge&quot;, 1:8),
+  
+  # smooth
+  smooth = c(FALSE, TRUE),
+  
+  # shadow
+  shadow = c(FALSE, TRUE, FALSE, TRUE)) 
+
+# head(edges)
+#  from to  label length    arrows dashes  title smooth shadow
+#    10  7 Edge 1    100        to   TRUE Edge 1  FALSE  FALSE
+#     4 10 Edge 2    500      from  FALSE Edge 2   TRUE   TRUE
+
+nodes &lt;- data.frame(id = 1:10, group = c(&quot;A&quot;, &quot;B&quot;))</code></pre>
+<pre class="r"><code>visNetwork(nodes, edges, height = &quot;500px&quot;, width = &quot;100%&quot;)</code></pre>
+<p><div id="htmlwidget-7087" style="width:100%;height:500px;" class="visNetwork"></div>
+<script type="application/json" data-for="htmlwidget-7087">{
   "x": {
     "nodes": {
-      "id": [1, 2, 3]
+      "id": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+      "group": ["A", "B", "A", "B", "A", "B", "A", "B", "A", "B"]
     },
     "edges": {
-      "from": [1, 2],
-      "to": [1, 3]
+      "from": [6, 5, 7, 4, 1, 3, 8, 10],
+      "to": [9, 4, 8, 5, 7, 3, 6, 10],
+      "label": ["Edge 1", "Edge 2", "Edge 3", "Edge 4", "Edge 5", "Edge 6", "Edge 7", "Edge 8"],
+      "length": [100, 500, 100, 500, 100, 500, 100, 500],
+      "arrows": ["to", "from", "middle", "middle;to", "to", "from", "middle", "middle;to"],
+      "dashes": [true, false, true, false, true, false, true, false],
+      "title": ["Edge 1", "Edge 2", "Edge 3", "Edge 4", "Edge 5", "Edge 6", "Edge 7", "Edge 8"],
+      "smooth": [false, true, false, true, false, true, false, true],
+      "shadow": [false, true, false, true, false, true, false, true]
     },
     "options": {
       "width": "100%",
@@ -173,18 +189,116 @@ visNetwork(nodes, edges, width = &quot;100%&quot;)</code></pre>
         "enabled": false
       }
     },
+    "groups": ["A", "B"],
+    "width": "100%",
+    "height": "500px"
+  },
+  "evals": []
+}</script></p>
+</div>
+<div id="global-configuration" class="section level2">
+<h2>Global configuration</h2>
+<ul>
+<li>Set global options for edges using directly <strong>visEdges</strong> function :</li>
+</ul>
+<pre class="r"><code>nodes &lt;- data.frame(id = 1:4)
+edges &lt;- data.frame(from = c(2,4,3,2), to = c(1,2,4,3))
+
+visNetwork(nodes, edges, width = &quot;100%&quot;) %&gt;% 
+  visEdges(shadow = TRUE,
+           arrows =list(to = list(enabled = TRUE, scaleFactor = 2)),
+           color = list(color = &quot;lightblue&quot;, highlight = &quot;red&quot;))           </code></pre>
+<p><div id="htmlwidget-3640" style="width:100%;height:216px;" class="visNetwork"></div>
+<script type="application/json" data-for="htmlwidget-3640">{
+  "x": {
+    "nodes": {
+      "id": [1, 2, 3, 4]
+    },
+    "edges": {
+      "from": [2, 4, 3, 2],
+      "to": [1, 2, 4, 3]
+    },
+    "options": {
+      "width": "100%",
+      "height": "100%",
+      "nodes": {
+        "shape": "dot"
+      },
+      "manipulation": {
+        "enabled": false
+      },
+      "edges": {
+        "arrows": {
+          "to": {
+            "enabled": true,
+            "scaleFactor": 2
+          }
+        },
+        "color": {
+          "color": "lightblue",
+          "highlight": "red"
+        },
+        "shadow": true
+      }
+    },
     "groups": null,
     "width": "100%",
     "height": null
   },
   "evals": []
 }</script></p>
-</div>
-<div id="find-help" class="section level2">
-<h2>Find help ?</h2>
-<p>Besides the help R functions, a vignette is available, and you can access and read the full javascript API from R using <strong>visDocumentation()</strong>:</p>
-<pre class="r"><code>visDocumentation()
-vignette(&quot;Introduction-to-visNetwork&quot;) # with CRAN version</code></pre>
+<ul>
+<li>You can also combine individual and global options :</li>
+</ul>
+<pre class="r"><code>nodes &lt;- data.frame(id = 1:4, label = 1:4)
+edges &lt;- data.frame(from = c(2,4,3,2), to = c(1,2,4,3), 
+                    dashes = c(TRUE, FALSE))
+
+visNetwork(nodes, edges, width = &quot;100%&quot;) %&gt;% 
+  visEdges(shadow = TRUE,
+           arrows =list(to = list(enabled = TRUE, scaleFactor = 2)),
+           color = list(color = &quot;lightblue&quot;, highlight = &quot;red&quot;))             </code></pre>
+<p><div id="htmlwidget-9715" style="width:100%;height:216px;" class="visNetwork"></div>
+<script type="application/json" data-for="htmlwidget-9715">{
+  "x": {
+    "nodes": {
+      "id": [1, 2, 3, 4],
+      "label": [1, 2, 3, 4]
+    },
+    "edges": {
+      "from": [2, 4, 3, 2],
+      "to": [1, 2, 4, 3],
+      "dashes": [true, false, true, false]
+    },
+    "options": {
+      "width": "100%",
+      "height": "100%",
+      "nodes": {
+        "shape": "dot"
+      },
+      "manipulation": {
+        "enabled": false
+      },
+      "edges": {
+        "arrows": {
+          "to": {
+            "enabled": true,
+            "scaleFactor": 2
+          }
+        },
+        "color": {
+          "color": "lightblue",
+          "highlight": "red"
+        },
+        "shadow": true
+      }
+    },
+    "groups": null,
+    "width": "100%",
+    "height": null
+  },
+  "evals": []
+}</script></p>
 </div>
 
 <footer>

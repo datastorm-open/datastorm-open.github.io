@@ -10,7 +10,7 @@
 
 
 
-<title>Introduction</title>
+<title>Legend</title>
 
 <script src="libs/jquery/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -126,42 +126,29 @@ img {
 
 
 
-<div id="introduction" class="section level2">
-<h2>Introduction</h2>
-<p><strong>visNetwork</strong> is a R package for network visualization, using <strong>vis.js</strong> javascript library (<a href="http://visjs.org/" class="uri">http://visjs.org/</a>). All the remarks and bugs returns are welcome on github : <a href="https://github.com/DataKnowledge/visNetwork" class="uri">https://github.com/DataKnowledge/visNetwork</a>.</p>
-</div>
-<div id="features" class="section level2">
-<h2>Features</h2>
-</div>
-<div id="installation" class="section level2">
-<h2>Installation</h2>
-<p>Package is now available on CRAN.</p>
-<pre class="r"><code>install.packages(&quot;visNetwork&quot;)
-
-# can have new features in developpement version 
-devtools::install_github(&quot;dataknowledge/visNetwork&quot;)</code></pre>
-</div>
-<div id="how-its-works" class="section level2">
-<h2>How it’s works ?</h2>
-<p><strong>visNetwork</strong> needs at least two informations :</p>
+<div id="on-groups" class="section level2">
+<h2>On groups</h2>
 <ul>
-<li>a nodes data.frame, with <em>id</em> column</li>
-<li>a edges data.frame, with <em>from</em> and <em>to</em> columns</li>
+<li>We can add a legend, based on groups definition, using *visLegend** :</li>
 </ul>
-<pre class="r"><code>require(visNetwork, quietly = TRUE)
-# minimal example
-nodes &lt;- data.frame(id = 1:3)
-edges &lt;- data.frame(from = c(1,2), to = c(1,3))
-visNetwork(nodes, edges, width = &quot;100%&quot;)</code></pre>
+<pre class="r"><code>nodes &lt;- data.frame(id = 1:3, group = c(&quot;B&quot;, &quot;A&quot;, &quot;B&quot;))
+edges &lt;- data.frame(from = c(1,2), to = c(2,3))
+
+# default, on group
+visNetwork(nodes, edges, width = &quot;100%&quot;) %&gt;%
+  visGroups(groupname = &quot;A&quot;, color = &quot;red&quot;) %&gt;%
+  visGroups(groupname = &quot;B&quot;, color = &quot;lightblue&quot;) %&gt;%
+  visLegend()</code></pre>
 <p><div id="htmlwidget-5716" style="width:100%;height:216px;" class="visNetwork"></div>
 <script type="application/json" data-for="htmlwidget-5716">{
   "x": {
     "nodes": {
-      "id": [1, 2, 3]
+      "id": [1, 2, 3],
+      "group": ["B", "A", "B"]
     },
     "edges": {
       "from": [1, 2],
-      "to": [1, 3]
+      "to": [2, 3]
     },
     "options": {
       "width": "100%",
@@ -171,20 +158,146 @@ visNetwork(nodes, edges, width = &quot;100%&quot;)</code></pre>
       },
       "manipulation": {
         "enabled": false
+      },
+      "groups": {
+        "A": {
+          "color": "red"
+        },
+        "B": {
+          "color": "lightblue"
+        }
       }
     },
-    "groups": null,
+    "groups": ["B", "A"],
     "width": "100%",
-    "height": null
+    "height": null,
+    "legend": {
+      "width": 0.2,
+      "useGroups": true,
+      "position": "left"
+    }
   },
   "evals": []
 }</script></p>
 </div>
-<div id="find-help" class="section level2">
-<h2>Find help ?</h2>
-<p>Besides the help R functions, a vignette is available, and you can access and read the full javascript API from R using <strong>visDocumentation()</strong>:</p>
-<pre class="r"><code>visDocumentation()
-vignette(&quot;Introduction-to-visNetwork&quot;) # with CRAN version</code></pre>
+<div id="placement" class="section level2">
+<h2>Placement</h2>
+<ul>
+<li>It’s also possible to adjust position (left or right), and width :</li>
+</ul>
+<pre class="r"><code>visNetwork(nodes, edges, width = &quot;100%&quot;) %&gt;%
+  visGroups(groupname = &quot;A&quot;, color = &quot;red&quot;) %&gt;%
+  visGroups(groupname = &quot;B&quot;, color = &quot;lightblue&quot;) %&gt;%
+  visLegend(width = 0.05, position = &quot;right&quot;)</code></pre>
+<p><div id="htmlwidget-4929" style="width:100%;height:216px;" class="visNetwork"></div>
+<script type="application/json" data-for="htmlwidget-4929">{
+  "x": {
+    "nodes": {
+      "id": [1, 2, 3],
+      "group": ["B", "A", "B"]
+    },
+    "edges": {
+      "from": [1, 2],
+      "to": [2, 3]
+    },
+    "options": {
+      "width": "100%",
+      "height": "100%",
+      "nodes": {
+        "shape": "dot"
+      },
+      "manipulation": {
+        "enabled": false
+      },
+      "groups": {
+        "A": {
+          "color": "red"
+        },
+        "B": {
+          "color": "lightblue"
+        }
+      }
+    },
+    "groups": ["B", "A"],
+    "width": "100%",
+    "height": null,
+    "legend": {
+      "width": 0.05,
+      "useGroups": true,
+      "position": "right"
+    }
+  },
+  "evals": []
+}</script></p>
+</div>
+<div id="custom-nodesedges" class="section level2">
+<h2>Custom nodes/edges</h2>
+<ul>
+<li>Since 0.1.2, you can add custom nodes and/or edges on the legend :</li>
+</ul>
+<pre class="r"><code>lnodes &lt;- data.frame(label = c(&quot;Group A&quot;, &quot;Group B&quot;),
+ shape = c( &quot;ellipse&quot;), color = c(&quot;red&quot;, &quot;lightblue&quot;),
+ title = &quot;Informations&quot;, id = 1:2)
+
+ledges &lt;- data.frame(color = c(&quot;lightblue&quot;, &quot;red&quot;),
+ label = c(&quot;reverse&quot;, &quot;depends&quot;), arrows =c(&quot;to&quot;, &quot;from&quot;))
+ 
+visNetwork(nodes, edges, width = &quot;100%&quot;) %&gt;%
+  visGroups(groupname = &quot;A&quot;, color = &quot;red&quot;) %&gt;%
+  visGroups(groupname = &quot;B&quot;, color = &quot;lightblue&quot;) %&gt;%
+  visLegend(addEdges = ledges,useGroups = TRUE)</code></pre>
+<p><div id="htmlwidget-7837" style="width:100%;height:216px;" class="visNetwork"></div>
+<script type="application/json" data-for="htmlwidget-7837">{
+  "x": {
+    "nodes": {
+      "id": [1, 2, 3],
+      "group": ["B", "A", "B"]
+    },
+    "edges": {
+      "from": [1, 2],
+      "to": [2, 3]
+    },
+    "options": {
+      "width": "100%",
+      "height": "100%",
+      "nodes": {
+        "shape": "dot"
+      },
+      "manipulation": {
+        "enabled": false
+      },
+      "groups": {
+        "A": {
+          "color": "red"
+        },
+        "B": {
+          "color": "lightblue"
+        }
+      }
+    },
+    "groups": ["B", "A"],
+    "width": "100%",
+    "height": null,
+    "legend": {
+      "width": 0.2,
+      "useGroups": true,
+      "position": "left",
+      "edges": [
+        {
+          "color": "lightblue",
+          "label": "reverse",
+          "arrows": "to"
+        },
+        {
+          "color": "red",
+          "label": "depends",
+          "arrows": "from"
+        }
+      ]
+    }
+  },
+  "evals": []
+}</script></p>
 </div>
 
 <footer>

@@ -1,0 +1,10 @@
+---
+pagetitle: Physics
+---
+
+```{r, eval=TRUE, echo = FALSE}
+require("visNetwork", quietly = TRUE)
+```
+
+The physics options are in **visPhysics()** function. Examples coming soon...
+

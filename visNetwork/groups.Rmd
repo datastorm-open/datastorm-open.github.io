@@ -1,0 +1,22 @@
+---
+pagetitle: Groups
+---
+```{r, eval=TRUE, echo = FALSE}
+require("visNetwork", quietly = TRUE)
+```
+
+## Define groups of nodes
+
+* You can affect a group to a node using the _group_ column in the node data.frame, and then after add a configuration per group using **visGroups** function. 
+
+```{r}
+nodes <- data.frame(id = 1:5, group = c(rep("A", 2), rep("B", 3)))
+edges <- data.frame(from = c(2,5,3,3), to = c(1,2,4,2))
+
+visNetwork(nodes, edges, width = "100%") %>% 
+  # darkblue for group "A", shadow and "square"
+  visGroups(groupname = "A", color = "darkblue", shape = "square", 
+            shadow = list(enabled = TRUE)) %>% 
+  # red for group "B", and "triangle""
+  visGroups(groupname = "B", color = "red", shape = "triangle")             
+```
