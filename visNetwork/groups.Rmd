@@ -1,6 +1,7 @@
 ---
 pagetitle: Groups
 ---
+
 ```{r, eval=TRUE, echo = FALSE}
 require("visNetwork", quietly = TRUE)
 ```

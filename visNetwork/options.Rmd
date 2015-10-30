@@ -6,7 +6,7 @@ pagetitle: Options
 require("visNetwork", quietly = TRUE)
 ```
 
-Some options are available using *visOptions().
+Some options are available using *visOptions()*.
 
 ```{r, echo=TRUE}
 nb <- 10

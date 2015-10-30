@@ -1,0 +1,10 @@
+---
+pagetitle: Layout
+---
+
+```{r, eval=TRUE, echo = FALSE}
+require("visNetwork", quietly = TRUE)
+```
+
+The layout is configurable with  **visLayout()** and **visHierarchicalLayout()** functions. Examples coming soon...
+

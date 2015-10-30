@@ -1,0 +1,10 @@
+---
+pagetitle: More...
+---
+
+```{r, eval=TRUE, echo = FALSE}
+require("visNetwork", quietly = TRUE)
+```
+
+And more !
+
