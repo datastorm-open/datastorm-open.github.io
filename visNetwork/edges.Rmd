@@ -23,6 +23,9 @@ edges <- data.frame(from = sample(1:10,8), to = sample(1:10, 8),
   # length
   length = c(100,500),
   
+  # width
+  width = c(4,1),
+  
   # arrows
   arrows = c("to", "from", "middle", "middle;to"),
   
