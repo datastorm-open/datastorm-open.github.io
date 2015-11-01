@@ -123,7 +123,44 @@ img {
 
 
 
-<p>Examples coming soon…</p>
+<div id="use-your-network-in-shiny-with-visnetworkoutput-and-rendervisnetwork" class="section level3">
+<h3>Use your network in shiny with <em>visNetworkOutput</em> and <em>renderVisNetwork</em></h3>
+<pre class="r"><code>require(shiny)
+require(visNetwork)
+
+server &lt;- function(input, output) {
+  output$network &lt;- renderVisNetwork({
+    # minimal example
+    nodes &lt;- data.frame(id = 1:3)
+    edges &lt;- data.frame(from = c(1,2), to = c(1,3))
+    
+    visNetwork(nodes, edges)
+  })
+}
+
+ui &lt;- fluidPage(
+    visNetworkOutput(&quot;network&quot;)
+)
+
+shinyApp(ui = ui, server = server)</code></pre>
+</div>
+<div id="shiny-interactions" class="section level2">
+<h2>Shiny interactions</h2>
+<ul>
+<li>with <code>nodesIdSelection</code>, you can access to new input with current selection value :</li>
+</ul>
+<pre class="r"><code>output$mynetwork &lt;- renderVisNetwork({
+  ... visOptions(nodesIdSelection = TRUE)
+  }) 
+# created input$mynetwork_selected</code></pre>
+<ul>
+<li>with <code>selectedBy</code>, you can access to new input :</li>
+</ul>
+<pre class="r"><code>output$mynetwork &lt;- renderVisNetwork({
+  ... visOptions(selectedBy = &quot;group&quot;)
+  }) 
+# created input$mynetwork_selectedBy</code></pre>
+</div>
 
 <footer>
 <p><small> © 2015-2016 DataKnowledge</small></p>

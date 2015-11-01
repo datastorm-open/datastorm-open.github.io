@@ -6,5 +6,57 @@ pagetitle: Layout
 require("visNetwork", quietly = TRUE)
 ```
 
-The layout is configurable with  **visLayout()** and **visHierarchicalLayout()** functions. Examples coming soon...
+### The layout is configurable with  **visLayout()** and **visHierarchicalLayout()** functions. 
 
+## Set seed
+
+The nodes are randomly positioned initially. This means that the settled result is different every time. You can provide a random seed manually (````randomSeed````), the layout will be the same every time.
+
+## Hierarchical Layout
+
+You can use and control hierarchical layout with some options : 
+
+* ````levelSeparation````, the distance between the different levels.
+* ````direction````, the direction of the hierarchical layout. 
+* ````sortMethod````, the algorithm used to ascertain the levels of the nodes based on the data
+
+```{r, echo = TRUE}
+nodes <- data.frame(id = 1:7)
+edges <- data.frame(from = c(1,2,2,2,3,3),
+ to = c(2,3,4,5,6,7))
+```
+
+```{r}
+visNetwork(nodes, edges, width = "100%") %>% 
+  visEdges(arrow = "from") %>% 
+  visHierarchicalLayout() # same as   visLayout(hierarchical = TRUE) 
+```
+
+```{r}
+visNetwork(nodes, edges, width = "100%") %>% 
+  visEdges(arrow = "from") %>% 
+  visHierarchicalLayout(direction = "LR", levelSeparation = 500)
+```
+
+it's also possible to define the ````level```` of each node :
+
+```{r, echo = TRUE}
+nodes <- data.frame(id = 1:4, level = c(2, 1, 1, 1))
+edges <- data.frame(from = c(1, 1, 1),
+ to = c(2,3,4))
+```
+
+```{r}
+### with level
+visNetwork(nodes, edges, width = "100%") %>% 
+  visEdges(arrow = "from") %>% 
+  visHierarchicalLayout() # same as   visLayout(hierarchical = TRUE) 
+```
+
+```{r}
+### without level (vis.js choice)
+nodes$level <- NULL
+visNetwork(nodes, edges, width = "100%") %>% 
+  visEdges(arrow = "from") %>% 
+  visHierarchicalLayout() # same as   visLayout(hierarchical = TRUE) 
+```

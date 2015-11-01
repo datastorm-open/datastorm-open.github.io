@@ -18,6 +18,10 @@
 <script src="libs/bootstrap/js/bootstrap.min.js"></script>
 <script src="libs/bootstrap/shim/html5shiv.min.js"></script>
 <script src="libs/bootstrap/shim/respond.min.js"></script>
+<script src="libs/htmlwidgets/htmlwidgets.js"></script>
+<link href="libs/vis/vis.min.css" rel="stylesheet" />
+<script src="libs/vis/vis.min.js"></script>
+<script src="libs/visNetwork-binding/visNetwork.js"></script>
 
 <style type="text/css">code{white-space: pre;}</style>
 <link rel="stylesheet"
@@ -123,7 +127,183 @@ img {
 
 
 
-<p>The layout is configurable with <strong>visLayout()</strong> and <strong>visHierarchicalLayout()</strong> functions. Examples coming soon…</p>
+<div id="the-layout-is-configurable-with-vislayout-and-vishierarchicallayout-functions." class="section level3">
+<h3>The layout is configurable with <strong>visLayout()</strong> and <strong>visHierarchicalLayout()</strong> functions.</h3>
+</div>
+<div id="set-seed" class="section level2">
+<h2>Set seed</h2>
+<p>The nodes are randomly positioned initially. This means that the settled result is different every time. You can provide a random seed manually (<code>randomSeed</code>), the layout will be the same every time.</p>
+</div>
+<div id="hierarchical-layout" class="section level2">
+<h2>Hierarchical Layout</h2>
+<p>You can use and control hierarchical layout with some options :</p>
+<ul>
+<li><code>levelSeparation</code>, the distance between the different levels.</li>
+<li><code>direction</code>, the direction of the hierarchical layout.</li>
+<li><code>sortMethod</code>, the algorithm used to ascertain the levels of the nodes based on the data</li>
+</ul>
+<pre class="r"><code>nodes &lt;- data.frame(id = 1:7)
+edges &lt;- data.frame(from = c(1,2,2,2,3,3),
+ to = c(2,3,4,5,6,7))</code></pre>
+<pre class="r"><code>visNetwork(nodes, edges, width = &quot;100%&quot;) %&gt;% 
+  visEdges(arrow = &quot;from&quot;) %&gt;% 
+  visHierarchicalLayout() # same as   visLayout(hierarchical = TRUE) </code></pre>
+<p><div id="htmlwidget-5716" style="width:100%;height:216px;" class="visNetwork"></div>
+<script type="application/json" data-for="htmlwidget-5716">{
+  "x": {
+    "nodes": {
+      "id": [1, 2, 3, 4, 5, 6, 7]
+    },
+    "edges": {
+      "from": [1, 2, 2, 2, 3, 3],
+      "to": [2, 3, 4, 5, 6, 7]
+    },
+    "options": {
+      "width": "100%",
+      "height": "100%",
+      "nodes": {
+        "shape": "dot"
+      },
+      "manipulation": {
+        "enabled": false
+      },
+      "edges": {
+        "arrows": "from"
+      },
+      "layout": {
+        "hierarchical": {
+          "enabled": true
+        }
+      }
+    },
+    "groups": null,
+    "width": "100%",
+    "height": null
+  },
+  "evals": []
+}</script></p>
+<pre class="r"><code>visNetwork(nodes, edges, width = &quot;100%&quot;) %&gt;% 
+  visEdges(arrow = &quot;from&quot;) %&gt;% 
+  visHierarchicalLayout(direction = &quot;LR&quot;, levelSeparation = 500)</code></pre>
+<p><div id="htmlwidget-4929" style="width:100%;height:216px;" class="visNetwork"></div>
+<script type="application/json" data-for="htmlwidget-4929">{
+  "x": {
+    "nodes": {
+      "id": [1, 2, 3, 4, 5, 6, 7]
+    },
+    "edges": {
+      "from": [1, 2, 2, 2, 3, 3],
+      "to": [2, 3, 4, 5, 6, 7]
+    },
+    "options": {
+      "width": "100%",
+      "height": "100%",
+      "nodes": {
+        "shape": "dot"
+      },
+      "manipulation": {
+        "enabled": false
+      },
+      "edges": {
+        "arrows": "from"
+      },
+      "layout": {
+        "hierarchical": {
+          "enabled": true,
+          "levelSeparation": 500,
+          "direction": "LR"
+        }
+      }
+    },
+    "groups": null,
+    "width": "100%",
+    "height": null
+  },
+  "evals": []
+}</script></p>
+<p>it’s also possible to define the <code>level</code> of each node :</p>
+<pre class="r"><code>nodes &lt;- data.frame(id = 1:4, level = c(2, 1, 1, 1))
+edges &lt;- data.frame(from = c(1, 1, 1),
+ to = c(2,3,4))</code></pre>
+<pre class="r"><code>### with level
+visNetwork(nodes, edges, width = &quot;100%&quot;) %&gt;% 
+  visEdges(arrow = &quot;from&quot;) %&gt;% 
+  visHierarchicalLayout() # same as   visLayout(hierarchical = TRUE) </code></pre>
+<p><div id="htmlwidget-7837" style="width:100%;height:216px;" class="visNetwork"></div>
+<script type="application/json" data-for="htmlwidget-7837">{
+  "x": {
+    "nodes": {
+      "id": [1, 2, 3, 4],
+      "level": [2, 1, 1, 1]
+    },
+    "edges": {
+      "from": [1, 1, 1],
+      "to": [2, 3, 4]
+    },
+    "options": {
+      "width": "100%",
+      "height": "100%",
+      "nodes": {
+        "shape": "dot"
+      },
+      "manipulation": {
+        "enabled": false
+      },
+      "edges": {
+        "arrows": "from"
+      },
+      "layout": {
+        "hierarchical": {
+          "enabled": true
+        }
+      }
+    },
+    "groups": null,
+    "width": "100%",
+    "height": null
+  },
+  "evals": []
+}</script></p>
+<pre class="r"><code>### without level (vis.js choice)
+nodes$level &lt;- NULL
+visNetwork(nodes, edges, width = &quot;100%&quot;) %&gt;% 
+  visEdges(arrow = &quot;from&quot;) %&gt;% 
+  visHierarchicalLayout() # same as   visLayout(hierarchical = TRUE) </code></pre>
+<p><div id="htmlwidget-5403" style="width:100%;height:216px;" class="visNetwork"></div>
+<script type="application/json" data-for="htmlwidget-5403">{
+  "x": {
+    "nodes": {
+      "id": [1, 2, 3, 4]
+    },
+    "edges": {
+      "from": [1, 1, 1],
+      "to": [2, 3, 4]
+    },
+    "options": {
+      "width": "100%",
+      "height": "100%",
+      "nodes": {
+        "shape": "dot"
+      },
+      "manipulation": {
+        "enabled": false
+      },
+      "edges": {
+        "arrows": "from"
+      },
+      "layout": {
+        "hierarchical": {
+          "enabled": true
+        }
+      }
+    },
+    "groups": null,
+    "width": "100%",
+    "height": null
+  },
+  "evals": []
+}</script></p>
+</div>
 
 <footer>
 <p><small> © 2015-2016 DataKnowledge</small></p>
