@@ -106,6 +106,7 @@ img {
       <a class="list-group-item" href="edges.html">Edges</a>
       <a class="list-group-item" href="groups.html">Groups</a>
       <a class="list-group-item" href="legend.html">Legend</a>
+      <a class="list-group-item" href="image_icon.html">Use image & Icon</a>
       <a class="list-group-item" href="options.html">Options</a>
       <a class="list-group-item" href="interaction.html">Interactions</a>
       <a class="list-group-item" href="physic.html">Physics</a>
@@ -126,11 +127,13 @@ img {
 
 
 
+<div id="we-can-customize-nodes-with-a-lot-of-options-and-by-various-ways." class="section level3">
+<h3>We can customize nodes with a lot of options, and by various ways.</h3>
+</div>
 <div id="individual-configuration" class="section level2">
 <h2>Individual configuration</h2>
-<ul>
-<li>Adding more variables on nodes data.frame. See <strong>visNodes</strong> for available options.</li>
-</ul>
+<p>As seen in introduction, <em>nodes</em> mut be a data.frame, with at least one column <code>id</code>. You can add properties simply with more variables on data.frame. See <strong>visNodes</strong> for available options.</p>
+<p>The most used are presented in the following example :</p>
 <pre class="r"><code>nodes &lt;- data.frame(id = 1:10,
                     
   # add labels on nodes
@@ -198,16 +201,16 @@ edges &lt;- data.frame(from = c(1,2,5,7,8,10), to = c(9,3,1,6,4,7))</code></pre>
 </div>
 <div id="global-configuration" class="section level2">
 <h2>Global configuration</h2>
-<ul>
-<li>Set global options for nodes using directly <strong>visNodes</strong> function :</li>
-</ul>
+<p>If you want to set some configuration for all nodes, it’s possible in a simpler way, using directly <strong>visNodes</strong> function :</p>
 <pre class="r"><code>nodes &lt;- data.frame(id = 1:4)
 edges &lt;- data.frame(from = c(2,4,3,3), to = c(1,2,4,2))
 
 visNetwork(nodes, edges, width = &quot;100%&quot;) %&gt;% 
   visNodes(shape = &quot;square&quot;, 
-           color = list(background = &quot;lightblue&quot;, border = &quot;darkblue&quot;,highlight = &quot;yellow&quot;),
-           shadow = list(enabled = TRUE, size = 50))            </code></pre>
+           color = list(background = &quot;lightblue&quot;, border = &quot;darkblue&quot;,
+                        highlight = &quot;yellow&quot;),
+           shadow = list(enabled = TRUE, size = 50)) %&gt;%
+  visLayout(randomSeed = 12) # to have always the same network         </code></pre>
 <p><div id="htmlwidget-4929" style="width:100%;height:216px;" class="visNetwork"></div>
 <script type="application/json" data-for="htmlwidget-4929">{
   "x": {
@@ -235,6 +238,9 @@ visNetwork(nodes, edges, width = &quot;100%&quot;) %&gt;%
       },
       "manipulation": {
         "enabled": false
+      },
+      "layout": {
+        "randomSeed": 12
       }
     },
     "groups": null,
@@ -243,16 +249,16 @@ visNetwork(nodes, edges, width = &quot;100%&quot;) %&gt;%
   },
   "evals": []
 }</script></p>
-<ul>
-<li>You can also combine individual and global options :</li>
-</ul>
-<pre class="r"><code>nodes &lt;- data.frame(id = 1:4, shape = c(&quot;circle&quot;, &quot;square&quot;), label = LETTERS[1:4])
+<p>Finally, you can also combine individual and global options :</p>
+<pre class="r"><code>nodes &lt;- data.frame(id = 1:4, shape = c(&quot;circle&quot;, &quot;square&quot;), 
+                    label = LETTERS[1:4])
 edges &lt;- data.frame(from = c(2,4,3,3), to = c(1,2,4,2))
 
 visNetwork(nodes, edges, width = &quot;100%&quot;) %&gt;% 
   visNodes(color = list(background = &quot;lightblue&quot;, border = &quot;darkblue&quot;,
                         highlight = &quot;yellow&quot;),
-           shadow = list(enabled = TRUE, size = 50))            </code></pre>
+           shadow = list(enabled = TRUE, size = 50))  %&gt;%
+  visLayout(randomSeed = 12) # to have always the same network                     </code></pre>
 <p><div id="htmlwidget-7837" style="width:100%;height:216px;" class="visNetwork"></div>
 <script type="application/json" data-for="htmlwidget-7837">{
   "x": {
@@ -282,6 +288,9 @@ visNetwork(nodes, edges, width = &quot;100%&quot;) %&gt;%
       },
       "manipulation": {
         "enabled": false
+      },
+      "layout": {
+        "randomSeed": 12
       }
     },
     "groups": null,

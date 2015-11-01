@@ -6,9 +6,13 @@ pagetitle: Edges
 require("visNetwork", quietly = TRUE)
 ```
 
+### We can also customize edges with a lot of options, and by the same ways as nodes.
+
 ## Individual configuration
 
-* Adding more variables on edges data.frame. See **visEdges** for available options.
+As seen in introduction, *edges* mut be a data.frame, with at least ```from``` and ```to``` columns, which make the link with ```id``` of nodes. You can add properties simply with more variables on data.frame. See **visEdges** for available options. 
+
+The most used are presented in the following example :
 
 ```{r}
 edges <- data.frame(from = sample(1:10,8), to = sample(1:10, 8),
@@ -48,7 +52,7 @@ visNetwork(nodes, edges, height = "500px", width = "100%")
 
 ## Global configuration
 
-* Set global options for edges using directly **visEdges** function :
+If you want to set some configuration for all nodes, it's possible in a simpler way, using directly **visEdges** function :
 
 ```{r}
 nodes <- data.frame(id = 1:4)
@@ -57,10 +61,11 @@ edges <- data.frame(from = c(2,4,3,2), to = c(1,2,4,3))
 visNetwork(nodes, edges, width = "100%") %>% 
   visEdges(shadow = TRUE,
            arrows =list(to = list(enabled = TRUE, scaleFactor = 2)),
-           color = list(color = "lightblue", highlight = "red"))           
+           color = list(color = "lightblue", highlight = "red")) %>%
+  visLayout(randomSeed = 12) # to have always the same network           
 ```
 
-* You can also combine individual and global options : 
+Finally, you can also combine individual and global options : 
 
 ```{r}
 nodes <- data.frame(id = 1:4, label = 1:4)
@@ -70,5 +75,6 @@ edges <- data.frame(from = c(2,4,3,2), to = c(1,2,4,3),
 visNetwork(nodes, edges, width = "100%") %>% 
   visEdges(shadow = TRUE,
            arrows =list(to = list(enabled = TRUE, scaleFactor = 2)),
-           color = list(color = "lightblue", highlight = "red"))             
+           color = list(color = "lightblue", highlight = "red")) %>%
+  visLayout(randomSeed = 12) # to have always the same network             
 ```

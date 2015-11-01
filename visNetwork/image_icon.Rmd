@@ -1,0 +1,53 @@
+---
+pagetitle: Use image & Icon
+---
+
+```{r, eval=TRUE, echo = FALSE}
+require("visNetwork", quietly = TRUE)
+```
+
+Besides the various shapes, it's also possible to use images and icons for nodes.
+
+## Images
+
+* For use images in nodes, you first have to set ````shape```` to **image** or **circularImage**.
+* Then, set the path relative or absolute on ````image```` value
+* An option is available in case of wrong path : ````brokenImage````
+* And you can use borders with ````shapeProperties```` and ````useBorderWithImage````
+
+```{r}
+path_to_images <- "https://raw.githubusercontent.com/DataKnowledge/DataKnowledge.github.io/master/visNetwork/data/img/indonesia/"
+ 
+nodes <- data.frame(id = 1:4, shape = c("image", "circularImage"),
+  image = paste0(path_to_images, 1:4, ".png"),
+  label = "I'm an image")
+  
+edges <- data.frame(from = c(2,4,3,3), to = c(1,2,4,2))
+
+visNetwork(nodes, edges, width = "100%") %>% 
+  visNodes(shapeProperties = list(useBorderWithImage = TRUE)) %>%
+  visLayout(randomSeed = 2)
+```
+
+
+## fontAwesome icons
+
+Actually, **visNetwork** supports [fontAwesome](http://fortawesome.github.io/Font-Awesome) icons. Font-awesome is not part of default dependencies, but you can use **addFontAwesome()** if needed.
+
+* For use icons in nodes, you first have to set ````shape```` to **icon**.
+* **icon** options must be a list, so you have to use **visNodes** or **visGroups**. (Can't be use with data.frame...)
+* Choose the icon by his ````code````, set ````size```` and ````color````
+
+
+```{r}
+nodes <- data.frame(id = 1:3, group = c("B", "A", "B"))
+edges <- data.frame(from = c(1,2), to = c(2,3))
+
+visNetwork(nodes, edges, width = "100%") %>%
+  visGroups(groupname = "A", shape = "icon", 
+            icon = list(code = "f0c0", size = 75)) %>%
+  visGroups(groupname = "B", shape = "icon", 
+            icon = list(code = "f007", color = "red")) %>%
+  addFontAwesome()
+```
+

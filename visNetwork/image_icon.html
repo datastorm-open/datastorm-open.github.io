@@ -10,7 +10,7 @@
 
 
 
-<title>Edges</title>
+<title>Use image &amp; Icon</title>
 
 <script src="libs/jquery/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -22,6 +22,7 @@
 <link href="libs/vis/vis.min.css" rel="stylesheet" />
 <script src="libs/vis/vis.min.js"></script>
 <script src="libs/visNetwork-binding/visNetwork.js"></script>
+<link href="libs/font-awesome/font-awesome.min.css" rel="stylesheet" />
 
 <style type="text/css">code{white-space: pre;}</style>
 <link rel="stylesheet"
@@ -127,123 +128,53 @@ img {
 
 
 
-<div id="we-can-also-customize-edges-with-a-lot-of-options-and-by-the-same-ways-as-nodes." class="section level3">
-<h3>We can also customize edges with a lot of options, and by the same ways as nodes.</h3>
-</div>
-<div id="individual-configuration" class="section level2">
-<h2>Individual configuration</h2>
-<p>As seen in introduction, <em>edges</em> mut be a data.frame, with at least <code>from</code> and <code>to</code> columns, which make the link with <code>id</code> of nodes. You can add properties simply with more variables on data.frame. See <strong>visEdges</strong> for available options.</p>
-<p>The most used are presented in the following example :</p>
-<pre class="r"><code>edges &lt;- data.frame(from = sample(1:10,8), to = sample(1:10, 8),
-                    
-  # add labels on edges                  
-  label = paste(&quot;Edge&quot;, 1:8),
+<p>Besides the various shapes, it’s also possible to use images and icons for nodes.</p>
+<div id="images" class="section level2">
+<h2>Images</h2>
+<ul>
+<li>For use images in nodes, you first have to set <code>shape</code> to <strong>image</strong> or <strong>circularImage</strong>.</li>
+<li>Then, set the path relative or absolute on <code>image</code> value</li>
+<li>An option is available in case of wrong path : <code>brokenImage</code></li>
+<li>And you can use borders with <code>shapeProperties</code> and <code>useBorderWithImage</code></li>
+</ul>
+<pre class="r"><code>path_to_images &lt;- &quot;https://raw.githubusercontent.com/DataKnowledge/DataKnowledge.github.io/master/visNetwork/data/img/indonesia/&quot;
+ 
+nodes &lt;- data.frame(id = 1:4, shape = c(&quot;image&quot;, &quot;circularImage&quot;),
+  image = paste0(path_to_images, 1:4, &quot;.png&quot;),
+  label = &quot;I&#39;m an image&quot;)
   
-  # length
-  length = c(100,500),
-  
-  # arrows
-  arrows = c(&quot;to&quot;, &quot;from&quot;, &quot;middle&quot;, &quot;middle;to&quot;),
-  
-  # dashes
-  dashes = c(TRUE, FALSE),
-  
-  # tooltip (html or character)
-  title = paste(&quot;Edge&quot;, 1:8),
-  
-  # smooth
-  smooth = c(FALSE, TRUE),
-  
-  # shadow
-  shadow = c(FALSE, TRUE, FALSE, TRUE)) 
-
-# head(edges)
-#  from to  label length    arrows dashes  title smooth shadow
-#    10  7 Edge 1    100        to   TRUE Edge 1  FALSE  FALSE
-#     4 10 Edge 2    500      from  FALSE Edge 2   TRUE   TRUE
-
-nodes &lt;- data.frame(id = 1:10, group = c(&quot;A&quot;, &quot;B&quot;))</code></pre>
-<pre class="r"><code>visNetwork(nodes, edges, height = &quot;500px&quot;, width = &quot;100%&quot;)</code></pre>
-<p><div id="htmlwidget-7087" style="width:100%;height:500px;" class="visNetwork"></div>
-<script type="application/json" data-for="htmlwidget-7087">{
-  "x": {
-    "nodes": {
-      "id": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-      "group": ["A", "B", "A", "B", "A", "B", "A", "B", "A", "B"]
-    },
-    "edges": {
-      "from": [6, 5, 7, 4, 1, 3, 8, 10],
-      "to": [9, 4, 8, 5, 7, 3, 6, 10],
-      "label": ["Edge 1", "Edge 2", "Edge 3", "Edge 4", "Edge 5", "Edge 6", "Edge 7", "Edge 8"],
-      "length": [100, 500, 100, 500, 100, 500, 100, 500],
-      "arrows": ["to", "from", "middle", "middle;to", "to", "from", "middle", "middle;to"],
-      "dashes": [true, false, true, false, true, false, true, false],
-      "title": ["Edge 1", "Edge 2", "Edge 3", "Edge 4", "Edge 5", "Edge 6", "Edge 7", "Edge 8"],
-      "smooth": [false, true, false, true, false, true, false, true],
-      "shadow": [false, true, false, true, false, true, false, true]
-    },
-    "options": {
-      "width": "100%",
-      "height": "100%",
-      "nodes": {
-        "shape": "dot"
-      },
-      "manipulation": {
-        "enabled": false
-      }
-    },
-    "groups": ["A", "B"],
-    "width": "100%",
-    "height": "500px"
-  },
-  "evals": []
-}</script></p>
-</div>
-<div id="global-configuration" class="section level2">
-<h2>Global configuration</h2>
-<p>If you want to set some configuration for all nodes, it’s possible in a simpler way, using directly <strong>visEdges</strong> function :</p>
-<pre class="r"><code>nodes &lt;- data.frame(id = 1:4)
-edges &lt;- data.frame(from = c(2,4,3,2), to = c(1,2,4,3))
+edges &lt;- data.frame(from = c(2,4,3,3), to = c(1,2,4,2))
 
 visNetwork(nodes, edges, width = &quot;100%&quot;) %&gt;% 
-  visEdges(shadow = TRUE,
-           arrows =list(to = list(enabled = TRUE, scaleFactor = 2)),
-           color = list(color = &quot;lightblue&quot;, highlight = &quot;red&quot;)) %&gt;%
-  visLayout(randomSeed = 12) # to have always the same network           </code></pre>
-<p><div id="htmlwidget-3640" style="width:100%;height:216px;" class="visNetwork"></div>
-<script type="application/json" data-for="htmlwidget-3640">{
+  visNodes(shapeProperties = list(useBorderWithImage = TRUE)) %&gt;%
+  visLayout(randomSeed = 2)</code></pre>
+<p><div id="htmlwidget-5716" style="width:100%;height:216px;" class="visNetwork"></div>
+<script type="application/json" data-for="htmlwidget-5716">{
   "x": {
     "nodes": {
-      "id": [1, 2, 3, 4]
+      "id": [1, 2, 3, 4],
+      "shape": ["image", "circularImage", "image", "circularImage"],
+      "image": ["https://raw.githubusercontent.com/DataKnowledge/DataKnowledge.github.io/master/visNetwork/data/img/indonesia/1.png", "https://raw.githubusercontent.com/DataKnowledge/DataKnowledge.github.io/master/visNetwork/data/img/indonesia/2.png", "https://raw.githubusercontent.com/DataKnowledge/DataKnowledge.github.io/master/visNetwork/data/img/indonesia/3.png", "https://raw.githubusercontent.com/DataKnowledge/DataKnowledge.github.io/master/visNetwork/data/img/indonesia/4.png"],
+      "label": ["I'm an image", "I'm an image", "I'm an image", "I'm an image"]
     },
     "edges": {
-      "from": [2, 4, 3, 2],
-      "to": [1, 2, 4, 3]
+      "from": [2, 4, 3, 3],
+      "to": [1, 2, 4, 2]
     },
     "options": {
       "width": "100%",
       "height": "100%",
       "nodes": {
-        "shape": "dot"
+        "shape": "dot",
+        "shapeProperties": {
+          "useBorderWithImage": true
+        }
       },
       "manipulation": {
         "enabled": false
       },
-      "edges": {
-        "arrows": {
-          "to": {
-            "enabled": true,
-            "scaleFactor": 2
-          }
-        },
-        "color": {
-          "color": "lightblue",
-          "highlight": "red"
-        },
-        "shadow": true
-      },
       "layout": {
-        "randomSeed": 12
+        "randomSeed": 2
       }
     },
     "groups": null,
@@ -252,27 +183,34 @@ visNetwork(nodes, edges, width = &quot;100%&quot;) %&gt;%
   },
   "evals": []
 }</script></p>
-<p>Finally, you can also combine individual and global options :</p>
-<pre class="r"><code>nodes &lt;- data.frame(id = 1:4, label = 1:4)
-edges &lt;- data.frame(from = c(2,4,3,2), to = c(1,2,4,3), 
-                    dashes = c(TRUE, FALSE))
+</div>
+<div id="fontawesome-icons" class="section level2">
+<h2>fontAwesome icons</h2>
+<p>Actually, <strong>visNetwork</strong> supports <a href="http://fortawesome.github.io/Font-Awesome">fontAwesome</a> icons. Font-awesome is not part of default dependencies, but you can use <strong>addFontAwesome()</strong> if needed.</p>
+<ul>
+<li>For use icons in nodes, you first have to set <code>shape</code> to <strong>icon</strong>.</li>
+<li><strong>icon</strong> options must be a list, so you have to use <strong>visNodes</strong> or <strong>visGroups</strong>. (Can’t be use with data.frame…)</li>
+<li>Choose the icon by his <code>code</code>, set <code>size</code> and <code>color</code></li>
+</ul>
+<pre class="r"><code>nodes &lt;- data.frame(id = 1:3, group = c(&quot;B&quot;, &quot;A&quot;, &quot;B&quot;))
+edges &lt;- data.frame(from = c(1,2), to = c(2,3))
 
-visNetwork(nodes, edges, width = &quot;100%&quot;) %&gt;% 
-  visEdges(shadow = TRUE,
-           arrows =list(to = list(enabled = TRUE, scaleFactor = 2)),
-           color = list(color = &quot;lightblue&quot;, highlight = &quot;red&quot;)) %&gt;%
-  visLayout(randomSeed = 12) # to have always the same network             </code></pre>
-<p><div id="htmlwidget-9715" style="width:100%;height:216px;" class="visNetwork"></div>
-<script type="application/json" data-for="htmlwidget-9715">{
+visNetwork(nodes, edges, width = &quot;100%&quot;) %&gt;%
+  visGroups(groupname = &quot;A&quot;, shape = &quot;icon&quot;, 
+            icon = list(code = &quot;f0c0&quot;, size = 75)) %&gt;%
+  visGroups(groupname = &quot;B&quot;, shape = &quot;icon&quot;, 
+            icon = list(code = &quot;f007&quot;, color = &quot;red&quot;)) %&gt;%
+  addFontAwesome()</code></pre>
+<p><div id="htmlwidget-4929" style="width:100%;height:216px;" class="visNetwork"></div>
+<script type="application/json" data-for="htmlwidget-4929">{
   "x": {
     "nodes": {
-      "id": [1, 2, 3, 4],
-      "label": [1, 2, 3, 4]
+      "id": [1, 2, 3],
+      "group": ["B", "A", "B"]
     },
     "edges": {
-      "from": [2, 4, 3, 2],
-      "to": [1, 2, 4, 3],
-      "dashes": [true, false, true, false]
+      "from": [1, 2],
+      "to": [2, 3]
     },
     "options": {
       "width": "100%",
@@ -283,24 +221,24 @@ visNetwork(nodes, edges, width = &quot;100%&quot;) %&gt;%
       "manipulation": {
         "enabled": false
       },
-      "edges": {
-        "arrows": {
-          "to": {
-            "enabled": true,
-            "scaleFactor": 2
+      "groups": {
+        "A": {
+          "shape": "icon",
+          "icon": {
+            "code": "f0c0",
+            "size": 75
           }
         },
-        "color": {
-          "color": "lightblue",
-          "highlight": "red"
-        },
-        "shadow": true
-      },
-      "layout": {
-        "randomSeed": 12
+        "B": {
+          "shape": "icon",
+          "icon": {
+            "code": "f007",
+            "color": "red"
+          }
+        }
       }
     },
-    "groups": null,
+    "groups": ["B", "A"],
     "width": "100%",
     "height": null
   },

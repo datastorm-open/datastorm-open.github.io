@@ -4,9 +4,20 @@ pagetitle: Introduction
 
 ## Introduction
 
-**visNetwork** is a R package for network visualization, using **vis.js** javascript library (http://visjs.org/). All the remarks and bugs returns are welcome on github : https://github.com/DataKnowledge/visNetwork.
+**visNetwork** is a R package for network visualization, using **vis.js** javascript library (http://visjs.org/). All the remarks and bugs are welcome on github : https://github.com/DataKnowledge/visNetwork.
 
 ## Features
+
+Based on [htmlwidgets](http://www.htmlwidgets.org/), so :
+
+* compatible with [shiny ](http://shiny.rstudio.com/),  R Markdown documents, and RStudio viewer
+
+The package proposes all the features available with the **vis.js** API, and even more with special features for R : 
+
+* easy to use
+* custom shapes, styles, colors, sizes, ...
+* works smooth on any modern browser for up to a few thousand nodes and edges
+* interactivity controls (zoom, physics, movement of nodes, tooltip, events, ...)
 
 ## Installation
 
@@ -23,8 +34,8 @@ devtools::install_github("dataknowledge/visNetwork")
 
 **visNetwork** needs at least two informations :
 
-* a nodes data.frame, with *id* column
-* a edges data.frame, with *from* and *to* columns
+* a nodes _data.frame_, with ```id``` column
+* a edges _data.frame_, with ```from``` and ```to``` columns, which make the link with ```id```
 
 ```{r}
 require(visNetwork, quietly = TRUE)

@@ -106,6 +106,7 @@ img {
       <a class="list-group-item" href="edges.html">Edges</a>
       <a class="list-group-item" href="groups.html">Groups</a>
       <a class="list-group-item" href="legend.html">Legend</a>
+      <a class="list-group-item" href="image_icon.html">Use image & Icon</a>
       <a class="list-group-item" href="options.html">Options</a>
       <a class="list-group-item" href="interaction.html">Interactions</a>
       <a class="list-group-item" href="physic.html">Physics</a>
@@ -128,9 +129,7 @@ img {
 
 <div id="define-groups-of-nodes" class="section level2">
 <h2>Define groups of nodes</h2>
-<ul>
-<li>You can affect a group to a node using the <em>group</em> column in the node data.frame, and then after add a configuration per group using <strong>visGroups</strong> function.</li>
-</ul>
+<p>You can affect a group to a node using the <code>group</code> column in the node data.frame, and then add a configuration per group using <strong>visGroups</strong> function.</p>
 <pre class="r"><code>nodes &lt;- data.frame(id = 1:5, group = c(rep(&quot;A&quot;, 2), rep(&quot;B&quot;, 3)))
 edges &lt;- data.frame(from = c(2,5,3,3), to = c(1,2,4,2))
 

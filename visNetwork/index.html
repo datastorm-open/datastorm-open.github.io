@@ -106,6 +106,7 @@ img {
       <a class="list-group-item" href="edges.html">Edges</a>
       <a class="list-group-item" href="groups.html">Groups</a>
       <a class="list-group-item" href="legend.html">Legend</a>
+      <a class="list-group-item" href="image_icon.html">Use image & Icon</a>
       <a class="list-group-item" href="options.html">Options</a>
       <a class="list-group-item" href="interaction.html">Interactions</a>
       <a class="list-group-item" href="physic.html">Physics</a>
@@ -128,10 +129,21 @@ img {
 
 <div id="introduction" class="section level2">
 <h2>Introduction</h2>
-<p><strong>visNetwork</strong> is a R package for network visualization, using <strong>vis.js</strong> javascript library (<a href="http://visjs.org/" class="uri">http://visjs.org/</a>). All the remarks and bugs returns are welcome on github : <a href="https://github.com/DataKnowledge/visNetwork" class="uri">https://github.com/DataKnowledge/visNetwork</a>.</p>
+<p><strong>visNetwork</strong> is a R package for network visualization, using <strong>vis.js</strong> javascript library (<a href="http://visjs.org/" class="uri">http://visjs.org/</a>). All the remarks and bugs are welcome on github : <a href="https://github.com/DataKnowledge/visNetwork" class="uri">https://github.com/DataKnowledge/visNetwork</a>.</p>
 </div>
 <div id="features" class="section level2">
 <h2>Features</h2>
+<p>Based on <a href="http://www.htmlwidgets.org/">htmlwidgets</a>, so :</p>
+<ul>
+<li>compatible with <a href="http://shiny.rstudio.com/">shiny</a>, R Markdown documents, and RStudio viewer</li>
+</ul>
+<p>The package proposes all the features available with the <strong>vis.js</strong> API, and even more with special features for R :</p>
+<ul>
+<li>easy to use</li>
+<li>custom shapes, styles, colors, sizes, …</li>
+<li>works smooth on any modern browser for up to a few thousand nodes and edges</li>
+<li>interactivity controls (zoom, physics, movement of nodes, tooltip, events, …)</li>
+</ul>
 </div>
 <div id="installation" class="section level2">
 <h2>Installation</h2>
@@ -145,8 +157,8 @@ devtools::install_github(&quot;dataknowledge/visNetwork&quot;)</code></pre>
 <h2>How it’s works ?</h2>
 <p><strong>visNetwork</strong> needs at least two informations :</p>
 <ul>
-<li>a nodes data.frame, with <em>id</em> column</li>
-<li>a edges data.frame, with <em>from</em> and <em>to</em> columns</li>
+<li>a nodes <em>data.frame</em>, with <code>id</code> column</li>
+<li>a edges <em>data.frame</em>, with <code>from</code> and <code>to</code> columns, which make the link with <code>id</code></li>
 </ul>
 <pre class="r"><code>require(visNetwork, quietly = TRUE)
 # minimal example
