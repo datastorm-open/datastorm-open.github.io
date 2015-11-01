@@ -6,7 +6,7 @@ pagetitle: Shiny
 require("visNetwork", quietly = TRUE)
 ```
 
-### Use your network in shiny with *visNetworkOutput* and *renderVisNetwork*
+### Use your network in shiny with ````visNetworkOutput```` and ````renderVisNetwork````
 
 ```{r, eval = FALSE}
 require(shiny)
