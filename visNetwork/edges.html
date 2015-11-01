@@ -12,16 +12,16 @@
 
 <title>Edges</title>
 
-<script src="libs/jquery-1.11.0/jquery.min.js"></script>
+<script src="libs/jquery/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="libs/bootstrap-3.3.1/css/cosmo.min.css" rel="stylesheet" />
-<script src="libs/bootstrap-3.3.1/js/bootstrap.min.js"></script>
-<script src="libs/bootstrap-3.3.1/shim/html5shiv.min.js"></script>
-<script src="libs/bootstrap-3.3.1/shim/respond.min.js"></script>
-<script src="libs/htmlwidgets-0.5/htmlwidgets.js"></script>
-<link href="libs/vis-4.9.0/vis.min.css" rel="stylesheet" />
-<script src="libs/vis-4.9.0/vis.min.js"></script>
-<script src="libs/visNetwork-binding-0.1.3/visNetwork.js"></script>
+<link href="libs/bootstrap/css/cosmo.min.css" rel="stylesheet" />
+<script src="libs/bootstrap/js/bootstrap.min.js"></script>
+<script src="libs/bootstrap/shim/html5shiv.min.js"></script>
+<script src="libs/bootstrap/shim/respond.min.js"></script>
+<script src="libs/htmlwidgets/htmlwidgets.js"></script>
+<link href="libs/vis/vis.min.css" rel="stylesheet" />
+<script src="libs/vis/vis.min.js"></script>
+<script src="libs/visNetwork-binding/visNetwork.js"></script>
 
 <style type="text/css">code{white-space: pre;}</style>
 <link rel="stylesheet"
@@ -167,8 +167,41 @@ img {
 
 nodes &lt;- data.frame(id = 1:10, group = c(&quot;A&quot;, &quot;B&quot;))</code></pre>
 <pre class="r"><code>visNetwork(nodes, edges, height = &quot;500px&quot;, width = &quot;100%&quot;)</code></pre>
-<p><div id="htmlwidget-4359" style="width:100%;height:500px;" class="visNetwork"></div>
-<script type="application/json" data-for="htmlwidget-4359">{"x":{"nodes":{"id":[1,2,3,4,5,6,7,8,9,10],"group":["A","B","A","B","A","B","A","B","A","B"]},"edges":{"from":[10,4,6,1,3,5,2,8],"to":[3,9,4,2,8,6,1,5],"label":["Edge 1","Edge 2","Edge 3","Edge 4","Edge 5","Edge 6","Edge 7","Edge 8"],"length":[100,500,100,500,100,500,100,500],"width":[4,1,4,1,4,1,4,1],"arrows":["to","from","middle","middle;to","to","from","middle","middle;to"],"dashes":[true,false,true,false,true,false,true,false],"title":["Edge 1","Edge 2","Edge 3","Edge 4","Edge 5","Edge 6","Edge 7","Edge 8"],"smooth":[false,true,false,true,false,true,false,true],"shadow":[false,true,false,true,false,true,false,true]},"options":{"width":"100%","height":"100%","nodes":{"shape":"dot"},"manipulation":{"enabled":false}},"groups":["A","B"],"width":"100%","height":"500px"},"evals":[]}</script></p>
+<p><div id="htmlwidget-7087" style="width:100%;height:500px;" class="visNetwork"></div>
+<script type="application/json" data-for="htmlwidget-7087">{
+  "x": {
+    "nodes": {
+      "id": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+      "group": ["A", "B", "A", "B", "A", "B", "A", "B", "A", "B"]
+    },
+    "edges": {
+      "from": [6, 5, 7, 4, 1, 3, 8, 10],
+      "to": [9, 4, 8, 5, 7, 3, 6, 10],
+      "label": ["Edge 1", "Edge 2", "Edge 3", "Edge 4", "Edge 5", "Edge 6", "Edge 7", "Edge 8"],
+      "length": [100, 500, 100, 500, 100, 500, 100, 500],
+      "width": [4, 1, 4, 1, 4, 1, 4, 1],
+      "arrows": ["to", "from", "middle", "middle;to", "to", "from", "middle", "middle;to"],
+      "dashes": [true, false, true, false, true, false, true, false],
+      "title": ["Edge 1", "Edge 2", "Edge 3", "Edge 4", "Edge 5", "Edge 6", "Edge 7", "Edge 8"],
+      "smooth": [false, true, false, true, false, true, false, true],
+      "shadow": [false, true, false, true, false, true, false, true]
+    },
+    "options": {
+      "width": "100%",
+      "height": "100%",
+      "nodes": {
+        "shape": "dot"
+      },
+      "manipulation": {
+        "enabled": false
+      }
+    },
+    "groups": ["A", "B"],
+    "width": "100%",
+    "height": "500px"
+  },
+  "evals": []
+}</script></p>
 </div>
 <div id="global-configuration" class="section level2">
 <h2>Global configuration</h2>
@@ -181,8 +214,48 @@ visNetwork(nodes, edges, width = &quot;100%&quot;) %&gt;%
            arrows =list(to = list(enabled = TRUE, scaleFactor = 2)),
            color = list(color = &quot;lightblue&quot;, highlight = &quot;red&quot;)) %&gt;%
   visLayout(randomSeed = 12) # to have always the same network           </code></pre>
-<p><div id="htmlwidget-5774" style="width:100%;height:216px;" class="visNetwork"></div>
-<script type="application/json" data-for="htmlwidget-5774">{"x":{"nodes":{"id":[1,2,3,4]},"edges":{"from":[2,4,3,2],"to":[1,2,4,3]},"options":{"width":"100%","height":"100%","nodes":{"shape":"dot"},"manipulation":{"enabled":false},"edges":{"arrows":{"to":{"enabled":true,"scaleFactor":2}},"color":{"color":"lightblue","highlight":"red"},"shadow":true},"layout":{"randomSeed":12}},"groups":null,"width":"100%","height":null},"evals":[]}</script></p>
+<p><div id="htmlwidget-3640" style="width:100%;height:216px;" class="visNetwork"></div>
+<script type="application/json" data-for="htmlwidget-3640">{
+  "x": {
+    "nodes": {
+      "id": [1, 2, 3, 4]
+    },
+    "edges": {
+      "from": [2, 4, 3, 2],
+      "to": [1, 2, 4, 3]
+    },
+    "options": {
+      "width": "100%",
+      "height": "100%",
+      "nodes": {
+        "shape": "dot"
+      },
+      "manipulation": {
+        "enabled": false
+      },
+      "edges": {
+        "arrows": {
+          "to": {
+            "enabled": true,
+            "scaleFactor": 2
+          }
+        },
+        "color": {
+          "color": "lightblue",
+          "highlight": "red"
+        },
+        "shadow": true
+      },
+      "layout": {
+        "randomSeed": 12
+      }
+    },
+    "groups": null,
+    "width": "100%",
+    "height": null
+  },
+  "evals": []
+}</script></p>
 <p>Finally, you can also combine individual and global options :</p>
 <pre class="r"><code>nodes &lt;- data.frame(id = 1:4, label = 1:4)
 edges &lt;- data.frame(from = c(2,4,3,2), to = c(1,2,4,3), 
@@ -193,8 +266,50 @@ visNetwork(nodes, edges, width = &quot;100%&quot;) %&gt;%
            arrows =list(to = list(enabled = TRUE, scaleFactor = 2)),
            color = list(color = &quot;lightblue&quot;, highlight = &quot;red&quot;)) %&gt;%
   visLayout(randomSeed = 12) # to have always the same network             </code></pre>
-<p><div id="htmlwidget-7886" style="width:100%;height:216px;" class="visNetwork"></div>
-<script type="application/json" data-for="htmlwidget-7886">{"x":{"nodes":{"id":[1,2,3,4],"label":[1,2,3,4]},"edges":{"from":[2,4,3,2],"to":[1,2,4,3],"dashes":[true,false,true,false]},"options":{"width":"100%","height":"100%","nodes":{"shape":"dot"},"manipulation":{"enabled":false},"edges":{"arrows":{"to":{"enabled":true,"scaleFactor":2}},"color":{"color":"lightblue","highlight":"red"},"shadow":true},"layout":{"randomSeed":12}},"groups":null,"width":"100%","height":null},"evals":[]}</script></p>
+<p><div id="htmlwidget-9715" style="width:100%;height:216px;" class="visNetwork"></div>
+<script type="application/json" data-for="htmlwidget-9715">{
+  "x": {
+    "nodes": {
+      "id": [1, 2, 3, 4],
+      "label": [1, 2, 3, 4]
+    },
+    "edges": {
+      "from": [2, 4, 3, 2],
+      "to": [1, 2, 4, 3],
+      "dashes": [true, false, true, false]
+    },
+    "options": {
+      "width": "100%",
+      "height": "100%",
+      "nodes": {
+        "shape": "dot"
+      },
+      "manipulation": {
+        "enabled": false
+      },
+      "edges": {
+        "arrows": {
+          "to": {
+            "enabled": true,
+            "scaleFactor": 2
+          }
+        },
+        "color": {
+          "color": "lightblue",
+          "highlight": "red"
+        },
+        "shadow": true
+      },
+      "layout": {
+        "randomSeed": 12
+      }
+    },
+    "groups": null,
+    "width": "100%",
+    "height": null
+  },
+  "evals": []
+}</script></p>
 </div>
 
 <footer>
