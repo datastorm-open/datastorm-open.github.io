@@ -12,16 +12,16 @@
 
 <title>Interactions</title>
 
-<script src="libs/jquery-1.11.0/jquery.min.js"></script>
+<script src="libs/jquery/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="libs/bootstrap-3.3.1/css/cosmo.min.css" rel="stylesheet" />
-<script src="libs/bootstrap-3.3.1/js/bootstrap.min.js"></script>
-<script src="libs/bootstrap-3.3.1/shim/html5shiv.min.js"></script>
-<script src="libs/bootstrap-3.3.1/shim/respond.min.js"></script>
-<script src="libs/htmlwidgets-0.5/htmlwidgets.js"></script>
-<link href="libs/vis-4.9.0/vis.min.css" rel="stylesheet" />
-<script src="libs/vis-4.9.0/vis.min.js"></script>
-<script src="libs/visNetwork-binding-0.1.3/visNetwork.js"></script>
+<link href="libs/bootstrap/css/cosmo.min.css" rel="stylesheet" />
+<script src="libs/bootstrap/js/bootstrap.min.js"></script>
+<script src="libs/bootstrap/shim/html5shiv.min.js"></script>
+<script src="libs/bootstrap/shim/respond.min.js"></script>
+<script src="libs/htmlwidgets/htmlwidgets.js"></script>
+<link href="libs/vis/vis.min.css" rel="stylesheet" />
+<script src="libs/vis/vis.min.js"></script>
+<script src="libs/visNetwork-binding/visNetwork.js"></script>
 
 <style type="text/css">code{white-space: pre;}</style>
 <link rel="stylesheet"
@@ -142,8 +142,47 @@ img {
                  dragView = FALSE, 
                  zoomView = FALSE) %&gt;%
   visLayout(randomSeed = 123)</code></pre>
-<p><div id="htmlwidget-7458" style="width:100%;height:500px;" class="visNetwork"></div>
-<script type="application/json" data-for="htmlwidget-7458">{"x":{"nodes":{"id":[1,2,3,4,5,6,7,8,9,10],"label":["Label 1","Label 2","Label 3","Label 4","Label 5","Label 6","Label 7","Label 8","Label 9","Label 10"],"group":["B","C","C","B","B","B","C","B","B","B"],"value":[1,2,3,4,5,6,7,8,9,10],"title":["<p>1<br>Tooltip !</p>","<p>2<br>Tooltip !</p>","<p>3<br>Tooltip !</p>","<p>4<br>Tooltip !</p>","<p>5<br>Tooltip !</p>","<p>6<br>Tooltip !</p>","<p>7<br>Tooltip !</p>","<p>8<br>Tooltip !</p>","<p>9<br>Tooltip !</p>","<p>10<br>Tooltip !</p>"]},"edges":{"from":[8,2,7,6,1,8,9,4,6,2],"to":[3,7,2,7,9,1,5,3,2,9],"value":[11.5578547883222,8.89978270098816,11.4983436139399,9.99321044913607,9.83303440616836,10.2131284824123,8.57773889654927,10.0799297819309,8.92669743619913,10.2438225094816],"label":["Edge 1","Edge 2","Edge 3","Edge 4","Edge 5","Edge 6","Edge 7","Edge 8","Edge 9","Edge 10"],"title":["<p>1<br>Edge Tooltip !</p>","<p>2<br>Edge Tooltip !</p>","<p>3<br>Edge Tooltip !</p>","<p>4<br>Edge Tooltip !</p>","<p>5<br>Edge Tooltip !</p>","<p>6<br>Edge Tooltip !</p>","<p>7<br>Edge Tooltip !</p>","<p>8<br>Edge Tooltip !</p>","<p>9<br>Edge Tooltip !</p>","<p>10<br>Edge Tooltip !</p>"]},"options":{"width":"100%","height":"100%","nodes":{"shape":"dot"},"manipulation":{"enabled":false},"interaction":{"dragNodes":false,"dragView":false,"zoomView":false},"layout":{"randomSeed":123}},"groups":["B","C"],"width":"100%","height":"500px"},"evals":[]}</script></p>
+<p><div id="htmlwidget-3973" style="width:100%;height:500px;" class="visNetwork"></div>
+<script type="application/json" data-for="htmlwidget-3973">{
+  "x": {
+    "nodes": {
+      "id": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+      "label": ["Label 1", "Label 2", "Label 3", "Label 4", "Label 5", "Label 6", "Label 7", "Label 8", "Label 9", "Label 10"],
+      "group": ["B", "B", "C", "B", "A", "B", "C", "A", "C", "B"],
+      "value": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+      "title": ["<p>1<br>Tooltip !</p>", "<p>2<br>Tooltip !</p>", "<p>3<br>Tooltip !</p>", "<p>4<br>Tooltip !</p>", "<p>5<br>Tooltip !</p>", "<p>6<br>Tooltip !</p>", "<p>7<br>Tooltip !</p>", "<p>8<br>Tooltip !</p>", "<p>9<br>Tooltip !</p>", "<p>10<br>Tooltip !</p>"]
+    },
+    "edges": {
+      "from": [8, 2, 7, 6, 1, 8, 9, 4, 6, 2],
+      "to": [3, 7, 2, 7, 9, 1, 5, 3, 2, 9],
+      "value": [11.2006173961394, 10.8961498842131, 10.2536897550745, 10.5496003408587, 11.9033710510161, 11.4445336141903, 10.1152957581359, 9.37274591961818, 8.73051126961894, 9.77217985303943],
+      "label": ["Edge 1", "Edge 2", "Edge 3", "Edge 4", "Edge 5", "Edge 6", "Edge 7", "Edge 8", "Edge 9", "Edge 10"],
+      "title": ["<p>1<br>Edge Tooltip !</p>", "<p>2<br>Edge Tooltip !</p>", "<p>3<br>Edge Tooltip !</p>", "<p>4<br>Edge Tooltip !</p>", "<p>5<br>Edge Tooltip !</p>", "<p>6<br>Edge Tooltip !</p>", "<p>7<br>Edge Tooltip !</p>", "<p>8<br>Edge Tooltip !</p>", "<p>9<br>Edge Tooltip !</p>", "<p>10<br>Edge Tooltip !</p>"]
+    },
+    "options": {
+      "width": "100%",
+      "height": "100%",
+      "nodes": {
+        "shape": "dot"
+      },
+      "manipulation": {
+        "enabled": false
+      },
+      "interaction": {
+        "dragNodes": false,
+        "dragView": false,
+        "zoomView": false
+      },
+      "layout": {
+        "randomSeed": 123
+      }
+    },
+    "groups": ["B", "C", "A"],
+    "width": "100%",
+    "height": "500px"
+  },
+  "evals": []
+}</script></p>
 </div>
 <div id="hide-edgesnodes-on-drag" class="section level2">
 <h2>Hide edges/nodes on drag</h2>
@@ -155,16 +194,87 @@ img {
 <pre class="r"><code>visNetwork(nodes, edges, height = &quot;500px&quot;, width = &quot;100%&quot;) %&gt;% 
   visInteraction(hideEdgesOnDrag = TRUE) %&gt;%
   visLayout(randomSeed = 123)</code></pre>
-<p><div id="htmlwidget-1844" style="width:100%;height:500px;" class="visNetwork"></div>
-<script type="application/json" data-for="htmlwidget-1844">{"x":{"nodes":{"id":[1,2,3,4,5,6,7,8,9,10],"label":["Label 1","Label 2","Label 3","Label 4","Label 5","Label 6","Label 7","Label 8","Label 9","Label 10"],"group":["B","C","C","B","B","B","C","B","B","B"],"value":[1,2,3,4,5,6,7,8,9,10],"title":["<p>1<br>Tooltip !</p>","<p>2<br>Tooltip !</p>","<p>3<br>Tooltip !</p>","<p>4<br>Tooltip !</p>","<p>5<br>Tooltip !</p>","<p>6<br>Tooltip !</p>","<p>7<br>Tooltip !</p>","<p>8<br>Tooltip !</p>","<p>9<br>Tooltip !</p>","<p>10<br>Tooltip !</p>"]},"edges":{"from":[8,2,7,6,1,8,9,4,6,2],"to":[3,7,2,7,9,1,5,3,2,9],"value":[11.5578547883222,8.89978270098816,11.4983436139399,9.99321044913607,9.83303440616836,10.2131284824123,8.57773889654927,10.0799297819309,8.92669743619913,10.2438225094816],"label":["Edge 1","Edge 2","Edge 3","Edge 4","Edge 5","Edge 6","Edge 7","Edge 8","Edge 9","Edge 10"],"title":["<p>1<br>Edge Tooltip !</p>","<p>2<br>Edge Tooltip !</p>","<p>3<br>Edge Tooltip !</p>","<p>4<br>Edge Tooltip !</p>","<p>5<br>Edge Tooltip !</p>","<p>6<br>Edge Tooltip !</p>","<p>7<br>Edge Tooltip !</p>","<p>8<br>Edge Tooltip !</p>","<p>9<br>Edge Tooltip !</p>","<p>10<br>Edge Tooltip !</p>"]},"options":{"width":"100%","height":"100%","nodes":{"shape":"dot"},"manipulation":{"enabled":false},"interaction":{"hideEdgesOnDrag":true},"layout":{"randomSeed":123}},"groups":["B","C"],"width":"100%","height":"500px"},"evals":[]}</script></p>
+<p><div id="htmlwidget-9004" style="width:100%;height:500px;" class="visNetwork"></div>
+<script type="application/json" data-for="htmlwidget-9004">{
+  "x": {
+    "nodes": {
+      "id": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+      "label": ["Label 1", "Label 2", "Label 3", "Label 4", "Label 5", "Label 6", "Label 7", "Label 8", "Label 9", "Label 10"],
+      "group": ["B", "B", "C", "B", "A", "B", "C", "A", "C", "B"],
+      "value": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+      "title": ["<p>1<br>Tooltip !</p>", "<p>2<br>Tooltip !</p>", "<p>3<br>Tooltip !</p>", "<p>4<br>Tooltip !</p>", "<p>5<br>Tooltip !</p>", "<p>6<br>Tooltip !</p>", "<p>7<br>Tooltip !</p>", "<p>8<br>Tooltip !</p>", "<p>9<br>Tooltip !</p>", "<p>10<br>Tooltip !</p>"]
+    },
+    "edges": {
+      "from": [8, 2, 7, 6, 1, 8, 9, 4, 6, 2],
+      "to": [3, 7, 2, 7, 9, 1, 5, 3, 2, 9],
+      "value": [11.2006173961394, 10.8961498842131, 10.2536897550745, 10.5496003408587, 11.9033710510161, 11.4445336141903, 10.1152957581359, 9.37274591961818, 8.73051126961894, 9.77217985303943],
+      "label": ["Edge 1", "Edge 2", "Edge 3", "Edge 4", "Edge 5", "Edge 6", "Edge 7", "Edge 8", "Edge 9", "Edge 10"],
+      "title": ["<p>1<br>Edge Tooltip !</p>", "<p>2<br>Edge Tooltip !</p>", "<p>3<br>Edge Tooltip !</p>", "<p>4<br>Edge Tooltip !</p>", "<p>5<br>Edge Tooltip !</p>", "<p>6<br>Edge Tooltip !</p>", "<p>7<br>Edge Tooltip !</p>", "<p>8<br>Edge Tooltip !</p>", "<p>9<br>Edge Tooltip !</p>", "<p>10<br>Edge Tooltip !</p>"]
+    },
+    "options": {
+      "width": "100%",
+      "height": "100%",
+      "nodes": {
+        "shape": "dot"
+      },
+      "manipulation": {
+        "enabled": false
+      },
+      "interaction": {
+        "hideEdgesOnDrag": true
+      },
+      "layout": {
+        "randomSeed": 123
+      }
+    },
+    "groups": ["B", "C", "A"],
+    "width": "100%",
+    "height": "500px"
+  },
+  "evals": []
+}</script></p>
 </div>
 <div id="navigation-buttons" class="section level2">
 <h2>Navigation buttons</h2>
 <p>We can navigation buttons with <code>navigationButtons</code> :</p>
 <pre class="r"><code>visNetwork(nodes, edges, height = &quot;500px&quot;, width = &quot;100%&quot;) %&gt;% 
   visInteraction(navigationButtons = TRUE)</code></pre>
-<p><div id="htmlwidget-4873" style="width:100%;height:500px;" class="visNetwork"></div>
-<script type="application/json" data-for="htmlwidget-4873">{"x":{"nodes":{"id":[1,2,3,4,5,6,7,8,9,10],"label":["Label 1","Label 2","Label 3","Label 4","Label 5","Label 6","Label 7","Label 8","Label 9","Label 10"],"group":["B","C","C","B","B","B","C","B","B","B"],"value":[1,2,3,4,5,6,7,8,9,10],"title":["<p>1<br>Tooltip !</p>","<p>2<br>Tooltip !</p>","<p>3<br>Tooltip !</p>","<p>4<br>Tooltip !</p>","<p>5<br>Tooltip !</p>","<p>6<br>Tooltip !</p>","<p>7<br>Tooltip !</p>","<p>8<br>Tooltip !</p>","<p>9<br>Tooltip !</p>","<p>10<br>Tooltip !</p>"]},"edges":{"from":[8,2,7,6,1,8,9,4,6,2],"to":[3,7,2,7,9,1,5,3,2,9],"value":[11.5578547883222,8.89978270098816,11.4983436139399,9.99321044913607,9.83303440616836,10.2131284824123,8.57773889654927,10.0799297819309,8.92669743619913,10.2438225094816],"label":["Edge 1","Edge 2","Edge 3","Edge 4","Edge 5","Edge 6","Edge 7","Edge 8","Edge 9","Edge 10"],"title":["<p>1<br>Edge Tooltip !</p>","<p>2<br>Edge Tooltip !</p>","<p>3<br>Edge Tooltip !</p>","<p>4<br>Edge Tooltip !</p>","<p>5<br>Edge Tooltip !</p>","<p>6<br>Edge Tooltip !</p>","<p>7<br>Edge Tooltip !</p>","<p>8<br>Edge Tooltip !</p>","<p>9<br>Edge Tooltip !</p>","<p>10<br>Edge Tooltip !</p>"]},"options":{"width":"100%","height":"100%","nodes":{"shape":"dot"},"manipulation":{"enabled":false},"interaction":{"navigationButtons":true}},"groups":["B","C"],"width":"100%","height":"500px"},"evals":[]}</script></p>
+<p><div id="htmlwidget-578" style="width:100%;height:500px;" class="visNetwork"></div>
+<script type="application/json" data-for="htmlwidget-578">{
+  "x": {
+    "nodes": {
+      "id": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+      "label": ["Label 1", "Label 2", "Label 3", "Label 4", "Label 5", "Label 6", "Label 7", "Label 8", "Label 9", "Label 10"],
+      "group": ["B", "B", "C", "B", "A", "B", "C", "A", "C", "B"],
+      "value": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+      "title": ["<p>1<br>Tooltip !</p>", "<p>2<br>Tooltip !</p>", "<p>3<br>Tooltip !</p>", "<p>4<br>Tooltip !</p>", "<p>5<br>Tooltip !</p>", "<p>6<br>Tooltip !</p>", "<p>7<br>Tooltip !</p>", "<p>8<br>Tooltip !</p>", "<p>9<br>Tooltip !</p>", "<p>10<br>Tooltip !</p>"]
+    },
+    "edges": {
+      "from": [8, 2, 7, 6, 1, 8, 9, 4, 6, 2],
+      "to": [3, 7, 2, 7, 9, 1, 5, 3, 2, 9],
+      "value": [11.2006173961394, 10.8961498842131, 10.2536897550745, 10.5496003408587, 11.9033710510161, 11.4445336141903, 10.1152957581359, 9.37274591961818, 8.73051126961894, 9.77217985303943],
+      "label": ["Edge 1", "Edge 2", "Edge 3", "Edge 4", "Edge 5", "Edge 6", "Edge 7", "Edge 8", "Edge 9", "Edge 10"],
+      "title": ["<p>1<br>Edge Tooltip !</p>", "<p>2<br>Edge Tooltip !</p>", "<p>3<br>Edge Tooltip !</p>", "<p>4<br>Edge Tooltip !</p>", "<p>5<br>Edge Tooltip !</p>", "<p>6<br>Edge Tooltip !</p>", "<p>7<br>Edge Tooltip !</p>", "<p>8<br>Edge Tooltip !</p>", "<p>9<br>Edge Tooltip !</p>", "<p>10<br>Edge Tooltip !</p>"]
+    },
+    "options": {
+      "width": "100%",
+      "height": "100%",
+      "nodes": {
+        "shape": "dot"
+      },
+      "manipulation": {
+        "enabled": false
+      },
+      "interaction": {
+        "navigationButtons": true
+      }
+    },
+    "groups": ["B", "C", "A"],
+    "width": "100%",
+    "height": "500px"
+  },
+  "evals": []
+}</script></p>
 </div>
 <div id="and-also" class="section level2">
 <h2>And also…</h2>
@@ -177,8 +287,43 @@ img {
 </ul>
 <pre class="r"><code>visNetwork(nodes, edges, height = &quot;500px&quot;, width = &quot;100%&quot;) %&gt;% 
   visInteraction(keyboard = TRUE, tooltipDelay = 0)</code></pre>
-<p><div id="htmlwidget-4302" style="width:100%;height:500px;" class="visNetwork"></div>
-<script type="application/json" data-for="htmlwidget-4302">{"x":{"nodes":{"id":[1,2,3,4,5,6,7,8,9,10],"label":["Label 1","Label 2","Label 3","Label 4","Label 5","Label 6","Label 7","Label 8","Label 9","Label 10"],"group":["B","C","C","B","B","B","C","B","B","B"],"value":[1,2,3,4,5,6,7,8,9,10],"title":["<p>1<br>Tooltip !</p>","<p>2<br>Tooltip !</p>","<p>3<br>Tooltip !</p>","<p>4<br>Tooltip !</p>","<p>5<br>Tooltip !</p>","<p>6<br>Tooltip !</p>","<p>7<br>Tooltip !</p>","<p>8<br>Tooltip !</p>","<p>9<br>Tooltip !</p>","<p>10<br>Tooltip !</p>"]},"edges":{"from":[8,2,7,6,1,8,9,4,6,2],"to":[3,7,2,7,9,1,5,3,2,9],"value":[11.5578547883222,8.89978270098816,11.4983436139399,9.99321044913607,9.83303440616836,10.2131284824123,8.57773889654927,10.0799297819309,8.92669743619913,10.2438225094816],"label":["Edge 1","Edge 2","Edge 3","Edge 4","Edge 5","Edge 6","Edge 7","Edge 8","Edge 9","Edge 10"],"title":["<p>1<br>Edge Tooltip !</p>","<p>2<br>Edge Tooltip !</p>","<p>3<br>Edge Tooltip !</p>","<p>4<br>Edge Tooltip !</p>","<p>5<br>Edge Tooltip !</p>","<p>6<br>Edge Tooltip !</p>","<p>7<br>Edge Tooltip !</p>","<p>8<br>Edge Tooltip !</p>","<p>9<br>Edge Tooltip !</p>","<p>10<br>Edge Tooltip !</p>"]},"options":{"width":"100%","height":"100%","nodes":{"shape":"dot"},"manipulation":{"enabled":false},"interaction":{"keyboard":true,"tooltipDelay":0}},"groups":["B","C"],"width":"100%","height":"500px"},"evals":[]}</script></p>
+<p><div id="htmlwidget-8316" style="width:100%;height:500px;" class="visNetwork"></div>
+<script type="application/json" data-for="htmlwidget-8316">{
+  "x": {
+    "nodes": {
+      "id": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+      "label": ["Label 1", "Label 2", "Label 3", "Label 4", "Label 5", "Label 6", "Label 7", "Label 8", "Label 9", "Label 10"],
+      "group": ["B", "B", "C", "B", "A", "B", "C", "A", "C", "B"],
+      "value": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+      "title": ["<p>1<br>Tooltip !</p>", "<p>2<br>Tooltip !</p>", "<p>3<br>Tooltip !</p>", "<p>4<br>Tooltip !</p>", "<p>5<br>Tooltip !</p>", "<p>6<br>Tooltip !</p>", "<p>7<br>Tooltip !</p>", "<p>8<br>Tooltip !</p>", "<p>9<br>Tooltip !</p>", "<p>10<br>Tooltip !</p>"]
+    },
+    "edges": {
+      "from": [8, 2, 7, 6, 1, 8, 9, 4, 6, 2],
+      "to": [3, 7, 2, 7, 9, 1, 5, 3, 2, 9],
+      "value": [11.2006173961394, 10.8961498842131, 10.2536897550745, 10.5496003408587, 11.9033710510161, 11.4445336141903, 10.1152957581359, 9.37274591961818, 8.73051126961894, 9.77217985303943],
+      "label": ["Edge 1", "Edge 2", "Edge 3", "Edge 4", "Edge 5", "Edge 6", "Edge 7", "Edge 8", "Edge 9", "Edge 10"],
+      "title": ["<p>1<br>Edge Tooltip !</p>", "<p>2<br>Edge Tooltip !</p>", "<p>3<br>Edge Tooltip !</p>", "<p>4<br>Edge Tooltip !</p>", "<p>5<br>Edge Tooltip !</p>", "<p>6<br>Edge Tooltip !</p>", "<p>7<br>Edge Tooltip !</p>", "<p>8<br>Edge Tooltip !</p>", "<p>9<br>Edge Tooltip !</p>", "<p>10<br>Edge Tooltip !</p>"]
+    },
+    "options": {
+      "width": "100%",
+      "height": "100%",
+      "nodes": {
+        "shape": "dot"
+      },
+      "manipulation": {
+        "enabled": false
+      },
+      "interaction": {
+        "keyboard": true,
+        "tooltipDelay": 0
+      }
+    },
+    "groups": ["B", "C", "A"],
+    "width": "100%",
+    "height": "500px"
+  },
+  "evals": []
+}</script></p>
 </div>
 
 <footer>
