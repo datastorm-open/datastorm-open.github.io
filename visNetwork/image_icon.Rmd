@@ -6,7 +6,7 @@ pagetitle: Use image & Icon
 require("visNetwork", quietly = TRUE)
 ```
 
-Besides the various shapes, it's also possible to use images and icons for nodes.
+### Besides the various shapes, it's also possible to use **images** and **icons** for nodes.
 
 ## Images
 

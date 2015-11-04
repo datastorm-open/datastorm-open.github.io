@@ -48,3 +48,38 @@ output$mynetwork <- renderVisNetwork({
   }) 
 # created input$mynetwork_selectedBy
 ```
+
+## Build your own input
+
+With great [htmlwidgets](http://www.htmlwidgets.org/), it's also possible to build custom shiny input from **visNetwork**. For this, just use ````Shiny.onInputChange```` function in javascript event. This an example passing the node id when hover it : 
+
+```{r, eval = FALSE}
+library(visNetwork)
+library(shiny)
+
+server <- function(input, output) {
+  output$network <- renderVisNetwork({
+    # minimal example
+    nodes <- data.frame(id = 1:3)
+    edges <- data.frame(from = c(1,2), to = c(1,3))
+    
+    visNetwork(nodes, edges) %>%
+      visInteraction(hover = TRUE) %>%
+      visEvents(hoverNode = "function(nodes) {
+        Shiny.onInputChange('current_node_id', nodes);
+      ;}")
+  })
+  
+  output$shiny_return <- renderPrint({
+    input$current_node_id
+  })
+}
+
+ui <- fluidPage(
+  visNetworkOutput("network"),
+  verbatimTextOutput("shiny_return")
+)
+
+shinyApp(ui = ui, server = server)
+```
+

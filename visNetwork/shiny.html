@@ -161,6 +161,37 @@ shinyApp(ui = ui, server = server)</code></pre>
   }) 
 # created input$mynetwork_selectedBy</code></pre>
 </div>
+<div id="build-your-own-input" class="section level2">
+<h2>Build your own input</h2>
+<p>With great <a href="http://www.htmlwidgets.org/">htmlwidgets</a>, it’s also possible to build custom shiny input from <strong>visNetwork</strong>. For this, just use <code>Shiny.onInputChange</code> function in javascript event. This an example passing the node id when hover it :</p>
+<pre class="r"><code>library(visNetwork)
+library(shiny)
+
+server &lt;- function(input, output) {
+  output$network &lt;- renderVisNetwork({
+    # minimal example
+    nodes &lt;- data.frame(id = 1:3)
+    edges &lt;- data.frame(from = c(1,2), to = c(1,3))
+    
+    visNetwork(nodes, edges) %&gt;%
+      visInteraction(hover = TRUE) %&gt;%
+      visEvents(hoverNode = &quot;function(nodes) {
+        Shiny.onInputChange(&#39;current_node_id&#39;, nodes);
+      ;}&quot;)
+  })
+  
+  output$shiny_return &lt;- renderPrint({
+    input$current_node_id
+  })
+}
+
+ui &lt;- fluidPage(
+  visNetworkOutput(&quot;network&quot;),
+  verbatimTextOutput(&quot;shiny_return&quot;)
+)
+
+shinyApp(ui = ui, server = server)</code></pre>
+</div>
 
 <footer>
 <p><small> © 2015-2016 DataKnowledge</small></p>

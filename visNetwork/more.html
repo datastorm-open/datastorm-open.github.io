@@ -160,6 +160,12 @@ visNetwork(nodes, edges) %&gt;%
     "groups": null,
     "width": null,
     "height": null,
+    "idselection": {
+      "enabled": false
+    },
+    "byselection": {
+      "enabled": false
+    },
     "events": {
       "selectNode": "function(properties) {\n      alert('selected nodes ' + this.body.data.nodes.get(properties.nodes[0]).id);}"
     }
@@ -192,7 +198,13 @@ htmlwidgets::saveWidget(network, &quot;network.html&quot;)</code></pre>
     },
     "groups": null,
     "width": "100%",
-    "height": null
+    "height": null,
+    "idselection": {
+      "enabled": false
+    },
+    "byselection": {
+      "enabled": false
+    }
   },
   "evals": []
 }</script></p>
@@ -259,6 +271,12 @@ visNetwork(nodes, edges, height = &quot;400px&quot;, width = &quot;100%&quot;) %
     "groups": ["B", "A"],
     "width": "100%",
     "height": "400px",
+    "idselection": {
+      "enabled": false
+    },
+    "byselection": {
+      "enabled": false
+    },
     "clusteringColor": {
       "colors": [
         "red"
