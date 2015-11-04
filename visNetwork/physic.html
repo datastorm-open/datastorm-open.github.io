@@ -18,6 +18,10 @@
 <script src="libs/bootstrap/js/bootstrap.min.js"></script>
 <script src="libs/bootstrap/shim/html5shiv.min.js"></script>
 <script src="libs/bootstrap/shim/respond.min.js"></script>
+<script src="libs/htmlwidgets/htmlwidgets.js"></script>
+<link href="libs/vis/vis.min.css" rel="stylesheet" />
+<script src="libs/vis/vis.min.js"></script>
+<script src="libs/visNetwork-binding/visNetwork.js"></script>
 
 <style type="text/css">code{white-space: pre;}</style>
 <link rel="stylesheet"
@@ -124,7 +128,100 @@ img {
 
 
 
-<p>The physics options are in <strong>visPhysics()</strong> function. Examples coming soon…</p>
+<div id="the-physics-of-the-network-is-highly-configurable" class="section level3">
+<h3>The physics of the network is highly configurable</h3>
+<p>Using <strong>visPhysics()</strong> function, you can play with the physics of the network :</p>
+<ul>
+<li><p>choose the <code>solver</code> (‘barnesHut’, ‘repulsion’, ‘hierarchicalRepulsion’, ‘forceAtlas2Based’), and set options</p></li>
+<li><p>control the <code>stabilization</code> processus :</p>
+<ul>
+<li><p>playing with <code>maxVelocity</code> and <code>minVelocity</code></p></li>
+<li><p>disable stabilization for rendering initial network and see stabilization processus</p></li>
+<li><p>….</p></li>
+</ul></li>
+</ul>
+<pre class="r"><code>nodes &lt;- data.frame(id = 1:10)
+edges &lt;- data.frame(from = round(runif(8)*10), to = round(runif(8)*10))
+
+visNetwork(nodes, edges, height = &quot;500px&quot;, width = &quot;100%&quot;) %&gt;%
+ visPhysics(solver = &quot;forceAtlas2Based&quot;, 
+            forceAtlas2Based = list(gravitationalConstant = -500))</code></pre>
+<p><div id="htmlwidget-7087" style="width:100%;height:500px;" class="visNetwork"></div>
+<script type="application/json" data-for="htmlwidget-7087">{
+  "x": {
+    "nodes": {
+      "id": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    },
+    "edges": {
+      "from": [6, 5, 8, 5, 1, 4, 10, 3],
+      "to": [9, 4, 9, 7, 8, 4, 6, 9]
+    },
+    "options": {
+      "width": "100%",
+      "height": "100%",
+      "nodes": {
+        "shape": "dot"
+      },
+      "manipulation": {
+        "enabled": false
+      },
+      "physics": {
+        "solver": "forceAtlas2Based",
+        "forceAtlas2Based": {
+          "gravitationalConstant": -500
+        }
+      }
+    },
+    "groups": null,
+    "width": "100%",
+    "height": "500px",
+    "idselection": {
+      "enabled": false
+    },
+    "byselection": {
+      "enabled": false
+    }
+  },
+  "evals": []
+}</script></p>
+<pre class="r"><code>visNetwork(nodes, edges, height = &quot;500px&quot;, width = &quot;100%&quot;) %&gt;%
+ visPhysics(solver = &quot;barnesHut&quot;)</code></pre>
+<p><div id="htmlwidget-3640" style="width:100%;height:500px;" class="visNetwork"></div>
+<script type="application/json" data-for="htmlwidget-3640">{
+  "x": {
+    "nodes": {
+      "id": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    },
+    "edges": {
+      "from": [6, 5, 8, 5, 1, 4, 10, 3],
+      "to": [9, 4, 9, 7, 8, 4, 6, 9]
+    },
+    "options": {
+      "width": "100%",
+      "height": "100%",
+      "nodes": {
+        "shape": "dot"
+      },
+      "manipulation": {
+        "enabled": false
+      },
+      "physics": {
+        "solver": "barnesHut"
+      }
+    },
+    "groups": null,
+    "width": "100%",
+    "height": "500px",
+    "idselection": {
+      "enabled": false
+    },
+    "byselection": {
+      "enabled": false
+    }
+  },
+  "evals": []
+}</script></p>
+</div>
 
 <footer>
 <p><small> © 2015-2016 DataKnowledge</small></p>

@@ -6,5 +6,31 @@ pagetitle: Physics
 require("visNetwork", quietly = TRUE)
 ```
 
-The physics options are in **visPhysics()** function. Examples coming soon...
+### The physics of the network is highly configurable
 
+Using **visPhysics()** function, you can play with the physics of the network :
+
+* choose the ````solver```` ('barnesHut', 'repulsion', 'hierarchicalRepulsion', 'forceAtlas2Based'), and set options
+
+* control the ````stabilization```` processus : 
+
+    + playing with ````maxVelocity```` and ````minVelocity````
+  
+    + disable stabilization for rendering initial network and see stabilization processus
+  
+    + ....
+
+```{r}
+nodes <- data.frame(id = 1:10)
+edges <- data.frame(from = round(runif(8)*10), to = round(runif(8)*10))
+
+visNetwork(nodes, edges, height = "500px", width = "100%") %>%
+ visPhysics(solver = "forceAtlas2Based", 
+            forceAtlas2Based = list(gravitationalConstant = -500))
+```
+
+
+```{r}
+visNetwork(nodes, edges, height = "500px", width = "100%") %>%
+ visPhysics(solver = "barnesHut")
+```
