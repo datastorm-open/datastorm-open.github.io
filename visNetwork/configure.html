@@ -10,7 +10,7 @@
 
 
 
-<title>Shiny</title>
+<title>Configure tools</title>
 
 <script src="libs/jquery/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -124,74 +124,18 @@ img {
 
 
 
-<div id="use-your-network-in-shiny-with-visnetworkoutput-and-rendervisnetwork" class="section level3">
-<h3>Use your network in shiny with <code>visNetworkOutput</code> and <code>renderVisNetwork</code></h3>
-<pre class="r"><code>require(shiny)
-require(visNetwork)
+<div id="use-visconfigure-to-configure-and-view-options-directly-on-your-network" class="section level2">
+<h2>Use <strong>visConfigure()</strong> to configure and view options directly on your network</h2>
+<p>Don’t show here. Test and open the network in a web browser. Can be very usefull to configure your network as wanted !</p>
+<pre class="r"><code>nodes &lt;- data.frame(id = 1:3, label = LETTERS[1:3])
+edges &lt;- data.frame(from = c(1,2), to = c(1,3))
 
-server &lt;- function(input, output) {
-  output$network &lt;- renderVisNetwork({
-    # minimal example
-    nodes &lt;- data.frame(id = 1:3)
-    edges &lt;- data.frame(from = c(1,2), to = c(1,3))
-    
-    visNetwork(nodes, edges)
-  })
-}
-
-ui &lt;- fluidPage(
-    visNetworkOutput(&quot;network&quot;)
-)
-
-shinyApp(ui = ui, server = server)</code></pre>
+# don&#39;t look in RStudio viewer
+visNetwork(nodes, edges, width = &quot;100%&quot;) %&gt;%
+ visConfigure(enabled = TRUE)</code></pre>
+<div style="text-align:center" markdown="1">
+<p><img src="images/ex_configure.png" alt="Drawing" style="width: 600px;"/></p>
 </div>
-<div id="shiny-interactions" class="section level2">
-<h2>Shiny interactions</h2>
-<ul>
-<li>with <code>nodesIdSelection</code>, you can access to new input with current selection value :</li>
-</ul>
-<pre class="r"><code>output$mynetwork &lt;- renderVisNetwork({
-  ... visOptions(nodesIdSelection = TRUE)
-  }) 
-# created input$mynetwork_selected</code></pre>
-<ul>
-<li>with <code>selectedBy</code>, you can access to new input :</li>
-</ul>
-<pre class="r"><code>output$mynetwork &lt;- renderVisNetwork({
-  ... visOptions(selectedBy = &quot;group&quot;)
-  }) 
-# created input$mynetwork_selectedBy</code></pre>
-</div>
-<div id="build-your-own-input" class="section level2">
-<h2>Build your own input</h2>
-<p>With great <a href="http://www.htmlwidgets.org/">htmlwidgets</a>, it’s also possible to build custom shiny input from <strong>visNetwork</strong>. For this, just use <code>Shiny.onInputChange</code> function in javascript event. This is an example passing the node id when hover it :</p>
-<pre class="r"><code>library(visNetwork)
-library(shiny)
-
-server &lt;- function(input, output) {
-  output$network &lt;- renderVisNetwork({
-    # minimal example
-    nodes &lt;- data.frame(id = 1:3)
-    edges &lt;- data.frame(from = c(1,2), to = c(1,3))
-    
-    visNetwork(nodes, edges) %&gt;%
-      visInteraction(hover = TRUE) %&gt;%
-      visEvents(hoverNode = &quot;function(nodes) {
-        Shiny.onInputChange(&#39;current_node_id&#39;, nodes);
-      ;}&quot;)
-  })
-  
-  output$shiny_return &lt;- renderPrint({
-    input$current_node_id
-  })
-}
-
-ui &lt;- fluidPage(
-  visNetworkOutput(&quot;network&quot;),
-  verbatimTextOutput(&quot;shiny_return&quot;)
-)
-
-shinyApp(ui = ui, server = server)</code></pre>
 </div>
 
 <footer>
