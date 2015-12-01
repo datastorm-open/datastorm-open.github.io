@@ -25,6 +25,25 @@ if (!Function.prototype.bind) {
   };
 }
 
+var indexOf = function(needle, str) {
+        indexOf = function(needle, str) {
+            var i = -1, index = -1;
+
+            for(i = 0; i < this.length; i++) {
+                var val = this[i];
+                if(str){
+                  val = ''+val;
+                }
+                if(val === needle) {
+                    index = i;
+                    break;
+                }
+            }
+            return index;
+        };
+    return indexOf.call(this, needle, str);
+};
+
 function clone(obj) {
     if(obj === null || typeof(obj) != 'object')
         return obj;    
@@ -33,6 +52,61 @@ function clone(obj) {
         temp[key] = clone(obj[key]);    
     return temp;
 }
+
+if (HTMLWidgets.shinyMode){
+  // updateOptions in the network
+Shiny.addCustomMessageHandler('Options', function(data){
+    
+    // merging options
+    function update(source, target) {
+      Object.keys(target).forEach(function (k) {
+        if (typeof target[k] === 'object') {
+            source[k] = source[k] || {};
+            update(source[k], target[k]);
+        } else {
+            source[k] = target[k];
+        }
+      });
+    }
+    
+    // get container id
+    var el = document.getElementById("graph"+data.id);
+    
+    if(el){
+      // get nodes object
+      var network = el.chart;
+      var options = el.options;
+      
+      update(options, data.options);
+      network.setOptions(options);
+    }
+});
+
+// focus on a node in the network
+Shiny.addCustomMessageHandler('Focus', function(data){
+    // get container id
+    var el = document.getElementById("graph"+data.id);
+    
+    if(el){
+      // get nodes object
+      var network = el.chart;
+      network.focus(data.focusId, data.options);
+    }
+});
+
+// fit on a node in the network
+Shiny.addCustomMessageHandler('Fit', function(data){
+    // get container id
+    var el = document.getElementById("graph"+data.id);
+    
+    if(el){
+      // get nodes object
+      var network = el.chart;
+      network.fit(data.options);
+    }
+});
+}
+
 
 HTMLWidgets.widget({
   
@@ -63,7 +137,6 @@ HTMLWidgets.widget({
     var nodesSelDataset ;
     var edgesSelDataset ;
     
-    
     // clustergin by zoom variables
     var clusterIndex = 0;
     var clusters = [];
@@ -85,7 +158,7 @@ HTMLWidgets.widget({
     //idselection
     //*************************
     
-    function onIdChange(id) {
+    function onIdChange(id, init) {
       if(id === ""){
         instance.network.selectNodes([]);
       }else{
@@ -93,6 +166,19 @@ HTMLWidgets.widget({
       }
       if(x.highlight){
         neighbourhoodHighlight(instance.network.getSelection());
+      }else{
+        if(init){
+          selectNode = document.getElementById('nodeSelect'+el.id);
+          if(x.idselection.values !== undefined){
+            if(indexOf.call(x.idselection.values, id, true) > -1){
+              selectNode.value = id;
+            }else{
+              selectNode.value = "";
+            }
+          }else{
+            selectNode.value = id;
+          }
+        }
       }
       if (window.Shiny){
         changeInput('selected', document.getElementById("nodeSelect"+el.id).value);
@@ -116,7 +202,7 @@ HTMLWidgets.widget({
       var selectList = document.createElement("select");
       
       selectList.setAttribute('class', 'dropdown');
-      selectList.setAttribute('style', 'width: 150px; height: 26px');
+      selectList.setAttribute('style', x.idselection.style);
       
       selectList.id = "nodeSelect"+el.id;
       
@@ -127,16 +213,25 @@ HTMLWidgets.widget({
       option.text = "Select by id";
       selectList.appendChild(option);
       
+      var addid;
       //Create and append the options
       for (var i = 0; i < selnodes.length; i++) {
-        option = document.createElement("option");
-        option.value = selnodes[i].id;
-        if(selnodes[i].label){
-          option.text = selnodes[i].label;
-        }else{
-          option.text = selnodes[i].id;
+        addid = true;
+        if(x.idselection.values !== undefined){
+          if(indexOf.call(x.idselection.values, selnodes[i].id, false) === -1){
+            addid = false;
+          }
         }
-        selectList.appendChild(option);
+        if(addid){
+          option = document.createElement("option");
+          option.value = selnodes[i].id;
+          if(selnodes[i].label){
+            option.text = selnodes[i].label;
+          }else{
+            option.text = selnodes[i].id;
+          }
+          selectList.appendChild(option);
+        }
       }
       
       if (window.Shiny){
@@ -145,7 +240,7 @@ HTMLWidgets.widget({
       
       selectList.onchange =  function(){
         if(instance.network){
-          onIdChange(document.getElementById("nodeSelect"+el.id).value);
+          onIdChange(document.getElementById("nodeSelect"+el.id).value, false);
         }
       };
       var hr = document.createElement("hr");
@@ -183,7 +278,7 @@ HTMLWidgets.widget({
       var selectList2 = document.createElement("select");
       
       selectList2.setAttribute('class', 'dropdown');
-      selectList2.setAttribute('style', 'width: 150px; height: 26px');
+      selectList2.setAttribute('style', x.byselection.style);
       
       selectList2.id = "selectedBy"+el.id;
       
@@ -454,6 +549,10 @@ HTMLWidgets.widget({
     // create network
     instance.network = new vis.Network(document.getElementById("graph"+el.id), data, options);
     
+    //save data for re-use and update
+    document.getElementById("graph"+el.id).chart = instance.network;
+    document.getElementById("graph"+el.id).options = options;
+    
     // add Events
     if(x.events !== undefined){
       for (var key in x.events) {
@@ -553,7 +652,15 @@ HTMLWidgets.widget({
         
         if(x.idselection.enabled){
           selectNode = document.getElementById('nodeSelect'+el.id);
-          selectNode.value = params.nodes;
+          if(x.idselection.values !== undefined){
+            if(indexOf.call(x.idselection.values, params.nodes[0], true) > -1){
+              selectNode.value = params.nodes;
+            }else{
+              selectNode.value = "";
+            }
+          }else{
+            selectNode.value = params.nodes;
+          }
           if (window.Shiny){
             changeInput('selected', selectNode.value);
           }
@@ -694,7 +801,15 @@ HTMLWidgets.widget({
       if(x.idselection.enabled){
         if (selectedItems.nodes.length !== 0) {
           selectNode = document.getElementById('nodeSelect'+el.id);
-          selectNode.value = selectedItems.nodes;
+          if(x.idselection.values !== undefined){
+            if(indexOf.call(x.idselection.values, selectedItems.nodes[0], true) > -1){
+              selectNode.value = selectedItems.nodes;
+            }else{
+              selectNode.value = "";
+            }
+          }else{
+            selectNode.value = selectedItems.nodes;
+          }
           if (window.Shiny){
             changeInput('selected', selectNode.value);
           }
@@ -1009,7 +1124,7 @@ HTMLWidgets.widget({
     // init selection
     //******************
     if(x.idselection.enabled && x.nodes && x.idselection.selected !== undefined){ 
-      onIdChange(x.idselection.selected);
+      onIdChange(''+ x.idselection.selected, true);
     }
       
     if(x.byselection.enabled && x.nodes && x.byselection.selected !== undefined){ 
