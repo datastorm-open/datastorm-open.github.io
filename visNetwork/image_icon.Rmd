@@ -18,9 +18,10 @@ require("visNetwork", quietly = TRUE)
 ```{r}
 path_to_images <- "https://raw.githubusercontent.com/DataKnowledge/DataKnowledge.github.io/master/visNetwork/data/img/indonesia/"
  
-nodes <- data.frame(id = 1:4, shape = c("image", "circularImage"),
-  image = paste0(path_to_images, 1:4, ".png"),
-  label = "I'm an image")
+nodes <- data.frame(id = 1:4, 
+                    shape = c("image", "circularImage"),
+                    image = paste0(path_to_images, 1:4, ".png"),
+                    label = "I'm an image")
   
 edges <- data.frame(from = c(2,4,3,3), to = c(1,2,4,2))
 

@@ -133,7 +133,7 @@ img {
 </div>
 <div id="individual-configuration" class="section level2">
 <h2>Individual configuration</h2>
-<p>As seen in introduction, <em>edges</em> mut be a data.frame, with at least <code>from</code> and <code>to</code> columns, which make the link with <code>id</code> of nodes. You can add properties simply with more variables on data.frame. See <strong>visEdges</strong> for available options.</p>
+<p>As seen in introduction, <em>edges</em> mut be a data.frame, with at least <code>from</code> and <code>to</code> columns, which make the link with <code>id</code> of nodes. You can add properties simply adding variables on data.frame. See <strong>visEdges</strong> for available options.</p>
 <p>The most used are presented in the following example :</p>
 <pre class="r"><code>edges &lt;- data.frame(from = sample(1:10,8), to = sample(1:10, 8),
                     
@@ -212,7 +212,7 @@ nodes &lt;- data.frame(id = 1:10, group = c(&quot;A&quot;, &quot;B&quot;))</code
 </div>
 <div id="global-configuration" class="section level2">
 <h2>Global configuration</h2>
-<p>If you want to set some configuration for all nodes, it’s possible in a simpler way, using directly <strong>visEdges</strong> function :</p>
+<p>If you want to set some configuration for all edges, it’s possible in a simpler way, using directly <strong>visEdges</strong> function :</p>
 <pre class="r"><code>nodes &lt;- data.frame(id = 1:4)
 edges &lt;- data.frame(from = c(2,4,3,2), to = c(1,2,4,3))
 
@@ -271,7 +271,8 @@ visNetwork(nodes, edges, width = &quot;100%&quot;) %&gt;%
 }</script></p>
 <p>Finally, you can also combine individual and global options :</p>
 <pre class="r"><code>nodes &lt;- data.frame(id = 1:4, label = 1:4)
-edges &lt;- data.frame(from = c(2,4,3,2), to = c(1,2,4,3), 
+edges &lt;- data.frame(from = c(2,4,3,2), 
+                    to = c(1,2,4,3), 
                     dashes = c(TRUE, FALSE))
 
 visNetwork(nodes, edges, width = &quot;100%&quot;) %&gt;% 

@@ -161,6 +161,68 @@ shinyApp(ui = ui, server = server)</code></pre>
   ... visOptions(selectedBy = &quot;group&quot;)
   }) 
 # created input$mynetwork_selectedBy</code></pre>
+<ul>
+<li>with <code>manipulation</code>, you can access to new input with informations about manipulation</li>
+</ul>
+<pre class="r"><code>output$mynetwork &lt;- renderVisNetwork({
+  ... visOptions(manipulation = TRUE)
+  }) 
+# created input$mynetwork__graphChange</code></pre>
+</div>
+<div id="modify-your-network-with-visnetworkproxy" class="section level2">
+<h2>Modify your network with <code>visNetworkProxy</code></h2>
+<p>In order to not redraw the entire network, you can use <code>visNetworkProxy</code> function in <strong>shiny</strong> and then change the configuration of your network without redrawing it.</p>
+<p>You can use almost all the functions available on a <code>visNetworkProxy</code>, and even some functions special !</p>
+<ul>
+<li><p><strong>classic functions</strong> : <code>visNodes</code>, <code>visEdges</code>, <code>visGroups</code>, <code>visPhysics</code>, <code>visInteraction</code>, <code>visLayout</code> &amp; <code>visHierarchicalLayout</code></p></li>
+<li><p><strong>special functions</strong> :</p>
+<ul>
+<li><p><code>visFocus</code> : focus on one target node</p></li>
+<li><p><code>visFit</code> : fit view on one or several nodes</p></li>
+</ul></li>
+</ul>
+<pre class="r"><code>require(shiny)
+require(visNetwork)
+
+server &lt;- function(input, output) {
+  output$network_proxy_nodes &lt;- renderVisNetwork({
+    # minimal example
+    nodes &lt;- data.frame(id = 1:3)
+    edges &lt;- data.frame(from = c(1,2), to = c(1,3))
+    
+    visNetwork(nodes, edges) %&gt;% visNodes(color = &quot;blue&quot;)
+  })
+  
+  
+  observe({
+    visNetworkProxy(&quot;network_proxy_nodes&quot;) %&gt;%
+      visFocus(id = input$Focus, scale = 4)
+  })
+  
+  observe({
+    visNetworkProxy(&quot;network_proxy_nodes&quot;) %&gt;%
+      visNodes(color = input$color)
+  })
+  
+}
+
+ui &lt;- fluidPage(
+  fluidRow(
+    column(
+      width = 4,
+      selectInput(&quot;color&quot;, &quot;Color :&quot;,
+                    c(&quot;blue&quot;, &quot;red&quot;, &quot;green&quot;)),
+      selectInput(&quot;Focus&quot;, &quot;Focus on node :&quot;,
+                    c(1:3))
+    ),
+    column(
+      width = 8,
+      visNetworkOutput(&quot;network_proxy_nodes&quot;, height = &quot;400px&quot;)
+    )
+  )
+)
+
+shinyApp(ui = ui, server = server)</code></pre>
 </div>
 <div id="build-your-own-input" class="section level2">
 <h2>Build your own input</h2>
@@ -195,6 +257,11 @@ shinyApp(ui = ui, server = server)</code></pre>
 <div style="text-align:center" markdown="1">
 <p><img src="images/shiny.png" alt="Drawing" style="width: 600px;"/></p>
 </div>
+</div>
+<div id="need-some-examples" class="section level2">
+<h2>Need some examples ?</h2>
+<p>Have a look to the “demonstration” shiny apps :</p>
+<pre class="r"><code>shiny::runApp(system.file(&quot;shiny&quot;, package = &quot;visNetwork&quot;))</code></pre>
 </div>
 
 <footer>

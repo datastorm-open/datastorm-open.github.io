@@ -8,7 +8,7 @@ require("visNetwork", quietly = TRUE)
 
 ## Legend based on groups
 
-We can simply add a legend, based on the definition of the groups, using **visLegend** : 
+We can simply add a legend, based on the definition of groups, using **visLegend** : 
 
 ```{r}
 nodes <- data.frame(id = 1:3, group = c("B", "A", "B"))
@@ -37,10 +37,12 @@ visNetwork(nodes, edges, width = "100%") %>%
 Since **0.1.2**, you can add custom nodes (````addNodes````) and/or edges (````addEdges````) on the legend : 
 
 ```{r}
+# nodes data.frame for legend
 lnodes <- data.frame(label = c("Group A", "Group B"),
  shape = c( "ellipse"), color = c("red", "lightblue"),
  title = "Informations", id = 1:2)
 
+# edges data.frame for legend
 ledges <- data.frame(color = c("lightblue", "red"),
  label = c("reverse", "depends"), arrows =c("to", "from"))
  
@@ -50,7 +52,7 @@ visNetwork(nodes, edges, width = "100%") %>%
   visLegend(addEdges = ledges, addNodes = lnodes, useGroups = FALSE)
 ```
 
-It's possible to use definition of the groups (````useGroups = TRUE #default````) with  custom nodes (````addNodes````) and/or edges (````addEdges````) : 
+Finally, it's possible to use definition of the groups (````useGroups = TRUE #default````) with  custom nodes (````addNodes````) and/or edges (````addEdges````) : 
 
 ```{r}
 ledges <- data.frame(color = c("lightblue", "red"),
@@ -69,11 +71,15 @@ nodes <- data.frame(id = 1:3, group = c("B", "A", "B"))
 edges <- data.frame(from = c(1,2), to = c(2,3))
 
 visNetwork(nodes, edges) %>%
- visGroups(groupname = "A", shape = "icon", icon = list(code = "f0c0", size = 75)) %>%
- visGroups(groupname = "B", shape = "icon", icon = list(code = "f007", color = "red")) %>%
+ visGroups(groupname = "A", shape = "icon", 
+           icon = list(code = "f0c0", size = 75)) %>%
+ visGroups(groupname = "B", shape = "icon", 
+           icon = list(code = "f007", color = "red")) %>%
  addFontAwesome() %>%
  visLegend(addNodes = list(
-  list(label = "Group", shape = "icon", icon = list(code = "f0c0", size = 25)),
-  list(label = "User", shape = "icon", icon = list(code = "f007", size = 50, color = "red"))
- ), useGroups = FALSE)
+  list(label = "Group", shape = "icon", 
+       icon = list(code = "f0c0", size = 25)),
+  list(label = "User", shape = "icon", 
+       icon = list(code = "f007", size = 50, color = "red"))), 
+  useGroups = FALSE)
 ```

@@ -44,7 +44,7 @@ visNetwork(nodes, edges, height = "500px", width = "100%") %>%
 
 ## Select by node id
 
-You can also select a node by id/label with a list  with ````nodesIdSelection```` : 
+You can also select a node by id/label with a list using ````nodesIdSelection```` : 
 
 ```{r}
 visNetwork(nodes, edges, height = "500px", width = "100%") %>% 
@@ -54,7 +54,7 @@ visNetwork(nodes, edges, height = "500px", width = "100%") %>%
 
 ## Select by a column
 
-New feature in __visNetwork_0.1.2__ : select subset of nodes by the values of a column using ````selectedBy```` :
+Since __visNetwork_0.1.2__ : select subset of nodes by the values of a column using ````selectedBy```` :
 
 ```{r}
 # on "authorised" column
@@ -65,11 +65,38 @@ visNetwork(nodes, edges, height = "500px", width = "100%") %>%
 
 ```{r}
 # or new column
-nodes$sample <- sample(c("sample 1", "sample 2"), nrow(nodes), replace = TRUE)
+nodes$sample <- sample(c("sample 1", "sample 2"), 
+                       nrow(nodes), replace = TRUE)
+
 visNetwork(nodes, edges, height = "500px", width = "100%") %>%
   visOptions(selectedBy = "sample") %>%
   visLayout(randomSeed = 123)
 ```
+
+## ````selectedBy```` & ````nodesIdSelection```` options
+
+New features are available in __visNetwork_0.2.0__ : 
+
+* ````values```` : control the available values in the list
+* ````selected```` : initialize a selection
+* ````style```` : customize __css__ of list
+
+This is an example on ````nodesIdSelection```` :
+
+```{r}
+visNetwork(nodes, edges, height = "500px", width = "100%") %>% 
+  visOptions(highlightNearest = TRUE, 
+              nodesIdSelection = list(enabled = TRUE,
+                                 selected = "8",
+                                 values = c(5:10),
+                                 style = 'width: 200px; height: 26px;
+                                 background: #f8f8f8;
+                                 color: darkblue;
+                                 border:none;
+                                 outline:none;')) %>%
+  visLayout(randomSeed = 123)
+```
+
 
 ## Data Manipulation
 
@@ -93,6 +120,8 @@ edges <- jsonlite::fromJSON("https://raw.githubusercontent.com/DataKnowledge/Dat
 
 
 visNetwork(nodes, edges, height = "700px", width = "100%") %>%
-  visOptions(selectedBy = "group", highlightNearest = TRUE, nodesIdSelection = TRUE) %>%
+  visOptions(selectedBy = "group", 
+             highlightNearest = TRUE, 
+             nodesIdSelection = TRUE) %>%
   visPhysics(stabilization = FALSE)
 ```

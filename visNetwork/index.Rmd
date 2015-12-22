@@ -4,7 +4,7 @@ pagetitle: Introduction
 
 ## Introduction
 
-**visNetwork** is a R package for network visualization, using **vis.js** javascript library (http://visjs.org/). All the remarks and bugs are welcome on github : https://github.com/DataKnowledge/visNetwork.
+**visNetwork** is an R package for network visualization, using **vis.js** javascript library (http://visjs.org/). All remarks and bugs are welcome on github : https://github.com/DataKnowledge/visNetwork.
 
 ## Features
 
@@ -12,7 +12,7 @@ Based on [htmlwidgets](http://www.htmlwidgets.org/), so :
 
 * compatible with [shiny ](http://shiny.rstudio.com/),  R Markdown documents, and RStudio viewer
 
-The package proposes all the features available with the **vis.js** API, and even more with special features for R : 
+The package proposes all the features available in **vis.js** API, and even more with special features for R : 
 
 * easy to use
 * custom shapes, styles, colors, sizes, ...
@@ -52,6 +52,8 @@ Besides the help R functions, a vignette is available, and you can access and re
 ```{r, eval = FALSE}
 visDocumentation()
 vignette("Introduction-to-visNetwork") # with CRAN version
+# shiny example
+shiny::runApp(system.file("shiny", package = "visNetwork"))
 ```
 
 

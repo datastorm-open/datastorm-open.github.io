@@ -105,6 +105,18 @@ Shiny.addCustomMessageHandler('Fit', function(data){
       network.fit(data.options);
     }
 });
+
+// fit on a node in the network
+Shiny.addCustomMessageHandler('Redraw', function(data){
+    // get container id
+    var el = document.getElementById("graph"+data.id);
+    
+    if(el){
+      // get nodes object
+      var network = el.chart;
+      network.redraw();
+    }
+});
 }
 
 
@@ -494,54 +506,80 @@ HTMLWidgets.widget({
     //manipulation
     //*************************
     if(x.options.manipulation.enabled){
-      
+
       var style = document.createElement('style');
       style.type = 'text/css';
       style.appendChild(document.createTextNode(x.datacss));
       document.getElementsByTagName("head")[0].appendChild(style);
-      
+
       var div = document.createElement('div');
       div.id = 'network-popUp';
-      
+
       div.innerHTML = '<span id="operation">node</span> <br>\
       <table style="margin:auto;"><tr>\
-      <td>id</td><td><input id="node-id" value="new value"></td>\
+      <td>id</td><td><input id="node-id" value="new value" disabled = true></td>\
       </tr>\
       <tr>\
       <td>label</td><td><input id="node-label" value="new value"> </td>\
       </tr></table>\
       <input type="button" value="save" id="saveButton"></button>\
       <input type="button" value="cancel" id="cancelButton"></button>';
-      
+
       document.getElementById(el.id).appendChild(div);
-      
-      options.manipulation.addNode = function(data,callback) {
+
+      options.manipulation.addNode = function(data, callback) {
         document.getElementById('operation').innerHTML = "Add Node";
         document.getElementById('node-id').value = data.id;
         document.getElementById('node-label').value = data.label;
-        document.getElementById('saveButton').onclick = saveData.bind(this, data, callback);
+        document.getElementById('saveButton').onclick = saveNode.bind(this, data, callback, "addNode");
         document.getElementById('cancelButton').onclick = clearPopUp.bind();
         document.getElementById('network-popUp').style.display = 'block';
       };
-      
-      options.manipulation.editNode = function(data,callback) {
+
+      options.manipulation.editNode = function(data, callback) {
         document.getElementById('operation').innerHTML = "Edit Node";
         document.getElementById('node-id').value = data.id;
         document.getElementById('node-label').value = data.label;
-        document.getElementById('saveButton').onclick = saveData.bind(this, data, callback);
+        document.getElementById('saveButton').onclick = saveNode.bind(this, data, callback, "editNode");
         document.getElementById('cancelButton').onclick = cancelEdit.bind(this,callback);
         document.getElementById('network-popUp').style.display = 'block';
       };
-      
-      options.manipulation.addEdge = function(data,callback) {
+
+       options.manipulation.deleteNode = function(data, callback) {
+          var r = confirm("Do you want to delete " + data.nodes.length + " node(s) and " + data.edges.length + " edges ?");
+          if (r === true) {
+            deleteSubGraph(data, callback);
+          }
+      };
+
+      options.manipulation.deleteEdge = function(data, callback) {
+          var r = confirm("Do you want to delete " + data.edges.length + " edges ?");
+          if (r === true) {
+            deleteSubGraph(data, callback);
+          }
+      };
+
+      options.manipulation.addEdge = function(data, callback) {
         if (data.from == data.to) {
           var r = confirm("Do you want to connect the node to itself?");
           if (r === true) {
-            callback(data);
+            saveEdge(data, callback, "addEdge");
           }
         }
         else {
-          callback(data);
+          saveEdge(data, callback, "addEdge");
+        }
+      };
+      
+      options.manipulation.editEdge = function(data, callback) {
+        if (data.from == data.to) {
+          var r = confirm("Do you want to connect the node to itself?");
+          if (r === true) {
+            saveEdge(data, callback, "editEdge");
+          }
+        }
+        else {
+          saveEdge(data, callback, "editEdge");
         }
       };
     }
@@ -852,14 +890,35 @@ HTMLWidgets.widget({
       document.getElementById('cancelButton').onclick = null;
       document.getElementById('network-popUp').style.display = 'none';
     }
-    
-    function saveData(data,callback) {
+
+    function saveNode(data, callback, cmd) {
       data.id = document.getElementById('node-id').value;
       data.label = document.getElementById('node-label').value;
+      if (window.Shiny){
+        var obj = {cmd: cmd, id: data.id, label: data.label}
+        Shiny.onInputChange(el.id + '_graphChange', obj);
+      }
       clearPopUp();
       callback(data);
     }
-    
+
+    function saveEdge(data, callback, cmd) {
+      callback(data); //must be first called for egde id !
+      if (window.Shiny){
+        var obj = {cmd: cmd, id: data.id, from: data.from, to: data.to};
+        Shiny.onInputChange(el.id + '_graphChange', obj);
+      }
+      
+    }
+
+    function deleteSubGraph(data, callback) {
+      if (window.Shiny){
+        var obj = {cmd: "deleteElements", nodes: data.nodes, edges: data.edges}
+        Shiny.onInputChange(el.id + '_graphChange', obj);
+      }
+      callback(data);
+    }
+
     function cancelEdit(callback) {
       clearPopUp();
       callback(null);

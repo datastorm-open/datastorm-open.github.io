@@ -135,10 +135,10 @@ img {
 edges &lt;- data.frame(from = c(2,5,3,3), to = c(1,2,4,2))
 
 visNetwork(nodes, edges, width = &quot;100%&quot;) %&gt;% 
-  # darkblue for group &quot;A&quot;, shadow and &quot;square&quot;
+  # darkblue square with shadow for group &quot;A&quot;
   visGroups(groupname = &quot;A&quot;, color = &quot;darkblue&quot;, shape = &quot;square&quot;, 
             shadow = list(enabled = TRUE)) %&gt;% 
-  # red for group &quot;B&quot;, and &quot;triangle&quot;&quot;
+  # red triangle for group &quot;B&quot;
   visGroups(groupname = &quot;B&quot;, color = &quot;red&quot;, shape = &quot;triangle&quot;)             </code></pre>
 <p><div id="htmlwidget-5716" style="width:100%;height:216px;" class="visNetwork"></div>
 <script type="application/json" data-for="htmlwidget-5716">{

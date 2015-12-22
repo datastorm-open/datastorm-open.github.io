@@ -10,7 +10,7 @@ require("visNetwork", quietly = TRUE)
 
 ## Set seed
 
-The nodes are randomly positioned initially. This means that the settled result is different every time. You can provide a random seed manually (````randomSeed````), the layout will be the same every time.
+The nodes are randomly positioned initially. This means that the settled result is different every time. You can provide a random seed manually (````randomSeed````), then the layout will be the same every time.
 
 ## Hierarchical Layout
 

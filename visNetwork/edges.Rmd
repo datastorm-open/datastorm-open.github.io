@@ -10,7 +10,7 @@ require("visNetwork", quietly = TRUE)
 
 ## Individual configuration
 
-As seen in introduction, *edges* mut be a data.frame, with at least ```from``` and ```to``` columns, which make the link with ```id``` of nodes. You can add properties simply with more variables on data.frame. See **visEdges** for available options. 
+As seen in introduction, *edges* mut be a data.frame, with at least ```from``` and ```to``` columns, which make the link with ```id``` of nodes. You can add properties simply adding variables on data.frame. See **visEdges** for available options. 
 
 The most used are presented in the following example :
 
@@ -55,7 +55,7 @@ visNetwork(nodes, edges, height = "500px", width = "100%")
 
 ## Global configuration
 
-If you want to set some configuration for all nodes, it's possible in a simpler way, using directly **visEdges** function :
+If you want to set some configuration for all edges, it's possible in a simpler way, using directly **visEdges** function :
 
 ```{r}
 nodes <- data.frame(id = 1:4)
@@ -72,7 +72,8 @@ Finally, you can also combine individual and global options :
 
 ```{r}
 nodes <- data.frame(id = 1:4, label = 1:4)
-edges <- data.frame(from = c(2,4,3,2), to = c(1,2,4,3), 
+edges <- data.frame(from = c(2,4,3,2), 
+                    to = c(1,2,4,3), 
                     dashes = c(TRUE, FALSE))
 
 visNetwork(nodes, edges, width = "100%") %>% 

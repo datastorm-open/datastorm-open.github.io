@@ -142,9 +142,10 @@ img {
 </ul>
 <pre class="r"><code>path_to_images &lt;- &quot;https://raw.githubusercontent.com/DataKnowledge/DataKnowledge.github.io/master/visNetwork/data/img/indonesia/&quot;
  
-nodes &lt;- data.frame(id = 1:4, shape = c(&quot;image&quot;, &quot;circularImage&quot;),
-  image = paste0(path_to_images, 1:4, &quot;.png&quot;),
-  label = &quot;I&#39;m an image&quot;)
+nodes &lt;- data.frame(id = 1:4, 
+                    shape = c(&quot;image&quot;, &quot;circularImage&quot;),
+                    image = paste0(path_to_images, 1:4, &quot;.png&quot;),
+                    label = &quot;I&#39;m an image&quot;)
   
 edges &lt;- data.frame(from = c(2,4,3,3), to = c(1,2,4,2))
 

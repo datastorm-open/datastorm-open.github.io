@@ -10,7 +10,7 @@ require("visNetwork", quietly = TRUE)
 
 ## Individual configuration
 
-As seen in introduction, *nodes* mut be a data.frame, with at least one column ```id```. You can add properties simply with more variables on data.frame. See **visNodes** for available options. 
+As seen in introduction, *nodes* must be a data.frame, with at least one column ```id```. You can add properties simply adding variables on data.frame. See **visNodes** for available options. 
 
 The most used are presented in the following example :
 
@@ -30,7 +30,7 @@ nodes <- data.frame(id = 1:10,
   shape = c("square", "triangle", "box", "circle", "dot", "star",
   "ellipse", "database", "text", "diamond"),
   
-  # tooltip (html or character)
+  # tooltip (html or character), when the mouse is above
   title = paste0("<p><b>", 1:10,"</b><br>Node !</p>"),
   
   # color
@@ -61,7 +61,8 @@ edges <- data.frame(from = c(2,4,3,3), to = c(1,2,4,2))
 
 visNetwork(nodes, edges, width = "100%") %>% 
   visNodes(shape = "square", 
-           color = list(background = "lightblue", border = "darkblue",
+           color = list(background = "lightblue", 
+                        border = "darkblue",
                         highlight = "yellow"),
            shadow = list(enabled = TRUE, size = 50)) %>%
   visLayout(randomSeed = 12) # to have always the same network         
@@ -70,12 +71,14 @@ visNetwork(nodes, edges, width = "100%") %>%
 Finally, you can also combine individual and global options : 
 
 ```{r}
-nodes <- data.frame(id = 1:4, shape = c("circle", "square"), 
+nodes <- data.frame(id = 1:4, 
+                    shape = c("circle", "square"), 
                     label = LETTERS[1:4])
 edges <- data.frame(from = c(2,4,3,3), to = c(1,2,4,2))
 
 visNetwork(nodes, edges, width = "100%") %>% 
-  visNodes(color = list(background = "lightblue", border = "darkblue",
+  visNodes(color = list(background = "lightblue", 
+                        border = "darkblue",
                         highlight = "yellow"),
            shadow = list(enabled = TRUE, size = 50))  %>%
   visLayout(randomSeed = 12) # to have always the same network                     

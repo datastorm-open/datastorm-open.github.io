@@ -131,7 +131,7 @@ img {
 
 <div id="legend-based-on-groups" class="section level2">
 <h2>Legend based on groups</h2>
-<p>We can simply add a legend, based on the definition of the groups, using <strong>visLegend</strong> :</p>
+<p>We can simply add a legend, based on the definition of groups, using <strong>visLegend</strong> :</p>
 <pre class="r"><code>nodes &lt;- data.frame(id = 1:3, group = c(&quot;B&quot;, &quot;A&quot;, &quot;B&quot;))
 edges &lt;- data.frame(from = c(1,2), to = c(2,3))
 
@@ -246,10 +246,12 @@ visNetwork(nodes, edges, width = &quot;100%&quot;) %&gt;%
 <div id="custom-nodesedges" class="section level2">
 <h2>Custom nodes/edges</h2>
 <p>Since <strong>0.1.2</strong>, you can add custom nodes (<code>addNodes</code>) and/or edges (<code>addEdges</code>) on the legend :</p>
-<pre class="r"><code>lnodes &lt;- data.frame(label = c(&quot;Group A&quot;, &quot;Group B&quot;),
+<pre class="r"><code># nodes data.frame for legend
+lnodes &lt;- data.frame(label = c(&quot;Group A&quot;, &quot;Group B&quot;),
  shape = c( &quot;ellipse&quot;), color = c(&quot;red&quot;, &quot;lightblue&quot;),
  title = &quot;Informations&quot;, id = 1:2)
 
+# edges data.frame for legend
 ledges &lt;- data.frame(color = c(&quot;lightblue&quot;, &quot;red&quot;),
  label = c(&quot;reverse&quot;, &quot;depends&quot;), arrows =c(&quot;to&quot;, &quot;from&quot;))
  
@@ -332,7 +334,7 @@ visNetwork(nodes, edges, width = &quot;100%&quot;) %&gt;%
   },
   "evals": []
 }</script></p>
-<p>It’s possible to use definition of the groups (<code>useGroups = TRUE #default</code>) with custom nodes (<code>addNodes</code>) and/or edges (<code>addEdges</code>) :</p>
+<p>Finally, it’s possible to use definition of the groups (<code>useGroups = TRUE #default</code>) with custom nodes (<code>addNodes</code>) and/or edges (<code>addEdges</code>) :</p>
 <pre class="r"><code>ledges &lt;- data.frame(color = c(&quot;lightblue&quot;, &quot;red&quot;),
  label = c(&quot;reverse&quot;, &quot;depends&quot;), arrows =c(&quot;to&quot;, &quot;from&quot;))
  
@@ -404,13 +406,17 @@ visNetwork(nodes, edges, width = &quot;100%&quot;) %&gt;%
 edges &lt;- data.frame(from = c(1,2), to = c(2,3))
 
 visNetwork(nodes, edges) %&gt;%
- visGroups(groupname = &quot;A&quot;, shape = &quot;icon&quot;, icon = list(code = &quot;f0c0&quot;, size = 75)) %&gt;%
- visGroups(groupname = &quot;B&quot;, shape = &quot;icon&quot;, icon = list(code = &quot;f007&quot;, color = &quot;red&quot;)) %&gt;%
+ visGroups(groupname = &quot;A&quot;, shape = &quot;icon&quot;, 
+           icon = list(code = &quot;f0c0&quot;, size = 75)) %&gt;%
+ visGroups(groupname = &quot;B&quot;, shape = &quot;icon&quot;, 
+           icon = list(code = &quot;f007&quot;, color = &quot;red&quot;)) %&gt;%
  addFontAwesome() %&gt;%
  visLegend(addNodes = list(
-  list(label = &quot;Group&quot;, shape = &quot;icon&quot;, icon = list(code = &quot;f0c0&quot;, size = 25)),
-  list(label = &quot;User&quot;, shape = &quot;icon&quot;, icon = list(code = &quot;f007&quot;, size = 50, color = &quot;red&quot;))
- ), useGroups = FALSE)</code></pre>
+  list(label = &quot;Group&quot;, shape = &quot;icon&quot;, 
+       icon = list(code = &quot;f0c0&quot;, size = 25)),
+  list(label = &quot;User&quot;, shape = &quot;icon&quot;, 
+       icon = list(code = &quot;f007&quot;, size = 50, color = &quot;red&quot;))), 
+  useGroups = FALSE)</code></pre>
 <p><div id="htmlwidget-880" style="width:100%;height:216px;" class="visNetwork"></div>
 <script type="application/json" data-for="htmlwidget-880">{
   "x": {
