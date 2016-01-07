@@ -6,23 +6,11 @@ pagetitle: Introduction
 
 **rAmCharts** is an R package for interactive charts. It is based on the javascript library **amcharts.js** (https://amcharts.com). Currently it implements most of the functionnalities found in the distributions **CHARTS** and **STOCK CHARTS**. You'll find the source code and bug reports on our [github page](https://github.com/DataKnowledge/rAmCharts.), do not hesitate to send your bugs and you comments.
 
-## Features
-
-Based on [htmlwidgets](http://www.htmlwidgets.org/), so :
-
-* compatible with [shiny ](http://shiny.rstudio.com/),  R Markdown documents, and RStudio viewer
-
-The package proposes all the features available in **amcharts.js** API, and even more with special features for R : 
-
-* easy to use
-* custom shapes, styles, colors, sizes, ...
-* works smooth on any modern browser for up to a few thousand nodes and edges
-* interactivity controls (zoom, tooltip, events, ...)
+Based on [htmlwidgets](http://www.htmlwidgets.org/), it is compatible with [shiny ](http://shiny.rstudio.com/),  R Markdown documents and RStudio viewer.
 
 ## Prerequisite
 
-It uses internally the package **pipeR** which is usefull to draw complex charts by keeping a certain level of readability in the code. 
-Mainly the the functionnality used is `%>>%` (or `pipeline()`) but the package allow to do many more, see the official tutorial 
+It uses internally the package **pipeR** which is usefull to draw complex charts by keeping a certain level of readability in the code. The function mainly used is `%>>%` (or `pipeline()`) but the package allow to do many more, see the official tutorial 
 
 ## Installation
 
