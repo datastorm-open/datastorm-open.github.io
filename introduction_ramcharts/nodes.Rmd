@@ -1,0 +1,7 @@
+---
+pagetitle: Nodes
+---
+
+## Global configuration
+
+Bonjour !

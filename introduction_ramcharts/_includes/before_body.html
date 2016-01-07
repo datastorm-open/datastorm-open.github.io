@@ -1,0 +1,50 @@
+<style type="text/css">
+  body {
+    padding-top: 20px;
+  }
+  .navbar-brand {
+    font-weight: bold;
+  }
+  footer {
+    border-top: 1px solid #CCC;
+    margin-top: 60px;
+    margin-bottom: 48px;
+    opacity: 0.75;
+  }
+  .content-body>:first-child, .content-body>:first-child>:first-child {
+    margin-top: 0 !important;
+  }
+  p code {
+    white-space: inherit;
+  }
+</style>
+
+<div class="fluid-row">
+  <div class="col-sm-12">
+    <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <a class="navbar-brand" href="./">rAmCharts, a new new package for common vizualisation</a>
+        </div>
+      </div>
+    </nav>
+  </div>
+</div>
+
+<div class="fluid-row">
+  <div class="col-sm-3">
+    <div class="list-group">
+      <a class="list-group-item" href="index.html">Introduction</a>
+      <a class="list-group-item" href="nodes.html">Nodes</a>
+    </div>
+    <script>
+      // manage active state of toc based on current page
+      var href = window.location.pathname;
+      href = href.substr(href.lastIndexOf('/') + 1);
+      if (href === "" || href === "index.html")
+        href = "index.html";
+      $('a.list-group-item[href="' + href + '"]').addClass('active');
+    </script>
+  </div>
+  <div class="col-sm-9 content-body">
