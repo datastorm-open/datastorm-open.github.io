@@ -2,19 +2,20 @@
 pagetitle: Introduction
 ---
 
+```{r,echo=FALSE, message=FALSE}
+require(rAmCharts)
+require(pipeR)
+```
+
 ## Introduction
 
-**rAmCharts** is an R package for interactive charts. It is based on the javascript library **amcharts.js** (https://amcharts.com). Currently it implements most of the functionnalities found in the distributions **CHARTS** and **STOCK CHARTS**. You'll find the source code and bug reports on our [github page](https://github.com/DataKnowledge/rAmCharts.), do not hesitate to send your bugs and you comments.
+**rAmCharts** is an R package for interactive charts. It is based on the javascript library **amcharts.js** (https://amcharts.com). Currently it implements most of the functionnalities found in the distributions **CHARTS** and **STOCK CHARTS**. You'll find the source code and bug reports on our [github_page][], do not hesitate to send your bugs and your comments.
 
-Based on [htmlwidgets](http://www.htmlwidgets.org/), it is compatible with [shiny ](http://shiny.rstudio.com/),  R Markdown documents and RStudio viewer.
-
-## Prerequisite
-
-It uses internally the package **pipeR** which is usefull to draw complex charts by keeping a certain level of readability in the code. The function mainly used is `%>>%` (or `pipeline()`) but the package allow to do many more, see the official tutorial 
+Based on [htmlwidgets][], it is compatible with [shiny][], R Markdown documents and RStudio viewer.
 
 ## Installation
 
-Package is now available on CRAN.
+Package is on CRAN.
 
 ```{r, eval=FALSE}
 install.packages("rAmCharts")
@@ -23,10 +24,37 @@ install.packages("rAmCharts")
 devtools::install_github("dataknowledge/rAmCharts")
 ```
 
-## How it's works ?
-C'est Jeffery!
+## Prerequisite
 
-github_page :[]
+- Some functions import the package **rlist** refering to http://renkun.me/rlist.
+
+- Besides, the package uses internally **pipeR** which is usefull to draw complex charts by keeping a certain level of readability in the code. The function mainly used is `%>>%` (or `pipeline()`) but the package allow to do many more, see the official tutorial at http://renkun.me/pipeR-tutorial.
+
+For those who are not familiar with the 'pipe style' the following lines are equivalent:
+
+```{r, eval=FALSE}
+head(x = get("iris", "package:datasets"), n = 3)
+# or
+get("iris", "package:datasets") %>>% head(n = 3)
+# or
+pipeline(
+  get("iris", "package:datasets"),
+  head(n = 3)
+)
+```
+```{r, echo=FALSE}
+get("iris", "package:datasets") %>>%head(n = 3)
+```
+
+## Find help
+
+- We have developped few examples in an app with [shiny][] and [shinydashboard][], run `runShinyExamples'.
+
+- If you have some questions about properties to custom a chart you may find solutions in the online amcharts API at 
+https://docs.amcharts.com/3/
 
 
-
+[htmlwidgets]:    http://www.htmlwidgets.org
+[github_page]:    https://github.com/DataKnowledge/rAmCharts
+[shiny]:          http://shiny.rstudio.com
+[shinydashboard]: https://rstudio.github.io/shinydashboard

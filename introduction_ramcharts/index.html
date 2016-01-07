@@ -12,12 +12,12 @@
 
 <title>Introduction</title>
 
-<script src="libs/jquery/jquery.min.js"></script>
+<script src="libs/jquery-1.11.0/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="libs/bootstrap/css/cosmo.min.css" rel="stylesheet" />
-<script src="libs/bootstrap/js/bootstrap.min.js"></script>
-<script src="libs/bootstrap/shim/html5shiv.min.js"></script>
-<script src="libs/bootstrap/shim/respond.min.js"></script>
+<link href="libs/bootstrap-3.3.1/css/cosmo.min.css" rel="stylesheet" />
+<script src="libs/bootstrap-3.3.1/js/bootstrap.min.js"></script>
+<script src="libs/bootstrap-3.3.1/shim/html5shiv.min.js"></script>
+<script src="libs/bootstrap-3.3.1/shim/respond.min.js"></script>
 
 <style type="text/css">code{white-space: pre;}</style>
 <link rel="stylesheet"
@@ -87,7 +87,7 @@ img {
       <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
-          <a class="navbar-brand" href="./">rAmCharts, a new new package for common vizualisation</a>
+          <a class="navbar-brand" href="./">rAmCharts, a new new package for data vizualisation</a>
         </div>
       </div>
     </nav>
@@ -97,8 +97,38 @@ img {
 <div class="fluid-row">
   <div class="col-sm-3">
     <div class="list-group">
-      <a class="list-group-item" href="index.html">Introduction</a>
-      <a class="list-group-item" href="nodes.html">Nodes</a>
+      <a class="list-group-item" href="index.html">
+        <span>Introduction</span>
+      </a>
+      
+      <a class="list-group-item" href="firstSteps.html">
+        <span>First steps</span>
+      </a>
+      
+      <a class="list-group-item" href="convert.html">
+        <span>Convert an existing chart from JS</span>
+      </a>
+
+      <a class="list-group-item" href="shiny.html">
+        <span>Use in shiny</span>
+      </a>
+      
+      <br/>
+      <span style="margin-left: 25px;"><b>Test the 'am' Functions</b></span>
+      <br/>
+      
+      <a class="list-group-item" href="amPlot.html">
+        <span>amPlot</span>
+      </a>
+      
+      <a class="list-group-item" href="amBoxplot.html">
+        <span>amBoxPlot</span>
+      </a>
+      
+      <a class="list-group-item" href="amHist.html">
+        <span>amHist</span>
+      </a>
+      
     </div>
     <script>
       // manage active state of toc based on current page
@@ -115,34 +145,43 @@ img {
 
 <div id="introduction" class="section level2">
 <h2>Introduction</h2>
-<p><strong>rAmCharts</strong> is an R package for interactive charts. It is based on the javascript library <strong>amcharts.js</strong> (<a href="https://amcharts.com" class="uri">https://amcharts.com</a>). Currently it implements most of the functionnalities found standard charts and stock charts. You’ll find the source code on our <a href="https://github.com/DataKnowledge/rAmCharts.">github page</a>, do not hesitate to report bugs are welcome on github.</p>
-</div>
-<div id="features" class="section level2">
-<h2>Features</h2>
-<p>Based on <a href="http://www.htmlwidgets.org/">htmlwidgets</a>, so :</p>
-<ul>
-<li>compatible with <a href="http://shiny.rstudio.com/">shiny</a>, R Markdown documents, and RStudio viewer</li>
-</ul>
-<p>The package proposes all the features available in <strong>amcharts.js</strong> API, and even more with special features for R :</p>
-<ul>
-<li>easy to use</li>
-<li>custom shapes, styles, colors, sizes, …</li>
-<li>works smooth on any modern browser for up to a few thousand nodes and edges</li>
-<li>interactivity controls (zoom, tooltip, events, …)</li>
-</ul>
+<p><strong>rAmCharts</strong> is an R package for interactive charts. It is based on the javascript library <strong>amcharts.js</strong> (<a href="https://amcharts.com" class="uri">https://amcharts.com</a>). Currently it implements most of the functionnalities found in the distributions <strong>CHARTS</strong> and <strong>STOCK CHARTS</strong>. You’ll find the source code and bug reports on our <a href="https://github.com/DataKnowledge/rAmCharts">github_page</a>, do not hesitate to send your bugs and your comments.</p>
+<p>Based on <a href="http://www.htmlwidgets.org">htmlwidgets</a>, it is compatible with <a href="http://shiny.rstudio.com">shiny</a>, R Markdown documents and RStudio viewer.</p>
 </div>
 <div id="installation" class="section level2">
 <h2>Installation</h2>
-<p>Package is now available on CRAN.</p>
+<p>Package is on CRAN.</p>
 <pre class="r"><code>install.packages(&quot;rAmCharts&quot;)
 
 # can have new features in developpement version 
 devtools::install_github(&quot;dataknowledge/rAmCharts&quot;)</code></pre>
 </div>
-<div id="how-its-works" class="section level2">
-<h2>How it’s works ?</h2>
-<p>C’est Jeffery!</p>
-<p>github_page :[]</p>
+<div id="prerequisite" class="section level2">
+<h2>Prerequisite</h2>
+<ul>
+<li><p>Some functions import the package <strong>rlist</strong> refering to <a href="http://renkun.me/rlist" class="uri">http://renkun.me/rlist</a>.</p></li>
+<li><p>Besides, the package uses internally <strong>pipeR</strong> which is usefull to draw complex charts by keeping a certain level of readability in the code. The function mainly used is <code>%&gt;&gt;%</code> (or <code>pipeline()</code>) but the package allow to do many more, see the official tutorial at <a href="http://renkun.me/pipeR-tutorial" class="uri">http://renkun.me/pipeR-tutorial</a>.</p></li>
+</ul>
+<p>For those who are not familiar with the ‘pipe style’ the following lines are equivalent:</p>
+<pre class="r"><code>head(x = get(&quot;iris&quot;, &quot;package:datasets&quot;), n = 3)
+# or
+get(&quot;iris&quot;, &quot;package:datasets&quot;) %&gt;&gt;% head(n = 3)
+# or
+pipeline(
+  get(&quot;iris&quot;, &quot;package:datasets&quot;),
+  head(n = 3)
+)</code></pre>
+<pre><code>##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+## 1          5.1         3.5          1.4         0.2  setosa
+## 2          4.9         3.0          1.4         0.2  setosa
+## 3          4.7         3.2          1.3         0.2  setosa</code></pre>
+</div>
+<div id="find-help" class="section level2">
+<h2>Find help</h2>
+<ul>
+<li><p>We have developped few examples in an app with <a href="http://shiny.rstudio.com">shiny</a> and <a href="https://rstudio.github.io/shinydashboard">shinydashboard</a>, run `runShinyExamples’.</p></li>
+<li><p>If you have some questions about properties to custom a chart you may find solutions in the online amcharts API at <a href="https://docs.amcharts.com/3/" class="uri">https://docs.amcharts.com/3/</a></p></li>
+</ul>
 </div>
 
 <footer>
