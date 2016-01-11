@@ -1,80 +1,21 @@
-<style type="text/css">
-  body {
-    padding-top: 20px;
-  }
-  .navbar-brand {
-    font-weight: bold;
-  }
-  footer {
-    border-top: 1px solid #CCC;
-    margin-top: 60px;
-    margin-bottom: 48px;
-    opacity: 0.75;
-  }
-  .content-body>:first-child, .content-body>:first-child>:first-child {
-    margin-top: 0 !important;
-  }
-  p code {
-    white-space: inherit;
-  }
-</style>
-
 <div class="fluid-row">
-  <div class="col-sm-12">
-    <nav class="navbar navbar-inverse">
-      <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-          <a class="navbar-brand" href="./">rAmCharts, a new new package for data vizualisation</a>
-        </div>
-      </div>
-    </nav>
-  </div>
-</div>
 
-<div class="fluid-row">
   <div class="col-sm-3">
-    <div class="list-group">
-      <a class="list-group-item" href="index.html">
-        <span>Introduction</span>
-      </a>
-      
-      <a class="list-group-item" href="firstSteps.html">
-        <span>First steps</span>
-      </a>
-      
-      <a class="list-group-item" href="convert.html">
-        <span>Convert an existing chart from JS</span>
-      </a>
-
-      <a class="list-group-item" href="shiny.html">
-        <span>Use in shiny</span>
-      </a>
-      
-      <br/>
-      <span style="margin-left: 25px;"><b>Test the 'am' Functions</b></span>
-      <br/>
-      
-      <a class="list-group-item" href="amPlot.html">
-        <span>amPlot</span>
-      </a>
-      
-      <a class="list-group-item" href="amBoxplot.html">
-        <span>amBoxPlot</span>
-      </a>
-      
-      <a class="list-group-item" href="amHist.html">
-        <span>amHist</span>
-      </a>
-      
-    </div>
-    <script>
-      // manage active state of toc based on current page
-      var href = window.location.pathname;
-      href = href.substr(href.lastIndexOf('/') + 1);
-      if (href === "" || href === "index.html")
-        href = "index.html";
-      $('a.list-group-item[href="' + href + '"]').addClass('active');
-    </script>
+    <ultoc>
+      <litoc><a class=toc-item href="index.html">Introduction</a></litoc>
+      <litoc><a class=toc-item href="firstSteps.html">First steps</a></litoc>
+      <litoc><a class=toc-item href="convert.html">Convert from JS</a></litoc>
+      <litoc><a class=toc-item href="shiny.html">Insert into shiny apps</a></litoc>
+    </ultoc>
   </div>
-  <div class="col-sm-9 content-body">
+  
+  <script>
+    // manage active state of toc based on current page
+    var href = window.location.pathname;
+    href = href.substr(href.lastIndexOf('/') + 1);
+    if (href === "" || href === "index.html")
+      href = "index.html";
+    $('a.toc-item[href="' + href + '"]').addClass('active');
+  </script>
+  
+  <div class="col-sm-9">

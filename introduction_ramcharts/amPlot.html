@@ -18,6 +18,55 @@
 <script src="libs/bootstrap/js/bootstrap.min.js"></script>
 <script src="libs/bootstrap/shim/html5shiv.min.js"></script>
 <script src="libs/bootstrap/shim/respond.min.js"></script>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Pompiere' rel='stylesheet' type='text/css'>
+
+<style type="text/css">
+ultoc {
+  background-color: #f1f1f1;
+  /*
+  margin: 0;
+  padding: 0;
+    */
+  width: 15%;
+  overflow: auto;
+  position: fixed;
+}
+
+litoc a {
+    display: block;
+    color: #000;
+    padding: 8px 0 8px 16px;
+    text-decoration: none;
+}
+
+litoc a.active {
+    background-color: #3c8dbc;
+    color: white;
+}
+
+litoc a:hover:not(.active) {
+    background-color: #555;
+    color: white;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: 'Pompiere', cursive;
+}
+
+div {
+  font-family: 'Open Sans Condensed', sans-serif;
+}
+
+footer {
+  border-top: 1px solid #CCC;
+  margin-top: 60px;
+  margin-bottom: 48px;
+  opacity: .75;
+}
+
+</style>
 
 <style type="text/css">code{white-space: pre;}</style>
 <link rel="stylesheet"
@@ -38,6 +87,7 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
 </script>
 
 
+<link rel="stylesheet" href="styles.css" type="text/css" />
 
 </head>
 
@@ -60,86 +110,27 @@ img {
 </style>
 <div class="container-fluid main-container">
 
-<style type="text/css">
-  body {
-    padding-top: 20px;
-  }
-  .navbar-brand {
-    font-weight: bold;
-  }
-  footer {
-    border-top: 1px solid #CCC;
-    margin-top: 60px;
-    margin-bottom: 48px;
-    opacity: 0.75;
-  }
-  .content-body>:first-child, .content-body>:first-child>:first-child {
-    margin-top: 0 !important;
-  }
-  p code {
-    white-space: inherit;
-  }
-</style>
-
 <div class="fluid-row">
-  <div class="col-sm-12">
-    <nav class="navbar navbar-inverse">
-      <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-          <a class="navbar-brand" href="./">rAmCharts, a new new package for data vizualisation</a>
-        </div>
-      </div>
-    </nav>
-  </div>
-</div>
 
-<div class="fluid-row">
   <div class="col-sm-3">
-    <div class="list-group">
-      <a class="list-group-item" href="index.html">
-        <span>Introduction</span>
-      </a>
-      
-      <a class="list-group-item" href="firstSteps.html">
-        <span>First steps</span>
-      </a>
-      
-      <a class="list-group-item" href="convert.html">
-        <span>Convert an existing chart from JS</span>
-      </a>
-
-      <a class="list-group-item" href="shiny.html">
-        <span>Use in shiny</span>
-      </a>
-      
-      <br/>
-      <span style="margin-left: 25px;"><b>Test the 'am' Functions</b></span>
-      <br/>
-      
-      <a class="list-group-item" href="amPlot.html">
-        <span>amPlot</span>
-      </a>
-      
-      <a class="list-group-item" href="amBoxplot.html">
-        <span>amBoxPlot</span>
-      </a>
-      
-      <a class="list-group-item" href="amHist.html">
-        <span>amHist</span>
-      </a>
-      
-    </div>
-    <script>
-      // manage active state of toc based on current page
-      var href = window.location.pathname;
-      href = href.substr(href.lastIndexOf('/') + 1);
-      if (href === "" || href === "index.html")
-        href = "index.html";
-      $('a.list-group-item[href="' + href + '"]').addClass('active');
-    </script>
+    <ultoc>
+      <litoc><a class=toc-item href="index.html">Introduction</a></litoc>
+      <litoc><a class=toc-item href="firstSteps.html">First steps</a></litoc>
+      <litoc><a class=toc-item href="convert.html">Convert from JS</a></litoc>
+      <litoc><a class=toc-item href="shiny.html">Insert into shiny apps</a></litoc>
+    </ultoc>
   </div>
-  <div class="col-sm-9 content-body">
+  
+  <script>
+    // manage active state of toc based on current page
+    var href = window.location.pathname;
+    href = href.substr(href.lastIndexOf('/') + 1);
+    if (href === "" || href === "index.html")
+      href = "index.html";
+    $('a.toc-item[href="' + href + '"]').addClass('active');
+  </script>
+  
+  <div class="col-sm-9">
 
 
 
@@ -147,14 +138,18 @@ img {
 <h2>TODO</h2>
 </div>
 
-<footer>
-<p><small> © 2015-2016 DataKnowledge</small></p>
-</footer>
-
+  <footer>
+  <p><small> © 2015-2016 DataKnowledge</small></p>
+  </footer>
+  
   </div>
 </div>
 
-<a href="https://github.com/DataKnowledge/rAmCharts.git"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+</div>
+
+<a href="https://github.com/DataKnowledge/rAmCharts.git">
+  <img style="position: fixed; top: 0; right: 0; border: 0;" src="./www/github.png" width="10%" title="Fork me on Github"/>
+</a>
 
 </div>
 

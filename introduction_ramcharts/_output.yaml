@@ -1,10 +1,12 @@
 html_document:
   theme: cosmo
+  css: styles.css
   self_contained: no
   lib_dir: libs
-  fig_width: 5.5
-  fig_height: 2.25
+  fig_width: 4
+  fig_height: 2
   fig_retina: 1
   includes:
+    in_header: _includes/in_header.html
     before_body: _includes/before_body.html
     after_body: _includes/after_body.html

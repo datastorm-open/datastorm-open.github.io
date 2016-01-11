@@ -1,9 +1,5 @@
 library(knitr)
 library(rmarkdown)
-options(htmlwidgets.TOJSON_ARGS = list(pretty = TRUE))
-Sys.setenv(R_KNITR_OPTIONS = 'knitr.chunk.tidy = FALSE')
-
-library(rmarkdown)
 library(yaml)
 library(evaluate)
 library(curl)

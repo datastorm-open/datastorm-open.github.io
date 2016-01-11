@@ -2,6 +2,38 @@
 pagetitle: Convert JS code
 ---
 
-## TODO
+```{r, echo=FALSE, message=FALSE}
+require(rAmCharts)
+require(pipeR)
+```
+
+## Same structure as JS
+
+### Exemple with a pie chart
+
+```{r, echo=FALSE}
+data("data_gdp")
+pipeR::pipeline(
+  amPieChart(valueField = 'gdp', titleField = 'country',
+             dataProvider = data_gdp, startDuration = 0),
+  plot()
+)
+```
+
+JS code : 
+
+```javascript
+amcharts = {
+  type: "pie",
+  theme: "light",
+  valueField: "gdp",
+  titleField: "country",
+  dataProvider: [
+    {country: "China", gdp: 18.976},
+    {country: "United States", gdp: 18.125},
+    ...
+  ],
+}
+```
 
 

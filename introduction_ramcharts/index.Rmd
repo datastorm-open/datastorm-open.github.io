@@ -7,13 +7,13 @@ require(rAmCharts)
 require(pipeR)
 ```
 
-## Introduction
+# Introduction
 
-**rAmCharts** is an R package for interactive charts. It is based on the javascript library **amcharts.js** (https://amcharts.com). Currently it implements most of the functionnalities found in the distributions **CHARTS** and **STOCK CHARTS**. You'll find the source code and bug reports on our [github_page][], do not hesitate to send your bugs and your comments.
+**rAmCharts** is an R package for interactive charts. It is based on the javascript library **amcharts.js** (https://amcharts.com). Currently it implements most of the functionnalities found in the distributions **CHARTS** and **STOCK CHARTS**. You'll find the source code and bug reports on our [github page][github_page], do not hesitate to send your bugs and your comments.
 
 Based on [htmlwidgets][], it is compatible with [shiny][], R Markdown documents and RStudio viewer.
 
-## Installation
+# Installation
 
 Package is on CRAN.
 
@@ -24,7 +24,7 @@ install.packages("rAmCharts")
 devtools::install_github("dataknowledge/rAmCharts")
 ```
 
-## Prerequisite
+# Prerequisite
 
 - Some functions import the package **rlist** refering to http://renkun.me/rlist.
 
@@ -48,7 +48,7 @@ get("iris", "package:datasets") %>>%head(n = 3)
 
 ## Find help
 
-- We have developped few examples in an app with [shiny][] and [shinydashboard][], run `runShinyExamples'.
+- We have developped few examples in an app with [shiny][] and [shinydashboard][], run `runShinyExamples()'.
 
 - If you have some questions about properties to custom a chart you may find solutions in the online amcharts API at 
 https://docs.amcharts.com/3/
