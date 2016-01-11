@@ -1,9 +1,9 @@
 html_document:
   theme: cosmo
-  css: styles.css
+  css: ./www/css/styles.css
   self_contained: no
   lib_dir: libs
-  fig_width: 4
+  fig_width: 6
   fig_height: 2
   fig_retina: 1
   includes:

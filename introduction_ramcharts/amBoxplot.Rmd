@@ -2,4 +2,16 @@
 pagetitle: amBoxplot
 ---
 
-## TODO
+```{r,echo=FALSE, message=FALSE}
+require(package = "rAmCharts", quietly = TRUE)
+require(package = "pipeR", quietly = TRUE)
+```
+
+# Basic example
+
+```{r}
+dataset <- get(x = "ChickWeight", pos = "package:datasets")
+amBoxplot(weight~Diet, data=dataset) %>>% plot()
+```
+
+#Coming: documentation

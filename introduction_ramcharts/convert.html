@@ -27,12 +27,27 @@
 <link href='https://fonts.googleapis.com/css?family=Pompiere' rel='stylesheet' type='text/css'>
 
 <style type="text/css">
+
+.ramcharts_base {
+  height: 70% !important;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.main-toc {
+  text-align:center;
+}
+
+.section-toc {
+  color:#A9A9A9;
+  margin-left:8px;
+}
+
 ultoc {
   background-color: #f1f1f1;
-  /*
   margin: 0;
   padding: 0;
-    */
+  height: 100%;
   width: 15%;
   overflow: auto;
   position: fixed;
@@ -70,6 +85,23 @@ footer {
   opacity: .75;
 }
 
+body .main-container {
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: 120px;
+}
+
+.r {
+  font-size:11px;
+}
+
+.javascript {
+  font-size:11px;
+}
+
+code {
+  font-size:11px;
+}
 </style>
 
 <style type="text/css">code{white-space: pre;}</style>
@@ -91,7 +123,7 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
 </script>
 
 
-<link rel="stylesheet" href="styles.css" type="text/css" />
+<link rel="stylesheet" href="www/css/styles.css" type="text/css" />
 
 </head>
 
@@ -114,15 +146,39 @@ img {
 </style>
 <div class="container-fluid main-container">
 
+<a href="https://github.com/DataKnowledge/rAmCharts.git">
+  <img style="position: fixed; top: 0; right: 0; border: 0;" src="./www/img/github.png" width="10%" title="Fork me on Github"/>
+</a>
+  
 <div class="fluid-row">
-
-  <div class="col-sm-3">
+  <div class="col-sm-3" style="padding:0; margin:0;">
     <ultoc>
+      <div class=main-toc><b>R Package: rAmCharts</b></div>
+      <hr/>
+      <b class=section-toc>Getting started</b>
+
       <litoc><a class=toc-item href="index.html">Introduction</a></litoc>
-      <litoc><a class=toc-item href="firstSteps.html">First steps</a></litoc>
       <litoc><a class=toc-item href="convert.html">Convert from JS</a></litoc>
-      <litoc><a class=toc-item href="shiny.html">Insert into shiny apps</a></litoc>
+      <litoc><a class=toc-item href="shiny.html">Use in shiny apps</a></litoc>
+      <litoc><a class=toc-item href="advance.html">Advanced features</a></litoc>
+      
+      <br/>
+      <b class=section-toc>Functions 'am'</b>
+      
+      <litoc list-style-type:disc><a class=toc-item href="amAngularGauge.html">amAngularGauge</a></litoc>
+      <litoc list-style-type:disc><a class=toc-item href="amBarplot.html">amBarplot</a></litoc>
+      <litoc list-style-type:disc><a class=toc-item href="amBoxplot.html">amBoxplot</a></litoc>
+      <litoc list-style-type:disc><a class=toc-item href="amBullet.html">amBullet</a></litoc>
+      <litoc list-style-type:disc><a class=toc-item href="amCandlestick.html">amCandlestick</a></litoc>
+      <litoc list-style-type:disc><a class=toc-item href="amHist.html">amHist</a></litoc>
+      <litoc list-style-type:disc><a class=toc-item href="amMekko.html">amMekko</a></litoc>
+      <litoc list-style-type:disc><a class=toc-item href="amPie.html">amPie</a></litoc>
+      <litoc list-style-type:disc><a class=toc-item href="amPlot.html">amPlot</a></litoc>
+      <litoc list-style-type:disc><a class=toc-item href="amRadar.html">amRadar</a></litoc>
+      <litoc list-style-type:disc><a class=toc-item href="amWaterfall.html">amWaterfall</a></litoc>
+      <litoc list-style-type:disc><a class=toc-item href="amWind.html">amWind</a></litoc>
     </ultoc>
+    
   </div>
   
   <script>
@@ -142,8 +198,14 @@ img {
 <h2>Same structure as JS</h2>
 <div id="exemple-with-a-pie-chart" class="section level3">
 <h3>Exemple with a pie chart</h3>
-<p><div id="htmlwidget-1437" style="width:100%;height:500px;" class="ramcharts_base"></div>
-<script type="application/json" data-for="htmlwidget-1437">{"x":{"chartData":{"valueField":"gdp","titleField":"country","startDuration":0,"dataProvider":[{"country":"China","gdp":18.976},{"country":"United States","gdp":18.125},{"country":"India","gdp":7.997},{"country":"Japan","gdp":4.843},{"country":"Germany","gdp":3.815},{"country":"Russia","gdp":3.458},{"country":"Brazil","gdp":3.259},{"country":"Indonesia","gdp":2.84},{"country":"United Kingdom","gdp":2.641},{"country":"France","gdp":2.634}],"type":"pie"},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":null},"evals":[]}</script></p>
+<pre class="r"><code>data(&quot;data_gdp&quot;)
+pipeR::pipeline(
+  amPieChart(valueField = &#39;gdp&#39;, titleField = &#39;country&#39;,
+             dataProvider = data_gdp, startDuration = 0),
+  plot()
+)</code></pre>
+<p><div id="htmlwidget-2233" style="width:100%;height:500px;" class="ramcharts_base"></div>
+<script type="application/json" data-for="htmlwidget-2233">{"x":{"chartData":{"valueField":"gdp","titleField":"country","startDuration":0,"dataProvider":[{"country":"China","gdp":18.976},{"country":"United States","gdp":18.125},{"country":"India","gdp":7.997},{"country":"Japan","gdp":4.843},{"country":"Germany","gdp":3.815},{"country":"Russia","gdp":3.458},{"country":"Brazil","gdp":3.259},{"country":"Indonesia","gdp":2.84},{"country":"United Kingdom","gdp":2.641},{"country":"France","gdp":2.634}],"type":"pie"},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":null},"evals":[]}</script></p>
 <p>JS code :</p>
 <pre class="javascript"><code>amcharts = {
   type: &quot;pie&quot;,
@@ -167,10 +229,6 @@ img {
 </div>
 
 </div>
-
-<a href="https://github.com/DataKnowledge/rAmCharts.git">
-  <img style="position: fixed; top: 0; right: 0; border: 0;" src="./www/github.png" width="10%" title="Fork me on Github"/>
-</a>
 
 </div>
 

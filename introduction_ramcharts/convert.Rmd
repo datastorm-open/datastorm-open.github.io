@@ -11,7 +11,7 @@ require(pipeR)
 
 ### Exemple with a pie chart
 
-```{r, echo=FALSE}
+```{r}
 data("data_gdp")
 pipeR::pipeline(
   amPieChart(valueField = 'gdp', titleField = 'country',

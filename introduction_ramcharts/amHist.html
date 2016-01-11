@@ -18,17 +18,37 @@
 <script src="libs/bootstrap/js/bootstrap.min.js"></script>
 <script src="libs/bootstrap/shim/html5shiv.min.js"></script>
 <script src="libs/bootstrap/shim/respond.min.js"></script>
+<script src="libs/htmlwidgets/htmlwidgets.js"></script>
+<script src="libs/amcharts/amcharts.js"></script>
+<script src="libs/ramcharts_base-binding/ramcharts_base.js"></script>
+<script src="libs/amcharts_typeserial/serial.js"></script>
+<script src="libs/amcharts_themes_light/light.js"></script>
 <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Pompiere' rel='stylesheet' type='text/css'>
 
 <style type="text/css">
+
+.ramcharts_base {
+  height: 70% !important;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.main-toc {
+  text-align:center;
+}
+
+.section-toc {
+  color:#A9A9A9;
+  margin-left:8px;
+}
+
 ultoc {
   background-color: #f1f1f1;
-  /*
   margin: 0;
   padding: 0;
-    */
+  height: 100%;
   width: 15%;
   overflow: auto;
   position: fixed;
@@ -66,6 +86,23 @@ footer {
   opacity: .75;
 }
 
+body .main-container {
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: 120px;
+}
+
+.r {
+  font-size:11px;
+}
+
+.javascript {
+  font-size:11px;
+}
+
+code {
+  font-size:11px;
+}
 </style>
 
 <style type="text/css">code{white-space: pre;}</style>
@@ -87,7 +124,7 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
 </script>
 
 
-<link rel="stylesheet" href="styles.css" type="text/css" />
+<link rel="stylesheet" href="www/css/styles.css" type="text/css" />
 
 </head>
 
@@ -110,15 +147,39 @@ img {
 </style>
 <div class="container-fluid main-container">
 
+<a href="https://github.com/DataKnowledge/rAmCharts.git">
+  <img style="position: fixed; top: 0; right: 0; border: 0;" src="./www/img/github.png" width="10%" title="Fork me on Github"/>
+</a>
+  
 <div class="fluid-row">
-
-  <div class="col-sm-3">
+  <div class="col-sm-3" style="padding:0; margin:0;">
     <ultoc>
+      <div class=main-toc><b>R Package: rAmCharts</b></div>
+      <hr/>
+      <b class=section-toc>Getting started</b>
+
       <litoc><a class=toc-item href="index.html">Introduction</a></litoc>
-      <litoc><a class=toc-item href="firstSteps.html">First steps</a></litoc>
       <litoc><a class=toc-item href="convert.html">Convert from JS</a></litoc>
-      <litoc><a class=toc-item href="shiny.html">Insert into shiny apps</a></litoc>
+      <litoc><a class=toc-item href="shiny.html">Use in shiny apps</a></litoc>
+      <litoc><a class=toc-item href="advance.html">Advanced features</a></litoc>
+      
+      <br/>
+      <b class=section-toc>Functions 'am'</b>
+      
+      <litoc list-style-type:disc><a class=toc-item href="amAngularGauge.html">amAngularGauge</a></litoc>
+      <litoc list-style-type:disc><a class=toc-item href="amBarplot.html">amBarplot</a></litoc>
+      <litoc list-style-type:disc><a class=toc-item href="amBoxplot.html">amBoxplot</a></litoc>
+      <litoc list-style-type:disc><a class=toc-item href="amBullet.html">amBullet</a></litoc>
+      <litoc list-style-type:disc><a class=toc-item href="amCandlestick.html">amCandlestick</a></litoc>
+      <litoc list-style-type:disc><a class=toc-item href="amHist.html">amHist</a></litoc>
+      <litoc list-style-type:disc><a class=toc-item href="amMekko.html">amMekko</a></litoc>
+      <litoc list-style-type:disc><a class=toc-item href="amPie.html">amPie</a></litoc>
+      <litoc list-style-type:disc><a class=toc-item href="amPlot.html">amPlot</a></litoc>
+      <litoc list-style-type:disc><a class=toc-item href="amRadar.html">amRadar</a></litoc>
+      <litoc list-style-type:disc><a class=toc-item href="amWaterfall.html">amWaterfall</a></litoc>
+      <litoc list-style-type:disc><a class=toc-item href="amWind.html">amWind</a></litoc>
     </ultoc>
+    
   </div>
   
   <script>
@@ -134,8 +195,14 @@ img {
 
 
 
-<div id="todo" class="section level2">
-<h2>TODO</h2>
+<div id="basic-example" class="section level1">
+<h1>Basic example</h1>
+<pre class="r"><code>amHist(x = rnorm(100)) %&gt;&gt;% plot()</code></pre>
+<p><div id="htmlwidget-4682" style="width:100%;height:500px;" class="ramcharts_base"></div>
+<script type="application/json" data-for="htmlwidget-4682">{"x":{"chartData":{"columnSpacing":0,"columnWidth":1,"fillAlphas":1,"lineAlpha":1,"categoryAxis":{"title":"rnorm(100)"},"categoryField":"x","creditsPosition":"bottom-right","chartCursor":{"animationDuration":0.3},"dataProvider":[{"x":-3.5,"y":2,"cut":"(from -4 to -3)","color":"gray"},{"x":-2.5,"y":4,"cut":"(from -3 to -2)","color":"gray"},{"x":-1.5,"y":19,"cut":"(from -2 to -1)","color":"gray"},{"x":-0.5,"y":26,"cut":"(from -1 to 0)","color":"gray"},{"x":0.5,"y":30,"cut":"(from 0 to 1)","color":"gray"},{"x":1.5,"y":16,"cut":"(from 1 to 2)","color":"gray"},{"x":2.5,"y":2,"cut":"(from 2 to 3)","color":"gray"},{"x":3.5,"y":1,"cut":"(from 3 to 4)","color":"gray"}],"graphs":[{"fillAlphas":0.8,"lineAlpha":1,"fillColorsField":"color","lineColor":"gray","balloonText":"<b>[[value]]</b> <br/> [[cut]] ","type":"column","valueField":"y"},{"lineColor":"black","id":"graph-line","balloonText":"","type":"smoothedLine","valueField":"y"}],"theme":"light","titles":[{"text":"Histogram of rnorm(100)","size":18}],"type":"serial","valueAxes":[{"minimum":0,"maximum":31.5,"title":"Frequency"}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[]}</script></p>
+<div id="coming-documentation" class="section level2">
+<h2>Coming: documentation</h2>
+</div>
 </div>
 
   <footer>
@@ -146,10 +213,6 @@ img {
 </div>
 
 </div>
-
-<a href="https://github.com/DataKnowledge/rAmCharts.git">
-  <img style="position: fixed; top: 0; right: 0; border: 0;" src="./www/github.png" width="10%" title="Fork me on Github"/>
-</a>
 
 </div>
 

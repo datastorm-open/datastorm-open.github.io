@@ -18,17 +18,37 @@
 <script src="libs/bootstrap/js/bootstrap.min.js"></script>
 <script src="libs/bootstrap/shim/html5shiv.min.js"></script>
 <script src="libs/bootstrap/shim/respond.min.js"></script>
+<script src="libs/htmlwidgets/htmlwidgets.js"></script>
+<script src="libs/amcharts/amcharts.js"></script>
+<script src="libs/ramcharts_base-binding/ramcharts_base.js"></script>
+<script src="libs/amcharts_typeserial/serial.js"></script>
+<script src="libs/amcharts_themes_light/light.js"></script>
 <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Pompiere' rel='stylesheet' type='text/css'>
 
 <style type="text/css">
+
+.ramcharts_base {
+  height: 70% !important;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.main-toc {
+  text-align:center;
+}
+
+.section-toc {
+  color:#A9A9A9;
+  margin-left:8px;
+}
+
 ultoc {
   background-color: #f1f1f1;
-  /*
   margin: 0;
   padding: 0;
-    */
+  height: 100%;
   width: 15%;
   overflow: auto;
   position: fixed;
@@ -66,6 +86,23 @@ footer {
   opacity: .75;
 }
 
+body .main-container {
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: 120px;
+}
+
+.r {
+  font-size:11px;
+}
+
+.javascript {
+  font-size:11px;
+}
+
+code {
+  font-size:11px;
+}
 </style>
 
 <style type="text/css">code{white-space: pre;}</style>
@@ -87,7 +124,7 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
 </script>
 
 
-<link rel="stylesheet" href="styles.css" type="text/css" />
+<link rel="stylesheet" href="www/css/styles.css" type="text/css" />
 
 </head>
 
@@ -110,15 +147,39 @@ img {
 </style>
 <div class="container-fluid main-container">
 
+<a href="https://github.com/DataKnowledge/rAmCharts.git">
+  <img style="position: fixed; top: 0; right: 0; border: 0;" src="./www/img/github.png" width="10%" title="Fork me on Github"/>
+</a>
+  
 <div class="fluid-row">
-
-  <div class="col-sm-3">
+  <div class="col-sm-3" style="padding:0; margin:0;">
     <ultoc>
+      <div class=main-toc><b>R Package: rAmCharts</b></div>
+      <hr/>
+      <b class=section-toc>Getting started</b>
+
       <litoc><a class=toc-item href="index.html">Introduction</a></litoc>
-      <litoc><a class=toc-item href="firstSteps.html">First steps</a></litoc>
       <litoc><a class=toc-item href="convert.html">Convert from JS</a></litoc>
-      <litoc><a class=toc-item href="shiny.html">Insert into shiny apps</a></litoc>
+      <litoc><a class=toc-item href="shiny.html">Use in shiny apps</a></litoc>
+      <litoc><a class=toc-item href="advance.html">Advanced features</a></litoc>
+      
+      <br/>
+      <b class=section-toc>Functions 'am'</b>
+      
+      <litoc list-style-type:disc><a class=toc-item href="amAngularGauge.html">amAngularGauge</a></litoc>
+      <litoc list-style-type:disc><a class=toc-item href="amBarplot.html">amBarplot</a></litoc>
+      <litoc list-style-type:disc><a class=toc-item href="amBoxplot.html">amBoxplot</a></litoc>
+      <litoc list-style-type:disc><a class=toc-item href="amBullet.html">amBullet</a></litoc>
+      <litoc list-style-type:disc><a class=toc-item href="amCandlestick.html">amCandlestick</a></litoc>
+      <litoc list-style-type:disc><a class=toc-item href="amHist.html">amHist</a></litoc>
+      <litoc list-style-type:disc><a class=toc-item href="amMekko.html">amMekko</a></litoc>
+      <litoc list-style-type:disc><a class=toc-item href="amPie.html">amPie</a></litoc>
+      <litoc list-style-type:disc><a class=toc-item href="amPlot.html">amPlot</a></litoc>
+      <litoc list-style-type:disc><a class=toc-item href="amRadar.html">amRadar</a></litoc>
+      <litoc list-style-type:disc><a class=toc-item href="amWaterfall.html">amWaterfall</a></litoc>
+      <litoc list-style-type:disc><a class=toc-item href="amWind.html">amWind</a></litoc>
     </ultoc>
+    
   </div>
   
   <script>
@@ -134,8 +195,14 @@ img {
 
 
 
-<div id="todo" class="section level2">
-<h2>TODO</h2>
+<div id="basic-example" class="section level1">
+<h1>Basic example</h1>
+<pre class="r"><code>amPlot(x = rnorm(100), type = &quot;l&quot;) %&gt;&gt;% plot()</code></pre>
+<p><div id="htmlwidget-9040" style="width:100%;height:500px;" class="ramcharts_base"></div>
+<script type="application/json" data-for="htmlwidget-9040">{"x":{"chartData":{"precision":2,"export":{"enabled":false},"theme":"light","balloon":{"borderAlpha":0.5,"borderThickness":1,"cornerRadius":5},"categoryAxis":{"title":"index","position":"bottom","id":"x"},"categoryField":"cat","chartCursor":{"animationDuration":0.3,"enabled":true,"cursorColor":"black"},"chartScrollbar":{"oppositeAxis":false,"offset":10,"enabled":false},"dataProvider":[{"x":0.995592109928022,"cat":"obs. 1","col":"gray"},{"x":1.03503259153351,"cat":"obs. 2","col":"gray"},{"x":0.302957066817749,"cat":"obs. 3","col":"gray"},{"x":0.66616674753522,"cat":"obs. 4","col":"gray"},{"x":1.27823967040852,"cat":"obs. 5","col":"gray"},{"x":-1.59961848446713,"cat":"obs. 6","col":"gray"},{"x":1.52332781948815,"cat":"obs. 7","col":"gray"},{"x":-0.964130628711895,"cat":"obs. 8","col":"gray"},{"x":-2.05715037782054,"cat":"obs. 9","col":"gray"},{"x":1.04211203233759,"cat":"obs. 10","col":"gray"},{"x":-0.00603355394133879,"cat":"obs. 11","col":"gray"},{"x":-0.252584863992846,"cat":"obs. 12","col":"gray"},{"x":0.518585286814174,"cat":"obs. 13","col":"gray"},{"x":-0.592243997277305,"cat":"obs. 14","col":"gray"},{"x":1.0046742086432,"cat":"obs. 15","col":"gray"},{"x":0.622780148315283,"cat":"obs. 16","col":"gray"},{"x":0.178525386534283,"cat":"obs. 17","col":"gray"},{"x":-2.08815729971196,"cat":"obs. 18","col":"gray"},{"x":0.49958420583753,"cat":"obs. 19","col":"gray"},{"x":-2.4581526019622,"cat":"obs. 20","col":"gray"},{"x":0.510949907483569,"cat":"obs. 21","col":"gray"},{"x":1.19802496003068,"cat":"obs. 22","col":"gray"},{"x":0.777903247631144,"cat":"obs. 23","col":"gray"},{"x":-0.11278275529993,"cat":"obs. 24","col":"gray"},{"x":0.792882729330074,"cat":"obs. 25","col":"gray"},{"x":2.22057256374957,"cat":"obs. 26","col":"gray"},{"x":-1.37229447958846,"cat":"obs. 27","col":"gray"},{"x":0.362862330529998,"cat":"obs. 28","col":"gray"},{"x":0.514905454899671,"cat":"obs. 29","col":"gray"},{"x":-0.911858928117141,"cat":"obs. 30","col":"gray"},{"x":0.478793391692383,"cat":"obs. 31","col":"gray"},{"x":1.21795668652485,"cat":"obs. 32","col":"gray"},{"x":-0.286941579314047,"cat":"obs. 33","col":"gray"},{"x":0.41980583699573,"cat":"obs. 34","col":"gray"},{"x":-0.263061502124053,"cat":"obs. 35","col":"gray"},{"x":1.17890111766936,"cat":"obs. 36","col":"gray"},{"x":-1.17282465264237,"cat":"obs. 37","col":"gray"},{"x":-1.57993385071018,"cat":"obs. 38","col":"gray"},{"x":0.800739229445358,"cat":"obs. 39","col":"gray"},{"x":-1.37319305415364,"cat":"obs. 40","col":"gray"},{"x":-0.0391209803797547,"cat":"obs. 41","col":"gray"},{"x":0.441566724457034,"cat":"obs. 42","col":"gray"},{"x":-0.25198044795573,"cat":"obs. 43","col":"gray"},{"x":1.42697323976665,"cat":"obs. 44","col":"gray"},{"x":-0.762303859870589,"cat":"obs. 45","col":"gray"},{"x":0.837977619542816,"cat":"obs. 46","col":"gray"},{"x":0.483732677917511,"cat":"obs. 47","col":"gray"},{"x":0.327956540533222,"cat":"obs. 48","col":"gray"},{"x":1.49326687848448,"cat":"obs. 49","col":"gray"},{"x":-0.619680933342158,"cat":"obs. 50","col":"gray"},{"x":-0.449251620041586,"cat":"obs. 51","col":"gray"},{"x":-0.351084274742624,"cat":"obs. 52","col":"gray"},{"x":-0.314209378314361,"cat":"obs. 53","col":"gray"},{"x":0.0851067585243992,"cat":"obs. 54","col":"gray"},{"x":0.0843284365005802,"cat":"obs. 55","col":"gray"},{"x":0.466559980088776,"cat":"obs. 56","col":"gray"},{"x":-0.53915967166502,"cat":"obs. 57","col":"gray"},{"x":0.654790316276081,"cat":"obs. 58","col":"gray"},{"x":-2.3225328938706,"cat":"obs. 59","col":"gray"},{"x":-0.344208166951517,"cat":"obs. 60","col":"gray"},{"x":0.13570583088677,"cat":"obs. 61","col":"gray"},{"x":-0.912958414558283,"cat":"obs. 62","col":"gray"},{"x":0.0790543617584143,"cat":"obs. 63","col":"gray"},{"x":-1.23277460100806,"cat":"obs. 64","col":"gray"},{"x":-0.62432975022277,"cat":"obs. 65","col":"gray"},{"x":0.260010496693284,"cat":"obs. 66","col":"gray"},{"x":-1.69755494001064,"cat":"obs. 67","col":"gray"},{"x":-0.203350907108125,"cat":"obs. 68","col":"gray"},{"x":-0.0205836993186591,"cat":"obs. 69","col":"gray"},{"x":1.19217410259973,"cat":"obs. 70","col":"gray"},{"x":0.736591087132483,"cat":"obs. 71","col":"gray"},{"x":-0.422376136161116,"cat":"obs. 72","col":"gray"},{"x":1.3666007498678,"cat":"obs. 73","col":"gray"},{"x":1.2036021801412,"cat":"obs. 74","col":"gray"},{"x":0.965990322548041,"cat":"obs. 75","col":"gray"},{"x":-0.134539472788887,"cat":"obs. 76","col":"gray"},{"x":-0.927127978343401,"cat":"obs. 77","col":"gray"},{"x":-0.0725734293290281,"cat":"obs. 78","col":"gray"},{"x":-0.544506337396235,"cat":"obs. 79","col":"gray"},{"x":-0.324741146208556,"cat":"obs. 80","col":"gray"},{"x":-0.577391978840574,"cat":"obs. 81","col":"gray"},{"x":0.496592924640403,"cat":"obs. 82","col":"gray"},{"x":-1.27042170605244,"cat":"obs. 83","col":"gray"},{"x":2.99850128643125,"cat":"obs. 84","col":"gray"},{"x":1.11273618162187,"cat":"obs. 85","col":"gray"},{"x":0.78257400295233,"cat":"obs. 86","col":"gray"},{"x":-1.66030182128986,"cat":"obs. 87","col":"gray"},{"x":1.12045429926461,"cat":"obs. 88","col":"gray"},{"x":-0.632003366272551,"cat":"obs. 89","col":"gray"},{"x":1.18214229208486,"cat":"obs. 90","col":"gray"},{"x":0.428423856121017,"cat":"obs. 91","col":"gray"},{"x":-1.80772656571635,"cat":"obs. 92","col":"gray"},{"x":-1.39913223482148,"cat":"obs. 93","col":"gray"},{"x":1.13088443829617,"cat":"obs. 94","col":"gray"},{"x":0.906042803953738,"cat":"obs. 95","col":"gray"},{"x":0.366533037175367,"cat":"obs. 96","col":"gray"},{"x":1.08765425522275,"cat":"obs. 97","col":"gray"},{"x":1.72629212777593,"cat":"obs. 98","col":"gray"},{"x":1.70221429917486,"cat":"obs. 99","col":"gray"},{"x":0.391987160644861,"cat":"obs. 100","col":"gray"}],"graphs":[{"lineAlpha":1,"dashLength":0,"lineThickness":1,"lineColor":"gray","balloonText":"value: <b>[[value]]</b>","title":"rnorm(100)","type":"line","valueField":"x"}],"titles":[{"text":""}],"type":"serial","valueAxes":[{"position":"left","axisAlpha":0,"id":"y","title":"rnorm(100)"}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[]}</script></p>
+</div>
+<div id="coming-documentation" class="section level1">
+<h1>Coming: documentation</h1>
 </div>
 
   <footer>
@@ -146,10 +213,6 @@ img {
 </div>
 
 </div>
-
-<a href="https://github.com/DataKnowledge/rAmCharts.git">
-  <img style="position: fixed; top: 0; right: 0; border: 0;" src="./www/github.png" width="10%" title="Fork me on Github"/>
-</a>
 
 </div>
 

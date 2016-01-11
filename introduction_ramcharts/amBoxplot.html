@@ -18,17 +18,37 @@
 <script src="libs/bootstrap/js/bootstrap.min.js"></script>
 <script src="libs/bootstrap/shim/html5shiv.min.js"></script>
 <script src="libs/bootstrap/shim/respond.min.js"></script>
+<script src="libs/htmlwidgets/htmlwidgets.js"></script>
+<script src="libs/amcharts/amcharts.js"></script>
+<script src="libs/ramcharts_base-binding/ramcharts_base.js"></script>
+<script src="libs/amcharts_typeserial/serial.js"></script>
+<script src="libs/amcharts_themes_light/light.js"></script>
 <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Pompiere' rel='stylesheet' type='text/css'>
 
 <style type="text/css">
+
+.ramcharts_base {
+  height: 70% !important;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.main-toc {
+  text-align:center;
+}
+
+.section-toc {
+  color:#A9A9A9;
+  margin-left:8px;
+}
+
 ultoc {
   background-color: #f1f1f1;
-  /*
   margin: 0;
   padding: 0;
-    */
+  height: 100%;
   width: 15%;
   overflow: auto;
   position: fixed;
@@ -66,6 +86,23 @@ footer {
   opacity: .75;
 }
 
+body .main-container {
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: 120px;
+}
+
+.r {
+  font-size:11px;
+}
+
+.javascript {
+  font-size:11px;
+}
+
+code {
+  font-size:11px;
+}
 </style>
 
 <style type="text/css">code{white-space: pre;}</style>
@@ -87,7 +124,7 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
 </script>
 
 
-<link rel="stylesheet" href="styles.css" type="text/css" />
+<link rel="stylesheet" href="www/css/styles.css" type="text/css" />
 
 </head>
 
@@ -110,15 +147,39 @@ img {
 </style>
 <div class="container-fluid main-container">
 
+<a href="https://github.com/DataKnowledge/rAmCharts.git">
+  <img style="position: fixed; top: 0; right: 0; border: 0;" src="./www/img/github.png" width="10%" title="Fork me on Github"/>
+</a>
+  
 <div class="fluid-row">
-
-  <div class="col-sm-3">
+  <div class="col-sm-3" style="padding:0; margin:0;">
     <ultoc>
+      <div class=main-toc><b>R Package: rAmCharts</b></div>
+      <hr/>
+      <b class=section-toc>Getting started</b>
+
       <litoc><a class=toc-item href="index.html">Introduction</a></litoc>
-      <litoc><a class=toc-item href="firstSteps.html">First steps</a></litoc>
       <litoc><a class=toc-item href="convert.html">Convert from JS</a></litoc>
-      <litoc><a class=toc-item href="shiny.html">Insert into shiny apps</a></litoc>
+      <litoc><a class=toc-item href="shiny.html">Use in shiny apps</a></litoc>
+      <litoc><a class=toc-item href="advance.html">Advanced features</a></litoc>
+      
+      <br/>
+      <b class=section-toc>Functions 'am'</b>
+      
+      <litoc list-style-type:disc><a class=toc-item href="amAngularGauge.html">amAngularGauge</a></litoc>
+      <litoc list-style-type:disc><a class=toc-item href="amBarplot.html">amBarplot</a></litoc>
+      <litoc list-style-type:disc><a class=toc-item href="amBoxplot.html">amBoxplot</a></litoc>
+      <litoc list-style-type:disc><a class=toc-item href="amBullet.html">amBullet</a></litoc>
+      <litoc list-style-type:disc><a class=toc-item href="amCandlestick.html">amCandlestick</a></litoc>
+      <litoc list-style-type:disc><a class=toc-item href="amHist.html">amHist</a></litoc>
+      <litoc list-style-type:disc><a class=toc-item href="amMekko.html">amMekko</a></litoc>
+      <litoc list-style-type:disc><a class=toc-item href="amPie.html">amPie</a></litoc>
+      <litoc list-style-type:disc><a class=toc-item href="amPlot.html">amPlot</a></litoc>
+      <litoc list-style-type:disc><a class=toc-item href="amRadar.html">amRadar</a></litoc>
+      <litoc list-style-type:disc><a class=toc-item href="amWaterfall.html">amWaterfall</a></litoc>
+      <litoc list-style-type:disc><a class=toc-item href="amWind.html">amWind</a></litoc>
     </ultoc>
+    
   </div>
   
   <script>
@@ -134,8 +195,15 @@ img {
 
 
 
-<div id="todo" class="section level2">
-<h2>TODO</h2>
+<div id="basic-example" class="section level1">
+<h1>Basic example</h1>
+<pre class="r"><code>dataset &lt;- get(x = &quot;ChickWeight&quot;, pos = &quot;package:datasets&quot;)
+amBoxplot(weight~Diet, data=dataset) %&gt;&gt;% plot()</code></pre>
+<p><div id="htmlwidget-7058" style="width:100%;height:500px;" class="ramcharts_base"></div>
+<script type="application/json" data-for="htmlwidget-7058">{"x":{"chartData":{"rotate":false,"categoryField":"cat","chartCursor":{"animationDuration":0.3,"oneBalloonOnly":true},"dataProvider":[{"cat":"1","low_outlier":35,"low":35,"open":57.5,"median":88,"close":137,"high":250,"high_outlier":250,"color":"gray","real_outlier_1":"259","individual_1":"166","real_outlier_2":"266","individual_2":"167","real_outlier_3":"288","individual_3":"83","real_outlier_4":"305","individual_4":"84"},{"cat":"2","low_outlier":39,"low":39,"open":65,"median":104.5,"close":163,"high":309,"high_outlier":309,"color":"gray","real_outlier_1":"318","individual_1":"231","real_outlier_2":"331","individual_2":"232"},{"cat":"3","low_outlier":39,"low":39,"open":67,"median":125.5,"close":199.5,"high":373,"high_outlier":373,"color":"gray"},{"cat":"4","low_outlier":39,"low":39,"open":69,"median":129.5,"close":185,"high":322,"high_outlier":322,"color":"gray"}],"graphs":[{"id":"g1","closeField":"close","fillColorsField":"color","highField":"high","lineColor":"#7f8da9","lineAlpha":1,"lowField":"low","fillAlphas":"0.9","negativeLineColor":"#7f8da9","openField":"open","balloonText":"High = <b>[[high_outlier]]</b><br/>3rd quart. = <b>[[close]]</b><br/>Median = <b>[[median]]</b><br/>1st quart. = <b>[[open]]</b><br/>Low = <b>[[low_outlier]]</b><br/>","title":"Price:","type":"candlestick","valueField":"close"},{"id":"g2","lineColor":"black","noStepRisers":true,"periodSpan":0.8,"lineThickness":3,"balloonText":"","type":"step","valueField":"median"},{"id":"g3","lineColor":"black","noStepRisers":true,"periodSpan":0.5,"balloonText":"","type":"step","valueField":"low_outlier"},{"id":"g4","lineColor":"black","noStepRisers":true,"periodSpan":0.5,"balloonText":"","type":"step","valueField":"high_outlier"},{"id":"g5","lineColor":"black","lineAlpha":0,"bullet":"round","noStepRisers":true,"periodSpan":0.5,"balloonText":"","type":"line","valueField":"real_outlier"},{"lineColor":"black","lineAlpha":0,"bullet":"round","noStepRisers":true,"periodSpan":0.5,"balloonText":"<b> Individual </b>: [[individual_1]]<br/><b> Value </b>: [[real_outlier_1]]","type":"line","valueField":"real_outlier_1"},{"lineColor":"black","lineAlpha":0,"bullet":"round","noStepRisers":true,"periodSpan":0.5,"balloonText":"<b> Individual </b>: [[individual_2]]<br/><b> Value </b>: [[real_outlier_2]]","type":"line","valueField":"real_outlier_2"},{"lineColor":"black","lineAlpha":0,"bullet":"round","noStepRisers":true,"periodSpan":0.5,"balloonText":"<b> Individual </b>: [[individual_3]]<br/><b> Value </b>: [[real_outlier_3]]","type":"line","valueField":"real_outlier_3"},{"lineColor":"black","lineAlpha":0,"bullet":"round","noStepRisers":true,"periodSpan":0.5,"balloonText":"<b> Individual </b>: [[individual_4]]<br/><b> Value </b>: [[real_outlier_4]]","type":"line","valueField":"real_outlier_4"},{"lineColor":"black","lineAlpha":0,"bullet":"round","noStepRisers":true,"periodSpan":0.5,"balloonText":"<b> Individual </b>: [[individual_5]]<br/><b> Value </b>: [[real_outlier_5]]","type":"line","valueField":"real_outlier_5"},{"lineColor":"black","lineAlpha":0,"bullet":"round","noStepRisers":true,"periodSpan":0.5,"balloonText":"<b> Individual </b>: [[individual_6]]<br/><b> Value </b>: [[real_outlier_6]]","type":"line","valueField":"real_outlier_6"},{"lineColor":"black","lineAlpha":0,"bullet":"round","noStepRisers":true,"periodSpan":0.5,"balloonText":"<b> Individual </b>: [[individual_7]]<br/><b> Value </b>: [[real_outlier_7]]","type":"line","valueField":"real_outlier_7"},{"lineColor":"black","lineAlpha":0,"bullet":"round","noStepRisers":true,"periodSpan":0.5,"balloonText":"<b> Individual </b>: [[individual_8]]<br/><b> Value </b>: [[real_outlier_8]]","type":"line","valueField":"real_outlier_8"},{"lineColor":"black","lineAlpha":0,"bullet":"round","noStepRisers":true,"periodSpan":0.5,"balloonText":"<b> Individual </b>: [[individual_9]]<br/><b> Value </b>: [[real_outlier_9]]","type":"line","valueField":"real_outlier_9"}],"theme":"light","type":"serial"},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":null},"evals":[]}</script></p>
+</div>
+<div id="coming-documentation" class="section level1">
+<h1>Coming: documentation</h1>
 </div>
 
   <footer>
@@ -146,10 +214,6 @@ img {
 </div>
 
 </div>
-
-<a href="https://github.com/DataKnowledge/rAmCharts.git">
-  <img style="position: fixed; top: 0; right: 0; border: 0;" src="./www/github.png" width="10%" title="Fork me on Github"/>
-</a>
 
 </div>
 

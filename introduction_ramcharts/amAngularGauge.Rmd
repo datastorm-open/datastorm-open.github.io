@@ -1,0 +1,16 @@
+----
+pagetitle: amAngularGauge
+----
+  
+```{r,echo=FALSE, message=FALSE}
+require(package = "rAmCharts", quietly = TRUE)
+require(package = "pipeR", quietly = TRUE)
+```
+
+# Basic example
+
+```{r}
+amAngularGauge(x = 25) %>>% plot()
+```
+
+# Coming: documentation

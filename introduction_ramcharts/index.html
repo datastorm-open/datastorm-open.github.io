@@ -23,12 +23,27 @@
 <link href='https://fonts.googleapis.com/css?family=Pompiere' rel='stylesheet' type='text/css'>
 
 <style type="text/css">
+
+.ramcharts_base {
+  height: 70% !important;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.main-toc {
+  text-align:center;
+}
+
+.section-toc {
+  color:#A9A9A9;
+  margin-left:8px;
+}
+
 ultoc {
   background-color: #f1f1f1;
-  /*
   margin: 0;
   padding: 0;
-    */
+  height: 100%;
   width: 15%;
   overflow: auto;
   position: fixed;
@@ -66,6 +81,23 @@ footer {
   opacity: .75;
 }
 
+body .main-container {
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: 120px;
+}
+
+.r {
+  font-size:11px;
+}
+
+.javascript {
+  font-size:11px;
+}
+
+code {
+  font-size:11px;
+}
 </style>
 
 <style type="text/css">code{white-space: pre;}</style>
@@ -87,7 +119,7 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
 </script>
 
 
-<link rel="stylesheet" href="styles.css" type="text/css" />
+<link rel="stylesheet" href="www/css/styles.css" type="text/css" />
 
 </head>
 
@@ -110,15 +142,39 @@ img {
 </style>
 <div class="container-fluid main-container">
 
+<a href="https://github.com/DataKnowledge/rAmCharts.git">
+  <img style="position: fixed; top: 0; right: 0; border: 0;" src="./www/img/github.png" width="10%" title="Fork me on Github"/>
+</a>
+  
 <div class="fluid-row">
-
-  <div class="col-sm-3">
+  <div class="col-sm-3" style="padding:0; margin:0;">
     <ultoc>
+      <div class=main-toc><b>R Package: rAmCharts</b></div>
+      <hr/>
+      <b class=section-toc>Getting started</b>
+
       <litoc><a class=toc-item href="index.html">Introduction</a></litoc>
-      <litoc><a class=toc-item href="firstSteps.html">First steps</a></litoc>
       <litoc><a class=toc-item href="convert.html">Convert from JS</a></litoc>
-      <litoc><a class=toc-item href="shiny.html">Insert into shiny apps</a></litoc>
+      <litoc><a class=toc-item href="shiny.html">Use in shiny apps</a></litoc>
+      <litoc><a class=toc-item href="advance.html">Advanced features</a></litoc>
+      
+      <br/>
+      <b class=section-toc>Functions 'am'</b>
+      
+      <litoc list-style-type:disc><a class=toc-item href="amAngularGauge.html">amAngularGauge</a></litoc>
+      <litoc list-style-type:disc><a class=toc-item href="amBarplot.html">amBarplot</a></litoc>
+      <litoc list-style-type:disc><a class=toc-item href="amBoxplot.html">amBoxplot</a></litoc>
+      <litoc list-style-type:disc><a class=toc-item href="amBullet.html">amBullet</a></litoc>
+      <litoc list-style-type:disc><a class=toc-item href="amCandlestick.html">amCandlestick</a></litoc>
+      <litoc list-style-type:disc><a class=toc-item href="amHist.html">amHist</a></litoc>
+      <litoc list-style-type:disc><a class=toc-item href="amMekko.html">amMekko</a></litoc>
+      <litoc list-style-type:disc><a class=toc-item href="amPie.html">amPie</a></litoc>
+      <litoc list-style-type:disc><a class=toc-item href="amPlot.html">amPlot</a></litoc>
+      <litoc list-style-type:disc><a class=toc-item href="amRadar.html">amRadar</a></litoc>
+      <litoc list-style-type:disc><a class=toc-item href="amWaterfall.html">amWaterfall</a></litoc>
+      <litoc list-style-type:disc><a class=toc-item href="amWind.html">amWind</a></litoc>
     </ultoc>
+    
   </div>
   
   <script>
@@ -183,10 +239,6 @@ pipeline(
 </div>
 
 </div>
-
-<a href="https://github.com/DataKnowledge/rAmCharts.git">
-  <img style="position: fixed; top: 0; right: 0; border: 0;" src="./www/github.png" width="10%" title="Fork me on Github"/>
-</a>
 
 </div>
 

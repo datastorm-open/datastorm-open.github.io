@@ -3,8 +3,8 @@ pagetitle: Introduction
 ---
 
 ```{r,echo=FALSE, message=FALSE}
-require(rAmCharts)
-require(pipeR)
+require(package = "rAmCharts", quietly = TRUE)
+require(package = "pipeR", quietly = TRUE)
 ```
 
 # Introduction
@@ -43,7 +43,7 @@ pipeline(
 )
 ```
 ```{r, echo=FALSE}
-get("iris", "package:datasets") %>>%head(n = 3)
+get("iris", "package:datasets") %>>% head(n = 3)
 ```
 
 ## Find help

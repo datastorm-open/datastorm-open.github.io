@@ -10,7 +10,7 @@
 
 
 
-<title>Nodes</title>
+<title>Shiny</title>
 
 <script src="libs/jquery/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -18,17 +18,37 @@
 <script src="libs/bootstrap/js/bootstrap.min.js"></script>
 <script src="libs/bootstrap/shim/html5shiv.min.js"></script>
 <script src="libs/bootstrap/shim/respond.min.js"></script>
+<script src="libs/htmlwidgets/htmlwidgets.js"></script>
+<script src="libs/amcharts/amcharts.js"></script>
+<script src="libs/ramcharts_base-binding/ramcharts_base.js"></script>
+<script src="libs/amcharts_typeserial/serial.js"></script>
+<script src="libs/amcharts_themes_light/light.js"></script>
 <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Pompiere' rel='stylesheet' type='text/css'>
 
 <style type="text/css">
+
+.ramcharts_base {
+  height: 70% !important;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.main-toc {
+  text-align:center;
+}
+
+.section-toc {
+  color:#A9A9A9;
+  margin-left:8px;
+}
+
 ultoc {
   background-color: #f1f1f1;
-  /*
   margin: 0;
   padding: 0;
-    */
+  height: 100%;
   width: 15%;
   overflow: auto;
   position: fixed;
@@ -66,6 +86,23 @@ footer {
   opacity: .75;
 }
 
+body .main-container {
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: 120px;
+}
+
+.r {
+  font-size:11px;
+}
+
+.javascript {
+  font-size:11px;
+}
+
+code {
+  font-size:11px;
+}
 </style>
 
 <style type="text/css">code{white-space: pre;}</style>
@@ -87,7 +124,7 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
 </script>
 
 
-<link rel="stylesheet" href="styles.css" type="text/css" />
+<link rel="stylesheet" href="www/css/styles.css" type="text/css" />
 
 </head>
 
@@ -110,15 +147,39 @@ img {
 </style>
 <div class="container-fluid main-container">
 
+<a href="https://github.com/DataKnowledge/rAmCharts.git">
+  <img style="position: fixed; top: 0; right: 0; border: 0;" src="./www/img/github.png" width="10%" title="Fork me on Github"/>
+</a>
+  
 <div class="fluid-row">
-
-  <div class="col-sm-3">
+  <div class="col-sm-3" style="padding:0; margin:0;">
     <ultoc>
+      <div class=main-toc><b>R Package: rAmCharts</b></div>
+      <hr/>
+      <b class=section-toc>Getting started</b>
+
       <litoc><a class=toc-item href="index.html">Introduction</a></litoc>
-      <litoc><a class=toc-item href="firstSteps.html">First steps</a></litoc>
       <litoc><a class=toc-item href="convert.html">Convert from JS</a></litoc>
-      <litoc><a class=toc-item href="shiny.html">Insert into shiny apps</a></litoc>
+      <litoc><a class=toc-item href="shiny.html">Use in shiny apps</a></litoc>
+      <litoc><a class=toc-item href="advance.html">Advanced features</a></litoc>
+      
+      <br/>
+      <b class=section-toc>Functions 'am'</b>
+      
+      <litoc list-style-type:disc><a class=toc-item href="amAngularGauge.html">amAngularGauge</a></litoc>
+      <litoc list-style-type:disc><a class=toc-item href="amBarplot.html">amBarplot</a></litoc>
+      <litoc list-style-type:disc><a class=toc-item href="amBoxplot.html">amBoxplot</a></litoc>
+      <litoc list-style-type:disc><a class=toc-item href="amBullet.html">amBullet</a></litoc>
+      <litoc list-style-type:disc><a class=toc-item href="amCandlestick.html">amCandlestick</a></litoc>
+      <litoc list-style-type:disc><a class=toc-item href="amHist.html">amHist</a></litoc>
+      <litoc list-style-type:disc><a class=toc-item href="amMekko.html">amMekko</a></litoc>
+      <litoc list-style-type:disc><a class=toc-item href="amPie.html">amPie</a></litoc>
+      <litoc list-style-type:disc><a class=toc-item href="amPlot.html">amPlot</a></litoc>
+      <litoc list-style-type:disc><a class=toc-item href="amRadar.html">amRadar</a></litoc>
+      <litoc list-style-type:disc><a class=toc-item href="amWaterfall.html">amWaterfall</a></litoc>
+      <litoc list-style-type:disc><a class=toc-item href="amWind.html">amWind</a></litoc>
     </ultoc>
+    
   </div>
   
   <script>
@@ -134,9 +195,60 @@ img {
 
 
 
-<div id="global-configuration" class="section level2">
-<h2>Global configuration</h2>
-<p>Bonjour !</p>
+<div id="basic-use" class="section level1">
+<h1>Basic use</h1>
+<p>You can easily include charts in your shiny apps with the functions <code>amChartsOutput(outputId)</code> and <code>renderAmCharts(expr)</code>.</p>
+<pre class="r"><code>require(shiny)
+
+shinyApp(
+  ui = fluidPage(amChartsOutput(outputId = &quot;amchart&quot;)),
+  
+  server = function(input, output) {
+    output$amchart &lt;- renderAmCharts({
+      # minimal example
+      iris &lt;- get(x = &quot;iris&quot;, pos = &quot;package:datasets&quot;)
+      
+      amBoxplot(iris[, -5])
+    })
+  }
+)</code></pre>
+<p><div id="htmlwidget-8867" style="width:100%;height:400px;" class="ramcharts_base"></div>
+<script type="application/json" data-for="htmlwidget-8867">{"x":{"chartData":{"rotate":false,"categoryField":"cat","chartCursor":{"animationDuration":0.3,"oneBalloonOnly":true},"dataProvider":[{"cat":"Sepal.Length","low_outlier":4.3,"low":4.3,"open":5.1,"median":5.8,"close":6.4,"high":7.9,"high_outlier":7.9,"color":"gray"},{"cat":"Sepal.Width","low_outlier":2.2,"low":2.2,"open":2.8,"median":3,"close":3.3,"high":4,"high_outlier":4,"color":"gray","real_outlier_1":"2","individual_1":"61","real_outlier_2":"4.1","individual_2":"33","real_outlier_3":"4.2","individual_3":"34","real_outlier_4":"4.4","individual_4":"16"},{"cat":"Petal.Length","low_outlier":1,"low":1,"open":1.6,"median":4.35,"close":5.1,"high":6.9,"high_outlier":6.9,"color":"gray"},{"cat":"Petal.Width","low_outlier":0.1,"low":0.1,"open":0.3,"median":1.3,"close":1.8,"high":2.5,"high_outlier":2.5,"color":"gray"}],"graphs":[{"id":"g1","closeField":"close","fillColorsField":"color","highField":"high","lineColor":"#7f8da9","lineAlpha":1,"lowField":"low","fillAlphas":"0.9","negativeLineColor":"#7f8da9","openField":"open","balloonText":"High = <b>[[high_outlier]]</b><br/>3rd quart. = <b>[[close]]</b><br/>Median = <b>[[median]]</b><br/>1st quart. = <b>[[open]]</b><br/>Low = <b>[[low_outlier]]</b><br/>","title":"Price:","type":"candlestick","valueField":"close"},{"id":"g2","lineColor":"black","noStepRisers":true,"periodSpan":0.8,"lineThickness":3,"balloonText":"","type":"step","valueField":"median"},{"id":"g3","lineColor":"black","noStepRisers":true,"periodSpan":0.5,"balloonText":"","type":"step","valueField":"low_outlier"},{"id":"g4","lineColor":"black","noStepRisers":true,"periodSpan":0.5,"balloonText":"","type":"step","valueField":"high_outlier"},{"id":"g5","lineColor":"black","lineAlpha":0,"bullet":"round","noStepRisers":true,"periodSpan":0.5,"balloonText":"","type":"line","valueField":"real_outlier"},{"lineColor":"black","lineAlpha":0,"bullet":"round","noStepRisers":true,"periodSpan":0.5,"balloonText":"<b> Individual </b>: [[individual_1]]<br/><b> Value </b>: [[real_outlier_1]]","type":"line","valueField":"real_outlier_1"},{"lineColor":"black","lineAlpha":0,"bullet":"round","noStepRisers":true,"periodSpan":0.5,"balloonText":"<b> Individual </b>: [[individual_2]]<br/><b> Value </b>: [[real_outlier_2]]","type":"line","valueField":"real_outlier_2"},{"lineColor":"black","lineAlpha":0,"bullet":"round","noStepRisers":true,"periodSpan":0.5,"balloonText":"<b> Individual </b>: [[individual_3]]<br/><b> Value </b>: [[real_outlier_3]]","type":"line","valueField":"real_outlier_3"},{"lineColor":"black","lineAlpha":0,"bullet":"round","noStepRisers":true,"periodSpan":0.5,"balloonText":"<b> Individual </b>: [[individual_4]]<br/><b> Value </b>: [[real_outlier_4]]","type":"line","valueField":"real_outlier_4"},{"lineColor":"black","lineAlpha":0,"bullet":"round","noStepRisers":true,"periodSpan":0.5,"balloonText":"<b> Individual </b>: [[individual_5]]<br/><b> Value </b>: [[real_outlier_5]]","type":"line","valueField":"real_outlier_5"},{"lineColor":"black","lineAlpha":0,"bullet":"round","noStepRisers":true,"periodSpan":0.5,"balloonText":"<b> Individual </b>: [[individual_6]]<br/><b> Value </b>: [[real_outlier_6]]","type":"line","valueField":"real_outlier_6"},{"lineColor":"black","lineAlpha":0,"bullet":"round","noStepRisers":true,"periodSpan":0.5,"balloonText":"<b> Individual </b>: [[individual_7]]<br/><b> Value </b>: [[real_outlier_7]]","type":"line","valueField":"real_outlier_7"},{"lineColor":"black","lineAlpha":0,"bullet":"round","noStepRisers":true,"periodSpan":0.5,"balloonText":"<b> Individual </b>: [[individual_8]]<br/><b> Value </b>: [[real_outlier_8]]","type":"line","valueField":"real_outlier_8"},{"lineColor":"black","lineAlpha":0,"bullet":"round","noStepRisers":true,"periodSpan":0.5,"balloonText":"<b> Individual </b>: [[individual_9]]<br/><b> Value </b>: [[real_outlier_9]]","type":"line","valueField":"real_outlier_9"}],"theme":"light","type":"serial"},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":null},"evals":[]}</script></p>
+</div>
+<div id="shiny-interactions" class="section level1">
+<h1>Shiny interactions</h1>
+<p>Moreover, you can get the result from a click by adding a listener to you graph. For doing this we use the function <code>addListener(.Object, name, expression)</code>. The argument ‘name’ is the event which trigger the event, in this case <code>clickGraphItem</code> detect a click on the chart values. The argument <code>expression</code> is a character string corresponding to a JS function:</p>
+<pre class="javascript"><code>function (event) {
+  Shiny.onInputChange(&#39;myValues&#39;, event.item.values);
+}</code></pre>
+<p>It is define a new input with the id=‘myValues’, for which the result sent to the server are the chart values at the click.</p>
+<pre class="r"><code>require(shiny)
+
+shinyApp(
+  ui = fluidPage(
+    amChartsOutput(outputId = &quot;amchart&quot;),
+    fluidRow(
+      column(width = 1, strong(&quot;Values: &quot;)),
+      column(width = 3, verbatimTextOutput(&quot;click&quot;))
+    )
+  ),
+  
+  server =  function(input, output) {
+    output$amchart &lt;- renderAmCharts({
+      # build the chart
+      pipeR::pipeline(
+        amBoxplot(iris[, -5]),
+        addListener(name = &#39;clickGraphItem&#39;,
+                    expression = paste(&#39;function (event) {&#39;,
+                                       &#39;Shiny.onInputChange(\&#39;myValues\&#39;, event.item.values);&#39;,
+                                       &#39;}&#39;))
+      )
+    })
+    
+    output$click &lt;- renderPrint(input$myValues)
+  }
+)</code></pre>
+<p><img src="www/img/shiny_listener.png" /></p>
 </div>
 
   <footer>
@@ -147,10 +259,6 @@ img {
 </div>
 
 </div>
-
-<a href="https://github.com/DataKnowledge/rAmCharts.git">
-  <img style="position: fixed; top: 0; right: 0; border: 0;" src="./www/github.png" width="10%" title="Fork me on Github"/>
-</a>
 
 </div>
 

@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+<title>amWaterfall</title>
+
+<script src="libs/jquery/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="libs/bootstrap/css/cosmo.min.css" rel="stylesheet" />
+<script src="libs/bootstrap/js/bootstrap.min.js"></script>
+<script src="libs/bootstrap/shim/html5shiv.min.js"></script>
+<script src="libs/bootstrap/shim/respond.min.js"></script>
+<script src="libs/htmlwidgets/htmlwidgets.js"></script>
+<script src="libs/amcharts/amcharts.js"></script>
+<script src="libs/ramcharts_base-binding/ramcharts_base.js"></script>
+<script src="libs/amcharts_typeserial/serial.js"></script>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Pompiere' rel='stylesheet' type='text/css'>
+
+<style type="text/css">
+
+.ramcharts_base {
+  height: 70% !important;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.main-toc {
+  text-align:center;
+}
+
+.section-toc {
+  color:#A9A9A9;
+  margin-left:8px;
+}
+
+ultoc {
+  background-color: #f1f1f1;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 15%;
+  overflow: auto;
+  position: fixed;
+}
+
+litoc a {
+    display: block;
+    color: #000;
+    padding: 8px 0 8px 16px;
+    text-decoration: none;
+}
+
+litoc a.active {
+    background-color: #3c8dbc;
+    color: white;
+}
+
+litoc a:hover:not(.active) {
+    background-color: #555;
+    color: white;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: 'Pompiere', cursive;
+}
+
+div {
+  font-family: 'Open Sans Condensed', sans-serif;
+}
+
+footer {
+  border-top: 1px solid #CCC;
+  margin-top: 60px;
+  margin-bottom: 48px;
+  opacity: .75;
+}
+
+body .main-container {
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: 120px;
+}
+
+.r {
+  font-size:11px;
+}
+
+.javascript {
+  font-size:11px;
+}
+
+code {
+  font-size:11px;
+}
+</style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<link rel="stylesheet"
+      href="libs/highlight/default.css"
+      type="text/css" />
+<script src="libs/highlight/highlight.js"></script>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs && document.readyState && document.readyState === "complete") {
+   window.setTimeout(function() {
+      hljs.initHighlighting();
+   }, 0);
+}
+</script>
+
+
+<link rel="stylesheet" href="www/css/styles.css" type="text/css" />
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img { 
+  max-width:100%; 
+  height: auto; 
+}
+</style>
+<div class="container-fluid main-container">
+
+<a href="https://github.com/DataKnowledge/rAmCharts.git">
+  <img style="position: fixed; top: 0; right: 0; border: 0;" src="./www/img/github.png" width="10%" title="Fork me on Github"/>
+</a>
+  
+<div class="fluid-row">
+  <div class="col-sm-3" style="padding:0; margin:0;">
+    <ultoc>
+      <div class=main-toc><b>R Package: rAmCharts</b></div>
+      <hr/>
+      <b class=section-toc>Getting started</b>
+
+      <litoc><a class=toc-item href="index.html">Introduction</a></litoc>
+      <litoc><a class=toc-item href="convert.html">Convert from JS</a></litoc>
+      <litoc><a class=toc-item href="shiny.html">Use in shiny apps</a></litoc>
+      <litoc><a class=toc-item href="advance.html">Advanced features</a></litoc>
+      
+      <br/>
+      <b class=section-toc>Functions 'am'</b>
+      
+      <litoc list-style-type:disc><a class=toc-item href="amAngularGauge.html">amAngularGauge</a></litoc>
+      <litoc list-style-type:disc><a class=toc-item href="amBarplot.html">amBarplot</a></litoc>
+      <litoc list-style-type:disc><a class=toc-item href="amBoxplot.html">amBoxplot</a></litoc>
+      <litoc list-style-type:disc><a class=toc-item href="amBullet.html">amBullet</a></litoc>
+      <litoc list-style-type:disc><a class=toc-item href="amCandlestick.html">amCandlestick</a></litoc>
+      <litoc list-style-type:disc><a class=toc-item href="amHist.html">amHist</a></litoc>
+      <litoc list-style-type:disc><a class=toc-item href="amMekko.html">amMekko</a></litoc>
+      <litoc list-style-type:disc><a class=toc-item href="amPie.html">amPie</a></litoc>
+      <litoc list-style-type:disc><a class=toc-item href="amPlot.html">amPlot</a></litoc>
+      <litoc list-style-type:disc><a class=toc-item href="amRadar.html">amRadar</a></litoc>
+      <litoc list-style-type:disc><a class=toc-item href="amWaterfall.html">amWaterfall</a></litoc>
+      <litoc list-style-type:disc><a class=toc-item href="amWind.html">amWind</a></litoc>
+    </ultoc>
+    
+  </div>
+  
+  <script>
+    // manage active state of toc based on current page
+    var href = window.location.pathname;
+    href = href.substr(href.lastIndexOf('/') + 1);
+    if (href === "" || href === "index.html")
+      href = "index.html";
+    $('a.toc-item[href="' + href + '"]').addClass('active');
+  </script>
+  
+  <div class="col-sm-9">
+
+
+
+<div id="basic-example" class="section level1">
+<h1>Basic example</h1>
+<pre class="r"><code> data_waterfall &lt;- data.frame(label = c(&quot;Income 1&quot;, &quot;Income 2&quot;, &quot;Income 3&quot;, &quot;Total 1&quot;, 
+                                        &quot;Expenses 1&quot;, &quot;Expenses 2&quot;, &quot;Total 2&quot;, &quot;Income 4&quot;, 
+                                        &quot;Income 5&quot;, &quot;Income 6&quot;, &quot;Expenses 3&quot;,&quot;Total 3&quot;),
+                              value = c(5, 10, 15, 30, 10, 5, 15, 50, 10, 35, 10, 100),
+                              operation = c(rep(&quot;plus&quot;, 3), &quot;total&quot;, rep(&quot;minus&quot;, 2),
+                                             &quot;total&quot;, rep(&quot;plus&quot;, 3), &quot;minus&quot;, &quot;total&quot;), 
+                                             stringsAsFactors = FALSE)
+ 
+ amWaterfall(data = data_waterfall, main = &quot;Waterfall Example&quot;, show_values = TRUE) %&gt;&gt;% plot()</code></pre>
+<p><div id="htmlwidget-2442" style="width:100%;height:500px;" class="ramcharts_base"></div>
+<script type="application/json" data-for="htmlwidget-2442">{"x":{"chartData":{"balloonValue":"val","rotate":false,"categoryField":"label","dataProvider":[{"label":"Income 1","value":5,"operation":"plus","color":"#C1FFC1","open":0,"close":5,"val":5,"val2":5},{"label":"Income 2","value":10,"operation":"plus","color":"#C1FFC1","open":5,"close":15,"val":10,"val2":10},{"label":"Income 3","value":15,"operation":"plus","color":"#C1FFC1","open":15,"close":30,"val":15,"val2":15},{"label":"Total 1","value":30,"operation":"total","color":"#1E90FF","open":0,"close":30,"val":30,"val2":30},{"label":"Expenses 1","value":10,"operation":"minus","color":"#FF4040","open":20,"close":30,"val":10,"val2":10},{"label":"Expenses 2","value":5,"operation":"minus","color":"#FF4040","open":15,"close":20,"val":5,"val2":5},{"label":"Total 2","value":15,"operation":"total","color":"#1E90FF","open":0,"close":15,"val":15,"val2":15},{"label":"Income 4","value":50,"operation":"plus","color":"#C1FFC1","open":15,"close":65,"val":50,"val2":50},{"label":"Income 5","value":10,"operation":"plus","color":"#C1FFC1","open":65,"close":75,"val":10,"val2":10},{"label":"Income 6","value":35,"operation":"plus","color":"#C1FFC1","open":75,"close":110,"val":35,"val2":35},{"label":"Expenses 3","value":10,"operation":"minus","color":"#FF4040","open":100,"close":110,"val":10,"val2":10},{"label":"Total 3","value":100,"operation":"total","color":"#1E90FF","open":0,"close":100,"val":100,"val2":100}],"graphs":[{"openField":"open","colorField":"color","lineColor":"#BBBBBB","fillAlphas":0.8,"labelText":"[[val2]]","balloonText":"<span style='color:[[color]]'>[[label]]</span><br><b>[[val]]</b>","type":"column","valueField":"close"}],"titles":[{"text":"Waterfall Example","size":15}],"trendLines":[{"initialCategory":"Income 1","finalCategory":"Income 2","lineColor":"#888888","dashLength":3,"initialValue":5,"finalValue":5},{"initialCategory":"Income 2","finalCategory":"Income 3","lineColor":"#888888","dashLength":3,"initialValue":15,"finalValue":15},{"initialCategory":"Income 3","finalCategory":"Total 1","lineColor":"#888888","dashLength":3,"initialValue":30,"finalValue":30},{"initialCategory":"Total 1","finalCategory":"Expenses 1","lineColor":"#888888","dashLength":3,"initialValue":30,"finalValue":30},{"initialCategory":"Expenses 1","finalCategory":"Expenses 2","lineColor":"#888888","dashLength":3,"initialValue":20,"finalValue":20},{"initialCategory":"Expenses 2","finalCategory":"Total 2","lineColor":"#888888","dashLength":3,"initialValue":15,"finalValue":15},{"initialCategory":"Total 2","finalCategory":"Income 4","lineColor":"#888888","dashLength":3,"initialValue":15,"finalValue":15},{"initialCategory":"Income 4","finalCategory":"Income 5","lineColor":"#888888","dashLength":3,"initialValue":65,"finalValue":65},{"initialCategory":"Income 5","finalCategory":"Income 6","lineColor":"#888888","dashLength":3,"initialValue":75,"finalValue":75},{"initialCategory":"Income 6","finalCategory":"Expenses 3","lineColor":"#888888","dashLength":3,"initialValue":110,"finalValue":110},{"initialCategory":"Expenses 3","finalCategory":"Total 3","lineColor":"#888888","dashLength":3,"initialValue":100,"finalValue":100}],"type":"serial"},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":null},"evals":[]}</script></p>
+</div>
+<div id="coming-documentation" class="section level1">
+<h1>Coming: documentation</h1>
+</div>
+
+  <footer>
+  <p><small> © 2015-2016 DataKnowledge</small></p>
+  </footer>
+  
+  </div>
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+$(document).ready(function () {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+});
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

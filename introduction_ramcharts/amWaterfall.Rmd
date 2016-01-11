@@ -1,0 +1,24 @@
+---
+pagetitle: amWaterfall
+---
+  
+```{r,echo=FALSE, message=FALSE}
+require(package = "rAmCharts", quietly = TRUE)
+require(package = "pipeR", quietly = TRUE)
+```
+
+# Basic example
+
+```{r}
+ data_waterfall <- data.frame(label = c("Income 1", "Income 2", "Income 3", "Total 1", 
+                                        "Expenses 1", "Expenses 2", "Total 2", "Income 4", 
+                                        "Income 5", "Income 6", "Expenses 3","Total 3"),
+                              value = c(5, 10, 15, 30, 10, 5, 15, 50, 10, 35, 10, 100),
+                              operation = c(rep("plus", 3), "total", rep("minus", 2),
+                                             "total", rep("plus", 3), "minus", "total"), 
+                                             stringsAsFactors = FALSE)
+ 
+ amWaterfall(data = data_waterfall, main = "Waterfall Example", show_values = TRUE) %>>% plot()
+```
+
+# Coming: documentation
