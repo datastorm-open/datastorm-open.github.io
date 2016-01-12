@@ -21,13 +21,59 @@
 <script src="libs/htmlwidgets/htmlwidgets.js"></script>
 <script src="libs/amcharts/amcharts.js"></script>
 <script src="libs/ramcharts_base-binding/ramcharts_base.js"></script>
-<script src="libs/amcharts_typeradar/radar.js"></script>
+<script src="libs/amcharts/radar.js"></script>
 <link href="libs/amcharts_plugins_export/export.css" rel="stylesheet" />
 <script src="libs/amcharts_plugins_export/export.min.js"></script>
 <script src="libs/amcharts_themes_light/light.js"></script>
 <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Pompiere' rel='stylesheet' type='text/css'>
+
+<style type="text/css">code{white-space: pre;}</style>
+<link rel="stylesheet"
+      href="libs/highlight/default.css"
+      type="text/css" />
+<script src="libs/highlight/highlight.js"></script>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs && document.readyState && document.readyState === "complete") {
+   window.setTimeout(function() {
+      hljs.initHighlighting();
+   }, 0);
+}
+</script>
+
+
+<link rel="stylesheet" href="www/css/styles.css" type="text/css" />
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img { 
+  max-width:100%; 
+  height: auto; 
+}
+</style>
+<div class="container-fluid main-container">
+
+<a href="https://github.com/DataKnowledge/rAmCharts.git">
+  <img style="position: fixed; top: 0; right: 0; border: 0;" src="./www/img/github.png" width="10%" title="Fork me on Github"/>
+</a>
 
 <style type="text/css">
 
@@ -92,6 +138,7 @@ body .main-container {
   max-width: 100%;
   margin-left: auto;
   margin-right: 120px;
+  padding: 0;
 }
 
 .r {
@@ -105,56 +152,11 @@ body .main-container {
 code {
   font-size:11px;
 }
+
 </style>
 
-<style type="text/css">code{white-space: pre;}</style>
-<link rel="stylesheet"
-      href="libs/highlight/default.css"
-      type="text/css" />
-<script src="libs/highlight/highlight.js"></script>
-<style type="text/css">
-  pre:not([class]) {
-    background-color: white;
-  }
-</style>
-<script type="text/javascript">
-if (window.hljs && document.readyState && document.readyState === "complete") {
-   window.setTimeout(function() {
-      hljs.initHighlighting();
-   }, 0);
-}
-</script>
-
-
-<link rel="stylesheet" href="www/css/styles.css" type="text/css" />
-
-</head>
-
-<body>
-
-<style type = "text/css">
-.main-container {
-  max-width: 940px;
-  margin-left: auto;
-  margin-right: auto;
-}
-code {
-  color: inherit;
-  background-color: rgba(0, 0, 0, 0.04);
-}
-img { 
-  max-width:100%; 
-  height: auto; 
-}
-</style>
-<div class="container-fluid main-container">
-
-<a href="https://github.com/DataKnowledge/rAmCharts.git">
-  <img style="position: fixed; top: 0; right: 0; border: 0;" src="./www/img/github.png" width="10%" title="Fork me on Github"/>
-</a>
-  
-<div class="fluid-row">
-  <div class="col-sm-3" style="padding:0; margin:0;">
+<div class=fluid-row>
+  <div class=col-sm-3>
     <ultoc>
       <div class=main-toc><b>R Package: rAmCharts</b></div>
       <hr/>
@@ -205,8 +207,8 @@ img {
 amWind(data, main = &quot;&quot;, export = TRUE,
        col = c(&quot;#0404B4&quot;,&quot;#01DF01&quot;,&quot;#FFBF00&quot;),
        backTransparency = 1, pch=&quot;round&quot;) %&gt;&gt;% plot()</code></pre>
-<p><div id="htmlwidget-1127" style="width:100%;height:500px;" class="ramcharts_base"></div>
-<script type="application/json" data-for="htmlwidget-1127">{"x":{"chartData":{"export":{"enabled":true},"fontSize":15,"type":"radar","theme":"light","startDuration":1,"categoryField":"labels","dataProvider":[{"Week":1,"Middle":3,"Strong":4,"labels":"N","Weeklab":"<b>1 </b>Observations <br><b>6.25%</b> of wind <b>Week</b>","Middlelab":"<b>2 </b>Observations <br><b>8%</b> of wind <b>Middle</b>","Stronglab":"<b>1 </b>Observations <br><b>9.09%</b> of wind <b>Strong</b>"},{"Week":2,"Middle":10,"Strong":11,"labels":"NE","Weeklab":"<b>2 </b>Observations <br><b>12.5%</b> of wind <b>Week</b>","Middlelab":"<b>8 </b>Observations <br><b>32%</b> of wind <b>Middle</b>","Stronglab":"<b>1 </b>Observations <br><b>9.09%</b> of wind <b>Strong</b>"},{"Week":3,"Middle":4,"Strong":6,"labels":"E","Weeklab":"<b>3 </b>Observations <br><b>18.75%</b> of wind <b>Week</b>","Middlelab":"<b>1 </b>Observations <br><b>4%</b> of wind <b>Middle</b>","Stronglab":"<b>2 </b>Observations <br><b>18.18%</b> of wind <b>Strong</b>"},{"Week":4,"Middle":5,"Strong":7,"labels":"SE","Weeklab":"<b>4 </b>Observations <br><b>25%</b> of wind <b>Week</b>","Middlelab":"<b>1 </b>Observations <br><b>4%</b> of wind <b>Middle</b>","Stronglab":"<b>2 </b>Observations <br><b>18.18%</b> of wind <b>Strong</b>"},{"Week":1,"Middle":3,"Strong":4,"labels":"S","Weeklab":"<b>1 </b>Observations <br><b>6.25%</b> of wind <b>Week</b>","Middlelab":"<b>2 </b>Observations <br><b>8%</b> of wind <b>Middle</b>","Stronglab":"<b>1 </b>Observations <br><b>9.09%</b> of wind <b>Strong</b>"},{"Week":2,"Middle":10,"Strong":11,"labels":"SO","Weeklab":"<b>2 </b>Observations <br><b>12.5%</b> of wind <b>Week</b>","Middlelab":"<b>8 </b>Observations <br><b>32%</b> of wind <b>Middle</b>","Stronglab":"<b>1 </b>Observations <br><b>9.09%</b> of wind <b>Strong</b>"},{"Week":1,"Middle":2,"Strong":3,"labels":"O","Weeklab":"<b>1 </b>Observations <br><b>6.25%</b> of wind <b>Week</b>","Middlelab":"<b>1 </b>Observations <br><b>4%</b> of wind <b>Middle</b>","Stronglab":"<b>1 </b>Observations <br><b>9.09%</b> of wind <b>Strong</b>"},{"Week":2,"Middle":4,"Strong":6,"labels":"NO","Weeklab":"<b>2 </b>Observations <br><b>12.5%</b> of wind <b>Week</b>","Middlelab":"<b>2 </b>Observations <br><b>8%</b> of wind <b>Middle</b>","Stronglab":"<b>2 </b>Observations <br><b>18.18%</b> of wind <b>Strong</b>"}],"graphs":[{"lineThickness":2,"legendAlpha":1,"lineColor":"#000000","lineAlpha":1,"fillColors":"#FFBF00","fillAlphas":1,"bullet":"round","bulletAlpha":0,"legendColor":"#FFBF00","balloonText":"[[Stronglab]]","title":"Strong","valueField":"Strong"},{"lineThickness":2,"legendAlpha":1,"lineColor":"#000000","lineAlpha":1,"fillColors":"#01DF01","fillAlphas":1,"bullet":"round","bulletAlpha":0,"legendColor":"#01DF01","balloonText":"[[Middlelab]]","title":"Middle","valueField":"Middle"},{"lineThickness":2,"legendAlpha":1,"lineColor":"#000000","lineAlpha":1,"fillColors":"#0404B4","fillAlphas":1,"bullet":"round","bulletAlpha":0,"legendColor":"#0404B4","balloonText":"[[Weeklab]]","title":"Week","valueField":"Week"}],"legend":{"labelText":"[[title]]","switchable":false,"align":"right","markerBorderColor":"#000000"},"titles":[{"text":""}],"type.1":"radar","valueAxes":[{"gridType":"circle"}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[]}</script></p>
+<p><div id="htmlwidget-540" style="width:100%;height:500px;" class="ramcharts_base"></div>
+<script type="application/json" data-for="htmlwidget-540">{"x":{"chartData":{"export":{"enabled":true},"fontSize":15,"type":"radar","theme":"light","startDuration":1,"categoryField":"labels","dataProvider":[{"Week":1,"Middle":3,"Strong":4,"labels":"N","Weeklab":"<b>1 </b>Observations <br><b>6.25%</b> of wind <b>Week</b>","Middlelab":"<b>2 </b>Observations <br><b>8%</b> of wind <b>Middle</b>","Stronglab":"<b>1 </b>Observations <br><b>9.09%</b> of wind <b>Strong</b>"},{"Week":2,"Middle":10,"Strong":11,"labels":"NE","Weeklab":"<b>2 </b>Observations <br><b>12.5%</b> of wind <b>Week</b>","Middlelab":"<b>8 </b>Observations <br><b>32%</b> of wind <b>Middle</b>","Stronglab":"<b>1 </b>Observations <br><b>9.09%</b> of wind <b>Strong</b>"},{"Week":3,"Middle":4,"Strong":6,"labels":"E","Weeklab":"<b>3 </b>Observations <br><b>18.75%</b> of wind <b>Week</b>","Middlelab":"<b>1 </b>Observations <br><b>4%</b> of wind <b>Middle</b>","Stronglab":"<b>2 </b>Observations <br><b>18.18%</b> of wind <b>Strong</b>"},{"Week":4,"Middle":5,"Strong":7,"labels":"SE","Weeklab":"<b>4 </b>Observations <br><b>25%</b> of wind <b>Week</b>","Middlelab":"<b>1 </b>Observations <br><b>4%</b> of wind <b>Middle</b>","Stronglab":"<b>2 </b>Observations <br><b>18.18%</b> of wind <b>Strong</b>"},{"Week":1,"Middle":3,"Strong":4,"labels":"S","Weeklab":"<b>1 </b>Observations <br><b>6.25%</b> of wind <b>Week</b>","Middlelab":"<b>2 </b>Observations <br><b>8%</b> of wind <b>Middle</b>","Stronglab":"<b>1 </b>Observations <br><b>9.09%</b> of wind <b>Strong</b>"},{"Week":2,"Middle":10,"Strong":11,"labels":"SO","Weeklab":"<b>2 </b>Observations <br><b>12.5%</b> of wind <b>Week</b>","Middlelab":"<b>8 </b>Observations <br><b>32%</b> of wind <b>Middle</b>","Stronglab":"<b>1 </b>Observations <br><b>9.09%</b> of wind <b>Strong</b>"},{"Week":1,"Middle":2,"Strong":3,"labels":"O","Weeklab":"<b>1 </b>Observations <br><b>6.25%</b> of wind <b>Week</b>","Middlelab":"<b>1 </b>Observations <br><b>4%</b> of wind <b>Middle</b>","Stronglab":"<b>1 </b>Observations <br><b>9.09%</b> of wind <b>Strong</b>"},{"Week":2,"Middle":4,"Strong":6,"labels":"NO","Weeklab":"<b>2 </b>Observations <br><b>12.5%</b> of wind <b>Week</b>","Middlelab":"<b>2 </b>Observations <br><b>8%</b> of wind <b>Middle</b>","Stronglab":"<b>2 </b>Observations <br><b>18.18%</b> of wind <b>Strong</b>"}],"graphs":[{"lineThickness":2,"legendAlpha":1,"lineColor":"#000000","lineAlpha":1,"fillColors":"#FFBF00","fillAlphas":1,"bullet":"round","bulletAlpha":0,"legendColor":"#FFBF00","balloonText":"[[Stronglab]]","title":"Strong","valueField":"Strong"},{"lineThickness":2,"legendAlpha":1,"lineColor":"#000000","lineAlpha":1,"fillColors":"#01DF01","fillAlphas":1,"bullet":"round","bulletAlpha":0,"legendColor":"#01DF01","balloonText":"[[Middlelab]]","title":"Middle","valueField":"Middle"},{"lineThickness":2,"legendAlpha":1,"lineColor":"#000000","lineAlpha":1,"fillColors":"#0404B4","fillAlphas":1,"bullet":"round","bulletAlpha":0,"legendColor":"#0404B4","balloonText":"[[Weeklab]]","title":"Week","valueField":"Week"}],"legend":{"labelText":"[[title]]","switchable":false,"align":"right","markerBorderColor":"#000000"},"titles":[{"text":""}],"type.1":"radar","valueAxes":[{"gridType":"circle"}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[]}</script></p>
 </div>
 <div id="coming-documentation" class="section level1">
 <h1>Coming: documentation</h1>

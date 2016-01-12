@@ -1,6 +1,6 @@
-----
+---
 pagetitle: amAngularGauge
-----
+---
   
 ```{r,echo=FALSE, message=FALSE}
 require(package = "rAmCharts", quietly = TRUE)

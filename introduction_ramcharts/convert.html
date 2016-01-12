@@ -21,10 +21,56 @@
 <script src="libs/htmlwidgets/htmlwidgets.js"></script>
 <script src="libs/amcharts/amcharts.js"></script>
 <script src="libs/ramcharts_base-binding/ramcharts_base.js"></script>
-<script src="libs/amcharts_typepie/pie.js"></script>
+<script src="libs/amcharts/pie.js"></script>
 <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Pompiere' rel='stylesheet' type='text/css'>
+
+<style type="text/css">code{white-space: pre;}</style>
+<link rel="stylesheet"
+      href="libs/highlight/default.css"
+      type="text/css" />
+<script src="libs/highlight/highlight.js"></script>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs && document.readyState && document.readyState === "complete") {
+   window.setTimeout(function() {
+      hljs.initHighlighting();
+   }, 0);
+}
+</script>
+
+
+<link rel="stylesheet" href="www/css/styles.css" type="text/css" />
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img { 
+  max-width:100%; 
+  height: auto; 
+}
+</style>
+<div class="container-fluid main-container">
+
+<a href="https://github.com/DataKnowledge/rAmCharts.git">
+  <img style="position: fixed; top: 0; right: 0; border: 0;" src="./www/img/github.png" width="10%" title="Fork me on Github"/>
+</a>
 
 <style type="text/css">
 
@@ -89,6 +135,7 @@ body .main-container {
   max-width: 100%;
   margin-left: auto;
   margin-right: 120px;
+  padding: 0;
 }
 
 .r {
@@ -102,56 +149,11 @@ body .main-container {
 code {
   font-size:11px;
 }
+
 </style>
 
-<style type="text/css">code{white-space: pre;}</style>
-<link rel="stylesheet"
-      href="libs/highlight/default.css"
-      type="text/css" />
-<script src="libs/highlight/highlight.js"></script>
-<style type="text/css">
-  pre:not([class]) {
-    background-color: white;
-  }
-</style>
-<script type="text/javascript">
-if (window.hljs && document.readyState && document.readyState === "complete") {
-   window.setTimeout(function() {
-      hljs.initHighlighting();
-   }, 0);
-}
-</script>
-
-
-<link rel="stylesheet" href="www/css/styles.css" type="text/css" />
-
-</head>
-
-<body>
-
-<style type = "text/css">
-.main-container {
-  max-width: 940px;
-  margin-left: auto;
-  margin-right: auto;
-}
-code {
-  color: inherit;
-  background-color: rgba(0, 0, 0, 0.04);
-}
-img { 
-  max-width:100%; 
-  height: auto; 
-}
-</style>
-<div class="container-fluid main-container">
-
-<a href="https://github.com/DataKnowledge/rAmCharts.git">
-  <img style="position: fixed; top: 0; right: 0; border: 0;" src="./www/img/github.png" width="10%" title="Fork me on Github"/>
-</a>
-  
-<div class="fluid-row">
-  <div class="col-sm-3" style="padding:0; margin:0;">
+<div class=fluid-row>
+  <div class=col-sm-3>
     <ultoc>
       <div class=main-toc><b>R Package: rAmCharts</b></div>
       <hr/>
@@ -204,8 +206,8 @@ pipeR::pipeline(
              dataProvider = data_gdp, startDuration = 0),
   plot()
 )</code></pre>
-<p><div id="htmlwidget-2233" style="width:100%;height:500px;" class="ramcharts_base"></div>
-<script type="application/json" data-for="htmlwidget-2233">{"x":{"chartData":{"valueField":"gdp","titleField":"country","startDuration":0,"dataProvider":[{"country":"China","gdp":18.976},{"country":"United States","gdp":18.125},{"country":"India","gdp":7.997},{"country":"Japan","gdp":4.843},{"country":"Germany","gdp":3.815},{"country":"Russia","gdp":3.458},{"country":"Brazil","gdp":3.259},{"country":"Indonesia","gdp":2.84},{"country":"United Kingdom","gdp":2.641},{"country":"France","gdp":2.634}],"type":"pie"},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":null},"evals":[]}</script></p>
+<p><div id="htmlwidget-1795" style="width:100%;height:500px;" class="ramcharts_base"></div>
+<script type="application/json" data-for="htmlwidget-1795">{"x":{"chartData":{"valueField":"gdp","titleField":"country","startDuration":0,"dataProvider":[{"country":"China","gdp":18.976},{"country":"United States","gdp":18.125},{"country":"India","gdp":7.997},{"country":"Japan","gdp":4.843},{"country":"Germany","gdp":3.815},{"country":"Russia","gdp":3.458},{"country":"Brazil","gdp":3.259},{"country":"Indonesia","gdp":2.84},{"country":"United Kingdom","gdp":2.641},{"country":"France","gdp":2.634}],"type":"pie"},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":null},"evals":[]}</script></p>
 <p>JS code :</p>
 <pre class="javascript"><code>amcharts = {
   type: &quot;pie&quot;,
