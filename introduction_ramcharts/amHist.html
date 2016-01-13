@@ -93,18 +93,24 @@ img {
       <b class="section-toc">Functions 'am'</b>
       <br/><br/>
       
+      <!--
       <litoc list-style-type:disc><a class="toc-item" href="amAngularGauge.html">amAngularGauge</a></litoc>
+      -->
       <litoc list-style-type:disc><a class="toc-item" href="amBarplot.html">amBarplot</a></litoc>
       <litoc list-style-type:disc><a class="toc-item" href="amBoxplot.html">amBoxplot</a></litoc>
+      <!--
       <litoc list-style-type:disc><a class="toc-item" href="amBullet.html">amBullet</a></litoc>
+      -->
       <litoc list-style-type:disc><a class="toc-item" href="amCandlestick.html">amCandlestick</a></litoc>
       <litoc list-style-type:disc><a class="toc-item" href="amHist.html">amHist</a></litoc>
+      <!--
       <litoc list-style-type:disc><a class="toc-item" href="amMekko.html">amMekko</a></litoc>
       <litoc list-style-type:disc><a class="toc-item" href="amPie.html">amPie</a></litoc>
       <litoc list-style-type:disc><a class="toc-item" href="amPlot.html">amPlot</a></litoc>
       <litoc list-style-type:disc><a class="toc-item" href="amRadar.html">amRadar</a></litoc>
       <litoc list-style-type:disc><a class="toc-item" href="amWaterfall.html">amWaterfall</a></litoc>
       <litoc list-style-type:disc><a class="toc-item" href="amWind.html">amWind</a></litoc>
+      -->
       <br/>
     </ultoc>
     
@@ -126,8 +132,8 @@ img {
 <div id="basic-example" class="section level1">
 <h1>Basic example</h1>
 <pre class="r"><code>amHist(x = rnorm(100)) %&gt;&gt;% plot()</code></pre>
-<p><div id="htmlwidget-9606" style="width:100%;height:500px;" class="ramcharts_base"></div>
-<script type="application/json" data-for="htmlwidget-9606">{"x":{"chartData":{"columnSpacing":0,"columnWidth":1,"fillAlphas":1,"lineAlpha":1,"categoryAxis":{"title":"rnorm(100)"},"categoryField":"x","creditsPosition":"bottom-right","chartCursor":{"animationDuration":0.3},"dataProvider":[{"x":-2.8,"y":2,"cut":"(from -3 to -2.5)","color":"gray"},{"x":-2.2,"y":1,"cut":"(from -2.5 to -2)","color":"gray"},{"x":-1.8,"y":6,"cut":"(from -2 to -1.5)","color":"gray"},{"x":-1.2,"y":9,"cut":"(from -1.5 to -1)","color":"gray"},{"x":-0.8,"y":15,"cut":"(from -1 to -0.5)","color":"gray"},{"x":-0.2,"y":19,"cut":"(from -0.5 to 0)","color":"gray"},{"x":0.2,"y":16,"cut":"(from 0 to 0.5)","color":"gray"},{"x":0.8,"y":21,"cut":"(from 0.5 to 1)","color":"gray"},{"x":1.2,"y":6,"cut":"(from 1 to 1.5)","color":"gray"},{"x":1.8,"y":4,"cut":"(from 1.5 to 2)","color":"gray"},{"x":2.2,"y":1,"cut":"(from 2 to 2.5)","color":"gray"}],"graphs":[{"fillAlphas":0.8,"lineAlpha":1,"fillColorsField":"color","lineColor":"gray","balloonText":"<b>[[value]]</b> <br/> [[cut]] ","type":"column","valueField":"y"},{"lineColor":"black","id":"graph-line","balloonText":"","type":"smoothedLine","valueField":"y"}],"theme":"light","titles":[{"text":"Histogram of rnorm(100)","size":18}],"type":"serial","valueAxes":[{"minimum":0,"maximum":22.05,"title":"Frequency"}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[]}</script></p>
+<p><div id="htmlwidget-9505" style="width:100%;height:500px;" class="ramcharts_base"></div>
+<script type="application/json" data-for="htmlwidget-9505">{"x":{"chartData":{"columnSpacing":0,"columnWidth":1,"fillAlphas":1,"lineAlpha":1,"categoryAxis":{"title":"rnorm(100)"},"categoryField":"x","creditsPosition":"bottom-right","dataProvider":[{"x":-1.8,"y":4,"cut":"(from -2 to -1.5)","color":"gray"},{"x":-1.2,"y":12,"cut":"(from -1.5 to -1)","color":"gray"},{"x":-0.8,"y":14,"cut":"(from -1 to -0.5)","color":"gray"},{"x":-0.2,"y":15,"cut":"(from -0.5 to 0)","color":"gray"},{"x":0.2,"y":19,"cut":"(from 0 to 0.5)","color":"gray"},{"x":0.8,"y":14,"cut":"(from 0.5 to 1)","color":"gray"},{"x":1.2,"y":10,"cut":"(from 1 to 1.5)","color":"gray"},{"x":1.8,"y":7,"cut":"(from 1.5 to 2)","color":"gray"},{"x":2.2,"y":5,"cut":"(from 2 to 2.5)","color":"gray"}],"graphs":[{"fillAlphas":0.8,"lineAlpha":1,"fillColorsField":"color","lineColor":"gray","balloonText":"<b>[[value]]</b> <br/> [[cut]] ","type":"column","valueField":"y"},{"lineColor":"black","id":"graph-line","balloonText":"","type":"smoothedLine","valueField":"y"}],"theme":"light","type":"serial","valueAxes":[{"minimum":0,"maximum":19.95,"title":"Frequency"}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[]}</script></p>
 <div id="coming-documentation" class="section level2">
 <h2>Coming: documentation</h2>
 </div>
@@ -139,9 +145,9 @@ img {
   
   </div>
   
-  <div class="col-xs-2 col-md-2">
+  <div class="col-xs-1 col-md-1">
     <a href="https://github.com/DataKnowledge/rAmCharts.git">
-      <img  src="www/img/github.png" title="Fork me on Github"/>
+      <img  src="www/img/github.jpg" title="Fork me on Github"/>
     </a>
   </div>
   
