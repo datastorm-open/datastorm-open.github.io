@@ -1,0 +1,62 @@
+#navbar {
+  background-color: #f1f1f1 !important;
+  overflow: auto;
+}
+
+litoc a {
+    display: block;
+    color: #00000;
+    padding: 8px 0 8px 16px;
+    text-decoration: none;
+}
+
+litoc a.active {
+    background-color: #3c8dbc;
+    color: white;
+}
+
+litoc a:hover:not(.active) {
+    background-color: #555;
+    color: white;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: 'Pompiere', cursive;
+}
+
+div {
+  font-family: 'Open Sans Condensed', sans-serif;
+}
+
+footer {
+  border-top: 1px solid #CCC;
+  margin-top: 60px;
+  margin-bottom: 48px;
+  opacity: .75;
+}
+
+body .r, .javascript, code{
+  font-size:11px;
+}
+
+body .ramcharts_base {
+  height: 60% !important;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+body .main-toc {
+  text-align:center;
+}
+
+.section-toc {
+  color:#A9A9A9;
+  margin-left:8px;
+}
+
+body .main-container {
+  max-width: 100%;
+  padding: 0;
+  margin-left: auto;
+  margin-right: auto;
+}

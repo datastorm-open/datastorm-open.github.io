@@ -26,6 +26,7 @@
 <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Pompiere' rel='stylesheet' type='text/css'>
+<script src="./www/js/sticky-kit.js"></script>
 
 <style type="text/css">code{white-space: pre;}</style>
 <link rel="stylesheet"
@@ -69,120 +70,45 @@ img {
 </style>
 <div class="container-fluid main-container">
 
-<a href="https://github.com/DataKnowledge/rAmCharts.git">
-  <img style="position: fixed; top: 0; right: 0; border: 0;" src="./www/img/github.png" width="10%" title="Fork me on Github"/>
-</a>
-
-<style type="text/css">
-
-.ramcharts_base {
-  height: 70% !important;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.main-toc {
-  text-align:center;
-}
-
-.section-toc {
-  color:#A9A9A9;
-  margin-left:8px;
-}
-
-ultoc {
-  background-color: #f1f1f1;
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  width: 15%;
-  overflow: auto;
-  position: fixed;
-}
-
-litoc a {
-    display: block;
-    color: #000;
-    padding: 8px 0 8px 16px;
-    text-decoration: none;
-}
-
-litoc a.active {
-    background-color: #3c8dbc;
-    color: white;
-}
-
-litoc a:hover:not(.active) {
-    background-color: #555;
-    color: white;
-}
-
-h1, h2, h3, h4, h5 {
-  font-family: 'Pompiere', cursive;
-}
-
-div {
-  font-family: 'Open Sans Condensed', sans-serif;
-}
-
-footer {
-  border-top: 1px solid #CCC;
-  margin-top: 60px;
-  margin-bottom: 48px;
-  opacity: .75;
-}
-
-body .main-container {
-  max-width: 100%;
-  margin-left: auto;
-  margin-right: 120px;
-  padding: 0;
-}
-
-.r {
-  font-size:11px;
-}
-
-.javascript {
-  font-size:11px;
-}
-
-code {
-  font-size:11px;
-}
-
-</style>
-
-<div class=fluid-row>
-  <div class=col-sm-3>
-    <ultoc>
-      <div class=main-toc><b>R Package: rAmCharts</b></div>
+<!-- bootstrap row container for all the content -->
+  
+<div class="row">
+  
+  <nav class="col-xs-2 col-md-2" id="navbar">
+    
+    <ultoc class="toc">
+      <div class="main-toc"><b>R Package: rAmCharts</b></div>
       <hr/>
-      <b class=section-toc>Getting started</b>
+      
+      <b class="section-toc">Getting started</b>
+      <br/><br/>
 
-      <litoc><a class=toc-item href="index.html">Introduction</a></litoc>
-      <litoc><a class=toc-item href="convert.html">Convert from JS</a></litoc>
-      <litoc><a class=toc-item href="shiny.html">Use in shiny apps</a></litoc>
-      <litoc><a class=toc-item href="advance.html">Advanced features</a></litoc>
+      <litoc><a class="toc-item" href="index.html">Introduction</a></litoc>
+      <litoc><a class="toc-item" href="convert.html">Convert from JS</a></litoc>
+      <litoc><a class="toc-item" href="shiny.html">Use in shiny apps</a></litoc>
+      <litoc><a class="toc-item" href="advance.html">Advanced features</a></litoc>
       
+      <hr/>
+      
+      <b class="section-toc">Functions 'am'</b>
+      <br/><br/>
+      
+      <litoc list-style-type:disc><a class="toc-item" href="amAngularGauge.html">amAngularGauge</a></litoc>
+      <litoc list-style-type:disc><a class="toc-item" href="amBarplot.html">amBarplot</a></litoc>
+      <litoc list-style-type:disc><a class="toc-item" href="amBoxplot.html">amBoxplot</a></litoc>
+      <litoc list-style-type:disc><a class="toc-item" href="amBullet.html">amBullet</a></litoc>
+      <litoc list-style-type:disc><a class="toc-item" href="amCandlestick.html">amCandlestick</a></litoc>
+      <litoc list-style-type:disc><a class="toc-item" href="amHist.html">amHist</a></litoc>
+      <litoc list-style-type:disc><a class="toc-item" href="amMekko.html">amMekko</a></litoc>
+      <litoc list-style-type:disc><a class="toc-item" href="amPie.html">amPie</a></litoc>
+      <litoc list-style-type:disc><a class="toc-item" href="amPlot.html">amPlot</a></litoc>
+      <litoc list-style-type:disc><a class="toc-item" href="amRadar.html">amRadar</a></litoc>
+      <litoc list-style-type:disc><a class="toc-item" href="amWaterfall.html">amWaterfall</a></litoc>
+      <litoc list-style-type:disc><a class="toc-item" href="amWind.html">amWind</a></litoc>
       <br/>
-      <b class=section-toc>Functions 'am'</b>
-      
-      <litoc list-style-type:disc><a class=toc-item href="amAngularGauge.html">amAngularGauge</a></litoc>
-      <litoc list-style-type:disc><a class=toc-item href="amBarplot.html">amBarplot</a></litoc>
-      <litoc list-style-type:disc><a class=toc-item href="amBoxplot.html">amBoxplot</a></litoc>
-      <litoc list-style-type:disc><a class=toc-item href="amBullet.html">amBullet</a></litoc>
-      <litoc list-style-type:disc><a class=toc-item href="amCandlestick.html">amCandlestick</a></litoc>
-      <litoc list-style-type:disc><a class=toc-item href="amHist.html">amHist</a></litoc>
-      <litoc list-style-type:disc><a class=toc-item href="amMekko.html">amMekko</a></litoc>
-      <litoc list-style-type:disc><a class=toc-item href="amPie.html">amPie</a></litoc>
-      <litoc list-style-type:disc><a class=toc-item href="amPlot.html">amPlot</a></litoc>
-      <litoc list-style-type:disc><a class=toc-item href="amRadar.html">amRadar</a></litoc>
-      <litoc list-style-type:disc><a class=toc-item href="amWaterfall.html">amWaterfall</a></litoc>
-      <litoc list-style-type:disc><a class=toc-item href="amWind.html">amWind</a></litoc>
     </ultoc>
     
-  </div>
+  </nav>
   
   <script>
     // manage active state of toc based on current page
@@ -193,27 +119,32 @@ code {
     $('a.toc-item[href="' + href + '"]').addClass('active');
   </script>
   
-  <div class="col-sm-9">
+  <div class="col-xs-8 col-md-8" data-sticky_column>
 
 
 
 <div id="basic-example" class="section level1">
 <h1>Basic example</h1>
 <pre class="r"><code>amPlot(x = rnorm(100), type = &quot;l&quot;) %&gt;&gt;% plot()</code></pre>
-<p><div id="htmlwidget-3601" style="width:100%;height:500px;" class="ramcharts_base"></div>
-<script type="application/json" data-for="htmlwidget-3601">{"x":{"chartData":{"precision":2,"export":{"enabled":false},"theme":"light","balloon":{"borderAlpha":0.5,"borderThickness":1,"cornerRadius":5},"categoryAxis":{"title":"index","position":"bottom","id":"x"},"categoryField":"cat","chartCursor":{"animationDuration":0.3,"enabled":true,"cursorColor":"black"},"chartScrollbar":{"oppositeAxis":false,"offset":10,"enabled":false},"dataProvider":[{"x":-0.973104652612649,"cat":"obs. 1","col":"gray"},{"x":-1.67723118090976,"cat":"obs. 2","col":"gray"},{"x":1.97190593663238,"cat":"obs. 3","col":"gray"},{"x":-0.909776256354098,"cat":"obs. 4","col":"gray"},{"x":-0.892847697939799,"cat":"obs. 5","col":"gray"},{"x":2.15058547844062,"cat":"obs. 6","col":"gray"},{"x":2.05924689876747,"cat":"obs. 7","col":"gray"},{"x":-1.77083055714952,"cat":"obs. 8","col":"gray"},{"x":0.438664447814875,"cat":"obs. 9","col":"gray"},{"x":0.990848808841962,"cat":"obs. 10","col":"gray"},{"x":-1.19297773418241,"cat":"obs. 11","col":"gray"},{"x":-0.0221274278117633,"cat":"obs. 12","col":"gray"},{"x":1.41803977721569,"cat":"obs. 13","col":"gray"},{"x":-0.522430330426678,"cat":"obs. 14","col":"gray"},{"x":-1.70887431936813,"cat":"obs. 15","col":"gray"},{"x":1.32816711131605,"cat":"obs. 16","col":"gray"},{"x":-0.473214934402848,"cat":"obs. 17","col":"gray"},{"x":-1.22933493859421,"cat":"obs. 18","col":"gray"},{"x":-0.237694242927216,"cat":"obs. 19","col":"gray"},{"x":0.847861148318343,"cat":"obs. 20","col":"gray"},{"x":-0.439769895011792,"cat":"obs. 21","col":"gray"},{"x":0.23522936318539,"cat":"obs. 22","col":"gray"},{"x":1.01763822856318,"cat":"obs. 23","col":"gray"},{"x":0.162146269613985,"cat":"obs. 24","col":"gray"},{"x":1.10515740122515,"cat":"obs. 25","col":"gray"},{"x":-0.652609932488603,"cat":"obs. 26","col":"gray"},{"x":0.679586512482256,"cat":"obs. 27","col":"gray"},{"x":0.0668727307191162,"cat":"obs. 28","col":"gray"},{"x":0.0411410380330668,"cat":"obs. 29","col":"gray"},{"x":1.01566136957835,"cat":"obs. 30","col":"gray"},{"x":-0.745732308668149,"cat":"obs. 31","col":"gray"},{"x":0.691866958766385,"cat":"obs. 32","col":"gray"},{"x":-0.447867992706804,"cat":"obs. 33","col":"gray"},{"x":2.00763789366814,"cat":"obs. 34","col":"gray"},{"x":0.0816447798691471,"cat":"obs. 35","col":"gray"},{"x":1.16949531473467,"cat":"obs. 36","col":"gray"},{"x":-0.42251767308078,"cat":"obs. 37","col":"gray"},{"x":0.265214966961431,"cat":"obs. 38","col":"gray"},{"x":-1.90563451168745,"cat":"obs. 39","col":"gray"},{"x":-1.07438446465554,"cat":"obs. 40","col":"gray"},{"x":2.07356171616489,"cat":"obs. 41","col":"gray"},{"x":-1.79151136610501,"cat":"obs. 42","col":"gray"},{"x":-1.33127003097938,"cat":"obs. 43","col":"gray"},{"x":-2.55728275651969,"cat":"obs. 44","col":"gray"},{"x":-0.207659638306316,"cat":"obs. 45","col":"gray"},{"x":0.642046472023163,"cat":"obs. 46","col":"gray"},{"x":-0.528977730634015,"cat":"obs. 47","col":"gray"},{"x":0.958289019434109,"cat":"obs. 48","col":"gray"},{"x":-1.56173108041587,"cat":"obs. 49","col":"gray"},{"x":-0.0414493897487122,"cat":"obs. 50","col":"gray"},{"x":0.695975290868231,"cat":"obs. 51","col":"gray"},{"x":0.482558401316403,"cat":"obs. 52","col":"gray"},{"x":-0.383870853538033,"cat":"obs. 53","col":"gray"},{"x":-0.0137408088630903,"cat":"obs. 54","col":"gray"},{"x":0.832473495871336,"cat":"obs. 55","col":"gray"},{"x":0.568721253992966,"cat":"obs. 56","col":"gray"},{"x":0.663615315753018,"cat":"obs. 57","col":"gray"},{"x":0.556103912887486,"cat":"obs. 58","col":"gray"},{"x":-0.581846514767375,"cat":"obs. 59","col":"gray"},{"x":1.03729131879395,"cat":"obs. 60","col":"gray"},{"x":-0.037805799064133,"cat":"obs. 61","col":"gray"},{"x":0.611494819909561,"cat":"obs. 62","col":"gray"},{"x":1.41809358120222,"cat":"obs. 63","col":"gray"},{"x":-1.30704490551964,"cat":"obs. 64","col":"gray"},{"x":0.50507456137553,"cat":"obs. 65","col":"gray"},{"x":-0.412821677710678,"cat":"obs. 66","col":"gray"},{"x":-0.736892243422226,"cat":"obs. 67","col":"gray"},{"x":-0.707164634178254,"cat":"obs. 68","col":"gray"},{"x":-0.1759758726089,"cat":"obs. 69","col":"gray"},{"x":-0.599566738706552,"cat":"obs. 70","col":"gray"},{"x":-0.51493727670875,"cat":"obs. 71","col":"gray"},{"x":-0.72465791691132,"cat":"obs. 72","col":"gray"},{"x":-1.92377763945156,"cat":"obs. 73","col":"gray"},{"x":2.33298334387671,"cat":"obs. 74","col":"gray"},{"x":-0.911156034846274,"cat":"obs. 75","col":"gray"},{"x":1.59354033693067,"cat":"obs. 76","col":"gray"},{"x":0.118849047380909,"cat":"obs. 77","col":"gray"},{"x":-0.159622132692244,"cat":"obs. 78","col":"gray"},{"x":-0.352429647087857,"cat":"obs. 79","col":"gray"},{"x":0.389061441904037,"cat":"obs. 80","col":"gray"},{"x":1.27035454628595,"cat":"obs. 81","col":"gray"},{"x":-0.189685190645547,"cat":"obs. 82","col":"gray"},{"x":-1.17724749184164,"cat":"obs. 83","col":"gray"},{"x":-0.00212515148974455,"cat":"obs. 84","col":"gray"},{"x":0.791804967914427,"cat":"obs. 85","col":"gray"},{"x":1.32141976530339,"cat":"obs. 86","col":"gray"},{"x":-1.37056931376929,"cat":"obs. 87","col":"gray"},{"x":-0.319023973314425,"cat":"obs. 88","col":"gray"},{"x":-1.21384508941024,"cat":"obs. 89","col":"gray"},{"x":-1.16911855409701,"cat":"obs. 90","col":"gray"},{"x":-0.693672297273518,"cat":"obs. 91","col":"gray"},{"x":0.767282904566615,"cat":"obs. 92","col":"gray"},{"x":-0.921386707274699,"cat":"obs. 93","col":"gray"},{"x":0.101169799540854,"cat":"obs. 94","col":"gray"},{"x":1.00701149310329,"cat":"obs. 95","col":"gray"},{"x":0.643862882180054,"cat":"obs. 96","col":"gray"},{"x":-2.18115836499389,"cat":"obs. 97","col":"gray"},{"x":0.0799620770327065,"cat":"obs. 98","col":"gray"},{"x":0.679572554325769,"cat":"obs. 99","col":"gray"},{"x":-1.26051622896621,"cat":"obs. 100","col":"gray"}],"graphs":[{"lineAlpha":1,"dashLength":0,"lineThickness":1,"lineColor":"gray","balloonText":"value: <b>[[value]]</b>","title":"rnorm(100)","type":"line","valueField":"x"}],"titles":[{"text":""}],"type":"serial","valueAxes":[{"position":"left","axisAlpha":0,"id":"y","title":"rnorm(100)"}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[]}</script></p>
+<p><div id="htmlwidget-8524" style="width:100%;height:500px;" class="ramcharts_base"></div>
+<script type="application/json" data-for="htmlwidget-8524">{"x":{"chartData":{"precision":2,"export":{"enabled":false},"theme":"light","balloon":{"borderAlpha":0.5,"borderThickness":1,"cornerRadius":5},"categoryAxis":{"title":"index","position":"bottom","id":"x"},"categoryField":"cat","chartCursor":{"animationDuration":0.3,"enabled":true,"cursorColor":"black"},"chartScrollbar":{"oppositeAxis":false,"offset":10,"enabled":false},"dataProvider":[{"x":-1.43435995461334,"cat":"obs. 1","col":"gray"},{"x":-0.0353080969374669,"cat":"obs. 2","col":"gray"},{"x":1.44821169797837,"cat":"obs. 3","col":"gray"},{"x":-0.878283035182273,"cat":"obs. 4","col":"gray"},{"x":-1.93430296086637,"cat":"obs. 5","col":"gray"},{"x":-0.160586911469202,"cat":"obs. 6","col":"gray"},{"x":0.0235270085005723,"cat":"obs. 7","col":"gray"},{"x":1.35479850251166,"cat":"obs. 8","col":"gray"},{"x":0.690939767524889,"cat":"obs. 9","col":"gray"},{"x":-1.04103538623717,"cat":"obs. 10","col":"gray"},{"x":0.509985782100153,"cat":"obs. 11","col":"gray"},{"x":-0.0105636736954088,"cat":"obs. 12","col":"gray"},{"x":0.207803428207008,"cat":"obs. 13","col":"gray"},{"x":0.077960114387362,"cat":"obs. 14","col":"gray"},{"x":1.1825853273901,"cat":"obs. 15","col":"gray"},{"x":-0.38074767386219,"cat":"obs. 16","col":"gray"},{"x":0.542831792392765,"cat":"obs. 17","col":"gray"},{"x":0.957040282807928,"cat":"obs. 18","col":"gray"},{"x":1.4873587828842,"cat":"obs. 19","col":"gray"},{"x":0.0183215600373689,"cat":"obs. 20","col":"gray"},{"x":-2.05178704703097,"cat":"obs. 21","col":"gray"},{"x":0.593464386295093,"cat":"obs. 22","col":"gray"},{"x":-0.701039861000644,"cat":"obs. 23","col":"gray"},{"x":0.947766203637495,"cat":"obs. 24","col":"gray"},{"x":-1.3069562554389,"cat":"obs. 25","col":"gray"},{"x":-0.36140289250888,"cat":"obs. 26","col":"gray"},{"x":-0.0494742091613869,"cat":"obs. 27","col":"gray"},{"x":-0.658502574926368,"cat":"obs. 28","col":"gray"},{"x":1.43288739992238,"cat":"obs. 29","col":"gray"},{"x":0.765357003905058,"cat":"obs. 30","col":"gray"},{"x":1.32926173622086,"cat":"obs. 31","col":"gray"},{"x":-0.499138180911855,"cat":"obs. 32","col":"gray"},{"x":-1.57906119757807,"cat":"obs. 33","col":"gray"},{"x":-1.01556412887674,"cat":"obs. 34","col":"gray"},{"x":1.19524021606096,"cat":"obs. 35","col":"gray"},{"x":0.564062119227971,"cat":"obs. 36","col":"gray"},{"x":-0.734051012371951,"cat":"obs. 37","col":"gray"},{"x":-1.07249039553606,"cat":"obs. 38","col":"gray"},{"x":-0.0754961328836382,"cat":"obs. 39","col":"gray"},{"x":1.10819916161474,"cat":"obs. 40","col":"gray"},{"x":-1.28670898893414,"cat":"obs. 41","col":"gray"},{"x":2.02793124870448,"cat":"obs. 42","col":"gray"},{"x":-0.447035163044247,"cat":"obs. 43","col":"gray"},{"x":0.233862464758657,"cat":"obs. 44","col":"gray"},{"x":0.366142576662689,"cat":"obs. 45","col":"gray"},{"x":1.31738101738876,"cat":"obs. 46","col":"gray"},{"x":1.16763589860995,"cat":"obs. 47","col":"gray"},{"x":-0.177469303874282,"cat":"obs. 48","col":"gray"},{"x":-0.277571891779557,"cat":"obs. 49","col":"gray"},{"x":-0.365846517994984,"cat":"obs. 50","col":"gray"},{"x":-0.781756890026518,"cat":"obs. 51","col":"gray"},{"x":-1.21169291617807,"cat":"obs. 52","col":"gray"},{"x":-0.0177973512438208,"cat":"obs. 53","col":"gray"},{"x":0.0184096719253322,"cat":"obs. 54","col":"gray"},{"x":0.0426739781172566,"cat":"obs. 55","col":"gray"},{"x":0.7558257246758,"cat":"obs. 56","col":"gray"},{"x":0.311353246073546,"cat":"obs. 57","col":"gray"},{"x":-2.2462973888338,"cat":"obs. 58","col":"gray"},{"x":2.22133415216834,"cat":"obs. 59","col":"gray"},{"x":0.48973358746874,"cat":"obs. 60","col":"gray"},{"x":0.0463317616610599,"cat":"obs. 61","col":"gray"},{"x":0.614624213591759,"cat":"obs. 62","col":"gray"},{"x":0.175739563365194,"cat":"obs. 63","col":"gray"},{"x":-1.47778027468464,"cat":"obs. 64","col":"gray"},{"x":-0.180843726152707,"cat":"obs. 65","col":"gray"},{"x":-0.141220010286827,"cat":"obs. 66","col":"gray"},{"x":0.00448570281210574,"cat":"obs. 67","col":"gray"},{"x":-0.816361415683586,"cat":"obs. 68","col":"gray"},{"x":-0.0337981044411742,"cat":"obs. 69","col":"gray"},{"x":0.922343559597683,"cat":"obs. 70","col":"gray"},{"x":-1.42674210059681,"cat":"obs. 71","col":"gray"},{"x":0.300096012280587,"cat":"obs. 72","col":"gray"},{"x":-1.58928805666017,"cat":"obs. 73","col":"gray"},{"x":-1.02251195055618,"cat":"obs. 74","col":"gray"},{"x":-0.566886344148826,"cat":"obs. 75","col":"gray"},{"x":-1.31515317547108,"cat":"obs. 76","col":"gray"},{"x":0.251366297563795,"cat":"obs. 77","col":"gray"},{"x":0.274730101737058,"cat":"obs. 78","col":"gray"},{"x":0.396225326384699,"cat":"obs. 79","col":"gray"},{"x":1.10094135011374,"cat":"obs. 80","col":"gray"},{"x":1.71960285074939,"cat":"obs. 81","col":"gray"},{"x":0.885929475142748,"cat":"obs. 82","col":"gray"},{"x":1.98745968757696,"cat":"obs. 83","col":"gray"},{"x":-0.825287999858403,"cat":"obs. 84","col":"gray"},{"x":-1.073263289488,"cat":"obs. 85","col":"gray"},{"x":-0.252879757960053,"cat":"obs. 86","col":"gray"},{"x":-0.775317798731102,"cat":"obs. 87","col":"gray"},{"x":2.67266383257858,"cat":"obs. 88","col":"gray"},{"x":-0.452864003528398,"cat":"obs. 89","col":"gray"},{"x":0.148636335631592,"cat":"obs. 90","col":"gray"},{"x":1.55667361673729,"cat":"obs. 91","col":"gray"},{"x":0.160077632277371,"cat":"obs. 92","col":"gray"},{"x":0.157183797182627,"cat":"obs. 93","col":"gray"},{"x":-0.646210729067773,"cat":"obs. 94","col":"gray"},{"x":0.0791579568393166,"cat":"obs. 95","col":"gray"},{"x":0.383089094381758,"cat":"obs. 96","col":"gray"},{"x":0.118221156732267,"cat":"obs. 97","col":"gray"},{"x":0.67784545216778,"cat":"obs. 98","col":"gray"},{"x":-0.552287124439864,"cat":"obs. 99","col":"gray"},{"x":-2.34440160118162,"cat":"obs. 100","col":"gray"}],"graphs":[{"lineAlpha":1,"dashLength":0,"lineThickness":1,"lineColor":"gray","balloonText":"value: <b>[[value]]</b>","title":"rnorm(100)","type":"line","valueField":"x"}],"titles":[{"text":""}],"type":"serial","valueAxes":[{"position":"left","axisAlpha":0,"id":"y","title":"rnorm(100)"}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[]}</script></p>
 </div>
 <div id="coming-documentation" class="section level1">
 <h1>Coming: documentation</h1>
 </div>
 
-  <footer>
-  <p><small> © 2015-2016 DataKnowledge</small></p>
-  </footer>
+    <footer>
+      <p><small> © 2015-2016 DataKnowledge</small></p>
+    </footer>
   
   </div>
-</div>
-
+  
+  <div class="col-xs-2 col-md-2">
+    <a href="https://github.com/DataKnowledge/rAmCharts.git">
+      <img  src="www/img/github.png" title="Fork me on Github"/>
+    </a>
+  </div>
+  
 </div>
 
 </div>

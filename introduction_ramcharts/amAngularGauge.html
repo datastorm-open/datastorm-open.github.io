@@ -25,6 +25,7 @@
 <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Pompiere' rel='stylesheet' type='text/css'>
+<script src="./www/js/sticky-kit.js"></script>
 
 <style type="text/css">code{white-space: pre;}</style>
 <link rel="stylesheet"
@@ -68,120 +69,45 @@ img {
 </style>
 <div class="container-fluid main-container">
 
-<a href="https://github.com/DataKnowledge/rAmCharts.git">
-  <img style="position: fixed; top: 0; right: 0; border: 0;" src="./www/img/github.png" width="10%" title="Fork me on Github"/>
-</a>
-
-<style type="text/css">
-
-.ramcharts_base {
-  height: 70% !important;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.main-toc {
-  text-align:center;
-}
-
-.section-toc {
-  color:#A9A9A9;
-  margin-left:8px;
-}
-
-ultoc {
-  background-color: #f1f1f1;
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  width: 15%;
-  overflow: auto;
-  position: fixed;
-}
-
-litoc a {
-    display: block;
-    color: #000;
-    padding: 8px 0 8px 16px;
-    text-decoration: none;
-}
-
-litoc a.active {
-    background-color: #3c8dbc;
-    color: white;
-}
-
-litoc a:hover:not(.active) {
-    background-color: #555;
-    color: white;
-}
-
-h1, h2, h3, h4, h5 {
-  font-family: 'Pompiere', cursive;
-}
-
-div {
-  font-family: 'Open Sans Condensed', sans-serif;
-}
-
-footer {
-  border-top: 1px solid #CCC;
-  margin-top: 60px;
-  margin-bottom: 48px;
-  opacity: .75;
-}
-
-body .main-container {
-  max-width: 100%;
-  margin-left: auto;
-  margin-right: 120px;
-  padding: 0;
-}
-
-.r {
-  font-size:11px;
-}
-
-.javascript {
-  font-size:11px;
-}
-
-code {
-  font-size:11px;
-}
-
-</style>
-
-<div class=fluid-row>
-  <div class=col-sm-3>
-    <ultoc>
-      <div class=main-toc><b>R Package: rAmCharts</b></div>
+<!-- bootstrap row container for all the content -->
+  
+<div class="row">
+  
+  <nav class="col-xs-2 col-md-2" id="navbar">
+    
+    <ultoc class="toc">
+      <div class="main-toc"><b>R Package: rAmCharts</b></div>
       <hr/>
-      <b class=section-toc>Getting started</b>
+      
+      <b class="section-toc">Getting started</b>
+      <br/><br/>
 
-      <litoc><a class=toc-item href="index.html">Introduction</a></litoc>
-      <litoc><a class=toc-item href="convert.html">Convert from JS</a></litoc>
-      <litoc><a class=toc-item href="shiny.html">Use in shiny apps</a></litoc>
-      <litoc><a class=toc-item href="advance.html">Advanced features</a></litoc>
+      <litoc><a class="toc-item" href="index.html">Introduction</a></litoc>
+      <litoc><a class="toc-item" href="convert.html">Convert from JS</a></litoc>
+      <litoc><a class="toc-item" href="shiny.html">Use in shiny apps</a></litoc>
+      <litoc><a class="toc-item" href="advance.html">Advanced features</a></litoc>
       
+      <hr/>
+      
+      <b class="section-toc">Functions 'am'</b>
+      <br/><br/>
+      
+      <litoc list-style-type:disc><a class="toc-item" href="amAngularGauge.html">amAngularGauge</a></litoc>
+      <litoc list-style-type:disc><a class="toc-item" href="amBarplot.html">amBarplot</a></litoc>
+      <litoc list-style-type:disc><a class="toc-item" href="amBoxplot.html">amBoxplot</a></litoc>
+      <litoc list-style-type:disc><a class="toc-item" href="amBullet.html">amBullet</a></litoc>
+      <litoc list-style-type:disc><a class="toc-item" href="amCandlestick.html">amCandlestick</a></litoc>
+      <litoc list-style-type:disc><a class="toc-item" href="amHist.html">amHist</a></litoc>
+      <litoc list-style-type:disc><a class="toc-item" href="amMekko.html">amMekko</a></litoc>
+      <litoc list-style-type:disc><a class="toc-item" href="amPie.html">amPie</a></litoc>
+      <litoc list-style-type:disc><a class="toc-item" href="amPlot.html">amPlot</a></litoc>
+      <litoc list-style-type:disc><a class="toc-item" href="amRadar.html">amRadar</a></litoc>
+      <litoc list-style-type:disc><a class="toc-item" href="amWaterfall.html">amWaterfall</a></litoc>
+      <litoc list-style-type:disc><a class="toc-item" href="amWind.html">amWind</a></litoc>
       <br/>
-      <b class=section-toc>Functions 'am'</b>
-      
-      <litoc list-style-type:disc><a class=toc-item href="amAngularGauge.html">amAngularGauge</a></litoc>
-      <litoc list-style-type:disc><a class=toc-item href="amBarplot.html">amBarplot</a></litoc>
-      <litoc list-style-type:disc><a class=toc-item href="amBoxplot.html">amBoxplot</a></litoc>
-      <litoc list-style-type:disc><a class=toc-item href="amBullet.html">amBullet</a></litoc>
-      <litoc list-style-type:disc><a class=toc-item href="amCandlestick.html">amCandlestick</a></litoc>
-      <litoc list-style-type:disc><a class=toc-item href="amHist.html">amHist</a></litoc>
-      <litoc list-style-type:disc><a class=toc-item href="amMekko.html">amMekko</a></litoc>
-      <litoc list-style-type:disc><a class=toc-item href="amPie.html">amPie</a></litoc>
-      <litoc list-style-type:disc><a class=toc-item href="amPlot.html">amPlot</a></litoc>
-      <litoc list-style-type:disc><a class=toc-item href="amRadar.html">amRadar</a></litoc>
-      <litoc list-style-type:disc><a class=toc-item href="amWaterfall.html">amWaterfall</a></litoc>
-      <litoc list-style-type:disc><a class=toc-item href="amWind.html">amWind</a></litoc>
     </ultoc>
     
-  </div>
+  </nav>
   
   <script>
     // manage active state of toc based on current page
@@ -192,27 +118,32 @@ code {
     $('a.toc-item[href="' + href + '"]').addClass('active');
   </script>
   
-  <div class="col-sm-9">
+  <div class="col-xs-8 col-md-8" data-sticky_column>
 
 
 
 <div id="basic-example" class="section level1">
 <h1>Basic example</h1>
 <pre class="r"><code>amAngularGauge(x = 25) %&gt;&gt;% plot()</code></pre>
-<p><div id="htmlwidget-1392" style="width:100%;height:500px;" class="ramcharts_base"></div>
-<script type="application/json" data-for="htmlwidget-1392">{"x":{"chartData":{"startValue":0,"endValue":100,"valueInterval":20,"arrows":[{"alpha":1,"value":25}],"axes":[{"axisAlpha":1,"startValue":0,"endValue":100,"valueInterval":20,"bottomText":"25 ","bottomTextFontSize":25,"radius":"100%","bands":[{"alpha":1}]}],"titles":[{"text":"","size":15}],"type":"gauge"},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":[],"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":null},"evals":[]}</script></p>
+<p><div id="htmlwidget-9530" style="width:100%;height:500px;" class="ramcharts_base"></div>
+<script type="application/json" data-for="htmlwidget-9530">{"x":{"chartData":{"startValue":0,"endValue":100,"valueInterval":20,"arrows":[{"alpha":1,"value":25}],"axes":[{"axisAlpha":1,"startValue":0,"endValue":100,"valueInterval":20,"bottomText":"25 ","bottomTextFontSize":25,"radius":"100%","bands":[{"alpha":1}]}],"titles":[{"text":"","size":15}],"type":"gauge"},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":[],"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":null},"evals":[]}</script></p>
 </div>
 <div id="coming-documentation" class="section level1">
 <h1>Coming: documentation</h1>
 </div>
 
-  <footer>
-  <p><small> © 2015-2016 DataKnowledge</small></p>
-  </footer>
+    <footer>
+      <p><small> © 2015-2016 DataKnowledge</small></p>
+    </footer>
   
   </div>
-</div>
-
+  
+  <div class="col-xs-2 col-md-2">
+    <a href="https://github.com/DataKnowledge/rAmCharts.git">
+      <img  src="www/img/github.png" title="Fork me on Github"/>
+    </a>
+  </div>
+  
 </div>
 
 </div>
