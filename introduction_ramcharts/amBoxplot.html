@@ -26,7 +26,6 @@
 <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Pompiere' rel='stylesheet' type='text/css'>
-<script src="./www/js/sticky-kit.js"></script>
 
 <style type="text/css">code{white-space: pre;}</style>
 <link rel="stylesheet"
@@ -72,11 +71,11 @@ img {
 
 <!-- bootstrap row container for all the content -->
   
-<div class="row">
+<div class="row" data-sticky_parent>
   
   <nav class="col-xs-2 col-md-2" id="navbar">
     
-    <ultoc class="toc">
+    <ultoc class="toc" id="nav">
       <div class="main-toc"><b>R Package: rAmCharts</b></div>
       <hr/>
       
@@ -103,6 +102,10 @@ img {
       -->
       <litoc list-style-type:disc><a class="toc-item" href="amCandlestick.html">amCandlestick</a></litoc>
       <litoc list-style-type:disc><a class="toc-item" href="amHist.html">amHist</a></litoc>
+      
+
+      <litoc list-style-type:disc><a class="toc-item" href="amRadar.html">amRadar</a></litoc>
+      
       <!--
       <litoc list-style-type:disc><a class="toc-item" href="amMekko.html">amMekko</a></litoc>
       <litoc list-style-type:disc><a class="toc-item" href="amPie.html">amPie</a></litoc>
@@ -111,21 +114,16 @@ img {
       <litoc list-style-type:disc><a class="toc-item" href="amWaterfall.html">amWaterfall</a></litoc>
       <litoc list-style-type:disc><a class="toc-item" href="amWind.html">amWind</a></litoc>
       -->
-      <br/>
     </ultoc>
     
-  </nav>
+    <footer>
+      <div class="copyrights"><small> © 2015-2016 DataKnowledge</small></div>
+    </footer>
+  </nav><!-- end of left column -->
   
-  <script>
-    // manage active state of toc based on current page
-    var href = window.location.pathname;
-    href = href.substr(href.lastIndexOf('/') + 1);
-    if (href === "" || href === "index.html")
-      href = "index.html";
-    $('a.toc-item[href="' + href + '"]').addClass('active');
-  </script>
-  
-  <div class="col-xs-9 col-md-9" data-sticky_column>
+  <div class="col-xs-10 col-md-10">
+    <div class="row">
+      <div class="col-xs-11 col-md-11">
 
 
 
@@ -133,26 +131,27 @@ img {
 <h1>Basic example</h1>
 <pre class="r"><code>dataset &lt;- get(x = &quot;ChickWeight&quot;, pos = &quot;package:datasets&quot;)
 amBoxplot(weight~Diet, data=dataset) %&gt;&gt;% plot()</code></pre>
-<p><div id="htmlwidget-4409" style="width:100%;height:500px;" class="ramcharts_base"></div>
-<script type="application/json" data-for="htmlwidget-4409">{"x":{"chartData":{"rotate":false,"categoryField":"cat","chartCursor":{"animationDuration":0.3,"oneBalloonOnly":true},"dataProvider":[{"cat":"1","low_outlier":35,"low":35,"open":57.5,"median":88,"close":137,"high":250,"high_outlier":250,"color":"gray","real_outlier_1":"259","individual_1":"166","real_outlier_2":"266","individual_2":"167","real_outlier_3":"288","individual_3":"83","real_outlier_4":"305","individual_4":"84"},{"cat":"2","low_outlier":39,"low":39,"open":65,"median":104.5,"close":163,"high":309,"high_outlier":309,"color":"gray","real_outlier_1":"318","individual_1":"231","real_outlier_2":"331","individual_2":"232"},{"cat":"3","low_outlier":39,"low":39,"open":67,"median":125.5,"close":199.5,"high":373,"high_outlier":373,"color":"gray"},{"cat":"4","low_outlier":39,"low":39,"open":69,"median":129.5,"close":185,"high":322,"high_outlier":322,"color":"gray"}],"graphs":[{"id":"g1","closeField":"close","fillColorsField":"color","highField":"high","lineColor":"#7f8da9","lineAlpha":1,"lowField":"low","fillAlphas":"0.9","negativeLineColor":"#7f8da9","openField":"open","balloonText":"High = <b>[[high_outlier]]</b><br/>3rd quart. = <b>[[close]]</b><br/>Median = <b>[[median]]</b><br/>1st quart. = <b>[[open]]</b><br/>Low = <b>[[low_outlier]]</b><br/>","title":"Price:","type":"candlestick","valueField":"close"},{"id":"g2","lineColor":"black","noStepRisers":true,"periodSpan":0.8,"lineThickness":3,"balloonText":"","type":"step","valueField":"median"},{"id":"g3","lineColor":"black","noStepRisers":true,"periodSpan":0.5,"balloonText":"","type":"step","valueField":"low_outlier"},{"id":"g4","lineColor":"black","noStepRisers":true,"periodSpan":0.5,"balloonText":"","type":"step","valueField":"high_outlier"},{"id":"g5","lineColor":"black","lineAlpha":0,"bullet":"round","noStepRisers":true,"periodSpan":0.5,"balloonText":"","type":"line","valueField":"real_outlier"},{"lineColor":"black","lineAlpha":0,"bullet":"round","noStepRisers":true,"periodSpan":0.5,"balloonText":"<b> Individual </b>: [[individual_1]]<br/><b> Value </b>: [[real_outlier_1]]","type":"line","valueField":"real_outlier_1"},{"lineColor":"black","lineAlpha":0,"bullet":"round","noStepRisers":true,"periodSpan":0.5,"balloonText":"<b> Individual </b>: [[individual_2]]<br/><b> Value </b>: [[real_outlier_2]]","type":"line","valueField":"real_outlier_2"},{"lineColor":"black","lineAlpha":0,"bullet":"round","noStepRisers":true,"periodSpan":0.5,"balloonText":"<b> Individual </b>: [[individual_3]]<br/><b> Value </b>: [[real_outlier_3]]","type":"line","valueField":"real_outlier_3"},{"lineColor":"black","lineAlpha":0,"bullet":"round","noStepRisers":true,"periodSpan":0.5,"balloonText":"<b> Individual </b>: [[individual_4]]<br/><b> Value </b>: [[real_outlier_4]]","type":"line","valueField":"real_outlier_4"},{"lineColor":"black","lineAlpha":0,"bullet":"round","noStepRisers":true,"periodSpan":0.5,"balloonText":"<b> Individual </b>: [[individual_5]]<br/><b> Value </b>: [[real_outlier_5]]","type":"line","valueField":"real_outlier_5"},{"lineColor":"black","lineAlpha":0,"bullet":"round","noStepRisers":true,"periodSpan":0.5,"balloonText":"<b> Individual </b>: [[individual_6]]<br/><b> Value </b>: [[real_outlier_6]]","type":"line","valueField":"real_outlier_6"},{"lineColor":"black","lineAlpha":0,"bullet":"round","noStepRisers":true,"periodSpan":0.5,"balloonText":"<b> Individual </b>: [[individual_7]]<br/><b> Value </b>: [[real_outlier_7]]","type":"line","valueField":"real_outlier_7"},{"lineColor":"black","lineAlpha":0,"bullet":"round","noStepRisers":true,"periodSpan":0.5,"balloonText":"<b> Individual </b>: [[individual_8]]<br/><b> Value </b>: [[real_outlier_8]]","type":"line","valueField":"real_outlier_8"},{"lineColor":"black","lineAlpha":0,"bullet":"round","noStepRisers":true,"periodSpan":0.5,"balloonText":"<b> Individual </b>: [[individual_9]]<br/><b> Value </b>: [[real_outlier_9]]","type":"line","valueField":"real_outlier_9"}],"theme":"light","type":"serial"},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":null},"evals":[]}</script></p>
+<p><div id="htmlwidget-7829" style="width:100%;height:500px;" class="ramcharts_base"></div>
+<script type="application/json" data-for="htmlwidget-7829">{"x":{"chartData":{"rotate":false,"categoryField":"cat","chartCursor":{"animationDuration":0.3,"oneBalloonOnly":true},"dataProvider":[{"cat":"1","low_outlier":35,"low":35,"open":57.5,"median":88,"close":137,"high":250,"high_outlier":250,"color":"gray","real_outlier_1":"259","individual_1":"166","real_outlier_2":"266","individual_2":"167","real_outlier_3":"288","individual_3":"83","real_outlier_4":"305","individual_4":"84"},{"cat":"2","low_outlier":39,"low":39,"open":65,"median":104.5,"close":163,"high":309,"high_outlier":309,"color":"gray","real_outlier_1":"318","individual_1":"231","real_outlier_2":"331","individual_2":"232"},{"cat":"3","low_outlier":39,"low":39,"open":67,"median":125.5,"close":199.5,"high":373,"high_outlier":373,"color":"gray"},{"cat":"4","low_outlier":39,"low":39,"open":69,"median":129.5,"close":185,"high":322,"high_outlier":322,"color":"gray"}],"graphs":[{"id":"g1","closeField":"close","fillColorsField":"color","highField":"high","lineColor":"#7f8da9","lineAlpha":1,"lowField":"low","fillAlphas":"0.9","negativeLineColor":"#7f8da9","openField":"open","balloonText":"High = <b>[[high_outlier]]</b><br/>3rd quart. = <b>[[close]]</b><br/>Median = <b>[[median]]</b><br/>1st quart. = <b>[[open]]</b><br/>Low = <b>[[low_outlier]]</b><br/>","title":"Price:","type":"candlestick","valueField":"close"},{"id":"g2","lineColor":"black","noStepRisers":true,"periodSpan":0.8,"lineThickness":3,"balloonText":"","type":"step","valueField":"median"},{"id":"g3","lineColor":"black","noStepRisers":true,"periodSpan":0.5,"balloonText":"","type":"step","valueField":"low_outlier"},{"id":"g4","lineColor":"black","noStepRisers":true,"periodSpan":0.5,"balloonText":"","type":"step","valueField":"high_outlier"},{"id":"g5","lineColor":"black","lineAlpha":0,"bullet":"round","noStepRisers":true,"periodSpan":0.5,"balloonText":"","type":"line","valueField":"real_outlier"},{"lineColor":"black","lineAlpha":0,"bullet":"round","noStepRisers":true,"periodSpan":0.5,"balloonText":"<b> Individual </b>: [[individual_1]]<br/><b> Value </b>: [[real_outlier_1]]","type":"line","valueField":"real_outlier_1"},{"lineColor":"black","lineAlpha":0,"bullet":"round","noStepRisers":true,"periodSpan":0.5,"balloonText":"<b> Individual </b>: [[individual_2]]<br/><b> Value </b>: [[real_outlier_2]]","type":"line","valueField":"real_outlier_2"},{"lineColor":"black","lineAlpha":0,"bullet":"round","noStepRisers":true,"periodSpan":0.5,"balloonText":"<b> Individual </b>: [[individual_3]]<br/><b> Value </b>: [[real_outlier_3]]","type":"line","valueField":"real_outlier_3"},{"lineColor":"black","lineAlpha":0,"bullet":"round","noStepRisers":true,"periodSpan":0.5,"balloonText":"<b> Individual </b>: [[individual_4]]<br/><b> Value </b>: [[real_outlier_4]]","type":"line","valueField":"real_outlier_4"},{"lineColor":"black","lineAlpha":0,"bullet":"round","noStepRisers":true,"periodSpan":0.5,"balloonText":"<b> Individual </b>: [[individual_5]]<br/><b> Value </b>: [[real_outlier_5]]","type":"line","valueField":"real_outlier_5"},{"lineColor":"black","lineAlpha":0,"bullet":"round","noStepRisers":true,"periodSpan":0.5,"balloonText":"<b> Individual </b>: [[individual_6]]<br/><b> Value </b>: [[real_outlier_6]]","type":"line","valueField":"real_outlier_6"},{"lineColor":"black","lineAlpha":0,"bullet":"round","noStepRisers":true,"periodSpan":0.5,"balloonText":"<b> Individual </b>: [[individual_7]]<br/><b> Value </b>: [[real_outlier_7]]","type":"line","valueField":"real_outlier_7"},{"lineColor":"black","lineAlpha":0,"bullet":"round","noStepRisers":true,"periodSpan":0.5,"balloonText":"<b> Individual </b>: [[individual_8]]<br/><b> Value </b>: [[real_outlier_8]]","type":"line","valueField":"real_outlier_8"},{"lineColor":"black","lineAlpha":0,"bullet":"round","noStepRisers":true,"periodSpan":0.5,"balloonText":"<b> Individual </b>: [[individual_9]]<br/><b> Value </b>: [[real_outlier_9]]","type":"line","valueField":"real_outlier_9"}],"theme":"light","type":"serial"},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":null},"evals":[]}</script></p>
 </div>
 <div id="coming-documentation" class="section level1">
 <h1>Coming: documentation</h1>
 </div>
 
-    <footer>
-      <p><small> © 2015-2016 DataKnowledge</small></p>
-    </footer>
+      </div> <!-- end of column -->
+    
+      <div class="col-xs-1 col-md-1" id="logo">
+        <a href="https://github.com/DataKnowledge/rAmCharts.git">
+          <img  src="www/img/github.jpg" title="View on Github" id="img-github"/>
+        </a>
+      </div>
+    
+    </div><!-- end of row -->
+  </div><!-- end of rigth column -->
   
-  </div>
-  
-  <div class="col-xs-1 col-md-1">
-    <a href="https://github.com/DataKnowledge/rAmCharts.git">
-      <img  src="www/img/github.jpg" title="Fork me on Github"/>
-    </a>
-  </div>
-  
-</div>
+  <script src="./www/js/navbar.js"> </script>
+  <script src="./www/js/logo.js"> </script>
+</div><!-- end of main row -->
 
 </div>
 

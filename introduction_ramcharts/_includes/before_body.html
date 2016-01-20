@@ -1,10 +1,10 @@
 <!-- bootstrap row container for all the content -->
   
-<div class="row">
+<div class="row" data-sticky_parent>
   
   <nav class="col-xs-2 col-md-2" id="navbar">
     
-    <ultoc class="toc">
+    <ultoc class="toc" id="nav">
       <div class="main-toc"><b>R Package: rAmCharts</b></div>
       <hr/>
       
@@ -43,18 +43,13 @@
       <litoc list-style-type:disc><a class="toc-item" href="amWaterfall.html">amWaterfall</a></litoc>
       <litoc list-style-type:disc><a class="toc-item" href="amWind.html">amWind</a></litoc>
       -->
-      <br/>
     </ultoc>
     
-  </nav>
+    <footer>
+      <div class="copyrights"><small> © 2015-2016 DataKnowledge</small></div>
+    </footer>
+  </nav><!-- end of left column -->
   
-  <script>
-    // manage active state of toc based on current page
-    var href = window.location.pathname;
-    href = href.substr(href.lastIndexOf('/') + 1);
-    if (href === "" || href === "index.html")
-      href = "index.html";
-    $('a.toc-item[href="' + href + '"]').addClass('active');
-  </script>
-  
-  <div class="col-xs-9 col-md-9" data-sticky_column>
+  <div class="col-xs-10 col-md-10">
+    <div class="row">
+      <div class="col-xs-11 col-md-11">

@@ -21,7 +21,6 @@
 <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Pompiere' rel='stylesheet' type='text/css'>
-<script src="./www/js/sticky-kit.js"></script>
 
 <style type="text/css">code{white-space: pre;}</style>
 <link rel="stylesheet"
@@ -67,11 +66,11 @@ img {
 
 <!-- bootstrap row container for all the content -->
   
-<div class="row">
+<div class="row" data-sticky_parent>
   
   <nav class="col-xs-2 col-md-2" id="navbar">
     
-    <ultoc class="toc">
+    <ultoc class="toc" id="nav">
       <div class="main-toc"><b>R Package: rAmCharts</b></div>
       <hr/>
       
@@ -98,6 +97,10 @@ img {
       -->
       <litoc list-style-type:disc><a class="toc-item" href="amCandlestick.html">amCandlestick</a></litoc>
       <litoc list-style-type:disc><a class="toc-item" href="amHist.html">amHist</a></litoc>
+      
+
+      <litoc list-style-type:disc><a class="toc-item" href="amRadar.html">amRadar</a></litoc>
+      
       <!--
       <litoc list-style-type:disc><a class="toc-item" href="amMekko.html">amMekko</a></litoc>
       <litoc list-style-type:disc><a class="toc-item" href="amPie.html">amPie</a></litoc>
@@ -106,21 +109,16 @@ img {
       <litoc list-style-type:disc><a class="toc-item" href="amWaterfall.html">amWaterfall</a></litoc>
       <litoc list-style-type:disc><a class="toc-item" href="amWind.html">amWind</a></litoc>
       -->
-      <br/>
     </ultoc>
     
-  </nav>
+    <footer>
+      <div class="copyrights"><small> © 2015-2016 DataKnowledge</small></div>
+    </footer>
+  </nav><!-- end of left column -->
   
-  <script>
-    // manage active state of toc based on current page
-    var href = window.location.pathname;
-    href = href.substr(href.lastIndexOf('/') + 1);
-    if (href === "" || href === "index.html")
-      href = "index.html";
-    $('a.toc-item[href="' + href + '"]').addClass('active');
-  </script>
-  
-  <div class="col-xs-9 col-md-9" data-sticky_column>
+  <div class="col-xs-10 col-md-10">
+    <div class="row">
+      <div class="col-xs-11 col-md-11">
 
 
 
@@ -137,19 +135,20 @@ img {
 <h1>Coming: Legend settings</h1>
 </div>
 
-    <footer>
-      <p><small> © 2015-2016 DataKnowledge</small></p>
-    </footer>
+      </div> <!-- end of column -->
+    
+      <div class="col-xs-1 col-md-1" id="logo">
+        <a href="https://github.com/DataKnowledge/rAmCharts.git">
+          <img  src="www/img/github.jpg" title="View on Github" id="img-github"/>
+        </a>
+      </div>
+    
+    </div><!-- end of row -->
+  </div><!-- end of rigth column -->
   
-  </div>
-  
-  <div class="col-xs-1 col-md-1">
-    <a href="https://github.com/DataKnowledge/rAmCharts.git">
-      <img  src="www/img/github.jpg" title="Fork me on Github"/>
-    </a>
-  </div>
-  
-</div>
+  <script src="./www/js/navbar.js"> </script>
+  <script src="./www/js/logo.js"> </script>
+</div><!-- end of main row -->
 
 </div>
 
