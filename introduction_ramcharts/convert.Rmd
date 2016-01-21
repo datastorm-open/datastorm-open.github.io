@@ -11,16 +11,8 @@ require(pipeR)
 
 ### Exemple with a pie chart
 
-```{r}
-data("data_gdp")
-pipeR::pipeline(
-  amPieChart(valueField = 'gdp', titleField = 'country',
-             dataProvider = data_gdp, startDuration = 0),
-  plot()
-)
-```
 
-JS code : 
+JS code: 
 
 ```javascript
 amcharts = {
@@ -28,6 +20,10 @@ amcharts = {
   theme: "light",
   valueField: "gdp",
   titleField: "country",
+  legend: {
+    position: "bottom",
+    useMarkerColorForLabels: true
+  }
   dataProvider: [
     {country: "China", gdp: 18.976},
     {country: "United States", gdp: 18.125},
@@ -36,4 +32,74 @@ amcharts = {
 }
 ```
 
+Result: 
 
+```{r, echo=FALSE}
+data("data_gdp")
+pipeR::pipeline(
+  amPieChart(valueField = 'gdp', titleField = 'country',
+             dataProvider = data_gdp, startDuration = 0),
+  setLegend(position = "bottom", useMarkerColorForLabels = TRUE),
+  plot()
+)
+```
+
+
+As you can see in the above example, an amcharts is defined as an object with different properties (which can be other object or array of objects). That works the same way in our package. For most of the existing objects in the JS library we have defined an S4 class that you can instantiate with a specific constructor. For instance if we want to declare an empty amcharts, use:
+```{r}
+amChart() %>>% print()
+```
+
+This creates en empty object, ready to get its different properties ! Also let's notice that the different properties will appear in a list. That is a developpement choice for conveniency with the package 'htmlwidgets', but do not worry, for basic use you should never have to create the list by yourself.
+
+
+Now let's keep creating the chart.
+
+For setting the chart properties, you have two choices:
+
+- Either it is a _simple property_ (not a object), in this case you can add the property directly in the constructor -best practice- or use a dedicated setter method if exists.
+
+- Or it is a _complex property_ (object), in this case use a dedicated setter method:
+
+A setter method is an R function with the syntax `setXXX()` which have several parameters. The first parameter generally called '.Object' is the object to which you want to set a property (it can be a __chart__, a __legend__, a __graph__...). The other parameter are the named properties.
+
+#### Illustration for a _simple property_ :
+```{r, eval=FALSE}
+amChart(type = "pie")
+# strictly equivalent to
+amChart() %>>% setType(type = "pie")
+```
+
+Important: __every__ amchart has a property called 'type'. We recommend to set it directly by using the specific constructor:
+
+Illustration for a _simple property_ :
+
+```{r}
+amPieChart() %>>% print()
+```
+
+#### Illustration for a _complex property_ :
+```{r}
+amPieChart() %>>% setLegend(position = "bottom", useMarkerColorForLabels = TRUE) %>>% print()
+```
+
+Notice: as in the latter example, if you want to share settings for several amcharts you can also instantiate an object then set it to your charts in the constructors:
+
+```{r, eval=FALSE}
+legend_obj <- legend(position = "bottom", useMarkerColorForLabels = TRUE)
+amchart1 <- amChart(legend = legend_obj)
+amchart2 <- amChart(legend = legend_obj)
+```
+
+
+#### Different property : dataProvider
+
+The property 'dataProvider' contain all data needed by an amchart. As we are R developer we have chosen that dataProvider would have a data.frame format (alternatively data.table).
+
+Consequently, to set the dataProvider property you can either use the setter method or use the named parameter in the constructor:
+
+```{r}
+amPieChart(dataProvider = data_gdp)
+# equivalent to:
+amPieChart() %>>% setDataProvider(dataProvider = data_gdp) 
+```

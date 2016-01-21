@@ -3,39 +3,50 @@
   overflow: auto;
 }
 
-litoc a {
+#main-toc {
+  padding: 8px;
+  text-align: center;
+  font-family: 'Raleway', Helvetica, Arial, sans-serif;
+}
+
+
+body litoc a {
     display: block;
     color: #00000;
     padding: 8px 0 8px 16px;
     text-decoration: none;
 }
 
-litoc a.active {
+body litoc a.active {
     background-color: #3c8dbc;
     color: white;
+    text-decoration: none;
 }
 
-litoc a:hover:not(.active) {
+body litoc a:hover:not(.active) {
     background-color: #555;
     color: white;
+    text-decoration: none;
 }
 
-h1, h2, h3, h4, h5 {
-  font-family: 'Pompiere', cursive;
+body h1, h2, h3, h4, h5 {
+  font-family: 'Raleway', Helvetica, Arial, sans-serif;
+  /*font-family: 'Pompiere', cursive;*/
 }
 
-div {
+body div {
   font-family: 'Hind', sans-serif;
 }
 
-footer {
+nav footer {
   border-top: 1px solid #CCC;
   margin-top: 60px;
   margin-bottom: 48px;
   opacity: .75;
 }
 
-body .r, .javascript, code{
+
+body code, .r, .javascript{
   font-size:11px;
 }
 
@@ -45,18 +56,15 @@ body .ramcharts_base {
   margin-right: auto;
 }
 
-body .main-toc {
-  text-align:center;
-}
-
 body .section-toc {
   color:#A9A9A9;
   margin-left:8px;
 }
 
 body .main-container {
-  max-width: 95%;
-  padding: 0;
+  box-sizing: border-box;
+  max-width: 100%;
+  padding: auto;
   margin-left: auto;
   margin-right: auto;
 }

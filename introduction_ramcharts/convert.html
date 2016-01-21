@@ -12,19 +12,21 @@
 
 <title>Convert JS code</title>
 
-<script src="libs/jquery/jquery.min.js"></script>
+<script src="libs/jquery-1.11.0/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="libs/bootstrap/css/cosmo.min.css" rel="stylesheet" />
-<script src="libs/bootstrap/js/bootstrap.min.js"></script>
-<script src="libs/bootstrap/shim/html5shiv.min.js"></script>
-<script src="libs/bootstrap/shim/respond.min.js"></script>
-<script src="libs/htmlwidgets/htmlwidgets.js"></script>
-<script src="libs/amcharts/amcharts.js"></script>
-<script src="libs/ramcharts_base-binding/ramcharts_base.js"></script>
-<script src="libs/amcharts/pie.js"></script>
+<link href="libs/bootstrap-3.3.1/css/cosmo.min.css" rel="stylesheet" />
+<script src="libs/bootstrap-3.3.1/js/bootstrap.min.js"></script>
+<script src="libs/bootstrap-3.3.1/shim/html5shiv.min.js"></script>
+<script src="libs/bootstrap-3.3.1/shim/respond.min.js"></script>
+<script src="libs/htmlwidgets-0.5/htmlwidgets.js"></script>
+<script src="libs/amcharts-3.18.2/amcharts.js"></script>
+<script src="libs/ramcharts_base-binding-1.1.3/ramcharts_base.js"></script>
+<script src="libs/amcharts_typepie-3.18.2/pie.js"></script>
 <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Pompiere' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Raleway:100' rel='stylesheet' type='text/css'>
 
 <style type="text/css">code{white-space: pre;}</style>
 <link rel="stylesheet"
@@ -70,12 +72,13 @@ img {
 
 <!-- bootstrap row container for all the content -->
   
-<div class="row" data-sticky_parent>
+<div class="row">
   
-  <nav class="col-xs-2 col-md-2" id="navbar">
+  <nav class="col-xs-3 col-md-2" id="navbar">
     
     <ultoc class="toc" id="nav">
-      <div class="main-toc"><b>R Package: rAmCharts</b></div>
+      
+      <p id="main-toc">Tutorial - rAmCharts</p>
       <hr/>
       
       <b class="section-toc">Getting started</b>
@@ -120,7 +123,7 @@ img {
     </footer>
   </nav><!-- end of left column -->
   
-  <div class="col-xs-10 col-md-10">
+  <div class="col-xs-9 col-md-10">
     <div class="row">
       <div class="col-xs-11 col-md-11">
 
@@ -130,26 +133,91 @@ img {
 <h2>Same structure as JS</h2>
 <div id="exemple-with-a-pie-chart" class="section level3">
 <h3>Exemple with a pie chart</h3>
-<pre class="r"><code>data(&quot;data_gdp&quot;)
-pipeR::pipeline(
-  amPieChart(valueField = &#39;gdp&#39;, titleField = &#39;country&#39;,
-             dataProvider = data_gdp, startDuration = 0),
-  plot()
-)</code></pre>
-<p><div id="htmlwidget-3506" style="width:100%;height:500px;" class="ramcharts_base"></div>
-<script type="application/json" data-for="htmlwidget-3506">{"x":{"chartData":{"valueField":"gdp","titleField":"country","startDuration":0,"dataProvider":[{"country":"China","gdp":18.976},{"country":"United States","gdp":18.125},{"country":"India","gdp":7.997},{"country":"Japan","gdp":4.843},{"country":"Germany","gdp":3.815},{"country":"Russia","gdp":3.458},{"country":"Brazil","gdp":3.259},{"country":"Indonesia","gdp":2.84},{"country":"United Kingdom","gdp":2.641},{"country":"France","gdp":2.634}],"type":"pie"},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":null},"evals":[]}</script></p>
-<p>JS code :</p>
+<p>JS code:</p>
 <pre class="javascript"><code>amcharts = {
   type: &quot;pie&quot;,
   theme: &quot;light&quot;,
   valueField: &quot;gdp&quot;,
   titleField: &quot;country&quot;,
+  legend: {
+    position: &quot;bottom&quot;,
+    useMarkerColorForLabels: true
+  }
   dataProvider: [
     {country: &quot;China&quot;, gdp: 18.976},
     {country: &quot;United States&quot;, gdp: 18.125},
     ...
   ],
 }</code></pre>
+<p>Result:</p>
+<p><div id="htmlwidget-4112" style="width:100%;height:500px;" class="ramcharts_base"></div>
+<script type="application/json" data-for="htmlwidget-4112">{"x":{"chartData":{"valueField":"gdp","titleField":"country","startDuration":0,"dataProvider":[{"country":"China","gdp":18.976},{"country":"United States","gdp":18.125},{"country":"India","gdp":7.997},{"country":"Japan","gdp":4.843},{"country":"Germany","gdp":3.815},{"country":"Russia","gdp":3.458},{"country":"Brazil","gdp":3.259},{"country":"Indonesia","gdp":2.84},{"country":"United Kingdom","gdp":2.641},{"country":"France","gdp":2.634}],"legend":{"position":"bottom","useMarkerColorForLabels":true},"type":"pie"},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":null},"evals":[]}</script></p>
+<p>As you can see in the above example, an amcharts is defined as an object with different properties (which can be other object or array of objects). That works the same way in our package. For most of the existing objects in the JS library we have defined an S4 class that you can instantiate with a specific constructor. For instance if we want to declare an empty amcharts, use:</p>
+<pre class="r"><code>amChart() %&gt;&gt;% print()</code></pre>
+<pre><code>## ~  AmChart  object (with detail)~
+## 
+## Referenced properties:
+##  
+## 
+##    - Detail:
+## list()</code></pre>
+<p>This creates en empty object, ready to get its different properties ! Also let’s notice that the different properties will appear in a list. That is a developpement choice for conveniency with the package ‘htmlwidgets’, but do not worry, for basic use you should never have to create the list by yourself.</p>
+<p>Now let’s keep creating the chart.</p>
+<p>For setting the chart properties, you have two choices:</p>
+<ul>
+<li><p>Either it is a <em>simple property</em> (not a object), in this case you can add the property directly in the constructor -best practice- or use a dedicated setter method if exists.</p></li>
+<li><p>Or it is a <em>complex property</em> (object), in this case use a dedicated setter method:</p></li>
+</ul>
+<p>A setter method is an R function with the syntax <code>setXXX()</code> which have several parameters. The first parameter generally called ‘.Object’ is the object to which you want to set a property (it can be a <strong>chart</strong>, a <strong>legend</strong>, a <strong>graph</strong>…). The other parameter are the named properties.</p>
+<div id="illustration-for-a-simple-property" class="section level4">
+<h4>Illustration for a <em>simple property</em> :</h4>
+<pre class="r"><code>amChart(type = &quot;pie&quot;)
+# strictly equivalent to
+amChart() %&gt;&gt;% setType(type = &quot;pie&quot;)</code></pre>
+<p>Important: <strong>every</strong> amchart has a property called ‘type’. We recommend to set it directly by using the specific constructor:</p>
+<p>Illustration for a <em>simple property</em> :</p>
+<pre class="r"><code>amPieChart() %&gt;&gt;% print()</code></pre>
+<pre><code>## ~  AmChart  object (with detail)~
+## 
+## Referenced properties:
+## type 
+## 
+##    - Detail:
+## $type
+## [1] &quot;pie&quot;</code></pre>
+</div>
+<div id="illustration-for-a-complex-property" class="section level4">
+<h4>Illustration for a <em>complex property</em> :</h4>
+<pre class="r"><code>amPieChart() %&gt;&gt;% setLegend(position = &quot;bottom&quot;, useMarkerColorForLabels = TRUE) %&gt;&gt;% print()</code></pre>
+<pre><code>## ~  AmChart  object (with detail)~
+## 
+## Referenced properties:
+## legend, type 
+## 
+##    - Detail:
+## $legend
+## $legend$position
+## [1] &quot;bottom&quot;
+## 
+## $legend$useMarkerColorForLabels
+## [1] TRUE
+## 
+## 
+## $type
+## [1] &quot;pie&quot;</code></pre>
+<p>Notice: as in the latter example, if you want to share settings for several amcharts you can also instantiate an object then set it to your charts in the constructors:</p>
+<pre class="r"><code>legend_obj &lt;- legend(position = &quot;bottom&quot;, useMarkerColorForLabels = TRUE)
+amchart1 &lt;- amChart(legend = legend_obj)
+amchart2 &lt;- amChart(legend = legend_obj)</code></pre>
+</div>
+<div id="different-property-dataprovider" class="section level4">
+<h4>Different property : dataProvider</h4>
+<p>The property ‘dataProvider’ contain all data needed by an amchart. As we are R developer we have chosen that dataProvider would have a data.frame format (alternatively data.table).</p>
+<p>Consequently, to set the dataProvider property you can either use the setter method or use the named parameter in the constructor:</p>
+<pre class="r"><code>amPieChart(dataProvider = data_gdp)
+# equivalent to:
+amPieChart() %&gt;&gt;% setDataProvider(dataProvider = data_gdp) </code></pre>
+</div>
 </div>
 </div>
 
