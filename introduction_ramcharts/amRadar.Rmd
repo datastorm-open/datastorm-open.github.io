@@ -1,13 +1,11 @@
 ---
-  pagetitle: amRadar
+pagetitle: rAmCharts - amRadar
 ---
 
 ```{r,echo=FALSE, message=FALSE}
 require(package = "rAmCharts", quietly = TRUE)
 require(package = "pipeR", quietly = TRUE)
 ```
-
-# amRadar
 
 ## Parameters
   
@@ -206,7 +204,7 @@ amRadar(data = data,  pch = "bubble", backTransparency = 0,
 amRadar(data = data,  pch = "bubble", backTransparency = 1, main = "My Radar", theme = "patterns")
 #or
 amRadar(data = data = data,  pch = "bubble", backTransparency = 1) %>>% 
-  amOptions( theme = "patterns")
+  amOptions(theme = "patterns")
 ```
 ```{r, echo = FALSE}
 amRadar(data = data,  pch = "bubble", backTransparency = 1, theme = "patterns") %>>% plot()

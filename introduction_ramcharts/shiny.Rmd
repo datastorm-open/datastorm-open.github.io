@@ -1,5 +1,5 @@
 ---
-pagetitle: Shiny
+pagetitle: rAmCharts - shiny integration
 ---
 
 ```{r,echo=FALSE, message=FALSE}
@@ -30,7 +30,7 @@ shinyApp(
 
 ```{r, eval = TRUE, echo=FALSE, fig.height=1}
 iris <- get(x = "iris", pos = "package:datasets")
-amBoxplot(iris[, -5]) %>>% plot(height = "400px")
+amBoxplot(iris[, -5]) %>>% plot()
 ```
 
 # Shiny interactions

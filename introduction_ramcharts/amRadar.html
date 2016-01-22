@@ -10,7 +10,7 @@
 
 
 
-<title>amRadar</title>
+<title>rAmCharts - amRadar</title>
 
 <script src="libs/jquery/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -30,6 +30,7 @@
 <link href='https://fonts.googleapis.com/css?family=Pompiere' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Raleway:100' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
 
 <style type="text/css">code{white-space: pre;}</style>
 <link rel="stylesheet"
@@ -77,54 +78,66 @@ img {
   
 <div class="row">
   
-  <nav class="col-xs-3 col-md-2" id="navbar">
+  <div class="col-xs-3 col-md-2" id="navbar">
     
-    <ultoc class="toc" id="nav">
+    <div id="main-toc">Tutorial - rAmCharts</div>
+    <hr/>
       
-      <p id="main-toc">Tutorial - rAmCharts</p>
-      <hr/>
-      
-      <b class="section-toc">Getting started</b>
-      <br/><br/>
+    <b class="section-toc">Getting started</b>
+    <br/>
 
-      <litoc><a class="toc-item" href="index.html">Introduction</a></litoc>
-      <litoc><a class="toc-item" href="convert.html">Convert from JS</a></litoc>
-      <litoc><a class="toc-item" href="shiny.html">Use in shiny apps</a></litoc>
-      <litoc><a class="toc-item" href="advance.html">Advanced features</a></litoc>
+    <ul class="toc" id="nav-intro">
+      <li class="litoc">
+        <a class="toc-item" href="index.html">Introduction</a>
+      </li>
+      <li class="litoc">
+        <a class="toc-item" href="convert.html">Quick tutorial</a>
+      </li>
+      <li class="litoc">
+        <a class="toc-item" href="shiny.html">Use in shiny apps</a>
+      </li>
+      <li class="litoc">
+        <a class="toc-item" href="advance.html">Advanced features</a>
+        </li>
+    </ul> 
+    <hr/>
       
-      <hr/>
+    <b class="section-toc">Functions 'am'</b>
+    <br/>
       
-      <b class="section-toc">Functions 'am'</b>
-      <br/><br/>
-      
+    <ul class="toc" id="nav-amfunctions">   
       <!--
-      <litoc list-style-type:disc><a class="toc-item" href="amAngularGauge.html">amAngularGauge</a></litoc>
+      <li class="litoc"><a class="toc-item" href="amAngularGauge.html">amAngularGauge</a></li>
       -->
-      <litoc list-style-type:disc><a class="toc-item" href="amBarplot.html">amBarplot</a></litoc>
-      <litoc list-style-type:disc><a class="toc-item" href="amBoxplot.html">amBoxplot</a></litoc>
+      <li class="litoc">
+        <a class="toc-item" href="amBarplot.html">amBarplot</a>
+      </li>
+      <li class="litoc">
+        <a class="toc-item" href="amBoxplot.html">amBoxplot</a>
+      </li>
       <!--
-      <litoc list-style-type:disc><a class="toc-item" href="amBullet.html">amBullet</a></litoc>
+      <li class="litoc"><a class="toc-item" href="amBullet.html">amBullet</a></li>
       -->
-      <litoc list-style-type:disc><a class="toc-item" href="amCandlestick.html">amCandlestick</a></litoc>
-      <litoc list-style-type:disc><a class="toc-item" href="amHist.html">amHist</a></litoc>
+      <li class="litoc"><a class="toc-item" href="amCandlestick.html">amCandlestick</a></li>
+      <li class="litoc"><a class="toc-item" href="amHist.html">amHist</a></li>
       
 
-      <litoc list-style-type:disc><a class="toc-item" href="amRadar.html">amRadar</a></litoc>
+      <li class="litoc"><a class="toc-item" href="amRadar.html">amRadar</a></li>
       
       <!--
-      <litoc list-style-type:disc><a class="toc-item" href="amMekko.html">amMekko</a></litoc>
-      <litoc list-style-type:disc><a class="toc-item" href="amPie.html">amPie</a></litoc>
-      <litoc list-style-type:disc><a class="toc-item" href="amPlot.html">amPlot</a></litoc>
-      <litoc list-style-type:disc><a class="toc-item" href="amRadar.html">amRadar</a></litoc>
-      <litoc list-style-type:disc><a class="toc-item" href="amWaterfall.html">amWaterfall</a></litoc>
-      <litoc list-style-type:disc><a class="toc-item" href="amWind.html">amWind</a></litoc>
+      <li class="litoc"><a class="toc-item" href="amMekko.html">amMekko</a></li>
+      <li class="litoc"><a class="toc-item" href="amPie.html">amPie</a></li>
+      <li class="litoc"><a class="toc-item" href="amPlot.html">amPlot</a></li>
+      <li class="litoc"><a class="toc-item" href="amRadar.html">amRadar</a></li>
+      <li class="litoc"><a class="toc-item" href="amWaterfall.html">amWaterfall</a></li>
+      <li class="litoc"><a class="toc-item" href="amWind.html">amWind</a></li>
       -->
-    </ultoc>
+    </ul>
     
     <footer>
       <div class="copyrights"><small> © 2015-2016 DataKnowledge</small></div>
     </footer>
-  </nav><!-- end of left column -->
+  </div><!-- end of left column -->
   
   <div class="col-xs-9 col-md-10">
     <div class="row">
@@ -132,8 +145,6 @@ img {
 
 
 
-<div id="amradar" class="section level1">
-<h1>amRadar</h1>
 <div id="parameters" class="section level2">
 <h2>Parameters</h2>
 <ul>
@@ -157,16 +168,16 @@ img {
 Basic exemple
 </h2>
 <pre class="r"><code>amRadar(data = data)</code></pre>
-<div id="htmlwidget-2166" style="width:100%;height:500px;" class="ramcharts_base"></div>
-<script type="application/json" data-for="htmlwidget-2166">{"x":{"chartData":{"type":"radar","categoryField":"label","creditsPosition":"top-left","dataProvider":[{"label":"A","Product1":1,"Product2":2,"Product3":1},{"label":"Z","Product1":2,"Product2":8,"Product3":1},{"label":"E","Product1":3,"Product2":1,"Product3":2},{"label":"R","Product1":4,"Product2":1,"Product3":2},{"label":"T","Product1":2,"Product2":0,"Product3":4}],"graphs":[{"lineColor":"","fillAlphas":0.5,"bullet":"round","balloonText":"<b>[[title]]</b><br>[[category]] : <b>[[value]]</b>","title":"Product1","valueField":"Product1"},{"lineColor":"","fillAlphas":0.5,"bullet":"round","balloonText":"<b>[[title]]</b><br>[[category]] : <b>[[value]]</b>","title":"Product2","valueField":"Product2"},{"lineColor":"","fillAlphas":0.5,"bullet":"round","balloonText":"<b>[[title]]</b><br>[[category]] : <b>[[value]]</b>","title":"Product3","valueField":"Product3"}],"type.1":"radar","valueAxes":[{"gridType":"polygons"}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[]}</script>
+<div id="htmlwidget-3907" style="width:100%;height:500px;" class="ramcharts_base"></div>
+<script type="application/json" data-for="htmlwidget-3907">{"x":{"chartData":{"type":"radar","categoryField":"label","dataProvider":[{"label":"A","Product1":1,"Product2":2,"Product3":1},{"label":"Z","Product1":2,"Product2":8,"Product3":1},{"label":"E","Product1":3,"Product2":1,"Product3":2},{"label":"R","Product1":4,"Product2":1,"Product3":2},{"label":"T","Product1":2,"Product2":0,"Product3":4}],"graphs":[{"lineColor":"","fillAlphas":0.5,"bullet":"round","balloonText":"<b>[[title]]</b><br>[[category]] : <b>[[value]]</b>","title":"Product1","valueField":"Product1"},{"lineColor":"","fillAlphas":0.5,"bullet":"round","balloonText":"<b>[[title]]</b><br>[[category]] : <b>[[value]]</b>","title":"Product2","valueField":"Product2"},{"lineColor":"","fillAlphas":0.5,"bullet":"round","balloonText":"<b>[[title]]</b><br>[[category]] : <b>[[value]]</b>","title":"Product3","valueField":"Product3"}],"type.1":"radar","valueAxes":[{"gridType":"polygons"}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[]}</script>
 </div>
 <div class="col-xs-12 col-md-6">
 <h2 class="partdivtitle">
 Change color
 </h2>
 <pre class="r"><code>amRadar(data = data, col = c(&quot;#0000FF&quot;, &quot;#00FF00&quot;, &quot;#FF0000&quot;))</code></pre>
-<div id="htmlwidget-8509" style="width:100%;height:500px;" class="ramcharts_base"></div>
-<script type="application/json" data-for="htmlwidget-8509">{"x":{"chartData":{"type":"radar","categoryField":"label","creditsPosition":"top-left","dataProvider":[{"label":"A","Product1":1,"Product2":2,"Product3":1},{"label":"Z","Product1":2,"Product2":8,"Product3":1},{"label":"E","Product1":3,"Product2":1,"Product3":2},{"label":"R","Product1":4,"Product2":1,"Product3":2},{"label":"T","Product1":2,"Product2":0,"Product3":4}],"graphs":[{"lineColor":"#0000FF","fillAlphas":0.5,"bullet":"round","balloonText":"<b>[[title]]</b><br>[[category]] : <b>[[value]]</b>","title":"Product1","valueField":"Product1"},{"lineColor":"#00FF00","fillAlphas":0.5,"bullet":"round","balloonText":"<b>[[title]]</b><br>[[category]] : <b>[[value]]</b>","title":"Product2","valueField":"Product2"},{"lineColor":"#FF0000","fillAlphas":0.5,"bullet":"round","balloonText":"<b>[[title]]</b><br>[[category]] : <b>[[value]]</b>","title":"Product3","valueField":"Product3"}],"type.1":"radar","valueAxes":[{"gridType":"polygons"}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[]}</script>
+<div id="htmlwidget-6371" style="width:100%;height:500px;" class="ramcharts_base"></div>
+<script type="application/json" data-for="htmlwidget-6371">{"x":{"chartData":{"type":"radar","categoryField":"label","dataProvider":[{"label":"A","Product1":1,"Product2":2,"Product3":1},{"label":"Z","Product1":2,"Product2":8,"Product3":1},{"label":"E","Product1":3,"Product2":1,"Product3":2},{"label":"R","Product1":4,"Product2":1,"Product3":2},{"label":"T","Product1":2,"Product2":0,"Product3":4}],"graphs":[{"lineColor":"#0000FF","fillAlphas":0.5,"bullet":"round","balloonText":"<b>[[title]]</b><br>[[category]] : <b>[[value]]</b>","title":"Product1","valueField":"Product1"},{"lineColor":"#00FF00","fillAlphas":0.5,"bullet":"round","balloonText":"<b>[[title]]</b><br>[[category]] : <b>[[value]]</b>","title":"Product2","valueField":"Product2"},{"lineColor":"#FF0000","fillAlphas":0.5,"bullet":"round","balloonText":"<b>[[title]]</b><br>[[category]] : <b>[[value]]</b>","title":"Product3","valueField":"Product3"}],"type.1":"radar","valueAxes":[{"gridType":"polygons"}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[]}</script>
 </div>
 </div>
 <h2 class="partdivtitle">
@@ -175,13 +186,13 @@ backTransparency
 <div class="row">
 <div class="col-xs-12 col-md-6">
 <pre class="r"><code>amRadar(data = data, backTransparency = 1)</code></pre>
-<div id="htmlwidget-7012" style="width:100%;height:500px;" class="ramcharts_base"></div>
-<script type="application/json" data-for="htmlwidget-7012">{"x":{"chartData":{"type":"radar","categoryField":"label","creditsPosition":"top-left","dataProvider":[{"label":"A","Product1":1,"Product2":2,"Product3":1},{"label":"Z","Product1":2,"Product2":8,"Product3":1},{"label":"E","Product1":3,"Product2":1,"Product3":2},{"label":"R","Product1":4,"Product2":1,"Product3":2},{"label":"T","Product1":2,"Product2":0,"Product3":4}],"graphs":[{"lineColor":"","fillAlphas":1,"bullet":"round","balloonText":"<b>[[title]]</b><br>[[category]] : <b>[[value]]</b>","title":"Product1","valueField":"Product1"},{"lineColor":"","fillAlphas":1,"bullet":"round","balloonText":"<b>[[title]]</b><br>[[category]] : <b>[[value]]</b>","title":"Product2","valueField":"Product2"},{"lineColor":"","fillAlphas":1,"bullet":"round","balloonText":"<b>[[title]]</b><br>[[category]] : <b>[[value]]</b>","title":"Product3","valueField":"Product3"}],"type.1":"radar","valueAxes":[{"gridType":"polygons"}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[]}</script>
+<div id="htmlwidget-796" style="width:100%;height:500px;" class="ramcharts_base"></div>
+<script type="application/json" data-for="htmlwidget-796">{"x":{"chartData":{"type":"radar","categoryField":"label","dataProvider":[{"label":"A","Product1":1,"Product2":2,"Product3":1},{"label":"Z","Product1":2,"Product2":8,"Product3":1},{"label":"E","Product1":3,"Product2":1,"Product3":2},{"label":"R","Product1":4,"Product2":1,"Product3":2},{"label":"T","Product1":2,"Product2":0,"Product3":4}],"graphs":[{"lineColor":"","fillAlphas":1,"bullet":"round","balloonText":"<b>[[title]]</b><br>[[category]] : <b>[[value]]</b>","title":"Product1","valueField":"Product1"},{"lineColor":"","fillAlphas":1,"bullet":"round","balloonText":"<b>[[title]]</b><br>[[category]] : <b>[[value]]</b>","title":"Product2","valueField":"Product2"},{"lineColor":"","fillAlphas":1,"bullet":"round","balloonText":"<b>[[title]]</b><br>[[category]] : <b>[[value]]</b>","title":"Product3","valueField":"Product3"}],"type.1":"radar","valueAxes":[{"gridType":"polygons"}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[]}</script>
 </div>
 <div class="col-xs-12 col-md-6">
 <pre class="r"><code>amRadar(data = data, backTransparency = c(0, 0.4, 0.6))</code></pre>
-<div id="htmlwidget-8267" style="width:100%;height:500px;" class="ramcharts_base"></div>
-<script type="application/json" data-for="htmlwidget-8267">{"x":{"chartData":{"type":"radar","categoryField":"label","creditsPosition":"top-left","dataProvider":[{"label":"A","Product1":1,"Product2":2,"Product3":1},{"label":"Z","Product1":2,"Product2":8,"Product3":1},{"label":"E","Product1":3,"Product2":1,"Product3":2},{"label":"R","Product1":4,"Product2":1,"Product3":2},{"label":"T","Product1":2,"Product2":0,"Product3":4}],"graphs":[{"lineColor":"","fillAlphas":0,"bullet":"round","balloonText":"<b>[[title]]</b><br>[[category]] : <b>[[value]]</b>","title":"Product1","valueField":"Product1"},{"lineColor":"","fillAlphas":0.4,"bullet":"round","balloonText":"<b>[[title]]</b><br>[[category]] : <b>[[value]]</b>","title":"Product2","valueField":"Product2"},{"lineColor":"","fillAlphas":0.6,"bullet":"round","balloonText":"<b>[[title]]</b><br>[[category]] : <b>[[value]]</b>","title":"Product3","valueField":"Product3"}],"type.1":"radar","valueAxes":[{"gridType":"polygons"}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[]}</script>
+<div id="htmlwidget-9961" style="width:100%;height:500px;" class="ramcharts_base"></div>
+<script type="application/json" data-for="htmlwidget-9961">{"x":{"chartData":{"type":"radar","categoryField":"label","dataProvider":[{"label":"A","Product1":1,"Product2":2,"Product3":1},{"label":"Z","Product1":2,"Product2":8,"Product3":1},{"label":"E","Product1":3,"Product2":1,"Product3":2},{"label":"R","Product1":4,"Product2":1,"Product3":2},{"label":"T","Product1":2,"Product2":0,"Product3":4}],"graphs":[{"lineColor":"","fillAlphas":0,"bullet":"round","balloonText":"<b>[[title]]</b><br>[[category]] : <b>[[value]]</b>","title":"Product1","valueField":"Product1"},{"lineColor":"","fillAlphas":0.4,"bullet":"round","balloonText":"<b>[[title]]</b><br>[[category]] : <b>[[value]]</b>","title":"Product2","valueField":"Product2"},{"lineColor":"","fillAlphas":0.6,"bullet":"round","balloonText":"<b>[[title]]</b><br>[[category]] : <b>[[value]]</b>","title":"Product3","valueField":"Product3"}],"type.1":"radar","valueAxes":[{"gridType":"polygons"}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[]}</script>
 </div>
 </div>
 <h2 class="partdivtitle">
@@ -190,13 +201,13 @@ type
 <div class="row">
 <div class="col-xs-12 col-md-6">
 <pre class="r"><code>amRadar(data = data, type = &quot;circles&quot;)</code></pre>
-<div id="htmlwidget-6980" style="width:100%;height:500px;" class="ramcharts_base"></div>
-<script type="application/json" data-for="htmlwidget-6980">{"x":{"chartData":{"type":"radar","categoryField":"label","creditsPosition":"top-left","dataProvider":[{"label":"A","Product1":1,"Product2":2,"Product3":1},{"label":"Z","Product1":2,"Product2":8,"Product3":1},{"label":"E","Product1":3,"Product2":1,"Product3":2},{"label":"R","Product1":4,"Product2":1,"Product3":2},{"label":"T","Product1":2,"Product2":0,"Product3":4}],"graphs":[{"lineColor":"","fillAlphas":0.5,"bullet":"round","balloonText":"<b>[[title]]</b><br>[[category]] : <b>[[value]]</b>","title":"Product1","valueField":"Product1"},{"lineColor":"","fillAlphas":0.5,"bullet":"round","balloonText":"<b>[[title]]</b><br>[[category]] : <b>[[value]]</b>","title":"Product2","valueField":"Product2"},{"lineColor":"","fillAlphas":0.5,"bullet":"round","balloonText":"<b>[[title]]</b><br>[[category]] : <b>[[value]]</b>","title":"Product3","valueField":"Product3"}],"type.1":"radar","valueAxes":[{"gridType":"circles"}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[]}</script>
+<div id="htmlwidget-6302" style="width:100%;height:500px;" class="ramcharts_base"></div>
+<script type="application/json" data-for="htmlwidget-6302">{"x":{"chartData":{"type":"radar","categoryField":"label","dataProvider":[{"label":"A","Product1":1,"Product2":2,"Product3":1},{"label":"Z","Product1":2,"Product2":8,"Product3":1},{"label":"E","Product1":3,"Product2":1,"Product3":2},{"label":"R","Product1":4,"Product2":1,"Product3":2},{"label":"T","Product1":2,"Product2":0,"Product3":4}],"graphs":[{"lineColor":"","fillAlphas":0.5,"bullet":"round","balloonText":"<b>[[title]]</b><br>[[category]] : <b>[[value]]</b>","title":"Product1","valueField":"Product1"},{"lineColor":"","fillAlphas":0.5,"bullet":"round","balloonText":"<b>[[title]]</b><br>[[category]] : <b>[[value]]</b>","title":"Product2","valueField":"Product2"},{"lineColor":"","fillAlphas":0.5,"bullet":"round","balloonText":"<b>[[title]]</b><br>[[category]] : <b>[[value]]</b>","title":"Product3","valueField":"Product3"}],"type.1":"radar","valueAxes":[{"gridType":"circles"}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[]}</script>
 </div>
 <div class="col-xs-12 col-md-6">
 <pre class="r"><code>amRadar(data = data, type = &quot;polygons&quot;) #default</code></pre>
-<div id="htmlwidget-8110" style="width:100%;height:500px;" class="ramcharts_base"></div>
-<script type="application/json" data-for="htmlwidget-8110">{"x":{"chartData":{"type":"radar","categoryField":"label","creditsPosition":"top-left","dataProvider":[{"label":"A","Product1":1,"Product2":2,"Product3":1},{"label":"Z","Product1":2,"Product2":8,"Product3":1},{"label":"E","Product1":3,"Product2":1,"Product3":2},{"label":"R","Product1":4,"Product2":1,"Product3":2},{"label":"T","Product1":2,"Product2":0,"Product3":4}],"graphs":[{"lineColor":"","fillAlphas":0.5,"bullet":"round","balloonText":"<b>[[title]]</b><br>[[category]] : <b>[[value]]</b>","title":"Product1","valueField":"Product1"},{"lineColor":"","fillAlphas":0.5,"bullet":"round","balloonText":"<b>[[title]]</b><br>[[category]] : <b>[[value]]</b>","title":"Product2","valueField":"Product2"},{"lineColor":"","fillAlphas":0.5,"bullet":"round","balloonText":"<b>[[title]]</b><br>[[category]] : <b>[[value]]</b>","title":"Product3","valueField":"Product3"}],"type.1":"radar","valueAxes":[{"gridType":"polygons"}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[]}</script>
+<div id="htmlwidget-4954" style="width:100%;height:500px;" class="ramcharts_base"></div>
+<script type="application/json" data-for="htmlwidget-4954">{"x":{"chartData":{"type":"radar","categoryField":"label","dataProvider":[{"label":"A","Product1":1,"Product2":2,"Product3":1},{"label":"Z","Product1":2,"Product2":8,"Product3":1},{"label":"E","Product1":3,"Product2":1,"Product3":2},{"label":"R","Product1":4,"Product2":1,"Product3":2},{"label":"T","Product1":2,"Product2":0,"Product3":4}],"graphs":[{"lineColor":"","fillAlphas":0.5,"bullet":"round","balloonText":"<b>[[title]]</b><br>[[category]] : <b>[[value]]</b>","title":"Product1","valueField":"Product1"},{"lineColor":"","fillAlphas":0.5,"bullet":"round","balloonText":"<b>[[title]]</b><br>[[category]] : <b>[[value]]</b>","title":"Product2","valueField":"Product2"},{"lineColor":"","fillAlphas":0.5,"bullet":"round","balloonText":"<b>[[title]]</b><br>[[category]] : <b>[[value]]</b>","title":"Product3","valueField":"Product3"}],"type.1":"radar","valueAxes":[{"gridType":"polygons"}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[]}</script>
 </div>
 </div>
 <h2 class="partdivtitle">
@@ -205,23 +216,23 @@ pch
 <div class="row">
 <div class="col-xs-12 col-md-3">
 <pre class="r"><code>amRadar(data = data,  pch = &quot;triangleRight&quot;, backTransparency = 0)</code></pre>
-<div id="htmlwidget-6063" style="width:100%;height:500px;" class="ramcharts_base"></div>
-<script type="application/json" data-for="htmlwidget-6063">{"x":{"chartData":{"type":"radar","categoryField":"label","creditsPosition":"top-left","dataProvider":[{"label":"A","Product1":1,"Product2":2,"Product3":1},{"label":"Z","Product1":2,"Product2":8,"Product3":1},{"label":"E","Product1":3,"Product2":1,"Product3":2},{"label":"R","Product1":4,"Product2":1,"Product3":2},{"label":"T","Product1":2,"Product2":0,"Product3":4}],"graphs":[{"lineColor":"","fillAlphas":0,"bullet":"triangleRight","balloonText":"<b>[[title]]</b><br>[[category]] : <b>[[value]]</b>","title":"Product1","valueField":"Product1"},{"lineColor":"","fillAlphas":0,"bullet":"triangleRight","balloonText":"<b>[[title]]</b><br>[[category]] : <b>[[value]]</b>","title":"Product2","valueField":"Product2"},{"lineColor":"","fillAlphas":0,"bullet":"triangleRight","balloonText":"<b>[[title]]</b><br>[[category]] : <b>[[value]]</b>","title":"Product3","valueField":"Product3"}],"type.1":"radar","valueAxes":[{"gridType":"polygons"}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[]}</script>
+<div id="htmlwidget-5950" style="width:100%;height:500px;" class="ramcharts_base"></div>
+<script type="application/json" data-for="htmlwidget-5950">{"x":{"chartData":{"type":"radar","categoryField":"label","dataProvider":[{"label":"A","Product1":1,"Product2":2,"Product3":1},{"label":"Z","Product1":2,"Product2":8,"Product3":1},{"label":"E","Product1":3,"Product2":1,"Product3":2},{"label":"R","Product1":4,"Product2":1,"Product3":2},{"label":"T","Product1":2,"Product2":0,"Product3":4}],"graphs":[{"lineColor":"","fillAlphas":0,"bullet":"triangleRight","balloonText":"<b>[[title]]</b><br>[[category]] : <b>[[value]]</b>","title":"Product1","valueField":"Product1"},{"lineColor":"","fillAlphas":0,"bullet":"triangleRight","balloonText":"<b>[[title]]</b><br>[[category]] : <b>[[value]]</b>","title":"Product2","valueField":"Product2"},{"lineColor":"","fillAlphas":0,"bullet":"triangleRight","balloonText":"<b>[[title]]</b><br>[[category]] : <b>[[value]]</b>","title":"Product3","valueField":"Product3"}],"type.1":"radar","valueAxes":[{"gridType":"polygons"}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[]}</script>
 </div>
 <div class="col-xs-12 col-md-3">
 <pre class="r"><code>amRadar(data = data, pch = &quot;diamond&quot;, backTransparency = 0) </code></pre>
-<div id="htmlwidget-7352" style="width:100%;height:500px;" class="ramcharts_base"></div>
-<script type="application/json" data-for="htmlwidget-7352">{"x":{"chartData":{"type":"radar","categoryField":"label","creditsPosition":"top-left","dataProvider":[{"label":"A","Product1":1,"Product2":2,"Product3":1},{"label":"Z","Product1":2,"Product2":8,"Product3":1},{"label":"E","Product1":3,"Product2":1,"Product3":2},{"label":"R","Product1":4,"Product2":1,"Product3":2},{"label":"T","Product1":2,"Product2":0,"Product3":4}],"graphs":[{"lineColor":"","fillAlphas":0,"bullet":"diamond","balloonText":"<b>[[title]]</b><br>[[category]] : <b>[[value]]</b>","title":"Product1","valueField":"Product1"},{"lineColor":"","fillAlphas":0,"bullet":"diamond","balloonText":"<b>[[title]]</b><br>[[category]] : <b>[[value]]</b>","title":"Product2","valueField":"Product2"},{"lineColor":"","fillAlphas":0,"bullet":"diamond","balloonText":"<b>[[title]]</b><br>[[category]] : <b>[[value]]</b>","title":"Product3","valueField":"Product3"}],"type.1":"radar","valueAxes":[{"gridType":"polygons"}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[]}</script>
+<div id="htmlwidget-5060" style="width:100%;height:500px;" class="ramcharts_base"></div>
+<script type="application/json" data-for="htmlwidget-5060">{"x":{"chartData":{"type":"radar","categoryField":"label","dataProvider":[{"label":"A","Product1":1,"Product2":2,"Product3":1},{"label":"Z","Product1":2,"Product2":8,"Product3":1},{"label":"E","Product1":3,"Product2":1,"Product3":2},{"label":"R","Product1":4,"Product2":1,"Product3":2},{"label":"T","Product1":2,"Product2":0,"Product3":4}],"graphs":[{"lineColor":"","fillAlphas":0,"bullet":"diamond","balloonText":"<b>[[title]]</b><br>[[category]] : <b>[[value]]</b>","title":"Product1","valueField":"Product1"},{"lineColor":"","fillAlphas":0,"bullet":"diamond","balloonText":"<b>[[title]]</b><br>[[category]] : <b>[[value]]</b>","title":"Product2","valueField":"Product2"},{"lineColor":"","fillAlphas":0,"bullet":"diamond","balloonText":"<b>[[title]]</b><br>[[category]] : <b>[[value]]</b>","title":"Product3","valueField":"Product3"}],"type.1":"radar","valueAxes":[{"gridType":"polygons"}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[]}</script>
 </div>
 <div class="col-xs-12 col-md-3">
 <pre class="r"><code>amRadar(data = data,  pch = &quot;yError&quot;, backTransparency = 0)</code></pre>
-<div id="htmlwidget-7108" style="width:100%;height:500px;" class="ramcharts_base"></div>
-<script type="application/json" data-for="htmlwidget-7108">{"x":{"chartData":{"type":"radar","categoryField":"label","creditsPosition":"top-left","dataProvider":[{"label":"A","Product1":1,"Product2":2,"Product3":1},{"label":"Z","Product1":2,"Product2":8,"Product3":1},{"label":"E","Product1":3,"Product2":1,"Product3":2},{"label":"R","Product1":4,"Product2":1,"Product3":2},{"label":"T","Product1":2,"Product2":0,"Product3":4}],"graphs":[{"lineColor":"","fillAlphas":0,"bullet":"yError","balloonText":"<b>[[title]]</b><br>[[category]] : <b>[[value]]</b>","title":"Product1","valueField":"Product1"},{"lineColor":"","fillAlphas":0,"bullet":"yError","balloonText":"<b>[[title]]</b><br>[[category]] : <b>[[value]]</b>","title":"Product2","valueField":"Product2"},{"lineColor":"","fillAlphas":0,"bullet":"yError","balloonText":"<b>[[title]]</b><br>[[category]] : <b>[[value]]</b>","title":"Product3","valueField":"Product3"}],"type.1":"radar","valueAxes":[{"gridType":"polygons"}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[]}</script>
+<div id="htmlwidget-9433" style="width:100%;height:500px;" class="ramcharts_base"></div>
+<script type="application/json" data-for="htmlwidget-9433">{"x":{"chartData":{"type":"radar","categoryField":"label","dataProvider":[{"label":"A","Product1":1,"Product2":2,"Product3":1},{"label":"Z","Product1":2,"Product2":8,"Product3":1},{"label":"E","Product1":3,"Product2":1,"Product3":2},{"label":"R","Product1":4,"Product2":1,"Product3":2},{"label":"T","Product1":2,"Product2":0,"Product3":4}],"graphs":[{"lineColor":"","fillAlphas":0,"bullet":"yError","balloonText":"<b>[[title]]</b><br>[[category]] : <b>[[value]]</b>","title":"Product1","valueField":"Product1"},{"lineColor":"","fillAlphas":0,"bullet":"yError","balloonText":"<b>[[title]]</b><br>[[category]] : <b>[[value]]</b>","title":"Product2","valueField":"Product2"},{"lineColor":"","fillAlphas":0,"bullet":"yError","balloonText":"<b>[[title]]</b><br>[[category]] : <b>[[value]]</b>","title":"Product3","valueField":"Product3"}],"type.1":"radar","valueAxes":[{"gridType":"polygons"}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[]}</script>
 </div>
 <div class="col-xs-12 col-md-3">
 <pre class="r"><code>amRadar(data = data,  pch = &quot;bubble&quot;, backTransparency = 0)</code></pre>
-<div id="htmlwidget-4081" style="width:100%;height:500px;" class="ramcharts_base"></div>
-<script type="application/json" data-for="htmlwidget-4081">{"x":{"chartData":{"type":"radar","categoryField":"label","creditsPosition":"top-left","dataProvider":[{"label":"A","Product1":1,"Product2":2,"Product3":1},{"label":"Z","Product1":2,"Product2":8,"Product3":1},{"label":"E","Product1":3,"Product2":1,"Product3":2},{"label":"R","Product1":4,"Product2":1,"Product3":2},{"label":"T","Product1":2,"Product2":0,"Product3":4}],"graphs":[{"lineColor":"","fillAlphas":0,"bullet":"bubble","balloonText":"<b>[[title]]</b><br>[[category]] : <b>[[value]]</b>","title":"Product1","valueField":"Product1"},{"lineColor":"","fillAlphas":0,"bullet":"bubble","balloonText":"<b>[[title]]</b><br>[[category]] : <b>[[value]]</b>","title":"Product2","valueField":"Product2"},{"lineColor":"","fillAlphas":0,"bullet":"bubble","balloonText":"<b>[[title]]</b><br>[[category]] : <b>[[value]]</b>","title":"Product3","valueField":"Product3"}],"type.1":"radar","valueAxes":[{"gridType":"polygons"}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[]}</script>
+<div id="htmlwidget-2104" style="width:100%;height:500px;" class="ramcharts_base"></div>
+<script type="application/json" data-for="htmlwidget-2104">{"x":{"chartData":{"type":"radar","categoryField":"label","dataProvider":[{"label":"A","Product1":1,"Product2":2,"Product3":1},{"label":"Z","Product1":2,"Product2":8,"Product3":1},{"label":"E","Product1":3,"Product2":1,"Product3":2},{"label":"R","Product1":4,"Product2":1,"Product3":2},{"label":"T","Product1":2,"Product2":0,"Product3":4}],"graphs":[{"lineColor":"","fillAlphas":0,"bullet":"bubble","balloonText":"<b>[[title]]</b><br>[[category]] : <b>[[value]]</b>","title":"Product1","valueField":"Product1"},{"lineColor":"","fillAlphas":0,"bullet":"bubble","balloonText":"<b>[[title]]</b><br>[[category]] : <b>[[value]]</b>","title":"Product2","valueField":"Product2"},{"lineColor":"","fillAlphas":0,"bullet":"bubble","balloonText":"<b>[[title]]</b><br>[[category]] : <b>[[value]]</b>","title":"Product3","valueField":"Product3"}],"type.1":"radar","valueAxes":[{"gridType":"polygons"}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[]}</script>
 </div>
 </div>
 <h2 class="amOptions">
@@ -235,8 +246,8 @@ legend
 <pre class="r"><code>amRadar(data = data,  pch = &quot;bubble&quot;, backTransparency = 0, legend = TRUE)
 #or
 amRadar(data = data,  pch = &quot;bubble&quot;, backTransparency = 0) %&gt;&gt;% amOptions(legend = TRUE)</code></pre>
-<div id="htmlwidget-2651" style="width:100%;height:500px;" class="ramcharts_base"></div>
-<script type="application/json" data-for="htmlwidget-2651">{"x":{"chartData":{"type":"radar","categoryField":"label","creditsPosition":"top-left","dataProvider":[{"label":"A","Product1":1,"Product2":2,"Product3":1},{"label":"Z","Product1":2,"Product2":8,"Product3":1},{"label":"E","Product1":3,"Product2":1,"Product3":2},{"label":"R","Product1":4,"Product2":1,"Product3":2},{"label":"T","Product1":2,"Product2":0,"Product3":4}],"graphs":[{"lineColor":"","fillAlphas":0,"bullet":"bubble","balloonText":"<b>[[title]]</b><br>[[category]] : <b>[[value]]</b>","title":"Product1","valueField":"Product1"},{"lineColor":"","fillAlphas":0,"bullet":"bubble","balloonText":"<b>[[title]]</b><br>[[category]] : <b>[[value]]</b>","title":"Product2","valueField":"Product2"},{"lineColor":"","fillAlphas":0,"bullet":"bubble","balloonText":"<b>[[title]]</b><br>[[category]] : <b>[[value]]</b>","title":"Product3","valueField":"Product3"}],"legend":{"position":"right","useGraphSettings":true},"type.1":"radar","valueAxes":[{"gridType":"polygons"}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[]}</script>
+<div id="htmlwidget-4330" style="width:100%;height:500px;" class="ramcharts_base"></div>
+<script type="application/json" data-for="htmlwidget-4330">{"x":{"chartData":{"type":"radar","categoryField":"label","dataProvider":[{"label":"A","Product1":1,"Product2":2,"Product3":1},{"label":"Z","Product1":2,"Product2":8,"Product3":1},{"label":"E","Product1":3,"Product2":1,"Product3":2},{"label":"R","Product1":4,"Product2":1,"Product3":2},{"label":"T","Product1":2,"Product2":0,"Product3":4}],"graphs":[{"lineColor":"","fillAlphas":0,"bullet":"bubble","balloonText":"<b>[[title]]</b><br>[[category]] : <b>[[value]]</b>","title":"Product1","valueField":"Product1"},{"lineColor":"","fillAlphas":0,"bullet":"bubble","balloonText":"<b>[[title]]</b><br>[[category]] : <b>[[value]]</b>","title":"Product2","valueField":"Product2"},{"lineColor":"","fillAlphas":0,"bullet":"bubble","balloonText":"<b>[[title]]</b><br>[[category]] : <b>[[value]]</b>","title":"Product3","valueField":"Product3"}],"legend":{"position":"right","align":"left","useGraphSettings":true},"type.1":"radar","valueAxes":[{"gridType":"polygons"}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[]}</script>
 </div>
 <div class="col-xs-12 col-md-6">
 <h2 class="partdivtitle">
@@ -245,8 +256,8 @@ legendPosition
 <pre class="r"><code>amRadar(data = data,  pch = &quot;bubble&quot;, backTransparency = 0, legend = TRUE)
 #or
 amRadar(data = data,  pch = &quot;bubble&quot;, backTransparency = 0) %&gt;&gt;% amOptions(legend = TRUE)</code></pre>
-<div id="htmlwidget-6379" style="width:100%;height:500px;" class="ramcharts_base"></div>
-<script type="application/json" data-for="htmlwidget-6379">{"x":{"chartData":{"type":"radar","categoryField":"label","creditsPosition":"top-left","dataProvider":[{"label":"A","Product1":1,"Product2":2,"Product3":1},{"label":"Z","Product1":2,"Product2":8,"Product3":1},{"label":"E","Product1":3,"Product2":1,"Product3":2},{"label":"R","Product1":4,"Product2":1,"Product3":2},{"label":"T","Product1":2,"Product2":0,"Product3":4}],"graphs":[{"lineColor":"","fillAlphas":0,"bullet":"bubble","balloonText":"<b>[[title]]</b><br>[[category]] : <b>[[value]]</b>","title":"Product1","valueField":"Product1"},{"lineColor":"","fillAlphas":0,"bullet":"bubble","balloonText":"<b>[[title]]</b><br>[[category]] : <b>[[value]]</b>","title":"Product2","valueField":"Product2"},{"lineColor":"","fillAlphas":0,"bullet":"bubble","balloonText":"<b>[[title]]</b><br>[[category]] : <b>[[value]]</b>","title":"Product3","valueField":"Product3"}],"legend":{"position":"right","useGraphSettings":true},"type.1":"radar","valueAxes":[{"gridType":"polygons"}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[]}</script>
+<div id="htmlwidget-7351" style="width:100%;height:500px;" class="ramcharts_base"></div>
+<script type="application/json" data-for="htmlwidget-7351">{"x":{"chartData":{"type":"radar","categoryField":"label","dataProvider":[{"label":"A","Product1":1,"Product2":2,"Product3":1},{"label":"Z","Product1":2,"Product2":8,"Product3":1},{"label":"E","Product1":3,"Product2":1,"Product3":2},{"label":"R","Product1":4,"Product2":1,"Product3":2},{"label":"T","Product1":2,"Product2":0,"Product3":4}],"graphs":[{"lineColor":"","fillAlphas":0,"bullet":"bubble","balloonText":"<b>[[title]]</b><br>[[category]] : <b>[[value]]</b>","title":"Product1","valueField":"Product1"},{"lineColor":"","fillAlphas":0,"bullet":"bubble","balloonText":"<b>[[title]]</b><br>[[category]] : <b>[[value]]</b>","title":"Product2","valueField":"Product2"},{"lineColor":"","fillAlphas":0,"bullet":"bubble","balloonText":"<b>[[title]]</b><br>[[category]] : <b>[[value]]</b>","title":"Product3","valueField":"Product3"}],"legend":{"position":"right","align":"left","useGraphSettings":true},"type.1":"radar","valueAxes":[{"gridType":"polygons"}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[]}</script>
 </div>
 </div>
 <div class="row">
@@ -258,8 +269,8 @@ export
 #or
 amRadar(data = data,  pch = &quot;bubble&quot;, backTransparency = 0) %&gt;&gt;% 
   amOptions(export = TRUE)</code></pre>
-<div id="htmlwidget-8649" style="width:100%;height:500px;" class="ramcharts_base"></div>
-<script type="application/json" data-for="htmlwidget-8649">{"x":{"chartData":{"type":"radar","categoryField":"label","export":{"enabled":true},"creditsPosition":"top-left","dataProvider":[{"label":"A","Product1":1,"Product2":2,"Product3":1},{"label":"Z","Product1":2,"Product2":8,"Product3":1},{"label":"E","Product1":3,"Product2":1,"Product3":2},{"label":"R","Product1":4,"Product2":1,"Product3":2},{"label":"T","Product1":2,"Product2":0,"Product3":4}],"graphs":[{"lineColor":"","fillAlphas":0,"bullet":"bubble","balloonText":"<b>[[title]]</b><br>[[category]] : <b>[[value]]</b>","title":"Product1","valueField":"Product1"},{"lineColor":"","fillAlphas":0,"bullet":"bubble","balloonText":"<b>[[title]]</b><br>[[category]] : <b>[[value]]</b>","title":"Product2","valueField":"Product2"},{"lineColor":"","fillAlphas":0,"bullet":"bubble","balloonText":"<b>[[title]]</b><br>[[category]] : <b>[[value]]</b>","title":"Product3","valueField":"Product3"}],"type.1":"radar","valueAxes":[{"gridType":"polygons"}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[]}</script>
+<div id="htmlwidget-7152" style="width:100%;height:500px;" class="ramcharts_base"></div>
+<script type="application/json" data-for="htmlwidget-7152">{"x":{"chartData":{"type":"radar","categoryField":"label","export":{"enabled":true},"dataProvider":[{"label":"A","Product1":1,"Product2":2,"Product3":1},{"label":"Z","Product1":2,"Product2":8,"Product3":1},{"label":"E","Product1":3,"Product2":1,"Product3":2},{"label":"R","Product1":4,"Product2":1,"Product3":2},{"label":"T","Product1":2,"Product2":0,"Product3":4}],"graphs":[{"lineColor":"","fillAlphas":0,"bullet":"bubble","balloonText":"<b>[[title]]</b><br>[[category]] : <b>[[value]]</b>","title":"Product1","valueField":"Product1"},{"lineColor":"","fillAlphas":0,"bullet":"bubble","balloonText":"<b>[[title]]</b><br>[[category]] : <b>[[value]]</b>","title":"Product2","valueField":"Product2"},{"lineColor":"","fillAlphas":0,"bullet":"bubble","balloonText":"<b>[[title]]</b><br>[[category]] : <b>[[value]]</b>","title":"Product3","valueField":"Product3"}],"type.1":"radar","valueAxes":[{"gridType":"polygons"}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[]}</script>
 </div>
 <div class="col-xs-12 col-md-6">
 <h2 class="partdivtitle">
@@ -269,8 +280,8 @@ exportFormat
 #or
 amRadar(data = data,  pch = &quot;bubble&quot;, backTransparency = 0) %&gt;&gt;% 
   amOptions(export = TRUE, exportFormat = &quot;CSV&quot;)</code></pre>
-<div id="htmlwidget-1166" style="width:100%;height:500px;" class="ramcharts_base"></div>
-<script type="application/json" data-for="htmlwidget-1166">{"x":{"chartData":{"type":"radar","categoryField":"label","export":{"enabled":true,"menu":[{"format":"CSV","label":"CSV"}]},"creditsPosition":"top-left","dataProvider":[{"label":"A","Product1":1,"Product2":2,"Product3":1},{"label":"Z","Product1":2,"Product2":8,"Product3":1},{"label":"E","Product1":3,"Product2":1,"Product3":2},{"label":"R","Product1":4,"Product2":1,"Product3":2},{"label":"T","Product1":2,"Product2":0,"Product3":4}],"graphs":[{"lineColor":"","fillAlphas":0,"bullet":"bubble","balloonText":"<b>[[title]]</b><br>[[category]] : <b>[[value]]</b>","title":"Product1","valueField":"Product1"},{"lineColor":"","fillAlphas":0,"bullet":"bubble","balloonText":"<b>[[title]]</b><br>[[category]] : <b>[[value]]</b>","title":"Product2","valueField":"Product2"},{"lineColor":"","fillAlphas":0,"bullet":"bubble","balloonText":"<b>[[title]]</b><br>[[category]] : <b>[[value]]</b>","title":"Product3","valueField":"Product3"}],"type.1":"radar","valueAxes":[{"gridType":"polygons"}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[]}</script>
+<div id="htmlwidget-5811" style="width:100%;height:500px;" class="ramcharts_base"></div>
+<script type="application/json" data-for="htmlwidget-5811">{"x":{"chartData":{"type":"radar","categoryField":"label","export":{"enabled":true,"menu":[{"class":"export-main","menu":[{"format":"CSV","label":"CSV"}]}]},"dataProvider":[{"label":"A","Product1":1,"Product2":2,"Product3":1},{"label":"Z","Product1":2,"Product2":8,"Product3":1},{"label":"E","Product1":3,"Product2":1,"Product3":2},{"label":"R","Product1":4,"Product2":1,"Product3":2},{"label":"T","Product1":2,"Product2":0,"Product3":4}],"graphs":[{"lineColor":"","fillAlphas":0,"bullet":"bubble","balloonText":"<b>[[title]]</b><br>[[category]] : <b>[[value]]</b>","title":"Product1","valueField":"Product1"},{"lineColor":"","fillAlphas":0,"bullet":"bubble","balloonText":"<b>[[title]]</b><br>[[category]] : <b>[[value]]</b>","title":"Product2","valueField":"Product2"},{"lineColor":"","fillAlphas":0,"bullet":"bubble","balloonText":"<b>[[title]]</b><br>[[category]] : <b>[[value]]</b>","title":"Product3","valueField":"Product3"}],"type.1":"radar","valueAxes":[{"gridType":"polygons"}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[]}</script>
 </div>
 </div>
 <div class="row">
@@ -284,8 +295,8 @@ main and creditsPosition
 amRadar(data = data,  pch = &quot;bubble&quot;, backTransparency = 0) %&gt;&gt;% 
   amOptions( main = &quot;My Radar&quot;,
         mainColor = &quot;#00FF00&quot;, mainSize = 25, creditsPosition = &quot;bottom-right&quot;)</code></pre>
-<div id="htmlwidget-9973" style="width:100%;height:500px;" class="ramcharts_base"></div>
-<script type="application/json" data-for="htmlwidget-9973">{"x":{"chartData":{"type":"radar","categoryField":"label","creditsPosition":"top-right","dataProvider":[{"label":"A","Product1":1,"Product2":2,"Product3":1},{"label":"Z","Product1":2,"Product2":8,"Product3":1},{"label":"E","Product1":3,"Product2":1,"Product3":2},{"label":"R","Product1":4,"Product2":1,"Product3":2},{"label":"T","Product1":2,"Product2":0,"Product3":4}],"graphs":[{"lineColor":"","fillAlphas":0,"bullet":"bubble","balloonText":"<b>[[title]]</b><br>[[category]] : <b>[[value]]</b>","title":"Product1","valueField":"Product1"},{"lineColor":"","fillAlphas":0,"bullet":"bubble","balloonText":"<b>[[title]]</b><br>[[category]] : <b>[[value]]</b>","title":"Product2","valueField":"Product2"},{"lineColor":"","fillAlphas":0,"bullet":"bubble","balloonText":"<b>[[title]]</b><br>[[category]] : <b>[[value]]</b>","title":"Product3","valueField":"Product3"}],"titles":[{"color":"#00FF00","text":"My Radar","size":25}],"type.1":"radar","valueAxes":[{"gridType":"polygons"}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[]}</script>
+<div id="htmlwidget-98" style="width:100%;height:500px;" class="ramcharts_base"></div>
+<script type="application/json" data-for="htmlwidget-98">{"x":{"chartData":{"type":"radar","categoryField":"label","creditsPosition":"top-right","dataProvider":[{"label":"A","Product1":1,"Product2":2,"Product3":1},{"label":"Z","Product1":2,"Product2":8,"Product3":1},{"label":"E","Product1":3,"Product2":1,"Product3":2},{"label":"R","Product1":4,"Product2":1,"Product3":2},{"label":"T","Product1":2,"Product2":0,"Product3":4}],"graphs":[{"lineColor":"","fillAlphas":0,"bullet":"bubble","balloonText":"<b>[[title]]</b><br>[[category]] : <b>[[value]]</b>","title":"Product1","valueField":"Product1"},{"lineColor":"","fillAlphas":0,"bullet":"bubble","balloonText":"<b>[[title]]</b><br>[[category]] : <b>[[value]]</b>","title":"Product2","valueField":"Product2"},{"lineColor":"","fillAlphas":0,"bullet":"bubble","balloonText":"<b>[[title]]</b><br>[[category]] : <b>[[value]]</b>","title":"Product3","valueField":"Product3"}],"titles":[{"color":"#00FF00","text":"My Radar","size":25}],"type.1":"radar","valueAxes":[{"gridType":"polygons"}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[]}</script>
 </div>
 <div class="col-xs-12 col-md-6">
 <h2 class="partdivtitle">
@@ -294,10 +305,9 @@ theme
 <pre class="r"><code>amRadar(data = data,  pch = &quot;bubble&quot;, backTransparency = 1, main = &quot;My Radar&quot;, theme = &quot;patterns&quot;)
 #or
 amRadar(data = data = data,  pch = &quot;bubble&quot;, backTransparency = 1) %&gt;&gt;% 
-  amOptions( theme = &quot;patterns&quot;)</code></pre>
-<div id="htmlwidget-3347" style="width:100%;height:500px;" class="ramcharts_base"></div>
-<script type="application/json" data-for="htmlwidget-3347">{"x":{"chartData":{"type":"radar","categoryField":"label","creditsPosition":"top-left","theme":"patterns","dataProvider":[{"label":"A","Product1":1,"Product2":2,"Product3":1},{"label":"Z","Product1":2,"Product2":8,"Product3":1},{"label":"E","Product1":3,"Product2":1,"Product3":2},{"label":"R","Product1":4,"Product2":1,"Product3":2},{"label":"T","Product1":2,"Product2":0,"Product3":4}],"graphs":[{"lineColor":"","fillAlphas":1,"bullet":"bubble","balloonText":"<b>[[title]]</b><br>[[category]] : <b>[[value]]</b>","title":"Product1","valueField":"Product1"},{"lineColor":"","fillAlphas":1,"bullet":"bubble","balloonText":"<b>[[title]]</b><br>[[category]] : <b>[[value]]</b>","title":"Product2","valueField":"Product2"},{"lineColor":"","fillAlphas":1,"bullet":"bubble","balloonText":"<b>[[title]]</b><br>[[category]] : <b>[[value]]</b>","title":"Product3","valueField":"Product3"}],"type.1":"radar","valueAxes":[{"gridType":"polygons"}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[]}</script>
-</div>
+  amOptions(theme = &quot;patterns&quot;)</code></pre>
+<div id="htmlwidget-5041" style="width:100%;height:500px;" class="ramcharts_base"></div>
+<script type="application/json" data-for="htmlwidget-5041">{"x":{"chartData":{"type":"radar","categoryField":"label","dataProvider":[{"label":"A","Product1":1,"Product2":2,"Product3":1},{"label":"Z","Product1":2,"Product2":8,"Product3":1},{"label":"E","Product1":3,"Product2":1,"Product3":2},{"label":"R","Product1":4,"Product2":1,"Product3":2},{"label":"T","Product1":2,"Product2":0,"Product3":4}],"graphs":[{"lineColor":"","fillAlphas":1,"bullet":"bubble","balloonText":"<b>[[title]]</b><br>[[category]] : <b>[[value]]</b>","title":"Product1","valueField":"Product1"},{"lineColor":"","fillAlphas":1,"bullet":"bubble","balloonText":"<b>[[title]]</b><br>[[category]] : <b>[[value]]</b>","title":"Product2","valueField":"Product2"},{"lineColor":"","fillAlphas":1,"bullet":"bubble","balloonText":"<b>[[title]]</b><br>[[category]] : <b>[[value]]</b>","title":"Product3","valueField":"Product3"}],"theme":"patterns","type.1":"radar","valueAxes":[{"gridType":"polygons"}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[]}</script>
 </div>
 </div>
 </div>
@@ -306,7 +316,7 @@ amRadar(data = data = data,  pch = &quot;bubble&quot;, backTransparency = 1) %&g
     
       <div class="col-xs-1 col-md-1" id="logo">
         <a href="https://github.com/DataKnowledge/rAmCharts.git">
-          <img  src="www/img/github.jpg" title="View on Github" id="img-github"/>
+          <img  src="www/img/github.png" title="View on Github" id="img-github"/>
         </a>
       </div>
     

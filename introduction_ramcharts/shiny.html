@@ -10,7 +10,7 @@
 
 
 
-<title>Shiny</title>
+<title>rAmCharts - shiny integration</title>
 
 <script src="libs/jquery/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -28,6 +28,7 @@
 <link href='https://fonts.googleapis.com/css?family=Pompiere' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Raleway:100' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
 
 <style type="text/css">code{white-space: pre;}</style>
 <link rel="stylesheet"
@@ -75,54 +76,66 @@ img {
   
 <div class="row">
   
-  <nav class="col-xs-3 col-md-2" id="navbar">
+  <div class="col-xs-3 col-md-2" id="navbar">
     
-    <ultoc class="toc" id="nav">
+    <div id="main-toc">Tutorial - rAmCharts</div>
+    <hr/>
       
-      <p id="main-toc">Tutorial - rAmCharts</p>
-      <hr/>
-      
-      <b class="section-toc">Getting started</b>
-      <br/><br/>
+    <b class="section-toc">Getting started</b>
+    <br/>
 
-      <litoc><a class="toc-item" href="index.html">Introduction</a></litoc>
-      <litoc><a class="toc-item" href="convert.html">Convert from JS</a></litoc>
-      <litoc><a class="toc-item" href="shiny.html">Use in shiny apps</a></litoc>
-      <litoc><a class="toc-item" href="advance.html">Advanced features</a></litoc>
+    <ul class="toc" id="nav-intro">
+      <li class="litoc">
+        <a class="toc-item" href="index.html">Introduction</a>
+      </li>
+      <li class="litoc">
+        <a class="toc-item" href="convert.html">Quick tutorial</a>
+      </li>
+      <li class="litoc">
+        <a class="toc-item" href="shiny.html">Use in shiny apps</a>
+      </li>
+      <li class="litoc">
+        <a class="toc-item" href="advance.html">Advanced features</a>
+        </li>
+    </ul> 
+    <hr/>
       
-      <hr/>
+    <b class="section-toc">Functions 'am'</b>
+    <br/>
       
-      <b class="section-toc">Functions 'am'</b>
-      <br/><br/>
-      
+    <ul class="toc" id="nav-amfunctions">   
       <!--
-      <litoc list-style-type:disc><a class="toc-item" href="amAngularGauge.html">amAngularGauge</a></litoc>
+      <li class="litoc"><a class="toc-item" href="amAngularGauge.html">amAngularGauge</a></li>
       -->
-      <litoc list-style-type:disc><a class="toc-item" href="amBarplot.html">amBarplot</a></litoc>
-      <litoc list-style-type:disc><a class="toc-item" href="amBoxplot.html">amBoxplot</a></litoc>
+      <li class="litoc">
+        <a class="toc-item" href="amBarplot.html">amBarplot</a>
+      </li>
+      <li class="litoc">
+        <a class="toc-item" href="amBoxplot.html">amBoxplot</a>
+      </li>
       <!--
-      <litoc list-style-type:disc><a class="toc-item" href="amBullet.html">amBullet</a></litoc>
+      <li class="litoc"><a class="toc-item" href="amBullet.html">amBullet</a></li>
       -->
-      <litoc list-style-type:disc><a class="toc-item" href="amCandlestick.html">amCandlestick</a></litoc>
-      <litoc list-style-type:disc><a class="toc-item" href="amHist.html">amHist</a></litoc>
+      <li class="litoc"><a class="toc-item" href="amCandlestick.html">amCandlestick</a></li>
+      <li class="litoc"><a class="toc-item" href="amHist.html">amHist</a></li>
       
 
-      <litoc list-style-type:disc><a class="toc-item" href="amRadar.html">amRadar</a></litoc>
+      <li class="litoc"><a class="toc-item" href="amRadar.html">amRadar</a></li>
       
       <!--
-      <litoc list-style-type:disc><a class="toc-item" href="amMekko.html">amMekko</a></litoc>
-      <litoc list-style-type:disc><a class="toc-item" href="amPie.html">amPie</a></litoc>
-      <litoc list-style-type:disc><a class="toc-item" href="amPlot.html">amPlot</a></litoc>
-      <litoc list-style-type:disc><a class="toc-item" href="amRadar.html">amRadar</a></litoc>
-      <litoc list-style-type:disc><a class="toc-item" href="amWaterfall.html">amWaterfall</a></litoc>
-      <litoc list-style-type:disc><a class="toc-item" href="amWind.html">amWind</a></litoc>
+      <li class="litoc"><a class="toc-item" href="amMekko.html">amMekko</a></li>
+      <li class="litoc"><a class="toc-item" href="amPie.html">amPie</a></li>
+      <li class="litoc"><a class="toc-item" href="amPlot.html">amPlot</a></li>
+      <li class="litoc"><a class="toc-item" href="amRadar.html">amRadar</a></li>
+      <li class="litoc"><a class="toc-item" href="amWaterfall.html">amWaterfall</a></li>
+      <li class="litoc"><a class="toc-item" href="amWind.html">amWind</a></li>
       -->
-    </ultoc>
+    </ul>
     
     <footer>
       <div class="copyrights"><small> © 2015-2016 DataKnowledge</small></div>
     </footer>
-  </nav><!-- end of left column -->
+  </div><!-- end of left column -->
   
   <div class="col-xs-9 col-md-10">
     <div class="row">
@@ -147,8 +160,8 @@ shinyApp(
     })
   }
 )</code></pre>
-<p><div id="htmlwidget-6337" style="width:100%;height:400px;" class="ramcharts_base"></div>
-<script type="application/json" data-for="htmlwidget-6337">{"x":{"chartData":{"rotate":false,"categoryField":"cat","chartCursor":{"animationDuration":0.3,"oneBalloonOnly":true},"dataProvider":[{"cat":"Sepal.Length","low_outlier":4.3,"low":4.3,"open":5.1,"median":5.8,"close":6.4,"high":7.9,"high_outlier":7.9,"color":"gray"},{"cat":"Sepal.Width","low_outlier":2.2,"low":2.2,"open":2.8,"median":3,"close":3.3,"high":4,"high_outlier":4,"color":"gray","real_outlier_1":"2","individual_1":"61","real_outlier_2":"4.1","individual_2":"33","real_outlier_3":"4.2","individual_3":"34","real_outlier_4":"4.4","individual_4":"16"},{"cat":"Petal.Length","low_outlier":1,"low":1,"open":1.6,"median":4.35,"close":5.1,"high":6.9,"high_outlier":6.9,"color":"gray"},{"cat":"Petal.Width","low_outlier":0.1,"low":0.1,"open":0.3,"median":1.3,"close":1.8,"high":2.5,"high_outlier":2.5,"color":"gray"}],"graphs":[{"id":"g1","closeField":"close","fillColorsField":"color","highField":"high","lineColor":"#7f8da9","lineAlpha":1,"lowField":"low","fillAlphas":"0.9","negativeLineColor":"#7f8da9","openField":"open","balloonText":"High = <b>[[high_outlier]]</b><br/>3rd quart. = <b>[[close]]</b><br/>Median = <b>[[median]]</b><br/>1st quart. = <b>[[open]]</b><br/>Low = <b>[[low_outlier]]</b><br/>","title":"Price:","type":"candlestick","valueField":"close"},{"id":"g2","lineColor":"black","noStepRisers":true,"periodSpan":0.8,"lineThickness":3,"balloonText":"","type":"step","valueField":"median"},{"id":"g3","lineColor":"black","noStepRisers":true,"periodSpan":0.5,"balloonText":"","type":"step","valueField":"low_outlier"},{"id":"g4","lineColor":"black","noStepRisers":true,"periodSpan":0.5,"balloonText":"","type":"step","valueField":"high_outlier"},{"id":"g5","lineColor":"black","lineAlpha":0,"bullet":"round","noStepRisers":true,"periodSpan":0.5,"balloonText":"","type":"line","valueField":"real_outlier"},{"lineColor":"black","lineAlpha":0,"bullet":"round","noStepRisers":true,"periodSpan":0.5,"balloonText":"<b> Individual </b>: [[individual_1]]<br/><b> Value </b>: [[real_outlier_1]]","type":"line","valueField":"real_outlier_1"},{"lineColor":"black","lineAlpha":0,"bullet":"round","noStepRisers":true,"periodSpan":0.5,"balloonText":"<b> Individual </b>: [[individual_2]]<br/><b> Value </b>: [[real_outlier_2]]","type":"line","valueField":"real_outlier_2"},{"lineColor":"black","lineAlpha":0,"bullet":"round","noStepRisers":true,"periodSpan":0.5,"balloonText":"<b> Individual </b>: [[individual_3]]<br/><b> Value </b>: [[real_outlier_3]]","type":"line","valueField":"real_outlier_3"},{"lineColor":"black","lineAlpha":0,"bullet":"round","noStepRisers":true,"periodSpan":0.5,"balloonText":"<b> Individual </b>: [[individual_4]]<br/><b> Value </b>: [[real_outlier_4]]","type":"line","valueField":"real_outlier_4"},{"lineColor":"black","lineAlpha":0,"bullet":"round","noStepRisers":true,"periodSpan":0.5,"balloonText":"<b> Individual </b>: [[individual_5]]<br/><b> Value </b>: [[real_outlier_5]]","type":"line","valueField":"real_outlier_5"},{"lineColor":"black","lineAlpha":0,"bullet":"round","noStepRisers":true,"periodSpan":0.5,"balloonText":"<b> Individual </b>: [[individual_6]]<br/><b> Value </b>: [[real_outlier_6]]","type":"line","valueField":"real_outlier_6"},{"lineColor":"black","lineAlpha":0,"bullet":"round","noStepRisers":true,"periodSpan":0.5,"balloonText":"<b> Individual </b>: [[individual_7]]<br/><b> Value </b>: [[real_outlier_7]]","type":"line","valueField":"real_outlier_7"},{"lineColor":"black","lineAlpha":0,"bullet":"round","noStepRisers":true,"periodSpan":0.5,"balloonText":"<b> Individual </b>: [[individual_8]]<br/><b> Value </b>: [[real_outlier_8]]","type":"line","valueField":"real_outlier_8"},{"lineColor":"black","lineAlpha":0,"bullet":"round","noStepRisers":true,"periodSpan":0.5,"balloonText":"<b> Individual </b>: [[individual_9]]<br/><b> Value </b>: [[real_outlier_9]]","type":"line","valueField":"real_outlier_9"}],"theme":"light","type":"serial"},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":null},"evals":[]}</script></p>
+<p><div id="htmlwidget-4908" style="width:100%;height:300px;" class="ramcharts_base"></div>
+<script type="application/json" data-for="htmlwidget-4908">{"x":{"chartData":{"rotate":false,"categoryField":"cat","dataProvider":[{"cat":"Sepal.Length","low_outlier":4.3,"low":4.3,"open":5.1,"median":5.8,"close":6.4,"high":7.9,"high_outlier":7.9,"color":"gray"},{"cat":"Sepal.Width","low_outlier":2.2,"low":2.2,"open":2.8,"median":3,"close":3.3,"high":4,"high_outlier":4,"color":"gray","real_outlier_1":"2","individual_1":"61","real_outlier_2":"4.1","individual_2":"33","real_outlier_3":"4.2","individual_3":"34","real_outlier_4":"4.4","individual_4":"16"},{"cat":"Petal.Length","low_outlier":1,"low":1,"open":1.6,"median":4.35,"close":5.1,"high":6.9,"high_outlier":6.9,"color":"gray"},{"cat":"Petal.Width","low_outlier":0.1,"low":0.1,"open":0.3,"median":1.3,"close":1.8,"high":2.5,"high_outlier":2.5,"color":"gray"}],"graphs":[{"id":"g1","closeField":"close","fillColorsField":"color","highField":"high","lineColor":"#7f8da9","lineAlpha":1,"lowField":"low","fillAlphas":"0.9","negativeLineColor":"#7f8da9","openField":"open","balloonText":"High = <b>[[high_outlier]]</b><br/>3rd quart. = <b>[[close]]</b><br/>Median = <b>[[median]]</b><br/>1st quart. = <b>[[open]]</b><br/>Low = <b>[[low_outlier]]</b><br/>","title":"Price:","type":"candlestick","valueField":"close"},{"id":"g2","lineColor":"black","noStepRisers":true,"periodSpan":0.8,"lineThickness":3,"balloonText":"","type":"step","valueField":"median"},{"id":"g3","lineColor":"black","noStepRisers":true,"periodSpan":0.5,"balloonText":"","type":"step","valueField":"low_outlier"},{"id":"g4","lineColor":"black","noStepRisers":true,"periodSpan":0.5,"balloonText":"","type":"step","valueField":"high_outlier"},{"id":"g5","lineColor":"black","lineAlpha":0,"bullet":"round","noStepRisers":true,"periodSpan":0.5,"balloonText":"","type":"line","valueField":"real_outlier"},{"lineColor":"black","lineAlpha":0,"bullet":"round","noStepRisers":true,"periodSpan":0.5,"balloonText":"<b> Individual </b>: [[individual_1]]<br/><b> Value </b>: [[real_outlier_1]]","type":"line","valueField":"real_outlier_1"},{"lineColor":"black","lineAlpha":0,"bullet":"round","noStepRisers":true,"periodSpan":0.5,"balloonText":"<b> Individual </b>: [[individual_2]]<br/><b> Value </b>: [[real_outlier_2]]","type":"line","valueField":"real_outlier_2"},{"lineColor":"black","lineAlpha":0,"bullet":"round","noStepRisers":true,"periodSpan":0.5,"balloonText":"<b> Individual </b>: [[individual_3]]<br/><b> Value </b>: [[real_outlier_3]]","type":"line","valueField":"real_outlier_3"},{"lineColor":"black","lineAlpha":0,"bullet":"round","noStepRisers":true,"periodSpan":0.5,"balloonText":"<b> Individual </b>: [[individual_4]]<br/><b> Value </b>: [[real_outlier_4]]","type":"line","valueField":"real_outlier_4"},{"lineColor":"black","lineAlpha":0,"bullet":"round","noStepRisers":true,"periodSpan":0.5,"balloonText":"<b> Individual </b>: [[individual_5]]<br/><b> Value </b>: [[real_outlier_5]]","type":"line","valueField":"real_outlier_5"},{"lineColor":"black","lineAlpha":0,"bullet":"round","noStepRisers":true,"periodSpan":0.5,"balloonText":"<b> Individual </b>: [[individual_6]]<br/><b> Value </b>: [[real_outlier_6]]","type":"line","valueField":"real_outlier_6"},{"lineColor":"black","lineAlpha":0,"bullet":"round","noStepRisers":true,"periodSpan":0.5,"balloonText":"<b> Individual </b>: [[individual_7]]<br/><b> Value </b>: [[real_outlier_7]]","type":"line","valueField":"real_outlier_7"},{"lineColor":"black","lineAlpha":0,"bullet":"round","noStepRisers":true,"periodSpan":0.5,"balloonText":"<b> Individual </b>: [[individual_8]]<br/><b> Value </b>: [[real_outlier_8]]","type":"line","valueField":"real_outlier_8"},{"lineColor":"black","lineAlpha":0,"bullet":"round","noStepRisers":true,"periodSpan":0.5,"balloonText":"<b> Individual </b>: [[individual_9]]<br/><b> Value </b>: [[real_outlier_9]]","type":"line","valueField":"real_outlier_9"}],"theme":"light","type":"serial"},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":null},"evals":[]}</script></p>
 </div>
 <div id="shiny-interactions" class="section level1">
 <h1>Shiny interactions</h1>
@@ -190,7 +203,7 @@ shinyApp(
     
       <div class="col-xs-1 col-md-1" id="logo">
         <a href="https://github.com/DataKnowledge/rAmCharts.git">
-          <img  src="www/img/github.jpg" title="View on Github" id="img-github"/>
+          <img  src="www/img/github.png" title="View on Github" id="img-github"/>
         </a>
       </div>
     

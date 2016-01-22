@@ -27,6 +27,7 @@
 <link href='https://fonts.googleapis.com/css?family=Pompiere' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Raleway:100' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
 
 <style type="text/css">code{white-space: pre;}</style>
 <link rel="stylesheet"
@@ -74,54 +75,66 @@ img {
   
 <div class="row">
   
-  <nav class="col-xs-3 col-md-2" id="navbar">
+  <div class="col-xs-3 col-md-2" id="navbar">
     
-    <ultoc class="toc" id="nav">
+    <div id="main-toc">Tutorial - rAmCharts</div>
+    <hr/>
       
-      <p id="main-toc">Tutorial - rAmCharts</p>
-      <hr/>
-      
-      <b class="section-toc">Getting started</b>
-      <br/><br/>
+    <b class="section-toc">Getting started</b>
+    <br/>
 
-      <litoc><a class="toc-item" href="index.html">Introduction</a></litoc>
-      <litoc><a class="toc-item" href="convert.html">Convert from JS</a></litoc>
-      <litoc><a class="toc-item" href="shiny.html">Use in shiny apps</a></litoc>
-      <litoc><a class="toc-item" href="advance.html">Advanced features</a></litoc>
+    <ul class="toc" id="nav-intro">
+      <li class="litoc">
+        <a class="toc-item" href="index.html">Introduction</a>
+      </li>
+      <li class="litoc">
+        <a class="toc-item" href="convert.html">Quick tutorial</a>
+      </li>
+      <li class="litoc">
+        <a class="toc-item" href="shiny.html">Use in shiny apps</a>
+      </li>
+      <li class="litoc">
+        <a class="toc-item" href="advance.html">Advanced features</a>
+        </li>
+    </ul> 
+    <hr/>
       
-      <hr/>
+    <b class="section-toc">Functions 'am'</b>
+    <br/>
       
-      <b class="section-toc">Functions 'am'</b>
-      <br/><br/>
-      
+    <ul class="toc" id="nav-amfunctions">   
       <!--
-      <litoc list-style-type:disc><a class="toc-item" href="amAngularGauge.html">amAngularGauge</a></litoc>
+      <li class="litoc"><a class="toc-item" href="amAngularGauge.html">amAngularGauge</a></li>
       -->
-      <litoc list-style-type:disc><a class="toc-item" href="amBarplot.html">amBarplot</a></litoc>
-      <litoc list-style-type:disc><a class="toc-item" href="amBoxplot.html">amBoxplot</a></litoc>
+      <li class="litoc">
+        <a class="toc-item" href="amBarplot.html">amBarplot</a>
+      </li>
+      <li class="litoc">
+        <a class="toc-item" href="amBoxplot.html">amBoxplot</a>
+      </li>
       <!--
-      <litoc list-style-type:disc><a class="toc-item" href="amBullet.html">amBullet</a></litoc>
+      <li class="litoc"><a class="toc-item" href="amBullet.html">amBullet</a></li>
       -->
-      <litoc list-style-type:disc><a class="toc-item" href="amCandlestick.html">amCandlestick</a></litoc>
-      <litoc list-style-type:disc><a class="toc-item" href="amHist.html">amHist</a></litoc>
+      <li class="litoc"><a class="toc-item" href="amCandlestick.html">amCandlestick</a></li>
+      <li class="litoc"><a class="toc-item" href="amHist.html">amHist</a></li>
       
 
-      <litoc list-style-type:disc><a class="toc-item" href="amRadar.html">amRadar</a></litoc>
+      <li class="litoc"><a class="toc-item" href="amRadar.html">amRadar</a></li>
       
       <!--
-      <litoc list-style-type:disc><a class="toc-item" href="amMekko.html">amMekko</a></litoc>
-      <litoc list-style-type:disc><a class="toc-item" href="amPie.html">amPie</a></litoc>
-      <litoc list-style-type:disc><a class="toc-item" href="amPlot.html">amPlot</a></litoc>
-      <litoc list-style-type:disc><a class="toc-item" href="amRadar.html">amRadar</a></litoc>
-      <litoc list-style-type:disc><a class="toc-item" href="amWaterfall.html">amWaterfall</a></litoc>
-      <litoc list-style-type:disc><a class="toc-item" href="amWind.html">amWind</a></litoc>
+      <li class="litoc"><a class="toc-item" href="amMekko.html">amMekko</a></li>
+      <li class="litoc"><a class="toc-item" href="amPie.html">amPie</a></li>
+      <li class="litoc"><a class="toc-item" href="amPlot.html">amPlot</a></li>
+      <li class="litoc"><a class="toc-item" href="amRadar.html">amRadar</a></li>
+      <li class="litoc"><a class="toc-item" href="amWaterfall.html">amWaterfall</a></li>
+      <li class="litoc"><a class="toc-item" href="amWind.html">amWind</a></li>
       -->
-    </ultoc>
+    </ul>
     
     <footer>
       <div class="copyrights"><small> © 2015-2016 DataKnowledge</small></div>
     </footer>
-  </nav><!-- end of left column -->
+  </div><!-- end of left column -->
   
   <div class="col-xs-9 col-md-10">
     <div class="row">
@@ -133,8 +146,8 @@ img {
 <h1>Basic example</h1>
 <pre class="r"><code>dataset &lt;- data.frame(get(x = &quot;USArrests&quot;, pos = &quot;package:datasets&quot;))
 amBarplot(y = c(&quot;Murder&quot;, &quot;Assault&quot;, &quot;UrbanPop&quot;, &quot;Rape&quot;), data = dataset, stack_type = &quot;regular&quot;) %&gt;&gt;% plot()</code></pre>
-<p><div id="htmlwidget-1802" style="width:100%;height:500px;" class="ramcharts_base"></div>
-<script type="application/json" data-for="htmlwidget-1802">{"x":{"chartData":{"rotate":false,"depth3D":0,"angle":0,"dataDateFormat":null,"creditsPosition":"top-left","categoryAxis":{"title":"","labelRotation":0,"axisAlpha":0,"gridAlpha":0,"parseDates":false,"minPeriod":"","gridPosition":"start"},"categoryField":"xcat_","dataProvider":[{"Murder":13.2,"Assault":236,"UrbanPop":58,"Rape":21.2,"xcat_":"Alabama"},{"Murder":10,"Assault":263,"UrbanPop":48,"Rape":44.5,"xcat_":"Alaska"},{"Murder":8.1,"Assault":294,"UrbanPop":80,"Rape":31,"xcat_":"Arizona"},{"Murder":8.8,"Assault":190,"UrbanPop":50,"Rape":19.5,"xcat_":"Arkansas"},{"Murder":9,"Assault":276,"UrbanPop":91,"Rape":40.6,"xcat_":"California"},{"Murder":7.9,"Assault":204,"UrbanPop":78,"Rape":38.7,"xcat_":"Colorado"},{"Murder":3.3,"Assault":110,"UrbanPop":77,"Rape":11.1,"xcat_":"Connecticut"},{"Murder":5.9,"Assault":238,"UrbanPop":72,"Rape":15.8,"xcat_":"Delaware"},{"Murder":15.4,"Assault":335,"UrbanPop":80,"Rape":31.9,"xcat_":"Florida"},{"Murder":17.4,"Assault":211,"UrbanPop":60,"Rape":25.8,"xcat_":"Georgia"},{"Murder":5.3,"Assault":46,"UrbanPop":83,"Rape":20.2,"xcat_":"Hawaii"},{"Murder":2.6,"Assault":120,"UrbanPop":54,"Rape":14.2,"xcat_":"Idaho"},{"Murder":10.4,"Assault":249,"UrbanPop":83,"Rape":24,"xcat_":"Illinois"},{"Murder":7.2,"Assault":113,"UrbanPop":65,"Rape":21,"xcat_":"Indiana"},{"Murder":2.2,"Assault":56,"UrbanPop":57,"Rape":11.3,"xcat_":"Iowa"},{"Murder":6,"Assault":115,"UrbanPop":66,"Rape":18,"xcat_":"Kansas"},{"Murder":9.7,"Assault":109,"UrbanPop":52,"Rape":16.3,"xcat_":"Kentucky"},{"Murder":15.4,"Assault":249,"UrbanPop":66,"Rape":22.2,"xcat_":"Louisiana"},{"Murder":2.1,"Assault":83,"UrbanPop":51,"Rape":7.8,"xcat_":"Maine"},{"Murder":11.3,"Assault":300,"UrbanPop":67,"Rape":27.8,"xcat_":"Maryland"},{"Murder":4.4,"Assault":149,"UrbanPop":85,"Rape":16.3,"xcat_":"Massachusetts"},{"Murder":12.1,"Assault":255,"UrbanPop":74,"Rape":35.1,"xcat_":"Michigan"},{"Murder":2.7,"Assault":72,"UrbanPop":66,"Rape":14.9,"xcat_":"Minnesota"},{"Murder":16.1,"Assault":259,"UrbanPop":44,"Rape":17.1,"xcat_":"Mississippi"},{"Murder":9,"Assault":178,"UrbanPop":70,"Rape":28.2,"xcat_":"Missouri"},{"Murder":6,"Assault":109,"UrbanPop":53,"Rape":16.4,"xcat_":"Montana"},{"Murder":4.3,"Assault":102,"UrbanPop":62,"Rape":16.5,"xcat_":"Nebraska"},{"Murder":12.2,"Assault":252,"UrbanPop":81,"Rape":46,"xcat_":"Nevada"},{"Murder":2.1,"Assault":57,"UrbanPop":56,"Rape":9.5,"xcat_":"New Hampshire"},{"Murder":7.4,"Assault":159,"UrbanPop":89,"Rape":18.8,"xcat_":"New Jersey"},{"Murder":11.4,"Assault":285,"UrbanPop":70,"Rape":32.1,"xcat_":"New Mexico"},{"Murder":11.1,"Assault":254,"UrbanPop":86,"Rape":26.1,"xcat_":"New York"},{"Murder":13,"Assault":337,"UrbanPop":45,"Rape":16.1,"xcat_":"North Carolina"},{"Murder":0.8,"Assault":45,"UrbanPop":44,"Rape":7.3,"xcat_":"North Dakota"},{"Murder":7.3,"Assault":120,"UrbanPop":75,"Rape":21.4,"xcat_":"Ohio"},{"Murder":6.6,"Assault":151,"UrbanPop":68,"Rape":20,"xcat_":"Oklahoma"},{"Murder":4.9,"Assault":159,"UrbanPop":67,"Rape":29.3,"xcat_":"Oregon"},{"Murder":6.3,"Assault":106,"UrbanPop":72,"Rape":14.9,"xcat_":"Pennsylvania"},{"Murder":3.4,"Assault":174,"UrbanPop":87,"Rape":8.3,"xcat_":"Rhode Island"},{"Murder":14.4,"Assault":279,"UrbanPop":48,"Rape":22.5,"xcat_":"South Carolina"},{"Murder":3.8,"Assault":86,"UrbanPop":45,"Rape":12.8,"xcat_":"South Dakota"},{"Murder":13.2,"Assault":188,"UrbanPop":59,"Rape":26.9,"xcat_":"Tennessee"},{"Murder":12.7,"Assault":201,"UrbanPop":80,"Rape":25.5,"xcat_":"Texas"},{"Murder":3.2,"Assault":120,"UrbanPop":80,"Rape":22.9,"xcat_":"Utah"},{"Murder":2.2,"Assault":48,"UrbanPop":32,"Rape":11.2,"xcat_":"Vermont"},{"Murder":8.5,"Assault":156,"UrbanPop":63,"Rape":20.7,"xcat_":"Virginia"},{"Murder":4,"Assault":145,"UrbanPop":73,"Rape":26.2,"xcat_":"Washington"},{"Murder":5.7,"Assault":81,"UrbanPop":39,"Rape":9.3,"xcat_":"West Virginia"},{"Murder":2.6,"Assault":53,"UrbanPop":66,"Rape":10.8,"xcat_":"Wisconsin"},{"Murder":6.8,"Assault":161,"UrbanPop":60,"Rape":15.6,"xcat_":"Wyoming"}],"graphs":[{"id":"AmGraph-1","fillColors":"#67b7dc","legendColor":"#67b7dc","fillAlphas":0.85,"lineAlpha":0.1,"labelText":"","balloonText":"Murder : [[value]]","title":"Murder","type":"column","valueField":"Murder"},{"id":"AmGraph-2","fillColors":"#fdd400","legendColor":"#fdd400","fillAlphas":0.85,"lineAlpha":0.1,"labelText":"","balloonText":"Assault : [[value]]","title":"Assault","type":"column","valueField":"Assault"},{"id":"AmGraph-3","fillColors":"#84b761","legendColor":"#84b761","fillAlphas":0.85,"lineAlpha":0.1,"labelText":"","balloonText":"UrbanPop : [[value]]","title":"UrbanPop","type":"column","valueField":"UrbanPop"},{"id":"AmGraph-4","fillColors":"#cc4748","legendColor":"#cc4748","fillAlphas":0.85,"lineAlpha":0.1,"labelText":"","balloonText":"Rape : [[value]]","title":"Rape","type":"column","valueField":"Rape"}],"type":"serial","valueAxes":[{"position":"left","stackType":"regular","title":""}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[]}</script></p>
+<p><div id="htmlwidget-709" style="width:100%;height:500px;" class="ramcharts_base"></div>
+<script type="application/json" data-for="htmlwidget-709">{"x":{"chartData":{"rotate":false,"depth3D":0,"angle":0,"dataDateFormat":null,"categoryAxis":{"title":"","axisAlpha":0,"gridAlpha":0,"parseDates":false,"minPeriod":"","gridPosition":"start"},"categoryField":"xcat_","dataProvider":[{"Murder":13.2,"Assault":236,"UrbanPop":58,"Rape":21.2,"xcat_":"Alabama"},{"Murder":10,"Assault":263,"UrbanPop":48,"Rape":44.5,"xcat_":"Alaska"},{"Murder":8.1,"Assault":294,"UrbanPop":80,"Rape":31,"xcat_":"Arizona"},{"Murder":8.8,"Assault":190,"UrbanPop":50,"Rape":19.5,"xcat_":"Arkansas"},{"Murder":9,"Assault":276,"UrbanPop":91,"Rape":40.6,"xcat_":"California"},{"Murder":7.9,"Assault":204,"UrbanPop":78,"Rape":38.7,"xcat_":"Colorado"},{"Murder":3.3,"Assault":110,"UrbanPop":77,"Rape":11.1,"xcat_":"Connecticut"},{"Murder":5.9,"Assault":238,"UrbanPop":72,"Rape":15.8,"xcat_":"Delaware"},{"Murder":15.4,"Assault":335,"UrbanPop":80,"Rape":31.9,"xcat_":"Florida"},{"Murder":17.4,"Assault":211,"UrbanPop":60,"Rape":25.8,"xcat_":"Georgia"},{"Murder":5.3,"Assault":46,"UrbanPop":83,"Rape":20.2,"xcat_":"Hawaii"},{"Murder":2.6,"Assault":120,"UrbanPop":54,"Rape":14.2,"xcat_":"Idaho"},{"Murder":10.4,"Assault":249,"UrbanPop":83,"Rape":24,"xcat_":"Illinois"},{"Murder":7.2,"Assault":113,"UrbanPop":65,"Rape":21,"xcat_":"Indiana"},{"Murder":2.2,"Assault":56,"UrbanPop":57,"Rape":11.3,"xcat_":"Iowa"},{"Murder":6,"Assault":115,"UrbanPop":66,"Rape":18,"xcat_":"Kansas"},{"Murder":9.7,"Assault":109,"UrbanPop":52,"Rape":16.3,"xcat_":"Kentucky"},{"Murder":15.4,"Assault":249,"UrbanPop":66,"Rape":22.2,"xcat_":"Louisiana"},{"Murder":2.1,"Assault":83,"UrbanPop":51,"Rape":7.8,"xcat_":"Maine"},{"Murder":11.3,"Assault":300,"UrbanPop":67,"Rape":27.8,"xcat_":"Maryland"},{"Murder":4.4,"Assault":149,"UrbanPop":85,"Rape":16.3,"xcat_":"Massachusetts"},{"Murder":12.1,"Assault":255,"UrbanPop":74,"Rape":35.1,"xcat_":"Michigan"},{"Murder":2.7,"Assault":72,"UrbanPop":66,"Rape":14.9,"xcat_":"Minnesota"},{"Murder":16.1,"Assault":259,"UrbanPop":44,"Rape":17.1,"xcat_":"Mississippi"},{"Murder":9,"Assault":178,"UrbanPop":70,"Rape":28.2,"xcat_":"Missouri"},{"Murder":6,"Assault":109,"UrbanPop":53,"Rape":16.4,"xcat_":"Montana"},{"Murder":4.3,"Assault":102,"UrbanPop":62,"Rape":16.5,"xcat_":"Nebraska"},{"Murder":12.2,"Assault":252,"UrbanPop":81,"Rape":46,"xcat_":"Nevada"},{"Murder":2.1,"Assault":57,"UrbanPop":56,"Rape":9.5,"xcat_":"New Hampshire"},{"Murder":7.4,"Assault":159,"UrbanPop":89,"Rape":18.8,"xcat_":"New Jersey"},{"Murder":11.4,"Assault":285,"UrbanPop":70,"Rape":32.1,"xcat_":"New Mexico"},{"Murder":11.1,"Assault":254,"UrbanPop":86,"Rape":26.1,"xcat_":"New York"},{"Murder":13,"Assault":337,"UrbanPop":45,"Rape":16.1,"xcat_":"North Carolina"},{"Murder":0.8,"Assault":45,"UrbanPop":44,"Rape":7.3,"xcat_":"North Dakota"},{"Murder":7.3,"Assault":120,"UrbanPop":75,"Rape":21.4,"xcat_":"Ohio"},{"Murder":6.6,"Assault":151,"UrbanPop":68,"Rape":20,"xcat_":"Oklahoma"},{"Murder":4.9,"Assault":159,"UrbanPop":67,"Rape":29.3,"xcat_":"Oregon"},{"Murder":6.3,"Assault":106,"UrbanPop":72,"Rape":14.9,"xcat_":"Pennsylvania"},{"Murder":3.4,"Assault":174,"UrbanPop":87,"Rape":8.3,"xcat_":"Rhode Island"},{"Murder":14.4,"Assault":279,"UrbanPop":48,"Rape":22.5,"xcat_":"South Carolina"},{"Murder":3.8,"Assault":86,"UrbanPop":45,"Rape":12.8,"xcat_":"South Dakota"},{"Murder":13.2,"Assault":188,"UrbanPop":59,"Rape":26.9,"xcat_":"Tennessee"},{"Murder":12.7,"Assault":201,"UrbanPop":80,"Rape":25.5,"xcat_":"Texas"},{"Murder":3.2,"Assault":120,"UrbanPop":80,"Rape":22.9,"xcat_":"Utah"},{"Murder":2.2,"Assault":48,"UrbanPop":32,"Rape":11.2,"xcat_":"Vermont"},{"Murder":8.5,"Assault":156,"UrbanPop":63,"Rape":20.7,"xcat_":"Virginia"},{"Murder":4,"Assault":145,"UrbanPop":73,"Rape":26.2,"xcat_":"Washington"},{"Murder":5.7,"Assault":81,"UrbanPop":39,"Rape":9.3,"xcat_":"West Virginia"},{"Murder":2.6,"Assault":53,"UrbanPop":66,"Rape":10.8,"xcat_":"Wisconsin"},{"Murder":6.8,"Assault":161,"UrbanPop":60,"Rape":15.6,"xcat_":"Wyoming"}],"graphs":[{"id":"AmGraph-1","fillColors":"#67b7dc","legendColor":"#67b7dc","fillAlphas":0.85,"lineAlpha":0.1,"labelText":"","balloonText":"Murder : [[value]]","title":"Murder","type":"column","valueField":"Murder"},{"id":"AmGraph-2","fillColors":"#fdd400","legendColor":"#fdd400","fillAlphas":0.85,"lineAlpha":0.1,"labelText":"","balloonText":"Assault : [[value]]","title":"Assault","type":"column","valueField":"Assault"},{"id":"AmGraph-3","fillColors":"#84b761","legendColor":"#84b761","fillAlphas":0.85,"lineAlpha":0.1,"labelText":"","balloonText":"UrbanPop : [[value]]","title":"UrbanPop","type":"column","valueField":"UrbanPop"},{"id":"AmGraph-4","fillColors":"#cc4748","legendColor":"#cc4748","fillAlphas":0.85,"lineAlpha":0.1,"labelText":"","balloonText":"Rape : [[value]]","title":"Rape","type":"column","valueField":"Rape"}],"type":"serial","valueAxes":[{"position":"left","stackType":"regular","title":""}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[]}</script></p>
 </div>
 <div id="coming-documentation" class="section level1">
 <h1>Coming: documentation</h1>
@@ -144,7 +157,7 @@ amBarplot(y = c(&quot;Murder&quot;, &quot;Assault&quot;, &quot;UrbanPop&quot;, &
     
       <div class="col-xs-1 col-md-1" id="logo">
         <a href="https://github.com/DataKnowledge/rAmCharts.git">
-          <img  src="www/img/github.jpg" title="View on Github" id="img-github"/>
+          <img  src="www/img/github.png" title="View on Github" id="img-github"/>
         </a>
       </div>
     

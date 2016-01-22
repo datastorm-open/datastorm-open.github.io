@@ -1,5 +1,5 @@
 ---
-pagetitle: amHist
+pagetitle: rAmCharts - amHist
 ---
 
 ```{r,echo=FALSE, message=FALSE}
@@ -7,10 +7,68 @@ require(package = "rAmCharts", quietly = TRUE)
 require(package = "pipeR", quietly = TRUE)
 ```
 
-# Basic example
+## Parameters
 
+* __x__: a vector of values for which the histogram is desired.
+* __col__: a colour to be used to fill the bars.
+* __border__: a colour for the borders.
+* __freq__: logical if TRUE, the histogram graphic is a representation of frequencies, the counts component of the result; if FALSE, probability densities, component density, are plotted (so that the histogram has a total area of one). Defaults to TRUE if and only if breaks are equidistant (and probability is not specified).
+* __labels__: logical or character. Additionally draw labels on top of bars, if not FALSE; if TRUE, draw the counts or rounded densities; if labels is a character, draw itself.
+* __xlab, ylab__: character, labels of the axis.
+* __ylim__: the range of y values with sensible defaults.
+* __control_hist__: (optional) named list containing parameters for computing the histogram.
+* __...__: other parameters called in amOptions.
+
+Data used in the examples:
 ```{r}
-amHist(x = rnorm(100)) %>>% plot()
+data_hist <- get(x = "iris", pos = "package:datasets")$Sepal.Length
+head(data_hist)
 ```
 
-## Coming: documentation
+## Reference example
+
+```{r}
+amHist(x = data_hist) %>>% plot()
+```
+
+<div class="row">
+  <div class="col-xs-12 col-md-6"><h2 class="partdivtitle"> Filling color </h2>
+```{r}
+amHist(x = data_hist, col = "#367fa9") %>>% plot()
+```
+  </div>
+  
+  <div class="col-xs-12 col-md-6"><h2 class="partdivtitle"> Border color </h2>
+```{r}
+amHist(x = data_hist, border = "#367fa9") %>>% plot()
+```
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-12 col-md-6"><h2 class="partdivtitle"> View frequency </h2>
+```{r}
+amHist(x = data_hist, freq = FALSE) %>>% plot()
+```
+  </div>
+  
+  <div class="col-xs-12 col-md-6"><h2 class="partdivtitle"> Labels </h2>
+```{r}
+amHist(x = data_hist, xlab = "xlab", ylab = "ylab") %>>% plot()
+```
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-12 col-md-6"><h2 class="partdivtitle"> Add label on the top </h2>
+```{r}
+amHist(x = data_hist, labels = TRUE) %>>% plot()
+```
+  </div>
+  
+  <div class="col-xs-12 col-md-6"><h2 class="partdivtitle"> Set ylim </h2>
+```{r}
+amHist(x = data_hist, ylim = c(0,.8), freq = FALSE) %>>% plot()
+```
+  </div>
+</div>

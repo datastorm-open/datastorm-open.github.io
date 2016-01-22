@@ -10,7 +10,7 @@
 
 
 
-<title>amHist</title>
+<title>rAmCharts - amHist</title>
 
 <script src="libs/jquery/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -28,6 +28,7 @@
 <link href='https://fonts.googleapis.com/css?family=Pompiere' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Raleway:100' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
 
 <style type="text/css">code{white-space: pre;}</style>
 <link rel="stylesheet"
@@ -75,54 +76,66 @@ img {
   
 <div class="row">
   
-  <nav class="col-xs-3 col-md-2" id="navbar">
+  <div class="col-xs-3 col-md-2" id="navbar">
     
-    <ultoc class="toc" id="nav">
+    <div id="main-toc">Tutorial - rAmCharts</div>
+    <hr/>
       
-      <p id="main-toc">Tutorial - rAmCharts</p>
-      <hr/>
-      
-      <b class="section-toc">Getting started</b>
-      <br/><br/>
+    <b class="section-toc">Getting started</b>
+    <br/>
 
-      <litoc><a class="toc-item" href="index.html">Introduction</a></litoc>
-      <litoc><a class="toc-item" href="convert.html">Convert from JS</a></litoc>
-      <litoc><a class="toc-item" href="shiny.html">Use in shiny apps</a></litoc>
-      <litoc><a class="toc-item" href="advance.html">Advanced features</a></litoc>
+    <ul class="toc" id="nav-intro">
+      <li class="litoc">
+        <a class="toc-item" href="index.html">Introduction</a>
+      </li>
+      <li class="litoc">
+        <a class="toc-item" href="convert.html">Quick tutorial</a>
+      </li>
+      <li class="litoc">
+        <a class="toc-item" href="shiny.html">Use in shiny apps</a>
+      </li>
+      <li class="litoc">
+        <a class="toc-item" href="advance.html">Advanced features</a>
+        </li>
+    </ul> 
+    <hr/>
       
-      <hr/>
+    <b class="section-toc">Functions 'am'</b>
+    <br/>
       
-      <b class="section-toc">Functions 'am'</b>
-      <br/><br/>
-      
+    <ul class="toc" id="nav-amfunctions">   
       <!--
-      <litoc list-style-type:disc><a class="toc-item" href="amAngularGauge.html">amAngularGauge</a></litoc>
+      <li class="litoc"><a class="toc-item" href="amAngularGauge.html">amAngularGauge</a></li>
       -->
-      <litoc list-style-type:disc><a class="toc-item" href="amBarplot.html">amBarplot</a></litoc>
-      <litoc list-style-type:disc><a class="toc-item" href="amBoxplot.html">amBoxplot</a></litoc>
+      <li class="litoc">
+        <a class="toc-item" href="amBarplot.html">amBarplot</a>
+      </li>
+      <li class="litoc">
+        <a class="toc-item" href="amBoxplot.html">amBoxplot</a>
+      </li>
       <!--
-      <litoc list-style-type:disc><a class="toc-item" href="amBullet.html">amBullet</a></litoc>
+      <li class="litoc"><a class="toc-item" href="amBullet.html">amBullet</a></li>
       -->
-      <litoc list-style-type:disc><a class="toc-item" href="amCandlestick.html">amCandlestick</a></litoc>
-      <litoc list-style-type:disc><a class="toc-item" href="amHist.html">amHist</a></litoc>
+      <li class="litoc"><a class="toc-item" href="amCandlestick.html">amCandlestick</a></li>
+      <li class="litoc"><a class="toc-item" href="amHist.html">amHist</a></li>
       
 
-      <litoc list-style-type:disc><a class="toc-item" href="amRadar.html">amRadar</a></litoc>
+      <li class="litoc"><a class="toc-item" href="amRadar.html">amRadar</a></li>
       
       <!--
-      <litoc list-style-type:disc><a class="toc-item" href="amMekko.html">amMekko</a></litoc>
-      <litoc list-style-type:disc><a class="toc-item" href="amPie.html">amPie</a></litoc>
-      <litoc list-style-type:disc><a class="toc-item" href="amPlot.html">amPlot</a></litoc>
-      <litoc list-style-type:disc><a class="toc-item" href="amRadar.html">amRadar</a></litoc>
-      <litoc list-style-type:disc><a class="toc-item" href="amWaterfall.html">amWaterfall</a></litoc>
-      <litoc list-style-type:disc><a class="toc-item" href="amWind.html">amWind</a></litoc>
+      <li class="litoc"><a class="toc-item" href="amMekko.html">amMekko</a></li>
+      <li class="litoc"><a class="toc-item" href="amPie.html">amPie</a></li>
+      <li class="litoc"><a class="toc-item" href="amPlot.html">amPlot</a></li>
+      <li class="litoc"><a class="toc-item" href="amRadar.html">amRadar</a></li>
+      <li class="litoc"><a class="toc-item" href="amWaterfall.html">amWaterfall</a></li>
+      <li class="litoc"><a class="toc-item" href="amWind.html">amWind</a></li>
       -->
-    </ultoc>
+    </ul>
     
     <footer>
       <div class="copyrights"><small> © 2015-2016 DataKnowledge</small></div>
     </footer>
-  </nav><!-- end of left column -->
+  </div><!-- end of left column -->
   
   <div class="col-xs-9 col-md-10">
     <div class="row">
@@ -130,13 +143,82 @@ img {
 
 
 
-<div id="basic-example" class="section level1">
-<h1>Basic example</h1>
-<pre class="r"><code>amHist(x = rnorm(100)) %&gt;&gt;% plot()</code></pre>
-<p><div id="htmlwidget-6460" style="width:100%;height:500px;" class="ramcharts_base"></div>
-<script type="application/json" data-for="htmlwidget-6460">{"x":{"chartData":{"columnSpacing":0,"columnWidth":1,"fillAlphas":1,"lineAlpha":1,"categoryAxis":{"title":"rnorm(100)"},"categoryField":"x","creditsPosition":"bottom-right","dataProvider":[{"x":-2.8,"y":1,"cut":"(from -3 to -2.5)","color":"gray"},{"x":-2.2,"y":1,"cut":"(from -2.5 to -2)","color":"gray"},{"x":-1.8,"y":2,"cut":"(from -2 to -1.5)","color":"gray"},{"x":-1.2,"y":13,"cut":"(from -1.5 to -1)","color":"gray"},{"x":-0.8,"y":11,"cut":"(from -1 to -0.5)","color":"gray"},{"x":-0.2,"y":23,"cut":"(from -0.5 to 0)","color":"gray"},{"x":0.2,"y":17,"cut":"(from 0 to 0.5)","color":"gray"},{"x":0.8,"y":15,"cut":"(from 0.5 to 1)","color":"gray"},{"x":1.2,"y":11,"cut":"(from 1 to 1.5)","color":"gray"},{"x":1.8,"y":2,"cut":"(from 1.5 to 2)","color":"gray"},{"x":2.2,"y":4,"cut":"(from 2 to 2.5)","color":"gray"}],"graphs":[{"fillAlphas":0.8,"lineAlpha":1,"fillColorsField":"color","lineColor":"gray","balloonText":"<b>[[value]]</b> <br/> [[cut]] ","type":"column","valueField":"y"},{"lineColor":"black","id":"graph-line","balloonText":"","type":"smoothedLine","valueField":"y"}],"theme":"light","type":"serial","valueAxes":[{"minimum":0,"maximum":24.15,"title":"Frequency"}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[]}</script></p>
-<div id="coming-documentation" class="section level2">
-<h2>Coming: documentation</h2>
+<div id="parameters" class="section level2">
+<h2>Parameters</h2>
+<ul>
+<li><strong>x</strong>: a vector of values for which the histogram is desired.</li>
+<li><strong>col</strong>: a colour to be used to fill the bars.</li>
+<li><strong>border</strong>: a colour for the borders.</li>
+<li><strong>freq</strong>: logical if TRUE, the histogram graphic is a representation of frequencies, the counts component of the result; if FALSE, probability densities, component density, are plotted (so that the histogram has a total area of one). Defaults to TRUE if and only if breaks are equidistant (and probability is not specified).</li>
+<li><strong>labels</strong>: logical or character. Additionally draw labels on top of bars, if not FALSE; if TRUE, draw the counts or rounded densities; if labels is a character, draw itself.</li>
+<li><strong>xlab, ylab</strong>: character, labels of the axis.</li>
+<li><strong>ylim</strong>: the range of y values with sensible defaults.</li>
+<li><strong>control_hist</strong>: (optional) named list containing parameters for computing the histogram.</li>
+<li><strong>…</strong>: other parameters called in amOptions.</li>
+</ul>
+<p>Data used in the examples:</p>
+<pre class="r"><code>data_hist &lt;- get(x = &quot;iris&quot;, pos = &quot;package:datasets&quot;)$Sepal.Length
+head(data_hist)</code></pre>
+<pre><code>## [1] 5.1 4.9 4.7 4.6 5.0 5.4</code></pre>
+</div>
+<div id="reference-example" class="section level2">
+<h2>Reference example</h2>
+<pre class="r"><code>amHist(x = data_hist) %&gt;&gt;% plot()</code></pre>
+<p><div id="htmlwidget-9377" style="width:100%;height:500px;" class="ramcharts_base"></div>
+<script type="application/json" data-for="htmlwidget-9377">{"x":{"chartData":{"columnSpacing":0,"columnWidth":1,"fillAlphas":1,"lineAlpha":1,"categoryAxis":{"title":"data_hist"},"categoryField":"x","creditsPosition":"bottom-right","dataProvider":[{"x":4.2,"y":5,"cut":"(from 4 to 4.5)","color":"gray"},{"x":4.8,"y":27,"cut":"(from 4.5 to 5)","color":"gray"},{"x":5.2,"y":27,"cut":"(from 5 to 5.5)","color":"gray"},{"x":5.8,"y":30,"cut":"(from 5.5 to 6)","color":"gray"},{"x":6.2,"y":31,"cut":"(from 6 to 6.5)","color":"gray"},{"x":6.8,"y":18,"cut":"(from 6.5 to 7)","color":"gray"},{"x":7.2,"y":6,"cut":"(from 7 to 7.5)","color":"gray"},{"x":7.8,"y":6,"cut":"(from 7.5 to 8)","color":"gray"}],"graphs":[{"fillAlphas":0.8,"lineAlpha":1,"fillColorsField":"color","lineColor":"gray","labelText":"","balloonText":"<b>[[value]]</b> <br/> [[cut]] ","type":"column","valueField":"y"},{"lineColor":"black","id":"graph-line","balloonText":"","type":"smoothedLine","valueField":"y"}],"theme":"light","type":"serial","valueAxes":[{"minimum":0,"maximum":32.55,"title":"Frequency"}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[]}</script></p>
+<div class="row">
+<div class="col-xs-12 col-md-6">
+<h2 class="partdivtitle">
+Filling color
+</h2>
+<pre class="r"><code>amHist(x = data_hist, col = &quot;#367fa9&quot;) %&gt;&gt;% plot()</code></pre>
+<div id="htmlwidget-5091" style="width:100%;height:500px;" class="ramcharts_base"></div>
+<script type="application/json" data-for="htmlwidget-5091">{"x":{"chartData":{"columnSpacing":0,"columnWidth":1,"fillAlphas":1,"lineAlpha":1,"categoryAxis":{"title":"data_hist"},"categoryField":"x","creditsPosition":"bottom-right","dataProvider":[{"x":4.2,"y":5,"cut":"(from 4 to 4.5)","color":"#367fa9"},{"x":4.8,"y":27,"cut":"(from 4.5 to 5)","color":"#367fa9"},{"x":5.2,"y":27,"cut":"(from 5 to 5.5)","color":"#367fa9"},{"x":5.8,"y":30,"cut":"(from 5.5 to 6)","color":"#367fa9"},{"x":6.2,"y":31,"cut":"(from 6 to 6.5)","color":"#367fa9"},{"x":6.8,"y":18,"cut":"(from 6.5 to 7)","color":"#367fa9"},{"x":7.2,"y":6,"cut":"(from 7 to 7.5)","color":"#367fa9"},{"x":7.8,"y":6,"cut":"(from 7.5 to 8)","color":"#367fa9"}],"graphs":[{"fillAlphas":0.8,"lineAlpha":1,"fillColorsField":"color","lineColor":"gray","labelText":"","balloonText":"<b>[[value]]</b> <br/> [[cut]] ","type":"column","valueField":"y"},{"lineColor":"black","id":"graph-line","balloonText":"","type":"smoothedLine","valueField":"y"}],"theme":"light","type":"serial","valueAxes":[{"minimum":0,"maximum":32.55,"title":"Frequency"}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[]}</script>
+</div>
+<div class="col-xs-12 col-md-6">
+<h2 class="partdivtitle">
+Border color
+</h2>
+<pre class="r"><code>amHist(x = data_hist, border = &quot;#367fa9&quot;) %&gt;&gt;% plot()</code></pre>
+<div id="htmlwidget-2544" style="width:100%;height:500px;" class="ramcharts_base"></div>
+<script type="application/json" data-for="htmlwidget-2544">{"x":{"chartData":{"columnSpacing":0,"columnWidth":1,"fillAlphas":1,"lineAlpha":1,"categoryAxis":{"title":"data_hist"},"categoryField":"x","creditsPosition":"bottom-right","dataProvider":[{"x":4.2,"y":5,"cut":"(from 4 to 4.5)","color":"gray"},{"x":4.8,"y":27,"cut":"(from 4.5 to 5)","color":"gray"},{"x":5.2,"y":27,"cut":"(from 5 to 5.5)","color":"gray"},{"x":5.8,"y":30,"cut":"(from 5.5 to 6)","color":"gray"},{"x":6.2,"y":31,"cut":"(from 6 to 6.5)","color":"gray"},{"x":6.8,"y":18,"cut":"(from 6.5 to 7)","color":"gray"},{"x":7.2,"y":6,"cut":"(from 7 to 7.5)","color":"gray"},{"x":7.8,"y":6,"cut":"(from 7.5 to 8)","color":"gray"}],"graphs":[{"fillAlphas":0.8,"lineAlpha":1,"fillColorsField":"color","lineColor":"#367fa9","labelText":"","balloonText":"<b>[[value]]</b> <br/> [[cut]] ","type":"column","valueField":"y"},{"lineColor":"black","id":"graph-line","balloonText":"","type":"smoothedLine","valueField":"y"}],"theme":"light","type":"serial","valueAxes":[{"minimum":0,"maximum":32.55,"title":"Frequency"}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[]}</script>
+</div>
+</div>
+<div class="row">
+<div class="col-xs-12 col-md-6">
+<h2 class="partdivtitle">
+View frequency
+</h2>
+<pre class="r"><code>amHist(x = data_hist, freq = FALSE) %&gt;&gt;% plot()</code></pre>
+<div id="htmlwidget-7211" style="width:100%;height:500px;" class="ramcharts_base"></div>
+<script type="application/json" data-for="htmlwidget-7211">{"x":{"chartData":{"columnSpacing":0,"columnWidth":1,"fillAlphas":1,"lineAlpha":1,"categoryAxis":{"title":"data_hist"},"categoryField":"x","creditsPosition":"bottom-right","dataProvider":[{"x":4.2,"y":0.067,"cut":"(from 4 to 4.5)","color":"gray"},{"x":4.8,"y":0.36,"cut":"(from 4.5 to 5)","color":"gray"},{"x":5.2,"y":0.36,"cut":"(from 5 to 5.5)","color":"gray"},{"x":5.8,"y":0.4,"cut":"(from 5.5 to 6)","color":"gray"},{"x":6.2,"y":0.413,"cut":"(from 6 to 6.5)","color":"gray"},{"x":6.8,"y":0.24,"cut":"(from 6.5 to 7)","color":"gray"},{"x":7.2,"y":0.08,"cut":"(from 7 to 7.5)","color":"gray"},{"x":7.8,"y":0.08,"cut":"(from 7.5 to 8)","color":"gray"}],"graphs":[{"fillAlphas":0.8,"lineAlpha":1,"fillColorsField":"color","lineColor":"gray","labelText":"","balloonText":"<b>[[value]]</b> <br/> [[cut]] ","type":"column","valueField":"y"},{"lineColor":"black","id":"graph-line","balloonText":"","type":"smoothedLine","valueField":"y"}],"theme":"light","type":"serial","valueAxes":[{"minimum":0,"maximum":0.43365,"title":"Density"}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[]}</script>
+</div>
+<div class="col-xs-12 col-md-6">
+<h2 class="partdivtitle">
+Labels
+</h2>
+<pre class="r"><code>amHist(x = data_hist, xlab = &quot;xlab&quot;, ylab = &quot;ylab&quot;) %&gt;&gt;% plot()</code></pre>
+<div id="htmlwidget-9309" style="width:100%;height:500px;" class="ramcharts_base"></div>
+<script type="application/json" data-for="htmlwidget-9309">{"x":{"chartData":{"columnSpacing":0,"columnWidth":1,"fillAlphas":1,"lineAlpha":1,"categoryAxis":{"title":"xlab"},"categoryField":"x","creditsPosition":"bottom-right","dataProvider":[{"x":4.2,"y":5,"cut":"(from 4 to 4.5)","color":"gray"},{"x":4.8,"y":27,"cut":"(from 4.5 to 5)","color":"gray"},{"x":5.2,"y":27,"cut":"(from 5 to 5.5)","color":"gray"},{"x":5.8,"y":30,"cut":"(from 5.5 to 6)","color":"gray"},{"x":6.2,"y":31,"cut":"(from 6 to 6.5)","color":"gray"},{"x":6.8,"y":18,"cut":"(from 6.5 to 7)","color":"gray"},{"x":7.2,"y":6,"cut":"(from 7 to 7.5)","color":"gray"},{"x":7.8,"y":6,"cut":"(from 7.5 to 8)","color":"gray"}],"graphs":[{"fillAlphas":0.8,"lineAlpha":1,"fillColorsField":"color","lineColor":"gray","labelText":"","balloonText":"<b>[[value]]</b> <br/> [[cut]] ","type":"column","valueField":"y"},{"lineColor":"black","id":"graph-line","balloonText":"","type":"smoothedLine","valueField":"y"}],"theme":"light","type":"serial","valueAxes":[{"minimum":0,"maximum":32.55,"title":"ylab"}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[]}</script>
+</div>
+</div>
+<div class="row">
+<div class="col-xs-12 col-md-6">
+<h2 class="partdivtitle">
+Add label on the top
+</h2>
+<pre class="r"><code>amHist(x = data_hist, labels = TRUE) %&gt;&gt;% plot()</code></pre>
+<div id="htmlwidget-3779" style="width:100%;height:500px;" class="ramcharts_base"></div>
+<script type="application/json" data-for="htmlwidget-3779">{"x":{"chartData":{"columnSpacing":0,"columnWidth":1,"fillAlphas":1,"lineAlpha":1,"categoryAxis":{"title":"data_hist"},"categoryField":"x","creditsPosition":"bottom-right","dataProvider":[{"x":4.2,"y":5,"cut":"(from 4 to 4.5)","color":"gray"},{"x":4.8,"y":27,"cut":"(from 4.5 to 5)","color":"gray"},{"x":5.2,"y":27,"cut":"(from 5 to 5.5)","color":"gray"},{"x":5.8,"y":30,"cut":"(from 5.5 to 6)","color":"gray"},{"x":6.2,"y":31,"cut":"(from 6 to 6.5)","color":"gray"},{"x":6.8,"y":18,"cut":"(from 6.5 to 7)","color":"gray"},{"x":7.2,"y":6,"cut":"(from 7 to 7.5)","color":"gray"},{"x":7.8,"y":6,"cut":"(from 7.5 to 8)","color":"gray"}],"graphs":[{"fillAlphas":0.8,"lineAlpha":1,"fillColorsField":"color","lineColor":"gray","labelText":"[[value]]","balloonText":"<b>[[value]]</b> <br/> [[cut]] ","type":"column","valueField":"y"},{"lineColor":"black","id":"graph-line","balloonText":"","type":"smoothedLine","valueField":"y"}],"theme":"light","type":"serial","valueAxes":[{"minimum":0,"maximum":32.55,"title":"Frequency"}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[]}</script>
+</div>
+<div class="col-xs-12 col-md-6">
+<h2 class="partdivtitle">
+Set ylim
+</h2>
+<pre class="r"><code>amHist(x = data_hist, ylim = c(0,.8), freq = FALSE) %&gt;&gt;% plot()</code></pre>
+<div id="htmlwidget-4045" style="width:100%;height:500px;" class="ramcharts_base"></div>
+<script type="application/json" data-for="htmlwidget-4045">{"x":{"chartData":{"columnSpacing":0,"columnWidth":1,"fillAlphas":1,"lineAlpha":1,"categoryAxis":{"title":"data_hist"},"categoryField":"x","creditsPosition":"bottom-right","dataProvider":[{"x":4.2,"y":0.067,"cut":"(from 4 to 4.5)","color":"gray"},{"x":4.8,"y":0.36,"cut":"(from 4.5 to 5)","color":"gray"},{"x":5.2,"y":0.36,"cut":"(from 5 to 5.5)","color":"gray"},{"x":5.8,"y":0.4,"cut":"(from 5.5 to 6)","color":"gray"},{"x":6.2,"y":0.413,"cut":"(from 6 to 6.5)","color":"gray"},{"x":6.8,"y":0.24,"cut":"(from 6.5 to 7)","color":"gray"},{"x":7.2,"y":0.08,"cut":"(from 7 to 7.5)","color":"gray"},{"x":7.8,"y":0.08,"cut":"(from 7.5 to 8)","color":"gray"}],"graphs":[{"fillAlphas":0.8,"lineAlpha":1,"fillColorsField":"color","lineColor":"gray","labelText":"","balloonText":"<b>[[value]]</b> <br/> [[cut]] ","type":"column","valueField":"y"},{"lineColor":"black","id":"graph-line","balloonText":"","type":"smoothedLine","valueField":"y"}],"theme":"light","type":"serial","valueAxes":[{"minimum":0,"maximum":0.8,"title":"Density"}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[]}</script>
+</div>
 </div>
 </div>
 
@@ -144,7 +226,7 @@ img {
     
       <div class="col-xs-1 col-md-1" id="logo">
         <a href="https://github.com/DataKnowledge/rAmCharts.git">
-          <img  src="www/img/github.jpg" title="View on Github" id="img-github"/>
+          <img  src="www/img/github.png" title="View on Github" id="img-github"/>
         </a>
       </div>
     

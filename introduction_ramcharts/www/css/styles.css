@@ -1,36 +1,57 @@
 #navbar {
-  background-color: #f1f1f1 !important;
+  /*background: #f1f1f1;*/
+  background: #367fa9;
+  background: -webkit-linear-gradient(-45deg, #367fa9 90%, #3c8dbc 10%, #FFFFFF 5%);
+  background: linear-gradient(-135deg, #367fa9 78%, #3c8dbc 10%);
   overflow: auto;
+  min-height: 100%;
 }
 
 #main-toc {
-  padding: 8px;
+  padding-top:8px;
   text-align: center;
-  font-family: 'Raleway', Helvetica, Arial, sans-serif;
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
 }
 
+body .toc {
+  padding-left: 0;
+}
 
-body litoc a {
+body .section-toc {
+  color:#A9A9A9;
+}
+
+body .litoc {
+  list-style-position: inside;
+}
+
+body .litoc .toc-item {
     display: block;
-    color: #00000;
-    padding: 8px 0 8px 16px;
-    text-decoration: none;
+    color: white;
+    padding: 8px 0 8px 8px;
 }
 
-body litoc a.active {
+body .litoc .active {
     background-color: #3c8dbc;
     color: white;
     text-decoration: none;
 }
 
-body litoc a:hover:not(.active) {
+body .litoc .toc-item:hover:not(.active) {
     background-color: #555;
     color: white;
     text-decoration: none;
 }
 
+body .litoc .toc-item:visited {
+    color: black;
+}
+
 body h1, h2, h3, h4, h5 {
   font-family: 'Raleway', Helvetica, Arial, sans-serif;
+  font-weight: bolder;
+  color: #3c8dbc;
   /*font-family: 'Pompiere', cursive;*/
 }
 
@@ -38,7 +59,7 @@ body div {
   font-family: 'Hind', sans-serif;
 }
 
-nav footer {
+#navbar footer {
   border-top: 1px solid #CCC;
   margin-top: 60px;
   margin-bottom: 48px;
@@ -56,11 +77,6 @@ body .ramcharts_base {
   margin-right: auto;
 }
 
-body .section-toc {
-  color:#A9A9A9;
-  margin-left:8px;
-}
-
 body .main-container {
   box-sizing: border-box;
   max-width: 100%;
@@ -72,16 +88,17 @@ body .main-container {
 .partdivtitle {
   text-align: center;
   border-style: solid;
-  border-color: #A4A4A4;
+  border-color: #367fa9;
   padding:5px;
 }
 
 .amOptions {
   text-align: center;
   border-style: solid;
-  background-color: #A4A4A4;
+  /*background-color: #A4A4A4;*/
+  background-color: #367fa9;
   color: #FFFFFF;
-  padding: 5px;
+  padding: 8px;
 }
 
 .verticalLine {
@@ -96,4 +113,10 @@ body .main-container {
 
 .copyrights {
   text-align:center;
+}
+
+[id^=htmlwidget] {
+  height: auto;
+  width: auto;
+  max-height: 70%;
 }

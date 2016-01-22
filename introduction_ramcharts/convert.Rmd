@@ -1,5 +1,5 @@
 ---
-pagetitle: Convert JS code
+pagetitle: rAmCharts - your first charts !
 ---
 
 ```{r, echo=FALSE, message=FALSE}
@@ -7,9 +7,11 @@ require(rAmCharts)
 require(pipeR)
 ```
 
-## Same structure as JS
+# Get inspired by the JS format !
 
-### Exemple with a pie chart
+Currently, the package covers most of features found in [amcharts][] and [amstockcharts][]. The few examples given in this page will help you to convert the JS code. It isn't question of presenting you the richness of the library but just for introducing you the main principles to use the official documentation.
+
+## Exemple with a pie chart
 
 
 JS code: 
@@ -17,7 +19,6 @@ JS code:
 ```javascript
 amcharts = {
   type: "pie",
-  theme: "light",
   valueField: "gdp",
   titleField: "country",
   legend: {
@@ -55,32 +56,33 @@ This creates en empty object, ready to get its different properties ! Also let's
 
 Now let's keep creating the chart.
 
+### How to set the properties (other than dataProvider) ?
+
 For setting the chart properties, you have two choices:
 
-- Either it is a _simple property_ (not a object), in this case you can add the property directly in the constructor -best practice- or use a dedicated setter method if exists.
+- Either it is a _simple property_ (not an object), in this case you can add the property directly in the constructor -best practice- or use a dedicated setter method if exists.
 
 - Or it is a _complex property_ (object), in this case use a dedicated setter method:
 
-A setter method is an R function with the syntax `setXXX()` which have several parameters. The first parameter generally called '.Object' is the object to which you want to set a property (it can be a __chart__, a __legend__, a __graph__...). The other parameter are the named properties.
+A setter method is an R function with the syntax `setXX()` which has several parameters. The first parameter generally called '.Object' is the object to which you want to set a property (it can be a __chart__, a __legend__, a __graph__...). The other parameter are the named properties.
 
-#### Illustration for a _simple property_ :
+#### Illustration for a simple property:
 ```{r, eval=FALSE}
-amChart(type = "pie")
+amChart(theme = "light")
 # strictly equivalent to
-amChart() %>>% setType(type = "pie")
+amChart() %>>% setTheme(theme = "light")
 ```
 
-Important: __every__ amchart has a property called 'type'. We recommend to set it directly by using the specific constructor:
-
-Illustration for a _simple property_ :
-
+Important notice: __every__ amchart has a property called 'type'. We recommend to set it directly by using the specific constructor as follows:
 ```{r}
+amChart() %>>% setType(type = "pie")
+# strictly equivalent to
 amPieChart() %>>% print()
 ```
 
-#### Illustration for a _complex property_ :
+#### Illustration for a complex property :
 ```{r}
-amPieChart() %>>% setLegend(position = "bottom", useMarkerColorForLabels = TRUE) %>>% print()
+amChart() %>>% setLegend(position = "bottom", useMarkerColorForLabels = TRUE) %>>% print()
 ```
 
 Notice: as in the latter example, if you want to share settings for several amcharts you can also instantiate an object then set it to your charts in the constructors:
@@ -92,14 +94,209 @@ amchart2 <- amChart(legend = legend_obj)
 ```
 
 
-#### Different property : dataProvider
+### How to set the dataProvider ?
 
-The property 'dataProvider' contain all data needed by an amchart. As we are R developer we have chosen that dataProvider would have a data.frame format (alternatively data.table).
+The property 'dataProvider' contains all the data to be drawn. Naturally, we have chosen that it would more convenient to pass a data.frame.
 
-Consequently, to set the dataProvider property you can either use the setter method or use the named parameter in the constructor:
+The most important thing to remember is that __columns of the data.frame__ must correspond to __properties of the dataProvider__. The conversion into JS array of object is done transparently by the package.
+
+For instance we have this:
+```{r}
+head(x = data_gdp, n = 2)
+```
+
+Which is converted by line into array of objects:
+
+```javascript
+[
+{country: "China", gdp: 18.976},
+{country: "United States", gdp: 18.125}
+]
+```
+
+To set the dataProvider you can either use the setter method or use the named parameter in the constructor:
 
 ```{r}
 amPieChart(dataProvider = data_gdp)
 # equivalent to:
 amPieChart() %>>% setDataProvider(dataProvider = data_gdp) 
 ```
+
+Thus why we can refer to columns in the chart definition:
+```{r, eval=FALSE}
+amPieChart(valueField = 'gdp', titleField = 'country', dataProvider = data_gdp)
+```
+
+Let's remember the key things:
+
+1. Choose the chart type:
+```{r, eval=FALSE}
+amPieChart(...)
+```
+
+2. Give as many paramater as it's possible in the constructor:
+```{r, eval=FALSE}
+amPieChart(valueField = 'gdp', titleField = 'country',
+           theme = "light", dataProvider = data_gdp)
+```
+
+3. Tune the chart with other features by using the setters:
+```{r, eval=FALSE}
+pipeR::pipeline(
+  amPieChart(valueField = 'gdp', titleField = 'country',
+             theme = "light", dataProvider = data_gdp),
+  setLegend(position = "bottom", useMarkerColorForLabels = TRUE)
+)
+```
+
+4. Get the result in the viewer !
+```{r, echo=FALSE}
+pipeR::pipeline(
+  amPieChart(valueField = 'gdp', titleField = 'country',
+             theme = "light", dataProvider = data_gdp),
+  setLegend(position = "bottom", useMarkerColorForLabels = TRUE),
+  plot()
+)
+```
+
+
+## How to set an array ?
+
+The setters can have different forms depending on the nature of the JS object. Basically, for all properties which are JS array you will find the two kinds of setter `setXX` and `addXX`.
+Let's take a example with two series displayed on the same chart:
+
+```{r, echo=FALSE}
+data("data_AirPassengers")
+
+amSerialChart(dataProvider = data_AirPassengers, categoryField = 'Period') %>>%
+  addGraph(valueField = "AirPassengers", title = "First serie") %>>%
+  addGraph(valueField = "AirPassengers2", title = "First serie") %>>%
+  plot()
+```
+
+The associated JS code looks like this:
+```javascript
+amcharts = {
+  type: "serial",
+  categoryField: "Period",
+  graphs: [
+    {valueField: "AirPassengers", title; "First serie"},
+    {valueField: "AirPassengers2", title; "Second serie"}
+  ]
+  dataProvider: [
+    {AirPassengers: 112, AirPassengers: 28.00, Period: "01/1949", ...},
+    {AirPassengers: 118, AirPassengers: 29.50, Period: "02/1949", ...},
+    ...
+  ],
+}
+```
+
+We see that the property "graph" is an array of JS objects. To set this array we have two choices :
+
+1. Create a list of object "amGraph" and use the setter `setGraphs`
+```{r, eval=FALSE}
+graphs_ls <- list(graph(valueField = "AirPassengers", title = "First serie"),
+                  graph(valueField = "AirPassengers2", title = "First serie"))
+
+amSerialChart(dataProvider = data_AirPassengers, categoryField = 'Period', graphs = graphs_ls)
+```
+
+2. Add the graphs one by one with the setter `addGraph`
+
+```{r, eval=FALSE}
+amSerialChart(dataProvider = data_AirPassengers, categoryField = 'Period') %>>%
+  addGraph(valueField = "AirPassengers", title = "First serie") %>>%
+  addGraph(valueField = "AirPassengers2", title = "First serie")
+```
+
+If you don't plan to reuse the graph we recommend the second option to save memory space.
+
+
+## How to customize a chart ?
+
+
+Now, you should be able to add any properties to your chart, let's try with a simple use cases
+
+### First example
+
+Let's assume you want the same chart as above, but you would like to change the credits postion "JS chart by amCharts".
+
+1. First of all, your reflex is to look for documentation about serial charts:
+```{r, eval=FALSE}
+api("AmSerialChart")
+```
+This function will redirect you to the online API at "https://docs.amcharts.com/3/javascriptstockchart/AmSerialChart"
+
+2. Find a property corresponding to what you want to do:
+![](www/img/credits.png)
+
+3. Finally set the property to chart:
+```{r}
+amSerialChart(dataProvider = data_AirPassengers, categoryField = 'Period',
+              creditsPosition =  "top-right") %>>%
+  addGraph(valueField = "AirPassengers", title = "First serie") %>>%
+  addGraph(valueField = "AirPassengers2", title = "First serie") %>>%
+  plot()
+```
+
+__Important__: We don't control the validity of the properties you set, as a consequence if you set a wrong property, your chart could have either a wrong behavior or the same behavior (if the property has no effect) !
+
+### Second example:
+
+Now, let's assume that you still want the same chart but you want to add a title and a subtitle.
+
+1. Look for documentation about serial charts:
+```{r, eval=FALSE}
+api("AmSerialChart")
+```
+
+2. Find a property corresponding to what you want to do:
+![](www/img/titles.png)
+
+3. Find more information about a "Title" object, click on the link (or run `api("Title")`):
+![](www/img/example_title.png)
+
+4. Set the property to your chart:
+```{r}
+amSerialChart(dataProvider = data_AirPassengers, categoryField = 'Period',
+              creditsPosition =  "top-right") %>>%
+  addGraph(valueField = "AirPassengers", title = "First serie") %>>%
+  addGraph(valueField = "AirPassengers2", title = "First serie") %>>%
+  # we use the setter 'add' since the property titles is an array of 'Title' objects"
+  addTitle(text = "Title") %>>%
+  addTitle(text = "Subtitle", size = 10) %>>%
+  plot()
+```
+
+__Notice__:
+
+For a reusable title we also would have run:
+```{r, eval=FALSE}
+title_shared <- title(text = "Title")
+subtitle_shared <- title(text = "Subtitle", size = 10)
+
+amSerialChart(dataProvider = data_AirPassengers, categoryField = 'Period',
+              creditsPosition =  "top-right") %>>%
+  addGraph(valueField = "AirPassengers", title = "First serie") %>>%
+  addGraph(valueField = "AirPassengers2", title = "First serie") %>>%
+  # we use the setter 'add' since the property titles is an array of 'Title' objects"
+  addTitle(title = title_shared) %>>%
+  addTitle(title = subtitle_shared) %>>%
+  plot()
+```
+
+or: 
+```{r, eval=FALSE}
+title_shared <- title(text = "Title")
+subtitle_shared <- title(text = "Subtitle", size = 10)
+titles_ls <- list(title_shared, subtitle_shared)
+
+amSerialChart(dataProvider = data_AirPassengers, categoryField = 'Period',
+              creditsPosition =  "top-right", titles = titles_ls) %>>%
+  addGraph(valueField = "AirPassengers", title = "First serie") %>>%
+  addGraph(valueField = "AirPassengers2", title = "First serie") %>>%
+  plot()
+```
+
+[amcharts]:      https://docs.amcharts.com/3/javascriptcharts
+[amstockcharts]: https://docs.amcharts.com/3/javascriptstockchart
