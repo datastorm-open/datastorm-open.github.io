@@ -3,8 +3,12 @@
   background: #367fa9;
   background: -webkit-linear-gradient(-45deg, #367fa9 90%, #3c8dbc 10%, #FFFFFF 5%);
   background: linear-gradient(-135deg, #367fa9 78%, #3c8dbc 10%);
-  overflow: auto;
-  min-height: 100%;
+  overflow-y: scroll; 
+}
+
+#navbar, #main-content{
+  height:100%;
+  overflow-y: scroll; 
 }
 
 #main-toc {
