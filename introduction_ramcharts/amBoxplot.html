@@ -73,71 +73,43 @@ img {
 <div class="container-fluid main-container">
 
 <!-- bootstrap row container for all the content -->
-  
 <div class="row">
   
-  <nav class="col-xs-3 col-md-2" id="navbar">
+  <div class="col-xs-2 col-md-3" style="padding-left:0;">
+    <nav id="navbar">
     
-    <div id="main-toc">Tutorial - rAmCharts</div>
-    <hr/>
+      <div id="main-toc">Tutorial - rAmCharts</div>
+      <hr/>
       
-    <b class="section-toc">Getting started</b>
-    <br/>
+      <b class="section-toc">Getting started</b>
+      <br/>
 
-    <ul class="toc" id="nav-intro">
-      <li class="litoc">
-        <a class="toc-item" href="index.html">Introduction</a>
-      </li>
-      <li class="litoc">
-        <a class="toc-item" href="convert.html">Quick tutorial</a>
-      </li>
-      <li class="litoc">
-        <a class="toc-item" href="shiny.html">Use in shiny apps</a>
-      </li>
-      <li class="litoc">
-        <a class="toc-item" href="advance.html">Advanced features</a>
-        </li>
-    </ul> 
-    <hr/>
+      <ul class="toc" id="nav-intro">
+        <li class="litoc"><a class="toc-item" href="index.html">Introduction</a></li>
+        <li class="litoc"><a class="toc-item" href="convert.html">Quick tutorial</a></li>
+        <li class="litoc"><a class="toc-item" href="shiny.html">Use in shiny apps</a></li>
+        <li class="litoc"><a class="toc-item" href="advance.html">Advanced features</a></li>
+      </ul> 
+      <hr/>
       
-    <b class="section-toc">Functions 'am'</b>
-    <br/>
+      <b class="section-toc">Functions 'am'</b>
+      <br/>
       
-    <ul class="toc" id="nav-amfunctions">   
-      <!--
-      <li class="litoc"><a class="toc-item" href="amAngularGauge.html">amAngularGauge</a></li>
-      -->
-      <li class="litoc">
-        <a class="toc-item" href="amBarplot.html">amBarplot</a>
-      </li>
-      <li class="litoc">
-        <a class="toc-item" href="amBoxplot.html">amBoxplot</a>
-      </li>
-      <!--
-      <li class="litoc"><a class="toc-item" href="amBullet.html">amBullet</a></li>
-      -->
-      <li class="litoc"><a class="toc-item" href="amCandlestick.html">amCandlestick</a></li>
-      <li class="litoc"><a class="toc-item" href="amHist.html">amHist</a></li>
-      
-
-      <li class="litoc"><a class="toc-item" href="amRadar.html">amRadar</a></li>
-      
-      <!--
-      <li class="litoc"><a class="toc-item" href="amMekko.html">amMekko</a></li>
-      <li class="litoc"><a class="toc-item" href="amPie.html">amPie</a></li>
-      <li class="litoc"><a class="toc-item" href="amPlot.html">amPlot</a></li>
-      <li class="litoc"><a class="toc-item" href="amRadar.html">amRadar</a></li>
-      <li class="litoc"><a class="toc-item" href="amWaterfall.html">amWaterfall</a></li>
-      <li class="litoc"><a class="toc-item" href="amWind.html">amWind</a></li>
-      -->
-    </ul>
+      <ul class="toc" id="nav-amfunctions">   
+        <li class="litoc"> <a class="toc-item" href="amBarplot.html">amBarplot</a></li>
+        <li class="litoc"><a class="toc-item" href="amBoxplot.html">amBoxplot</a></li>
+        <li class="litoc"><a class="toc-item" href="amCandlestick.html">amCandlestick</a></li>
+        <li class="litoc"><a class="toc-item" href="amHist.html">amHist</a></li>
+        <li class="litoc"><a class="toc-item" href="amRadar.html">amRadar</a></li>
+      </ul>
     
-    <footer>
-      <div class="copyrights"><small> © 2015-2016 DataKnowledge</small></div>
-    </footer>
-  </nav><!-- end of left column -->
+      <footer>
+        <div class="copyrights"><small> © 2015-2016 DataKnowledge</small></div>
+      </footer>
+    </nav>
+  </div><!-- end of left column -->
   
-  <div class="col-xs-9 col-md-10" id="main-content">
+  <div class="col-xs-9 col-md-8" id="main-content">
     <div class="row">
       <div class="col-xs-11 col-md-11">
 
@@ -147,8 +119,8 @@ img {
 <h1>Basic example</h1>
 <pre class="r"><code>dataset &lt;- get(x = &quot;ChickWeight&quot;, pos = &quot;package:datasets&quot;)
 amBoxplot(weight~Diet, data=dataset) %&gt;&gt;% plot()</code></pre>
-<p><div id="htmlwidget-5207" style="width:100%;height:500px;" class="ramcharts_base"></div>
-<script type="application/json" data-for="htmlwidget-5207">{"x":{"chartData":{"rotate":false,"categoryField":"cat","dataProvider":[{"cat":"1","low_outlier":35,"low":35,"open":57.5,"median":88,"close":137,"high":250,"high_outlier":250,"color":"gray","real_outlier_1":"259","individual_1":"166","real_outlier_2":"266","individual_2":"167","real_outlier_3":"288","individual_3":"83","real_outlier_4":"305","individual_4":"84"},{"cat":"2","low_outlier":39,"low":39,"open":65,"median":104.5,"close":163,"high":309,"high_outlier":309,"color":"gray","real_outlier_1":"318","individual_1":"231","real_outlier_2":"331","individual_2":"232"},{"cat":"3","low_outlier":39,"low":39,"open":67,"median":125.5,"close":199.5,"high":373,"high_outlier":373,"color":"gray"},{"cat":"4","low_outlier":39,"low":39,"open":69,"median":129.5,"close":185,"high":322,"high_outlier":322,"color":"gray"}],"graphs":[{"id":"g1","closeField":"close","fillColorsField":"color","highField":"high","lineColor":"#7f8da9","lineAlpha":1,"lowField":"low","fillAlphas":"0.9","negativeLineColor":"#7f8da9","openField":"open","balloonText":"High = <b>[[high_outlier]]</b><br/>3rd quart. = <b>[[close]]</b><br/>Median = <b>[[median]]</b><br/>1st quart. = <b>[[open]]</b><br/>Low = <b>[[low_outlier]]</b><br/>","title":"Price:","type":"candlestick","valueField":"close"},{"id":"g2","lineColor":"black","noStepRisers":true,"periodSpan":0.8,"lineThickness":3,"balloonText":"","type":"step","valueField":"median"},{"id":"g3","lineColor":"black","noStepRisers":true,"periodSpan":0.5,"balloonText":"","type":"step","valueField":"low_outlier"},{"id":"g4","lineColor":"black","noStepRisers":true,"periodSpan":0.5,"balloonText":"","type":"step","valueField":"high_outlier"},{"id":"g5","lineColor":"black","lineAlpha":0,"bullet":"round","noStepRisers":true,"periodSpan":0.5,"balloonText":"","type":"line","valueField":"real_outlier"},{"lineColor":"black","lineAlpha":0,"bullet":"round","noStepRisers":true,"periodSpan":0.5,"balloonText":"<b> Individual </b>: [[individual_1]]<br/><b> Value </b>: [[real_outlier_1]]","type":"line","valueField":"real_outlier_1"},{"lineColor":"black","lineAlpha":0,"bullet":"round","noStepRisers":true,"periodSpan":0.5,"balloonText":"<b> Individual </b>: [[individual_2]]<br/><b> Value </b>: [[real_outlier_2]]","type":"line","valueField":"real_outlier_2"},{"lineColor":"black","lineAlpha":0,"bullet":"round","noStepRisers":true,"periodSpan":0.5,"balloonText":"<b> Individual </b>: [[individual_3]]<br/><b> Value </b>: [[real_outlier_3]]","type":"line","valueField":"real_outlier_3"},{"lineColor":"black","lineAlpha":0,"bullet":"round","noStepRisers":true,"periodSpan":0.5,"balloonText":"<b> Individual </b>: [[individual_4]]<br/><b> Value </b>: [[real_outlier_4]]","type":"line","valueField":"real_outlier_4"},{"lineColor":"black","lineAlpha":0,"bullet":"round","noStepRisers":true,"periodSpan":0.5,"balloonText":"<b> Individual </b>: [[individual_5]]<br/><b> Value </b>: [[real_outlier_5]]","type":"line","valueField":"real_outlier_5"},{"lineColor":"black","lineAlpha":0,"bullet":"round","noStepRisers":true,"periodSpan":0.5,"balloonText":"<b> Individual </b>: [[individual_6]]<br/><b> Value </b>: [[real_outlier_6]]","type":"line","valueField":"real_outlier_6"},{"lineColor":"black","lineAlpha":0,"bullet":"round","noStepRisers":true,"periodSpan":0.5,"balloonText":"<b> Individual </b>: [[individual_7]]<br/><b> Value </b>: [[real_outlier_7]]","type":"line","valueField":"real_outlier_7"},{"lineColor":"black","lineAlpha":0,"bullet":"round","noStepRisers":true,"periodSpan":0.5,"balloonText":"<b> Individual </b>: [[individual_8]]<br/><b> Value </b>: [[real_outlier_8]]","type":"line","valueField":"real_outlier_8"},{"lineColor":"black","lineAlpha":0,"bullet":"round","noStepRisers":true,"periodSpan":0.5,"balloonText":"<b> Individual </b>: [[individual_9]]<br/><b> Value </b>: [[real_outlier_9]]","type":"line","valueField":"real_outlier_9"}],"theme":"light","type":"serial"},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":null},"evals":[]}</script></p>
+<p><div id="htmlwidget-7020" style="width:100%;height:500px;" class="ramcharts_base"></div>
+<script type="application/json" data-for="htmlwidget-7020">{"x":{"chartData":{"rotate":false,"categoryField":"cat","dataProvider":[{"cat":"1","low_outlier":35,"low":35,"open":57.5,"median":88,"close":137,"high":250,"high_outlier":250,"color":"gray","real_outlier_1":"259","individual_1":"166","real_outlier_2":"266","individual_2":"167","real_outlier_3":"288","individual_3":"83","real_outlier_4":"305","individual_4":"84"},{"cat":"2","low_outlier":39,"low":39,"open":65,"median":104.5,"close":163,"high":309,"high_outlier":309,"color":"gray","real_outlier_1":"318","individual_1":"231","real_outlier_2":"331","individual_2":"232"},{"cat":"3","low_outlier":39,"low":39,"open":67,"median":125.5,"close":199.5,"high":373,"high_outlier":373,"color":"gray"},{"cat":"4","low_outlier":39,"low":39,"open":69,"median":129.5,"close":185,"high":322,"high_outlier":322,"color":"gray"}],"graphs":[{"id":"g1","closeField":"close","fillColorsField":"color","highField":"high","lineColor":"#7f8da9","lineAlpha":1,"lowField":"low","fillAlphas":"0.9","negativeLineColor":"#7f8da9","openField":"open","balloonText":"High = <b>[[high_outlier]]</b><br/>3rd quart. = <b>[[close]]</b><br/>Median = <b>[[median]]</b><br/>1st quart. = <b>[[open]]</b><br/>Low = <b>[[low_outlier]]</b><br/>","title":"Price:","type":"candlestick","valueField":"close"},{"id":"g2","lineColor":"black","noStepRisers":true,"periodSpan":0.8,"lineThickness":3,"balloonText":"","type":"step","valueField":"median"},{"id":"g3","lineColor":"black","noStepRisers":true,"periodSpan":0.5,"balloonText":"","type":"step","valueField":"low_outlier"},{"id":"g4","lineColor":"black","noStepRisers":true,"periodSpan":0.5,"balloonText":"","type":"step","valueField":"high_outlier"},{"id":"g5","lineColor":"black","lineAlpha":0,"bullet":"round","noStepRisers":true,"periodSpan":0.5,"balloonText":"","type":"line","valueField":"real_outlier"},{"lineColor":"black","lineAlpha":0,"bullet":"round","noStepRisers":true,"periodSpan":0.5,"balloonText":"<b> Individual </b>: [[individual_1]]<br/><b> Value </b>: [[real_outlier_1]]","type":"line","valueField":"real_outlier_1"},{"lineColor":"black","lineAlpha":0,"bullet":"round","noStepRisers":true,"periodSpan":0.5,"balloonText":"<b> Individual </b>: [[individual_2]]<br/><b> Value </b>: [[real_outlier_2]]","type":"line","valueField":"real_outlier_2"},{"lineColor":"black","lineAlpha":0,"bullet":"round","noStepRisers":true,"periodSpan":0.5,"balloonText":"<b> Individual </b>: [[individual_3]]<br/><b> Value </b>: [[real_outlier_3]]","type":"line","valueField":"real_outlier_3"},{"lineColor":"black","lineAlpha":0,"bullet":"round","noStepRisers":true,"periodSpan":0.5,"balloonText":"<b> Individual </b>: [[individual_4]]<br/><b> Value </b>: [[real_outlier_4]]","type":"line","valueField":"real_outlier_4"},{"lineColor":"black","lineAlpha":0,"bullet":"round","noStepRisers":true,"periodSpan":0.5,"balloonText":"<b> Individual </b>: [[individual_5]]<br/><b> Value </b>: [[real_outlier_5]]","type":"line","valueField":"real_outlier_5"},{"lineColor":"black","lineAlpha":0,"bullet":"round","noStepRisers":true,"periodSpan":0.5,"balloonText":"<b> Individual </b>: [[individual_6]]<br/><b> Value </b>: [[real_outlier_6]]","type":"line","valueField":"real_outlier_6"},{"lineColor":"black","lineAlpha":0,"bullet":"round","noStepRisers":true,"periodSpan":0.5,"balloonText":"<b> Individual </b>: [[individual_7]]<br/><b> Value </b>: [[real_outlier_7]]","type":"line","valueField":"real_outlier_7"},{"lineColor":"black","lineAlpha":0,"bullet":"round","noStepRisers":true,"periodSpan":0.5,"balloonText":"<b> Individual </b>: [[individual_8]]<br/><b> Value </b>: [[real_outlier_8]]","type":"line","valueField":"real_outlier_8"},{"lineColor":"black","lineAlpha":0,"bullet":"round","noStepRisers":true,"periodSpan":0.5,"balloonText":"<b> Individual </b>: [[individual_9]]<br/><b> Value </b>: [[real_outlier_9]]","type":"line","valueField":"real_outlier_9"}],"theme":"light","type":"serial"},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":null},"evals":[]}</script></p>
 </div>
 <div id="coming-documentation" class="section level1">
 <h1>Coming: documentation</h1>
@@ -165,7 +137,7 @@ amBoxplot(weight~Diet, data=dataset) %&gt;&gt;% plot()</code></pre>
     </div><!-- end of row -->
   </div><!-- end of rigth column -->
   
-  <script src="./www/js/navbar.js"> </script>
+  <!-- <script src="./www/js/navbar.js"> </script> -->
   <script src="./www/js/logo.js"> </script>
 </div><!-- end of main row -->
 

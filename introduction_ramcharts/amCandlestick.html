@@ -72,71 +72,43 @@ img {
 <div class="container-fluid main-container">
 
 <!-- bootstrap row container for all the content -->
-  
 <div class="row">
   
-  <nav class="col-xs-3 col-md-2" id="navbar">
+  <div class="col-xs-2 col-md-3" style="padding-left:0;">
+    <nav id="navbar">
     
-    <div id="main-toc">Tutorial - rAmCharts</div>
-    <hr/>
+      <div id="main-toc">Tutorial - rAmCharts</div>
+      <hr/>
       
-    <b class="section-toc">Getting started</b>
-    <br/>
+      <b class="section-toc">Getting started</b>
+      <br/>
 
-    <ul class="toc" id="nav-intro">
-      <li class="litoc">
-        <a class="toc-item" href="index.html">Introduction</a>
-      </li>
-      <li class="litoc">
-        <a class="toc-item" href="convert.html">Quick tutorial</a>
-      </li>
-      <li class="litoc">
-        <a class="toc-item" href="shiny.html">Use in shiny apps</a>
-      </li>
-      <li class="litoc">
-        <a class="toc-item" href="advance.html">Advanced features</a>
-        </li>
-    </ul> 
-    <hr/>
+      <ul class="toc" id="nav-intro">
+        <li class="litoc"><a class="toc-item" href="index.html">Introduction</a></li>
+        <li class="litoc"><a class="toc-item" href="convert.html">Quick tutorial</a></li>
+        <li class="litoc"><a class="toc-item" href="shiny.html">Use in shiny apps</a></li>
+        <li class="litoc"><a class="toc-item" href="advance.html">Advanced features</a></li>
+      </ul> 
+      <hr/>
       
-    <b class="section-toc">Functions 'am'</b>
-    <br/>
+      <b class="section-toc">Functions 'am'</b>
+      <br/>
       
-    <ul class="toc" id="nav-amfunctions">   
-      <!--
-      <li class="litoc"><a class="toc-item" href="amAngularGauge.html">amAngularGauge</a></li>
-      -->
-      <li class="litoc">
-        <a class="toc-item" href="amBarplot.html">amBarplot</a>
-      </li>
-      <li class="litoc">
-        <a class="toc-item" href="amBoxplot.html">amBoxplot</a>
-      </li>
-      <!--
-      <li class="litoc"><a class="toc-item" href="amBullet.html">amBullet</a></li>
-      -->
-      <li class="litoc"><a class="toc-item" href="amCandlestick.html">amCandlestick</a></li>
-      <li class="litoc"><a class="toc-item" href="amHist.html">amHist</a></li>
-      
-
-      <li class="litoc"><a class="toc-item" href="amRadar.html">amRadar</a></li>
-      
-      <!--
-      <li class="litoc"><a class="toc-item" href="amMekko.html">amMekko</a></li>
-      <li class="litoc"><a class="toc-item" href="amPie.html">amPie</a></li>
-      <li class="litoc"><a class="toc-item" href="amPlot.html">amPlot</a></li>
-      <li class="litoc"><a class="toc-item" href="amRadar.html">amRadar</a></li>
-      <li class="litoc"><a class="toc-item" href="amWaterfall.html">amWaterfall</a></li>
-      <li class="litoc"><a class="toc-item" href="amWind.html">amWind</a></li>
-      -->
-    </ul>
+      <ul class="toc" id="nav-amfunctions">   
+        <li class="litoc"> <a class="toc-item" href="amBarplot.html">amBarplot</a></li>
+        <li class="litoc"><a class="toc-item" href="amBoxplot.html">amBoxplot</a></li>
+        <li class="litoc"><a class="toc-item" href="amCandlestick.html">amCandlestick</a></li>
+        <li class="litoc"><a class="toc-item" href="amHist.html">amHist</a></li>
+        <li class="litoc"><a class="toc-item" href="amRadar.html">amRadar</a></li>
+      </ul>
     
-    <footer>
-      <div class="copyrights"><small> © 2015-2016 DataKnowledge</small></div>
-    </footer>
-  </nav><!-- end of left column -->
+      <footer>
+        <div class="copyrights"><small> © 2015-2016 DataKnowledge</small></div>
+      </footer>
+    </nav>
+  </div><!-- end of left column -->
   
-  <div class="col-xs-9 col-md-10" id="main-content">
+  <div class="col-xs-9 col-md-8" id="main-content">
     <div class="row">
       <div class="col-xs-11 col-md-11">
 
@@ -159,8 +131,8 @@ img {
                           stringsAsFactors = FALSE)
 
 amCandlestick(data = data_candle) %&gt;&gt;% plot()</code></pre>
-<p><div id="htmlwidget-2781" style="width:100%;height:500px;" class="ramcharts_base"></div>
-<script type="application/json" data-for="htmlwidget-2781">{"x":{"chartData":{"precision":2,"dataDateFormat":null,"rotate":false,"categoryAxis":{"title":"","axisAlpha":0,"gridAlpha":0.1,"parseDates":false,"minPeriod":""},"categoryField":"category","dataProvider":[{"category":"2015-01-01","open":136.65,"close":136.4,"low":134.15,"high":136.96,"openpos":null,"closepos":null,"lowpos":null,"highpos":null},{"category":"2015-01-02","open":135.26,"close":131.8,"low":131.5,"high":135.95,"openpos":null,"closepos":null,"lowpos":null,"highpos":null},{"category":"2015-01-03","open":null,"close":null,"low":null,"high":null,"openpos":132.9,"closepos":135.2,"lowpos":128.3,"highpos":135.27},{"category":"2015-01-04","open":null,"close":null,"low":null,"high":null,"openpos":134.94,"closepos":135,"lowpos":132.63,"highpos":137.24},{"category":"2015-01-05","open":136.76,"close":134,"low":132,"high":136.86,"openpos":null,"closepos":null,"lowpos":null,"highpos":null},{"category":"2015-01-06","open":131.11,"close":126.3,"low":125.09,"high":133,"openpos":null,"closepos":null,"lowpos":null,"highpos":null},{"category":"2015-01-07","open":null,"close":null,"low":null,"high":null,"openpos":123.12,"closepos":125,"lowpos":120.3,"highpos":127.75},{"category":"2015-01-08","open":128.32,"close":127.7,"low":126.5,"high":129.35,"openpos":null,"closepos":null,"lowpos":null,"highpos":null},{"category":"2015-01-09","open":128.29,"close":124,"low":123.71,"high":128.3,"openpos":null,"closepos":null,"lowpos":null,"highpos":null},{"category":"2015-01-10","open":122.74,"close":119.9,"low":119.65,"high":124.86,"openpos":null,"closepos":null,"lowpos":null,"highpos":null},{"category":"2015-01-11","open":117.01,"close":117,"low":111.62,"high":118.5,"openpos":null,"closepos":null,"lowpos":null,"highpos":null},{"category":"2015-01-20","open":122.01,"close":122,"low":119.82,"high":123.5,"openpos":null,"closepos":null,"lowpos":null,"highpos":null}],"graphs":[{"id":"g1","openField":"open","closeField":"close","highField":"high","lowField":"low","fillColors":"#db4c3c","lineColor":"#db4c3c","fillAlphas":0.8,"balloonText":"high :<b>[[high]]</b><br> close :<b>[[close]]</b><br> open <b>[[open]]</b><br> low :<b>[[low]]</b><br>","title":"negative","type":"candlestick","valueField":"close"},{"id":"g2","openField":"openpos","closeField":"closepos","highField":"highpos","lowField":"lowpos","fillColors":"#7f8da9","lineColor":"#7f8da9","fillAlphas":0.8,"balloonText":"high :<b>[[highpos]]</b><br> close :<b>[[closepos]]</b><br> open <b>[[openpos]]</b><br> low :<b>[[lowpos]]</b><br>","title":"positive","type":"candlestick","valueField":"closepos"}],"type":"serial","valueAxes":[{"position":"left","gridAlpha":0.1,"title":""}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[]}</script></p>
+<p><div id="htmlwidget-1393" style="width:100%;height:500px;" class="ramcharts_base"></div>
+<script type="application/json" data-for="htmlwidget-1393">{"x":{"chartData":{"precision":2,"dataDateFormat":null,"rotate":false,"categoryAxis":{"title":"","axisAlpha":0,"gridAlpha":0.1,"parseDates":false,"minPeriod":""},"categoryField":"category","dataProvider":[{"category":"2015-01-01","open":136.65,"close":136.4,"low":134.15,"high":136.96,"openpos":null,"closepos":null,"lowpos":null,"highpos":null},{"category":"2015-01-02","open":135.26,"close":131.8,"low":131.5,"high":135.95,"openpos":null,"closepos":null,"lowpos":null,"highpos":null},{"category":"2015-01-03","open":null,"close":null,"low":null,"high":null,"openpos":132.9,"closepos":135.2,"lowpos":128.3,"highpos":135.27},{"category":"2015-01-04","open":null,"close":null,"low":null,"high":null,"openpos":134.94,"closepos":135,"lowpos":132.63,"highpos":137.24},{"category":"2015-01-05","open":136.76,"close":134,"low":132,"high":136.86,"openpos":null,"closepos":null,"lowpos":null,"highpos":null},{"category":"2015-01-06","open":131.11,"close":126.3,"low":125.09,"high":133,"openpos":null,"closepos":null,"lowpos":null,"highpos":null},{"category":"2015-01-07","open":null,"close":null,"low":null,"high":null,"openpos":123.12,"closepos":125,"lowpos":120.3,"highpos":127.75},{"category":"2015-01-08","open":128.32,"close":127.7,"low":126.5,"high":129.35,"openpos":null,"closepos":null,"lowpos":null,"highpos":null},{"category":"2015-01-09","open":128.29,"close":124,"low":123.71,"high":128.3,"openpos":null,"closepos":null,"lowpos":null,"highpos":null},{"category":"2015-01-10","open":122.74,"close":119.9,"low":119.65,"high":124.86,"openpos":null,"closepos":null,"lowpos":null,"highpos":null},{"category":"2015-01-11","open":117.01,"close":117,"low":111.62,"high":118.5,"openpos":null,"closepos":null,"lowpos":null,"highpos":null},{"category":"2015-01-20","open":122.01,"close":122,"low":119.82,"high":123.5,"openpos":null,"closepos":null,"lowpos":null,"highpos":null}],"graphs":[{"id":"g1","openField":"open","closeField":"close","highField":"high","lowField":"low","fillColors":"#db4c3c","lineColor":"#db4c3c","fillAlphas":0.8,"balloonText":"high :<b>[[high]]</b><br> close :<b>[[close]]</b><br> open <b>[[open]]</b><br> low :<b>[[low]]</b><br>","title":"negative","type":"candlestick","valueField":"close"},{"id":"g2","openField":"openpos","closeField":"closepos","highField":"highpos","lowField":"lowpos","fillColors":"#7f8da9","lineColor":"#7f8da9","fillAlphas":0.8,"balloonText":"high :<b>[[highpos]]</b><br> close :<b>[[closepos]]</b><br> open <b>[[openpos]]</b><br> low :<b>[[lowpos]]</b><br>","title":"positive","type":"candlestick","valueField":"closepos"}],"type":"serial","valueAxes":[{"position":"left","gridAlpha":0.1,"title":""}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[]}</script></p>
 </div>
 <div id="coming-documentation" class="section level1">
 <h1>Coming: documentation</h1>
@@ -177,7 +149,7 @@ amCandlestick(data = data_candle) %&gt;&gt;% plot()</code></pre>
     </div><!-- end of row -->
   </div><!-- end of rigth column -->
   
-  <script src="./www/js/navbar.js"> </script>
+  <!-- <script src="./www/js/navbar.js"> </script> -->
   <script src="./www/js/logo.js"> </script>
 </div><!-- end of main row -->
 
