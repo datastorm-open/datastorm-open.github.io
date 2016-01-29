@@ -302,34 +302,20 @@ visNetwork(nodes, edges, width = &quot;100%&quot;) %&gt;%
       "width": 0.2,
       "useGroups": false,
       "position": "left",
-      "edges": [
-        {
-          "color": "lightblue",
-          "label": "reverse",
-          "arrows": "to"
-        },
-        {
-          "color": "red",
-          "label": "depends",
-          "arrows": "from"
-        }
-      ],
-      "nodes": [
-        {
-          "label": "Group A",
-          "shape": "ellipse",
-          "color": "red",
-          "title": "Informations",
-          "id": 1
-        },
-        {
-          "label": "Group B",
-          "shape": "ellipse",
-          "color": "lightblue",
-          "title": "Informations",
-          "id": 2
-        }
-      ]
+      "edges": {
+        "color": ["lightblue", "red"],
+        "label": ["reverse", "depends"],
+        "arrows": ["to", "from"]
+      },
+      "edgesToDataframe": true,
+      "nodes": {
+        "label": ["Group A", "Group B"],
+        "shape": ["ellipse", "ellipse"],
+        "color": ["red", "lightblue"],
+        "title": ["Informations", "Informations"],
+        "id": [1, 2]
+      },
+      "nodesToDataframe": true
     }
   },
   "evals": []
@@ -385,18 +371,12 @@ visNetwork(nodes, edges, width = &quot;100%&quot;) %&gt;%
       "width": 0.2,
       "useGroups": true,
       "position": "left",
-      "edges": [
-        {
-          "color": "lightblue",
-          "label": "reverse",
-          "arrows": "to"
-        },
-        {
-          "color": "red",
-          "label": "depends",
-          "arrows": "from"
-        }
-      ]
+      "edges": {
+        "color": ["lightblue", "red"],
+        "label": ["reverse", "depends"],
+        "arrows": ["to", "from"]
+      },
+      "edgesToDataframe": true
     }
   },
   "evals": []
@@ -486,7 +466,8 @@ visNetwork(nodes, edges) %&gt;%
             "color": "red"
           }
         }
-      ]
+      ],
+      "nodesToDataframe": false
     }
   },
   "evals": []
