@@ -11,7 +11,7 @@ require(package = "pipeR", quietly = TRUE)
 
 ```{r}
 dataset <- get(x = "ChickWeight", pos = "package:datasets")
-amBoxplot(weight~Diet, data=dataset) %>>% plot()
+amBoxplot(weight~Diet, data=dataset)
 ```
 
 #Coming: documentation

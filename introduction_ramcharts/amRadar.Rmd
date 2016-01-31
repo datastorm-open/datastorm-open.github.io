@@ -29,20 +29,14 @@ data <- data.frame(label = c("A", "Z", "E", "R", "T"),
 
 <div class="row">
   <div class="col-xs-12 col-md-6"><h2 class="partdivtitle"> Basic exemple </h2>
-```{r, echo = TRUE, eval = FALSE}
+```{r}
 amRadar(data = data)
-```
-```{r, echo = FALSE}
-amRadar(data = data) %>>% plot()
 ```
   </div>
   
   <div class="col-xs-12 col-md-6"><h2 class="partdivtitle">Change color </h2>
-```{r, echo = TRUE, eval = FALSE}
+```{r}
 amRadar(data = data, col = c("#0000FF", "#00FF00", "#FF0000"))
-```
-```{r, echo = FALSE}
-amRadar(data = data, col = c("#0000FF", "#00FF00", "#FF0000")) %>>% plot()
 ```
   </div>
   
@@ -52,19 +46,13 @@ amRadar(data = data, col = c("#0000FF", "#00FF00", "#FF0000")) %>>% plot()
 
 <div class="row">
   <div class="col-xs-12 col-md-6">
-```{r, echo = TRUE, eval = FALSE}
+```{r}
 amRadar(data = data, backTransparency = 1)
-```
-```{r, echo = FALSE}
-amRadar(data = data, backTransparency = 1) %>>% plot()
 ```
   </div>
   <div class="col-xs-12 col-md-6">
-```{r, echo = TRUE, eval = FALSE}
+```{r}
 amRadar(data = data, backTransparency = c(0, 0.4, 0.6))
-```
-```{r, echo = FALSE}
-amRadar(data = data, backTransparency = c(0, 0.4, 0.6)) %>>% plot()
 ```
   </div>
 </div>
@@ -73,19 +61,14 @@ amRadar(data = data, backTransparency = c(0, 0.4, 0.6)) %>>% plot()
 
 <div class="row">
   <div class="col-xs-12 col-md-6">
-```{r, echo = TRUE, eval = FALSE}
+```{r}
 amRadar(data = data, type = "circles")
 ```
-```{r, echo = FALSE}
-amRadar(data = data, type = "circles") %>>% plot()
-```
+
   </div>
   <div class="col-xs-12 col-md-6">
-```{r, echo = TRUE, eval = FALSE}
+```{r}
 amRadar(data = data, type = "polygons") #default
-```
-```{r, echo = FALSE}
-amRadar(data = data, type = "polygons") %>>% plot()#default
 ```
   </div>
 </div>
@@ -93,38 +76,26 @@ amRadar(data = data, type = "polygons") %>>% plot()#default
 <h2 class="partdivtitle">pch</h2>
 <div class="row">
   <div class="col-xs-12 col-md-3">
-```{r, echo = TRUE, eval = FALSE}
+```{r}
 amRadar(data = data,  pch = "triangleRight", backTransparency = 0)
 ```
-```{r, echo = FALSE}
-amRadar(data = data,  pch = "triangleRight", backTransparency = 0) %>>% plot()
-```
   </div>
   
   <div class="col-xs-12 col-md-3">
-```{r, echo = TRUE, eval = FALSE}
+```{r}
 amRadar(data = data, pch = "diamond", backTransparency = 0) 
 ```
-```{r, echo = FALSE}
-amRadar(data = data,  pch = "diamond", backTransparency = 0) %>>% plot()
-```
   </div>
   
   <div class="col-xs-12 col-md-3">
-```{r, echo = TRUE, eval = FALSE}
+```{r}
 amRadar(data = data,  pch = "yError", backTransparency = 0)
 ```
-```{r, echo = FALSE}
-amRadar(data = data,  pch = "yError", backTransparency = 0)%>>% plot()
-```
   </div>
   
   <div class="col-xs-12 col-md-3">
-```{r, echo = TRUE, eval = FALSE}
+```{r}
 amRadar(data = data,  pch = "bubble", backTransparency = 0)
-```
-```{r, echo = FALSE}
-amRadar(data = data,  pch = "bubble", backTransparency = 0) %>>% plot()
 ```
   </div>
 </div>
@@ -139,17 +110,17 @@ amRadar(data = data,  pch = "bubble", backTransparency = 0, legend = TRUE)
 amRadar(data = data,  pch = "bubble", backTransparency = 0) %>>% amOptions(legend = TRUE)
 ```
 ```{r, echo = FALSE}
-amRadar(data = data,  pch = "bubble", backTransparency = 0, legend = TRUE) %>>% plot()
+amRadar(data = data,  pch = "bubble", backTransparency = 0, legend = TRUE)
 ```
   </div>
   <div class="col-xs-12 col-md-6"><h2 class="partdivtitle">legendPosition</h2>
 ```{r, echo = TRUE, eval = FALSE}
-amRadar(data = data,  pch = "bubble", backTransparency = 0, legend = TRUE)
+amRadar(data = data,  pch = "bubble", backTransparency = 0, legend = TRUE, legendPosition = "left")
 #or
-amRadar(data = data,  pch = "bubble", backTransparency = 0) %>>% amOptions(legend = TRUE)
+amRadar(data = data,  pch = "bubble", backTransparency = 0) %>>% amOptions(legend = TRUE, legendPosition = "left")
 ```
 ```{r, echo = FALSE}
-amRadar(data = data,  pch = "bubble", backTransparency = 0, legend = TRUE) %>>% plot()
+amRadar(data = data,  pch = "bubble", backTransparency = 0, legend = TRUE, legendPosition = "left")
 ```
   </div>
 </div>
@@ -164,7 +135,7 @@ amRadar(data = data,  pch = "bubble", backTransparency = 0) %>>%
 ```
 ```{r, echo = FALSE}
 amRadar(data = data,  pch = "bubble", backTransparency = 0, 
-        export = TRUE) %>>% plot()
+        export = TRUE)
 ```
   </div>
   <div class="col-xs-12 col-md-6"><h2 class="partdivtitle">exportFormat</h2>
@@ -176,7 +147,7 @@ amRadar(data = data,  pch = "bubble", backTransparency = 0) %>>%
 ```
 ```{r, echo = FALSE}
 amRadar(data = data,  pch = "bubble", backTransparency = 0, 
-        export = TRUE, exportFormat = "CSV") %>>% plot()
+        export = TRUE, exportFormat = "CSV")
 ```
   </div>
 </div>
@@ -187,27 +158,27 @@ amRadar(data = data,  pch = "bubble", backTransparency = 0,
   <div class="col-xs-12 col-md-6"><h2 class="partdivtitle">main and creditsPosition</h2>
 ```{r, echo = TRUE, eval = FALSE}
 amRadar(data = data,  pch = "bubble", backTransparency = 0, main = "My Radar",
-        mainColor = "#00FF00", mainSize = 25, creditsPosition = "bottom-right")
+        mainColor = "#00FF00", mainSize = 25, creditsPosition = "top-right")
 #or
 amRadar(data = data,  pch = "bubble", backTransparency = 0) %>>% 
   amOptions( main = "My Radar",
-        mainColor = "#00FF00", mainSize = 25, creditsPosition = "bottom-right")
+        mainColor = "#00FF00", mainSize = 25, creditsPosition = "top-right")
 ```
 ```{r, echo = FALSE}
 amRadar(data = data,  pch = "bubble", backTransparency = 0, 
        main = "My Radar",
-        mainColor = "#00FF00", mainSize = 25, creditsPosition = "top-right") %>>% plot()
+        mainColor = "#00FF00", mainSize = 25, creditsPosition = "top-right")
 ```
   </div>
   <div class="col-xs-12 col-md-6"><h2 class="partdivtitle">theme</h2>
 ```{r, echo = TRUE, eval = FALSE}
 amRadar(data = data,  pch = "bubble", backTransparency = 1, main = "My Radar", theme = "patterns")
 #or
-amRadar(data = data = data,  pch = "bubble", backTransparency = 1) %>>% 
+amRadar(data = data,  pch = "bubble", backTransparency = 1) %>>% 
   amOptions(theme = "patterns")
 ```
 ```{r, echo = FALSE}
-amRadar(data = data,  pch = "bubble", backTransparency = 1, theme = "patterns") %>>% plot()
+amRadar(data = data,  pch = "bubble", backTransparency = 1, theme = "patterns")
 ```
   </div>
 </div>

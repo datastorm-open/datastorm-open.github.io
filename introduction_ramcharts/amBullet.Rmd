@@ -1,0 +1,124 @@
+---
+pagetitle: rAmCharts - amBullet
+---
+
+```{r,echo=FALSE, message=FALSE}
+require(package = "rAmCharts", quietly = TRUE)
+require(package = "pipeR", quietly = TRUE)
+```
+
+## Parameters
+
+* __value__: a numeric
+* __min__: a numeric, minimum value allowed.
+* __max__: a numeric, maximum value allowed.
+* __val_color__: a character, color of the bar value, in hexadecimal.
+* __limit__: a numeric, target value.
+* __limit_color__: a character, color of the line limit, in hexadecimal.
+* __rates__: a data frame with 4 columns : name (character), min (numeric), max (numeric), and color (character, color in hexadecimal).
+* __steps__: a boolean.
+* __label__: a character, label of the bullet.
+* __horiz__: a boolean, TRUE (default) for an horizontal bullet chart, FALSE for a vertical one.
+* __...__: other parameters called in amOptions.
+
+
+## Reference example
+
+```{r}
+amBullet(value = 65)
+```
+
+<div class="row">
+  <div class="col-xs-12 col-md-6"><h2 class="partdivtitle"> Remove steps from backgroud </h2>
+```{r}
+amBullet(value = 65, steps = FALSE)
+```
+  </div>
+  
+  <div class="col-xs-12 col-md-6"><h2 class="partdivtitle"> Tune the colors </h2>
+```{r}
+amBullet(value = 65, val_color = "purple", limit_color = "#3c8dbc")
+```
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-12 col-md-6"><h2 class="partdivtitle"> Change orientation </h2>
+```{r}
+amBullet(value = 65, horiz = FALSE)
+```
+  </div>
+  
+  <div class="col-xs-12 col-md-6"><h2 class="partdivtitle"> Add text </h2>
+```{r}
+amBullet(value = 65, text = "Evaluation")
+```
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-12 col-md-6"><h2 class="partdivtitle"> Change mon and max </h2>
+```{r}
+amBullet(value = 65, min = 20, max = 90)
+```
+  </div>
+</div>
+
+<h2 class="amOptions">amOptions</h2>
+
+<div class="row">
+  <div class="col-xs-12 col-md-6"><h2 class="partdivtitle">export</h2>
+```{r, echo = TRUE, eval = FALSE}
+amBullet(value = 65, export = TRUE)
+#or
+amBullet(value = 65) %>>% 
+  amOptions(export = TRUE)
+```
+```{r, echo = FALSE}
+amBullet(value = 65, export = TRUE)
+```
+  </div>
+  <div class="col-xs-12 col-md-6"><h2 class="partdivtitle">exportFormat</h2>
+```{r, echo = TRUE, eval = FALSE}
+amBullet(value = 65, export = TRUE, exportFormat = "CSV")
+#or
+amBullet(value = 65) %>>% 
+  amOptions(export = TRUE, exportFormat = "CSV")
+```
+```{r, echo = FALSE}
+amBullet(value = 65, export = TRUE, exportFormat = "CSV")
+```
+  </div>
+</div>
+
+
+
+<div class="row">
+  <div class="col-xs-12 col-md-6"><h2 class="partdivtitle">main and creditsPosition</h2>
+```{r, echo = TRUE, eval = FALSE}
+amBullet(value = 65, main = "My Bullet",
+        mainColor = "#00FF00", mainSize = 25, creditsPosition = "top-right")
+#or
+amBullet(value = 65) %>>% 
+  amOptions( main = "My Bullet",
+        mainColor = "#00FF00", mainSize = 25, creditsPosition = "top-right")
+```
+```{r, echo = FALSE}
+amBullet(value = 65, 
+       main = "My Bullet",
+        mainColor = "#00FF00", mainSize = 25, creditsPosition = "top-right")
+```
+  </div>
+  <div class="col-xs-12 col-md-6"><h2 class="partdivtitle">theme</h2>
+```{r, echo = TRUE, eval = FALSE}
+amBullet(value = 65, main = "My Bullet", theme = "patterns")
+#or
+amBullet(value = 65) %>>% 
+  amOptions(theme = "patterns")
+```
+```{r, echo = FALSE}
+amBullet(value = 65, theme = "patterns")
+```
+  </div>
+</div>
+

@@ -1,0 +1,138 @@
+---
+pagetitle: rAmCharts - amPie
+---
+
+```{r,echo=FALSE, message=FALSE}
+require(package = "rAmCharts", quietly = TRUE)
+require(package = "pipeR", quietly = TRUE)
+```
+
+## Parameters
+
+* __data__: a dataframe with at least 2 columns: label (character), and value (numeric). See data_pie for example. You can add a third column "color" (character, colors in hexadecimal) to specify the colors.
+* __show_values__: a boolean, TRUE to display values.
+* __depth__: a numeric, between 0 and 100. If superior to 0, chart is displayed in 3D. 
+* __inner_radius__: a numeric, between 0 ans 100. If superior to 0, the pie becomes a donut chart. 
+* __...__: other parameters called in amOptions.
+
+Data used in the examples:
+```{r}
+data("data_pie")
+head(data_pie)
+```
+
+## Reference example
+
+```{r}
+amPie(data = data_pie)
+```
+
+<div class="row">
+  <div class="col-xs-12 col-md-6"><h2 class="partdivtitle"> Don't display values </h2>
+```{r}
+amPie(data = data_pie, show_values = FALSE)
+```
+  </div>
+  
+  <div class="col-xs-12 col-md-6"><h2 class="partdivtitle"> 3D pie </h2>
+```{r}
+amPie(data = data_pie, depth = 10)
+```
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-12 col-md-6"><h2 class="partdivtitle"> Donut chart </h2>
+```{r}
+amPie(data = data_pie, inner_radius = 50)
+```
+  </div>
+  
+  <div class="col-xs-12 col-md-6"><h2 class="partdivtitle"> All options </h2>
+```{r}
+amPie(data = data_pie, inner_radius = 50, depth = 10, show_values = TRUE)
+```
+  </div>
+</div>
+
+<h2 class="amOptions">amOptions</h2>
+
+<div class="row">
+  <div class="col-xs-12 col-md-6"><h2 class="partdivtitle">legend</h2>
+```{r, echo = TRUE, eval = FALSE}
+amPie(data = data_pie, legend = TRUE)
+#or
+amPie(data = data_pie) %>>% amOptions(legend = TRUE)
+```
+```{r, echo = FALSE}
+amPie(data = data_pie, legend = TRUE)
+```
+  </div>
+  <div class="col-xs-12 col-md-6"><h2 class="partdivtitle">legendPosition</h2>
+```{r, echo = TRUE, eval = FALSE}
+amPie(data = data_pie, legend = TRUE, legendPosition = "left")
+#or
+amPie(data = data_pie) %>>% amOptions(legend = TRUE, legendPosition = "left")
+```
+```{r, echo = FALSE}
+amPie(data = data_pie, legend = TRUE, legendPosition = "left")
+```
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-12 col-md-6"><h2 class="partdivtitle">export</h2>
+```{r, echo = TRUE, eval = FALSE}
+amPie(data = data_pie, export = TRUE)
+#or
+amPie(data = data_pie) %>>% 
+  amOptions(export = TRUE)
+```
+```{r, echo = FALSE}
+amPie(data = data_pie, export = TRUE)
+```
+  </div>
+  <div class="col-xs-12 col-md-6"><h2 class="partdivtitle">exportFormat</h2>
+```{r, echo = TRUE, eval = FALSE}
+amPie(data = data_pie, export = TRUE, exportFormat = "CSV")
+#or
+amPie(data = data_pie) %>>% 
+  amOptions(export = TRUE, exportFormat = "CSV")
+```
+```{r, echo = FALSE}
+amPie(data = data_pie, export = TRUE, exportFormat = "CSV")
+```
+  </div>
+</div>
+
+
+
+<div class="row">
+  <div class="col-xs-12 col-md-6"><h2 class="partdivtitle">main and creditsPosition</h2>
+```{r, echo = TRUE, eval = FALSE}
+amPie(data = data_pie, main = "My Pie",
+        mainColor = "#00FF00", mainSize = 25, creditsPosition = "top-right")
+#or
+amPie(data = data_pie) %>>% 
+  amOptions( main = "My Pie",
+        mainColor = "#00FF00", mainSize = 25, creditsPosition = "top-right")
+```
+```{r, echo = FALSE}
+amPie(data = data_pie, 
+       main = "My Pie",
+        mainColor = "#00FF00", mainSize = 25, creditsPosition = "top-right")
+```
+  </div>
+  <div class="col-xs-12 col-md-6"><h2 class="partdivtitle">theme</h2>
+```{r, echo = TRUE, eval = FALSE}
+amPie(data = data_pie, main = "My Pie", theme = "patterns")
+#or
+amPie(data = data_pie) %>>% 
+  amOptions(theme = "patterns")
+```
+```{r, echo = FALSE}
+amPie(data = data_pie, theme = "patterns")
+```
+  </div>
+</div>
+

@@ -1,5 +1,5 @@
 ---
-pagetitle: rAmCharts - amCandlestick
+pagetitle: rAmCharts - amOHLC
 ---
 
 ```{r,echo=FALSE, message=FALSE}
@@ -29,37 +29,44 @@ head(data_candleStick2)
 ## Reference example
 
 ```{r}
-amCandlestick(data = data_candleStick2)
+amOHLC(data = data_candleStick2) %>>% 
+  setChartCursor()
 ```
 
 <h2 class="partdivtitle"> Change colors </h2>
 ```{r}
-amCandlestick(data = data_candleStick2, positiveColor = "black", negativeColor = "green")
+amOHLC(data = data_candleStick2, positiveColor = "black", negativeColor = "green") %>>% 
+  setChartCursor()
 ```
 
 <h2 class="partdivtitle"> Naming axis </h2>
 ```{r}
-amCandlestick(data = data_candleStick2, xlab = "categories", ylab = "values")
+amOHLC(data = data_candleStick2, xlab = "categories", ylab = "values") %>>% 
+  setChartCursor()
 ```
 
 <h2 class="partdivtitle"> Rotate x axis labels </h2>
 ```{r}
-amCandlestick(data = data_candleStick2, labelRotation = 90)
+amOHLC(data = data_candleStick2, labelRotation = 90) %>>% 
+  setChartCursor()
 ```
 
 <h2 class="partdivtitle"> Change names </h2>
 ```{r}
-amCandlestick(data = data_candleStick2, names = c("min", "begin", "end", "max"))
+amOHLC(data = data_candleStick2, names = c("min", "begin", "end", "max")) %>>% 
+  setChartCursor()
 ```
 
 <h2 class="partdivtitle"> Horizontal chart </h2>
 ```{r}
-amCandlestick(data = data_candleStick2, horiz = TRUE)
+amOHLC(data = data_candleStick2, horiz = TRUE) %>>% 
+  setChartCursor()
 ```
 
 <h2 class="partdivtitle"> Parse dates </h2>
 ```{r}
-amCandlestick(data = data_candleStick2, dataDateFormat = "YYYY-MM-DD")
+amOHLC(data = data_candleStick2, dataDateFormat = "YYYY-MM-DD") %>>% 
+  setChartCursor()
 ```
 
 <h2 class="partdivtitle"> Data over months </h2>
@@ -69,75 +76,68 @@ data_candleStick2$category <- c("2015-01-01", "2015-02-01", "2015-03-01",
                                 "2015-07-01", "2015-08-01", "2015-09-01",
                                 "2015-10-01", "2015-11-01", "2015-12-01")
 
-amCandlestick(data = data_candleStick2, dataDateFormat = "YYYY-MM-DD", minPeriod = "MM")
+amOHLC(data = data_candleStick2, dataDateFormat = "YYYY-MM-DD", minPeriod = "MM") %>>% 
+  setChartCursor()
 ```
 
 <h2 class="amOptions">amOptions</h2>
 
-<h2 class="partdivtitle">legend</h2>
-```{r, echo = TRUE, eval = FALSE}
-amCandlestick(data = data_candleStick2, legend = TRUE)
-#or
-amCandlestick(data = data_candleStick2) %>>% amOptions(legend = TRUE)
-```
-```{r, echo = FALSE}
-amCandlestick(data = data_candleStick2, legend = TRUE)
-```
-
-<h2 class="partdivtitle">legendPosition</h2>
-```{r, echo = TRUE, eval = FALSE}
-amCandlestick(data = data_candleStick2, legend = TRUE, legendPosition = "left")
-#or
-amCandlestick(data = data_candleStick2) %>>% amOptions(legend = TRUE, legendPosition = "left")
-```
-```{r, echo = FALSE}
-amCandlestick(data = data_candleStick2, legend = TRUE, legendPosition = "left")
-```
-
 <h2 class="partdivtitle">export</h2>
 ```{r, echo = TRUE, eval = FALSE}
-amCandlestick(data = data_candleStick2, export = TRUE)
+amOHLC(data = data_candleStick2, export = TRUE) %>>% 
+  setChartCursor()
 #or
-amCandlestick(data = data_candleStick2) %>>% 
-  amOptions(export = TRUE)
+amOHLC(data = data_candleStick2) %>>% 
+  amOptions(export = TRUE) %>>%
+  setChartCursor()
 ```
 ```{r, echo = FALSE}
-amCandlestick(data = data_candleStick2, export = TRUE)
+amOHLC(data = data_candleStick2, export = TRUE) %>>% 
+  setChartCursor()
 ```
   
 <h2 class="partdivtitle">exportFormat</h2>
 ```{r, echo = TRUE, eval = FALSE}
-amCandlestick(data = data_candleStick2, export = TRUE, exportFormat = "CSV")
+amOHLC(data = data_candleStick2, export = TRUE, exportFormat = "CSV") %>>% 
+  setChartCursor()
 #or
-amCandlestick(data = data_candleStick2) %>>% 
-  amOptions(export = TRUE, exportFormat = "CSV")
+amOHLC(data = data_candleStick2) %>>% 
+  amOptions(export = TRUE, exportFormat = "CSV") %>>% 
+  setChartCursor()
 ```
 ```{r, echo = FALSE}
-amCandlestick(data = data_candleStick2, export = TRUE, exportFormat = "CSV")
+amOHLC(data = data_candleStick2, export = TRUE, exportFormat = "CSV") %>>% 
+  setChartCursor()
 ```
 
 <h2 class="partdivtitle">main and creditsPosition</h2>
 ```{r, echo = TRUE, eval = FALSE}
-amCandlestick(data = data_candleStick2, main = "My Candlestick",
-        mainColor = "#00FF00", mainSize = 25, creditsPosition = "top-right")
+amOHLC(data = data_candleStick2, main = "My Candlestick",
+        mainColor = "#00FF00", mainSize = 25, creditsPosition = "top-right") %>>% 
+  setChartCursor()
 #or
-amCandlestick(data = data_candleStick2) %>>% 
+amOHLC(data = data_candleStick2) %>>% 
   amOptions( main = "My Candlestick",
-        mainColor = "#00FF00", mainSize = 25, creditsPosition = "top-right")
+        mainColor = "#00FF00", mainSize = 25, creditsPosition = "top-right") %>>% 
+  setChartCursor()
 ```
 ```{r, echo = FALSE}
-amCandlestick(data = data_candleStick2, 
+amOHLC(data = data_candleStick2, 
        main = "My Candlestick",
-        mainColor = "#00FF00", mainSize = 25, creditsPosition = "top-right")
+        mainColor = "#00FF00", mainSize = 25, creditsPosition = "top-right") %>>% 
+  setChartCursor()
 ```
 
 <h2 class="partdivtitle">theme</h2>
 ```{r, echo = TRUE, eval = FALSE}
-amCandlestick(data = data_candleStick2, main = "My Candlestick", theme = "patterns")
+amOHLC(data = data_candleStick2, main = "My Candlestick", theme = "patterns") %>>% 
+  setChartCursor()
 #or
-amCandlestick(data = data_candleStick2) %>>% 
-  amOptions(theme = "patterns")
+amOHLC(data = data_candleStick2) %>>% 
+  amOptions(theme = "patterns") %>>% 
+  setChartCursor()
 ```
 ```{r, echo = FALSE}
-amCandlestick(data = data_candleStick2, theme = "patterns")
+amOHLC(data = data_candleStick2, theme = "patterns") %>>% 
+  setChartCursor()
 ```
