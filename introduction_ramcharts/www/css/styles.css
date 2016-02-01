@@ -2,8 +2,6 @@
 /*background: #f1f1f1;*/
   padding: 15px;
   background: #3c8dbc;
-  background: -webkit-linear-gradient(-45deg, #3c8dbc 90%, #367fa9 10%, #FFFFFF 5%);
-  background: linear-gradient(-135deg, #3c8dbc 78%, #367fa9 10%);
   overflow-y: auto;
   overflow-x: scroll;
 }
@@ -91,7 +89,7 @@ body .main-container {
   text-align: center;
   border-style: solid;
   border-color: #367fa9;
-    padding:5px;
+  padding:5px;
 }
 
 .amOptions {
