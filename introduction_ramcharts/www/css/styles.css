@@ -3,7 +3,7 @@
   padding-left: 15px;
   padding-right: 15px;
   background: #3c8dbc;
-  /*overflow-y: auto;*/
+  overflow-y: auto;
   overflow-x: scroll;
   height:100vh;
 }
