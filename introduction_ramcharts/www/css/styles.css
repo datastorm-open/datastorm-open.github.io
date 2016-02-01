@@ -45,19 +45,14 @@ body .litoc a:hover:not(.active) {
   text-decoration: none;
 }
 
-body .litoc a:visited {
-  color: black;
-}
-
 h1, h2, h3, h4, h5 {
   font-family: 'Raleway', Helvetica, Arial, sans-serif;
   font-weight: bolder;
   color: #3c8dbc;
-    /*font-family: 'Pompiere', cursive;*/
 }
 
 body div {
-  font-family: 'Hind', sans-serif;
+  font-family: 'Hind',Helvetica, Arial, sans-serif;
 }
 
 #navbar footer {
