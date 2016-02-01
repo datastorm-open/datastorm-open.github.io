@@ -1,17 +1,177 @@
 ---
-pagetitle: amBarplot
+pagetitle: rAmCharts - amBarplot
 ---
-  
+
 ```{r,echo=FALSE, message=FALSE}
 require(package = "rAmCharts", quietly = TRUE)
 require(package = "pipeR", quietly = TRUE)
 ```
 
-#Basic example
+## Parameters
 
+* __x__: a character, column name for x-axis, or a numeric, number of the corresponding column. It is optional il argument data has row names. 
+* __y__: a character, column name for y-axis, or a numeric, number of the corresponding column.to date objects. If ypu want to display a grouped barchart or a stacked barchart, y is a vector of characters or numerics.
+* __data__: a dataframe with values to display. You can add a column "color" (character, colors in hexadecimal). You can also add a column "description" (character) containing the text you want to display when mouse is on the graphic ('<br>' for a new line).
+* __groups_color__: a character, vector of colors in hexadecimal, same length as y.
+* __xlab__: a character, label for x-axis.
+* __ylab__: a character, label for y-axis.
+* __horiz__: a boolean, TRUE for an horizontal chart, FALSE for a vertical one.
+* __stack_type__: a character, "regular" if you wish stacked bars, "100" if you want 100 percent stacked bars. Default is set to "none".
+* __layered__: a boolean, TRUE for layered. If TRUE, stack_type must be set to "none".
+* __show_values__: a boolean, TRUE ti dosplay values.
+* __depth__: a numeric. If depth is superior to 0, chart is displayed in 3D. Value between 0 and 100.
+* __dataDateFormat__: a character, default 'NULL'. Even if your chart parses dates,you can pass them as strings in your data - all you need to do is to set data date format and the chart will parse dates to date objects. Please note that two-digit years (YY) as well as literal month names (MMM)  are NOT supported in this setting.
+* __minPeriod__: a character. Specifies the shortest period of your data. This should be set only if dataDateFormat is not 'NULL'. Possible period values: fff - milliseconds, ss - seconds, mm - minutes, hh - hours, DD - days, MM - months, YYYY - years. It's also possible to supply a number for increments, i.e. '15mm' which will instruct the chart that your data is supplied in 15 minutes increments.
+* __...__: other parameters called in amOptions. 
+
+Notice: If the chart has many columns, several labels might be hidden. It depends on the width of the conatainer where the chart is displayed. Zoom on the chart to see if the chart can contain all labels. If not, use the parameter labelRotation. You can also add a cursor to your chart...
+
+Data used in the examples:
 ```{r}
-dataset <- data.frame(get(x = "USArrests", pos = "package:datasets"))
-amBarplot(y = c("Murder", "Assault", "UrbanPop", "Rape"), data = dataset, stack_type = "regular") %>>% plot()
+data("data_bar")
+head(data_bar)
+data("data_gbar")
+head(data_gbar)
 ```
 
-#Coming: documentation
+## Reference example
+
+```{r}
+amBarplot(x = "country", y = "visits", data = data_bar,
+          labelRotation = -90) 
+```
+
+<h2 class="partdivtitle"> Horizontal bar </h2>
+```{r}
+amBarplot(x = "country", y = "visits", data = data_bar, horiz = TRUE, labelRotation = -90)
+```
+
+<h2 class="partdivtitle"> 3D bar </h2>
+```{r}
+amBarplot(x = "country", y = "visits", data = data_bar, depth = 15, labelRotation = -90)
+```
+
+<h2 class="partdivtitle"> Display values </h2>
+```{r}
+amBarplot(x = "country", y = "visits", data = data_bar, show_values = TRUE, labelRotation = -90)
+```
+
+<h2 class="partdivtitle"> Grouped columns </h2>
+```{r}
+amBarplot(x = "year", y = c("income", "expenses"), data = data_gbar)
+```
+
+<h2 class="partdivtitle"> Parse dates - default label: first day of each year </h2>
+```{r}
+pipeR::pipeline(
+  amBarplot(x = "year", y = c("income", "expenses"), data = data_gbar,
+            dataDateFormat = "YYYY", minPeriod = "YYYY"),
+  setChartCursor()
+)
+```
+
+<h2 class="partdivtitle"> Parse dates - default label: first day of each month </h2>
+```{r}
+pipeR::pipeline(
+  amBarplot(x = "month", y = c("income", "expenses"), data = data_gbar,
+            dataDateFormat = "MM/YYYY", minPeriod = "MM"),
+  setChartCursor()
+)
+```
+
+<h2 class="partdivtitle"> Change groups colors </h2>
+```{r}
+amBarplot(x = "year", y = c("income", "expenses"), data = data_gbar, 
+      groups_color = c("#87cefa", "#c7158"))
+```
+
+<h2 class="partdivtitle"> Stacked bars </h2>
+```{r}
+amBarplot(x = "year", y = c("income", "expenses"), data = data_gbar, stack_type = "regular")
+```
+
+<h2 class="partdivtitle"> 100% Stacked bars </h2>
+```{r}
+amBarplot(x = "year", y = c("income", "expenses"), data = data_gbar, stack_type = "100")
+```
+
+<h2 class="partdivtitle"> Layered bars </h2>
+```{r}
+amBarplot(x = "year", y = c("income", "expenses"), data = data_gbar, layered = TRUE)
+```
+
+<h2 class="partdivtitle"> Data with row names </h2>
+```{r}
+dataset <- data.frame(get(x = "USArrests", pos = "package:datasets"))
+amBarplot(y = c("Murder", "Assault", "UrbanPop", "Rape"), data = dataset, stack_type = "regular")
+```
+
+<h2 class="amOptions">amOptions</h2>
+
+<h2 class="partdivtitle">legend</h2>
+```{r, echo = TRUE, eval = FALSE}
+amBarplot(x = "year", y = c("income", "expenses"), data = data_gbar, legend = TRUE)
+#or
+amBarplot(x = "year", y = c("income", "expenses"), data = data_gbar) %>>% amOptions(legend = TRUE)
+```
+```{r, echo = FALSE}
+amBarplot(x = "year", y = c("income", "expenses"), data = data_gbar, legend = TRUE)
+```
+
+<h2 class="partdivtitle">legendPosition</h2>
+```{r, echo = TRUE, eval = FALSE}
+amBarplot(x = "year", y = c("income", "expenses"), data = data_gbar, legend = TRUE, legendPosition = "left")
+#or
+amBarplot(x = "year", y = c("income", "expenses"), data = data_gbar) %>>% amOptions(legend = TRUE, legendPosition = "left")
+```
+```{r, echo = FALSE}
+amBarplot(x = "year", y = c("income", "expenses"), data = data_gbar, legend = TRUE, legendPosition = "left")
+```
+
+<h2 class="partdivtitle">export</h2>
+```{r, echo = TRUE, eval = FALSE}
+amBarplot(x = "country", y = "visits", data = data_bar, labelRotation = -45, export = TRUE)
+#or
+amBarplot(x = "country", y = "visits", data = data_bar, labelRotation = -45) %>>% 
+  amOptions(export = TRUE)
+```
+```{r, echo = FALSE}
+amBarplot(x = "country", y = "visits", data = data_bar, labelRotation = -45, export = TRUE)
+```
+  
+<h2 class="partdivtitle">exportFormat</h2>
+```{r, echo = TRUE, eval = FALSE}
+amBarplot(x = "country", y = "visits", data = data_bar, labelRotation = -45, export = TRUE, exportFormat = "CSV")
+#or
+amBarplot(x = "country", y = "visits", data = data_bar, labelRotation = -45) %>>% 
+  amOptions(export = TRUE, exportFormat = "CSV")
+```
+```{r, echo = FALSE}
+amBarplot(x = "country", y = "visits", data = data_bar, labelRotation = -45, export = TRUE, exportFormat = "CSV")
+```
+
+<h2 class="partdivtitle">main and creditsPosition</h2>
+```{r, echo = TRUE, eval = FALSE}
+amBarplot(x = "country", y = "visits", data = data_bar, labelRotation = -45, main = "My Barchart",
+        mainColor = "#00FF00", mainSize = 25, creditsPosition = "top-right")
+#or
+amBarplot(x = "country", y = "visits", data = data_bar, labelRotation = -45) %>>% 
+  amOptions( main = "My Barchart",
+        mainColor = "#00FF00", mainSize = 25, creditsPosition = "top-right")
+```
+```{r, echo = FALSE}
+amBarplot(x = "country", y = "visits", data = data_bar, labelRotation = -45, 
+       main = "My Barchart",
+        mainColor = "#00FF00", mainSize = 25, creditsPosition = "top-right")
+```
+
+<h2 class="partdivtitle">theme</h2>
+```{r, echo = TRUE, eval = FALSE}
+amBarplot(x = "year", y = c("income", "expenses"), data = data_gbar, main = "My Barchart", theme = "patterns")
+#or
+amBarplot(x = "year", y = c("income", "expenses"), data = data_gbar) %>>% 
+  amOptions(theme = "patterns")
+```
+```{r, echo = FALSE}
+amBarplot(x = "year", y = c("income", "expenses"), data = data_gbar, theme = "patterns")
+```

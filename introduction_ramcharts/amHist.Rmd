@@ -28,19 +28,19 @@ head(data_hist)
 ## Reference example
 
 ```{r}
-amHist(x = data_hist) %>>% plot()
+amHist(x = data_hist)
 ```
 
 <div class="row">
   <div class="col-xs-12 col-md-6"><h2 class="partdivtitle"> Filling color </h2>
 ```{r}
-amHist(x = data_hist, col = "#367fa9") %>>% plot()
+amHist(x = data_hist, col = "#367fa9")
 ```
   </div>
   
   <div class="col-xs-12 col-md-6"><h2 class="partdivtitle"> Border color </h2>
 ```{r}
-amHist(x = data_hist, border = "#367fa9") %>>% plot()
+amHist(x = data_hist, border = "#367fa9")
 ```
   </div>
 </div>
@@ -48,13 +48,13 @@ amHist(x = data_hist, border = "#367fa9") %>>% plot()
 <div class="row">
   <div class="col-xs-12 col-md-6"><h2 class="partdivtitle"> View frequency </h2>
 ```{r}
-amHist(x = data_hist, freq = FALSE) %>>% plot()
+amHist(x = data_hist, freq = FALSE)
 ```
   </div>
   
   <div class="col-xs-12 col-md-6"><h2 class="partdivtitle"> Labels </h2>
 ```{r}
-amHist(x = data_hist, xlab = "xlab", ylab = "ylab") %>>% plot()
+amHist(x = data_hist, xlab = "xlab", ylab = "ylab")
 ```
   </div>
 </div>
@@ -62,13 +62,13 @@ amHist(x = data_hist, xlab = "xlab", ylab = "ylab") %>>% plot()
 <div class="row">
   <div class="col-xs-12 col-md-6"><h2 class="partdivtitle"> Add label on the top </h2>
 ```{r}
-amHist(x = data_hist, labels = TRUE) %>>% plot()
+amHist(x = data_hist, labels = TRUE)
 ```
   </div>
   
   <div class="col-xs-12 col-md-6"><h2 class="partdivtitle"> Set ylim </h2>
 ```{r}
-amHist(x = data_hist, ylim = c(0,.8), freq = FALSE) %>>% plot()
+amHist(x = data_hist, ylim = c(0,.8), freq = FALSE)
 ```
   </div>
 </div>

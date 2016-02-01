@@ -30,7 +30,7 @@ shinyApp(
 
 ```{r, eval = TRUE, echo=FALSE, fig.height=1}
 iris <- get(x = "iris", pos = "package:datasets")
-amBoxplot(iris[, -5]) %>>% plot()
+amBoxplot(iris[, -5])
 ```
 
 # Shiny interactions

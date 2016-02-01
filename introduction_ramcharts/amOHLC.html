@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+<title>rAmCharts - amOHLC</title>
+
+<script src="libs/jquery-1.11.0/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="libs/bootstrap-3.3.1/css/cosmo.min.css" rel="stylesheet" />
+<script src="libs/bootstrap-3.3.1/js/bootstrap.min.js"></script>
+<script src="libs/bootstrap-3.3.1/shim/html5shiv.min.js"></script>
+<script src="libs/bootstrap-3.3.1/shim/respond.min.js"></script>
+<script src="libs/htmlwidgets-0.5/htmlwidgets.js"></script>
+<script src="libs/amcharts-3.18.2/amcharts.js"></script>
+<script src="libs/ramcharts_base-binding-1.1.3/ramcharts_base.js"></script>
+<script src="libs/amcharts_typeserial-3.18.2/serial.js"></script>
+<link href="libs/amcharts_plugins_export-3.18.2/export.css" rel="stylesheet" />
+<script src="libs/amcharts_plugins_export-3.18.2/export.min.js"></script>
+<script src="libs/amcharts_themes_patterns-3.18.2/patterns.js"></script>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Pompiere' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Raleway:100' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+
+<style type="text/css">code{white-space: pre;}</style>
+<link rel="stylesheet"
+      href="libs/highlight/default.css"
+      type="text/css" />
+<script src="libs/highlight/highlight.js"></script>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs && document.readyState && document.readyState === "complete") {
+   window.setTimeout(function() {
+      hljs.initHighlighting();
+   }, 0);
+}
+</script>
+
+
+<link rel="stylesheet" href="www\css\styles.css" type="text/css" />
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img { 
+  max-width:100%; 
+  height: auto; 
+}
+</style>
+<div class="container-fluid main-container">
+
+<!-- bootstrap row container for all the content -->
+  
+<div class="row">
+  
+  <div class="col-xs-3 col-md-2" id="navbar">
+    
+    <div id="main-toc">Tutorial - rAmCharts</div>
+    <hr/>
+      
+    <b class="section-toc">Getting started</b>
+    <br/>
+
+    <ul class="toc" id="nav-intro">
+      <li class="litoc">
+        <a class="toc-item" href="index.html">Introduction</a>
+      </li>
+      <li class="litoc">
+        <a class="toc-item" href="convert.html">Quick tutorial</a>
+      </li>
+      <li class="litoc">
+        <a class="toc-item" href="shiny.html">Use in shiny apps</a>
+      </li>
+      <li class="litoc">
+        <a class="toc-item" href="advance.html">Advanced features</a>
+        </li>
+    </ul> 
+    <hr/>
+      
+    <b class="section-toc">Functions 'am'</b>
+    <br/>
+      
+    <ul class="toc" id="nav-amfunctions">   
+      <li class="litoc">
+        <a class="toc-item" href="amAngularGauge.html">amAngularGauge</a>
+      </li>
+      <li class="litoc">
+        <a class="toc-item" href="amBarplot.html">amBarplot</a>
+      </li>
+      <li class="litoc">
+        <a class="toc-item" href="amBoxplot.html">amBoxplot</a>
+      </li>
+      <li class="litoc">
+        <a class="toc-item" href="amBullet.html">amBullet</a>
+      </li>
+      <li class="litoc"><a class="toc-item" href="amCandlestick.html">amCandlestick</a></li>
+      <li class="litoc"><a class="toc-item" href="amHist.html">amHist</a></li>
+      <li class="litoc"><a class="toc-item" href="amPie.html">amPie</a></li>
+      <li class="litoc"><a class="toc-item" href="amRadar.html">amRadar</a></li>
+      
+      <!--
+      <li class="litoc"><a class="toc-item" href="amMekko.html">amMekko</a></li>
+      
+      <li class="litoc"><a class="toc-item" href="amPlot.html">amPlot</a></li>
+      <li class="litoc"><a class="toc-item" href="amRadar.html">amRadar</a></li>
+      <li class="litoc"><a class="toc-item" href="amWaterfall.html">amWaterfall</a></li>
+      <li class="litoc"><a class="toc-item" href="amWind.html">amWind</a></li>
+      -->
+    </ul>
+    
+    <footer>
+      <div class="copyrights"><small> © 2015-2016 DataKnowledge</small></div>
+    </footer>
+  </div><!-- end of left column -->
+  
+  <div class="col-xs-9 col-md-10">
+    <div class="row">
+      <div class="col-xs-11 col-md-11">
+
+
+
+<div id="parameters" class="section level2">
+<h2>Parameters</h2>
+<ul>
+<li><strong>data</strong>: a dataframe with at least 5 columns: category, open (numeric), close (numeric), low (numeric), high (numeric).</li>
+<li><strong>dataDateFormat</strong>: a character, default ‘NULL’. Even if your chart parses dates, you can pass them as strings in your data - all you need to do is to set data date format and the chart will parse dates to date objects. Please note that two-digit years (YY) as well as literal month names (MMM) are NOT supported in this setting.</li>
+<li><strong>minPeriod</strong>: a character. minPeriod Specifies the shortest period of your data. This should be set only if dataDateFormat is not ‘NULL’. Possible period values: fff - milliseconds, ss - seconds, mm - minutes, hh - hours, DD - days, MM - months, YYYY - years. It’s also possible to supply a number for increments, i.e. ‘15mm’ which will instruct the chart that your data is supplied in 15 minutes increments.</li>
+<li><strong>positiveColor</strong>: a character, color for positive values. Must be in hexadecimal if you plan to export the chart.</li>
+<li><strong>negativeColor</strong>: a character, color for negative values. Must be in hexadecimal if you plan to export the chart.</li>
+<li><strong>names</strong>: a character, names for the tooltips.</li>
+<li><strong>xlab</strong>: a character, label for x-axis.</li>
+<li><strong>ylab</strong>: a character, label for y-axis.</li>
+<li><strong>horiz</strong>: a boolean, TRUE for an horizontal chart, FALSE for a vertical one.</li>
+<li><strong>…</strong>: other parameters called in amOptions.</li>
+</ul>
+<p>Data used in the examples:</p>
+<pre class="r"><code>data(&quot;data_candleStick2&quot;)
+head(data_candleStick2)</code></pre>
+<pre><code>##     category   open close    low   high
+## 1 2015-01-01 136.65 136.4 134.15 136.96
+## 2 2015-01-02 135.26 131.8 131.50 135.95
+## 3 2015-01-03 132.90 135.2 128.30 135.27
+## 4 2015-01-04 134.94 135.0 132.63 137.24
+## 5 2015-01-05 136.76 134.0 132.00 136.86
+## 6 2015-01-06 131.11 126.3 125.09 133.00</code></pre>
+</div>
+<div id="reference-example" class="section level2">
+<h2>Reference example</h2>
+<pre class="r"><code>amOHLC(data = data_candleStick2) %&gt;&gt;% 
+  setChartCursor()</code></pre>
+<p><div id="htmlwidget-8004" style="width:100%;height:500px;" class="ramcharts_base"></div>
+<script type="application/json" data-for="htmlwidget-8004">{"x":{"chartData":{"precision":2,"dataDateFormat":null,"rotate":false,"categoryAxis":{"title":"","axisAlpha":0,"gridAlpha":0.1,"parseDates":false,"minPeriod":""},"categoryField":"category","chartCursor":{"animationDuration":0.3},"dataProvider":[{"category":"2015-01-01","open":136.65,"close":136.4,"low":134.15,"high":136.96},{"category":"2015-01-02","open":135.26,"close":131.8,"low":131.5,"high":135.95},{"category":"2015-01-03","open":132.9,"close":135.2,"low":128.3,"high":135.27},{"category":"2015-01-04","open":134.94,"close":135,"low":132.63,"high":137.24},{"category":"2015-01-05","open":136.76,"close":134,"low":132,"high":136.86},{"category":"2015-01-06","open":131.11,"close":126.3,"low":125.09,"high":133},{"category":"2015-01-07","open":123.12,"close":125,"low":120.3,"high":127.75},{"category":"2015-01-08","open":128.32,"close":127.7,"low":126.5,"high":129.35},{"category":"2015-01-09","open":128.29,"close":124,"low":123.71,"high":128.3},{"category":"2015-01-10","open":122.74,"close":119.9,"low":119.65,"high":124.86},{"category":"2015-01-11","open":117.01,"close":117,"low":111.62,"high":118.5},{"category":"2015-01-20","open":122.01,"close":122,"low":119.82,"high":123.5}],"graphs":[{"id":"g1","openField":"open","closeField":"close","highField":"high","lowField":"low","fillColors":"#7f8da9","lineColor":"#7f8da9","negativeFillColors":"#db4c3c","negativeLineColor":"#db4c3c","fillAlphas":0.8,"balloonText":"open <b>[[open]]</b><br> low :<b>[[low]]</b><br> high :<b>[[high]]</b><br> close :<b>[[close]]</b><br>","type":"ohlc","valueField":"close"}],"type":"serial","valueAxes":[{"position":"left","gridAlpha":0.1,"title":""}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[]}</script></p>
+<h2 class="partdivtitle">
+Change colors
+</h2>
+<pre class="r"><code>amOHLC(data = data_candleStick2, positiveColor = &quot;black&quot;, negativeColor = &quot;green&quot;) %&gt;&gt;% 
+  setChartCursor()</code></pre>
+<p><div id="htmlwidget-8438" style="width:100%;height:500px;" class="ramcharts_base"></div>
+<script type="application/json" data-for="htmlwidget-8438">{"x":{"chartData":{"precision":2,"dataDateFormat":null,"rotate":false,"categoryAxis":{"title":"","axisAlpha":0,"gridAlpha":0.1,"parseDates":false,"minPeriod":""},"categoryField":"category","chartCursor":{"animationDuration":0.3},"dataProvider":[{"category":"2015-01-01","open":136.65,"close":136.4,"low":134.15,"high":136.96},{"category":"2015-01-02","open":135.26,"close":131.8,"low":131.5,"high":135.95},{"category":"2015-01-03","open":132.9,"close":135.2,"low":128.3,"high":135.27},{"category":"2015-01-04","open":134.94,"close":135,"low":132.63,"high":137.24},{"category":"2015-01-05","open":136.76,"close":134,"low":132,"high":136.86},{"category":"2015-01-06","open":131.11,"close":126.3,"low":125.09,"high":133},{"category":"2015-01-07","open":123.12,"close":125,"low":120.3,"high":127.75},{"category":"2015-01-08","open":128.32,"close":127.7,"low":126.5,"high":129.35},{"category":"2015-01-09","open":128.29,"close":124,"low":123.71,"high":128.3},{"category":"2015-01-10","open":122.74,"close":119.9,"low":119.65,"high":124.86},{"category":"2015-01-11","open":117.01,"close":117,"low":111.62,"high":118.5},{"category":"2015-01-20","open":122.01,"close":122,"low":119.82,"high":123.5}],"graphs":[{"id":"g1","openField":"open","closeField":"close","highField":"high","lowField":"low","fillColors":"black","lineColor":"black","negativeFillColors":"green","negativeLineColor":"green","fillAlphas":0.8,"balloonText":"open <b>[[open]]</b><br> low :<b>[[low]]</b><br> high :<b>[[high]]</b><br> close :<b>[[close]]</b><br>","type":"ohlc","valueField":"close"}],"type":"serial","valueAxes":[{"position":"left","gridAlpha":0.1,"title":""}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[]}</script></p>
+<h2 class="partdivtitle">
+Naming axis
+</h2>
+<pre class="r"><code>amOHLC(data = data_candleStick2, xlab = &quot;values&quot;, ylab = &quot;categories&quot;) %&gt;&gt;% 
+  setChartCursor()</code></pre>
+<p><div id="htmlwidget-8436" style="width:100%;height:500px;" class="ramcharts_base"></div>
+<script type="application/json" data-for="htmlwidget-8436">{"x":{"chartData":{"precision":2,"dataDateFormat":null,"rotate":false,"categoryAxis":{"title":"categories","axisAlpha":0,"gridAlpha":0.1,"parseDates":false,"minPeriod":""},"categoryField":"category","chartCursor":{"animationDuration":0.3},"dataProvider":[{"category":"2015-01-01","open":136.65,"close":136.4,"low":134.15,"high":136.96},{"category":"2015-01-02","open":135.26,"close":131.8,"low":131.5,"high":135.95},{"category":"2015-01-03","open":132.9,"close":135.2,"low":128.3,"high":135.27},{"category":"2015-01-04","open":134.94,"close":135,"low":132.63,"high":137.24},{"category":"2015-01-05","open":136.76,"close":134,"low":132,"high":136.86},{"category":"2015-01-06","open":131.11,"close":126.3,"low":125.09,"high":133},{"category":"2015-01-07","open":123.12,"close":125,"low":120.3,"high":127.75},{"category":"2015-01-08","open":128.32,"close":127.7,"low":126.5,"high":129.35},{"category":"2015-01-09","open":128.29,"close":124,"low":123.71,"high":128.3},{"category":"2015-01-10","open":122.74,"close":119.9,"low":119.65,"high":124.86},{"category":"2015-01-11","open":117.01,"close":117,"low":111.62,"high":118.5},{"category":"2015-01-20","open":122.01,"close":122,"low":119.82,"high":123.5}],"graphs":[{"id":"g1","openField":"open","closeField":"close","highField":"high","lowField":"low","fillColors":"#7f8da9","lineColor":"#7f8da9","negativeFillColors":"#db4c3c","negativeLineColor":"#db4c3c","fillAlphas":0.8,"balloonText":"open <b>[[open]]</b><br> low :<b>[[low]]</b><br> high :<b>[[high]]</b><br> close :<b>[[close]]</b><br>","type":"ohlc","valueField":"close"}],"type":"serial","valueAxes":[{"position":"left","gridAlpha":0.1,"title":"values"}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[]}</script></p>
+<h2 class="partdivtitle">
+Rotate x axis labels
+</h2>
+<pre class="r"><code>amOHLC(data = data_candleStick2, labelRotation = 90) %&gt;&gt;% 
+  setChartCursor()</code></pre>
+<p><div id="htmlwidget-591" style="width:100%;height:500px;" class="ramcharts_base"></div>
+<script type="application/json" data-for="htmlwidget-591">{"x":{"chartData":{"precision":2,"dataDateFormat":null,"rotate":false,"categoryAxis":{"labelRotation":90},"categoryField":"category","chartCursor":{"animationDuration":0.3},"dataProvider":[{"category":"2015-01-01","open":136.65,"close":136.4,"low":134.15,"high":136.96},{"category":"2015-01-02","open":135.26,"close":131.8,"low":131.5,"high":135.95},{"category":"2015-01-03","open":132.9,"close":135.2,"low":128.3,"high":135.27},{"category":"2015-01-04","open":134.94,"close":135,"low":132.63,"high":137.24},{"category":"2015-01-05","open":136.76,"close":134,"low":132,"high":136.86},{"category":"2015-01-06","open":131.11,"close":126.3,"low":125.09,"high":133},{"category":"2015-01-07","open":123.12,"close":125,"low":120.3,"high":127.75},{"category":"2015-01-08","open":128.32,"close":127.7,"low":126.5,"high":129.35},{"category":"2015-01-09","open":128.29,"close":124,"low":123.71,"high":128.3},{"category":"2015-01-10","open":122.74,"close":119.9,"low":119.65,"high":124.86},{"category":"2015-01-11","open":117.01,"close":117,"low":111.62,"high":118.5},{"category":"2015-01-20","open":122.01,"close":122,"low":119.82,"high":123.5}],"graphs":[{"id":"g1","openField":"open","closeField":"close","highField":"high","lowField":"low","fillColors":"#7f8da9","lineColor":"#7f8da9","negativeFillColors":"#db4c3c","negativeLineColor":"#db4c3c","fillAlphas":0.8,"balloonText":"open <b>[[open]]</b><br> low :<b>[[low]]</b><br> high :<b>[[high]]</b><br> close :<b>[[close]]</b><br>","type":"ohlc","valueField":"close"}],"type":"serial","valueAxes":[{"position":"left","gridAlpha":0.1,"title":""}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[]}</script></p>
+<h2 class="partdivtitle">
+Change names
+</h2>
+<pre class="r"><code>amOHLC(data = data_candleStick2, names = c(&quot;min&quot;, &quot;begin&quot;, &quot;end&quot;, &quot;max&quot;)) %&gt;&gt;% 
+  setChartCursor()</code></pre>
+<p><div id="htmlwidget-6753" style="width:100%;height:500px;" class="ramcharts_base"></div>
+<script type="application/json" data-for="htmlwidget-6753">{"x":{"chartData":{"precision":2,"dataDateFormat":null,"rotate":false,"categoryAxis":{"title":"","axisAlpha":0,"gridAlpha":0.1,"parseDates":false,"minPeriod":""},"categoryField":"category","chartCursor":{"animationDuration":0.3},"dataProvider":[{"category":"2015-01-01","open":136.65,"close":136.4,"low":134.15,"high":136.96},{"category":"2015-01-02","open":135.26,"close":131.8,"low":131.5,"high":135.95},{"category":"2015-01-03","open":132.9,"close":135.2,"low":128.3,"high":135.27},{"category":"2015-01-04","open":134.94,"close":135,"low":132.63,"high":137.24},{"category":"2015-01-05","open":136.76,"close":134,"low":132,"high":136.86},{"category":"2015-01-06","open":131.11,"close":126.3,"low":125.09,"high":133},{"category":"2015-01-07","open":123.12,"close":125,"low":120.3,"high":127.75},{"category":"2015-01-08","open":128.32,"close":127.7,"low":126.5,"high":129.35},{"category":"2015-01-09","open":128.29,"close":124,"low":123.71,"high":128.3},{"category":"2015-01-10","open":122.74,"close":119.9,"low":119.65,"high":124.86},{"category":"2015-01-11","open":117.01,"close":117,"low":111.62,"high":118.5},{"category":"2015-01-20","open":122.01,"close":122,"low":119.82,"high":123.5}],"graphs":[{"id":"g1","openField":"open","closeField":"close","highField":"high","lowField":"low","fillColors":"#7f8da9","lineColor":"#7f8da9","negativeFillColors":"#db4c3c","negativeLineColor":"#db4c3c","fillAlphas":0.8,"balloonText":"begin <b>[[open]]</b><br> min :<b>[[low]]</b><br> max :<b>[[high]]</b><br> end :<b>[[close]]</b><br>","type":"ohlc","valueField":"close"}],"type":"serial","valueAxes":[{"position":"left","gridAlpha":0.1,"title":""}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[]}</script></p>
+<h2 class="partdivtitle">
+Horizontal chart
+</h2>
+<pre class="r"><code>amOHLC(data = data_candleStick2, horiz = TRUE) %&gt;&gt;% 
+  setChartCursor()</code></pre>
+<p><div id="htmlwidget-1999" style="width:100%;height:500px;" class="ramcharts_base"></div>
+<script type="application/json" data-for="htmlwidget-1999">{"x":{"chartData":{"precision":2,"dataDateFormat":null,"rotate":true,"categoryAxis":{"title":"","axisAlpha":0,"gridAlpha":0.1,"parseDates":false,"minPeriod":""},"categoryField":"category","chartCursor":{"animationDuration":0.3},"dataProvider":[{"category":"2015-01-01","open":136.65,"close":136.4,"low":134.15,"high":136.96},{"category":"2015-01-02","open":135.26,"close":131.8,"low":131.5,"high":135.95},{"category":"2015-01-03","open":132.9,"close":135.2,"low":128.3,"high":135.27},{"category":"2015-01-04","open":134.94,"close":135,"low":132.63,"high":137.24},{"category":"2015-01-05","open":136.76,"close":134,"low":132,"high":136.86},{"category":"2015-01-06","open":131.11,"close":126.3,"low":125.09,"high":133},{"category":"2015-01-07","open":123.12,"close":125,"low":120.3,"high":127.75},{"category":"2015-01-08","open":128.32,"close":127.7,"low":126.5,"high":129.35},{"category":"2015-01-09","open":128.29,"close":124,"low":123.71,"high":128.3},{"category":"2015-01-10","open":122.74,"close":119.9,"low":119.65,"high":124.86},{"category":"2015-01-11","open":117.01,"close":117,"low":111.62,"high":118.5},{"category":"2015-01-20","open":122.01,"close":122,"low":119.82,"high":123.5}],"graphs":[{"id":"g1","openField":"open","closeField":"close","highField":"high","lowField":"low","fillColors":"#7f8da9","lineColor":"#7f8da9","negativeFillColors":"#db4c3c","negativeLineColor":"#db4c3c","fillAlphas":0.8,"balloonText":"open <b>[[open]]</b><br> low :<b>[[low]]</b><br> high :<b>[[high]]</b><br> close :<b>[[close]]</b><br>","type":"ohlc","valueField":"close"}],"type":"serial","valueAxes":[{"position":"left","gridAlpha":0.1,"title":""}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[]}</script></p>
+<h2 class="partdivtitle">
+Parse dates
+</h2>
+<pre class="r"><code>amOHLC(data = data_candleStick2, dataDateFormat = &quot;YYYY-MM-DD&quot;) %&gt;&gt;% 
+  setChartCursor()</code></pre>
+<p><div id="htmlwidget-7519" style="width:100%;height:500px;" class="ramcharts_base"></div>
+<script type="application/json" data-for="htmlwidget-7519">{"x":{"chartData":{"precision":2,"dataDateFormat":"YYYY-MM-DD","rotate":false,"categoryAxis":{"title":"","axisAlpha":0,"gridAlpha":0.1,"parseDates":true,"minPeriod":"DD"},"categoryField":"category","chartCursor":{"animationDuration":0.3},"dataProvider":[{"category":"2015-01-01","open":136.65,"close":136.4,"low":134.15,"high":136.96},{"category":"2015-01-02","open":135.26,"close":131.8,"low":131.5,"high":135.95},{"category":"2015-01-03","open":132.9,"close":135.2,"low":128.3,"high":135.27},{"category":"2015-01-04","open":134.94,"close":135,"low":132.63,"high":137.24},{"category":"2015-01-05","open":136.76,"close":134,"low":132,"high":136.86},{"category":"2015-01-06","open":131.11,"close":126.3,"low":125.09,"high":133},{"category":"2015-01-07","open":123.12,"close":125,"low":120.3,"high":127.75},{"category":"2015-01-08","open":128.32,"close":127.7,"low":126.5,"high":129.35},{"category":"2015-01-09","open":128.29,"close":124,"low":123.71,"high":128.3},{"category":"2015-01-10","open":122.74,"close":119.9,"low":119.65,"high":124.86},{"category":"2015-01-11","open":117.01,"close":117,"low":111.62,"high":118.5},{"category":"2015-01-20","open":122.01,"close":122,"low":119.82,"high":123.5}],"graphs":[{"id":"g1","openField":"open","closeField":"close","highField":"high","lowField":"low","fillColors":"#7f8da9","lineColor":"#7f8da9","negativeFillColors":"#db4c3c","negativeLineColor":"#db4c3c","fillAlphas":0.8,"balloonText":"open <b>[[open]]</b><br> low :<b>[[low]]</b><br> high :<b>[[high]]</b><br> close :<b>[[close]]</b><br>","type":"ohlc","valueField":"close"}],"type":"serial","valueAxes":[{"position":"left","gridAlpha":0.1,"title":""}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[]}</script></p>
+<h2 class="partdivtitle">
+Data over months
+</h2>
+<pre class="r"><code>data_candleStick2$category &lt;- c(&quot;2015-01-01&quot;, &quot;2015-02-01&quot;, &quot;2015-03-01&quot;,
+                                &quot;2015-04-01&quot;, &quot;2015-05-01&quot;, &quot;2015-06-01&quot;,
+                                &quot;2015-07-01&quot;, &quot;2015-08-01&quot;, &quot;2015-09-01&quot;,
+                                &quot;2015-10-01&quot;, &quot;2015-11-01&quot;, &quot;2015-12-01&quot;)
+
+amOHLC(data = data_candleStick2, dataDateFormat = &quot;YYYY-MM-DD&quot;, minPeriod = &quot;MM&quot;) %&gt;&gt;% 
+  setChartCursor()</code></pre>
+<p><div id="htmlwidget-683" style="width:100%;height:500px;" class="ramcharts_base"></div>
+<script type="application/json" data-for="htmlwidget-683">{"x":{"chartData":{"precision":2,"dataDateFormat":"YYYY-MM-DD","rotate":false,"categoryAxis":{"title":"","axisAlpha":0,"gridAlpha":0.1,"parseDates":true,"minPeriod":"MM"},"categoryField":"category","chartCursor":{"animationDuration":0.3},"dataProvider":[{"category":"2015-01-01","open":136.65,"close":136.4,"low":134.15,"high":136.96},{"category":"2015-02-01","open":135.26,"close":131.8,"low":131.5,"high":135.95},{"category":"2015-03-01","open":132.9,"close":135.2,"low":128.3,"high":135.27},{"category":"2015-04-01","open":134.94,"close":135,"low":132.63,"high":137.24},{"category":"2015-05-01","open":136.76,"close":134,"low":132,"high":136.86},{"category":"2015-06-01","open":131.11,"close":126.3,"low":125.09,"high":133},{"category":"2015-07-01","open":123.12,"close":125,"low":120.3,"high":127.75},{"category":"2015-08-01","open":128.32,"close":127.7,"low":126.5,"high":129.35},{"category":"2015-09-01","open":128.29,"close":124,"low":123.71,"high":128.3},{"category":"2015-10-01","open":122.74,"close":119.9,"low":119.65,"high":124.86},{"category":"2015-11-01","open":117.01,"close":117,"low":111.62,"high":118.5},{"category":"2015-12-01","open":122.01,"close":122,"low":119.82,"high":123.5}],"graphs":[{"id":"g1","openField":"open","closeField":"close","highField":"high","lowField":"low","fillColors":"#7f8da9","lineColor":"#7f8da9","negativeFillColors":"#db4c3c","negativeLineColor":"#db4c3c","fillAlphas":0.8,"balloonText":"open <b>[[open]]</b><br> low :<b>[[low]]</b><br> high :<b>[[high]]</b><br> close :<b>[[close]]</b><br>","type":"ohlc","valueField":"close"}],"type":"serial","valueAxes":[{"position":"left","gridAlpha":0.1,"title":""}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[]}</script></p>
+<h2 class="amOptions">
+amOptions
+</h2>
+<h2 class="partdivtitle">
+export
+</h2>
+<pre class="r"><code>amOHLC(data = data_candleStick2, export = TRUE) %&gt;&gt;% 
+  setChartCursor()
+#or
+amOHLC(data = data_candleStick2) %&gt;&gt;% 
+  amOptions(export = TRUE) %&gt;&gt;%
+  setChartCursor()</code></pre>
+<p><div id="htmlwidget-9942" style="width:100%;height:500px;" class="ramcharts_base"></div>
+<script type="application/json" data-for="htmlwidget-9942">{"x":{"chartData":{"precision":2,"dataDateFormat":null,"rotate":false,"export":{"enabled":true},"categoryAxis":{"title":"","axisAlpha":0,"gridAlpha":0.1,"parseDates":false,"minPeriod":""},"categoryField":"category","chartCursor":{"animationDuration":0.3},"dataProvider":[{"category":"2015-01-01","open":136.65,"close":136.4,"low":134.15,"high":136.96},{"category":"2015-02-01","open":135.26,"close":131.8,"low":131.5,"high":135.95},{"category":"2015-03-01","open":132.9,"close":135.2,"low":128.3,"high":135.27},{"category":"2015-04-01","open":134.94,"close":135,"low":132.63,"high":137.24},{"category":"2015-05-01","open":136.76,"close":134,"low":132,"high":136.86},{"category":"2015-06-01","open":131.11,"close":126.3,"low":125.09,"high":133},{"category":"2015-07-01","open":123.12,"close":125,"low":120.3,"high":127.75},{"category":"2015-08-01","open":128.32,"close":127.7,"low":126.5,"high":129.35},{"category":"2015-09-01","open":128.29,"close":124,"low":123.71,"high":128.3},{"category":"2015-10-01","open":122.74,"close":119.9,"low":119.65,"high":124.86},{"category":"2015-11-01","open":117.01,"close":117,"low":111.62,"high":118.5},{"category":"2015-12-01","open":122.01,"close":122,"low":119.82,"high":123.5}],"graphs":[{"id":"g1","openField":"open","closeField":"close","highField":"high","lowField":"low","fillColors":"#7f8da9","lineColor":"#7f8da9","negativeFillColors":"#db4c3c","negativeLineColor":"#db4c3c","fillAlphas":0.8,"balloonText":"open <b>[[open]]</b><br> low :<b>[[low]]</b><br> high :<b>[[high]]</b><br> close :<b>[[close]]</b><br>","type":"ohlc","valueField":"close"}],"type":"serial","valueAxes":[{"position":"left","gridAlpha":0.1,"title":""}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[]}</script></p>
+<h2 class="partdivtitle">
+exportFormat
+</h2>
+<pre class="r"><code>amOHLC(data = data_candleStick2, export = TRUE, exportFormat = &quot;CSV&quot;) %&gt;&gt;% 
+  setChartCursor()
+#or
+amOHLC(data = data_candleStick2) %&gt;&gt;% 
+  amOptions(export = TRUE, exportFormat = &quot;CSV&quot;) %&gt;&gt;% 
+  setChartCursor()</code></pre>
+<p><div id="htmlwidget-1583" style="width:100%;height:500px;" class="ramcharts_base"></div>
+<script type="application/json" data-for="htmlwidget-1583">{"x":{"chartData":{"precision":2,"dataDateFormat":null,"rotate":false,"export":{"enabled":true,"menu":[{"class":"export-main","menu":[{"format":"CSV","label":"CSV"}]}]},"categoryAxis":{"title":"","axisAlpha":0,"gridAlpha":0.1,"parseDates":false,"minPeriod":""},"categoryField":"category","chartCursor":{"animationDuration":0.3},"dataProvider":[{"category":"2015-01-01","open":136.65,"close":136.4,"low":134.15,"high":136.96},{"category":"2015-02-01","open":135.26,"close":131.8,"low":131.5,"high":135.95},{"category":"2015-03-01","open":132.9,"close":135.2,"low":128.3,"high":135.27},{"category":"2015-04-01","open":134.94,"close":135,"low":132.63,"high":137.24},{"category":"2015-05-01","open":136.76,"close":134,"low":132,"high":136.86},{"category":"2015-06-01","open":131.11,"close":126.3,"low":125.09,"high":133},{"category":"2015-07-01","open":123.12,"close":125,"low":120.3,"high":127.75},{"category":"2015-08-01","open":128.32,"close":127.7,"low":126.5,"high":129.35},{"category":"2015-09-01","open":128.29,"close":124,"low":123.71,"high":128.3},{"category":"2015-10-01","open":122.74,"close":119.9,"low":119.65,"high":124.86},{"category":"2015-11-01","open":117.01,"close":117,"low":111.62,"high":118.5},{"category":"2015-12-01","open":122.01,"close":122,"low":119.82,"high":123.5}],"graphs":[{"id":"g1","openField":"open","closeField":"close","highField":"high","lowField":"low","fillColors":"#7f8da9","lineColor":"#7f8da9","negativeFillColors":"#db4c3c","negativeLineColor":"#db4c3c","fillAlphas":0.8,"balloonText":"open <b>[[open]]</b><br> low :<b>[[low]]</b><br> high :<b>[[high]]</b><br> close :<b>[[close]]</b><br>","type":"ohlc","valueField":"close"}],"type":"serial","valueAxes":[{"position":"left","gridAlpha":0.1,"title":""}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[]}</script></p>
+<h2 class="partdivtitle">
+main and creditsPosition
+</h2>
+<pre class="r"><code>amOHLC(data = data_candleStick2, main = &quot;My Candlestick&quot;,
+        mainColor = &quot;#00FF00&quot;, mainSize = 25, creditsPosition = &quot;top-right&quot;) %&gt;&gt;% 
+  setChartCursor()
+#or
+amOHLC(data = data_candleStick2) %&gt;&gt;% 
+  amOptions( main = &quot;My Candlestick&quot;,
+        mainColor = &quot;#00FF00&quot;, mainSize = 25, creditsPosition = &quot;top-right&quot;) %&gt;&gt;% 
+  setChartCursor()</code></pre>
+<p><div id="htmlwidget-2931" style="width:100%;height:500px;" class="ramcharts_base"></div>
+<script type="application/json" data-for="htmlwidget-2931">{"x":{"chartData":{"precision":2,"dataDateFormat":null,"rotate":false,"categoryAxis":{"title":"","axisAlpha":0,"gridAlpha":0.1,"parseDates":false,"minPeriod":""},"categoryField":"category","creditsPosition":"top-right","chartCursor":{"animationDuration":0.3},"dataProvider":[{"category":"2015-01-01","open":136.65,"close":136.4,"low":134.15,"high":136.96},{"category":"2015-02-01","open":135.26,"close":131.8,"low":131.5,"high":135.95},{"category":"2015-03-01","open":132.9,"close":135.2,"low":128.3,"high":135.27},{"category":"2015-04-01","open":134.94,"close":135,"low":132.63,"high":137.24},{"category":"2015-05-01","open":136.76,"close":134,"low":132,"high":136.86},{"category":"2015-06-01","open":131.11,"close":126.3,"low":125.09,"high":133},{"category":"2015-07-01","open":123.12,"close":125,"low":120.3,"high":127.75},{"category":"2015-08-01","open":128.32,"close":127.7,"low":126.5,"high":129.35},{"category":"2015-09-01","open":128.29,"close":124,"low":123.71,"high":128.3},{"category":"2015-10-01","open":122.74,"close":119.9,"low":119.65,"high":124.86},{"category":"2015-11-01","open":117.01,"close":117,"low":111.62,"high":118.5},{"category":"2015-12-01","open":122.01,"close":122,"low":119.82,"high":123.5}],"graphs":[{"id":"g1","openField":"open","closeField":"close","highField":"high","lowField":"low","fillColors":"#7f8da9","lineColor":"#7f8da9","negativeFillColors":"#db4c3c","negativeLineColor":"#db4c3c","fillAlphas":0.8,"balloonText":"open <b>[[open]]</b><br> low :<b>[[low]]</b><br> high :<b>[[high]]</b><br> close :<b>[[close]]</b><br>","type":"ohlc","valueField":"close"}],"titles":[{"color":"#00FF00","text":"My Candlestick","size":25}],"type":"serial","valueAxes":[{"position":"left","gridAlpha":0.1,"title":""}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[]}</script></p>
+<h2 class="partdivtitle">
+theme
+</h2>
+<pre class="r"><code>amOHLC(data = data_candleStick2, main = &quot;My Candlestick&quot;, theme = &quot;patterns&quot;) %&gt;&gt;% 
+  setChartCursor()
+#or
+amOHLC(data = data_candleStick2) %&gt;&gt;% 
+  amOptions(theme = &quot;patterns&quot;) %&gt;&gt;% 
+  setChartCursor()</code></pre>
+<p><div id="htmlwidget-1496" style="width:100%;height:500px;" class="ramcharts_base"></div>
+<script type="application/json" data-for="htmlwidget-1496">{"x":{"chartData":{"precision":2,"dataDateFormat":null,"rotate":false,"categoryAxis":{"title":"","axisAlpha":0,"gridAlpha":0.1,"parseDates":false,"minPeriod":""},"categoryField":"category","chartCursor":{"animationDuration":0.3},"dataProvider":[{"category":"2015-01-01","open":136.65,"close":136.4,"low":134.15,"high":136.96},{"category":"2015-02-01","open":135.26,"close":131.8,"low":131.5,"high":135.95},{"category":"2015-03-01","open":132.9,"close":135.2,"low":128.3,"high":135.27},{"category":"2015-04-01","open":134.94,"close":135,"low":132.63,"high":137.24},{"category":"2015-05-01","open":136.76,"close":134,"low":132,"high":136.86},{"category":"2015-06-01","open":131.11,"close":126.3,"low":125.09,"high":133},{"category":"2015-07-01","open":123.12,"close":125,"low":120.3,"high":127.75},{"category":"2015-08-01","open":128.32,"close":127.7,"low":126.5,"high":129.35},{"category":"2015-09-01","open":128.29,"close":124,"low":123.71,"high":128.3},{"category":"2015-10-01","open":122.74,"close":119.9,"low":119.65,"high":124.86},{"category":"2015-11-01","open":117.01,"close":117,"low":111.62,"high":118.5},{"category":"2015-12-01","open":122.01,"close":122,"low":119.82,"high":123.5}],"graphs":[{"id":"g1","openField":"open","closeField":"close","highField":"high","lowField":"low","fillColors":"#7f8da9","lineColor":"#7f8da9","negativeFillColors":"#db4c3c","negativeLineColor":"#db4c3c","fillAlphas":0.8,"balloonText":"open <b>[[open]]</b><br> low :<b>[[low]]</b><br> high :<b>[[high]]</b><br> close :<b>[[close]]</b><br>","type":"ohlc","valueField":"close"}],"theme":"patterns","type":"serial","valueAxes":[{"position":"left","gridAlpha":0.1,"title":""}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[]}</script></p>
+</div>
+
+      </div> <!-- end of column -->
+    
+      <div class="col-xs-1 col-md-1" id="logo">
+        <a href="https://github.com/DataKnowledge/rAmCharts.git">
+          <img  src="www/img/github.png" title="View on Github" id="img-github"/>
+        </a>
+      </div>
+    
+    </div><!-- end of row -->
+  </div><!-- end of rigth column -->
+  
+  <script src="./www/js/navbar.js"> </script>
+  <script src="./www/js/logo.js"> </script>
+</div><!-- end of main row -->
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+$(document).ready(function () {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+});
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

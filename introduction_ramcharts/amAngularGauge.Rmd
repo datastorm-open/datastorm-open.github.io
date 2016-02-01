@@ -1,0 +1,119 @@
+---
+pagetitle: rAmCharts - amAngularGauge
+---
+
+```{r,echo=FALSE, message=FALSE}
+require(package = "rAmCharts", quietly = TRUE)
+require(package = "pipeR", quietly = TRUE)
+```
+
+## Parameters
+
+* __x__: numeric, equal to the value for which the angular gauge is desired.
+* __start__: a numeric, minimum value allowed.
+* __end__: a numeric, maximum value allowed. 
+* __step__: a numeric, intervals size. 
+* __bands__: a data frame with 4 columns : start (numeric, minimal value for the band), end (numeric, maximal value for the band), color (character, color of the band, in hexadecimal) and width (numeric, width of the band). If the last column is not defined, it is auomatically set to 10. 
+* __text__: a character, text legend.
+* __textSize__: a numeric, size of text.
+* __secondAxe__: a boolean, TRUE if two axes are desired. Default is set to FALSE.
+* __start2__: a numeric, minimum value allowed for the second axe if secondAxe is TRUE.
+* __end2__: a numeric, maximum value allowed for the second axe if secondAxe is TRUE.
+* __bands2__: a data frame with 4 columns : start (numeric, minimal value for the band), end (numeric, maximal value for the band), color (character, color of the band, in hexadecimal) and width (numeric, width of the band). If the last column is not defined, it is auomatically set to 10. 
+* __...__: other parameters called in amOptions.
+
+## Reference example
+
+```{r}
+amAngularGauge(x = 25)
+```
+
+<div class="row">
+  <div class="col-xs-12 col-md-6"><h2 class="partdivtitle"> Add colored bands </h2>
+```{r}
+bands = data.frame(start = c(0, 40, 60), end = c(40, 60, 100), 
+                   color = c("#00CC00", "#ffac29", "#ea3838"),
+                   stringsAsFactors = FALSE)
+amAngularGauge(x = 25, bands = bands)
+```
+  </div>
+  
+  <div class="col-xs-12 col-md-6"><h2 class="partdivtitle"> Add text </h2>
+```{r}
+amAngularGauge(x = 25, text = "km/h")
+```
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-12 col-md-6"><h2 class="partdivtitle"> Two axis </h2>
+```{r}
+bands2 = data.frame(start = c(100, 130, 170), end = c(130, 170, 200), 
+                   color = c("#00CC00", "#ffac29", "#ea3838"),
+                   stringsAsFactors = FALSE)
+amAngularGauge(x = 25, start = 0, end = 100, bands = bands,
+               secondAxe = TRUE, start2 = 100, end2 = 200, bands2 = bands2)
+```
+  </div>
+  
+</div>
+
+<h2 class="amOptions">amOptions</h2>
+
+<div class="row">
+  <div class="col-xs-12 col-md-6"><h2 class="partdivtitle">export</h2>
+```{r, echo = TRUE, eval = FALSE}
+amAngularGauge(x = 25, export = TRUE)
+#or
+amAngularGauge(x = 25) %>>% 
+  amOptions(export = TRUE)
+```
+```{r, echo = FALSE}
+amAngularGauge(x = 25, export = TRUE)
+```
+  </div>
+  <div class="col-xs-12 col-md-6"><h2 class="partdivtitle">exportFormat</h2>
+```{r, echo = TRUE, eval = FALSE}
+amAngularGauge(x = 25, export = TRUE, exportFormat = "CSV")
+#or
+amAngularGauge(x = 25) %>>% 
+  amOptions(export = TRUE, exportFormat = "CSV")
+```
+```{r, echo = FALSE}
+amAngularGauge(x = 25, export = TRUE, exportFormat = "CSV")
+```
+  </div>
+</div>
+
+
+
+<div class="row">
+  <div class="col-xs-12 col-md-6"><h2 class="partdivtitle">main and creditsPosition</h2>
+```{r, echo = TRUE, eval = FALSE}
+amAngularGauge(x = 25, main = "My Gauge",
+        mainColor = "#00FF00", mainSize = 25, creditsPosition = "top-right")
+#or
+amAngularGauge(x = 25) %>>% 
+  amOptions( main = "My Pie",
+        mainColor = "#00FF00", mainSize = 25, creditsPosition = "top-right")
+```
+```{r, echo = FALSE}
+amAngularGauge(x = 25, 
+       main = "My Pie",
+        mainColor = "#00FF00", mainSize = 25, creditsPosition = "top-right")
+```
+  </div>
+  <div class="col-xs-12 col-md-6"><h2 class="partdivtitle">theme</h2>
+```{r, echo = TRUE, eval = FALSE}
+amAngularGauge(x = 25, main = "My Gauge", theme = "patterns")
+#or
+amAngularGauge(x = 25) %>>% 
+  amOptions(theme = "patterns")
+```
+```{r, echo = FALSE}
+amAngularGauge(x = 25, theme = "patterns")
+```
+  </div>
+</div>
+
+
