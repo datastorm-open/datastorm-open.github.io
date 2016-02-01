@@ -1,9 +1,11 @@
 #navbar {
-/*background: #f1f1f1;*/
-  padding: 15px;
+  /*background: #f1f1f1;*/
+  padding-left: 15px;
+  padding-right: 15px;
   background: #3c8dbc;
-  overflow-y: auto;
+  /*overflow-y: auto;*/
   overflow-x: scroll;
+  height:100vh;
 }
 
 #main-toc {

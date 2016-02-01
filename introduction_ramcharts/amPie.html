@@ -25,6 +25,7 @@
 <link href="libs/amcharts_plugins_export/export.css" rel="stylesheet" />
 <script src="libs/amcharts_plugins_export/export.min.js"></script>
 <script src="libs/amcharts_themes_patterns/patterns.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Raleway:100' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
@@ -72,12 +73,13 @@ img {
 <div class="container-fluid main-container">
 
 <!-- bootstrap row container for all the content -->
-<div class="row">
+<div class="row"> <!-- main row -->
   
-  <div class="col-xs-4 col-md-3" style="padding-left:0;">
+  <div class="col-xs-4 col-md-3 show" id="nav-content" style="padding-left:0;">
     <nav id="navbar">
-    
+      <br/>
       <div id="main-toc">Tutorial - rAmCharts</div>
+      <br/>
       <hr/>
       
       <b class="section-toc">Getting started</b>
@@ -89,7 +91,6 @@ img {
         <li class="litoc"><a class="toc-item" href="shiny.html">Use in shiny apps</a></li>
         <li class="litoc"><a class="toc-item" href="advance.html">Advanced features</a></li>
       </ul> 
-      <hr/>
       
       <b class="section-toc">Specific functions</b>
       <br/>
@@ -105,16 +106,20 @@ img {
         <li class="litoc"><a class="toc-item" href="amPie.html">Pie</a></li>
         <li class="litoc"><a class="toc-item" href="amRadar.html">Radar</a></li>
       </ul>
-    
+      
       <footer>
         <div class="copyrights"><small> © 2015-2016 DataKnowledge</small></div>
       </footer>
+    
     </nav>
-  </div><!-- end of left column -->
+    
+  </div> <!-- end of left column -->
   
-  <div class="col-xs-12 col-md-9" id="main-content">
-    <div class="row">
-      <div class="col-xs-11 col-md-11">
+  <div class="col-xs-1 col-md-1"> <!-- colummn for toggle button -->
+    <i id="toggle" class="fa fa-bars fa-lg toggle-collapse" style="padding-top:10px;"></i>
+  </div>
+  
+  <div class="col-xs-6 col-md-7 show" id="main-content"> <!-- main column -->
 
 
 
@@ -140,24 +145,24 @@ head(data_pie)</code></pre>
 <div id="reference-example" class="section level2">
 <h2>Reference example</h2>
 <pre class="r"><code>amPie(data = data_pie)</code></pre>
-<p><div id="htmlwidget-3885" style="width:100%;height:500px;" class="ramcharts_base"></div>
-<script type="application/json" data-for="htmlwidget-3885">{"x":{"chartData":{"valueField":"value","titleField":"label","startDuration":0,"colorField":"color","labelsEnabled":true,"innerRadius":"0 %","dataProvider":[{"label":"Facebook","value":38,"color":"#67b7dc"},{"label":"Twitter","value":25,"color":"#fdd400"},{"label":"LinkedIn","value":15,"color":"#84b761"},{"label":"Google+","value":14,"color":"#cc4748"},{"label":"Pinterest","value":8,"color":"#cd82ad"}],"type":"pie"},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":null},"evals":[]}</script></p>
+<p><div id="htmlwidget-1124" style="width:100%;height:500px;" class="ramcharts_base"></div>
+<script type="application/json" data-for="htmlwidget-1124">{"x":{"chartData":{"valueField":"value","titleField":"label","startDuration":0,"colorField":"color","labelsEnabled":true,"innerRadius":"0 %","dataProvider":[{"label":"Facebook","value":38,"color":"#67b7dc"},{"label":"Twitter","value":25,"color":"#fdd400"},{"label":"LinkedIn","value":15,"color":"#84b761"},{"label":"Google+","value":14,"color":"#cc4748"},{"label":"Pinterest","value":8,"color":"#cd82ad"}],"type":"pie"},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":null},"evals":[]}</script></p>
 <div class="row">
 <div class="col-xs-12 col-md-6">
 <h2 class="partdivtitle">
 Don’t display values
 </h2>
 <pre class="r"><code>amPie(data = data_pie, show_values = FALSE)</code></pre>
-<div id="htmlwidget-4062" style="width:100%;height:500px;" class="ramcharts_base"></div>
-<script type="application/json" data-for="htmlwidget-4062">{"x":{"chartData":{"valueField":"value","titleField":"label","startDuration":0,"colorField":"color","labelsEnabled":false,"innerRadius":"0 %","dataProvider":[{"label":"Facebook","value":38,"color":"#67b7dc"},{"label":"Twitter","value":25,"color":"#fdd400"},{"label":"LinkedIn","value":15,"color":"#84b761"},{"label":"Google+","value":14,"color":"#cc4748"},{"label":"Pinterest","value":8,"color":"#cd82ad"}],"type":"pie"},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":null},"evals":[]}</script>
+<div id="htmlwidget-770" style="width:100%;height:500px;" class="ramcharts_base"></div>
+<script type="application/json" data-for="htmlwidget-770">{"x":{"chartData":{"valueField":"value","titleField":"label","startDuration":0,"colorField":"color","labelsEnabled":false,"innerRadius":"0 %","dataProvider":[{"label":"Facebook","value":38,"color":"#67b7dc"},{"label":"Twitter","value":25,"color":"#fdd400"},{"label":"LinkedIn","value":15,"color":"#84b761"},{"label":"Google+","value":14,"color":"#cc4748"},{"label":"Pinterest","value":8,"color":"#cd82ad"}],"type":"pie"},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":null},"evals":[]}</script>
 </div>
 <div class="col-xs-12 col-md-6">
 <h2 class="partdivtitle">
 3D pie
 </h2>
 <pre class="r"><code>amPie(data = data_pie, depth = 10)</code></pre>
-<div id="htmlwidget-985" style="width:100%;height:500px;" class="ramcharts_base"></div>
-<script type="application/json" data-for="htmlwidget-985">{"x":{"chartData":{"valueField":"value","titleField":"label","startDuration":0,"colorField":"color","labelsEnabled":true,"depth3D":10,"angle":15,"innerRadius":"0 %","dataProvider":[{"label":"Facebook","value":38,"color":"#67b7dc"},{"label":"Twitter","value":25,"color":"#fdd400"},{"label":"LinkedIn","value":15,"color":"#84b761"},{"label":"Google+","value":14,"color":"#cc4748"},{"label":"Pinterest","value":8,"color":"#cd82ad"}],"type":"pie"},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":null},"evals":[]}</script>
+<div id="htmlwidget-6162" style="width:100%;height:500px;" class="ramcharts_base"></div>
+<script type="application/json" data-for="htmlwidget-6162">{"x":{"chartData":{"valueField":"value","titleField":"label","startDuration":0,"colorField":"color","labelsEnabled":true,"depth3D":10,"angle":15,"innerRadius":"0 %","dataProvider":[{"label":"Facebook","value":38,"color":"#67b7dc"},{"label":"Twitter","value":25,"color":"#fdd400"},{"label":"LinkedIn","value":15,"color":"#84b761"},{"label":"Google+","value":14,"color":"#cc4748"},{"label":"Pinterest","value":8,"color":"#cd82ad"}],"type":"pie"},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":null},"evals":[]}</script>
 </div>
 </div>
 <div class="row">
@@ -166,16 +171,16 @@ Don’t display values
 Donut chart
 </h2>
 <pre class="r"><code>amPie(data = data_pie, inner_radius = 50)</code></pre>
-<div id="htmlwidget-5144" style="width:100%;height:500px;" class="ramcharts_base"></div>
-<script type="application/json" data-for="htmlwidget-5144">{"x":{"chartData":{"valueField":"value","titleField":"label","startDuration":0,"colorField":"color","labelsEnabled":true,"innerRadius":"50 %","dataProvider":[{"label":"Facebook","value":38,"color":"#67b7dc"},{"label":"Twitter","value":25,"color":"#fdd400"},{"label":"LinkedIn","value":15,"color":"#84b761"},{"label":"Google+","value":14,"color":"#cc4748"},{"label":"Pinterest","value":8,"color":"#cd82ad"}],"type":"pie"},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":null},"evals":[]}</script>
+<div id="htmlwidget-166" style="width:100%;height:500px;" class="ramcharts_base"></div>
+<script type="application/json" data-for="htmlwidget-166">{"x":{"chartData":{"valueField":"value","titleField":"label","startDuration":0,"colorField":"color","labelsEnabled":true,"innerRadius":"50 %","dataProvider":[{"label":"Facebook","value":38,"color":"#67b7dc"},{"label":"Twitter","value":25,"color":"#fdd400"},{"label":"LinkedIn","value":15,"color":"#84b761"},{"label":"Google+","value":14,"color":"#cc4748"},{"label":"Pinterest","value":8,"color":"#cd82ad"}],"type":"pie"},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":null},"evals":[]}</script>
 </div>
 <div class="col-xs-12 col-md-6">
 <h2 class="partdivtitle">
 All options
 </h2>
 <pre class="r"><code>amPie(data = data_pie, inner_radius = 50, depth = 10, show_values = TRUE)</code></pre>
-<div id="htmlwidget-3360" style="width:100%;height:500px;" class="ramcharts_base"></div>
-<script type="application/json" data-for="htmlwidget-3360">{"x":{"chartData":{"valueField":"value","titleField":"label","startDuration":0,"colorField":"color","labelsEnabled":true,"depth3D":10,"angle":15,"innerRadius":"50 %","dataProvider":[{"label":"Facebook","value":38,"color":"#67b7dc"},{"label":"Twitter","value":25,"color":"#fdd400"},{"label":"LinkedIn","value":15,"color":"#84b761"},{"label":"Google+","value":14,"color":"#cc4748"},{"label":"Pinterest","value":8,"color":"#cd82ad"}],"type":"pie"},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":null},"evals":[]}</script>
+<div id="htmlwidget-4557" style="width:100%;height:500px;" class="ramcharts_base"></div>
+<script type="application/json" data-for="htmlwidget-4557">{"x":{"chartData":{"valueField":"value","titleField":"label","startDuration":0,"colorField":"color","labelsEnabled":true,"depth3D":10,"angle":15,"innerRadius":"50 %","dataProvider":[{"label":"Facebook","value":38,"color":"#67b7dc"},{"label":"Twitter","value":25,"color":"#fdd400"},{"label":"LinkedIn","value":15,"color":"#84b761"},{"label":"Google+","value":14,"color":"#cc4748"},{"label":"Pinterest","value":8,"color":"#cd82ad"}],"type":"pie"},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":null},"evals":[]}</script>
 </div>
 </div>
 <h2 class="amOptions">
@@ -189,8 +194,8 @@ legend
 <pre class="r"><code>amPie(data = data_pie, legend = TRUE)
 #or
 amPie(data = data_pie) %&gt;&gt;% amOptions(legend = TRUE)</code></pre>
-<div id="htmlwidget-2381" style="width:100%;height:500px;" class="ramcharts_base"></div>
-<script type="application/json" data-for="htmlwidget-2381">{"x":{"chartData":{"valueField":"value","titleField":"label","startDuration":0,"colorField":"color","labelsEnabled":true,"innerRadius":"0 %","dataProvider":[{"label":"Facebook","value":38,"color":"#67b7dc"},{"label":"Twitter","value":25,"color":"#fdd400"},{"label":"LinkedIn","value":15,"color":"#84b761"},{"label":"Google+","value":14,"color":"#cc4748"},{"label":"Pinterest","value":8,"color":"#cd82ad"}],"legend":{"position":"right","align":"left"},"type":"pie"},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":null},"evals":[]}</script>
+<div id="htmlwidget-4867" style="width:100%;height:500px;" class="ramcharts_base"></div>
+<script type="application/json" data-for="htmlwidget-4867">{"x":{"chartData":{"valueField":"value","titleField":"label","startDuration":0,"colorField":"color","labelsEnabled":true,"innerRadius":"0 %","dataProvider":[{"label":"Facebook","value":38,"color":"#67b7dc"},{"label":"Twitter","value":25,"color":"#fdd400"},{"label":"LinkedIn","value":15,"color":"#84b761"},{"label":"Google+","value":14,"color":"#cc4748"},{"label":"Pinterest","value":8,"color":"#cd82ad"}],"legend":{"position":"right","align":"left"},"type":"pie"},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":null},"evals":[]}</script>
 </div>
 <div class="col-xs-12 col-md-6">
 <h2 class="partdivtitle">
@@ -199,8 +204,8 @@ legendPosition
 <pre class="r"><code>amPie(data = data_pie, legend = TRUE, legendPosition = &quot;left&quot;)
 #or
 amPie(data = data_pie) %&gt;&gt;% amOptions(legend = TRUE, legendPosition = &quot;left&quot;)</code></pre>
-<div id="htmlwidget-22" style="width:100%;height:500px;" class="ramcharts_base"></div>
-<script type="application/json" data-for="htmlwidget-22">{"x":{"chartData":{"valueField":"value","titleField":"label","startDuration":0,"colorField":"color","labelsEnabled":true,"innerRadius":"0 %","dataProvider":[{"label":"Facebook","value":38,"color":"#67b7dc"},{"label":"Twitter","value":25,"color":"#fdd400"},{"label":"LinkedIn","value":15,"color":"#84b761"},{"label":"Google+","value":14,"color":"#cc4748"},{"label":"Pinterest","value":8,"color":"#cd82ad"}],"legend":{"position":"left","align":"left"},"type":"pie"},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":null},"evals":[]}</script>
+<div id="htmlwidget-9763" style="width:100%;height:500px;" class="ramcharts_base"></div>
+<script type="application/json" data-for="htmlwidget-9763">{"x":{"chartData":{"valueField":"value","titleField":"label","startDuration":0,"colorField":"color","labelsEnabled":true,"innerRadius":"0 %","dataProvider":[{"label":"Facebook","value":38,"color":"#67b7dc"},{"label":"Twitter","value":25,"color":"#fdd400"},{"label":"LinkedIn","value":15,"color":"#84b761"},{"label":"Google+","value":14,"color":"#cc4748"},{"label":"Pinterest","value":8,"color":"#cd82ad"}],"legend":{"position":"left","align":"left"},"type":"pie"},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":null},"evals":[]}</script>
 </div>
 </div>
 <div class="row">
@@ -212,8 +217,8 @@ export
 #or
 amPie(data = data_pie) %&gt;&gt;% 
   amOptions(export = TRUE)</code></pre>
-<div id="htmlwidget-3734" style="width:100%;height:500px;" class="ramcharts_base"></div>
-<script type="application/json" data-for="htmlwidget-3734">{"x":{"chartData":{"valueField":"value","titleField":"label","startDuration":0,"colorField":"color","labelsEnabled":true,"innerRadius":"0 %","export":{"enabled":true},"dataProvider":[{"label":"Facebook","value":38,"color":"#67b7dc"},{"label":"Twitter","value":25,"color":"#fdd400"},{"label":"LinkedIn","value":15,"color":"#84b761"},{"label":"Google+","value":14,"color":"#cc4748"},{"label":"Pinterest","value":8,"color":"#cd82ad"}],"type":"pie"},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":null},"evals":[]}</script>
+<div id="htmlwidget-7280" style="width:100%;height:500px;" class="ramcharts_base"></div>
+<script type="application/json" data-for="htmlwidget-7280">{"x":{"chartData":{"valueField":"value","titleField":"label","startDuration":0,"colorField":"color","labelsEnabled":true,"innerRadius":"0 %","export":{"enabled":true},"dataProvider":[{"label":"Facebook","value":38,"color":"#67b7dc"},{"label":"Twitter","value":25,"color":"#fdd400"},{"label":"LinkedIn","value":15,"color":"#84b761"},{"label":"Google+","value":14,"color":"#cc4748"},{"label":"Pinterest","value":8,"color":"#cd82ad"}],"type":"pie"},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":null},"evals":[]}</script>
 </div>
 <div class="col-xs-12 col-md-6">
 <h2 class="partdivtitle">
@@ -223,8 +228,8 @@ exportFormat
 #or
 amPie(data = data_pie) %&gt;&gt;% 
   amOptions(export = TRUE, exportFormat = &quot;CSV&quot;)</code></pre>
-<div id="htmlwidget-3198" style="width:100%;height:500px;" class="ramcharts_base"></div>
-<script type="application/json" data-for="htmlwidget-3198">{"x":{"chartData":{"valueField":"value","titleField":"label","startDuration":0,"colorField":"color","labelsEnabled":true,"innerRadius":"0 %","export":{"enabled":true,"menu":[{"class":"export-main","menu":[{"format":"CSV","label":"CSV"}]}]},"dataProvider":[{"label":"Facebook","value":38,"color":"#67b7dc"},{"label":"Twitter","value":25,"color":"#fdd400"},{"label":"LinkedIn","value":15,"color":"#84b761"},{"label":"Google+","value":14,"color":"#cc4748"},{"label":"Pinterest","value":8,"color":"#cd82ad"}],"type":"pie"},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":null},"evals":[]}</script>
+<div id="htmlwidget-7491" style="width:100%;height:500px;" class="ramcharts_base"></div>
+<script type="application/json" data-for="htmlwidget-7491">{"x":{"chartData":{"valueField":"value","titleField":"label","startDuration":0,"colorField":"color","labelsEnabled":true,"innerRadius":"0 %","export":{"enabled":true,"menu":[{"class":"export-main","menu":[{"format":"CSV","label":"CSV"}]}]},"dataProvider":[{"label":"Facebook","value":38,"color":"#67b7dc"},{"label":"Twitter","value":25,"color":"#fdd400"},{"label":"LinkedIn","value":15,"color":"#84b761"},{"label":"Google+","value":14,"color":"#cc4748"},{"label":"Pinterest","value":8,"color":"#cd82ad"}],"type":"pie"},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":null},"evals":[]}</script>
 </div>
 </div>
 <div class="row">
@@ -238,8 +243,8 @@ main and creditsPosition
 amPie(data = data_pie) %&gt;&gt;% 
   amOptions( main = &quot;My Pie&quot;,
         mainColor = &quot;#00FF00&quot;, mainSize = 25, creditsPosition = &quot;top-right&quot;)</code></pre>
-<div id="htmlwidget-3937" style="width:100%;height:500px;" class="ramcharts_base"></div>
-<script type="application/json" data-for="htmlwidget-3937">{"x":{"chartData":{"valueField":"value","titleField":"label","startDuration":0,"colorField":"color","labelsEnabled":true,"innerRadius":"0 %","creditsPosition":"top-right","dataProvider":[{"label":"Facebook","value":38,"color":"#67b7dc"},{"label":"Twitter","value":25,"color":"#fdd400"},{"label":"LinkedIn","value":15,"color":"#84b761"},{"label":"Google+","value":14,"color":"#cc4748"},{"label":"Pinterest","value":8,"color":"#cd82ad"}],"titles":[{"color":"#00FF00","text":"My Pie","size":25}],"type":"pie"},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":null},"evals":[]}</script>
+<div id="htmlwidget-2600" style="width:100%;height:500px;" class="ramcharts_base"></div>
+<script type="application/json" data-for="htmlwidget-2600">{"x":{"chartData":{"valueField":"value","titleField":"label","startDuration":0,"colorField":"color","labelsEnabled":true,"innerRadius":"0 %","creditsPosition":"top-right","dataProvider":[{"label":"Facebook","value":38,"color":"#67b7dc"},{"label":"Twitter","value":25,"color":"#fdd400"},{"label":"LinkedIn","value":15,"color":"#84b761"},{"label":"Google+","value":14,"color":"#cc4748"},{"label":"Pinterest","value":8,"color":"#cd82ad"}],"titles":[{"color":"#00FF00","text":"My Pie","size":25}],"type":"pie"},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":null},"evals":[]}</script>
 </div>
 <div class="col-xs-12 col-md-6">
 <h2 class="partdivtitle">
@@ -249,25 +254,24 @@ theme
 #or
 amPie(data = data_pie) %&gt;&gt;% 
   amOptions(theme = &quot;patterns&quot;)</code></pre>
-<div id="htmlwidget-9660" style="width:100%;height:500px;" class="ramcharts_base"></div>
-<script type="application/json" data-for="htmlwidget-9660">{"x":{"chartData":{"valueField":"value","titleField":"label","startDuration":0,"colorField":"color","labelsEnabled":true,"innerRadius":"0 %","dataProvider":[{"label":"Facebook","value":38,"color":"#67b7dc"},{"label":"Twitter","value":25,"color":"#fdd400"},{"label":"LinkedIn","value":15,"color":"#84b761"},{"label":"Google+","value":14,"color":"#cc4748"},{"label":"Pinterest","value":8,"color":"#cd82ad"}],"theme":"patterns","type":"pie"},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":null},"evals":[]}</script>
+<div id="htmlwidget-8" style="width:100%;height:500px;" class="ramcharts_base"></div>
+<script type="application/json" data-for="htmlwidget-8">{"x":{"chartData":{"valueField":"value","titleField":"label","startDuration":0,"colorField":"color","labelsEnabled":true,"innerRadius":"0 %","dataProvider":[{"label":"Facebook","value":38,"color":"#67b7dc"},{"label":"Twitter","value":25,"color":"#fdd400"},{"label":"LinkedIn","value":15,"color":"#84b761"},{"label":"Google+","value":14,"color":"#cc4748"},{"label":"Pinterest","value":8,"color":"#cd82ad"}],"theme":"patterns","type":"pie"},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":null},"evals":[]}</script>
 </div>
 </div>
 </div>
 
-      </div> <!-- end of column -->
-    
-      <div class="col-xs-1 col-md-1" id="logo">
-        <a href="https://github.com/DataKnowledge/rAmCharts.git">
-          <img  src="www/img/github.png" title="View on Github" id="img-github"/>
-        </a>
-      </div>
-    
-    </div><!-- end of row -->
-  </div><!-- end of rigth column -->
+
+  </div><!-- end of main column -->
+  
+  <div class="col-xs-1 col-md-1" id="logo">
+    <a href="https://github.com/DataKnowledge/rAmCharts.git">
+      <img  src="www/img/github.png" title="View on Github" id="img-github"/>
+    </a>
+  </div>
   
   <script src="./www/js/navbar.js"> </script>
   <script src="./www/js/logo.js"> </script>
+  <script src="./www/js/toggle.js"> </script>
 </div><!-- end of main row -->
 
 </div>

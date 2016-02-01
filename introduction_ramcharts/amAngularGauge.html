@@ -25,6 +25,7 @@
 <link href="libs/amcharts_plugins_export/export.css" rel="stylesheet" />
 <script src="libs/amcharts_plugins_export/export.min.js"></script>
 <script src="libs/amcharts_themes_patterns/patterns.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Raleway:100' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
@@ -72,12 +73,13 @@ img {
 <div class="container-fluid main-container">
 
 <!-- bootstrap row container for all the content -->
-<div class="row">
+<div class="row"> <!-- main row -->
   
-  <div class="col-xs-4 col-md-3" style="padding-left:0;">
+  <div class="col-xs-4 col-md-3 show" id="nav-content" style="padding-left:0;">
     <nav id="navbar">
-    
+      <br/>
       <div id="main-toc">Tutorial - rAmCharts</div>
+      <br/>
       <hr/>
       
       <b class="section-toc">Getting started</b>
@@ -89,7 +91,6 @@ img {
         <li class="litoc"><a class="toc-item" href="shiny.html">Use in shiny apps</a></li>
         <li class="litoc"><a class="toc-item" href="advance.html">Advanced features</a></li>
       </ul> 
-      <hr/>
       
       <b class="section-toc">Specific functions</b>
       <br/>
@@ -105,16 +106,20 @@ img {
         <li class="litoc"><a class="toc-item" href="amPie.html">Pie</a></li>
         <li class="litoc"><a class="toc-item" href="amRadar.html">Radar</a></li>
       </ul>
-    
+      
       <footer>
         <div class="copyrights"><small> © 2015-2016 DataKnowledge</small></div>
       </footer>
+    
     </nav>
-  </div><!-- end of left column -->
+    
+  </div> <!-- end of left column -->
   
-  <div class="col-xs-12 col-md-9" id="main-content">
-    <div class="row">
-      <div class="col-xs-11 col-md-11">
+  <div class="col-xs-1 col-md-1"> <!-- colummn for toggle button -->
+    <i id="toggle" class="fa fa-bars fa-lg toggle-collapse" style="padding-top:10px;"></i>
+  </div>
+  
+  <div class="col-xs-6 col-md-7 show" id="main-content"> <!-- main column -->
 
 
 
@@ -138,9 +143,8 @@ img {
 <div id="reference-example" class="section level2">
 <h2>Reference example</h2>
 <pre class="r"><code>amAngularGauge(x = 25)</code></pre>
-<pre><code>## Warning in FUN(X[[i]], ...): You should use setter for property &#39;value&#39;</code></pre>
-<p><div id="htmlwidget-6030" style="width:100%;height:500px;" class="ramcharts_base"></div>
-<script type="application/json" data-for="htmlwidget-6030">{"x":{"chartData":{"startValue":0,"endValue":100,"valueInterval":20,"arrows":[{"alpha":1}],"axes":[{"axisAlpha":1,"startValue":0,"endValue":100,"valueInterval":20,"bottomText":"25 ","bottomTextFontSize":25,"radius":"100%","bands":[{"alpha":1}]}],"type":"gauge"},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":[],"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":null},"evals":[]}</script></p>
+<p><div id="htmlwidget-3406" style="width:100%;height:500px;" class="ramcharts_base"></div>
+<script type="application/json" data-for="htmlwidget-3406">{"x":{"chartData":{"startValue":0,"endValue":100,"valueInterval":20,"arrows":[{"alpha":1,"value":25}],"axes":[{"axisAlpha":1,"startValue":0,"endValue":100,"valueInterval":20,"bottomText":"25 ","bottomTextFontSize":25,"radius":"100%","bands":[{"alpha":1}]}],"type":"gauge"},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":[],"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":null},"evals":[]}</script></p>
 <div class="row">
 <div class="col-xs-12 col-md-6">
 <h2 class="partdivtitle">
@@ -150,18 +154,16 @@ Add colored bands
                    color = c(&quot;#00CC00&quot;, &quot;#ffac29&quot;, &quot;#ea3838&quot;),
                    stringsAsFactors = FALSE)
 amAngularGauge(x = 25, bands = bands)</code></pre>
-<pre><code>## Warning in FUN(X[[i]], ...): You should use setter for property &#39;value&#39;</code></pre>
-<div id="htmlwidget-740" style="width:100%;height:500px;" class="ramcharts_base"></div>
-<script type="application/json" data-for="htmlwidget-740">{"x":{"chartData":{"startValue":0,"endValue":100,"valueInterval":20,"arrows":[{"alpha":1}],"axes":[{"axisAlpha":1,"startValue":0,"endValue":100,"valueInterval":20,"bottomText":"25 ","bottomTextFontSize":25,"radius":"100%","bands":[{"alpha":1,"startValue":0,"endValue":40,"color":"#00CC00","innerRadius":"97%"},{"alpha":1,"startValue":40,"endValue":60,"color":"#ffac29","innerRadius":"97%"},{"alpha":1,"startValue":60,"endValue":100,"color":"#ea3838","innerRadius":"97%"}]}],"type":"gauge"},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":[],"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":null},"evals":[]}</script>
+<div id="htmlwidget-3453" style="width:100%;height:500px;" class="ramcharts_base"></div>
+<script type="application/json" data-for="htmlwidget-3453">{"x":{"chartData":{"startValue":0,"endValue":100,"valueInterval":20,"arrows":[{"alpha":1,"value":25}],"axes":[{"axisAlpha":1,"startValue":0,"endValue":100,"valueInterval":20,"bottomText":"25 ","bottomTextFontSize":25,"radius":"100%","bands":[{"alpha":1,"startValue":0,"endValue":40,"color":"#00CC00","innerRadius":"97%"},{"alpha":1,"startValue":40,"endValue":60,"color":"#ffac29","innerRadius":"97%"},{"alpha":1,"startValue":60,"endValue":100,"color":"#ea3838","innerRadius":"97%"}]}],"type":"gauge"},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":[],"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":null},"evals":[]}</script>
 </div>
 <div class="col-xs-12 col-md-6">
 <h2 class="partdivtitle">
 Add text
 </h2>
 <pre class="r"><code>amAngularGauge(x = 25, text = &quot;km/h&quot;)</code></pre>
-<pre><code>## Warning in FUN(X[[i]], ...): You should use setter for property &#39;value&#39;</code></pre>
-<div id="htmlwidget-5211" style="width:100%;height:500px;" class="ramcharts_base"></div>
-<script type="application/json" data-for="htmlwidget-5211">{"x":{"chartData":{"startValue":0,"endValue":100,"valueInterval":20,"arrows":[{"alpha":1}],"axes":[{"axisAlpha":1,"startValue":0,"endValue":100,"valueInterval":20,"bottomText":"25 km/h","bottomTextFontSize":25,"radius":"100%","bands":[{"alpha":1}]}],"type":"gauge"},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":[],"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":null},"evals":[]}</script>
+<div id="htmlwidget-797" style="width:100%;height:500px;" class="ramcharts_base"></div>
+<script type="application/json" data-for="htmlwidget-797">{"x":{"chartData":{"startValue":0,"endValue":100,"valueInterval":20,"arrows":[{"alpha":1,"value":25}],"axes":[{"axisAlpha":1,"startValue":0,"endValue":100,"valueInterval":20,"bottomText":"25 km/h","bottomTextFontSize":25,"radius":"100%","bands":[{"alpha":1}]}],"type":"gauge"},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":[],"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":null},"evals":[]}</script>
 </div>
 </div>
 <div class="row">
@@ -174,9 +176,8 @@ Two axis
                    stringsAsFactors = FALSE)
 amAngularGauge(x = 25, start = 0, end = 100, bands = bands,
                secondAxe = TRUE, start2 = 100, end2 = 200, bands2 = bands2)</code></pre>
-<pre><code>## Warning in FUN(X[[i]], ...): You should use setter for property &#39;value&#39;</code></pre>
-<div id="htmlwidget-6425" style="width:100%;height:500px;" class="ramcharts_base"></div>
-<script type="application/json" data-for="htmlwidget-6425">{"x":{"chartData":{"startValue":0,"endValue":100,"valueInterval":20,"arrows":[{"alpha":1}],"axes":[{"axisAlpha":1,"startValue":0,"endValue":100,"valueInterval":20,"bottomText":"25 ","bottomTextFontSize":25,"radius":"80%","bands":[{"alpha":1,"startValue":0,"endValue":40,"color":"#00CC00","innerRadius":"97%"},{"alpha":1,"startValue":40,"endValue":60,"color":"#ffac29","innerRadius":"97%"},{"alpha":1,"startValue":60,"endValue":100,"color":"#ea3838","innerRadius":"97%"}]},{"axisAlpha":1,"startValue":100,"endValue":200,"valueInterval":20,"inside":false,"gridInside":false,"radius":"100%","bands":[{"alpha":1,"startValue":100,"endValue":130,"color":"#00CC00","innerRadius":"100%"},{"alpha":1,"startValue":130,"endValue":170,"color":"#ffac29","innerRadius":"100%"},{"alpha":1,"startValue":170,"endValue":200,"color":"#ea3838","innerRadius":"100%"}]}],"type":"gauge"},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":[],"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":null},"evals":[]}</script>
+<div id="htmlwidget-9941" style="width:100%;height:500px;" class="ramcharts_base"></div>
+<script type="application/json" data-for="htmlwidget-9941">{"x":{"chartData":{"startValue":0,"endValue":100,"valueInterval":20,"arrows":[{"alpha":1,"value":25}],"axes":[{"axisAlpha":1,"startValue":0,"endValue":100,"valueInterval":20,"bottomText":"25 ","bottomTextFontSize":25,"radius":"80%","bands":[{"alpha":1,"startValue":0,"endValue":40,"color":"#00CC00","innerRadius":"97%"},{"alpha":1,"startValue":40,"endValue":60,"color":"#ffac29","innerRadius":"97%"},{"alpha":1,"startValue":60,"endValue":100,"color":"#ea3838","innerRadius":"97%"}]},{"axisAlpha":1,"startValue":100,"endValue":200,"valueInterval":20,"inside":false,"gridInside":false,"radius":"100%","bands":[{"alpha":1,"startValue":100,"endValue":130,"color":"#00CC00","innerRadius":"100%"},{"alpha":1,"startValue":130,"endValue":170,"color":"#ffac29","innerRadius":"100%"},{"alpha":1,"startValue":170,"endValue":200,"color":"#ea3838","innerRadius":"100%"}]}],"type":"gauge"},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":[],"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":null},"evals":[]}</script>
 </div>
 </div>
 <h2 class="amOptions">
@@ -191,9 +192,8 @@ export
 #or
 amAngularGauge(x = 25) %&gt;&gt;% 
   amOptions(export = TRUE)</code></pre>
-<pre><code>## Warning in FUN(X[[i]], ...): You should use setter for property &#39;value&#39;</code></pre>
-<div id="htmlwidget-2285" style="width:100%;height:500px;" class="ramcharts_base"></div>
-<script type="application/json" data-for="htmlwidget-2285">{"x":{"chartData":{"startValue":0,"endValue":100,"valueInterval":20,"export":{"enabled":true},"arrows":[{"alpha":1}],"axes":[{"axisAlpha":1,"startValue":0,"endValue":100,"valueInterval":20,"bottomText":"25 ","bottomTextFontSize":25,"radius":"100%","bands":[{"alpha":1}]}],"type":"gauge"},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":[],"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":null},"evals":[]}</script>
+<div id="htmlwidget-5135" style="width:100%;height:500px;" class="ramcharts_base"></div>
+<script type="application/json" data-for="htmlwidget-5135">{"x":{"chartData":{"startValue":0,"endValue":100,"valueInterval":20,"export":{"enabled":true},"arrows":[{"alpha":1,"value":25}],"axes":[{"axisAlpha":1,"startValue":0,"endValue":100,"valueInterval":20,"bottomText":"25 ","bottomTextFontSize":25,"radius":"100%","bands":[{"alpha":1}]}],"type":"gauge"},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":[],"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":null},"evals":[]}</script>
 </div>
 <div class="col-xs-12 col-md-6">
 <h2 class="partdivtitle">
@@ -203,9 +203,8 @@ exportFormat
 #or
 amAngularGauge(x = 25) %&gt;&gt;% 
   amOptions(export = TRUE, exportFormat = &quot;CSV&quot;)</code></pre>
-<pre><code>## Warning in FUN(X[[i]], ...): You should use setter for property &#39;value&#39;</code></pre>
-<div id="htmlwidget-1450" style="width:100%;height:500px;" class="ramcharts_base"></div>
-<script type="application/json" data-for="htmlwidget-1450">{"x":{"chartData":{"startValue":0,"endValue":100,"valueInterval":20,"export":{"enabled":true,"menu":[{"class":"export-main","menu":[{"format":"CSV","label":"CSV"}]}]},"arrows":[{"alpha":1}],"axes":[{"axisAlpha":1,"startValue":0,"endValue":100,"valueInterval":20,"bottomText":"25 ","bottomTextFontSize":25,"radius":"100%","bands":[{"alpha":1}]}],"type":"gauge"},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":[],"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":null},"evals":[]}</script>
+<div id="htmlwidget-7602" style="width:100%;height:500px;" class="ramcharts_base"></div>
+<script type="application/json" data-for="htmlwidget-7602">{"x":{"chartData":{"startValue":0,"endValue":100,"valueInterval":20,"export":{"enabled":true,"menu":[{"class":"export-main","menu":[{"format":"CSV","label":"CSV"}]}]},"arrows":[{"alpha":1,"value":25}],"axes":[{"axisAlpha":1,"startValue":0,"endValue":100,"valueInterval":20,"bottomText":"25 ","bottomTextFontSize":25,"radius":"100%","bands":[{"alpha":1}]}],"type":"gauge"},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":[],"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":null},"evals":[]}</script>
 </div>
 </div>
 <div class="row">
@@ -219,9 +218,8 @@ main and creditsPosition
 amAngularGauge(x = 25) %&gt;&gt;% 
   amOptions( main = &quot;My Pie&quot;,
         mainColor = &quot;#00FF00&quot;, mainSize = 25, creditsPosition = &quot;top-right&quot;)</code></pre>
-<pre><code>## Warning in FUN(X[[i]], ...): You should use setter for property &#39;value&#39;</code></pre>
-<div id="htmlwidget-8484" style="width:100%;height:500px;" class="ramcharts_base"></div>
-<script type="application/json" data-for="htmlwidget-8484">{"x":{"chartData":{"startValue":0,"endValue":100,"valueInterval":20,"arrows":[{"alpha":1}],"axes":[{"axisAlpha":1,"startValue":0,"endValue":100,"valueInterval":20,"bottomText":"25 ","bottomTextFontSize":25,"radius":"100%","bands":[{"alpha":1}]}],"creditsPosition":"top-right","titles":[{"color":"#00FF00","text":"My Pie","size":25}],"type":"gauge"},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":[],"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":null},"evals":[]}</script>
+<div id="htmlwidget-8916" style="width:100%;height:500px;" class="ramcharts_base"></div>
+<script type="application/json" data-for="htmlwidget-8916">{"x":{"chartData":{"startValue":0,"endValue":100,"valueInterval":20,"arrows":[{"alpha":1,"value":25}],"axes":[{"axisAlpha":1,"startValue":0,"endValue":100,"valueInterval":20,"bottomText":"25 ","bottomTextFontSize":25,"radius":"100%","bands":[{"alpha":1}]}],"creditsPosition":"top-right","titles":[{"color":"#00FF00","text":"My Pie","size":25}],"type":"gauge"},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":[],"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":null},"evals":[]}</script>
 </div>
 <div class="col-xs-12 col-md-6">
 <h2 class="partdivtitle">
@@ -231,26 +229,24 @@ theme
 #or
 amAngularGauge(x = 25) %&gt;&gt;% 
   amOptions(theme = &quot;patterns&quot;)</code></pre>
-<pre><code>## Warning in FUN(X[[i]], ...): You should use setter for property &#39;value&#39;</code></pre>
-<div id="htmlwidget-135" style="width:100%;height:500px;" class="ramcharts_base"></div>
-<script type="application/json" data-for="htmlwidget-135">{"x":{"chartData":{"startValue":0,"endValue":100,"valueInterval":20,"arrows":[{"alpha":1}],"axes":[{"axisAlpha":1,"startValue":0,"endValue":100,"valueInterval":20,"bottomText":"25 ","bottomTextFontSize":25,"radius":"100%","bands":[{"alpha":1}]}],"theme":"patterns","type":"gauge"},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":[],"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":null},"evals":[]}</script>
+<div id="htmlwidget-3835" style="width:100%;height:500px;" class="ramcharts_base"></div>
+<script type="application/json" data-for="htmlwidget-3835">{"x":{"chartData":{"startValue":0,"endValue":100,"valueInterval":20,"arrows":[{"alpha":1,"value":25}],"axes":[{"axisAlpha":1,"startValue":0,"endValue":100,"valueInterval":20,"bottomText":"25 ","bottomTextFontSize":25,"radius":"100%","bands":[{"alpha":1}]}],"theme":"patterns","type":"gauge"},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":[],"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":null},"evals":[]}</script>
 </div>
 </div>
 </div>
 
-      </div> <!-- end of column -->
-    
-      <div class="col-xs-1 col-md-1" id="logo">
-        <a href="https://github.com/DataKnowledge/rAmCharts.git">
-          <img  src="www/img/github.png" title="View on Github" id="img-github"/>
-        </a>
-      </div>
-    
-    </div><!-- end of row -->
-  </div><!-- end of rigth column -->
+
+  </div><!-- end of main column -->
+  
+  <div class="col-xs-1 col-md-1" id="logo">
+    <a href="https://github.com/DataKnowledge/rAmCharts.git">
+      <img  src="www/img/github.png" title="View on Github" id="img-github"/>
+    </a>
+  </div>
   
   <script src="./www/js/navbar.js"> </script>
   <script src="./www/js/logo.js"> </script>
+  <script src="./www/js/toggle.js"> </script>
 </div><!-- end of main row -->
 
 </div>
