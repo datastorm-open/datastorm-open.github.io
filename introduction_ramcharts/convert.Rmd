@@ -37,12 +37,9 @@ Result:
 
 ```{r, echo=FALSE}
 data("data_gdp")
-pipeR::pipeline(
-  amPieChart(valueField = 'gdp', titleField = 'country',
-             dataProvider = data_gdp, startDuration = 0),
-  setLegend(position = "bottom", useMarkerColorForLabels = TRUE),
-  plot()
-)
+amPieChart(valueField = 'gdp', titleField = 'country',
+           dataProvider = data_gdp, startDuration = 0) %>>%
+  setLegend(position = "bottom", useMarkerColorForLabels = TRUE)
 ```
 
 
@@ -75,7 +72,7 @@ amChart() %>>% setTheme(theme = "light")
 
 Important notice: __every__ amchart has a property called 'type'. We recommend to set it directly by using the specific constructor as follows:
 ```{r}
-amChart() %>>% setType(type = "pie")
+# amChart() %>>% setType(type = "pie") %>>% print()
 # strictly equivalent to
 amPieChart() %>>% print()
 ```
@@ -109,17 +106,17 @@ Which is converted by line into array of objects:
 
 ```javascript
 [
-{country: "China", gdp: 18.976},
-{country: "United States", gdp: 18.125}
+  {country: "China", gdp: 18.976},
+  {country: "United States", gdp: 18.125}
 ]
 ```
 
 To set the dataProvider you can either use the setter method or use the named parameter in the constructor:
 
 ```{r}
-amPieChart(dataProvider = data_gdp)
+# amPieChart() %>>% setDataProvider(dataProvider = data_gdp) 
 # equivalent to:
-amPieChart() %>>% setDataProvider(dataProvider = data_gdp) 
+amPieChart(dataProvider = data_gdp) %>>% print()
 ```
 
 Thus why we can refer to columns in the chart definition:
@@ -142,21 +139,17 @@ amPieChart(valueField = 'gdp', titleField = 'country',
 
 3. Tune the chart with other features by using the setters:
 ```{r, eval=FALSE}
-pipeR::pipeline(
-  amPieChart(valueField = 'gdp', titleField = 'country',
-             theme = "light", dataProvider = data_gdp),
+amPieChart(valueField = 'gdp', titleField = 'country',
+           theme = "light", dataProvider = data_gdp) %>>%
   setLegend(position = "bottom", useMarkerColorForLabels = TRUE)
-)
+
 ```
 
 4. Get the result in the viewer !
 ```{r, echo=FALSE}
-pipeR::pipeline(
-  amPieChart(valueField = 'gdp', titleField = 'country',
-             theme = "light", dataProvider = data_gdp),
-  setLegend(position = "bottom", useMarkerColorForLabels = TRUE),
-  plot()
-)
+amPieChart(valueField = 'gdp', titleField = 'country',
+           theme = "light", dataProvider = data_gdp) %>>%
+setLegend(position = "bottom", useMarkerColorForLabels = TRUE)
 ```
 
 
@@ -170,8 +163,7 @@ data("data_AirPassengers")
 
 amSerialChart(dataProvider = data_AirPassengers, categoryField = 'Period') %>>%
   addGraph(valueField = "AirPassengers", title = "First serie") %>>%
-  addGraph(valueField = "AirPassengers2", title = "First serie") %>>%
-  plot()
+  addGraph(valueField = "AirPassengers2", title = "First serie")
 ```
 
 The associated JS code looks like this:
@@ -235,8 +227,7 @@ This function will redirect you to the online API at "https://docs.amcharts.com/
 amSerialChart(dataProvider = data_AirPassengers, categoryField = 'Period',
               creditsPosition =  "top-right") %>>%
   addGraph(valueField = "AirPassengers", title = "First serie") %>>%
-  addGraph(valueField = "AirPassengers2", title = "First serie") %>>%
-  plot()
+  addGraph(valueField = "AirPassengers2", title = "First serie")
 ```
 
 __Important__: We don't control the validity of the properties you set, as a consequence if you set a wrong property, your chart could have either a wrong behavior or the same behavior (if the property has no effect) !
@@ -264,8 +255,7 @@ amSerialChart(dataProvider = data_AirPassengers, categoryField = 'Period',
   addGraph(valueField = "AirPassengers2", title = "First serie") %>>%
   # we use the setter 'add' since the property titles is an array of 'Title' objects"
   addTitle(text = "Title") %>>%
-  addTitle(text = "Subtitle", size = 10) %>>%
-  plot()
+  addTitle(text = "Subtitle", size = 10)
 ```
 
 __Notice__:
@@ -281,8 +271,7 @@ amSerialChart(dataProvider = data_AirPassengers, categoryField = 'Period',
   addGraph(valueField = "AirPassengers2", title = "First serie") %>>%
   # we use the setter 'add' since the property titles is an array of 'Title' objects"
   addTitle(title = title_shared) %>>%
-  addTitle(title = subtitle_shared) %>>%
-  plot()
+  addTitle(title = subtitle_shared)
 ```
 
 or: 
@@ -294,8 +283,7 @@ titles_ls <- list(title_shared, subtitle_shared)
 amSerialChart(dataProvider = data_AirPassengers, categoryField = 'Period',
               creditsPosition =  "top-right", titles = titles_ls) %>>%
   addGraph(valueField = "AirPassengers", title = "First serie") %>>%
-  addGraph(valueField = "AirPassengers2", title = "First serie") %>>%
-  plot()
+  addGraph(valueField = "AirPassengers2", title = "First serie")
 ```
 
 [amcharts]:      https://docs.amcharts.com/3/javascriptcharts

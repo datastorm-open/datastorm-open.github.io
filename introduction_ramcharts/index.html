@@ -12,12 +12,12 @@
 
 <title>rAmCharts - introduction</title>
 
-<script src="libs/jquery-1.11.0/jquery.min.js"></script>
+<script src="libs/jquery/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="libs/bootstrap-3.3.1/css/cosmo.min.css" rel="stylesheet" />
-<script src="libs/bootstrap-3.3.1/js/bootstrap.min.js"></script>
-<script src="libs/bootstrap-3.3.1/shim/html5shiv.min.js"></script>
-<script src="libs/bootstrap-3.3.1/shim/respond.min.js"></script>
+<link href="libs/bootstrap/css/cosmo.min.css" rel="stylesheet" />
+<script src="libs/bootstrap/js/bootstrap.min.js"></script>
+<script src="libs/bootstrap/shim/html5shiv.min.js"></script>
+<script src="libs/bootstrap/shim/respond.min.js"></script>
 <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Pompiere' rel='stylesheet' type='text/css'>
@@ -44,7 +44,7 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
 </script>
 
 
-<link rel="stylesheet" href="www\css\styles.css" type="text/css" />
+<link rel="stylesheet" href="www/css/styles.css" type="text/css" />
 
 </head>
 
@@ -70,7 +70,7 @@ img {
 <!-- bootstrap row container for all the content -->
 <div class="row">
   
-  <div class="col-xs-2 col-md-3" style="padding-left:0;">
+  <div class="col-xs-4 col-md-3" style="padding-left:0;">
     <nav id="navbar">
     
       <div id="main-toc">Tutorial - rAmCharts</div>
@@ -87,15 +87,19 @@ img {
       </ul> 
       <hr/>
       
-      <b class="section-toc">Functions 'am'</b>
+      <b class="section-toc">Specific functions</b>
       <br/>
       
-      <ul class="toc" id="nav-amfunctions">   
-        <li class="litoc"> <a class="toc-item" href="amBarplot.html">amBarplot</a></li>
-        <li class="litoc"><a class="toc-item" href="amBoxplot.html">amBoxplot</a></li>
-        <li class="litoc"><a class="toc-item" href="amCandlestick.html">amCandlestick</a></li>
-        <li class="litoc"><a class="toc-item" href="amHist.html">amHist</a></li>
-        <li class="litoc"><a class="toc-item" href="amRadar.html">amRadar</a></li>
+      <ul class="toc" id="nav-amfunctions">
+        <li class="litoc"> <a class="toc-item" href="amAngularGauge.html">AngularGauge</a></li>   
+        <li class="litoc"> <a class="toc-item" href="amBarplot.html">Barplot</a></li>
+        <li class="litoc"><a class="toc-item" href="amBoxplot.html">Boxplot</a></li>
+        <li class="litoc"><a class="toc-item" href="amBullet.html">Bullet</a></li>
+        <li class="litoc"><a class="toc-item" href="amCandlestick.html">Candlestick</a></li>
+        <li class="litoc"><a class="toc-item" href="amHist.html">Hist</a></li>
+        <li class="litoc"><a class="toc-item" href="amOHLC.html">OHLC</a></li>
+        <li class="litoc"><a class="toc-item" href="amPie.html">Pie</a></li>
+        <li class="litoc"><a class="toc-item" href="amRadar.html">Radar</a></li>
       </ul>
     
       <footer>
@@ -104,7 +108,7 @@ img {
     </nav>
   </div><!-- end of left column -->
   
-  <div class="col-xs-9 col-md-8" id="main-content">
+  <div class="col-xs-12 col-md-8" id="main-content">
     <div class="row">
       <div class="col-xs-11 col-md-11">
 
@@ -169,7 +173,7 @@ pipeline(
     </div><!-- end of row -->
   </div><!-- end of rigth column -->
   
-  <!-- <script src="./www/js/navbar.js"> </script> -->
+  <script src="./www/js/navbar.js"> </script>
   <script src="./www/js/logo.js"> </script>
 </div><!-- end of main row -->
 

@@ -12,19 +12,19 @@
 
 <title>rAmCharts - amBullet</title>
 
-<script src="libs/jquery-1.11.0/jquery.min.js"></script>
+<script src="libs/jquery/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="libs/bootstrap-3.3.1/css/cosmo.min.css" rel="stylesheet" />
-<script src="libs/bootstrap-3.3.1/js/bootstrap.min.js"></script>
-<script src="libs/bootstrap-3.3.1/shim/html5shiv.min.js"></script>
-<script src="libs/bootstrap-3.3.1/shim/respond.min.js"></script>
-<script src="libs/htmlwidgets-0.5/htmlwidgets.js"></script>
-<script src="libs/amcharts-3.18.2/amcharts.js"></script>
-<script src="libs/ramcharts_base-binding-1.1.3/ramcharts_base.js"></script>
-<script src="libs/amcharts_typeserial-3.18.2/serial.js"></script>
-<link href="libs/amcharts_plugins_export-3.18.2/export.css" rel="stylesheet" />
-<script src="libs/amcharts_plugins_export-3.18.2/export.min.js"></script>
-<script src="libs/amcharts_themes_patterns-3.18.2/patterns.js"></script>
+<link href="libs/bootstrap/css/cosmo.min.css" rel="stylesheet" />
+<script src="libs/bootstrap/js/bootstrap.min.js"></script>
+<script src="libs/bootstrap/shim/html5shiv.min.js"></script>
+<script src="libs/bootstrap/shim/respond.min.js"></script>
+<script src="libs/htmlwidgets/htmlwidgets.js"></script>
+<script src="libs/amcharts/amcharts.js"></script>
+<script src="libs/ramcharts_base-binding/ramcharts_base.js"></script>
+<script src="libs/amcharts/serial.js"></script>
+<link href="libs/amcharts_plugins_export/export.css" rel="stylesheet" />
+<script src="libs/amcharts_plugins_export/export.min.js"></script>
+<script src="libs/amcharts_themes_patterns/patterns.js"></script>
 <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Pompiere' rel='stylesheet' type='text/css'>
@@ -51,7 +51,7 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
 </script>
 
 
-<link rel="stylesheet" href="www\css\styles.css" type="text/css" />
+<link rel="stylesheet" href="www/css/styles.css" type="text/css" />
 
 </head>
 
@@ -75,70 +75,47 @@ img {
 <div class="container-fluid main-container">
 
 <!-- bootstrap row container for all the content -->
-  
 <div class="row">
   
-  <div class="col-xs-3 col-md-2" id="navbar">
+  <div class="col-xs-4 col-md-3" style="padding-left:0;">
+    <nav id="navbar">
     
-    <div id="main-toc">Tutorial - rAmCharts</div>
-    <hr/>
+      <div id="main-toc">Tutorial - rAmCharts</div>
+      <hr/>
       
-    <b class="section-toc">Getting started</b>
-    <br/>
+      <b class="section-toc">Getting started</b>
+      <br/>
 
-    <ul class="toc" id="nav-intro">
-      <li class="litoc">
-        <a class="toc-item" href="index.html">Introduction</a>
-      </li>
-      <li class="litoc">
-        <a class="toc-item" href="convert.html">Quick tutorial</a>
-      </li>
-      <li class="litoc">
-        <a class="toc-item" href="shiny.html">Use in shiny apps</a>
-      </li>
-      <li class="litoc">
-        <a class="toc-item" href="advance.html">Advanced features</a>
-        </li>
-    </ul> 
-    <hr/>
+      <ul class="toc" id="nav-intro">
+        <li class="litoc"><a class="toc-item" href="index.html">Introduction</a></li>
+        <li class="litoc"><a class="toc-item" href="convert.html">Quick tutorial</a></li>
+        <li class="litoc"><a class="toc-item" href="shiny.html">Use in shiny apps</a></li>
+        <li class="litoc"><a class="toc-item" href="advance.html">Advanced features</a></li>
+      </ul> 
+      <hr/>
       
-    <b class="section-toc">Functions 'am'</b>
-    <br/>
+      <b class="section-toc">Specific functions</b>
+      <br/>
       
-    <ul class="toc" id="nav-amfunctions">   
-      <li class="litoc">
-        <a class="toc-item" href="amAngularGauge.html">amAngularGauge</a>
-      </li>
-      <li class="litoc">
-        <a class="toc-item" href="amBarplot.html">amBarplot</a>
-      </li>
-      <li class="litoc">
-        <a class="toc-item" href="amBoxplot.html">amBoxplot</a>
-      </li>
-      <!--
-      <li class="litoc"><a class="toc-item" href="amBullet.html">amBullet</a></li>
-      -->
-      <li class="litoc"><a class="toc-item" href="amCandlestick.html">amCandlestick</a></li>
-      <li class="litoc"><a class="toc-item" href="amHist.html">amHist</a></li>
-      <li class="litoc"><a class="toc-item" href="amPie.html">amPie</a></li>
-      <li class="litoc"><a class="toc-item" href="amRadar.html">amRadar</a></li>
-      
-      <!--
-      <li class="litoc"><a class="toc-item" href="amMekko.html">amMekko</a></li>
-      
-      <li class="litoc"><a class="toc-item" href="amPlot.html">amPlot</a></li>
-      <li class="litoc"><a class="toc-item" href="amRadar.html">amRadar</a></li>
-      <li class="litoc"><a class="toc-item" href="amWaterfall.html">amWaterfall</a></li>
-      <li class="litoc"><a class="toc-item" href="amWind.html">amWind</a></li>
-      -->
-    </ul>
+      <ul class="toc" id="nav-amfunctions">
+        <li class="litoc"> <a class="toc-item" href="amAngularGauge.html">AngularGauge</a></li>   
+        <li class="litoc"> <a class="toc-item" href="amBarplot.html">Barplot</a></li>
+        <li class="litoc"><a class="toc-item" href="amBoxplot.html">Boxplot</a></li>
+        <li class="litoc"><a class="toc-item" href="amBullet.html">Bullet</a></li>
+        <li class="litoc"><a class="toc-item" href="amCandlestick.html">Candlestick</a></li>
+        <li class="litoc"><a class="toc-item" href="amHist.html">Hist</a></li>
+        <li class="litoc"><a class="toc-item" href="amOHLC.html">OHLC</a></li>
+        <li class="litoc"><a class="toc-item" href="amPie.html">Pie</a></li>
+        <li class="litoc"><a class="toc-item" href="amRadar.html">Radar</a></li>
+      </ul>
     
-    <footer>
-      <div class="copyrights"><small> © 2015-2016 DataKnowledge</small></div>
-    </footer>
+      <footer>
+        <div class="copyrights"><small> © 2015-2016 DataKnowledge</small></div>
+      </footer>
+    </nav>
   </div><!-- end of left column -->
   
-  <div class="col-xs-9 col-md-10">
+  <div class="col-xs-12 col-md-8" id="main-content">
     <div class="row">
       <div class="col-xs-11 col-md-11">
 
@@ -163,24 +140,24 @@ img {
 <div id="reference-example" class="section level2">
 <h2>Reference example</h2>
 <pre class="r"><code>amBullet(value = 65)</code></pre>
-<p><div id="htmlwidget-5911" style="width:100%;height:500px;" class="ramcharts_base"></div>
-<script type="application/json" data-for="htmlwidget-5911">{"x":{"chartData":{"rotate":true,"columnWidth":1,"categoryField":"category","dataProvider":[{"category":"","excelent":20,"good":20,"average":20,"poor":20,"bad":20,"limit":85,"full":100,"bullet":65}],"graphs":[{"columnWidth":0.5,"lineColor":"#000000","lineThickness":3,"noStepRisers":true,"stackable":false,"type":"step","valueField":"limit"},{"fillAlphas":0.8,"lineColor":"#19d228","showBalloon":false,"columnWidth":1,"type":"column","valueField":"excelent"},{"fillAlphas":0.8,"lineColor":"#b4dd1e","showBalloon":false,"columnWidth":1,"type":"column","valueField":"good"},{"fillAlphas":0.8,"lineColor":"#f4fb16","showBalloon":false,"columnWidth":1,"type":"column","valueField":"average"},{"fillAlphas":0.8,"lineColor":"#f6d32b","showBalloon":false,"columnWidth":1,"type":"column","valueField":"poor"},{"fillAlphas":0.8,"lineColor":"#fb7116","showBalloon":false,"columnWidth":1,"type":"column","valueField":"bad"},{"columnWidth":0.3,"fillAlphas":1,"lineColor":"#000000","clustered":false,"stackable":false,"type":"column","valueField":"bullet"}],"type":"serial","valueAxes":[{"minimum":0,"maximum":100,"stackType":"regular","gridAlpha":0}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[]}</script></p>
+<p><div id="htmlwidget-6210" style="width:100%;height:500px;" class="ramcharts_base"></div>
+<script type="application/json" data-for="htmlwidget-6210">{"x":{"chartData":{"rotate":true,"columnWidth":1,"categoryField":"category","dataProvider":[{"category":"","excelent":20,"good":20,"average":20,"poor":20,"bad":20,"limit":85,"full":100,"bullet":65}],"graphs":[{"columnWidth":0.5,"lineColor":"#000000","lineThickness":3,"noStepRisers":true,"stackable":false,"type":"step","valueField":"limit"},{"fillAlphas":0.8,"lineColor":"#19d228","showBalloon":false,"columnWidth":1,"type":"column","valueField":"excelent"},{"fillAlphas":0.8,"lineColor":"#b4dd1e","showBalloon":false,"columnWidth":1,"type":"column","valueField":"good"},{"fillAlphas":0.8,"lineColor":"#f4fb16","showBalloon":false,"columnWidth":1,"type":"column","valueField":"average"},{"fillAlphas":0.8,"lineColor":"#f6d32b","showBalloon":false,"columnWidth":1,"type":"column","valueField":"poor"},{"fillAlphas":0.8,"lineColor":"#fb7116","showBalloon":false,"columnWidth":1,"type":"column","valueField":"bad"},{"columnWidth":0.3,"fillAlphas":1,"lineColor":"#000000","clustered":false,"stackable":false,"type":"column","valueField":"bullet"}],"type":"serial","valueAxes":[{"minimum":0,"maximum":100,"stackType":"regular","gridAlpha":0}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[]}</script></p>
 <div class="row">
 <div class="col-xs-12 col-md-6">
 <h2 class="partdivtitle">
 Remove steps from backgroud
 </h2>
 <pre class="r"><code>amBullet(value = 65, steps = FALSE)</code></pre>
-<div id="htmlwidget-2589" style="width:100%;height:500px;" class="ramcharts_base"></div>
-<script type="application/json" data-for="htmlwidget-2589">{"x":{"chartData":{"rotate":true,"columnWidth":1,"categoryField":"category","dataProvider":[{"category":"","excelent":20,"good":20,"average":20,"poor":20,"bad":20,"limit":85,"full":100,"bullet":65}],"graphs":[{"columnWidth":0.5,"lineColor":"#000000","lineThickness":3,"noStepRisers":true,"stackable":false,"type":"step","valueField":"limit"},{"lineAlpha":0,"fillAlphas":0.8,"fillColors":["#19d228","#b4dd1e","#f4fb16","#f6d32b","#fb7116"],"gradientOrientation":"horizontal","showBalloon":false,"type":"column","valueField":"full"},{"columnWidth":0.3,"fillAlphas":1,"lineColor":"#000000","clustered":false,"stackable":false,"type":"column","valueField":"bullet"}],"type":"serial","valueAxes":[{"minimum":0,"maximum":100,"stackType":"regular","gridAlpha":0}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[]}</script>
+<div id="htmlwidget-7630" style="width:100%;height:500px;" class="ramcharts_base"></div>
+<script type="application/json" data-for="htmlwidget-7630">{"x":{"chartData":{"rotate":true,"columnWidth":1,"categoryField":"category","dataProvider":[{"category":"","excelent":20,"good":20,"average":20,"poor":20,"bad":20,"limit":85,"full":100,"bullet":65}],"graphs":[{"columnWidth":0.5,"lineColor":"#000000","lineThickness":3,"noStepRisers":true,"stackable":false,"type":"step","valueField":"limit"},{"lineAlpha":0,"fillAlphas":0.8,"fillColors":["#19d228","#b4dd1e","#f4fb16","#f6d32b","#fb7116"],"gradientOrientation":"horizontal","showBalloon":false,"type":"column","valueField":"full"},{"columnWidth":0.3,"fillAlphas":1,"lineColor":"#000000","clustered":false,"stackable":false,"type":"column","valueField":"bullet"}],"type":"serial","valueAxes":[{"minimum":0,"maximum":100,"stackType":"regular","gridAlpha":0}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[]}</script>
 </div>
 <div class="col-xs-12 col-md-6">
 <h2 class="partdivtitle">
 Tune the colors
 </h2>
 <pre class="r"><code>amBullet(value = 65, val_color = &quot;purple&quot;, limit_color = &quot;#3c8dbc&quot;)</code></pre>
-<div id="htmlwidget-4341" style="width:100%;height:500px;" class="ramcharts_base"></div>
-<script type="application/json" data-for="htmlwidget-4341">{"x":{"chartData":{"rotate":true,"columnWidth":1,"categoryField":"category","dataProvider":[{"category":"","excelent":20,"good":20,"average":20,"poor":20,"bad":20,"limit":85,"full":100,"bullet":65}],"graphs":[{"columnWidth":0.5,"lineColor":"#3c8dbc","lineThickness":3,"noStepRisers":true,"stackable":false,"type":"step","valueField":"limit"},{"fillAlphas":0.8,"lineColor":"#19d228","showBalloon":false,"columnWidth":1,"type":"column","valueField":"excelent"},{"fillAlphas":0.8,"lineColor":"#b4dd1e","showBalloon":false,"columnWidth":1,"type":"column","valueField":"good"},{"fillAlphas":0.8,"lineColor":"#f4fb16","showBalloon":false,"columnWidth":1,"type":"column","valueField":"average"},{"fillAlphas":0.8,"lineColor":"#f6d32b","showBalloon":false,"columnWidth":1,"type":"column","valueField":"poor"},{"fillAlphas":0.8,"lineColor":"#fb7116","showBalloon":false,"columnWidth":1,"type":"column","valueField":"bad"},{"columnWidth":0.3,"fillAlphas":1,"lineColor":"purple","clustered":false,"stackable":false,"type":"column","valueField":"bullet"}],"type":"serial","valueAxes":[{"minimum":0,"maximum":100,"stackType":"regular","gridAlpha":0}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[]}</script>
+<div id="htmlwidget-8469" style="width:100%;height:500px;" class="ramcharts_base"></div>
+<script type="application/json" data-for="htmlwidget-8469">{"x":{"chartData":{"rotate":true,"columnWidth":1,"categoryField":"category","dataProvider":[{"category":"","excelent":20,"good":20,"average":20,"poor":20,"bad":20,"limit":85,"full":100,"bullet":65}],"graphs":[{"columnWidth":0.5,"lineColor":"#3c8dbc","lineThickness":3,"noStepRisers":true,"stackable":false,"type":"step","valueField":"limit"},{"fillAlphas":0.8,"lineColor":"#19d228","showBalloon":false,"columnWidth":1,"type":"column","valueField":"excelent"},{"fillAlphas":0.8,"lineColor":"#b4dd1e","showBalloon":false,"columnWidth":1,"type":"column","valueField":"good"},{"fillAlphas":0.8,"lineColor":"#f4fb16","showBalloon":false,"columnWidth":1,"type":"column","valueField":"average"},{"fillAlphas":0.8,"lineColor":"#f6d32b","showBalloon":false,"columnWidth":1,"type":"column","valueField":"poor"},{"fillAlphas":0.8,"lineColor":"#fb7116","showBalloon":false,"columnWidth":1,"type":"column","valueField":"bad"},{"columnWidth":0.3,"fillAlphas":1,"lineColor":"purple","clustered":false,"stackable":false,"type":"column","valueField":"bullet"}],"type":"serial","valueAxes":[{"minimum":0,"maximum":100,"stackType":"regular","gridAlpha":0}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[]}</script>
 </div>
 </div>
 <div class="row">
@@ -188,17 +165,17 @@ Tune the colors
 <h2 class="partdivtitle">
 Change orientation
 </h2>
-<pre class="r"><code>amBullet(value = 65, steps = FALSE, horiz = FALSE)</code></pre>
-<div id="htmlwidget-761" style="width:100%;height:500px;" class="ramcharts_base"></div>
-<script type="application/json" data-for="htmlwidget-761">{"x":{"chartData":{"rotate":false,"columnWidth":1,"categoryField":"category","dataProvider":[{"category":"","excelent":20,"good":20,"average":20,"poor":20,"bad":20,"limit":85,"full":100,"bullet":65}],"graphs":[{"columnWidth":0.5,"lineColor":"#000000","lineThickness":3,"noStepRisers":true,"stackable":false,"type":"step","valueField":"limit"},{"lineAlpha":0,"fillAlphas":0.8,"fillColors":["#19d228","#b4dd1e","#f4fb16","#f6d32b","#fb7116"],"gradientOrientation":"vertical","showBalloon":false,"type":"column","valueField":"full"},{"columnWidth":0.3,"fillAlphas":1,"lineColor":"#000000","clustered":false,"stackable":false,"type":"column","valueField":"bullet"}],"type":"serial","valueAxes":[{"minimum":0,"maximum":100,"stackType":"regular","gridAlpha":0}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[]}</script>
+<pre class="r"><code>amBullet(value = 65, horiz = FALSE)</code></pre>
+<div id="htmlwidget-6858" style="width:100%;height:500px;" class="ramcharts_base"></div>
+<script type="application/json" data-for="htmlwidget-6858">{"x":{"chartData":{"rotate":false,"columnWidth":1,"categoryField":"category","dataProvider":[{"category":"","excelent":20,"good":20,"average":20,"poor":20,"bad":20,"limit":85,"full":100,"bullet":65}],"graphs":[{"columnWidth":0.5,"lineColor":"#000000","lineThickness":3,"noStepRisers":true,"stackable":false,"type":"step","valueField":"limit"},{"fillAlphas":0.8,"lineColor":"#19d228","showBalloon":false,"columnWidth":1,"type":"column","valueField":"excelent"},{"fillAlphas":0.8,"lineColor":"#b4dd1e","showBalloon":false,"columnWidth":1,"type":"column","valueField":"good"},{"fillAlphas":0.8,"lineColor":"#f4fb16","showBalloon":false,"columnWidth":1,"type":"column","valueField":"average"},{"fillAlphas":0.8,"lineColor":"#f6d32b","showBalloon":false,"columnWidth":1,"type":"column","valueField":"poor"},{"fillAlphas":0.8,"lineColor":"#fb7116","showBalloon":false,"columnWidth":1,"type":"column","valueField":"bad"},{"columnWidth":0.3,"fillAlphas":1,"lineColor":"#000000","clustered":false,"stackable":false,"type":"column","valueField":"bullet"}],"type":"serial","valueAxes":[{"minimum":0,"maximum":100,"stackType":"regular","gridAlpha":0}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[]}</script>
 </div>
 <div class="col-xs-12 col-md-6">
 <h2 class="partdivtitle">
 Add text
 </h2>
 <pre class="r"><code>amBullet(value = 65, text = &quot;Evaluation&quot;)</code></pre>
-<div id="htmlwidget-1273" style="width:100%;height:500px;" class="ramcharts_base"></div>
-<script type="application/json" data-for="htmlwidget-1273">{"x":{"chartData":{"rotate":true,"columnWidth":1,"categoryField":"category","dataProvider":[{"category":"","excelent":20,"good":20,"average":20,"poor":20,"bad":20,"limit":85,"full":100,"bullet":65}],"graphs":[{"columnWidth":0.5,"lineColor":"#000000","lineThickness":3,"noStepRisers":true,"stackable":false,"type":"step","valueField":"limit"},{"fillAlphas":0.8,"lineColor":"#19d228","showBalloon":false,"columnWidth":1,"type":"column","valueField":"excelent"},{"fillAlphas":0.8,"lineColor":"#b4dd1e","showBalloon":false,"columnWidth":1,"type":"column","valueField":"good"},{"fillAlphas":0.8,"lineColor":"#f4fb16","showBalloon":false,"columnWidth":1,"type":"column","valueField":"average"},{"fillAlphas":0.8,"lineColor":"#f6d32b","showBalloon":false,"columnWidth":1,"type":"column","valueField":"poor"},{"fillAlphas":0.8,"lineColor":"#fb7116","showBalloon":false,"columnWidth":1,"type":"column","valueField":"bad"},{"columnWidth":0.3,"fillAlphas":1,"lineColor":"#000000","clustered":false,"stackable":false,"type":"column","valueField":"bullet"}],"type":"serial","valueAxes":[{"minimum":0,"maximum":100,"stackType":"regular","gridAlpha":0}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[]}</script>
+<div id="htmlwidget-5942" style="width:100%;height:500px;" class="ramcharts_base"></div>
+<script type="application/json" data-for="htmlwidget-5942">{"x":{"chartData":{"rotate":true,"columnWidth":1,"categoryField":"category","dataProvider":[{"category":"","excelent":20,"good":20,"average":20,"poor":20,"bad":20,"limit":85,"full":100,"bullet":65}],"graphs":[{"columnWidth":0.5,"lineColor":"#000000","lineThickness":3,"noStepRisers":true,"stackable":false,"type":"step","valueField":"limit"},{"fillAlphas":0.8,"lineColor":"#19d228","showBalloon":false,"columnWidth":1,"type":"column","valueField":"excelent"},{"fillAlphas":0.8,"lineColor":"#b4dd1e","showBalloon":false,"columnWidth":1,"type":"column","valueField":"good"},{"fillAlphas":0.8,"lineColor":"#f4fb16","showBalloon":false,"columnWidth":1,"type":"column","valueField":"average"},{"fillAlphas":0.8,"lineColor":"#f6d32b","showBalloon":false,"columnWidth":1,"type":"column","valueField":"poor"},{"fillAlphas":0.8,"lineColor":"#fb7116","showBalloon":false,"columnWidth":1,"type":"column","valueField":"bad"},{"columnWidth":0.3,"fillAlphas":1,"lineColor":"#000000","clustered":false,"stackable":false,"type":"column","valueField":"bullet"}],"type":"serial","valueAxes":[{"minimum":0,"maximum":100,"stackType":"regular","gridAlpha":0}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[]}</script>
 </div>
 </div>
 <div class="row">
@@ -207,8 +184,8 @@ Add text
 Change mon and max
 </h2>
 <pre class="r"><code>amBullet(value = 65, min = 20, max = 90)</code></pre>
-<div id="htmlwidget-5449" style="width:100%;height:500px;" class="ramcharts_base"></div>
-<script type="application/json" data-for="htmlwidget-5449">{"x":{"chartData":{"rotate":true,"columnWidth":1,"categoryField":"category","dataProvider":[{"category":"","excelent":20,"good":20,"average":20,"poor":20,"bad":20,"limit":85,"full":90,"bullet":65}],"graphs":[{"columnWidth":0.5,"lineColor":"#000000","lineThickness":3,"noStepRisers":true,"stackable":false,"type":"step","valueField":"limit"},{"fillAlphas":0.8,"lineColor":"#19d228","showBalloon":false,"columnWidth":1,"type":"column","valueField":"excelent"},{"fillAlphas":0.8,"lineColor":"#b4dd1e","showBalloon":false,"columnWidth":1,"type":"column","valueField":"good"},{"fillAlphas":0.8,"lineColor":"#f4fb16","showBalloon":false,"columnWidth":1,"type":"column","valueField":"average"},{"fillAlphas":0.8,"lineColor":"#f6d32b","showBalloon":false,"columnWidth":1,"type":"column","valueField":"poor"},{"fillAlphas":0.8,"lineColor":"#fb7116","showBalloon":false,"columnWidth":1,"type":"column","valueField":"bad"},{"columnWidth":0.3,"fillAlphas":1,"lineColor":"#000000","clustered":false,"stackable":false,"type":"column","valueField":"bullet"}],"type":"serial","valueAxes":[{"minimum":20,"maximum":90,"stackType":"regular","gridAlpha":0}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[]}</script>
+<div id="htmlwidget-9353" style="width:100%;height:500px;" class="ramcharts_base"></div>
+<script type="application/json" data-for="htmlwidget-9353">{"x":{"chartData":{"rotate":true,"columnWidth":1,"categoryField":"category","dataProvider":[{"category":"","excelent":20,"good":20,"average":20,"poor":20,"bad":20,"limit":85,"full":90,"bullet":65}],"graphs":[{"columnWidth":0.5,"lineColor":"#000000","lineThickness":3,"noStepRisers":true,"stackable":false,"type":"step","valueField":"limit"},{"fillAlphas":0.8,"lineColor":"#19d228","showBalloon":false,"columnWidth":1,"type":"column","valueField":"excelent"},{"fillAlphas":0.8,"lineColor":"#b4dd1e","showBalloon":false,"columnWidth":1,"type":"column","valueField":"good"},{"fillAlphas":0.8,"lineColor":"#f4fb16","showBalloon":false,"columnWidth":1,"type":"column","valueField":"average"},{"fillAlphas":0.8,"lineColor":"#f6d32b","showBalloon":false,"columnWidth":1,"type":"column","valueField":"poor"},{"fillAlphas":0.8,"lineColor":"#fb7116","showBalloon":false,"columnWidth":1,"type":"column","valueField":"bad"},{"columnWidth":0.3,"fillAlphas":1,"lineColor":"#000000","clustered":false,"stackable":false,"type":"column","valueField":"bullet"}],"type":"serial","valueAxes":[{"minimum":20,"maximum":90,"stackType":"regular","gridAlpha":0}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[]}</script>
 </div>
 </div>
 <h2 class="amOptions">
@@ -223,8 +200,8 @@ export
 #or
 amBullet(value = 65) %&gt;&gt;% 
   amOptions(export = TRUE)</code></pre>
-<div id="htmlwidget-5531" style="width:100%;height:500px;" class="ramcharts_base"></div>
-<script type="application/json" data-for="htmlwidget-5531">{"x":{"chartData":{"rotate":true,"columnWidth":1,"export":{"enabled":true},"categoryField":"category","dataProvider":[{"category":"","excelent":20,"good":20,"average":20,"poor":20,"bad":20,"limit":85,"full":100,"bullet":65}],"graphs":[{"columnWidth":0.5,"lineColor":"#000000","lineThickness":3,"noStepRisers":true,"stackable":false,"type":"step","valueField":"limit"},{"fillAlphas":0.8,"lineColor":"#19d228","showBalloon":false,"columnWidth":1,"type":"column","valueField":"excelent"},{"fillAlphas":0.8,"lineColor":"#b4dd1e","showBalloon":false,"columnWidth":1,"type":"column","valueField":"good"},{"fillAlphas":0.8,"lineColor":"#f4fb16","showBalloon":false,"columnWidth":1,"type":"column","valueField":"average"},{"fillAlphas":0.8,"lineColor":"#f6d32b","showBalloon":false,"columnWidth":1,"type":"column","valueField":"poor"},{"fillAlphas":0.8,"lineColor":"#fb7116","showBalloon":false,"columnWidth":1,"type":"column","valueField":"bad"},{"columnWidth":0.3,"fillAlphas":1,"lineColor":"#000000","clustered":false,"stackable":false,"type":"column","valueField":"bullet"}],"type":"serial","valueAxes":[{"minimum":0,"maximum":100,"stackType":"regular","gridAlpha":0}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[]}</script>
+<div id="htmlwidget-7834" style="width:100%;height:500px;" class="ramcharts_base"></div>
+<script type="application/json" data-for="htmlwidget-7834">{"x":{"chartData":{"rotate":true,"columnWidth":1,"export":{"enabled":true},"categoryField":"category","dataProvider":[{"category":"","excelent":20,"good":20,"average":20,"poor":20,"bad":20,"limit":85,"full":100,"bullet":65}],"graphs":[{"columnWidth":0.5,"lineColor":"#000000","lineThickness":3,"noStepRisers":true,"stackable":false,"type":"step","valueField":"limit"},{"fillAlphas":0.8,"lineColor":"#19d228","showBalloon":false,"columnWidth":1,"type":"column","valueField":"excelent"},{"fillAlphas":0.8,"lineColor":"#b4dd1e","showBalloon":false,"columnWidth":1,"type":"column","valueField":"good"},{"fillAlphas":0.8,"lineColor":"#f4fb16","showBalloon":false,"columnWidth":1,"type":"column","valueField":"average"},{"fillAlphas":0.8,"lineColor":"#f6d32b","showBalloon":false,"columnWidth":1,"type":"column","valueField":"poor"},{"fillAlphas":0.8,"lineColor":"#fb7116","showBalloon":false,"columnWidth":1,"type":"column","valueField":"bad"},{"columnWidth":0.3,"fillAlphas":1,"lineColor":"#000000","clustered":false,"stackable":false,"type":"column","valueField":"bullet"}],"type":"serial","valueAxes":[{"minimum":0,"maximum":100,"stackType":"regular","gridAlpha":0}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[]}</script>
 </div>
 <div class="col-xs-12 col-md-6">
 <h2 class="partdivtitle">
@@ -234,8 +211,8 @@ exportFormat
 #or
 amBullet(value = 65) %&gt;&gt;% 
   amOptions(export = TRUE, exportFormat = &quot;CSV&quot;)</code></pre>
-<div id="htmlwidget-3042" style="width:100%;height:500px;" class="ramcharts_base"></div>
-<script type="application/json" data-for="htmlwidget-3042">{"x":{"chartData":{"rotate":true,"columnWidth":1,"export":{"enabled":true,"menu":[{"class":"export-main","menu":[{"format":"CSV","label":"CSV"}]}]},"categoryField":"category","dataProvider":[{"category":"","excelent":20,"good":20,"average":20,"poor":20,"bad":20,"limit":85,"full":100,"bullet":65}],"graphs":[{"columnWidth":0.5,"lineColor":"#000000","lineThickness":3,"noStepRisers":true,"stackable":false,"type":"step","valueField":"limit"},{"fillAlphas":0.8,"lineColor":"#19d228","showBalloon":false,"columnWidth":1,"type":"column","valueField":"excelent"},{"fillAlphas":0.8,"lineColor":"#b4dd1e","showBalloon":false,"columnWidth":1,"type":"column","valueField":"good"},{"fillAlphas":0.8,"lineColor":"#f4fb16","showBalloon":false,"columnWidth":1,"type":"column","valueField":"average"},{"fillAlphas":0.8,"lineColor":"#f6d32b","showBalloon":false,"columnWidth":1,"type":"column","valueField":"poor"},{"fillAlphas":0.8,"lineColor":"#fb7116","showBalloon":false,"columnWidth":1,"type":"column","valueField":"bad"},{"columnWidth":0.3,"fillAlphas":1,"lineColor":"#000000","clustered":false,"stackable":false,"type":"column","valueField":"bullet"}],"type":"serial","valueAxes":[{"minimum":0,"maximum":100,"stackType":"regular","gridAlpha":0}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[]}</script>
+<div id="htmlwidget-1779" style="width:100%;height:500px;" class="ramcharts_base"></div>
+<script type="application/json" data-for="htmlwidget-1779">{"x":{"chartData":{"rotate":true,"columnWidth":1,"export":{"enabled":true,"menu":[{"class":"export-main","menu":[{"format":"CSV","label":"CSV"}]}]},"categoryField":"category","dataProvider":[{"category":"","excelent":20,"good":20,"average":20,"poor":20,"bad":20,"limit":85,"full":100,"bullet":65}],"graphs":[{"columnWidth":0.5,"lineColor":"#000000","lineThickness":3,"noStepRisers":true,"stackable":false,"type":"step","valueField":"limit"},{"fillAlphas":0.8,"lineColor":"#19d228","showBalloon":false,"columnWidth":1,"type":"column","valueField":"excelent"},{"fillAlphas":0.8,"lineColor":"#b4dd1e","showBalloon":false,"columnWidth":1,"type":"column","valueField":"good"},{"fillAlphas":0.8,"lineColor":"#f4fb16","showBalloon":false,"columnWidth":1,"type":"column","valueField":"average"},{"fillAlphas":0.8,"lineColor":"#f6d32b","showBalloon":false,"columnWidth":1,"type":"column","valueField":"poor"},{"fillAlphas":0.8,"lineColor":"#fb7116","showBalloon":false,"columnWidth":1,"type":"column","valueField":"bad"},{"columnWidth":0.3,"fillAlphas":1,"lineColor":"#000000","clustered":false,"stackable":false,"type":"column","valueField":"bullet"}],"type":"serial","valueAxes":[{"minimum":0,"maximum":100,"stackType":"regular","gridAlpha":0}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[]}</script>
 </div>
 </div>
 <div class="row">
@@ -249,8 +226,8 @@ main and creditsPosition
 amBullet(value = 65) %&gt;&gt;% 
   amOptions( main = &quot;My Bullet&quot;,
         mainColor = &quot;#00FF00&quot;, mainSize = 25, creditsPosition = &quot;top-right&quot;)</code></pre>
-<div id="htmlwidget-7445" style="width:100%;height:500px;" class="ramcharts_base"></div>
-<script type="application/json" data-for="htmlwidget-7445">{"x":{"chartData":{"rotate":true,"columnWidth":1,"categoryField":"category","creditsPosition":"top-right","dataProvider":[{"category":"","excelent":20,"good":20,"average":20,"poor":20,"bad":20,"limit":85,"full":100,"bullet":65}],"graphs":[{"columnWidth":0.5,"lineColor":"#000000","lineThickness":3,"noStepRisers":true,"stackable":false,"type":"step","valueField":"limit"},{"fillAlphas":0.8,"lineColor":"#19d228","showBalloon":false,"columnWidth":1,"type":"column","valueField":"excelent"},{"fillAlphas":0.8,"lineColor":"#b4dd1e","showBalloon":false,"columnWidth":1,"type":"column","valueField":"good"},{"fillAlphas":0.8,"lineColor":"#f4fb16","showBalloon":false,"columnWidth":1,"type":"column","valueField":"average"},{"fillAlphas":0.8,"lineColor":"#f6d32b","showBalloon":false,"columnWidth":1,"type":"column","valueField":"poor"},{"fillAlphas":0.8,"lineColor":"#fb7116","showBalloon":false,"columnWidth":1,"type":"column","valueField":"bad"},{"columnWidth":0.3,"fillAlphas":1,"lineColor":"#000000","clustered":false,"stackable":false,"type":"column","valueField":"bullet"}],"titles":[{"color":"#00FF00","text":"My Bullet","size":25}],"type":"serial","valueAxes":[{"minimum":0,"maximum":100,"stackType":"regular","gridAlpha":0}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[]}</script>
+<div id="htmlwidget-4864" style="width:100%;height:500px;" class="ramcharts_base"></div>
+<script type="application/json" data-for="htmlwidget-4864">{"x":{"chartData":{"rotate":true,"columnWidth":1,"categoryField":"category","creditsPosition":"top-right","dataProvider":[{"category":"","excelent":20,"good":20,"average":20,"poor":20,"bad":20,"limit":85,"full":100,"bullet":65}],"graphs":[{"columnWidth":0.5,"lineColor":"#000000","lineThickness":3,"noStepRisers":true,"stackable":false,"type":"step","valueField":"limit"},{"fillAlphas":0.8,"lineColor":"#19d228","showBalloon":false,"columnWidth":1,"type":"column","valueField":"excelent"},{"fillAlphas":0.8,"lineColor":"#b4dd1e","showBalloon":false,"columnWidth":1,"type":"column","valueField":"good"},{"fillAlphas":0.8,"lineColor":"#f4fb16","showBalloon":false,"columnWidth":1,"type":"column","valueField":"average"},{"fillAlphas":0.8,"lineColor":"#f6d32b","showBalloon":false,"columnWidth":1,"type":"column","valueField":"poor"},{"fillAlphas":0.8,"lineColor":"#fb7116","showBalloon":false,"columnWidth":1,"type":"column","valueField":"bad"},{"columnWidth":0.3,"fillAlphas":1,"lineColor":"#000000","clustered":false,"stackable":false,"type":"column","valueField":"bullet"}],"titles":[{"color":"#00FF00","text":"My Bullet","size":25}],"type":"serial","valueAxes":[{"minimum":0,"maximum":100,"stackType":"regular","gridAlpha":0}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[]}</script>
 </div>
 <div class="col-xs-12 col-md-6">
 <h2 class="partdivtitle">
@@ -260,8 +237,8 @@ theme
 #or
 amBullet(value = 65) %&gt;&gt;% 
   amOptions(theme = &quot;patterns&quot;)</code></pre>
-<div id="htmlwidget-9892" style="width:100%;height:500px;" class="ramcharts_base"></div>
-<script type="application/json" data-for="htmlwidget-9892">{"x":{"chartData":{"rotate":true,"columnWidth":1,"categoryField":"category","dataProvider":[{"category":"","excelent":20,"good":20,"average":20,"poor":20,"bad":20,"limit":85,"full":100,"bullet":65}],"graphs":[{"columnWidth":0.5,"lineColor":"#000000","lineThickness":3,"noStepRisers":true,"stackable":false,"type":"step","valueField":"limit"},{"fillAlphas":0.8,"lineColor":"#19d228","showBalloon":false,"columnWidth":1,"type":"column","valueField":"excelent"},{"fillAlphas":0.8,"lineColor":"#b4dd1e","showBalloon":false,"columnWidth":1,"type":"column","valueField":"good"},{"fillAlphas":0.8,"lineColor":"#f4fb16","showBalloon":false,"columnWidth":1,"type":"column","valueField":"average"},{"fillAlphas":0.8,"lineColor":"#f6d32b","showBalloon":false,"columnWidth":1,"type":"column","valueField":"poor"},{"fillAlphas":0.8,"lineColor":"#fb7116","showBalloon":false,"columnWidth":1,"type":"column","valueField":"bad"},{"columnWidth":0.3,"fillAlphas":1,"lineColor":"#000000","clustered":false,"stackable":false,"type":"column","valueField":"bullet"}],"theme":"patterns","type":"serial","valueAxes":[{"minimum":0,"maximum":100,"stackType":"regular","gridAlpha":0}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[]}</script>
+<div id="htmlwidget-6366" style="width:100%;height:500px;" class="ramcharts_base"></div>
+<script type="application/json" data-for="htmlwidget-6366">{"x":{"chartData":{"rotate":true,"columnWidth":1,"categoryField":"category","dataProvider":[{"category":"","excelent":20,"good":20,"average":20,"poor":20,"bad":20,"limit":85,"full":100,"bullet":65}],"graphs":[{"columnWidth":0.5,"lineColor":"#000000","lineThickness":3,"noStepRisers":true,"stackable":false,"type":"step","valueField":"limit"},{"fillAlphas":0.8,"lineColor":"#19d228","showBalloon":false,"columnWidth":1,"type":"column","valueField":"excelent"},{"fillAlphas":0.8,"lineColor":"#b4dd1e","showBalloon":false,"columnWidth":1,"type":"column","valueField":"good"},{"fillAlphas":0.8,"lineColor":"#f4fb16","showBalloon":false,"columnWidth":1,"type":"column","valueField":"average"},{"fillAlphas":0.8,"lineColor":"#f6d32b","showBalloon":false,"columnWidth":1,"type":"column","valueField":"poor"},{"fillAlphas":0.8,"lineColor":"#fb7116","showBalloon":false,"columnWidth":1,"type":"column","valueField":"bad"},{"columnWidth":0.3,"fillAlphas":1,"lineColor":"#000000","clustered":false,"stackable":false,"type":"column","valueField":"bullet"}],"theme":"patterns","type":"serial","valueAxes":[{"minimum":0,"maximum":100,"stackType":"regular","gridAlpha":0}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[]}</script>
 </div>
 </div>
 </div>

@@ -76,7 +76,7 @@ img {
 <!-- bootstrap row container for all the content -->
 <div class="row">
   
-  <div class="col-xs-2 col-md-3" style="padding-left:0;">
+  <div class="col-xs-4 col-md-3" style="padding-left:0;">
     <nav id="navbar">
     
       <div id="main-toc">Tutorial - rAmCharts</div>
@@ -93,15 +93,19 @@ img {
       </ul> 
       <hr/>
       
-      <b class="section-toc">Functions 'am'</b>
+      <b class="section-toc">Specific functions</b>
       <br/>
       
-      <ul class="toc" id="nav-amfunctions">   
-        <li class="litoc"> <a class="toc-item" href="amBarplot.html">amBarplot</a></li>
-        <li class="litoc"><a class="toc-item" href="amBoxplot.html">amBoxplot</a></li>
-        <li class="litoc"><a class="toc-item" href="amCandlestick.html">amCandlestick</a></li>
-        <li class="litoc"><a class="toc-item" href="amHist.html">amHist</a></li>
-        <li class="litoc"><a class="toc-item" href="amRadar.html">amRadar</a></li>
+      <ul class="toc" id="nav-amfunctions">
+        <li class="litoc"> <a class="toc-item" href="amAngularGauge.html">AngularGauge</a></li>   
+        <li class="litoc"> <a class="toc-item" href="amBarplot.html">Barplot</a></li>
+        <li class="litoc"><a class="toc-item" href="amBoxplot.html">Boxplot</a></li>
+        <li class="litoc"><a class="toc-item" href="amBullet.html">Bullet</a></li>
+        <li class="litoc"><a class="toc-item" href="amCandlestick.html">Candlestick</a></li>
+        <li class="litoc"><a class="toc-item" href="amHist.html">Hist</a></li>
+        <li class="litoc"><a class="toc-item" href="amOHLC.html">OHLC</a></li>
+        <li class="litoc"><a class="toc-item" href="amPie.html">Pie</a></li>
+        <li class="litoc"><a class="toc-item" href="amRadar.html">Radar</a></li>
       </ul>
     
       <footer>
@@ -110,7 +114,7 @@ img {
     </nav>
   </div><!-- end of left column -->
   
-  <div class="col-xs-9 col-md-8" id="main-content">
+  <div class="col-xs-12 col-md-8" id="main-content">
     <div class="row">
       <div class="col-xs-11 col-md-11">
 
@@ -139,8 +143,8 @@ amPieChart(valueField = &#39;gdp&#39;, titleField = &#39;country&#39;,
   setLegend(position = &quot;bottom&quot;, useMarkerColorForLabels = TRUE) %&gt;&gt;%
   setExport(enabled = TRUE) %&gt;&gt;%
   plot()</code></pre>
-<p><div id="htmlwidget-1644" style="width:100%;height:500px;" class="ramcharts_base"></div>
-<script type="application/json" data-for="htmlwidget-1644">{"x":{"chartData":{"valueField":"gdp","titleField":"country","startDuration":0,"export":{"enabled":true},"dataProvider":[{"country":"China","gdp":18.976},{"country":"United States","gdp":18.125},{"country":"India","gdp":7.997},{"country":"Japan","gdp":4.843},{"country":"Germany","gdp":3.815},{"country":"Russia","gdp":3.458},{"country":"Brazil","gdp":3.259},{"country":"Indonesia","gdp":2.84},{"country":"United Kingdom","gdp":2.641},{"country":"France","gdp":2.634}],"legend":{"position":"bottom","useMarkerColorForLabels":true},"type":"pie"},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":null},"evals":[]}</script></p>
+<p><div id="htmlwidget-897" style="width:100%;height:480px;" class="ramcharts_base"></div>
+<script type="application/json" data-for="htmlwidget-897">{"x":{"chartData":{"valueField":"gdp","titleField":"country","startDuration":0,"export":{"enabled":true},"dataProvider":[{"country":"China","gdp":18.976},{"country":"United States","gdp":18.125},{"country":"India","gdp":7.997},{"country":"Japan","gdp":4.843},{"country":"Germany","gdp":3.815},{"country":"Russia","gdp":3.458},{"country":"Brazil","gdp":3.259},{"country":"Indonesia","gdp":2.84},{"country":"United Kingdom","gdp":2.641},{"country":"France","gdp":2.634}],"legend":{"position":"bottom","useMarkerColorForLabels":true},"type":"pie"},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":null},"evals":[]}</script></p>
 <p>By default, the chart will contains all the JS plugins for exporting, annotating, printing… If you don’t want all of these features you just have to customize the property “menu”:</p>
 <div id="example-1" class="section level3">
 <h3>Example 1</h3>
@@ -162,8 +166,8 @@ amPieChart(valueField = &#39;gdp&#39;, titleField = &#39;country&#39;,
   setLegend(position = &quot;bottom&quot;, useMarkerColorForLabels = TRUE) %&gt;&gt;%
   setExport(enabled = TRUE, menu = menu_obj) %&gt;&gt;%
   plot()</code></pre>
-<p><div id="htmlwidget-5547" style="width:100%;height:500px;" class="ramcharts_base"></div>
-<script type="application/json" data-for="htmlwidget-5547">{"x":{"chartData":{"valueField":"gdp","titleField":"country","startDuration":0,"export":{"enabled":true,"menu":[{"format":"JPG","label":"Save as JPG","title":"Export chart to JPG"},{"format":"PNG","label":"Save as PNG","title":"Export chart to PNG"}]},"dataProvider":[{"country":"China","gdp":18.976},{"country":"United States","gdp":18.125},{"country":"India","gdp":7.997},{"country":"Japan","gdp":4.843},{"country":"Germany","gdp":3.815},{"country":"Russia","gdp":3.458},{"country":"Brazil","gdp":3.259},{"country":"Indonesia","gdp":2.84},{"country":"United Kingdom","gdp":2.641},{"country":"France","gdp":2.634}],"legend":{"position":"bottom","useMarkerColorForLabels":true},"type":"pie"},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":null},"evals":[]}</script></p>
+<p><div id="htmlwidget-3995" style="width:100%;height:480px;" class="ramcharts_base"></div>
+<script type="application/json" data-for="htmlwidget-3995">{"x":{"chartData":{"valueField":"gdp","titleField":"country","startDuration":0,"export":{"enabled":true,"menu":[{"format":"JPG","label":"Save as JPG","title":"Export chart to JPG"},{"format":"PNG","label":"Save as PNG","title":"Export chart to PNG"}]},"dataProvider":[{"country":"China","gdp":18.976},{"country":"United States","gdp":18.125},{"country":"India","gdp":7.997},{"country":"Japan","gdp":4.843},{"country":"Germany","gdp":3.815},{"country":"Russia","gdp":3.458},{"country":"Brazil","gdp":3.259},{"country":"Indonesia","gdp":2.84},{"country":"United Kingdom","gdp":2.641},{"country":"France","gdp":2.634}],"legend":{"position":"bottom","useMarkerColorForLabels":true},"type":"pie"},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":null},"evals":[]}</script></p>
 </div>
 <div id="example-2" class="section level3">
 <h3>Example 2</h3>
@@ -192,8 +196,8 @@ amPieChart(valueField = &#39;gdp&#39;, titleField = &#39;country&#39;,
   setLegend(position = &quot;bottom&quot;, useMarkerColorForLabels = TRUE) %&gt;&gt;%
   setExport(enabled = TRUE, menu = menu_obj) %&gt;&gt;%
   plot()</code></pre>
-<p><div id="htmlwidget-9233" style="width:100%;height:500px;" class="ramcharts_base"></div>
-<script type="application/json" data-for="htmlwidget-9233">{"x":{"chartData":{"valueField":"gdp","titleField":"country","startDuration":0,"export":{"enabled":true,"menu":[{"class":"export-main","menu":[{"label":"Download","menu":["PNG","JPG","CSV"]},{"label":"Annotate","action":"draw","menu":[{"class":"export-drawing","menu":["PNG","JPG"]}]}]}]},"dataProvider":[{"country":"China","gdp":18.976},{"country":"United States","gdp":18.125},{"country":"India","gdp":7.997},{"country":"Japan","gdp":4.843},{"country":"Germany","gdp":3.815},{"country":"Russia","gdp":3.458},{"country":"Brazil","gdp":3.259},{"country":"Indonesia","gdp":2.84},{"country":"United Kingdom","gdp":2.641},{"country":"France","gdp":2.634}],"legend":{"position":"bottom","useMarkerColorForLabels":true},"type":"pie"},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":null},"evals":[]}</script></p>
+<p><div id="htmlwidget-1359" style="width:100%;height:480px;" class="ramcharts_base"></div>
+<script type="application/json" data-for="htmlwidget-1359">{"x":{"chartData":{"valueField":"gdp","titleField":"country","startDuration":0,"export":{"enabled":true,"menu":[{"class":"export-main","menu":[{"label":"Download","menu":["PNG","JPG","CSV"]},{"label":"Annotate","action":"draw","menu":[{"class":"export-drawing","menu":["PNG","JPG"]}]}]}]},"dataProvider":[{"country":"China","gdp":18.976},{"country":"United States","gdp":18.125},{"country":"India","gdp":7.997},{"country":"Japan","gdp":4.843},{"country":"Germany","gdp":3.815},{"country":"Russia","gdp":3.458},{"country":"Brazil","gdp":3.259},{"country":"Indonesia","gdp":2.84},{"country":"United Kingdom","gdp":2.641},{"country":"France","gdp":2.634}],"legend":{"position":"bottom","useMarkerColorForLabels":true},"type":"pie"},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":null},"evals":[]}</script></p>
 <p>For more information you can refer to the official documentation <a href="./www/docs/export.html">here</a>.</p>
 </div>
 </div>
@@ -209,8 +213,8 @@ amPieChart(valueField = &#39;gdp&#39;, titleField = &#39;country&#39;,
                                                       &quot;alert(&#39;The value is: &#39; + obj.value);&quot;,
                                                       &quot;}&quot;)) %&gt;&gt;%
   plot()</code></pre>
-<p><div id="htmlwidget-5475" style="width:100%;height:500px;" class="ramcharts_base"></div>
-<script type="application/json" data-for="htmlwidget-5475">{"x":{"chartData":{"valueField":"gdp","titleField":"country","startDuration":0,"dataProvider":[{"country":"China","gdp":18.976},{"country":"United States","gdp":18.125},{"country":"India","gdp":7.997},{"country":"Japan","gdp":4.843},{"country":"Germany","gdp":3.815},{"country":"Russia","gdp":3.458},{"country":"Brazil","gdp":3.259},{"country":"Indonesia","gdp":2.84},{"country":"United Kingdom","gdp":2.641},{"country":"France","gdp":2.634}],"legend":{"position":"bottom","useMarkerColorForLabels":true},"type":"pie"},"background":"#ffffff","listeners":{"clickSlice":"function (event) { var obj = event.dataItem; alert('The value is: ' + obj.value); }"},"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":null},"evals":["listeners.clickSlice"]}</script></p>
+<p><div id="htmlwidget-4425" style="width:100%;height:480px;" class="ramcharts_base"></div>
+<script type="application/json" data-for="htmlwidget-4425">{"x":{"chartData":{"valueField":"gdp","titleField":"country","startDuration":0,"dataProvider":[{"country":"China","gdp":18.976},{"country":"United States","gdp":18.125},{"country":"India","gdp":7.997},{"country":"Japan","gdp":4.843},{"country":"Germany","gdp":3.815},{"country":"Russia","gdp":3.458},{"country":"Brazil","gdp":3.259},{"country":"Indonesia","gdp":2.84},{"country":"United Kingdom","gdp":2.641},{"country":"France","gdp":2.634}],"legend":{"position":"bottom","useMarkerColorForLabels":true},"type":"pie"},"background":"#ffffff","listeners":{"clickSlice":"function (event) { var obj = event.dataItem; alert('The value is: ' + obj.value); }"},"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":null},"evals":["listeners.clickSlice"]}</script></p>
 </div>
 
       </div> <!-- end of column -->
@@ -224,7 +228,7 @@ amPieChart(valueField = &#39;gdp&#39;, titleField = &#39;country&#39;,
     </div><!-- end of row -->
   </div><!-- end of rigth column -->
   
-  <!-- <script src="./www/js/navbar.js"> </script> -->
+  <script src="./www/js/navbar.js"> </script>
   <script src="./www/js/logo.js"> </script>
 </div><!-- end of main row -->
 

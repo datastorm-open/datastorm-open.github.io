@@ -1,12 +1,12 @@
 #navbar {
 /*background: #f1f1f1;*/
   padding: 15px;
-  background: #3c8dbc;
+background: #3c8dbc;
   background: -webkit-linear-gradient(-45deg, #3c8dbc 90%, #367fa9 10%, #FFFFFF 5%);
-  background: linear-gradient(-135deg, #3c8dbc 78%, #367fa9 10%);
-  overflow-y: auto;
-  overflow-x: scroll;
-}
+                                      background: linear-gradient(-135deg, #3c8dbc 78%, #367fa9 10%);
+                                                                  overflow-y: auto;
+                                                                  overflow-x: scroll;
+                                                                  }
 
 #main-toc {
 padding-top:8px;
@@ -37,17 +37,17 @@ body .litoc .toc-item {
 
 body .litoc .active {
   background-color: #367fa9;
-  color: white;
+    color: white;
   text-decoration: none;
 }
 
-body .litoc a:hover:not(.active) {
+body .litoc .toc-item:hover:not(.active) {
   background-color: #555;
-  color: white;
+    color: white;
   text-decoration: none;
 }
 
-body .litoc a:visited {
+body .litoc .toc-item:visited {
   color: black;
 }
 
@@ -83,6 +83,7 @@ body .ramcharts_base {
 body .main-container {
   box-sizing: border-box;
   max-width: 100%;
+  padding: auto;
   margin-left: auto;
   margin-right: auto;
 }
