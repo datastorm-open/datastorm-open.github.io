@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+<title>rAmCharts - amSolidGauge</title>
+
+<script src="libs/jquery-1.11.0/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="libs/bootstrap-3.3.1/css/cosmo.min.css" rel="stylesheet" />
+<script src="libs/bootstrap-3.3.1/js/bootstrap.min.js"></script>
+<script src="libs/bootstrap-3.3.1/shim/html5shiv.min.js"></script>
+<script src="libs/bootstrap-3.3.1/shim/respond.min.js"></script>
+<script src="libs/htmlwidgets-0.5/htmlwidgets.js"></script>
+<script src="libs/amcharts-3.18.2/amcharts.js"></script>
+<script src="libs/ramcharts_base-binding-1.1.3/ramcharts_base.js"></script>
+<script src="libs/amcharts_typegauge-3.18.2/gauge.js"></script>
+<link href="libs/amcharts_style-3.18.2/style.css" rel="stylesheet" />
+<link href="libs/amcharts_plugins_export-3.18.2/export.css" rel="stylesheet" />
+<script src="libs/amcharts_plugins_export-3.18.2/export.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Raleway:100' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+
+<style type="text/css">code{white-space: pre;}</style>
+<link rel="stylesheet"
+      href="libs/highlight/default.css"
+      type="text/css" />
+<script src="libs/highlight/highlight.js"></script>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs && document.readyState && document.readyState === "complete") {
+   window.setTimeout(function() {
+      hljs.initHighlighting();
+   }, 0);
+}
+</script>
+
+
+<link rel="stylesheet" href="www\css\styles.css" type="text/css" />
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img { 
+  max-width:100%; 
+  height: auto; 
+}
+</style>
+<div class="container-fluid main-container">
+
+
+<!-- bootstrap row container for all the content -->
+<div class="row"> <!-- main row -->
+  
+  <div class="col-xs-4 col-md-3 show" id="nav-content" style="padding-left:0;">
+    <nav id="navbar">
+      <br/>
+      <div id="main-toc">Tutorial - rAmCharts</div>
+      <br/>
+      <hr/>
+      
+      <b class="section-toc">Getting started</b>
+      <br/>
+
+      <ul class="toc" id="nav-intro">
+        <li class="litoc"><a class="toc-item" href="index.html">Introduction</a></li>
+        <li class="litoc"><a class="toc-item" href="convert.html">Quick tutorial</a></li>
+        <li class="litoc"><a class="toc-item" href="shiny.html">Use in shiny apps</a></li>
+        <li class="litoc"><a class="toc-item" href="advance.html">Advanced features</a></li>
+      </ul> 
+      
+      <b class="section-toc">Specific functions</b>
+      <br/>
+      
+      <ul class="toc" id="nav-amfunctions">
+        <li class="litoc"> <a class="toc-item" href="amAngularGauge.html">AngularGauge</a></li>   
+        <li class="litoc"> <a class="toc-item" href="amBarplot.html">Barplot</a></li>
+        <li class="litoc"><a class="toc-item" href="amBoxplot.html">Boxplot</a></li>
+        <li class="litoc"><a class="toc-item" href="amBullet.html">Bullet</a></li>
+        <li class="litoc"><a class="toc-item" href="amCandlestick.html">Candlestick</a></li>
+        <li class="litoc"><a class="toc-item" href="amHist.html">Histogram</a></li>
+        <li class="litoc"><a class="toc-item" href="amOHLC.html">OHLC</a></li>
+        <li class="litoc"><a class="toc-item" href="amPie.html">Pie</a></li>
+        <li class="litoc"><a class="toc-item" href="amRadar.html">Radar</a></li>
+      </ul>
+      
+      <footer>
+        <div class="copyrights"><small> © 2015-2016 DataKnowledge</small></div>
+      </footer>
+    
+    </nav>
+    
+  </div> <!-- end of left column -->
+  
+  <div class="col-xs-1 col-md-1"> <!-- colummn for toggle button -->
+    <i id="toggle" class="fa fa-bars fa-lg toggle-collapse" style="padding-top:10px;"></i>
+  </div>
+  
+  <div class="col-xs-6 col-md-7 show" id="main-content"> <!-- main column -->
+
+
+
+<h1>
+rAmCharts - amSolidGauge
+</h1>
+<div id="parameters" class="section level2">
+<h2>Parameters</h2>
+<ul>
+<li><strong>x</strong>: numeric, equal to the value for which the solid gauge is desired.</li>
+<li><strong>min</strong>: a numeric, minimum possible value.</li>
+<li><strong>max</strong>: a numeric, maximum possible value.</li>
+<li><strong>type</strong>: a character, type of gauge : “full” or “semi”.</li>
+<li><strong>width</strong>: a numeric, width of the gauge.</li>
+<li><strong>color</strong>: a character, hexadecimal color value or a vector of colors.</li>
+<li><strong>text</strong>: a character, text to add to the printed value.</li>
+<li><strong>textSize</strong>: a numeric, size of text.</li>
+<li><strong>…</strong>: other parameters called in amOptions.</li>
+</ul>
+</div>
+<div id="reference-example" class="section level2">
+<h2>Reference example</h2>
+<pre class="r"><code>amSolidGauge(x = 65)</code></pre>
+<p><div id="htmlwidget-6366" style="width:40%;height:480px;" class="ramcharts_base"></div>
+<script type="application/json" data-for="htmlwidget-6366">{"x":{"chartData":{"startValue":0,"endValue":100,"valueInterval":100,"labelsEnabled":false,"axes":[{"axisAlpha":1,"startAngle":0,"endAngle":360,"startValue":0,"endValue":100,"bottomText":"65 ","bottomTextYOffset":-110,"bottomTextFontSize":20,"tickAlpha":0,"axisColor":"#c1cdcd","labelsEnabled":false,"bands":[{"alpha":1,"startValue":0,"endValue":100,"color":"#e0eeee","innerRadius":"80%"},{"alpha":1,"startValue":0,"endValue":65,"color":"#1e90ff","innerRadius":"80%"}]}],"type":"gauge"},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":[],"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":null},"evals":[]}</script></p>
+</div>
+<div id="change-min-and-max-values" class="section level2">
+<h2>Change min and max values</h2>
+<pre class="r"><code>amSolidGauge(x = 65, min = 0, max = 200)</code></pre>
+<p><div id="htmlwidget-759" style="width:40%;height:480px;" class="ramcharts_base"></div>
+<script type="application/json" data-for="htmlwidget-759">{"x":{"chartData":{"startValue":0,"endValue":200,"valueInterval":200,"labelsEnabled":false,"axes":[{"axisAlpha":1,"startAngle":0,"endAngle":360,"startValue":0,"endValue":200,"bottomText":"65 ","bottomTextYOffset":-110,"bottomTextFontSize":20,"tickAlpha":0,"axisColor":"#c1cdcd","labelsEnabled":false,"bands":[{"alpha":1,"startValue":0,"endValue":200,"color":"#e0eeee","innerRadius":"80%"},{"alpha":1,"startValue":0,"endValue":65,"color":"#1e90ff","innerRadius":"80%"}]}],"type":"gauge"},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":[],"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":null},"evals":[]}</script></p>
+</div>
+<div id="semi-solid-gauge" class="section level2">
+<h2>Semi Solid Gauge</h2>
+<pre class="r"><code>amSolidGauge(x = 65, type = &quot;semi&quot;)</code></pre>
+<p><div id="htmlwidget-2543" style="width:40%;height:480px;" class="ramcharts_base"></div>
+<script type="application/json" data-for="htmlwidget-2543">{"x":{"chartData":{"startValue":0,"endValue":100,"valueInterval":100,"labelsEnabled":false,"axes":[{"axisAlpha":1,"startAngle":-90,"endAngle":90,"startValue":0,"endValue":100,"bottomText":"65 ","bottomTextYOffset":-150,"bottomTextFontSize":20,"tickAlpha":0,"axisColor":"#c1cdcd","labelsEnabled":false,"bands":[{"alpha":1,"startValue":0,"endValue":100,"color":"#e0eeee","innerRadius":"80%"},{"alpha":1,"startValue":0,"endValue":65,"color":"#1e90ff","innerRadius":"80%"}]}],"type":"gauge"},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":[],"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":null},"evals":[]}</script></p>
+</div>
+<div id="change-width" class="section level2">
+<h2>Change width</h2>
+<pre class="r"><code>amSolidGauge(x = 65, width = 50)</code></pre>
+<p><div id="htmlwidget-74" style="width:40%;height:480px;" class="ramcharts_base"></div>
+<script type="application/json" data-for="htmlwidget-74">{"x":{"chartData":{"startValue":0,"endValue":100,"valueInterval":100,"labelsEnabled":false,"axes":[{"axisAlpha":1,"startAngle":0,"endAngle":360,"startValue":0,"endValue":100,"bottomText":"65 ","bottomTextYOffset":-110,"bottomTextFontSize":20,"tickAlpha":0,"axisColor":"#c1cdcd","labelsEnabled":false,"bands":[{"alpha":1,"startValue":0,"endValue":100,"color":"#e0eeee","innerRadius":"50%"},{"alpha":1,"startValue":0,"endValue":65,"color":"#1e90ff","innerRadius":"50%"}]}],"type":"gauge"},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":[],"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":null},"evals":[]}</script></p>
+</div>
+<div id="change-color" class="section level2">
+<h2>Change color</h2>
+<pre class="r"><code>amSolidGauge(x = 65, color = &quot;#2F4F4F&quot;)</code></pre>
+<p><div id="htmlwidget-9654" style="width:40%;height:480px;" class="ramcharts_base"></div>
+<script type="application/json" data-for="htmlwidget-9654">{"x":{"chartData":{"startValue":0,"endValue":100,"valueInterval":100,"labelsEnabled":false,"axes":[{"axisAlpha":1,"startAngle":0,"endAngle":360,"startValue":0,"endValue":100,"bottomText":"65 ","bottomTextYOffset":-110,"bottomTextFontSize":20,"tickAlpha":0,"axisColor":"#c1cdcd","labelsEnabled":false,"bands":[{"alpha":1,"startValue":0,"endValue":100,"color":"#e0eeee","innerRadius":"80%"},{"alpha":1,"startValue":0,"endValue":65,"color":"#2F4F4F","innerRadius":"80%"}]}],"type":"gauge"},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":[],"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":null},"evals":[]}</script></p>
+</div>
+<div id="put-a-color-scale" class="section level2">
+<h2>Put a color scale</h2>
+<pre class="r"><code>      amSolidGauge(x = 10, color = c(&quot;#00ff00&quot;, &quot;#ffd700&quot;, &quot;#ff0000&quot;))
+      amSolidGauge(x = 35, color = c(&quot;#00ff00&quot;, &quot;#ffd700&quot;, &quot;#ff0000&quot;))
+      amSolidGauge(x = 70, color = c(&quot;#00ff00&quot;, &quot;#ffd700&quot;, &quot;#ff0000&quot;))
+      amSolidGauge(x = 90, color = c(&quot;#00ff00&quot;, &quot;#ffd700&quot;, &quot;#ff0000&quot;))</code></pre>
+<div class="row">
+<div class="col-xs-12 col-md-6">
+<pre><code><div id="htmlwidget-7795" style="width:40%;height:480px;" class="ramcharts_base"></div>
+    <script type="application/json" data-for="htmlwidget-7795">{"x":{"chartData":{"startValue":0,"endValue":100,"valueInterval":100,"labelsEnabled":false,"axes":[{"axisAlpha":1,"startAngle":0,"endAngle":360,"startValue":0,"endValue":100,"bottomText":"10 ","bottomTextYOffset":-110,"bottomTextFontSize":20,"tickAlpha":0,"axisColor":"#c1cdcd","labelsEnabled":false,"bands":[{"alpha":1,"startValue":0,"endValue":100,"color":"#e0eeee","innerRadius":"80%"},{"alpha":1,"startValue":0,"endValue":10,"color":"#2EF700","innerRadius":"80%"}]}],"type":"gauge"},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":[],"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":null},"evals":[]}</script></code></pre>
+</div>
+<div class="col-xs-12 col-md-6">
+<pre><code><div id="htmlwidget-4438" style="width:40%;height:480px;" class="ramcharts_base"></div>
+    <script type="application/json" data-for="htmlwidget-4438">{"x":{"chartData":{"startValue":0,"endValue":100,"valueInterval":100,"labelsEnabled":false,"axes":[{"axisAlpha":1,"startAngle":0,"endAngle":360,"startValue":0,"endValue":100,"bottomText":"35 ","bottomTextYOffset":-110,"bottomTextFontSize":20,"tickAlpha":0,"axisColor":"#c1cdcd","labelsEnabled":false,"bands":[{"alpha":1,"startValue":0,"endValue":100,"color":"#e0eeee","innerRadius":"80%"},{"alpha":1,"startValue":0,"endValue":35,"color":"#AFE300","innerRadius":"80%"}]}],"type":"gauge"},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":[],"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":null},"evals":[]}</script></code></pre>
+</div>
+</div>
+<div class="row">
+<div class="col-xs-12 col-md-6">
+<pre><code><div id="htmlwidget-4560" style="width:40%;height:480px;" class="ramcharts_base"></div>
+    <script type="application/json" data-for="htmlwidget-4560">{"x":{"chartData":{"startValue":0,"endValue":100,"valueInterval":100,"labelsEnabled":false,"axes":[{"axisAlpha":1,"startAngle":0,"endAngle":360,"startValue":0,"endValue":100,"bottomText":"70 ","bottomTextYOffset":-110,"bottomTextFontSize":20,"tickAlpha":0,"axisColor":"#c1cdcd","labelsEnabled":false,"bands":[{"alpha":1,"startValue":0,"endValue":100,"color":"#e0eeee","innerRadius":"80%"},{"alpha":1,"startValue":0,"endValue":70,"color":"#FF8200","innerRadius":"80%"}]}],"type":"gauge"},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":[],"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":null},"evals":[]}</script></code></pre>
+</div>
+<div class="col-xs-12 col-md-6">
+<pre><code><div id="htmlwidget-8932" style="width:40%;height:480px;" class="ramcharts_base"></div>
+    <script type="application/json" data-for="htmlwidget-8932">{"x":{"chartData":{"startValue":0,"endValue":100,"valueInterval":100,"labelsEnabled":false,"axes":[{"axisAlpha":1,"startAngle":0,"endAngle":360,"startValue":0,"endValue":100,"bottomText":"90 ","bottomTextYOffset":-110,"bottomTextFontSize":20,"tickAlpha":0,"axisColor":"#c1cdcd","labelsEnabled":false,"bands":[{"alpha":1,"startValue":0,"endValue":100,"color":"#e0eeee","innerRadius":"80%"},{"alpha":1,"startValue":0,"endValue":90,"color":"#FF2B00","innerRadius":"80%"}]}],"type":"gauge"},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":[],"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":null},"evals":[]}</script></code></pre>
+</div>
+</div>
+</div>
+<div id="add-some-text-to-the-printed-value" class="section level2">
+<h2>Add some text to the printed value</h2>
+<pre class="r"><code>amSolidGauge(x = 65, text = &quot;%&quot;)</code></pre>
+<p><div id="htmlwidget-7664" style="width:40%;height:480px;" class="ramcharts_base"></div>
+<script type="application/json" data-for="htmlwidget-7664">{"x":{"chartData":{"startValue":0,"endValue":100,"valueInterval":100,"labelsEnabled":false,"axes":[{"axisAlpha":1,"startAngle":0,"endAngle":360,"startValue":0,"endValue":100,"bottomText":"65 %","bottomTextYOffset":-110,"bottomTextFontSize":20,"tickAlpha":0,"axisColor":"#c1cdcd","labelsEnabled":false,"bands":[{"alpha":1,"startValue":0,"endValue":100,"color":"#e0eeee","innerRadius":"80%"},{"alpha":1,"startValue":0,"endValue":65,"color":"#1e90ff","innerRadius":"80%"}]}],"type":"gauge"},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":[],"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":null},"evals":[]}</script></p>
+</div>
+<div id="modify-textsize-value" class="section level2">
+<h2>Modify textSize value</h2>
+<pre class="r"><code>amSolidGauge(x = 65, text = &quot;%&quot;, textSize = 50)</code></pre>
+<p><div id="htmlwidget-8883" style="width:40%;height:480px;" class="ramcharts_base"></div>
+<script type="application/json" data-for="htmlwidget-8883">{"x":{"chartData":{"startValue":0,"endValue":100,"valueInterval":100,"labelsEnabled":false,"axes":[{"axisAlpha":1,"startAngle":0,"endAngle":360,"startValue":0,"endValue":100,"bottomText":"65 %","bottomTextYOffset":-110,"bottomTextFontSize":50,"tickAlpha":0,"axisColor":"#c1cdcd","labelsEnabled":false,"bands":[{"alpha":1,"startValue":0,"endValue":100,"color":"#e0eeee","innerRadius":"80%"},{"alpha":1,"startValue":0,"endValue":65,"color":"#1e90ff","innerRadius":"80%"}]}],"type":"gauge"},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":[],"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":null},"evals":[]}</script></p>
+<h2 class="partdivtitle">
+amOptions
+</h2>
+</div>
+<div id="export" class="section level2">
+<h2>export</h2>
+<pre class="r"><code>amSolidGauge(x = 65, export = TRUE)
+#or
+amSolidGauge(x = 65) %&gt;&gt;% 
+  amOptions(export = TRUE)</code></pre>
+<p><div id="htmlwidget-7895" style="width:40%;height:480px;" class="ramcharts_base"></div>
+<script type="application/json" data-for="htmlwidget-7895">{"x":{"chartData":{"startValue":0,"endValue":100,"valueInterval":100,"labelsEnabled":false,"export":{"enabled":true},"axes":[{"axisAlpha":1,"startAngle":0,"endAngle":360,"startValue":0,"endValue":100,"bottomText":"65 ","bottomTextYOffset":-110,"bottomTextFontSize":20,"tickAlpha":0,"axisColor":"#c1cdcd","labelsEnabled":false,"bands":[{"alpha":1,"startValue":0,"endValue":100,"color":"#e0eeee","innerRadius":"80%"},{"alpha":1,"startValue":0,"endValue":65,"color":"#1e90ff","innerRadius":"80%"}]}],"type":"gauge"},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":[],"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":null},"evals":[]}</script></p>
+</div>
+<div id="exportformat" class="section level2">
+<h2>exportFormat</h2>
+<pre class="r"><code>amSolidGauge(x = 65, export = TRUE, exportFormat = &quot;JPG&quot;)
+#or
+amSolidGauge(x = 65) %&gt;&gt;% 
+  amOptions(export = TRUE, exportFormat = &quot;JPG&quot;)</code></pre>
+<p><div id="htmlwidget-2231" style="width:40%;height:480px;" class="ramcharts_base"></div>
+<script type="application/json" data-for="htmlwidget-2231">{"x":{"chartData":{"startValue":0,"endValue":100,"valueInterval":100,"labelsEnabled":false,"export":{"enabled":true,"menu":[{"class":"export-main","menu":[{"format":"JPG","label":"JPG"}]}]},"axes":[{"axisAlpha":1,"startAngle":0,"endAngle":360,"startValue":0,"endValue":100,"bottomText":"65 ","bottomTextYOffset":-110,"bottomTextFontSize":20,"tickAlpha":0,"axisColor":"#c1cdcd","labelsEnabled":false,"bands":[{"alpha":1,"startValue":0,"endValue":100,"color":"#e0eeee","innerRadius":"80%"},{"alpha":1,"startValue":0,"endValue":65,"color":"#1e90ff","innerRadius":"80%"}]}],"type":"gauge"},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":[],"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":null},"evals":[]}</script></p>
+</div>
+<div id="main-and-creditsposition" class="section level2">
+<h2>main and creditsPosition</h2>
+<pre class="r"><code>amSolidGauge(x = 65, main = &quot;My Gauge&quot;,
+        mainColor = &quot;#68838B&quot;, mainSize = 25, creditsPosition = &quot;top-right&quot;)
+#or
+amSolidGauge(x = 65) %&gt;&gt;% 
+  amOptions( main = &quot;My Gauge&quot;,
+        mainColor = &quot;#68838B&quot;, mainSize = 25, creditsPosition = &quot;top-right&quot;)</code></pre>
+<p><div id="htmlwidget-5833" style="width:40%;height:480px;" class="ramcharts_base"></div>
+<script type="application/json" data-for="htmlwidget-5833">{"x":{"chartData":{"startValue":0,"endValue":100,"valueInterval":100,"labelsEnabled":false,"axes":[{"axisAlpha":1,"startAngle":0,"endAngle":360,"startValue":0,"endValue":100,"bottomText":"65 ","bottomTextYOffset":-110,"bottomTextFontSize":20,"tickAlpha":0,"axisColor":"#c1cdcd","labelsEnabled":false,"bands":[{"alpha":1,"startValue":0,"endValue":100,"color":"#e0eeee","innerRadius":"80%"},{"alpha":1,"startValue":0,"endValue":65,"color":"#1e90ff","innerRadius":"80%"}]}],"creditsPosition":"top-right","titles":[{"color":"#68838B","text":"My Gauge","size":25}],"type":"gauge"},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":[],"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":null},"evals":[]}</script></p>
+</div>
+
+
+  </div><!-- end of main column -->
+  
+  <div class="col-xs-1 col-md-1" id="logo">
+    <a href="https://github.com/DataKnowledge/rAmCharts.git">
+      <img  src="www/img/github.png" title="View on Github" id="img-github"/>
+    </a>
+  </div>
+  
+  <script src="./www/js/navbar.js"> </script>
+  <script src="./www/js/logo.js"> </script>
+  <script src="./www/js/toggle.js"> </script>
+</div><!-- end of main row -->
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+$(document).ready(function () {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+});
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

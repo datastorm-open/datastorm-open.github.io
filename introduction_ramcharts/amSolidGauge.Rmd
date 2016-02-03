@@ -1,0 +1,152 @@
+---
+pagetitle: rAmCharts - amSolidGauge
+---
+
+```{r,echo=FALSE, message=FALSE}
+require(package = "rAmCharts", quietly = TRUE)
+require(package = "pipeR", quietly = TRUE)
+```
+
+<h1>rAmCharts - amSolidGauge</h1>
+
+## Parameters
+
+* __x__: numeric, equal to the value for which the solid gauge is desired.
+* __min__: a numeric, minimum possible value.
+* __max__: a numeric, maximum possible value. 
+* __type__: a character, type of gauge : "full" or "semi".
+* __width__: a numeric,  width of the gauge.
+* __color__: a character, hexadecimal color value or a vector of colors. 
+* __text__: a character, text to add to the printed value. 
+* __textSize__: a numeric, size of text.
+* __...__: other parameters called in amOptions.
+
+## Reference example
+
+```{r, echo = TRUE, eval = FALSE}
+amSolidGauge(x = 65)
+```
+```{r, echo = FALSE, eval = TRUE}
+amSolidGauge(x = 65) %>>% plot(width = "40%")
+```
+
+## Change min and max values
+```{r, echo = TRUE, eval = FALSE}
+amSolidGauge(x = 65, min = 0, max = 200)
+```
+```{r, echo = FALSE, eval = TRUE}
+amSolidGauge(x = 65, min = 0, max = 200) %>>% plot(width = "40%")
+```
+
+## Semi Solid Gauge
+```{r, echo = TRUE, eval = FALSE}
+amSolidGauge(x = 65, type = "semi")
+```
+```{r, echo = FALSE, eval = TRUE}
+amSolidGauge(x = 65, type = "semi") %>>% plot(width = "40%")
+```
+
+## Change width
+```{r, echo = TRUE, eval = FALSE}
+amSolidGauge(x = 65, width = 50)
+```
+```{r, echo = FALSE, eval = TRUE}
+amSolidGauge(x = 65, width = 50) %>>% plot(width = "40%")
+```
+
+## Change color
+```{r, echo = TRUE, eval = FALSE}
+amSolidGauge(x = 65, color = "#2F4F4F")
+```
+```{r, echo = FALSE, eval = TRUE}
+amSolidGauge(x = 65, color = "#2F4F4F") %>>% plot(width = "40%")
+```
+
+## Put a color scale
+
+```{r, echo = TRUE, eval = FALSE}
+      amSolidGauge(x = 10, color = c("#00ff00", "#ffd700", "#ff0000"))
+      amSolidGauge(x = 35, color = c("#00ff00", "#ffd700", "#ff0000"))
+      amSolidGauge(x = 70, color = c("#00ff00", "#ffd700", "#ff0000"))
+      amSolidGauge(x = 90, color = c("#00ff00", "#ffd700", "#ff0000"))
+```
+
+<div class="row">
+  <div class="col-xs-12 col-md-6">
+    ```{r, echo = FALSE, eval = TRUE}
+      amSolidGauge(x = 10, color = c("#00ff00", "#ffd700", "#ff0000")) %>>% plot(width = "40%")
+    ```
+  </div>
+  <div class="col-xs-12 col-md-6">
+    ```{r, echo = FALSE, eval = TRUE}
+      amSolidGauge(x = 35, color = c("#00ff00", "#ffd700", "#ff0000")) %>>% plot(width = "40%")
+    ```
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12 col-md-6">
+    ```{r, echo = FALSE, eval = TRUE}
+      amSolidGauge(x = 70, color = c("#00ff00", "#ffd700", "#ff0000")) %>>% plot(width = "40%")
+    ```
+  </div>
+  <div class="col-xs-12 col-md-6">
+    ```{r, echo = FALSE, eval = TRUE}
+      amSolidGauge(x = 90, color = c("#00ff00", "#ffd700", "#ff0000")) %>>% plot(width = "40%")
+    ```
+  </div>
+</div>
+
+## Add some text to the printed value
+```{r, echo = TRUE, eval = FALSE}
+amSolidGauge(x = 65, text = "%")
+```
+```{r, echo = FALSE, eval = TRUE}
+amSolidGauge(x = 65, text = "%") %>>% plot(width = "40%")
+```
+
+## Modify textSize value
+```{r, echo = TRUE, eval = FALSE}
+amSolidGauge(x = 65, text = "%", textSize = 50)
+```
+```{r, echo = FALSE, eval = TRUE}
+amSolidGauge(x = 65, text = "%", textSize = 50) %>>% plot(width = "40%")
+```
+
+<h2 class="partdivtitle">amOptions</h2>
+
+## export
+```{r, echo = TRUE, eval = FALSE}
+amSolidGauge(x = 65, export = TRUE)
+#or
+amSolidGauge(x = 65) %>>% 
+  amOptions(export = TRUE)
+```
+```{r, echo = FALSE}
+amSolidGauge(x = 65, export = TRUE)  %>>% plot(width = "40%")
+```
+
+## exportFormat
+```{r, echo = TRUE, eval = FALSE}
+amSolidGauge(x = 65, export = TRUE, exportFormat = "JPG")
+#or
+amSolidGauge(x = 65) %>>% 
+  amOptions(export = TRUE, exportFormat = "JPG")
+```
+```{r, echo = FALSE}
+amSolidGauge(x = 65, export = TRUE, exportFormat = "JPG")  %>>% plot(width = "40%")
+```
+
+## main and creditsPosition
+```{r, echo = TRUE, eval = FALSE}
+amSolidGauge(x = 65, main = "My Gauge",
+        mainColor = "#68838B", mainSize = 25, creditsPosition = "top-right")
+#or
+amSolidGauge(x = 65) %>>% 
+  amOptions( main = "My Gauge",
+        mainColor = "#68838B", mainSize = 25, creditsPosition = "top-right")
+```
+```{r, echo = FALSE}
+amSolidGauge(x = 65, 
+       main = "My Gauge",
+        mainColor = "#68838B", mainSize = 25, creditsPosition = "top-right")  %>>% plot(width = "40%")
+```

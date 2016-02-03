@@ -102,12 +102,12 @@ amAngularGauge(x = 25, main = "My Gauge",
         mainColor = "#68838B", mainSize = 25, creditsPosition = "top-right")
 #or
 amAngularGauge(x = 25) %>>% 
-  amOptions( main = "My Pie",
+  amOptions( main = "My Gauge",
         mainColor = "#68838B", mainSize = 25, creditsPosition = "top-right")
 ```
 ```{r, echo = FALSE}
 amAngularGauge(x = 25, 
-       main = "My Pie",
+       main = "My Gauge",
         mainColor = "#68838B", mainSize = 25, creditsPosition = "top-right")  %>>% plot(width = "40%")
 ```
 
