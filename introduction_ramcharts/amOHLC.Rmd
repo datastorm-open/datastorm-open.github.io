@@ -7,6 +7,8 @@ require(package = "rAmCharts", quietly = TRUE)
 require(package = "pipeR", quietly = TRUE)
 ```
 
+<h1>rAmCharts - amOHLC</h1>
+
 ## Parameters
 
 * __data__: a dataframe with at least 5 columns: category, open (numeric), close (numeric), low (numeric), high (numeric). 
@@ -29,115 +31,95 @@ head(data_candleStick2)
 ## Reference example
 
 ```{r}
-amOHLC(data = data_candleStick2) %>>% 
-  setChartCursor()
+amOHLC(data = data_candleStick2, labelRotation = -45)
 ```
 
-<h2 class="partdivtitle"> Change colors </h2>
+## Change colors
 ```{r}
-amOHLC(data = data_candleStick2, positiveColor = "black", negativeColor = "green") %>>% 
-  setChartCursor()
+amOHLC(data = data_candleStick2, labelRotation = -45, positiveColor = "black", negativeColor = "green")
 ```
 
-<h2 class="partdivtitle"> Naming axis </h2>
+## Naming axis
 ```{r}
-amOHLC(data = data_candleStick2, xlab = "categories", ylab = "values") %>>% 
-  setChartCursor()
+amOHLC(data = data_candleStick2, labelRotation = -45, xlab = "categories", ylab = "values")
 ```
 
-<h2 class="partdivtitle"> Rotate x axis labels </h2>
+## Rotate x axis labels
 ```{r}
-amOHLC(data = data_candleStick2, labelRotation = 90) %>>% 
-  setChartCursor()
+amOHLC(data = data_candleStick2, labelRotation = 90)
 ```
 
-<h2 class="partdivtitle"> Change names </h2>
+## Change names
 ```{r}
-amOHLC(data = data_candleStick2, names = c("min", "begin", "end", "max")) %>>% 
-  setChartCursor()
+amOHLC(data = data_candleStick2, labelRotation = -45, names = c("min", "begin", "end", "max"))
 ```
 
-<h2 class="partdivtitle"> Horizontal chart </h2>
+## Horizontal chart
 ```{r}
-amOHLC(data = data_candleStick2, horiz = TRUE) %>>% 
-  setChartCursor()
+amOHLC(data = data_candleStick2, labelRotation = -45, horiz = TRUE)
 ```
 
-<h2 class="partdivtitle"> Parse dates </h2>
+## Parse dates
 ```{r}
-amOHLC(data = data_candleStick2, dataDateFormat = "YYYY-MM-DD") %>>% 
-  setChartCursor()
+amOHLC(data = data_candleStick2, labelRotation = -45, dataDateFormat = "YYYY-MM-DD")
 ```
 
-<h2 class="partdivtitle"> Data over months </h2>
+## Data over months
 ```{r}
 data_candleStick2$category <- c("2015-01-01", "2015-02-01", "2015-03-01",
                                 "2015-04-01", "2015-05-01", "2015-06-01",
                                 "2015-07-01", "2015-08-01", "2015-09-01",
                                 "2015-10-01", "2015-11-01", "2015-12-01")
 
-amOHLC(data = data_candleStick2, dataDateFormat = "YYYY-MM-DD", minPeriod = "MM") %>>% 
-  setChartCursor()
+amOHLC(data = data_candleStick2, labelRotation = -45, dataDateFormat = "YYYY-MM-DD", minPeriod = "MM")
 ```
 
-<h2 class="amOptions">amOptions</h2>
+<h2 class="partdivtitle">amOptions</h2>
 
-<h2 class="partdivtitle">export</h2>
+## export
 ```{r, echo = TRUE, eval = FALSE}
-amOHLC(data = data_candleStick2, export = TRUE) %>>% 
-  setChartCursor()
+amOHLC(data = data_candleStick2, labelRotation = -45, export = TRUE)
 #or
-amOHLC(data = data_candleStick2) %>>% 
-  amOptions(export = TRUE) %>>%
-  setChartCursor()
+amOHLC(data = data_candleStick2, labelRotation = -45) %>>% 
+  amOptions(export = TRUE)
 ```
 ```{r, echo = FALSE}
-amOHLC(data = data_candleStick2, export = TRUE) %>>% 
-  setChartCursor()
+amOHLC(data = data_candleStick2, labelRotation = -45, export = TRUE)
 ```
   
-<h2 class="partdivtitle">exportFormat</h2>
+## exportFormat
 ```{r, echo = TRUE, eval = FALSE}
-amOHLC(data = data_candleStick2, export = TRUE, exportFormat = "CSV") %>>% 
-  setChartCursor()
+amOHLC(data = data_candleStick2, labelRotation = -45, export = TRUE, exportFormat = "JPG")
 #or
-amOHLC(data = data_candleStick2) %>>% 
-  amOptions(export = TRUE, exportFormat = "CSV") %>>% 
-  setChartCursor()
+amOHLC(data = data_candleStick2, labelRotation = -45) %>>% 
+  amOptions(export = TRUE, exportFormat = "JPG")
 ```
 ```{r, echo = FALSE}
-amOHLC(data = data_candleStick2, export = TRUE, exportFormat = "CSV") %>>% 
-  setChartCursor()
+amOHLC(data = data_candleStick2, labelRotation = -45, export = TRUE, exportFormat = "JPG")
 ```
 
-<h2 class="partdivtitle">main and creditsPosition</h2>
+## main and creditsPosition
 ```{r, echo = TRUE, eval = FALSE}
-amOHLC(data = data_candleStick2, main = "My Candlestick",
-        mainColor = "#00FF00", mainSize = 25, creditsPosition = "top-right") %>>% 
-  setChartCursor()
+amOHLC(data = data_candleStick2, labelRotation = -45, main = "My Candlestick",
+        mainColor = "#00FF00", mainSize = 25, creditsPosition = "top-right")
 #or
-amOHLC(data = data_candleStick2) %>>% 
+amOHLC(data = data_candleStick2, labelRotation = -45) %>>% 
   amOptions( main = "My Candlestick",
-        mainColor = "#00FF00", mainSize = 25, creditsPosition = "top-right") %>>% 
-  setChartCursor()
+        mainColor = "#00FF00", mainSize = 25, creditsPosition = "top-right")
 ```
 ```{r, echo = FALSE}
-amOHLC(data = data_candleStick2, 
+amOHLC(data = data_candleStick2, labelRotation = -45, 
        main = "My Candlestick",
-        mainColor = "#00FF00", mainSize = 25, creditsPosition = "top-right") %>>% 
-  setChartCursor()
+        mainColor = "#00FF00", mainSize = 25, creditsPosition = "top-right")
 ```
 
-<h2 class="partdivtitle">theme</h2>
+## theme
 ```{r, echo = TRUE, eval = FALSE}
-amOHLC(data = data_candleStick2, main = "My Candlestick", theme = "patterns") %>>% 
-  setChartCursor()
+amOHLC(data = data_candleStick2, labelRotation = -45, main = "My Candlestick", theme = "patterns")
 #or
-amOHLC(data = data_candleStick2) %>>% 
-  amOptions(theme = "patterns") %>>% 
-  setChartCursor()
+amOHLC(data = data_candleStick2, labelRotation = -45) %>>% 
+  amOptions(theme = "patterns")
 ```
 ```{r, echo = FALSE}
-amOHLC(data = data_candleStick2, theme = "patterns") %>>% 
-  setChartCursor()
+amOHLC(data = data_candleStick2, labelRotation = -45, theme = "patterns")
 ```
