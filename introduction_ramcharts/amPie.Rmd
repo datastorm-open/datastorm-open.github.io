@@ -84,13 +84,13 @@ amPie(data = data_pie, export = TRUE)
 
 ## exportFormat
 ```{r, echo = TRUE, eval = FALSE}
-amPie(data = data_pie, export = TRUE, exportFormat = "CSV")
+amPie(data = data_pie, export = TRUE, exportFormat = "JPG")
 #or
 amPie(data = data_pie) %>>% 
-  amOptions(export = TRUE, exportFormat = "CSV")
+  amOptions(export = TRUE, exportFormat = "JPG")
 ```
 ```{r, echo = FALSE}
-amPie(data = data_pie, export = TRUE, exportFormat = "CSV")
+amPie(data = data_pie, export = TRUE, exportFormat = "JPG")
 ```
 
 ## main and creditsPosition

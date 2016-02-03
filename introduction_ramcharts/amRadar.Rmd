@@ -111,14 +111,14 @@ amRadar(data = data,  pch = "bubble", backTransparency = 0,
 
 ## exportFormat
 ```{r, echo = TRUE, eval = FALSE}
-amRadar(data = data,  pch = "bubble", backTransparency = 0, export = TRUE, exportFormat = "CSV")
+amRadar(data = data,  pch = "bubble", backTransparency = 0, export = TRUE, exportFormat = "JPG")
 #or
 amRadar(data = data,  pch = "bubble", backTransparency = 0) %>>% 
-  amOptions(export = TRUE, exportFormat = "CSV")
+  amOptions(export = TRUE, exportFormat = "JPG")
 ```
 ```{r, echo = FALSE}
 amRadar(data = data,  pch = "bubble", backTransparency = 0, 
-        export = TRUE, exportFormat = "CSV")
+        export = TRUE, exportFormat = "JPG")
 ```
 
 ## main and creditsPosition
