@@ -33,7 +33,7 @@ amAngularGauge(x = 25)
 amAngularGauge(x = 25) %>>% plot(width = "50%")
 ```
 
-<h2 class="partdivtitle"> Add colored bands </h2>
+## Add colored bands
 ```{r, echo = TRUE, eval = FALSE}
 bands = data.frame(start = c(0, 40, 60), end = c(40, 60, 100), 
                    color = c("#00CC00", "#ffac29", "#ea3838"),
@@ -47,7 +47,7 @@ bands = data.frame(start = c(0, 40, 60), end = c(40, 60, 100),
 amAngularGauge(x = 25, bands = bands) %>>% plot(width = "50%")
 ```
 
-<h2 class="partdivtitle"> Add text </h2>
+## Add text
 ```{r, echo = TRUE, eval = FALSE}
 amAngularGauge(x = 25, text = "km/h")
 ```
@@ -55,7 +55,7 @@ amAngularGauge(x = 25, text = "km/h")
 amAngularGauge(x = 25, text = "km/h") %>>% plot(width = "50%")
 ```
 
-<h2 class="partdivtitle"> Two axis </h2>
+## Two axis
 ```{r, echo = TRUE, eval = FALSE}
 bands2 = data.frame(start = c(100, 130, 170), end = c(130, 170, 200), 
                    color = c("#00CC00", "#ffac29", "#ea3838"),
@@ -71,9 +71,10 @@ amAngularGauge(x = 25, start = 0, end = 100, bands = bands,
                secondAxe = TRUE, start2 = 100, end2 = 200, bands2 = bands2)  %>>% plot(width = "50%")
 ```
 
-<h2 class="amOptions">amOptions</h2>
 
-<h2 class="partdivtitle">export</h2>
+<h2 class="partdivtitle">amOptions</h2>
+
+## export
 ```{r, echo = TRUE, eval = FALSE}
 amAngularGauge(x = 25, export = TRUE)
 #or
@@ -84,7 +85,7 @@ amAngularGauge(x = 25) %>>%
 amAngularGauge(x = 25, export = TRUE)  %>>% plot(width = "50%")
 ```
 
-<h2 class="partdivtitle">exportFormat</h2>
+## exportFormat
 ```{r, echo = TRUE, eval = FALSE}
 amAngularGauge(x = 25, export = TRUE, exportFormat = "JPG")
 #or
@@ -95,7 +96,7 @@ amAngularGauge(x = 25) %>>%
 amAngularGauge(x = 25, export = TRUE, exportFormat = "JPG")  %>>% plot(width = "50%")
 ```
 
-<h2 class="partdivtitle">main and creditsPosition</h2>
+## main and creditsPosition
 ```{r, echo = TRUE, eval = FALSE}
 amAngularGauge(x = 25, main = "My Gauge",
         mainColor = "#00FF00", mainSize = 25, creditsPosition = "top-right")
@@ -110,7 +111,7 @@ amAngularGauge(x = 25,
         mainColor = "#00FF00", mainSize = 25, creditsPosition = "top-right")  %>>% plot(width = "50%")
 ```
 
-<h2 class="partdivtitle">theme</h2>
+## theme
 ```{r, echo = TRUE, eval = FALSE}
 amAngularGauge(x = 25, main = "My Gauge", theme = "patterns")
 #or
