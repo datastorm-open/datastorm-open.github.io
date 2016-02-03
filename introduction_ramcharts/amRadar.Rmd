@@ -7,6 +7,8 @@ require(package = "rAmCharts", quietly = TRUE)
 require(package = "pipeR", quietly = TRUE)
 ```
 
+<h1>rAmCharts - amRadar</h1>
+
 ## Parameters
   
 
@@ -27,83 +29,55 @@ data <- data.frame(label = c("A", "Z", "E", "R", "T"),
                    Product3 = c(1,1,2,2,4))
 ```
 
-<div class="row">
-  <div class="col-xs-12 col-md-6"><h2 class="partdivtitle"> Basic exemple </h2>
+## Basic exemple
 ```{r}
 amRadar(data = data)
 ```
-  </div>
-  
-  <div class="col-xs-12 col-md-6"><h2 class="partdivtitle">Change color </h2>
+
+## Change color
 ```{r}
 amRadar(data = data, col = c("#0000FF", "#00FF00", "#FF0000"))
 ```
-  </div>
-  
-</div>
 
-<h2 class="partdivtitle">backTransparency</h2>
+## backTransparency
 
-<div class="row">
-  <div class="col-xs-12 col-md-6">
 ```{r}
 amRadar(data = data, backTransparency = 1)
 ```
-  </div>
-  <div class="col-xs-12 col-md-6">
+ 
 ```{r}
 amRadar(data = data, backTransparency = c(0, 0.4, 0.6))
 ```
-  </div>
-</div>
 
-<h2 class="partdivtitle">type</h2>
-
-<div class="row">
-  <div class="col-xs-12 col-md-6">
+## type
 ```{r}
 amRadar(data = data, type = "circles")
 ```
 
-  </div>
-  <div class="col-xs-12 col-md-6">
 ```{r}
 amRadar(data = data, type = "polygons") #default
 ```
-  </div>
-</div>
 
-<h2 class="partdivtitle">pch</h2>
-<div class="row">
-  <div class="col-xs-12 col-md-3">
+## pch
 ```{r}
 amRadar(data = data,  pch = "triangleRight", backTransparency = 0)
 ```
-  </div>
-  
-  <div class="col-xs-12 col-md-3">
+
 ```{r}
 amRadar(data = data, pch = "diamond", backTransparency = 0) 
 ```
-  </div>
-  
-  <div class="col-xs-12 col-md-3">
+
 ```{r}
 amRadar(data = data,  pch = "yError", backTransparency = 0)
 ```
-  </div>
-  
-  <div class="col-xs-12 col-md-3">
+
 ```{r}
 amRadar(data = data,  pch = "bubble", backTransparency = 0)
 ```
-  </div>
-</div>
 
-<h2 class="amOptions">amOptions</h2>
+<h2 class="partdivtitle">amOptions</h2>
 
-<div class="row">
-  <div class="col-xs-12 col-md-6"><h2 class="partdivtitle">legend</h2>
+## legend
 ```{r, echo = TRUE, eval = FALSE}
 amRadar(data = data,  pch = "bubble", backTransparency = 0, legend = TRUE)
 #or
@@ -112,8 +86,8 @@ amRadar(data = data,  pch = "bubble", backTransparency = 0) %>>% amOptions(legen
 ```{r, echo = FALSE}
 amRadar(data = data,  pch = "bubble", backTransparency = 0, legend = TRUE)
 ```
-  </div>
-  <div class="col-xs-12 col-md-6"><h2 class="partdivtitle">legendPosition</h2>
+
+## legendPosition
 ```{r, echo = TRUE, eval = FALSE}
 amRadar(data = data,  pch = "bubble", backTransparency = 0, legend = TRUE, legendPosition = "left")
 #or
@@ -122,11 +96,8 @@ amRadar(data = data,  pch = "bubble", backTransparency = 0) %>>% amOptions(legen
 ```{r, echo = FALSE}
 amRadar(data = data,  pch = "bubble", backTransparency = 0, legend = TRUE, legendPosition = "left")
 ```
-  </div>
-</div>
 
-<div class="row">
-  <div class="col-xs-12 col-md-6"><h2 class="partdivtitle">export</h2>
+## export
 ```{r, echo = TRUE, eval = FALSE}
 amRadar(data = data,  pch = "bubble", backTransparency = 0, export = TRUE)
 #or
@@ -137,8 +108,8 @@ amRadar(data = data,  pch = "bubble", backTransparency = 0) %>>%
 amRadar(data = data,  pch = "bubble", backTransparency = 0, 
         export = TRUE)
 ```
-  </div>
-  <div class="col-xs-12 col-md-6"><h2 class="partdivtitle">exportFormat</h2>
+
+## exportFormat
 ```{r, echo = TRUE, eval = FALSE}
 amRadar(data = data,  pch = "bubble", backTransparency = 0, export = TRUE, exportFormat = "CSV")
 #or
@@ -149,13 +120,8 @@ amRadar(data = data,  pch = "bubble", backTransparency = 0) %>>%
 amRadar(data = data,  pch = "bubble", backTransparency = 0, 
         export = TRUE, exportFormat = "CSV")
 ```
-  </div>
-</div>
 
-
-
-<div class="row">
-  <div class="col-xs-12 col-md-6"><h2 class="partdivtitle">main and creditsPosition</h2>
+## main and creditsPosition
 ```{r, echo = TRUE, eval = FALSE}
 amRadar(data = data,  pch = "bubble", backTransparency = 0, main = "My Radar",
         mainColor = "#00FF00", mainSize = 25, creditsPosition = "top-right")
@@ -169,8 +135,8 @@ amRadar(data = data,  pch = "bubble", backTransparency = 0,
        main = "My Radar",
         mainColor = "#00FF00", mainSize = 25, creditsPosition = "top-right")
 ```
-  </div>
-  <div class="col-xs-12 col-md-6"><h2 class="partdivtitle">theme</h2>
+
+## theme
 ```{r, echo = TRUE, eval = FALSE}
 amRadar(data = data,  pch = "bubble", backTransparency = 1, main = "My Radar", theme = "patterns")
 #or
@@ -180,5 +146,3 @@ amRadar(data = data,  pch = "bubble", backTransparency = 1) %>>%
 ```{r, echo = FALSE}
 amRadar(data = data,  pch = "bubble", backTransparency = 1, theme = "patterns")
 ```
-  </div>
-</div>
