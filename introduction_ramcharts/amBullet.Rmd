@@ -89,13 +89,13 @@ amBullet(value = 65, export = TRUE) %>>% plot(height = "150px", width = "60%")
 
 ## exportFormat 
 ```{r, echo = TRUE, eval = FALSE}
-amBullet(value = 65, export = TRUE, exportFormat = "CSV")
+amBullet(value = 65, export = TRUE, exportFormat = "JPG")
 #or
 amBullet(value = 65) %>>% 
-  amOptions(export = TRUE, exportFormat = "CSV")
+  amOptions(export = TRUE, exportFormat = "JPG")
 ```
 ```{r, echo = FALSE}
-amBullet(value = 65, export = TRUE, exportFormat = "CSV") %>>% plot(height = "150px", width = "60%")
+amBullet(value = 65, export = TRUE, exportFormat = "JPG") %>>% plot(height = "150px", width = "60%")
 ```
 
 ## main and creditsPosition</h2>
