@@ -7,6 +7,8 @@ require(package = "rAmCharts", quietly = TRUE)
 require(package = "pipeR", quietly = TRUE)
 ```
 
+<h1>rAmCharts - amCandlestick</h1>
+
 ## Parameters
 
 * __data__: a dataframe with at least 5 columns: category, open (numeric), close (numeric), low (numeric), high (numeric). 
@@ -32,37 +34,37 @@ head(data_candleStick2)
 amCandlestick(data = data_candleStick2)
 ```
 
-<h2 class="partdivtitle"> Change colors </h2>
+## Change colors
 ```{r}
 amCandlestick(data = data_candleStick2, positiveColor = "black", negativeColor = "green")
 ```
 
-<h2 class="partdivtitle"> Naming axis </h2>
+## Naming axis
 ```{r}
 amCandlestick(data = data_candleStick2, xlab = "categories", ylab = "values")
 ```
 
-<h2 class="partdivtitle"> Rotate x axis labels </h2>
+## Rotate x axis labels
 ```{r}
 amCandlestick(data = data_candleStick2, labelRotation = 90)
 ```
 
-<h2 class="partdivtitle"> Change names </h2>
+## Change names
 ```{r}
 amCandlestick(data = data_candleStick2, names = c("min", "begin", "end", "max"))
 ```
 
-<h2 class="partdivtitle"> Horizontal chart </h2>
+## Horizontal chart
 ```{r}
 amCandlestick(data = data_candleStick2, horiz = TRUE)
 ```
 
-<h2 class="partdivtitle"> Parse dates </h2>
+## Parse dates
 ```{r}
 amCandlestick(data = data_candleStick2, dataDateFormat = "YYYY-MM-DD")
 ```
 
-<h2 class="partdivtitle"> Data over months </h2>
+## Data over months
 ```{r}
 data_candleStick2$category <- c("2015-01-01", "2015-02-01", "2015-03-01",
                                 "2015-04-01", "2015-05-01", "2015-06-01",
@@ -72,9 +74,9 @@ data_candleStick2$category <- c("2015-01-01", "2015-02-01", "2015-03-01",
 amCandlestick(data = data_candleStick2, dataDateFormat = "YYYY-MM-DD", minPeriod = "MM")
 ```
 
-<h2 class="amOptions">amOptions</h2>
+<h2 class="partdivtitle">amOptions</h2>
 
-<h2 class="partdivtitle">legend</h2>
+## legend
 ```{r, echo = TRUE, eval = FALSE}
 amCandlestick(data = data_candleStick2, legend = TRUE)
 #or
@@ -84,7 +86,7 @@ amCandlestick(data = data_candleStick2) %>>% amOptions(legend = TRUE)
 amCandlestick(data = data_candleStick2, legend = TRUE)
 ```
 
-<h2 class="partdivtitle">legendPosition</h2>
+## legendPosition
 ```{r, echo = TRUE, eval = FALSE}
 amCandlestick(data = data_candleStick2, legend = TRUE, legendPosition = "left")
 #or
@@ -94,7 +96,7 @@ amCandlestick(data = data_candleStick2) %>>% amOptions(legend = TRUE, legendPosi
 amCandlestick(data = data_candleStick2, legend = TRUE, legendPosition = "left")
 ```
 
-<h2 class="partdivtitle">export</h2>
+## export
 ```{r, echo = TRUE, eval = FALSE}
 amCandlestick(data = data_candleStick2, export = TRUE)
 #or
@@ -105,18 +107,18 @@ amCandlestick(data = data_candleStick2) %>>%
 amCandlestick(data = data_candleStick2, export = TRUE)
 ```
   
-<h2 class="partdivtitle">exportFormat</h2>
+## exportFormat
 ```{r, echo = TRUE, eval = FALSE}
-amCandlestick(data = data_candleStick2, export = TRUE, exportFormat = "CSV")
+amCandlestick(data = data_candleStick2, export = TRUE, exportFormat = "JPG")
 #or
 amCandlestick(data = data_candleStick2) %>>% 
-  amOptions(export = TRUE, exportFormat = "CSV")
+  amOptions(export = TRUE, exportFormat = "JPG")
 ```
 ```{r, echo = FALSE}
-amCandlestick(data = data_candleStick2, export = TRUE, exportFormat = "CSV")
+amCandlestick(data = data_candleStick2, export = TRUE, exportFormat = "JPG")
 ```
 
-<h2 class="partdivtitle">main and creditsPosition</h2>
+## main and creditsPosition
 ```{r, echo = TRUE, eval = FALSE}
 amCandlestick(data = data_candleStick2, main = "My Candlestick",
         mainColor = "#00FF00", mainSize = 25, creditsPosition = "top-right")
