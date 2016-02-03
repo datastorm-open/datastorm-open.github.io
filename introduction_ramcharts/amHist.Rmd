@@ -7,6 +7,8 @@ require(package = "rAmCharts", quietly = TRUE)
 require(package = "pipeR", quietly = TRUE)
 ```
 
+<h1>rAmCharts - amHist</h1>
+
 ## Parameters
 
 * __x__: a vector of values for which the histogram is desired.
@@ -31,44 +33,32 @@ head(data_hist)
 amHist(x = data_hist)
 ```
 
-<div class="row">
-  <div class="col-xs-12 col-md-6"><h2 class="partdivtitle"> Filling color </h2>
+## Filling color
 ```{r}
 amHist(x = data_hist, col = "#367fa9")
 ```
-  </div>
-  
-  <div class="col-xs-12 col-md-6"><h2 class="partdivtitle"> Border color </h2>
+
+## Border color
 ```{r}
 amHist(x = data_hist, border = "#367fa9")
 ```
-  </div>
-</div>
 
-<div class="row">
-  <div class="col-xs-12 col-md-6"><h2 class="partdivtitle"> View frequency </h2>
+## View frequency
 ```{r}
 amHist(x = data_hist, freq = FALSE)
 ```
-  </div>
-  
-  <div class="col-xs-12 col-md-6"><h2 class="partdivtitle"> Labels </h2>
+
+## Labels
 ```{r}
 amHist(x = data_hist, xlab = "xlab", ylab = "ylab")
 ```
-  </div>
-</div>
 
-<div class="row">
-  <div class="col-xs-12 col-md-6"><h2 class="partdivtitle"> Add label on the top </h2>
+## Add label on the top
 ```{r}
 amHist(x = data_hist, labels = TRUE)
 ```
-  </div>
-  
-  <div class="col-xs-12 col-md-6"><h2 class="partdivtitle"> Set ylim </h2>
+
+## Set ylim
 ```{r}
 amHist(x = data_hist, ylim = c(0,.8), freq = FALSE)
 ```
-  </div>
-</div>

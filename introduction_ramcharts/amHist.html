@@ -12,18 +12,17 @@
 
 <title>rAmCharts - amHist</title>
 
-<script src="libs/jquery/jquery.min.js"></script>
+<script src="libs/jquery-1.11.0/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="libs/bootstrap/css/cosmo.min.css" rel="stylesheet" />
-<script src="libs/bootstrap/js/bootstrap.min.js"></script>
-<script src="libs/bootstrap/shim/html5shiv.min.js"></script>
-<script src="libs/bootstrap/shim/respond.min.js"></script>
-<script src="libs/htmlwidgets/htmlwidgets.js"></script>
-<script src="libs/amcharts/amcharts.js"></script>
-<script src="libs/ramcharts_base-binding/ramcharts_base.js"></script>
-<script src="libs/amcharts/serial.js"></script>
-<script src="libs/amcharts_themes_light/light.js"></script>
-<link href="libs/amcharts_style/style.css" rel="stylesheet" />
+<link href="libs/bootstrap-3.3.1/css/cosmo.min.css" rel="stylesheet" />
+<script src="libs/bootstrap-3.3.1/js/bootstrap.min.js"></script>
+<script src="libs/bootstrap-3.3.1/shim/html5shiv.min.js"></script>
+<script src="libs/bootstrap-3.3.1/shim/respond.min.js"></script>
+<script src="libs/htmlwidgets-0.5/htmlwidgets.js"></script>
+<script src="libs/amcharts-3.18.2/amcharts.js"></script>
+<script src="libs/ramcharts_base-binding-1.1.3/ramcharts_base.js"></script>
+<script src="libs/amcharts_typeserial-3.18.2/serial.js"></script>
+<script src="libs/amcharts_themes_light-3.18.2/light.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Raleway:100' rel='stylesheet' type='text/css'>
@@ -48,7 +47,7 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
 </script>
 
 
-<link rel="stylesheet" href="www/css/styles.css" type="text/css" />
+<link rel="stylesheet" href="www\css\styles.css" type="text/css" />
 
 </head>
 
@@ -122,6 +121,9 @@ img {
 
 
 
+<h1>
+rAmCharts - amHist
+</h1>
 <div id="parameters" class="section level2">
 <h2>Parameters</h2>
 <ul>
@@ -143,62 +145,44 @@ head(data_hist)</code></pre>
 <div id="reference-example" class="section level2">
 <h2>Reference example</h2>
 <pre class="r"><code>amHist(x = data_hist)</code></pre>
-<p><div id="htmlwidget-9276" style="width:100%;height:500px;" class="ramcharts_base"></div>
-<script type="application/json" data-for="htmlwidget-9276">{"x":{"chartData":{"columnSpacing":0,"columnWidth":1,"fillAlphas":1,"lineAlpha":1,"categoryAxis":{"title":"data_hist"},"categoryField":"x","creditsPosition":"bottom-right","dataProvider":[{"x":4.2,"y":5,"cut":"(from 4 to 4.5)","color":"gray"},{"x":4.8,"y":27,"cut":"(from 4.5 to 5)","color":"gray"},{"x":5.2,"y":27,"cut":"(from 5 to 5.5)","color":"gray"},{"x":5.8,"y":30,"cut":"(from 5.5 to 6)","color":"gray"},{"x":6.2,"y":31,"cut":"(from 6 to 6.5)","color":"gray"},{"x":6.8,"y":18,"cut":"(from 6.5 to 7)","color":"gray"},{"x":7.2,"y":6,"cut":"(from 7 to 7.5)","color":"gray"},{"x":7.8,"y":6,"cut":"(from 7.5 to 8)","color":"gray"}],"graphs":[{"fillAlphas":0.8,"lineAlpha":1,"fillColorsField":"color","lineColor":"gray","labelText":"","balloonText":"<b>[[value]]</b> <br/> [[cut]] ","type":"column","valueField":"y"},{"lineColor":"black","id":"graph-line","balloonText":"","type":"smoothedLine","valueField":"y"}],"theme":"light","type":"serial","valueAxes":[{"minimum":0,"maximum":32.55,"title":"Frequency"}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[]}</script></p>
-<div class="row">
-<div class="col-xs-12 col-md-6">
-<h2 class="partdivtitle">
-Filling color
-</h2>
+<p><div id="htmlwidget-2630" style="width:100%;height:500px;" class="ramcharts_base"></div>
+<script type="application/json" data-for="htmlwidget-2630">{"x":{"chartData":{"columnSpacing":0,"columnWidth":1,"fillAlphas":1,"lineAlpha":1,"categoryAxis":{"title":"data_hist"},"categoryField":"x","creditsPosition":"bottom-right","dataProvider":[{"x":4.2,"y":5,"cut":"(from 4 to 4.5)","color":"gray"},{"x":4.8,"y":27,"cut":"(from 4.5 to 5)","color":"gray"},{"x":5.2,"y":27,"cut":"(from 5 to 5.5)","color":"gray"},{"x":5.8,"y":30,"cut":"(from 5.5 to 6)","color":"gray"},{"x":6.2,"y":31,"cut":"(from 6 to 6.5)","color":"gray"},{"x":6.8,"y":18,"cut":"(from 6.5 to 7)","color":"gray"},{"x":7.2,"y":6,"cut":"(from 7 to 7.5)","color":"gray"},{"x":7.8,"y":6,"cut":"(from 7.5 to 8)","color":"gray"}],"graphs":[{"fillAlphas":0.8,"lineAlpha":1,"fillColorsField":"color","lineColor":"gray","labelText":"","balloonText":"<b>[[value]]</b> <br/> [[cut]] ","type":"column","valueField":"y"},{"lineColor":"black","id":"graph-line","balloonText":"","type":"smoothedLine","valueField":"y"}],"theme":"light","type":"serial","valueAxes":[{"minimum":0,"maximum":32.55,"title":"Frequency"}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[]}</script></p>
+</div>
+<div id="filling-color" class="section level2">
+<h2>Filling color</h2>
 <pre class="r"><code>amHist(x = data_hist, col = &quot;#367fa9&quot;)</code></pre>
-<div id="htmlwidget-56" style="width:100%;height:500px;" class="ramcharts_base"></div>
-<script type="application/json" data-for="htmlwidget-56">{"x":{"chartData":{"columnSpacing":0,"columnWidth":1,"fillAlphas":1,"lineAlpha":1,"categoryAxis":{"title":"data_hist"},"categoryField":"x","creditsPosition":"bottom-right","dataProvider":[{"x":4.2,"y":5,"cut":"(from 4 to 4.5)","color":"#367fa9"},{"x":4.8,"y":27,"cut":"(from 4.5 to 5)","color":"#367fa9"},{"x":5.2,"y":27,"cut":"(from 5 to 5.5)","color":"#367fa9"},{"x":5.8,"y":30,"cut":"(from 5.5 to 6)","color":"#367fa9"},{"x":6.2,"y":31,"cut":"(from 6 to 6.5)","color":"#367fa9"},{"x":6.8,"y":18,"cut":"(from 6.5 to 7)","color":"#367fa9"},{"x":7.2,"y":6,"cut":"(from 7 to 7.5)","color":"#367fa9"},{"x":7.8,"y":6,"cut":"(from 7.5 to 8)","color":"#367fa9"}],"graphs":[{"fillAlphas":0.8,"lineAlpha":1,"fillColorsField":"color","lineColor":"gray","labelText":"","balloonText":"<b>[[value]]</b> <br/> [[cut]] ","type":"column","valueField":"y"},{"lineColor":"black","id":"graph-line","balloonText":"","type":"smoothedLine","valueField":"y"}],"theme":"light","type":"serial","valueAxes":[{"minimum":0,"maximum":32.55,"title":"Frequency"}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[]}</script>
+<p><div id="htmlwidget-8833" style="width:100%;height:500px;" class="ramcharts_base"></div>
+<script type="application/json" data-for="htmlwidget-8833">{"x":{"chartData":{"columnSpacing":0,"columnWidth":1,"fillAlphas":1,"lineAlpha":1,"categoryAxis":{"title":"data_hist"},"categoryField":"x","creditsPosition":"bottom-right","dataProvider":[{"x":4.2,"y":5,"cut":"(from 4 to 4.5)","color":"#367fa9"},{"x":4.8,"y":27,"cut":"(from 4.5 to 5)","color":"#367fa9"},{"x":5.2,"y":27,"cut":"(from 5 to 5.5)","color":"#367fa9"},{"x":5.8,"y":30,"cut":"(from 5.5 to 6)","color":"#367fa9"},{"x":6.2,"y":31,"cut":"(from 6 to 6.5)","color":"#367fa9"},{"x":6.8,"y":18,"cut":"(from 6.5 to 7)","color":"#367fa9"},{"x":7.2,"y":6,"cut":"(from 7 to 7.5)","color":"#367fa9"},{"x":7.8,"y":6,"cut":"(from 7.5 to 8)","color":"#367fa9"}],"graphs":[{"fillAlphas":0.8,"lineAlpha":1,"fillColorsField":"color","lineColor":"gray","labelText":"","balloonText":"<b>[[value]]</b> <br/> [[cut]] ","type":"column","valueField":"y"},{"lineColor":"black","id":"graph-line","balloonText":"","type":"smoothedLine","valueField":"y"}],"theme":"light","type":"serial","valueAxes":[{"minimum":0,"maximum":32.55,"title":"Frequency"}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[]}</script></p>
 </div>
-<div class="col-xs-12 col-md-6">
-<h2 class="partdivtitle">
-Border color
-</h2>
+<div id="border-color" class="section level2">
+<h2>Border color</h2>
 <pre class="r"><code>amHist(x = data_hist, border = &quot;#367fa9&quot;)</code></pre>
-<div id="htmlwidget-8848" style="width:100%;height:500px;" class="ramcharts_base"></div>
-<script type="application/json" data-for="htmlwidget-8848">{"x":{"chartData":{"columnSpacing":0,"columnWidth":1,"fillAlphas":1,"lineAlpha":1,"categoryAxis":{"title":"data_hist"},"categoryField":"x","creditsPosition":"bottom-right","dataProvider":[{"x":4.2,"y":5,"cut":"(from 4 to 4.5)","color":"gray"},{"x":4.8,"y":27,"cut":"(from 4.5 to 5)","color":"gray"},{"x":5.2,"y":27,"cut":"(from 5 to 5.5)","color":"gray"},{"x":5.8,"y":30,"cut":"(from 5.5 to 6)","color":"gray"},{"x":6.2,"y":31,"cut":"(from 6 to 6.5)","color":"gray"},{"x":6.8,"y":18,"cut":"(from 6.5 to 7)","color":"gray"},{"x":7.2,"y":6,"cut":"(from 7 to 7.5)","color":"gray"},{"x":7.8,"y":6,"cut":"(from 7.5 to 8)","color":"gray"}],"graphs":[{"fillAlphas":0.8,"lineAlpha":1,"fillColorsField":"color","lineColor":"#367fa9","labelText":"","balloonText":"<b>[[value]]</b> <br/> [[cut]] ","type":"column","valueField":"y"},{"lineColor":"black","id":"graph-line","balloonText":"","type":"smoothedLine","valueField":"y"}],"theme":"light","type":"serial","valueAxes":[{"minimum":0,"maximum":32.55,"title":"Frequency"}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[]}</script>
+<p><div id="htmlwidget-7980" style="width:100%;height:500px;" class="ramcharts_base"></div>
+<script type="application/json" data-for="htmlwidget-7980">{"x":{"chartData":{"columnSpacing":0,"columnWidth":1,"fillAlphas":1,"lineAlpha":1,"categoryAxis":{"title":"data_hist"},"categoryField":"x","creditsPosition":"bottom-right","dataProvider":[{"x":4.2,"y":5,"cut":"(from 4 to 4.5)","color":"gray"},{"x":4.8,"y":27,"cut":"(from 4.5 to 5)","color":"gray"},{"x":5.2,"y":27,"cut":"(from 5 to 5.5)","color":"gray"},{"x":5.8,"y":30,"cut":"(from 5.5 to 6)","color":"gray"},{"x":6.2,"y":31,"cut":"(from 6 to 6.5)","color":"gray"},{"x":6.8,"y":18,"cut":"(from 6.5 to 7)","color":"gray"},{"x":7.2,"y":6,"cut":"(from 7 to 7.5)","color":"gray"},{"x":7.8,"y":6,"cut":"(from 7.5 to 8)","color":"gray"}],"graphs":[{"fillAlphas":0.8,"lineAlpha":1,"fillColorsField":"color","lineColor":"#367fa9","labelText":"","balloonText":"<b>[[value]]</b> <br/> [[cut]] ","type":"column","valueField":"y"},{"lineColor":"black","id":"graph-line","balloonText":"","type":"smoothedLine","valueField":"y"}],"theme":"light","type":"serial","valueAxes":[{"minimum":0,"maximum":32.55,"title":"Frequency"}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[]}</script></p>
 </div>
-</div>
-<div class="row">
-<div class="col-xs-12 col-md-6">
-<h2 class="partdivtitle">
-View frequency
-</h2>
+<div id="view-frequency" class="section level2">
+<h2>View frequency</h2>
 <pre class="r"><code>amHist(x = data_hist, freq = FALSE)</code></pre>
-<div id="htmlwidget-7375" style="width:100%;height:500px;" class="ramcharts_base"></div>
-<script type="application/json" data-for="htmlwidget-7375">{"x":{"chartData":{"columnSpacing":0,"columnWidth":1,"fillAlphas":1,"lineAlpha":1,"categoryAxis":{"title":"data_hist"},"categoryField":"x","creditsPosition":"bottom-right","dataProvider":[{"x":4.2,"y":0.067,"cut":"(from 4 to 4.5)","color":"gray"},{"x":4.8,"y":0.36,"cut":"(from 4.5 to 5)","color":"gray"},{"x":5.2,"y":0.36,"cut":"(from 5 to 5.5)","color":"gray"},{"x":5.8,"y":0.4,"cut":"(from 5.5 to 6)","color":"gray"},{"x":6.2,"y":0.413,"cut":"(from 6 to 6.5)","color":"gray"},{"x":6.8,"y":0.24,"cut":"(from 6.5 to 7)","color":"gray"},{"x":7.2,"y":0.08,"cut":"(from 7 to 7.5)","color":"gray"},{"x":7.8,"y":0.08,"cut":"(from 7.5 to 8)","color":"gray"}],"graphs":[{"fillAlphas":0.8,"lineAlpha":1,"fillColorsField":"color","lineColor":"gray","labelText":"","balloonText":"<b>[[value]]</b> <br/> [[cut]] ","type":"column","valueField":"y"},{"lineColor":"black","id":"graph-line","balloonText":"","type":"smoothedLine","valueField":"y"}],"theme":"light","type":"serial","valueAxes":[{"minimum":0,"maximum":0.43365,"title":"Density"}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[]}</script>
+<p><div id="htmlwidget-7572" style="width:100%;height:500px;" class="ramcharts_base"></div>
+<script type="application/json" data-for="htmlwidget-7572">{"x":{"chartData":{"columnSpacing":0,"columnWidth":1,"fillAlphas":1,"lineAlpha":1,"categoryAxis":{"title":"data_hist"},"categoryField":"x","creditsPosition":"bottom-right","dataProvider":[{"x":4.2,"y":0.067,"cut":"(from 4 to 4.5)","color":"gray"},{"x":4.8,"y":0.36,"cut":"(from 4.5 to 5)","color":"gray"},{"x":5.2,"y":0.36,"cut":"(from 5 to 5.5)","color":"gray"},{"x":5.8,"y":0.4,"cut":"(from 5.5 to 6)","color":"gray"},{"x":6.2,"y":0.413,"cut":"(from 6 to 6.5)","color":"gray"},{"x":6.8,"y":0.24,"cut":"(from 6.5 to 7)","color":"gray"},{"x":7.2,"y":0.08,"cut":"(from 7 to 7.5)","color":"gray"},{"x":7.8,"y":0.08,"cut":"(from 7.5 to 8)","color":"gray"}],"graphs":[{"fillAlphas":0.8,"lineAlpha":1,"fillColorsField":"color","lineColor":"gray","labelText":"","balloonText":"<b>[[value]]</b> <br/> [[cut]] ","type":"column","valueField":"y"},{"lineColor":"black","id":"graph-line","balloonText":"","type":"smoothedLine","valueField":"y"}],"theme":"light","type":"serial","valueAxes":[{"minimum":0,"maximum":0.43365,"title":"Density"}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[]}</script></p>
 </div>
-<div class="col-xs-12 col-md-6">
-<h2 class="partdivtitle">
-Labels
-</h2>
+<div id="labels" class="section level2">
+<h2>Labels</h2>
 <pre class="r"><code>amHist(x = data_hist, xlab = &quot;xlab&quot;, ylab = &quot;ylab&quot;)</code></pre>
-<div id="htmlwidget-9978" style="width:100%;height:500px;" class="ramcharts_base"></div>
-<script type="application/json" data-for="htmlwidget-9978">{"x":{"chartData":{"columnSpacing":0,"columnWidth":1,"fillAlphas":1,"lineAlpha":1,"categoryAxis":{"title":"xlab"},"categoryField":"x","creditsPosition":"bottom-right","dataProvider":[{"x":4.2,"y":5,"cut":"(from 4 to 4.5)","color":"gray"},{"x":4.8,"y":27,"cut":"(from 4.5 to 5)","color":"gray"},{"x":5.2,"y":27,"cut":"(from 5 to 5.5)","color":"gray"},{"x":5.8,"y":30,"cut":"(from 5.5 to 6)","color":"gray"},{"x":6.2,"y":31,"cut":"(from 6 to 6.5)","color":"gray"},{"x":6.8,"y":18,"cut":"(from 6.5 to 7)","color":"gray"},{"x":7.2,"y":6,"cut":"(from 7 to 7.5)","color":"gray"},{"x":7.8,"y":6,"cut":"(from 7.5 to 8)","color":"gray"}],"graphs":[{"fillAlphas":0.8,"lineAlpha":1,"fillColorsField":"color","lineColor":"gray","labelText":"","balloonText":"<b>[[value]]</b> <br/> [[cut]] ","type":"column","valueField":"y"},{"lineColor":"black","id":"graph-line","balloonText":"","type":"smoothedLine","valueField":"y"}],"theme":"light","type":"serial","valueAxes":[{"minimum":0,"maximum":32.55,"title":"ylab"}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[]}</script>
+<p><div id="htmlwidget-594" style="width:100%;height:500px;" class="ramcharts_base"></div>
+<script type="application/json" data-for="htmlwidget-594">{"x":{"chartData":{"columnSpacing":0,"columnWidth":1,"fillAlphas":1,"lineAlpha":1,"categoryAxis":{"title":"xlab"},"categoryField":"x","creditsPosition":"bottom-right","dataProvider":[{"x":4.2,"y":5,"cut":"(from 4 to 4.5)","color":"gray"},{"x":4.8,"y":27,"cut":"(from 4.5 to 5)","color":"gray"},{"x":5.2,"y":27,"cut":"(from 5 to 5.5)","color":"gray"},{"x":5.8,"y":30,"cut":"(from 5.5 to 6)","color":"gray"},{"x":6.2,"y":31,"cut":"(from 6 to 6.5)","color":"gray"},{"x":6.8,"y":18,"cut":"(from 6.5 to 7)","color":"gray"},{"x":7.2,"y":6,"cut":"(from 7 to 7.5)","color":"gray"},{"x":7.8,"y":6,"cut":"(from 7.5 to 8)","color":"gray"}],"graphs":[{"fillAlphas":0.8,"lineAlpha":1,"fillColorsField":"color","lineColor":"gray","labelText":"","balloonText":"<b>[[value]]</b> <br/> [[cut]] ","type":"column","valueField":"y"},{"lineColor":"black","id":"graph-line","balloonText":"","type":"smoothedLine","valueField":"y"}],"theme":"light","type":"serial","valueAxes":[{"minimum":0,"maximum":32.55,"title":"ylab"}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[]}</script></p>
 </div>
-</div>
-<div class="row">
-<div class="col-xs-12 col-md-6">
-<h2 class="partdivtitle">
-Add label on the top
-</h2>
+<div id="add-label-on-the-top" class="section level2">
+<h2>Add label on the top</h2>
 <pre class="r"><code>amHist(x = data_hist, labels = TRUE)</code></pre>
-<div id="htmlwidget-4538" style="width:100%;height:500px;" class="ramcharts_base"></div>
-<script type="application/json" data-for="htmlwidget-4538">{"x":{"chartData":{"columnSpacing":0,"columnWidth":1,"fillAlphas":1,"lineAlpha":1,"categoryAxis":{"title":"data_hist"},"categoryField":"x","creditsPosition":"bottom-right","dataProvider":[{"x":4.2,"y":5,"cut":"(from 4 to 4.5)","color":"gray"},{"x":4.8,"y":27,"cut":"(from 4.5 to 5)","color":"gray"},{"x":5.2,"y":27,"cut":"(from 5 to 5.5)","color":"gray"},{"x":5.8,"y":30,"cut":"(from 5.5 to 6)","color":"gray"},{"x":6.2,"y":31,"cut":"(from 6 to 6.5)","color":"gray"},{"x":6.8,"y":18,"cut":"(from 6.5 to 7)","color":"gray"},{"x":7.2,"y":6,"cut":"(from 7 to 7.5)","color":"gray"},{"x":7.8,"y":6,"cut":"(from 7.5 to 8)","color":"gray"}],"graphs":[{"fillAlphas":0.8,"lineAlpha":1,"fillColorsField":"color","lineColor":"gray","labelText":"[[value]]","balloonText":"<b>[[value]]</b> <br/> [[cut]] ","type":"column","valueField":"y"},{"lineColor":"black","id":"graph-line","balloonText":"","type":"smoothedLine","valueField":"y"}],"theme":"light","type":"serial","valueAxes":[{"minimum":0,"maximum":32.55,"title":"Frequency"}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[]}</script>
+<p><div id="htmlwidget-8689" style="width:100%;height:500px;" class="ramcharts_base"></div>
+<script type="application/json" data-for="htmlwidget-8689">{"x":{"chartData":{"columnSpacing":0,"columnWidth":1,"fillAlphas":1,"lineAlpha":1,"categoryAxis":{"title":"data_hist"},"categoryField":"x","creditsPosition":"bottom-right","dataProvider":[{"x":4.2,"y":5,"cut":"(from 4 to 4.5)","color":"gray"},{"x":4.8,"y":27,"cut":"(from 4.5 to 5)","color":"gray"},{"x":5.2,"y":27,"cut":"(from 5 to 5.5)","color":"gray"},{"x":5.8,"y":30,"cut":"(from 5.5 to 6)","color":"gray"},{"x":6.2,"y":31,"cut":"(from 6 to 6.5)","color":"gray"},{"x":6.8,"y":18,"cut":"(from 6.5 to 7)","color":"gray"},{"x":7.2,"y":6,"cut":"(from 7 to 7.5)","color":"gray"},{"x":7.8,"y":6,"cut":"(from 7.5 to 8)","color":"gray"}],"graphs":[{"fillAlphas":0.8,"lineAlpha":1,"fillColorsField":"color","lineColor":"gray","labelText":"[[value]]","balloonText":"<b>[[value]]</b> <br/> [[cut]] ","type":"column","valueField":"y"},{"lineColor":"black","id":"graph-line","balloonText":"","type":"smoothedLine","valueField":"y"}],"theme":"light","type":"serial","valueAxes":[{"minimum":0,"maximum":32.55,"title":"Frequency"}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[]}</script></p>
 </div>
-<div class="col-xs-12 col-md-6">
-<h2 class="partdivtitle">
-Set ylim
-</h2>
+<div id="set-ylim" class="section level2">
+<h2>Set ylim</h2>
 <pre class="r"><code>amHist(x = data_hist, ylim = c(0,.8), freq = FALSE)</code></pre>
-<div id="htmlwidget-2313" style="width:100%;height:500px;" class="ramcharts_base"></div>
-<script type="application/json" data-for="htmlwidget-2313">{"x":{"chartData":{"columnSpacing":0,"columnWidth":1,"fillAlphas":1,"lineAlpha":1,"categoryAxis":{"title":"data_hist"},"categoryField":"x","creditsPosition":"bottom-right","dataProvider":[{"x":4.2,"y":0.067,"cut":"(from 4 to 4.5)","color":"gray"},{"x":4.8,"y":0.36,"cut":"(from 4.5 to 5)","color":"gray"},{"x":5.2,"y":0.36,"cut":"(from 5 to 5.5)","color":"gray"},{"x":5.8,"y":0.4,"cut":"(from 5.5 to 6)","color":"gray"},{"x":6.2,"y":0.413,"cut":"(from 6 to 6.5)","color":"gray"},{"x":6.8,"y":0.24,"cut":"(from 6.5 to 7)","color":"gray"},{"x":7.2,"y":0.08,"cut":"(from 7 to 7.5)","color":"gray"},{"x":7.8,"y":0.08,"cut":"(from 7.5 to 8)","color":"gray"}],"graphs":[{"fillAlphas":0.8,"lineAlpha":1,"fillColorsField":"color","lineColor":"gray","labelText":"","balloonText":"<b>[[value]]</b> <br/> [[cut]] ","type":"column","valueField":"y"},{"lineColor":"black","id":"graph-line","balloonText":"","type":"smoothedLine","valueField":"y"}],"theme":"light","type":"serial","valueAxes":[{"minimum":0,"maximum":0.8,"title":"Density"}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[]}</script>
-</div>
-</div>
+<p><div id="htmlwidget-3042" style="width:100%;height:500px;" class="ramcharts_base"></div>
+<script type="application/json" data-for="htmlwidget-3042">{"x":{"chartData":{"columnSpacing":0,"columnWidth":1,"fillAlphas":1,"lineAlpha":1,"categoryAxis":{"title":"data_hist"},"categoryField":"x","creditsPosition":"bottom-right","dataProvider":[{"x":4.2,"y":0.067,"cut":"(from 4 to 4.5)","color":"gray"},{"x":4.8,"y":0.36,"cut":"(from 4.5 to 5)","color":"gray"},{"x":5.2,"y":0.36,"cut":"(from 5 to 5.5)","color":"gray"},{"x":5.8,"y":0.4,"cut":"(from 5.5 to 6)","color":"gray"},{"x":6.2,"y":0.413,"cut":"(from 6 to 6.5)","color":"gray"},{"x":6.8,"y":0.24,"cut":"(from 6.5 to 7)","color":"gray"},{"x":7.2,"y":0.08,"cut":"(from 7 to 7.5)","color":"gray"},{"x":7.8,"y":0.08,"cut":"(from 7.5 to 8)","color":"gray"}],"graphs":[{"fillAlphas":0.8,"lineAlpha":1,"fillColorsField":"color","lineColor":"gray","labelText":"","balloonText":"<b>[[value]]</b> <br/> [[cut]] ","type":"column","valueField":"y"},{"lineColor":"black","id":"graph-line","balloonText":"","type":"smoothedLine","valueField":"y"}],"theme":"light","type":"serial","valueAxes":[{"minimum":0,"maximum":0.8,"title":"Density"}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[]}</script></p>
 </div>
 
 
