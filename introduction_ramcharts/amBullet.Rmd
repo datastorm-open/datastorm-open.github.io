@@ -7,6 +7,8 @@ require(package = "rAmCharts", quietly = TRUE)
 require(package = "pipeR", quietly = TRUE)
 ```
 
+<h1>rAmCharts - amBullet</h1>
+
 ## Parameters
 
 * __value__: a numeric
@@ -24,50 +26,57 @@ require(package = "pipeR", quietly = TRUE)
 
 ## Reference example
 
-```{r}
+```{r, echo = TRUE, eval = FALSE}
 amBullet(value = 65)
 ```
+```{r, echo = FALSE, eval = TRUE}
+amBullet(value = 65) %>>% plot(height = "150px", width = "60%")
+```
 
-<div class="row">
-  <div class="col-xs-12 col-md-6"><h2 class="partdivtitle"> Remove steps from backgroud </h2>
-```{r}
+## Remove steps from backgroud
+```{r, echo = TRUE, eval = FALSE}
 amBullet(value = 65, steps = FALSE)
 ```
-  </div>
-  
-  <div class="col-xs-12 col-md-6"><h2 class="partdivtitle"> Tune the colors </h2>
-```{r}
+```{r, echo = FALSE, eval = TRUE}
+amBullet(value = 65, steps = FALSE) %>>% plot(height = "150px", width = "60%")
+```
+
+## Tune the colors
+```{r, echo = TRUE, eval = FALSE}
 amBullet(value = 65, val_color = "purple", limit_color = "#3c8dbc")
 ```
-  </div>
-</div>
+```{r, echo = FALSE, eval = TRUE}
+amBullet(value = 65, val_color = "purple", limit_color = "#3c8dbc") %>>% plot(height = "150px", width = "60%")
+```
 
-<div class="row">
-  <div class="col-xs-12 col-md-6"><h2 class="partdivtitle"> Change orientation </h2>
-```{r}
+## Change orientation
+```{r, echo = TRUE, eval = FALSE}
 amBullet(value = 65, horiz = FALSE)
 ```
-  </div>
-  
-  <div class="col-xs-12 col-md-6"><h2 class="partdivtitle"> Add text </h2>
-```{r}
+```{r, echo = FALSE, eval = TRUE}
+amBullet(value = 65, horiz = FALSE) %>>% plot(height = "500px", width = "150px")
+```
+
+## Add label
+```{r, echo = TRUE, eval = FALSE}
 amBullet(value = 65, label = "Evaluation")
 ```
-  </div>
-</div>
+```{r, echo = FALSE, eval = TRUE}
+amBullet(value = 65, label = "Evaluation") %>>% plot(height = "150px", width = "70%")
+```
 
-<div class="row">
-  <div class="col-xs-12 col-md-6"><h2 class="partdivtitle"> Change mon and max </h2>
-```{r}
+## Change mon and max
+```{r, echo = TRUE, eval = FALSE}
 amBullet(value = 65, min = 20, max = 90)
 ```
-  </div>
-</div>
+```{r, echo = FALSE, eval = TRUE}
+amBullet(value = 65, min = 20, max = 90) %>>% plot(height = "150px", width = "60%")
+```
 
-<h2 class="amOptions">amOptions</h2>
 
-<div class="row">
-  <div class="col-xs-12 col-md-6"><h2 class="partdivtitle">export</h2>
+<h2 class="partdivtitle">amOptions</h2>
+
+## export
 ```{r, echo = TRUE, eval = FALSE}
 amBullet(value = 65, export = TRUE)
 #or
@@ -75,10 +84,10 @@ amBullet(value = 65) %>>%
   amOptions(export = TRUE)
 ```
 ```{r, echo = FALSE}
-amBullet(value = 65, export = TRUE)
+amBullet(value = 65, export = TRUE) %>>% plot(height = "150px", width = "60%")
 ```
-  </div>
-  <div class="col-xs-12 col-md-6"><h2 class="partdivtitle">exportFormat</h2>
+
+## exportFormat 
 ```{r, echo = TRUE, eval = FALSE}
 amBullet(value = 65, export = TRUE, exportFormat = "CSV")
 #or
@@ -86,15 +95,10 @@ amBullet(value = 65) %>>%
   amOptions(export = TRUE, exportFormat = "CSV")
 ```
 ```{r, echo = FALSE}
-amBullet(value = 65, export = TRUE, exportFormat = "CSV")
+amBullet(value = 65, export = TRUE, exportFormat = "CSV") %>>% plot(height = "150px", width = "60%")
 ```
-  </div>
-</div>
 
-
-
-<div class="row">
-  <div class="col-xs-12 col-md-6"><h2 class="partdivtitle">main and creditsPosition</h2>
+## main and creditsPosition</h2>
 ```{r, echo = TRUE, eval = FALSE}
 amBullet(value = 65, main = "My Bullet",
         mainColor = "#00FF00", mainSize = 25, creditsPosition = "top-right")
@@ -104,12 +108,11 @@ amBullet(value = 65) %>>%
         mainColor = "#00FF00", mainSize = 25, creditsPosition = "top-right")
 ```
 ```{r, echo = FALSE}
-amBullet(value = 65, 
-       main = "My Bullet",
-        mainColor = "#00FF00", mainSize = 25, creditsPosition = "top-right")
+amBullet(value = 65,  main = "My Bullet", mainColor = "#00FF00", mainSize = 25, creditsPosition = "top-right") %>>%
+  plot(height = "200px", width = "60%")
 ```
-  </div>
-  <div class="col-xs-12 col-md-6"><h2 class="partdivtitle">theme</h2>
+
+## theme
 ```{r, echo = TRUE, eval = FALSE}
 amBullet(value = 65, main = "My Bullet", theme = "patterns")
 #or
@@ -117,8 +120,5 @@ amBullet(value = 65) %>>%
   amOptions(theme = "patterns")
 ```
 ```{r, echo = FALSE}
-amBullet(value = 65, theme = "patterns")
+amBullet(value = 65, theme = "patterns") %>>% plot(height = "150px", width = "60%")
 ```
-  </div>
-</div>
-
