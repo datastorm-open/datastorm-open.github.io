@@ -51,7 +51,7 @@ amBullet(value = 65, horiz = FALSE)
   
   <div class="col-xs-12 col-md-6"><h2 class="partdivtitle"> Add text </h2>
 ```{r}
-amBullet(value = 65, text = "Evaluation")
+amBullet(value = 65, label = "Evaluation")
 ```
   </div>
 </div>
