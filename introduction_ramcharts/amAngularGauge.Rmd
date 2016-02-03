@@ -7,6 +7,8 @@ require(package = "rAmCharts", quietly = TRUE)
 require(package = "pipeR", quietly = TRUE)
 ```
 
+<h1>rAmCharts - amAngularGauge</h1>
+
 ## Parameters
 
 * __x__: numeric, equal to the value for which the angular gauge is desired.

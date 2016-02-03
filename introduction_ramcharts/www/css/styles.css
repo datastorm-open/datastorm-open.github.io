@@ -47,9 +47,14 @@ body .litoc a:hover:not(.active) {
   text-decoration: none;
 }
 
-h1, h2, h3, h4, h5 {
+h1 {
   font-family: 'Raleway', Helvetica, Arial, sans-serif;
-  font-weight: bolder;
+  color: #000000;
+  font-size: 24;
+}
+
+h2, h3, h4, h5 {
+  font-family: 'Raleway', Helvetica, Arial, sans-serif;
   color: #3c8dbc;
 }
 
