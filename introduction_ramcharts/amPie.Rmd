@@ -96,16 +96,16 @@ amPie(data = data_pie, export = TRUE, exportFormat = "JPG")
 ## main and creditsPosition
 ```{r, echo = TRUE, eval = FALSE}
 amPie(data = data_pie, main = "My Pie",
-        mainColor = "#00FF00", mainSize = 25, creditsPosition = "top-right")
+        mainColor = "#68838B", mainSize = 25, creditsPosition = "top-right")
 #or
 amPie(data = data_pie) %>>% 
   amOptions( main = "My Pie",
-        mainColor = "#00FF00", mainSize = 25, creditsPosition = "top-right")
+        mainColor = "#68838B", mainSize = 25, creditsPosition = "top-right")
 ```
 ```{r, echo = FALSE}
 amPie(data = data_pie, 
        main = "My Pie",
-        mainColor = "#00FF00", mainSize = 25, creditsPosition = "top-right")
+        mainColor = "#68838B", mainSize = 25, creditsPosition = "top-right")
 ```
 
 ## theme

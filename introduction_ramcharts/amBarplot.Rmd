@@ -155,16 +155,16 @@ amBarplot(x = "country", y = "visits", data = data_bar, labelRotation = -45, exp
 ## main and creditsPosition
 ```{r, echo = TRUE, eval = FALSE}
 amBarplot(x = "country", y = "visits", data = data_bar, labelRotation = -45, main = "My Barchart",
-        mainColor = "#00FF00", mainSize = 25, creditsPosition = "top-right")
+        mainColor = "#68838B", mainSize = 25, creditsPosition = "top-right")
 #or
 amBarplot(x = "country", y = "visits", data = data_bar, labelRotation = -45) %>>% 
   amOptions( main = "My Barchart",
-        mainColor = "#00FF00", mainSize = 25, creditsPosition = "top-right")
+        mainColor = "#68838B", mainSize = 25, creditsPosition = "top-right")
 ```
 ```{r, echo = FALSE}
 amBarplot(x = "country", y = "visits", data = data_bar, labelRotation = -45, 
        main = "My Barchart",
-        mainColor = "#00FF00", mainSize = 25, creditsPosition = "top-right")
+        mainColor = "#68838B", mainSize = 25, creditsPosition = "top-right")
 ```
 
 ## theme

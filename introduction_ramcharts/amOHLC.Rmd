@@ -101,16 +101,16 @@ amOHLC(data = data_candleStick2, labelRotation = -45, export = TRUE, exportForma
 ## main and creditsPosition
 ```{r, echo = TRUE, eval = FALSE}
 amOHLC(data = data_candleStick2, labelRotation = -45, main = "My Candlestick",
-        mainColor = "#00FF00", mainSize = 25, creditsPosition = "top-right")
+        mainColor = "#68838B", mainSize = 25, creditsPosition = "top-right")
 #or
 amOHLC(data = data_candleStick2, labelRotation = -45) %>>% 
   amOptions( main = "My Candlestick",
-        mainColor = "#00FF00", mainSize = 25, creditsPosition = "top-right")
+        mainColor = "#68838B", mainSize = 25, creditsPosition = "top-right")
 ```
 ```{r, echo = FALSE}
 amOHLC(data = data_candleStick2, labelRotation = -45, 
        main = "My Candlestick",
-        mainColor = "#00FF00", mainSize = 25, creditsPosition = "top-right")
+        mainColor = "#68838B", mainSize = 25, creditsPosition = "top-right")
 ```
 
 ## theme

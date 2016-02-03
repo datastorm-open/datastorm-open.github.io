@@ -124,16 +124,16 @@ amRadar(data = data,  pch = "bubble", backTransparency = 0,
 ## main and creditsPosition
 ```{r, echo = TRUE, eval = FALSE}
 amRadar(data = data,  pch = "bubble", backTransparency = 0, main = "My Radar",
-        mainColor = "#00FF00", mainSize = 25, creditsPosition = "top-right")
+        mainColor = "#68838B", mainSize = 25, creditsPosition = "top-right")
 #or
 amRadar(data = data,  pch = "bubble", backTransparency = 0) %>>% 
   amOptions( main = "My Radar",
-        mainColor = "#00FF00", mainSize = 25, creditsPosition = "top-right")
+        mainColor = "#68838B", mainSize = 25, creditsPosition = "top-right")
 ```
 ```{r, echo = FALSE}
 amRadar(data = data,  pch = "bubble", backTransparency = 0, 
        main = "My Radar",
-        mainColor = "#00FF00", mainSize = 25, creditsPosition = "top-right")
+        mainColor = "#68838B", mainSize = 25, creditsPosition = "top-right")
 ```
 
 ## theme

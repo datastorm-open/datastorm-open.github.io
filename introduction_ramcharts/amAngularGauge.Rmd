@@ -99,16 +99,16 @@ amAngularGauge(x = 25, export = TRUE, exportFormat = "JPG")  %>>% plot(width = "
 ## main and creditsPosition
 ```{r, echo = TRUE, eval = FALSE}
 amAngularGauge(x = 25, main = "My Gauge",
-        mainColor = "#00FF00", mainSize = 25, creditsPosition = "top-right")
+        mainColor = "#68838B", mainSize = 25, creditsPosition = "top-right")
 #or
 amAngularGauge(x = 25) %>>% 
   amOptions( main = "My Pie",
-        mainColor = "#00FF00", mainSize = 25, creditsPosition = "top-right")
+        mainColor = "#68838B", mainSize = 25, creditsPosition = "top-right")
 ```
 ```{r, echo = FALSE}
 amAngularGauge(x = 25, 
        main = "My Pie",
-        mainColor = "#00FF00", mainSize = 25, creditsPosition = "top-right")  %>>% plot(width = "40%")
+        mainColor = "#68838B", mainSize = 25, creditsPosition = "top-right")  %>>% plot(width = "40%")
 ```
 
 ## theme
