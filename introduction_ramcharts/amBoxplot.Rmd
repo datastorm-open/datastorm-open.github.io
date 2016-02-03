@@ -7,7 +7,9 @@ require(package = "rAmCharts", quietly = TRUE)
 require(package = "pipeR", quietly = TRUE)
 ```
 
-# Basic example
+<h1>rAmCharts - amBoxplot</h1>
+
+## Basic example
 
 ```{r}
 dataset <- get(x = "ChickWeight", pos = "package:datasets")
