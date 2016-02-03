@@ -17,6 +17,11 @@ font-weight: bold;
 
 body .toc {
   padding-left: 0;
+  list-style-position: inside;
+}
+
+ul.toc li.litoc a {
+  display: inline-block;
 }
 
 body .section-toc {
@@ -26,25 +31,26 @@ body .section-toc {
 body .litoc {
   white-space: nowrap;
   text-overflow: ellipsis;
-  list-style-position: inside;
 }
 
 body .litoc .toc-item {
   display: block;
   color: white;
-  padding: 8px 0 8px 8px;
+  padding: 8px 0 10px 6px;
 }
 
-body .litoc .active {
+body ul.toc .active {
   background-color: #367fa9;
   color: white;
   text-decoration: none;
+  width: 100%;
 }
 
 body .litoc a:hover:not(.active) {
   background-color: #555;
   color: white;
   text-decoration: none;
+  width: 100%;
 }
 
 h1 {
@@ -91,7 +97,8 @@ body .main-container {
   text-align: center;
   border-style: solid;
   border-color: #367fa9;
-  padding:5px;
+  padding: 5px;
+  margin-top: 1.5em;
 }
 
 .amOptions {
