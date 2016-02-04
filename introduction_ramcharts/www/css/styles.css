@@ -8,11 +8,11 @@
   height:100vh;
 }
 
-#main-toc {
-padding-top:8px;
+#title-toc {
 text-align: center;
 font-family: 'Roboto', sans-serif;
 font-weight: bold;
+font-size: 2em;
 }
 
 body .toc {
@@ -20,12 +20,17 @@ body .toc {
   list-style-position: inside;
 }
 
+ul.toc {
+  list-style-type: none;
+}
+
 ul.toc li.litoc a {
   display: inline-block;
 }
 
 body .section-toc {
-  color:#A9A9A9;
+  color:#000000;
+  font-size:1.2em;
 }
 
 body .litoc {

@@ -7,7 +7,7 @@ require(package = "rAmCharts", quietly = TRUE)
 require(package = "pipeR", quietly = TRUE)
 ```
 
-<h1>rAmCharts - amHist</h1>
+# rAmCharts - amHist
 
 ## Parameters
 
@@ -62,3 +62,4 @@ amHist(x = data_hist, labels = TRUE)
 ```{r}
 amHist(x = data_hist, ylim = c(0,.8), freq = FALSE)
 ```
+
