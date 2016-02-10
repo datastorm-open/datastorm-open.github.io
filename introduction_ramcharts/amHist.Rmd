@@ -35,12 +35,12 @@ amHist(x = data_hist)
 
 ## Filling color
 ```{r}
-amHist(x = data_hist, col = "#367fa9")
+amHist(x = data_hist, col = "#CECECE")
 ```
 
 ## Border color
 ```{r}
-amHist(x = data_hist, border = "#367fa9")
+amHist(x = data_hist, border = "#CECECE")
 ```
 
 ## View frequency
