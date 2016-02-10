@@ -139,7 +139,7 @@ amFloatingBar(x = "country", y_inf = "visits_inf", y_sup = "visits_sup",
 ## theme
 ```{r, echo = TRUE, eval = FALSE}
 amFloatingBar(x = "country", y_inf = "visits_inf", y_sup = "visits_sup",
-              data = data_fbar, labelRotation = -45, main = "My Floating Barchart", 
+              data = data_fbar, labelRotation = -45,  
               theme = "patterns")
 #or
 amFloatingBar(x = "country", y_inf = "visits_inf", y_sup = "visits_sup",

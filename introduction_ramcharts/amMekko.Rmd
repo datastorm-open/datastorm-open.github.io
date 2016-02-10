@@ -1,0 +1,118 @@
+---
+pagetitle: rAmCharts - amMekko
+---
+
+```{r,echo=FALSE, message=FALSE}
+require(package = "rAmCharts", quietly = TRUE)
+require(package = "pipeR", quietly = TRUE)
+```
+
+<h1>rAmCharts - amMekko</h1>
+
+## Parameters
+
+* __x__: a character, column name for x-axis.
+* __y__: a character, column name for y-axis.
+* __data__: a dataframe with values to display. See data_mekko for example.
+* __groups_color__: character, a vector of colors in hexadecimal, same length as the number of y modalities.
+* __xlab__: a character, label for x-axis.
+* __ylab__: a character, label for y-axis.
+* __horiz__: a boolean, TRUE for an horizontal chart, FALSE for a vertical one.
+* __show_values__: a boolean, TRUE to display values.
+* __...__: other parameters called in amOptions.
+
+
+Data used in the examples:
+```{r}
+data("data_mekko")
+head(data_mekko)
+```
+
+## Reference example
+
+```{r}
+amMekko(x = "var1", y = "var2", data = data_mekko)
+```
+
+## Horizontal chart
+```{r}
+amMekko(x = "var1", y = "var2", data = data_mekko, horiz = TRUE)
+```
+
+## Display values
+```{r}
+amMekko(x = "var1", y = "var2", data = data_mekko, show_values = TRUE)
+```
+
+
+<h2 class="partdivtitle">amOptions</h2>
+
+## legend
+```{r, echo = TRUE, eval = FALSE}
+amMekko(x = "var1", y = "var2", data = data_mekko, legend = TRUE)
+#or
+amMekko(x = "var1", y = "var2", data = data_mekko) %>>% 
+  amOptions(legend = TRUE)
+```
+```{r, echo = FALSE}
+amMekko(x = "var1", y = "var2", data = data_mekko, legend = TRUE)
+```
+
+## legendPosition
+```{r, echo = TRUE, eval = FALSE}
+amMekko(x = "var1", y = "var2", data = data_mekko, legend = TRUE, legendPosition = "left")
+#or
+amMekko(x = "var1", y = "var2", data = data_mekko) %>>% 
+  amOptions(legend = TRUE, legendPosition = "left")
+```
+```{r, echo = FALSE}
+amMekko(x = "var1", y = "var2", data = data_mekko, legend = TRUE, legendPosition = "left")
+```
+
+## export
+```{r, echo = TRUE, eval = FALSE}
+amMekko(x = "var1", y = "var2", data = data_mekko, export = TRUE)
+#or
+amMekko(x = "var1", y = "var2", data = data_mekko) %>>% 
+  amOptions(export = TRUE)
+```
+```{r, echo = FALSE}
+amMekko(x = "var1", y = "var2", data = data_mekko, export = TRUE)
+```
+
+## exportFormat
+```{r, echo = TRUE, eval = FALSE}
+amMekko(x = "var1", y = "var2", data = data_mekko, export = TRUE, exportFormat = "JPG")
+#or
+amMekko(x = "var1", y = "var2", data = data_mekko) %>>% 
+  amOptions(export = TRUE, exportFormat = "JPG")
+```
+```{r, echo = FALSE}
+amMekko(x = "var1", y = "var2", data = data_mekko, export = TRUE, exportFormat = "JPG")
+```
+
+## main and creditsPosition
+```{r, echo = TRUE, eval = FALSE}
+amMekko(x = "var1", y = "var2", data = data_mekko, main = "My Mekko",
+        mainColor = "#68838B", mainSize = 25, creditsPosition = "bottom-left")
+#or
+amMekko(x = "var1", y = "var2", data = data_mekko) %>>% 
+  amOptions( main = "My Mekko",
+        mainColor = "#68838B", mainSize = 25, creditsPosition = "bottom-left")
+```
+```{r, echo = FALSE}
+amMekko(x = "var1", y = "var2", data = data_mekko, 
+       main = "My Mekko",
+        mainColor = "#68838B", mainSize = 25, creditsPosition = "bottom-left")
+```
+
+## theme
+```{r, echo = TRUE, eval = FALSE}
+amMekko(x = "var1", y = "var2", data = data_mekko, theme = "patterns")
+#or
+amMekko(x = "var1", y = "var2", data = data_mekko) %>>% 
+  amOptions(theme = "patterns")
+```
+```{r, echo = FALSE}
+amMekko(x = "var1", y = "var2", data = data_mekko, theme = "patterns")
+```

@@ -141,7 +141,7 @@ amRadar(data = data,  pch = "bubble", backTransparency = 0,
 
 ## theme
 ```{r, echo = TRUE, eval = FALSE}
-amRadar(data = data,  pch = "bubble", backTransparency = 1, main = "My Radar", theme = "patterns")
+amRadar(data = data,  pch = "bubble", backTransparency = 1, theme = "patterns")
 #or
 amRadar(data = data,  pch = "bubble", backTransparency = 1) %>>% 
   amOptions(theme = "patterns")

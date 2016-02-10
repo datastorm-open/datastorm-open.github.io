@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+<title>rAmCharts - amMekko</title>
+
+<script src="libs/jquery-1.11.0/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="libs/bootstrap-3.3.1/css/cosmo.min.css" rel="stylesheet" />
+<script src="libs/bootstrap-3.3.1/js/bootstrap.min.js"></script>
+<script src="libs/bootstrap-3.3.1/shim/html5shiv.min.js"></script>
+<script src="libs/bootstrap-3.3.1/shim/respond.min.js"></script>
+<script src="libs/htmlwidgets-0.5/htmlwidgets.js"></script>
+<script src="libs/amcharts-3.18.2/amcharts.js"></script>
+<script src="libs/ramcharts_base-binding-1.1.3/ramcharts_base.js"></script>
+<script src="libs/amcharts_typeserial-3.18.2/serial.js"></script>
+<link href="libs/amcharts_style-3.18.2/style.css" rel="stylesheet" />
+<link href="libs/amcharts_plugins_export-3.18.2/export.css" rel="stylesheet" />
+<script src="libs/amcharts_plugins_export-3.18.2/export.min.js"></script>
+<script src="libs/amcharts_themes_patterns-3.18.2/patterns.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Raleway:100' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+
+<style type="text/css">code{white-space: pre;}</style>
+<link rel="stylesheet"
+      href="libs/highlight/default.css"
+      type="text/css" />
+<script src="libs/highlight/highlight.js"></script>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs && document.readyState && document.readyState === "complete") {
+   window.setTimeout(function() {
+      hljs.initHighlighting();
+   }, 0);
+}
+</script>
+
+
+<link rel="stylesheet" href="www\css\styles.css" type="text/css" />
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img { 
+  max-width:100%; 
+  height: auto; 
+}
+</style>
+<div class="container-fluid main-container">
+
+
+<!-- bootstrap row container for all the content -->
+<div class="row"> <!-- main row -->
+  
+  <div class="col-xs-4 col-md-3 show" id="nav-content" style="padding-left:0;">
+    <nav id="navbar">
+      <br/>
+      <div id="title-toc"> rAmCharts</div>
+      <hr/>
+      
+      <b class="section-toc">Getting started</b>
+      <br/>
+
+      <ul class="toc" id="nav-intro">
+        <li class="litoc"><a class="toc-item" href="index.html">Introduction</a></li>
+        <li class="litoc"><a class="toc-item" href="convert.html">Quick tutorial</a></li>
+        <li class="litoc"><a class="toc-item" href="shiny.html">Use in shiny apps</a></li>
+        <li class="litoc"><a class="toc-item" href="advance.html">Advanced features</a></li>
+      </ul> 
+      
+      <b class="section-toc">Specific functions</b>
+      <br/>
+      
+      <ul class="toc" id="nav-amfunctions">
+        <li class="litoc"> <a class="toc-item" href="amAngularGauge.html">AngularGauge</a></li>   
+        <li class="litoc"> <a class="toc-item" href="amBarplot.html">Barplot</a></li>
+        <li class="litoc"><a class="toc-item" href="amBoxplot.html">Boxplot</a></li>
+        <li class="litoc"><a class="toc-item" href="amBullet.html">Bullet</a></li>
+        <li class="litoc"><a class="toc-item" href="amCandlestick.html">Candlestick</a></li>
+        <li class="litoc"><a class="toc-item" href="amFloatingBar.html">Floating Bar</a></li>
+        <li class="litoc"><a class="toc-item" href="amFunnel.html">Funnel</a></li>
+        <li class="litoc"><a class="toc-item" href="amHist.html">Histogram</a></li>
+        <li class="litoc"><a class="toc-item" href="amMekko.html">Mekko</a></li>
+        <li class="litoc"><a class="toc-item" href="amOHLC.html">OHLC</a></li>
+        <li class="litoc"><a class="toc-item" href="amPie.html">Pie</a></li>
+        <li class="litoc"><a class="toc-item" href="amRadar.html">Radar</a></li>
+        <li class="litoc"><a class="toc-item" href="amSolidGauge.html">SolidGauge</a></li>
+      </ul>
+      
+      <footer>
+        <div class="copyrights"><small> © 2015-2016 DataKnowledge</small></div>
+      </footer>
+    
+    </nav>
+    
+  </div> <!-- end of left column -->
+  
+  <div class="col-xs-1 col-md-1"> <!-- colummn for toggle button -->
+    <i id="toggle" class="fa fa-bars fa-lg toggle-collapse" style="padding-top:10px;"></i>
+  </div>
+  
+  <div class="col-xs-6 col-md-7 show" id="main-content"> <!-- main column -->
+
+
+
+<h1>
+rAmCharts - amMekko
+</h1>
+<div id="parameters" class="section level2">
+<h2>Parameters</h2>
+<ul>
+<li><strong>x</strong>: a character, column name for x-axis.</li>
+<li><strong>y</strong>: a character, column name for y-axis.</li>
+<li><strong>data</strong>: a dataframe with values to display. See data_mekko for example.</li>
+<li><strong>groups_color</strong>: character, a vector of colors in hexadecimal, same length as the number of y modalities.</li>
+<li><strong>xlab</strong>: a character, label for x-axis.</li>
+<li><strong>ylab</strong>: a character, label for y-axis.</li>
+<li><strong>horiz</strong>: a boolean, TRUE for an horizontal chart, FALSE for a vertical one.</li>
+<li><strong>show_values</strong>: a boolean, TRUE to display values.</li>
+<li><strong>…</strong>: other parameters called in amOptions.</li>
+</ul>
+<p>Data used in the examples:</p>
+<pre class="r"><code>data(&quot;data_mekko&quot;)
+head(data_mekko)</code></pre>
+<pre><code>##   var1 var2
+## 1   A1   B5
+## 2   A1   B4
+## 3   A1   B5
+## 4   A1   B5
+## 5   A1   B4
+## 6   A1   B1</code></pre>
+</div>
+<div id="reference-example" class="section level2">
+<h2>Reference example</h2>
+<pre class="r"><code>amMekko(x = &quot;var1&quot;, y = &quot;var2&quot;, data = data_mekko)</code></pre>
+<p><div id="htmlwidget-2309" style="width:100%;height:500px;" class="ramcharts_base"></div>
+<script type="application/json" data-for="htmlwidget-2309">{"x":{"chartData":{"rotate":false,"columnWidth":1,"categoryAxis":{"title":"","axisAlpha":0,"gridAlpha":0,"widthField":"total","gridPosition":"start"},"categoryField":"abs","dataProvider":[{"B1":18,"B2":22,"B3":21,"B4":36,"B5":27,"B6":26,"total":150,"abs":"A1"},{"B1":78,"B2":53,"B3":50,"B4":55,"B5":60,"B6":54,"total":350,"abs":"A2"},{"B1":82,"B2":95,"B3":84,"B4":87,"B5":78,"B6":74,"total":500,"abs":"A3"}],"graphs":[{"id":"AmGraph-1","fillColors":"#67b7dc","legendColor":"#67b7dc","fillAlphas":0.8,"lineAlpha":0,"labelText":"","balloonText":"<b>[[category]] - B1</b> \n[[value]]","title":"B1","type":"column","valueField":"B1"},{"id":"AmGraph-2","fillColors":null,"legendColor":null,"fillAlphas":0.8,"lineAlpha":0,"labelText":"","balloonText":"<b>[[category]] - B2</b> \n[[value]]","title":"B2","type":"column","valueField":"B2"},{"id":"AmGraph-3","fillColors":null,"legendColor":null,"fillAlphas":0.8,"lineAlpha":0,"labelText":"","balloonText":"<b>[[category]] - B3</b> \n[[value]]","title":"B3","type":"column","valueField":"B3"},{"id":"AmGraph-4","fillColors":null,"legendColor":null,"fillAlphas":0.8,"lineAlpha":0,"labelText":"","balloonText":"<b>[[category]] - B4</b> \n[[value]]","title":"B4","type":"column","valueField":"B4"},{"id":"AmGraph-5","fillColors":null,"legendColor":null,"fillAlphas":0.8,"lineAlpha":0,"labelText":"","balloonText":"<b>[[category]] - B5</b> \n[[value]]","title":"B5","type":"column","valueField":"B5"},{"id":"AmGraph-6","fillColors":null,"legendColor":null,"fillAlphas":0.8,"lineAlpha":0,"labelText":"","balloonText":"<b>[[category]] - B6</b> \n[[value]]","title":"B6","type":"column","valueField":"B6"}],"type":"serial","valueAxes":[{"position":"left","stackType":"100% stacked","unit":"%","axisAlpha":0,"gridAlpha":0.1,"title":""}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[]}</script></p>
+</div>
+<div id="horizontal-chart" class="section level2">
+<h2>Horizontal chart</h2>
+<pre class="r"><code>amMekko(x = &quot;var1&quot;, y = &quot;var2&quot;, data = data_mekko, horiz = TRUE)</code></pre>
+<p><div id="htmlwidget-8838" style="width:100%;height:500px;" class="ramcharts_base"></div>
+<script type="application/json" data-for="htmlwidget-8838">{"x":{"chartData":{"rotate":true,"columnWidth":1,"categoryAxis":{"title":"","axisAlpha":0,"gridAlpha":0,"widthField":"total","gridPosition":"start"},"categoryField":"abs","dataProvider":[{"B1":18,"B2":22,"B3":21,"B4":36,"B5":27,"B6":26,"total":150,"abs":"A1"},{"B1":78,"B2":53,"B3":50,"B4":55,"B5":60,"B6":54,"total":350,"abs":"A2"},{"B1":82,"B2":95,"B3":84,"B4":87,"B5":78,"B6":74,"total":500,"abs":"A3"}],"graphs":[{"id":"AmGraph-1","fillColors":"#67b7dc","legendColor":"#67b7dc","fillAlphas":0.8,"lineAlpha":0,"labelText":"","balloonText":"<b>[[category]] - B1</b> \n[[value]]","title":"B1","type":"column","valueField":"B1"},{"id":"AmGraph-2","fillColors":null,"legendColor":null,"fillAlphas":0.8,"lineAlpha":0,"labelText":"","balloonText":"<b>[[category]] - B2</b> \n[[value]]","title":"B2","type":"column","valueField":"B2"},{"id":"AmGraph-3","fillColors":null,"legendColor":null,"fillAlphas":0.8,"lineAlpha":0,"labelText":"","balloonText":"<b>[[category]] - B3</b> \n[[value]]","title":"B3","type":"column","valueField":"B3"},{"id":"AmGraph-4","fillColors":null,"legendColor":null,"fillAlphas":0.8,"lineAlpha":0,"labelText":"","balloonText":"<b>[[category]] - B4</b> \n[[value]]","title":"B4","type":"column","valueField":"B4"},{"id":"AmGraph-5","fillColors":null,"legendColor":null,"fillAlphas":0.8,"lineAlpha":0,"labelText":"","balloonText":"<b>[[category]] - B5</b> \n[[value]]","title":"B5","type":"column","valueField":"B5"},{"id":"AmGraph-6","fillColors":null,"legendColor":null,"fillAlphas":0.8,"lineAlpha":0,"labelText":"","balloonText":"<b>[[category]] - B6</b> \n[[value]]","title":"B6","type":"column","valueField":"B6"}],"type":"serial","valueAxes":[{"position":"left","stackType":"100% stacked","unit":"%","axisAlpha":0,"gridAlpha":0.1,"title":""}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[]}</script></p>
+</div>
+<div id="display-values" class="section level2">
+<h2>Display values</h2>
+<pre class="r"><code>amMekko(x = &quot;var1&quot;, y = &quot;var2&quot;, data = data_mekko, show_values = TRUE)</code></pre>
+<p><div id="htmlwidget-8353" style="width:100%;height:500px;" class="ramcharts_base"></div>
+<script type="application/json" data-for="htmlwidget-8353">{"x":{"chartData":{"rotate":false,"columnWidth":1,"categoryAxis":{"title":"","axisAlpha":0,"gridAlpha":0,"widthField":"total","gridPosition":"start"},"categoryField":"abs","dataProvider":[{"B1":18,"B2":22,"B3":21,"B4":36,"B5":27,"B6":26,"total":150,"abs":"A1"},{"B1":78,"B2":53,"B3":50,"B4":55,"B5":60,"B6":54,"total":350,"abs":"A2"},{"B1":82,"B2":95,"B3":84,"B4":87,"B5":78,"B6":74,"total":500,"abs":"A3"}],"graphs":[{"id":"AmGraph-1","fillColors":"#67b7dc","legendColor":"#67b7dc","fillAlphas":0.8,"lineAlpha":0,"labelText":"[[value]]","balloonText":"<b>[[category]] - B1</b> \n[[value]]","title":"B1","type":"column","valueField":"B1"},{"id":"AmGraph-2","fillColors":null,"legendColor":null,"fillAlphas":0.8,"lineAlpha":0,"labelText":"[[value]]","balloonText":"<b>[[category]] - B2</b> \n[[value]]","title":"B2","type":"column","valueField":"B2"},{"id":"AmGraph-3","fillColors":null,"legendColor":null,"fillAlphas":0.8,"lineAlpha":0,"labelText":"[[value]]","balloonText":"<b>[[category]] - B3</b> \n[[value]]","title":"B3","type":"column","valueField":"B3"},{"id":"AmGraph-4","fillColors":null,"legendColor":null,"fillAlphas":0.8,"lineAlpha":0,"labelText":"[[value]]","balloonText":"<b>[[category]] - B4</b> \n[[value]]","title":"B4","type":"column","valueField":"B4"},{"id":"AmGraph-5","fillColors":null,"legendColor":null,"fillAlphas":0.8,"lineAlpha":0,"labelText":"[[value]]","balloonText":"<b>[[category]] - B5</b> \n[[value]]","title":"B5","type":"column","valueField":"B5"},{"id":"AmGraph-6","fillColors":null,"legendColor":null,"fillAlphas":0.8,"lineAlpha":0,"labelText":"[[value]]","balloonText":"<b>[[category]] - B6</b> \n[[value]]","title":"B6","type":"column","valueField":"B6"}],"type":"serial","valueAxes":[{"position":"left","stackType":"100% stacked","unit":"%","axisAlpha":0,"gridAlpha":0.1,"title":""}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[]}</script></p>
+<h2 class="partdivtitle">
+amOptions
+</h2>
+</div>
+<div id="legend" class="section level2">
+<h2>legend</h2>
+<pre class="r"><code>amMekko(x = &quot;var1&quot;, y = &quot;var2&quot;, data = data_mekko, legend = TRUE)
+#or
+amMekko(x = &quot;var1&quot;, y = &quot;var2&quot;, data = data_mekko) %&gt;&gt;% 
+  amOptions(legend = TRUE)</code></pre>
+<p><div id="htmlwidget-4329" style="width:100%;height:500px;" class="ramcharts_base"></div>
+<script type="application/json" data-for="htmlwidget-4329">{"x":{"chartData":{"rotate":false,"columnWidth":1,"categoryAxis":{"title":"","axisAlpha":0,"gridAlpha":0,"widthField":"total","gridPosition":"start"},"categoryField":"abs","dataProvider":[{"B1":18,"B2":22,"B3":21,"B4":36,"B5":27,"B6":26,"total":150,"abs":"A1"},{"B1":78,"B2":53,"B3":50,"B4":55,"B5":60,"B6":54,"total":350,"abs":"A2"},{"B1":82,"B2":95,"B3":84,"B4":87,"B5":78,"B6":74,"total":500,"abs":"A3"}],"graphs":[{"id":"AmGraph-1","fillColors":"#67b7dc","legendColor":"#67b7dc","fillAlphas":0.8,"lineAlpha":0,"labelText":"","balloonText":"<b>[[category]] - B1</b> \n[[value]]","title":"B1","type":"column","valueField":"B1"},{"id":"AmGraph-2","fillColors":null,"legendColor":null,"fillAlphas":0.8,"lineAlpha":0,"labelText":"","balloonText":"<b>[[category]] - B2</b> \n[[value]]","title":"B2","type":"column","valueField":"B2"},{"id":"AmGraph-3","fillColors":null,"legendColor":null,"fillAlphas":0.8,"lineAlpha":0,"labelText":"","balloonText":"<b>[[category]] - B3</b> \n[[value]]","title":"B3","type":"column","valueField":"B3"},{"id":"AmGraph-4","fillColors":null,"legendColor":null,"fillAlphas":0.8,"lineAlpha":0,"labelText":"","balloonText":"<b>[[category]] - B4</b> \n[[value]]","title":"B4","type":"column","valueField":"B4"},{"id":"AmGraph-5","fillColors":null,"legendColor":null,"fillAlphas":0.8,"lineAlpha":0,"labelText":"","balloonText":"<b>[[category]] - B5</b> \n[[value]]","title":"B5","type":"column","valueField":"B5"},{"id":"AmGraph-6","fillColors":null,"legendColor":null,"fillAlphas":0.8,"lineAlpha":0,"labelText":"","balloonText":"<b>[[category]] - B6</b> \n[[value]]","title":"B6","type":"column","valueField":"B6"}],"legend":{"position":"right","align":"left","useGraphSettings":true},"type":"serial","valueAxes":[{"position":"left","stackType":"100% stacked","unit":"%","axisAlpha":0,"gridAlpha":0.1,"title":""}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[]}</script></p>
+</div>
+<div id="legendposition" class="section level2">
+<h2>legendPosition</h2>
+<pre class="r"><code>amMekko(x = &quot;var1&quot;, y = &quot;var2&quot;, data = data_mekko, legend = TRUE, legendPosition = &quot;left&quot;)
+#or
+amMekko(x = &quot;var1&quot;, y = &quot;var2&quot;, data = data_mekko) %&gt;&gt;% 
+  amOptions(legend = TRUE, legendPosition = &quot;left&quot;)</code></pre>
+<p><div id="htmlwidget-9819" style="width:100%;height:500px;" class="ramcharts_base"></div>
+<script type="application/json" data-for="htmlwidget-9819">{"x":{"chartData":{"rotate":false,"columnWidth":1,"categoryAxis":{"title":"","axisAlpha":0,"gridAlpha":0,"widthField":"total","gridPosition":"start"},"categoryField":"abs","dataProvider":[{"B1":18,"B2":22,"B3":21,"B4":36,"B5":27,"B6":26,"total":150,"abs":"A1"},{"B1":78,"B2":53,"B3":50,"B4":55,"B5":60,"B6":54,"total":350,"abs":"A2"},{"B1":82,"B2":95,"B3":84,"B4":87,"B5":78,"B6":74,"total":500,"abs":"A3"}],"graphs":[{"id":"AmGraph-1","fillColors":"#67b7dc","legendColor":"#67b7dc","fillAlphas":0.8,"lineAlpha":0,"labelText":"","balloonText":"<b>[[category]] - B1</b> \n[[value]]","title":"B1","type":"column","valueField":"B1"},{"id":"AmGraph-2","fillColors":null,"legendColor":null,"fillAlphas":0.8,"lineAlpha":0,"labelText":"","balloonText":"<b>[[category]] - B2</b> \n[[value]]","title":"B2","type":"column","valueField":"B2"},{"id":"AmGraph-3","fillColors":null,"legendColor":null,"fillAlphas":0.8,"lineAlpha":0,"labelText":"","balloonText":"<b>[[category]] - B3</b> \n[[value]]","title":"B3","type":"column","valueField":"B3"},{"id":"AmGraph-4","fillColors":null,"legendColor":null,"fillAlphas":0.8,"lineAlpha":0,"labelText":"","balloonText":"<b>[[category]] - B4</b> \n[[value]]","title":"B4","type":"column","valueField":"B4"},{"id":"AmGraph-5","fillColors":null,"legendColor":null,"fillAlphas":0.8,"lineAlpha":0,"labelText":"","balloonText":"<b>[[category]] - B5</b> \n[[value]]","title":"B5","type":"column","valueField":"B5"},{"id":"AmGraph-6","fillColors":null,"legendColor":null,"fillAlphas":0.8,"lineAlpha":0,"labelText":"","balloonText":"<b>[[category]] - B6</b> \n[[value]]","title":"B6","type":"column","valueField":"B6"}],"legend":{"position":"left","align":"left","useGraphSettings":true},"type":"serial","valueAxes":[{"position":"left","stackType":"100% stacked","unit":"%","axisAlpha":0,"gridAlpha":0.1,"title":""}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[]}</script></p>
+</div>
+<div id="export" class="section level2">
+<h2>export</h2>
+<pre class="r"><code>amMekko(x = &quot;var1&quot;, y = &quot;var2&quot;, data = data_mekko, export = TRUE)
+#or
+amMekko(x = &quot;var1&quot;, y = &quot;var2&quot;, data = data_mekko) %&gt;&gt;% 
+  amOptions(export = TRUE)</code></pre>
+<p><div id="htmlwidget-3505" style="width:100%;height:500px;" class="ramcharts_base"></div>
+<script type="application/json" data-for="htmlwidget-3505">{"x":{"chartData":{"rotate":false,"columnWidth":1,"export":{"enabled":true},"categoryAxis":{"title":"","axisAlpha":0,"gridAlpha":0,"widthField":"total","gridPosition":"start"},"categoryField":"abs","dataProvider":[{"B1":18,"B2":22,"B3":21,"B4":36,"B5":27,"B6":26,"total":150,"abs":"A1"},{"B1":78,"B2":53,"B3":50,"B4":55,"B5":60,"B6":54,"total":350,"abs":"A2"},{"B1":82,"B2":95,"B3":84,"B4":87,"B5":78,"B6":74,"total":500,"abs":"A3"}],"graphs":[{"id":"AmGraph-1","fillColors":"#67b7dc","legendColor":"#67b7dc","fillAlphas":0.8,"lineAlpha":0,"labelText":"","balloonText":"<b>[[category]] - B1</b> \n[[value]]","title":"B1","type":"column","valueField":"B1"},{"id":"AmGraph-2","fillColors":null,"legendColor":null,"fillAlphas":0.8,"lineAlpha":0,"labelText":"","balloonText":"<b>[[category]] - B2</b> \n[[value]]","title":"B2","type":"column","valueField":"B2"},{"id":"AmGraph-3","fillColors":null,"legendColor":null,"fillAlphas":0.8,"lineAlpha":0,"labelText":"","balloonText":"<b>[[category]] - B3</b> \n[[value]]","title":"B3","type":"column","valueField":"B3"},{"id":"AmGraph-4","fillColors":null,"legendColor":null,"fillAlphas":0.8,"lineAlpha":0,"labelText":"","balloonText":"<b>[[category]] - B4</b> \n[[value]]","title":"B4","type":"column","valueField":"B4"},{"id":"AmGraph-5","fillColors":null,"legendColor":null,"fillAlphas":0.8,"lineAlpha":0,"labelText":"","balloonText":"<b>[[category]] - B5</b> \n[[value]]","title":"B5","type":"column","valueField":"B5"},{"id":"AmGraph-6","fillColors":null,"legendColor":null,"fillAlphas":0.8,"lineAlpha":0,"labelText":"","balloonText":"<b>[[category]] - B6</b> \n[[value]]","title":"B6","type":"column","valueField":"B6"}],"type":"serial","valueAxes":[{"position":"left","stackType":"100% stacked","unit":"%","axisAlpha":0,"gridAlpha":0.1,"title":""}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[]}</script></p>
+</div>
+<div id="exportformat" class="section level2">
+<h2>exportFormat</h2>
+<pre class="r"><code>amMekko(x = &quot;var1&quot;, y = &quot;var2&quot;, data = data_mekko, export = TRUE, exportFormat = &quot;JPG&quot;)
+#or
+amMekko(x = &quot;var1&quot;, y = &quot;var2&quot;, data = data_mekko) %&gt;&gt;% 
+  amOptions(export = TRUE, exportFormat = &quot;JPG&quot;)</code></pre>
+<p><div id="htmlwidget-2203" style="width:100%;height:500px;" class="ramcharts_base"></div>
+<script type="application/json" data-for="htmlwidget-2203">{"x":{"chartData":{"rotate":false,"columnWidth":1,"export":{"enabled":true,"menu":[{"class":"export-main","menu":[{"format":"JPG","label":"Download as JPG","title":"JPG"}]}]},"categoryAxis":{"title":"","axisAlpha":0,"gridAlpha":0,"widthField":"total","gridPosition":"start"},"categoryField":"abs","dataProvider":[{"B1":18,"B2":22,"B3":21,"B4":36,"B5":27,"B6":26,"total":150,"abs":"A1"},{"B1":78,"B2":53,"B3":50,"B4":55,"B5":60,"B6":54,"total":350,"abs":"A2"},{"B1":82,"B2":95,"B3":84,"B4":87,"B5":78,"B6":74,"total":500,"abs":"A3"}],"graphs":[{"id":"AmGraph-1","fillColors":"#67b7dc","legendColor":"#67b7dc","fillAlphas":0.8,"lineAlpha":0,"labelText":"","balloonText":"<b>[[category]] - B1</b> \n[[value]]","title":"B1","type":"column","valueField":"B1"},{"id":"AmGraph-2","fillColors":null,"legendColor":null,"fillAlphas":0.8,"lineAlpha":0,"labelText":"","balloonText":"<b>[[category]] - B2</b> \n[[value]]","title":"B2","type":"column","valueField":"B2"},{"id":"AmGraph-3","fillColors":null,"legendColor":null,"fillAlphas":0.8,"lineAlpha":0,"labelText":"","balloonText":"<b>[[category]] - B3</b> \n[[value]]","title":"B3","type":"column","valueField":"B3"},{"id":"AmGraph-4","fillColors":null,"legendColor":null,"fillAlphas":0.8,"lineAlpha":0,"labelText":"","balloonText":"<b>[[category]] - B4</b> \n[[value]]","title":"B4","type":"column","valueField":"B4"},{"id":"AmGraph-5","fillColors":null,"legendColor":null,"fillAlphas":0.8,"lineAlpha":0,"labelText":"","balloonText":"<b>[[category]] - B5</b> \n[[value]]","title":"B5","type":"column","valueField":"B5"},{"id":"AmGraph-6","fillColors":null,"legendColor":null,"fillAlphas":0.8,"lineAlpha":0,"labelText":"","balloonText":"<b>[[category]] - B6</b> \n[[value]]","title":"B6","type":"column","valueField":"B6"}],"type":"serial","valueAxes":[{"position":"left","stackType":"100% stacked","unit":"%","axisAlpha":0,"gridAlpha":0.1,"title":""}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[]}</script></p>
+</div>
+<div id="main-and-creditsposition" class="section level2">
+<h2>main and creditsPosition</h2>
+<pre class="r"><code>amMekko(x = &quot;var1&quot;, y = &quot;var2&quot;, data = data_mekko, main = &quot;My Mekko&quot;,
+        mainColor = &quot;#68838B&quot;, mainSize = 25, creditsPosition = &quot;bottom-left&quot;)
+#or
+amMekko(x = &quot;var1&quot;, y = &quot;var2&quot;, data = data_mekko) %&gt;&gt;% 
+  amOptions( main = &quot;My Mekko&quot;,
+        mainColor = &quot;#68838B&quot;, mainSize = 25, creditsPosition = &quot;bottom-left&quot;)</code></pre>
+<p><div id="htmlwidget-5879" style="width:100%;height:500px;" class="ramcharts_base"></div>
+<script type="application/json" data-for="htmlwidget-5879">{"x":{"chartData":{"rotate":false,"columnWidth":1,"categoryAxis":{"title":"","axisAlpha":0,"gridAlpha":0,"widthField":"total","gridPosition":"start"},"categoryField":"abs","creditsPosition":"bottom-left","dataProvider":[{"B1":18,"B2":22,"B3":21,"B4":36,"B5":27,"B6":26,"total":150,"abs":"A1"},{"B1":78,"B2":53,"B3":50,"B4":55,"B5":60,"B6":54,"total":350,"abs":"A2"},{"B1":82,"B2":95,"B3":84,"B4":87,"B5":78,"B6":74,"total":500,"abs":"A3"}],"graphs":[{"id":"AmGraph-1","fillColors":"#67b7dc","legendColor":"#67b7dc","fillAlphas":0.8,"lineAlpha":0,"labelText":"","balloonText":"<b>[[category]] - B1</b> \n[[value]]","title":"B1","type":"column","valueField":"B1"},{"id":"AmGraph-2","fillColors":null,"legendColor":null,"fillAlphas":0.8,"lineAlpha":0,"labelText":"","balloonText":"<b>[[category]] - B2</b> \n[[value]]","title":"B2","type":"column","valueField":"B2"},{"id":"AmGraph-3","fillColors":null,"legendColor":null,"fillAlphas":0.8,"lineAlpha":0,"labelText":"","balloonText":"<b>[[category]] - B3</b> \n[[value]]","title":"B3","type":"column","valueField":"B3"},{"id":"AmGraph-4","fillColors":null,"legendColor":null,"fillAlphas":0.8,"lineAlpha":0,"labelText":"","balloonText":"<b>[[category]] - B4</b> \n[[value]]","title":"B4","type":"column","valueField":"B4"},{"id":"AmGraph-5","fillColors":null,"legendColor":null,"fillAlphas":0.8,"lineAlpha":0,"labelText":"","balloonText":"<b>[[category]] - B5</b> \n[[value]]","title":"B5","type":"column","valueField":"B5"},{"id":"AmGraph-6","fillColors":null,"legendColor":null,"fillAlphas":0.8,"lineAlpha":0,"labelText":"","balloonText":"<b>[[category]] - B6</b> \n[[value]]","title":"B6","type":"column","valueField":"B6"}],"titles":[{"color":"#68838B","text":"My Mekko","size":25}],"type":"serial","valueAxes":[{"position":"left","stackType":"100% stacked","unit":"%","axisAlpha":0,"gridAlpha":0.1,"title":""}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[]}</script></p>
+</div>
+<div id="theme" class="section level2">
+<h2>theme</h2>
+<pre class="r"><code>amMekko(x = &quot;var1&quot;, y = &quot;var2&quot;, data = data_mekko, theme = &quot;patterns&quot;)
+#or
+amMekko(x = &quot;var1&quot;, y = &quot;var2&quot;, data = data_mekko) %&gt;&gt;% 
+  amOptions(theme = &quot;patterns&quot;)</code></pre>
+<p><div id="htmlwidget-353" style="width:100%;height:500px;" class="ramcharts_base"></div>
+<script type="application/json" data-for="htmlwidget-353">{"x":{"chartData":{"rotate":false,"columnWidth":1,"categoryAxis":{"title":"","axisAlpha":0,"gridAlpha":0,"widthField":"total","gridPosition":"start"},"categoryField":"abs","dataProvider":[{"B1":18,"B2":22,"B3":21,"B4":36,"B5":27,"B6":26,"total":150,"abs":"A1"},{"B1":78,"B2":53,"B3":50,"B4":55,"B5":60,"B6":54,"total":350,"abs":"A2"},{"B1":82,"B2":95,"B3":84,"B4":87,"B5":78,"B6":74,"total":500,"abs":"A3"}],"graphs":[{"id":"AmGraph-1","fillColors":"#67b7dc","legendColor":"#67b7dc","fillAlphas":0.8,"lineAlpha":0,"labelText":"","balloonText":"<b>[[category]] - B1</b> \n[[value]]","title":"B1","type":"column","valueField":"B1"},{"id":"AmGraph-2","fillColors":null,"legendColor":null,"fillAlphas":0.8,"lineAlpha":0,"labelText":"","balloonText":"<b>[[category]] - B2</b> \n[[value]]","title":"B2","type":"column","valueField":"B2"},{"id":"AmGraph-3","fillColors":null,"legendColor":null,"fillAlphas":0.8,"lineAlpha":0,"labelText":"","balloonText":"<b>[[category]] - B3</b> \n[[value]]","title":"B3","type":"column","valueField":"B3"},{"id":"AmGraph-4","fillColors":null,"legendColor":null,"fillAlphas":0.8,"lineAlpha":0,"labelText":"","balloonText":"<b>[[category]] - B4</b> \n[[value]]","title":"B4","type":"column","valueField":"B4"},{"id":"AmGraph-5","fillColors":null,"legendColor":null,"fillAlphas":0.8,"lineAlpha":0,"labelText":"","balloonText":"<b>[[category]] - B5</b> \n[[value]]","title":"B5","type":"column","valueField":"B5"},{"id":"AmGraph-6","fillColors":null,"legendColor":null,"fillAlphas":0.8,"lineAlpha":0,"labelText":"","balloonText":"<b>[[category]] - B6</b> \n[[value]]","title":"B6","type":"column","valueField":"B6"}],"theme":"patterns","type":"serial","valueAxes":[{"position":"left","stackType":"100% stacked","unit":"%","axisAlpha":0,"gridAlpha":0.1,"title":""}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[]}</script></p>
+</div>
+
+
+  </div><!-- end of main column -->
+  
+  <div class="col-xs-1 col-md-1" id="logo">
+    <a href="https://github.com/DataKnowledge/rAmCharts.git">
+      <img  src="www/img/github.png" title="View on Github" id="img-github"/>
+    </a>
+  </div>
+  
+  <script src="./www/js/navbar.js"> </script>
+  <script src="./www/js/logo.js"> </script>
+  <script src="./www/js/toggle.js"> </script>
+</div><!-- end of main row -->
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+$(document).ready(function () {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+});
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

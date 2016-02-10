@@ -112,7 +112,7 @@ amPie(data = data_pie,
 
 ## theme
 ```{r, echo = TRUE, eval = FALSE}
-amPie(data = data_pie, main = "My Pie", theme = "patterns")
+amPie(data = data_pie, theme = "patterns")
 #or
 amPie(data = data_pie) %>>% 
   amOptions(theme = "patterns")

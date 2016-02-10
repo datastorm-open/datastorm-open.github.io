@@ -173,7 +173,7 @@ amBarplot(x = "country", y = "visits", data = data_bar, labelRotation = -45,
 
 ## theme
 ```{r, echo = TRUE, eval = FALSE}
-amBarplot(x = "year", y = c("income", "expenses"), data = data_gbar, main = "My Barchart", 
+amBarplot(x = "year", y = c("income", "expenses"), data = data_gbar, 
           theme = "patterns")
 #or
 amBarplot(x = "year", y = c("income", "expenses"), data = data_gbar) %>>% 

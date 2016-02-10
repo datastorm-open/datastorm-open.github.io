@@ -124,7 +124,7 @@ amCandlestick(data = data_candleStick2,
 
 <h2 class="partdivtitle">theme</h2>
 ```{r, echo = TRUE, eval = FALSE}
-amCandlestick(data = data_candleStick2, main = "My Candlestick", theme = "patterns",
+amCandlestick(data = data_candleStick2, theme = "patterns",
               labelRotation = -45)
 #or
 amCandlestick(data = data_candleStick2, labelRotation = -45) %>>% 

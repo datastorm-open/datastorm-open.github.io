@@ -114,7 +114,7 @@ amAngularGauge(x = 25,
 
 ## theme
 ```{r, echo = TRUE, eval = FALSE}
-amAngularGauge(x = 25, main = "My Gauge", theme = "patterns")
+amAngularGauge(x = 25, theme = "patterns")
 #or
 amAngularGauge(x = 25) %>>% 
   amOptions(theme = "patterns")

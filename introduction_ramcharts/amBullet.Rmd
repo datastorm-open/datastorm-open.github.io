@@ -115,7 +115,7 @@ amBullet(value = 65,  main = "My Bullet", mainColor = "#68838B", mainSize = 25,
 
 ## theme
 ```{r, echo = TRUE, eval = FALSE}
-amBullet(value = 65, main = "My Bullet", theme = "patterns")
+amBullet(value = 65, theme = "patterns")
 #or
 amBullet(value = 65) %>>% 
   amOptions(theme = "patterns")
