@@ -56,7 +56,7 @@ amOHLC(data = data_candleStick2, labelRotation = -45, names = c("min", "begin", 
 
 ## Horizontal chart
 ```{r}
-amOHLC(data = data_candleStick2, labelRotation = -45, horiz = TRUE)
+amOHLC(data = data_candleStick2, horiz = TRUE)
 ```
 
 ## Parse dates

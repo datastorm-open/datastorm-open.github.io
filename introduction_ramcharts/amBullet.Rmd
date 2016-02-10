@@ -101,14 +101,15 @@ amBullet(value = 65, export = TRUE, exportFormat = "JPG") %>>% plot(height = "15
 ## main and creditsPosition</h2>
 ```{r, echo = TRUE, eval = FALSE}
 amBullet(value = 65, main = "My Bullet",
-        mainColor = "#68838B", mainSize = 25, creditsPosition = "top-right")
+        mainColor = "#68838B", mainSize = 25, creditsPosition = "bottom-right")
 #or
 amBullet(value = 65) %>>% 
   amOptions( main = "My Bullet",
-        mainColor = "#68838B", mainSize = 25, creditsPosition = "top-right")
+        mainColor = "#68838B", mainSize = 25, creditsPosition = "bottom-right")
 ```
 ```{r, echo = FALSE}
-amBullet(value = 65,  main = "My Bullet", mainColor = "#68838B", mainSize = 25, creditsPosition = "top-right") %>>%
+amBullet(value = 65,  main = "My Bullet", mainColor = "#68838B", mainSize = 25, 
+         creditsPosition = "bottom-right") %>>%
   plot(height = "200px", width = "60%")
 ```
 
