@@ -20,7 +20,7 @@ require(package = "pipeR", quietly = TRUE)
 * __...__: see amOptions for more options
 
 
-## Data used in the examples
+Data used in the examples
 
 ```{r}
 data <- data.frame(label = c("A", "Z", "E", "R", "T"),

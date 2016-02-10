@@ -1,0 +1,152 @@
+---
+pagetitle: rAmCharts - amFloatingBar
+---
+
+```{r,echo=FALSE, message=FALSE}
+require(package = "rAmCharts", quietly = TRUE)
+require(package = "pipeR", quietly = TRUE)
+```
+
+<h1>rAmCharts - amFloatingBar</h1>
+
+## Parameters
+
+* __x__: a character, column name for x-axis, or a numeric, number of the corresponding column. It is optional if argument data has row names. 
+* __y_inf__: a character, column name for the lower value, or a numeric, number of the corresponding column. 
+* __y_sup__: a character, column name for the lower value, or a numeric, number of the corresponding column. 
+* __data__: a dataframe with values to display. You can add a column "color" (character, colors in hexadecimal). You can also add a column "description" (character) containing the text you want to display when mouse is on the graphic ('\<br>' for a new line).
+* __groups_color__: a character, vector of colors in hexadecimal, same length as y.
+* __xlab__: a character, label for x-axis.
+* __ylab__: a character, label for y-axis.
+* __horiz__: a boolean, TRUE for an horizontal chart, FALSE for a vertical one.
+* __show_values__: a boolean, TRUE ti dosplay values.
+* __depth__: a numeric. If depth is superior to 0, chart is displayed in 3D. Value between 0 and 100.
+* __dataDateFormat__: a character, default 'NULL'. Even if your chart parses dates,you can pass them as strings in your data - all you need to do is to set data date format and the chart will parse dates to date objects. Please note that two-digit years (YY) as well as literal month names (MMM)  are NOT supported in this setting.
+* __minPeriod__: a character. Specifies the shortest period of your data. This should be set only if dataDateFormat is not 'NULL'. Possible period values: fff - milliseconds, ss - seconds, mm - minutes, hh - hours, DD - days, MM - months, YYYY - years. It's also possible to supply a number for increments, i.e. '15mm' which will instruct the chart that your data is supplied in 15 minutes increments.
+* __...__: other parameters called in amOptions. 
+
+Notice: If the chart has many columns, several labels might be hidden. It depends on the width of the conatainer where the chart is displayed. Zoom on the chart to see if the chart can contain all labels. If not, use the parameter labelRotation. You can also add a cursor to your chart...
+
+
+Data used in the examples:
+```{r}
+data("data_fbar")
+head(data_fbar)
+data("data_gbar")
+head(data_gbar)
+```
+
+## Reference example
+
+```{r}
+amFloatingBar(x = "country", y_inf = "visits_inf", y_sup = "visits_sup",
+              data = data_fbar, labelRotation = -45)
+ 
+```
+
+## Horizontal floating bar
+```{r}
+amFloatingBar(x = "country", y_inf = "visits_inf", y_sup = "visits_sup",
+              data = data_fbar, horiz = TRUE)
+```
+
+## 3D bar
+```{r}
+amFloatingBar(x = "country", y_inf = "visits_inf", y_sup = "visits_sup",
+              data = data_fbar, labelRotation = -45, depth = 15)
+```
+
+## Display values
+```{r}
+amFloatingBar(x = "country", y_inf = "visits_inf", y_sup = "visits_sup",
+              data = data_fbar, labelRotation = -45, show_values = TRUE)
+```
+
+## Change colors
+```{r}
+  amFloatingBar(x = "country", y_inf = "visits_inf", y_sup = "visits_sup",
+                data = data_fbar[,1:3], labelRotation = -45, groups_color = "#67b7dc")
+```
+
+## Parse dates - default label: first day of each year
+```{r}
+pipeR::pipeline(
+  amFloatingBar(x = "year", y_inf = "expenses", y_sup = "income", data = data_gbar,
+                dataDateFormat = "YYYY", minPeriod = "YYYY"), 
+  setChartCursor()
+)
+```
+
+## Parse dates - default label: first day of each month
+```{r}
+pipeR::pipeline(
+  amFloatingBar(x = "month", y_inf = "expenses", y_sup = "income", data = data_gbar,
+                dataDateFormat = "MM/YYYY", minPeriod = "MM"),
+  setChartCursor()
+)
+```
+
+<h2 class="partdivtitle">amOptions</h2>
+
+## export
+```{r, echo = TRUE, eval = FALSE}
+amFloatingBar(x = "country", y_inf = "visits_inf", y_sup = "visits_sup",
+              data = data_fbar, labelRotation = -45, export = TRUE)
+#or
+amFloatingBar(x = "country", y_inf = "visits_inf", y_sup = "visits_sup",
+              data = data_fbar, labelRotation = -45) %>>% 
+  amOptions(export = TRUE)
+```
+```{r, echo = FALSE}
+amFloatingBar(x = "country", y_inf = "visits_inf", y_sup = "visits_sup",
+              data = data_fbar, labelRotation = -45, export = TRUE)
+```
+  
+## exportFormat
+```{r, echo = TRUE, eval = FALSE}
+amFloatingBar(x = "country", y_inf = "visits_inf", y_sup = "visits_sup",
+              data = data_fbar, labelRotation = -45, export = TRUE,
+          exportFormat = "JPG")
+#or
+amFloatingBar(x = "country", y_inf = "visits_inf", y_sup = "visits_sup",
+              data = data_fbar, labelRotation = -45) %>>% 
+  amOptions(export = TRUE, exportFormat = "CSV")
+```
+```{r, echo = FALSE}
+amFloatingBar(x = "country", y_inf = "visits_inf", y_sup = "visits_sup",
+              data = data_fbar, labelRotation = -45, export = TRUE, 
+          exportFormat = "JPG")
+```
+
+## main and creditsPosition
+```{r, echo = TRUE, eval = FALSE}
+amFloatingBar(x = "country", y_inf = "visits_inf", y_sup = "visits_sup",
+              data = data_fbar, labelRotation = -45, main = "My Floating Barchart",
+              mainColor = "#68838B", mainSize = 25, creditsPosition = "top-right")
+#or
+amFloatingBar(x = "country", y_inf = "visits_inf", y_sup = "visits_sup",
+              data = data_fbar, labelRotation = -45) %>>% 
+  amOptions(main = "My Barchart",
+            mainColor = "#68838B", mainSize = 25, creditsPosition = "top-right")
+```
+```{r, echo = FALSE}
+amFloatingBar(x = "country", y_inf = "visits_inf", y_sup = "visits_sup",
+              data = data_fbar, labelRotation = -45, 
+              main = "My Floating Barchart", mainColor = "#68838B", mainSize = 25, 
+              creditsPosition = "top-right")
+```
+
+## theme
+```{r, echo = TRUE, eval = FALSE}
+amFloatingBar(x = "country", y_inf = "visits_inf", y_sup = "visits_sup",
+              data = data_fbar, labelRotation = -45, main = "My Floating Barchart", 
+              theme = "patterns")
+#or
+amFloatingBar(x = "country", y_inf = "visits_inf", y_sup = "visits_sup",
+              data = data_fbar, labelRotation = -45) %>>% 
+  amOptions(theme = "patterns")
+```
+```{r, echo = FALSE}
+amFloatingBar(x = "country", y_inf = "visits_inf", y_sup = "visits_sup",
+              data = data_fbar, labelRotation = -45, theme = "patterns")
+```

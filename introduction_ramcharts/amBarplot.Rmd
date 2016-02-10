@@ -11,8 +11,8 @@ require(package = "pipeR", quietly = TRUE)
 
 ## Parameters
 
-* __x__: a character, column name for x-axis, or a numeric, number of the corresponding column. It is optional il argument data has row names. 
-* __y__: a character, column name for y-axis, or a numeric, number of the corresponding column.to date objects. If ypu want to display a grouped barchart or a stacked barchart, y is a vector of characters or numerics.
+* __x__: a character, column name for x-axis, or a numeric, number of the corresponding column. It is optional if argument data has row names. 
+* __y__: a character, column name for y-axis, or a numeric, number of the corresponding column. If you want to display a grouped barchart or a stacked barchart, y is a vector of characters or numerics.
 * __data__: a dataframe with values to display. You can add a column "color" (character, colors in hexadecimal). You can also add a column "description" (character) containing the text you want to display when mouse is on the graphic ('\<br>' for a new line).
 * __groups_color__: a character, vector of colors in hexadecimal, same length as y.
 * __xlab__: a character, label for x-axis.
@@ -40,12 +40,12 @@ head(data_gbar)
 
 ```{r}
 amBarplot(x = "country", y = "visits", data = data_bar,
-          labelRotation = -90) 
+          labelRotation = -45) 
 ```
 
 ## Horizontal bar
 ```{r}
-amBarplot(x = "country", y = "visits", data = data_bar, horiz = TRUE, labelRotation = -90)
+amBarplot(x = "country", y = "visits", data = data_bar, horiz = TRUE)
 ```
 
 ## 3D bar
