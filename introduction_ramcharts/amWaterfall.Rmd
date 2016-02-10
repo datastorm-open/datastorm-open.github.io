@@ -1,0 +1,91 @@
+---
+pagetitle: rAmCharts - amWaterfall
+---
+
+```{r,echo=FALSE, message=FALSE}
+require(package = "rAmCharts", quietly = TRUE)
+require(package = "pipeR", quietly = TRUE)
+```
+
+<h1>rAmCharts - amWaterfall</h1>
+
+## Parameters
+
+* __data__: a dataframe with at least 3 columns : label (character), value (numeric), operation (character : "plus", "minus", "total"). You can add a third column "color" (character, colors in hexadecimal). You can also add a column "description" (character) containing the text you want to display when mouse is on the graphic ('<br>' for a new line). See data_xaterfall for example.
+* __start__: a numeric, value from which to start.
+* __horiz__: a boolean, TRUE for an horizontal chart, FALSE for a vertical one.
+* __show_values__: a boolean, TRUE ti dosplay values.
+* __...__: other parameters called in amOptions. 
+
+Data used in the examples:
+```{r}
+data("data_waterfall")
+head(data_waterfall)
+```
+
+## Reference example
+
+```{r}
+amWaterfall(data = data_waterfall)
+```
+
+## Horizontal waterfall
+```{r}
+amWaterfall(data = data_waterfall, horiz = TRUE)
+```
+
+## Display values
+```{r}
+amWaterfall(data = data_waterfall, show_values = TRUE)
+```
+
+<h2 class="partdivtitle">amOptions</h2>
+
+## export
+```{r, echo = TRUE, eval = FALSE}
+amWaterfall(data = data_waterfall, export = TRUE)
+#or
+amWaterfall(data = data_waterfall) %>>% 
+  amOptions(export = TRUE)
+```
+```{r, echo = FALSE}
+amWaterfall(data = data_waterfall, export = TRUE)
+```
+  
+## exportFormat
+```{r, echo = TRUE, eval = FALSE}
+amWaterfall(data = data_waterfall, export = TRUE, exportFormat = "JPG")
+#or
+amWaterfall(data = data_waterfall) %>>% 
+  amOptions(export = TRUE, exportFormat = "CSV")
+```
+```{r, echo = FALSE}
+amWaterfall(data = data_waterfall, export = TRUE, 
+          exportFormat = "JPG")
+```
+
+## main and creditsPosition
+```{r, echo = TRUE, eval = FALSE}
+amWaterfall(data = data_waterfall, main = "My Waterfall",
+        mainColor = "#68838B", mainSize = 25, creditsPosition = "top-right")
+#or
+amWaterfall(data = data_waterfall) %>>% 
+  amOptions( main = "My Waterfall",
+        mainColor = "#68838B", mainSize = 25, creditsPosition = "top-right")
+```
+```{r, echo = FALSE}
+amWaterfall(data = data_waterfall, 
+       main = "My Waterfall",
+        mainColor = "#68838B", mainSize = 25, creditsPosition = "top-right")
+```
+
+## theme
+```{r, echo = TRUE, eval = FALSE}
+amWaterfall(data = data_waterfall, theme = "patterns")
+#or
+amWaterfall(data = data_waterfall) %>>% 
+  amOptions(theme = "patterns")
+```
+```{r, echo = FALSE}
+amWaterfall(data = data_waterfall, theme = "patterns")
+```
