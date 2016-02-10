@@ -114,7 +114,8 @@ amBarplot(y = c("Murder", "Assault", "UrbanPop", "Rape"), data = dataset, stack_
 ```{r, echo = TRUE, eval = FALSE}
 amBarplot(x = "year", y = c("income", "expenses"), data = data_gbar, legend = TRUE)
 #or
-amBarplot(x = "year", y = c("income", "expenses"), data = data_gbar) %>>% amOptions(legend = TRUE)
+amBarplot(x = "year", y = c("income", "expenses"), data = data_gbar) %>>% 
+  amOptions(legend = TRUE)
 ```
 ```{r, echo = FALSE}
 amBarplot(x = "year", y = c("income", "expenses"), data = data_gbar, legend = TRUE)
@@ -124,7 +125,8 @@ amBarplot(x = "year", y = c("income", "expenses"), data = data_gbar, legend = TR
 ```{r, echo = TRUE, eval = FALSE}
 amBarplot(x = "year", y = c("income", "expenses"), data = data_gbar, legend = TRUE, legendPosition = "left")
 #or
-amBarplot(x = "year", y = c("income", "expenses"), data = data_gbar) %>>% amOptions(legend = TRUE, legendPosition = "left")
+amBarplot(x = "year", y = c("income", "expenses"), data = data_gbar) %>>% 
+  amOptions(legend = TRUE, legendPosition = "left")
 ```
 ```{r, echo = FALSE}
 amBarplot(x = "year", y = c("income", "expenses"), data = data_gbar, legend = TRUE, legendPosition = "left")
@@ -143,13 +145,15 @@ amBarplot(x = "country", y = "visits", data = data_bar, labelRotation = -45, exp
   
 ## exportFormat
 ```{r, echo = TRUE, eval = FALSE}
-amBarplot(x = "country", y = "visits", data = data_bar, labelRotation = -45, export = TRUE, exportFormat = "JPG")
+amBarplot(x = "country", y = "visits", data = data_bar, labelRotation = -45, export = TRUE,
+          exportFormat = "JPG")
 #or
 amBarplot(x = "country", y = "visits", data = data_bar, labelRotation = -45) %>>% 
   amOptions(export = TRUE, exportFormat = "CSV")
 ```
 ```{r, echo = FALSE}
-amBarplot(x = "country", y = "visits", data = data_bar, labelRotation = -45, export = TRUE, exportFormat = "JPG")
+amBarplot(x = "country", y = "visits", data = data_bar, labelRotation = -45, export = TRUE, 
+          exportFormat = "JPG")
 ```
 
 ## main and creditsPosition
@@ -169,7 +173,8 @@ amBarplot(x = "country", y = "visits", data = data_bar, labelRotation = -45,
 
 ## theme
 ```{r, echo = TRUE, eval = FALSE}
-amBarplot(x = "year", y = c("income", "expenses"), data = data_gbar, main = "My Barchart", theme = "patterns")
+amBarplot(x = "year", y = c("income", "expenses"), data = data_gbar, main = "My Barchart", 
+          theme = "patterns")
 #or
 amBarplot(x = "year", y = c("income", "expenses"), data = data_gbar) %>>% 
   amOptions(theme = "patterns")

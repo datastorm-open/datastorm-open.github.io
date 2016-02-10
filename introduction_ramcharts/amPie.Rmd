@@ -55,7 +55,8 @@ amPie(data = data_pie, inner_radius = 50, depth = 10, show_values = TRUE)
 ```{r, echo = TRUE, eval = FALSE}
 amPie(data = data_pie, legend = TRUE)
 #or
-amPie(data = data_pie) %>>% amOptions(legend = TRUE)
+amPie(data = data_pie) %>>% 
+  amOptions(legend = TRUE)
 ```
 ```{r, echo = FALSE}
 amPie(data = data_pie, legend = TRUE)
@@ -65,7 +66,8 @@ amPie(data = data_pie, legend = TRUE)
 ```{r, echo = TRUE, eval = FALSE}
 amPie(data = data_pie, legend = TRUE, legendPosition = "left")
 #or
-amPie(data = data_pie) %>>% amOptions(legend = TRUE, legendPosition = "left")
+amPie(data = data_pie) %>>% 
+  amOptions(legend = TRUE, legendPosition = "left")
 ```
 ```{r, echo = FALSE}
 amPie(data = data_pie, legend = TRUE, legendPosition = "left")
@@ -96,16 +98,16 @@ amPie(data = data_pie, export = TRUE, exportFormat = "JPG")
 ## main and creditsPosition
 ```{r, echo = TRUE, eval = FALSE}
 amPie(data = data_pie, main = "My Pie",
-        mainColor = "#68838B", mainSize = 25, creditsPosition = "top-right")
+        mainColor = "#68838B", mainSize = 25, creditsPosition = "bottom-right")
 #or
 amPie(data = data_pie) %>>% 
   amOptions( main = "My Pie",
-        mainColor = "#68838B", mainSize = 25, creditsPosition = "top-right")
+        mainColor = "#68838B", mainSize = 25, creditsPosition = "bottom-right")
 ```
 ```{r, echo = FALSE}
 amPie(data = data_pie, 
        main = "My Pie",
-        mainColor = "#68838B", mainSize = 25, creditsPosition = "top-right")
+        mainColor = "#68838B", mainSize = 25, creditsPosition = "bottom-right")
 ```
 
 ## theme

@@ -20,7 +20,7 @@ require(package = "pipeR", quietly = TRUE)
 * __...__: see amOptions for more options
 
 
-## Data use in the following examples
+## Data used in the examples
 
 ```{r}
 data <- data.frame(label = c("A", "Z", "E", "R", "T"),
@@ -81,7 +81,8 @@ amRadar(data = data,  pch = "bubble", backTransparency = 0)
 ```{r, echo = TRUE, eval = FALSE}
 amRadar(data = data,  pch = "bubble", backTransparency = 0, legend = TRUE)
 #or
-amRadar(data = data,  pch = "bubble", backTransparency = 0) %>>% amOptions(legend = TRUE)
+amRadar(data = data,  pch = "bubble", backTransparency = 0) %>>% 
+  amOptions(legend = TRUE)
 ```
 ```{r, echo = FALSE}
 amRadar(data = data,  pch = "bubble", backTransparency = 0, legend = TRUE)
@@ -89,9 +90,11 @@ amRadar(data = data,  pch = "bubble", backTransparency = 0, legend = TRUE)
 
 ## legendPosition
 ```{r, echo = TRUE, eval = FALSE}
-amRadar(data = data,  pch = "bubble", backTransparency = 0, legend = TRUE, legendPosition = "left")
+amRadar(data = data,  pch = "bubble", backTransparency = 0, legend = TRUE, 
+        legendPosition = "left")
 #or
-amRadar(data = data,  pch = "bubble", backTransparency = 0) %>>% amOptions(legend = TRUE, legendPosition = "left")
+amRadar(data = data,  pch = "bubble", backTransparency = 0) %>>% 
+  amOptions(legend = TRUE, legendPosition = "left")
 ```
 ```{r, echo = FALSE}
 amRadar(data = data,  pch = "bubble", backTransparency = 0, legend = TRUE, legendPosition = "left")
@@ -124,16 +127,16 @@ amRadar(data = data,  pch = "bubble", backTransparency = 0,
 ## main and creditsPosition
 ```{r, echo = TRUE, eval = FALSE}
 amRadar(data = data,  pch = "bubble", backTransparency = 0, main = "My Radar",
-        mainColor = "#68838B", mainSize = 25, creditsPosition = "top-right")
+        mainColor = "#68838B", mainSize = 25, creditsPosition = "bottom-right")
 #or
 amRadar(data = data,  pch = "bubble", backTransparency = 0) %>>% 
   amOptions( main = "My Radar",
-        mainColor = "#68838B", mainSize = 25, creditsPosition = "top-right")
+        mainColor = "#68838B", mainSize = 25, creditsPosition = "bottom-right")
 ```
 ```{r, echo = FALSE}
 amRadar(data = data,  pch = "bubble", backTransparency = 0, 
        main = "My Radar",
-        mainColor = "#68838B", mainSize = 25, creditsPosition = "top-right")
+        mainColor = "#68838B", mainSize = 25, creditsPosition = "bottom-right")
 ```
 
 ## theme
