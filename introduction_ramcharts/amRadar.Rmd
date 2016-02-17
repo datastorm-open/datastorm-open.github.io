@@ -54,25 +54,10 @@ amRadar(data = data, backTransparency = c(0, 0.4, 0.6))
 amRadar(data = data, type = "circles")
 ```
 
-```{r}
-amRadar(data = data, type = "polygons") #default
-```
-
 ## pch
-```{r}
-amRadar(data = data,  pch = "triangleRight", backTransparency = 0)
-```
-
-```{r}
-amRadar(data = data, pch = "diamond", backTransparency = 0) 
-```
 
 ```{r}
 amRadar(data = data,  pch = "yError", backTransparency = 0)
-```
-
-```{r}
-amRadar(data = data,  pch = "bubble", backTransparency = 0)
 ```
 
 <h2 class="partdivtitle">amOptions</h2>
