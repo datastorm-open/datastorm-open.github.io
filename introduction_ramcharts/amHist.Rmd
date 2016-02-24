@@ -35,12 +35,12 @@ amHist(x = data_hist)
 
 ## Filling color
 ```{r}
-amHist(x = data_hist, col = "#367fa9")
+amHist(x = data_hist, col = "#CECECE")
 ```
 
 ## Border color
 ```{r}
-amHist(x = data_hist, border = "#367fa9")
+amHist(x = data_hist, border = "#CECECE")
 ```
 
 ## View frequency
@@ -61,5 +61,55 @@ amHist(x = data_hist, labels = TRUE)
 ## Set ylim
 ```{r}
 amHist(x = data_hist, ylim = c(0,.8), freq = FALSE)
+```
+
+<h2 class="partdivtitle">amOptions</h2>
+
+## export
+```{r, echo = TRUE, eval = FALSE}
+amHist(x = data_hist, export = TRUE)
+#or
+amHist(x = data_hist) %>>% 
+  amOptions(export = TRUE)
+```
+```{r, echo = FALSE}
+amHist(x = data_hist, export = TRUE)
+```
+  
+## exportFormat
+```{r, echo = TRUE, eval = FALSE}
+amHist(x = data_hist, export = TRUE, exportFormat = "JPG")
+#or
+amHist(x = data_hist) %>>% 
+  amOptions(export = TRUE, exportFormat = "CSV")
+```
+```{r, echo = FALSE}
+amHist(x = data_hist, export = TRUE, exportFormat = "JPG")
+```
+
+## main and creditsPosition
+```{r, echo = TRUE, eval = FALSE}
+amHist(x = data_hist, main = "My Histogram",
+        mainColor = "#68838B", mainSize = 25, creditsPosition = "top-right")
+#or
+amHist(x = data_hist) %>>% 
+  amOptions( main = "My Histogram",
+        mainColor = "#68838B", mainSize = 25, creditsPosition = "top-right")
+```
+```{r, echo = FALSE}
+amHist(x = data_hist, 
+       main = "My Histogram",
+        mainColor = "#68838B", mainSize = 25, creditsPosition = "top-right")
+```
+
+## theme
+```{r, echo = TRUE, eval = FALSE}
+amHist(x = data_hist, theme = "patterns")
+#or
+amHist(x = data_hist) %>>% 
+  amOptions(theme = "patterns")
+```
+```{r, echo = FALSE}
+amHist(x = data_hist, theme = "patterns")
 ```
 

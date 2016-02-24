@@ -99,21 +99,22 @@ amAngularGauge(x = 25, export = TRUE, exportFormat = "JPG")  %>>% plot(width = "
 ## main and creditsPosition
 ```{r, echo = TRUE, eval = FALSE}
 amAngularGauge(x = 25, main = "My Gauge",
-        mainColor = "#68838B", mainSize = 25, creditsPosition = "top-right")
+        mainColor = "#68838B", mainSize = 25, creditsPosition = "bottom-right")
 #or
 amAngularGauge(x = 25) %>>% 
   amOptions( main = "My Gauge",
-        mainColor = "#68838B", mainSize = 25, creditsPosition = "top-right")
+        mainColor = "#68838B", mainSize = 25, creditsPosition = "bottom-right")
 ```
 ```{r, echo = FALSE}
 amAngularGauge(x = 25, 
        main = "My Gauge",
-        mainColor = "#68838B", mainSize = 25, creditsPosition = "top-right")  %>>% plot(width = "40%")
+        mainColor = "#68838B", mainSize = 25, creditsPosition = "bottom-right")  %>>% 
+  plot(width = "40%")
 ```
 
 ## theme
 ```{r, echo = TRUE, eval = FALSE}
-amAngularGauge(x = 25, main = "My Gauge", theme = "patterns")
+amAngularGauge(x = 25, theme = "patterns")
 #or
 amAngularGauge(x = 25) %>>% 
   amOptions(theme = "patterns")

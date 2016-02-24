@@ -20,7 +20,7 @@ require(package = "pipeR", quietly = TRUE)
 * __...__: see amOptions for more options
 
 
-## Data use in the following examples
+Data used in the examples
 
 ```{r}
 data <- data.frame(label = c("A", "Z", "E", "R", "T"),
@@ -54,25 +54,10 @@ amRadar(data = data, backTransparency = c(0, 0.4, 0.6))
 amRadar(data = data, type = "circles")
 ```
 
-```{r}
-amRadar(data = data, type = "polygons") #default
-```
-
 ## pch
-```{r}
-amRadar(data = data,  pch = "triangleRight", backTransparency = 0)
-```
-
-```{r}
-amRadar(data = data, pch = "diamond", backTransparency = 0) 
-```
 
 ```{r}
 amRadar(data = data,  pch = "yError", backTransparency = 0)
-```
-
-```{r}
-amRadar(data = data,  pch = "bubble", backTransparency = 0)
 ```
 
 <h2 class="partdivtitle">amOptions</h2>
@@ -81,7 +66,8 @@ amRadar(data = data,  pch = "bubble", backTransparency = 0)
 ```{r, echo = TRUE, eval = FALSE}
 amRadar(data = data,  pch = "bubble", backTransparency = 0, legend = TRUE)
 #or
-amRadar(data = data,  pch = "bubble", backTransparency = 0) %>>% amOptions(legend = TRUE)
+amRadar(data = data,  pch = "bubble", backTransparency = 0) %>>% 
+  amOptions(legend = TRUE)
 ```
 ```{r, echo = FALSE}
 amRadar(data = data,  pch = "bubble", backTransparency = 0, legend = TRUE)
@@ -89,9 +75,11 @@ amRadar(data = data,  pch = "bubble", backTransparency = 0, legend = TRUE)
 
 ## legendPosition
 ```{r, echo = TRUE, eval = FALSE}
-amRadar(data = data,  pch = "bubble", backTransparency = 0, legend = TRUE, legendPosition = "left")
+amRadar(data = data,  pch = "bubble", backTransparency = 0, legend = TRUE, 
+        legendPosition = "left")
 #or
-amRadar(data = data,  pch = "bubble", backTransparency = 0) %>>% amOptions(legend = TRUE, legendPosition = "left")
+amRadar(data = data,  pch = "bubble", backTransparency = 0) %>>% 
+  amOptions(legend = TRUE, legendPosition = "left")
 ```
 ```{r, echo = FALSE}
 amRadar(data = data,  pch = "bubble", backTransparency = 0, legend = TRUE, legendPosition = "left")
@@ -124,21 +112,21 @@ amRadar(data = data,  pch = "bubble", backTransparency = 0,
 ## main and creditsPosition
 ```{r, echo = TRUE, eval = FALSE}
 amRadar(data = data,  pch = "bubble", backTransparency = 0, main = "My Radar",
-        mainColor = "#68838B", mainSize = 25, creditsPosition = "top-right")
+        mainColor = "#68838B", mainSize = 25, creditsPosition = "bottom-right")
 #or
 amRadar(data = data,  pch = "bubble", backTransparency = 0) %>>% 
   amOptions( main = "My Radar",
-        mainColor = "#68838B", mainSize = 25, creditsPosition = "top-right")
+        mainColor = "#68838B", mainSize = 25, creditsPosition = "bottom-right")
 ```
 ```{r, echo = FALSE}
 amRadar(data = data,  pch = "bubble", backTransparency = 0, 
        main = "My Radar",
-        mainColor = "#68838B", mainSize = 25, creditsPosition = "top-right")
+        mainColor = "#68838B", mainSize = 25, creditsPosition = "bottom-right")
 ```
 
 ## theme
 ```{r, echo = TRUE, eval = FALSE}
-amRadar(data = data,  pch = "bubble", backTransparency = 1, main = "My Radar", theme = "patterns")
+amRadar(data = data,  pch = "bubble", backTransparency = 1, theme = "patterns")
 #or
 amRadar(data = data,  pch = "bubble", backTransparency = 1) %>>% 
   amOptions(theme = "patterns")

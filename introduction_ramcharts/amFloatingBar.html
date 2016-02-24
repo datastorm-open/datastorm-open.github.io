@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+<title>rAmCharts - amFloatingBar</title>
+
+<script src="libs/jquery/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="libs/bootstrap/css/cosmo.min.css" rel="stylesheet" />
+<script src="libs/bootstrap/js/bootstrap.min.js"></script>
+<script src="libs/bootstrap/shim/html5shiv.min.js"></script>
+<script src="libs/bootstrap/shim/respond.min.js"></script>
+<script src="libs/htmlwidgets/htmlwidgets.js"></script>
+<script src="libs/amcharts/amcharts.js"></script>
+<script src="libs/ramcharts_base-binding/ramcharts_base.js"></script>
+<script src="libs/amcharts/serial.js"></script>
+<link href="libs/amcharts_style/style.css" rel="stylesheet" />
+<link href="libs/amcharts_plugins_export/export.css" rel="stylesheet" />
+<script src="libs/amcharts_plugins_export/export.min.js"></script>
+<script src="libs/amcharts_themes_patterns/patterns.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Raleway:100' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+
+<style type="text/css">code{white-space: pre;}</style>
+<link rel="stylesheet"
+      href="libs/highlight/default.css"
+      type="text/css" />
+<script src="libs/highlight/highlight.js"></script>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs && document.readyState && document.readyState === "complete") {
+   window.setTimeout(function() {
+      hljs.initHighlighting();
+   }, 0);
+}
+</script>
+
+
+<link rel="stylesheet" href="www/css/styles.css" type="text/css" />
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img { 
+  max-width:100%; 
+  height: auto; 
+}
+</style>
+<div class="container-fluid main-container">
+
+<!-- bootstrap row container for all the content -->
+<div class="row"> <!-- main row -->
+  
+  <div class="col-xs-4 col-md-3 show" id="nav-content" style="padding-left:0;">
+    <nav id="navbar">
+      <br/>
+      <div id="title-toc"> rAmCharts</div>
+      <hr/>
+      
+      <b class="section-toc">Getting started</b>
+      <br/>
+
+      <ul class="toc" id="nav-intro">
+        <li class="litoc"><a class="toc-item" href="index.html">Introduction</a></li>
+        <li class="litoc"><a class="toc-item" href="convert.html">Quick tutorial</a></li>
+        <li class="litoc"><a class="toc-item" href="shiny.html">Use in shiny apps</a></li>
+        <li class="litoc"><a class="toc-item" href="advance.html">Advanced features</a></li>
+      </ul> 
+      
+      <b class="section-toc">Specific functions</b>
+      <br/>
+      
+      <ul class="toc" id="nav-amfunctions">
+        <li class="litoc"> <a class="toc-item" href="amAngularGauge.html">AngularGauge</a></li>   
+        <li class="litoc"> <a class="toc-item" href="amBarplot.html">Barplot</a></li>
+        <li class="litoc"><a class="toc-item" href="amBoxplot.html">Boxplot</a></li>
+        <li class="litoc"><a class="toc-item" href="amBullet.html">Bullet</a></li>
+        <li class="litoc"><a class="toc-item" href="amCandlestick.html">Candlestick</a></li>
+        <li class="litoc"><a class="toc-item" href="amFloatingBar.html">Floating Bar</a></li>
+        <li class="litoc"><a class="toc-item" href="amFunnel.html">Funnel</a></li>
+        <li class="litoc"><a class="toc-item" href="amHist.html">Histogram</a></li>
+        <li class="litoc"><a class="toc-item" href="amMekko.html">Mekko</a></li>
+        <li class="litoc"><a class="toc-item" href="amOHLC.html">OHLC</a></li>
+        <li class="litoc"><a class="toc-item" href="amPie.html">Pie</a></li>
+        <li class="litoc"><a class="toc-item" href="amRadar.html">Radar</a></li>
+        <li class="litoc"><a class="toc-item" href="amSolidGauge.html">SolidGauge</a></li>
+        <li class="litoc"><a class="toc-item" href="amWaterfall.html">Waterfall</a></li>
+      </ul>
+      
+      <footer>
+        <div class="copyrights"><small> © 2015-2016 DataKnowledge</small></div>
+      </footer>
+    
+    </nav>
+    
+  </div> <!-- end of left column -->
+  
+  <div class="col-xs-1 col-md-1"> <!-- colummn for toggle button -->
+    <i id="toggle" class="fa fa-bars fa-lg toggle-collapse" style="padding-top:10px;"></i>
+  </div>
+  
+  <div class="col-xs-6 col-md-7 show" id="main-content"> <!-- main column -->
+
+
+
+<h1>
+rAmCharts - amFloatingBar
+</h1>
+<div id="parameters" class="section level2">
+<h2>Parameters</h2>
+<ul>
+<li><strong>x</strong>: a character, column name for x-axis, or a numeric, number of the corresponding column. It is optional if argument data has row names.</li>
+<li><strong>y_inf</strong>: a character, column name for the lower value, or a numeric, number of the corresponding column.</li>
+<li><strong>y_sup</strong>: a character, column name for the lower value, or a numeric, number of the corresponding column.</li>
+<li><strong>data</strong>: a dataframe with values to display. You can add a column “color” (character, colors in hexadecimal). You can also add a column “description” (character) containing the text you want to display when mouse is on the graphic (‘&lt;br&gt;’ for a new line).</li>
+<li><strong>groups_color</strong>: a character, vector of colors in hexadecimal, same length as y.</li>
+<li><strong>xlab</strong>: a character, label for x-axis.</li>
+<li><strong>ylab</strong>: a character, label for y-axis.</li>
+<li><strong>horiz</strong>: a boolean, TRUE for an horizontal chart, FALSE for a vertical one.</li>
+<li><strong>show_values</strong>: a boolean, TRUE ti dosplay values.</li>
+<li><strong>depth</strong>: a numeric. If depth is superior to 0, chart is displayed in 3D. Value between 0 and 100.</li>
+<li><strong>dataDateFormat</strong>: a character, default ‘NULL’. Even if your chart parses dates,you can pass them as strings in your data - all you need to do is to set data date format and the chart will parse dates to date objects. Please note that two-digit years (YY) as well as literal month names (MMM) are NOT supported in this setting.</li>
+<li><strong>minPeriod</strong>: a character. Specifies the shortest period of your data. This should be set only if dataDateFormat is not ‘NULL’. Possible period values: fff - milliseconds, ss - seconds, mm - minutes, hh - hours, DD - days, MM - months, YYYY - years. It’s also possible to supply a number for increments, i.e. ‘15mm’ which will instruct the chart that your data is supplied in 15 minutes increments.</li>
+<li><strong>…</strong>: other parameters called in amOptions.</li>
+</ul>
+<p>Notice: If the chart has many columns, several labels might be hidden. It depends on the width of the conatainer where the chart is displayed. Zoom on the chart to see if the chart can contain all labels. If not, use the parameter labelRotation. You can also add a cursor to your chart…</p>
+<p>Data used in the examples:</p>
+<pre class="r"><code>data(&quot;data_fbar&quot;)
+head(data_fbar)</code></pre>
+<pre><code>##   country visits_inf visits_sup   color
+## 1     USA       3000       3025 #FF0F00
+## 2   China       1800       1882 #FF6600
+## 3   Japan       1000       1809 #FF9E01
+## 4 Germany       1300       1322 #FCD202
+## 5      UK       1100       1122 #F8FF01
+## 6  France       1000       1114 #B0DE09</code></pre>
+<pre class="r"><code>data(&quot;data_gbar&quot;)
+head(data_gbar)</code></pre>
+<pre><code>##   year        day   month income expenses
+## 1 2005 01/06/2005 06/2005   23.5     18.1
+## 2 2006 02/06/2005 07/2005   26.2     22.8
+## 3 2007 03/06/2005 08/2005   30.1     23.9
+## 4 2008 04/06/2005 09/2005   29.5     25.1
+## 5 2009 05/06/2005 10/2005   24.6     25.0</code></pre>
+</div>
+<div id="reference-example" class="section level2">
+<h2>Reference example</h2>
+<pre class="r"><code>amFloatingBar(x = &quot;country&quot;, y_inf = &quot;visits_inf&quot;, y_sup = &quot;visits_sup&quot;,
+              data = data_fbar, labelRotation = -45)</code></pre>
+<p><div id="htmlwidget-4911" style="width:100%;height:500px;" class="ramcharts_base"></div>
+<script type="application/json" data-for="htmlwidget-4911">{"x":{"chartData":{"rotate":false,"depth3D":0,"angle":0,"dataDateFormat":null,"categoryAxis":{"labelRotation":-45},"categoryField":"country","dataProvider":[{"country":"USA","visits_inf":3000,"visits_sup":3025,"color":"#FF0F00","tp_val":25},{"country":"China","visits_inf":1800,"visits_sup":1882,"color":"#FF6600","tp_val":82},{"country":"Japan","visits_inf":1000,"visits_sup":1809,"color":"#FF9E01","tp_val":809},{"country":"Germany","visits_inf":1300,"visits_sup":1322,"color":"#FCD202","tp_val":22},{"country":"UK","visits_inf":1100,"visits_sup":1122,"color":"#F8FF01","tp_val":22},{"country":"France","visits_inf":1000,"visits_sup":1114,"color":"#B0DE09","tp_val":114},{"country":"India","visits_inf":900,"visits_sup":984,"color":"#04D215","tp_val":84},{"country":"Spain","visits_inf":0,"visits_sup":711,"color":"#0D8ECF","tp_val":711},{"country":"Netherlands","visits_inf":600,"visits_sup":665,"color":"#0D52D1","tp_val":65},{"country":"Russia","visits_inf":0,"visits_sup":580,"color":"#2A0CD0","tp_val":580},{"country":"South Korea","visits_inf":400,"visits_sup":443,"color":"#8A0CCF","tp_val":43},{"country":"Canada","visits_inf":0,"visits_sup":441,"color":"#CD0D74","tp_val":441}],"graphs":[{"fillColorsField":"color","fillAlphas":0.85,"lineAlpha":0.1,"openField":"visits_inf","labelText":"","balloonText":"<b>[[tp_val]]</b>","type":"column","valueField":"visits_sup"}],"type":"serial","valueAxes":[{"position":"left","title":""}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[]}</script></p>
+</div>
+<div id="horizontal-floating-bar" class="section level2">
+<h2>Horizontal floating bar</h2>
+<pre class="r"><code>amFloatingBar(x = &quot;country&quot;, y_inf = &quot;visits_inf&quot;, y_sup = &quot;visits_sup&quot;,
+              data = data_fbar, horiz = TRUE)</code></pre>
+<p><div id="htmlwidget-4493" style="width:100%;height:500px;" class="ramcharts_base"></div>
+<script type="application/json" data-for="htmlwidget-4493">{"x":{"chartData":{"rotate":true,"depth3D":0,"angle":0,"dataDateFormat":null,"categoryAxis":{"title":"","axisAlpha":0,"gridAlpha":0,"parseDates":false,"minPeriod":"","gridPosition":"start"},"categoryField":"country","dataProvider":[{"country":"USA","visits_inf":3000,"visits_sup":3025,"color":"#FF0F00","tp_val":25},{"country":"China","visits_inf":1800,"visits_sup":1882,"color":"#FF6600","tp_val":82},{"country":"Japan","visits_inf":1000,"visits_sup":1809,"color":"#FF9E01","tp_val":809},{"country":"Germany","visits_inf":1300,"visits_sup":1322,"color":"#FCD202","tp_val":22},{"country":"UK","visits_inf":1100,"visits_sup":1122,"color":"#F8FF01","tp_val":22},{"country":"France","visits_inf":1000,"visits_sup":1114,"color":"#B0DE09","tp_val":114},{"country":"India","visits_inf":900,"visits_sup":984,"color":"#04D215","tp_val":84},{"country":"Spain","visits_inf":0,"visits_sup":711,"color":"#0D8ECF","tp_val":711},{"country":"Netherlands","visits_inf":600,"visits_sup":665,"color":"#0D52D1","tp_val":65},{"country":"Russia","visits_inf":0,"visits_sup":580,"color":"#2A0CD0","tp_val":580},{"country":"South Korea","visits_inf":400,"visits_sup":443,"color":"#8A0CCF","tp_val":43},{"country":"Canada","visits_inf":0,"visits_sup":441,"color":"#CD0D74","tp_val":441}],"graphs":[{"fillColorsField":"color","fillAlphas":0.85,"lineAlpha":0.1,"openField":"visits_inf","labelText":"","balloonText":"<b>[[tp_val]]</b>","type":"column","valueField":"visits_sup"}],"type":"serial","valueAxes":[{"position":"left","title":""}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[]}</script></p>
+</div>
+<div id="d-bar" class="section level2">
+<h2>3D bar</h2>
+<pre class="r"><code>amFloatingBar(x = &quot;country&quot;, y_inf = &quot;visits_inf&quot;, y_sup = &quot;visits_sup&quot;,
+              data = data_fbar, labelRotation = -45, depth = 15)</code></pre>
+<p><div id="htmlwidget-4851" style="width:100%;height:500px;" class="ramcharts_base"></div>
+<script type="application/json" data-for="htmlwidget-4851">{"x":{"chartData":{"rotate":false,"depth3D":15,"angle":30,"dataDateFormat":null,"categoryAxis":{"labelRotation":-45},"categoryField":"country","dataProvider":[{"country":"USA","visits_inf":3000,"visits_sup":3025,"color":"#FF0F00","tp_val":25},{"country":"China","visits_inf":1800,"visits_sup":1882,"color":"#FF6600","tp_val":82},{"country":"Japan","visits_inf":1000,"visits_sup":1809,"color":"#FF9E01","tp_val":809},{"country":"Germany","visits_inf":1300,"visits_sup":1322,"color":"#FCD202","tp_val":22},{"country":"UK","visits_inf":1100,"visits_sup":1122,"color":"#F8FF01","tp_val":22},{"country":"France","visits_inf":1000,"visits_sup":1114,"color":"#B0DE09","tp_val":114},{"country":"India","visits_inf":900,"visits_sup":984,"color":"#04D215","tp_val":84},{"country":"Spain","visits_inf":0,"visits_sup":711,"color":"#0D8ECF","tp_val":711},{"country":"Netherlands","visits_inf":600,"visits_sup":665,"color":"#0D52D1","tp_val":65},{"country":"Russia","visits_inf":0,"visits_sup":580,"color":"#2A0CD0","tp_val":580},{"country":"South Korea","visits_inf":400,"visits_sup":443,"color":"#8A0CCF","tp_val":43},{"country":"Canada","visits_inf":0,"visits_sup":441,"color":"#CD0D74","tp_val":441}],"graphs":[{"fillColorsField":"color","fillAlphas":0.85,"lineAlpha":0.1,"openField":"visits_inf","labelText":"","balloonText":"<b>[[tp_val]]</b>","type":"column","valueField":"visits_sup"}],"type":"serial","valueAxes":[{"position":"left","title":""}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[]}</script></p>
+</div>
+<div id="display-values" class="section level2">
+<h2>Display values</h2>
+<pre class="r"><code>amFloatingBar(x = &quot;country&quot;, y_inf = &quot;visits_inf&quot;, y_sup = &quot;visits_sup&quot;,
+              data = data_fbar, labelRotation = -45, show_values = TRUE)</code></pre>
+<p><div id="htmlwidget-2105" style="width:100%;height:500px;" class="ramcharts_base"></div>
+<script type="application/json" data-for="htmlwidget-2105">{"x":{"chartData":{"rotate":false,"depth3D":0,"angle":0,"dataDateFormat":null,"categoryAxis":{"labelRotation":-45},"categoryField":"country","dataProvider":[{"country":"USA","visits_inf":3000,"visits_sup":3025,"color":"#FF0F00","tp_val":25},{"country":"China","visits_inf":1800,"visits_sup":1882,"color":"#FF6600","tp_val":82},{"country":"Japan","visits_inf":1000,"visits_sup":1809,"color":"#FF9E01","tp_val":809},{"country":"Germany","visits_inf":1300,"visits_sup":1322,"color":"#FCD202","tp_val":22},{"country":"UK","visits_inf":1100,"visits_sup":1122,"color":"#F8FF01","tp_val":22},{"country":"France","visits_inf":1000,"visits_sup":1114,"color":"#B0DE09","tp_val":114},{"country":"India","visits_inf":900,"visits_sup":984,"color":"#04D215","tp_val":84},{"country":"Spain","visits_inf":0,"visits_sup":711,"color":"#0D8ECF","tp_val":711},{"country":"Netherlands","visits_inf":600,"visits_sup":665,"color":"#0D52D1","tp_val":65},{"country":"Russia","visits_inf":0,"visits_sup":580,"color":"#2A0CD0","tp_val":580},{"country":"South Korea","visits_inf":400,"visits_sup":443,"color":"#8A0CCF","tp_val":43},{"country":"Canada","visits_inf":0,"visits_sup":441,"color":"#CD0D74","tp_val":441}],"graphs":[{"fillColorsField":"color","fillAlphas":0.85,"lineAlpha":0.1,"openField":"visits_inf","labelText":"[[value]]","balloonText":"<b>[[tp_val]]</b>","type":"column","valueField":"visits_sup"}],"type":"serial","valueAxes":[{"position":"left","title":""}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[]}</script></p>
+</div>
+<div id="change-colors" class="section level2">
+<h2>Change colors</h2>
+<pre class="r"><code>  amFloatingBar(x = &quot;country&quot;, y_inf = &quot;visits_inf&quot;, y_sup = &quot;visits_sup&quot;,
+                data = data_fbar[,1:3], labelRotation = -45, groups_color = &quot;#67b7dc&quot;)</code></pre>
+<p><div id="htmlwidget-6205" style="width:100%;height:500px;" class="ramcharts_base"></div>
+<script type="application/json" data-for="htmlwidget-6205">{"x":{"chartData":{"rotate":false,"depth3D":0,"angle":0,"dataDateFormat":null,"categoryAxis":{"labelRotation":-45},"categoryField":"country","dataProvider":[{"country":"USA","visits_inf":3000,"visits_sup":3025,"color":"#67b7dc","tp_val":25},{"country":"China","visits_inf":1800,"visits_sup":1882,"color":"#67b7dc","tp_val":82},{"country":"Japan","visits_inf":1000,"visits_sup":1809,"color":"#67b7dc","tp_val":809},{"country":"Germany","visits_inf":1300,"visits_sup":1322,"color":"#67b7dc","tp_val":22},{"country":"UK","visits_inf":1100,"visits_sup":1122,"color":"#67b7dc","tp_val":22},{"country":"France","visits_inf":1000,"visits_sup":1114,"color":"#67b7dc","tp_val":114},{"country":"India","visits_inf":900,"visits_sup":984,"color":"#67b7dc","tp_val":84},{"country":"Spain","visits_inf":0,"visits_sup":711,"color":"#67b7dc","tp_val":711},{"country":"Netherlands","visits_inf":600,"visits_sup":665,"color":"#67b7dc","tp_val":65},{"country":"Russia","visits_inf":0,"visits_sup":580,"color":"#67b7dc","tp_val":580},{"country":"South Korea","visits_inf":400,"visits_sup":443,"color":"#67b7dc","tp_val":43},{"country":"Canada","visits_inf":0,"visits_sup":441,"color":"#67b7dc","tp_val":441}],"graphs":[{"fillColorsField":"color","fillAlphas":0.85,"lineAlpha":0.1,"openField":"visits_inf","labelText":"","balloonText":"<b>[[tp_val]]</b>","type":"column","valueField":"visits_sup"}],"type":"serial","valueAxes":[{"position":"left","title":""}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[]}</script></p>
+</div>
+<div id="parse-dates---default-label-first-day-of-each-year" class="section level2">
+<h2>Parse dates - default label: first day of each year</h2>
+<pre class="r"><code>pipeR::pipeline(
+  amFloatingBar(x = &quot;year&quot;, y_inf = &quot;expenses&quot;, y_sup = &quot;income&quot;, data = data_gbar,
+                dataDateFormat = &quot;YYYY&quot;, minPeriod = &quot;YYYY&quot;), 
+  setChartCursor()
+)</code></pre>
+<p><div id="htmlwidget-9206" style="width:100%;height:500px;" class="ramcharts_base"></div>
+<script type="application/json" data-for="htmlwidget-9206">{"x":{"chartData":{"rotate":false,"depth3D":0,"angle":0,"dataDateFormat":"YYYY","categoryAxis":{"title":"","axisAlpha":0,"gridAlpha":0,"parseDates":true,"minPeriod":"YYYY","gridPosition":"start"},"categoryField":"year","chartCursor":{"animationDuration":0.3},"dataProvider":[{"year":"2005","day":"01/06/2005","month":"06/2005","income":23.5,"expenses":18.1,"color":"#67b7dc","tp_val":5.4},{"year":"2006","day":"02/06/2005","month":"07/2005","income":26.2,"expenses":22.8,"color":"#fdd400","tp_val":3.4},{"year":"2007","day":"03/06/2005","month":"08/2005","income":30.1,"expenses":23.9,"color":"#84b761","tp_val":6.2},{"year":"2008","day":"04/06/2005","month":"09/2005","income":29.5,"expenses":25.1,"color":"#cc4748","tp_val":4.4},{"year":"2009","day":"05/06/2005","month":"10/2005","income":24.6,"expenses":25,"color":"#cd82ad","tp_val":-0.399999999999999}],"graphs":[{"fillColorsField":"color","fillAlphas":0.85,"lineAlpha":0.1,"openField":"expenses","labelText":"","balloonText":"<b>[[tp_val]]</b>","type":"column","valueField":"income"}],"type":"serial","valueAxes":[{"position":"left","title":""}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[]}</script></p>
+</div>
+<div id="parse-dates---default-label-first-day-of-each-month" class="section level2">
+<h2>Parse dates - default label: first day of each month</h2>
+<pre class="r"><code>pipeR::pipeline(
+  amFloatingBar(x = &quot;month&quot;, y_inf = &quot;expenses&quot;, y_sup = &quot;income&quot;, data = data_gbar,
+                dataDateFormat = &quot;MM/YYYY&quot;, minPeriod = &quot;MM&quot;),
+  setChartCursor()
+)</code></pre>
+<p><div id="htmlwidget-4308" style="width:100%;height:500px;" class="ramcharts_base"></div>
+<script type="application/json" data-for="htmlwidget-4308">{"x":{"chartData":{"rotate":false,"depth3D":0,"angle":0,"dataDateFormat":"MM/YYYY","categoryAxis":{"title":"","axisAlpha":0,"gridAlpha":0,"parseDates":true,"minPeriod":"MM","gridPosition":"start"},"categoryField":"month","chartCursor":{"animationDuration":0.3},"dataProvider":[{"year":"2005","day":"01/06/2005","month":"06/2005","income":23.5,"expenses":18.1,"color":"#67b7dc","tp_val":5.4},{"year":"2006","day":"02/06/2005","month":"07/2005","income":26.2,"expenses":22.8,"color":"#fdd400","tp_val":3.4},{"year":"2007","day":"03/06/2005","month":"08/2005","income":30.1,"expenses":23.9,"color":"#84b761","tp_val":6.2},{"year":"2008","day":"04/06/2005","month":"09/2005","income":29.5,"expenses":25.1,"color":"#cc4748","tp_val":4.4},{"year":"2009","day":"05/06/2005","month":"10/2005","income":24.6,"expenses":25,"color":"#cd82ad","tp_val":-0.399999999999999}],"graphs":[{"fillColorsField":"color","fillAlphas":0.85,"lineAlpha":0.1,"openField":"expenses","labelText":"","balloonText":"<b>[[tp_val]]</b>","type":"column","valueField":"income"}],"type":"serial","valueAxes":[{"position":"left","title":""}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[]}</script></p>
+<h2 class="partdivtitle">
+amOptions
+</h2>
+</div>
+<div id="export" class="section level2">
+<h2>export</h2>
+<pre class="r"><code>amFloatingBar(x = &quot;country&quot;, y_inf = &quot;visits_inf&quot;, y_sup = &quot;visits_sup&quot;,
+              data = data_fbar, labelRotation = -45, export = TRUE)
+#or
+amFloatingBar(x = &quot;country&quot;, y_inf = &quot;visits_inf&quot;, y_sup = &quot;visits_sup&quot;,
+              data = data_fbar, labelRotation = -45) %&gt;&gt;% 
+  amOptions(export = TRUE)</code></pre>
+<p><div id="htmlwidget-9860" style="width:100%;height:500px;" class="ramcharts_base"></div>
+<script type="application/json" data-for="htmlwidget-9860">{"x":{"chartData":{"rotate":false,"depth3D":0,"angle":0,"dataDateFormat":null,"export":{"enabled":true},"categoryAxis":{"labelRotation":-45},"categoryField":"country","dataProvider":[{"country":"USA","visits_inf":3000,"visits_sup":3025,"color":"#FF0F00","tp_val":25},{"country":"China","visits_inf":1800,"visits_sup":1882,"color":"#FF6600","tp_val":82},{"country":"Japan","visits_inf":1000,"visits_sup":1809,"color":"#FF9E01","tp_val":809},{"country":"Germany","visits_inf":1300,"visits_sup":1322,"color":"#FCD202","tp_val":22},{"country":"UK","visits_inf":1100,"visits_sup":1122,"color":"#F8FF01","tp_val":22},{"country":"France","visits_inf":1000,"visits_sup":1114,"color":"#B0DE09","tp_val":114},{"country":"India","visits_inf":900,"visits_sup":984,"color":"#04D215","tp_val":84},{"country":"Spain","visits_inf":0,"visits_sup":711,"color":"#0D8ECF","tp_val":711},{"country":"Netherlands","visits_inf":600,"visits_sup":665,"color":"#0D52D1","tp_val":65},{"country":"Russia","visits_inf":0,"visits_sup":580,"color":"#2A0CD0","tp_val":580},{"country":"South Korea","visits_inf":400,"visits_sup":443,"color":"#8A0CCF","tp_val":43},{"country":"Canada","visits_inf":0,"visits_sup":441,"color":"#CD0D74","tp_val":441}],"graphs":[{"fillColorsField":"color","fillAlphas":0.85,"lineAlpha":0.1,"openField":"visits_inf","labelText":"","balloonText":"<b>[[tp_val]]</b>","type":"column","valueField":"visits_sup"}],"type":"serial","valueAxes":[{"position":"left","title":""}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[]}</script></p>
+</div>
+<div id="exportformat" class="section level2">
+<h2>exportFormat</h2>
+<pre class="r"><code>amFloatingBar(x = &quot;country&quot;, y_inf = &quot;visits_inf&quot;, y_sup = &quot;visits_sup&quot;,
+              data = data_fbar, labelRotation = -45, export = TRUE,
+          exportFormat = &quot;JPG&quot;)
+#or
+amFloatingBar(x = &quot;country&quot;, y_inf = &quot;visits_inf&quot;, y_sup = &quot;visits_sup&quot;,
+              data = data_fbar, labelRotation = -45) %&gt;&gt;% 
+  amOptions(export = TRUE, exportFormat = &quot;CSV&quot;)</code></pre>
+<p><div id="htmlwidget-8428" style="width:100%;height:500px;" class="ramcharts_base"></div>
+<script type="application/json" data-for="htmlwidget-8428">{"x":{"chartData":{"rotate":false,"depth3D":0,"angle":0,"dataDateFormat":null,"export":{"enabled":true,"menu":[{"class":"export-main","menu":[{"format":"JPG","label":"Download as JPG","title":"JPG"}]}]},"categoryAxis":{"labelRotation":-45},"categoryField":"country","dataProvider":[{"country":"USA","visits_inf":3000,"visits_sup":3025,"color":"#FF0F00","tp_val":25},{"country":"China","visits_inf":1800,"visits_sup":1882,"color":"#FF6600","tp_val":82},{"country":"Japan","visits_inf":1000,"visits_sup":1809,"color":"#FF9E01","tp_val":809},{"country":"Germany","visits_inf":1300,"visits_sup":1322,"color":"#FCD202","tp_val":22},{"country":"UK","visits_inf":1100,"visits_sup":1122,"color":"#F8FF01","tp_val":22},{"country":"France","visits_inf":1000,"visits_sup":1114,"color":"#B0DE09","tp_val":114},{"country":"India","visits_inf":900,"visits_sup":984,"color":"#04D215","tp_val":84},{"country":"Spain","visits_inf":0,"visits_sup":711,"color":"#0D8ECF","tp_val":711},{"country":"Netherlands","visits_inf":600,"visits_sup":665,"color":"#0D52D1","tp_val":65},{"country":"Russia","visits_inf":0,"visits_sup":580,"color":"#2A0CD0","tp_val":580},{"country":"South Korea","visits_inf":400,"visits_sup":443,"color":"#8A0CCF","tp_val":43},{"country":"Canada","visits_inf":0,"visits_sup":441,"color":"#CD0D74","tp_val":441}],"graphs":[{"fillColorsField":"color","fillAlphas":0.85,"lineAlpha":0.1,"openField":"visits_inf","labelText":"","balloonText":"<b>[[tp_val]]</b>","type":"column","valueField":"visits_sup"}],"type":"serial","valueAxes":[{"position":"left","title":""}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[]}</script></p>
+</div>
+<div id="main-and-creditsposition" class="section level2">
+<h2>main and creditsPosition</h2>
+<pre class="r"><code>amFloatingBar(x = &quot;country&quot;, y_inf = &quot;visits_inf&quot;, y_sup = &quot;visits_sup&quot;,
+              data = data_fbar, labelRotation = -45, main = &quot;My Floating Barchart&quot;,
+              mainColor = &quot;#68838B&quot;, mainSize = 25, creditsPosition = &quot;top-right&quot;)
+#or
+amFloatingBar(x = &quot;country&quot;, y_inf = &quot;visits_inf&quot;, y_sup = &quot;visits_sup&quot;,
+              data = data_fbar, labelRotation = -45) %&gt;&gt;% 
+  amOptions(main = &quot;My Barchart&quot;,
+            mainColor = &quot;#68838B&quot;, mainSize = 25, creditsPosition = &quot;top-right&quot;)</code></pre>
+<p><div id="htmlwidget-8715" style="width:100%;height:500px;" class="ramcharts_base"></div>
+<script type="application/json" data-for="htmlwidget-8715">{"x":{"chartData":{"rotate":false,"depth3D":0,"angle":0,"dataDateFormat":null,"categoryAxis":{"labelRotation":-45},"categoryField":"country","creditsPosition":"top-right","dataProvider":[{"country":"USA","visits_inf":3000,"visits_sup":3025,"color":"#FF0F00","tp_val":25},{"country":"China","visits_inf":1800,"visits_sup":1882,"color":"#FF6600","tp_val":82},{"country":"Japan","visits_inf":1000,"visits_sup":1809,"color":"#FF9E01","tp_val":809},{"country":"Germany","visits_inf":1300,"visits_sup":1322,"color":"#FCD202","tp_val":22},{"country":"UK","visits_inf":1100,"visits_sup":1122,"color":"#F8FF01","tp_val":22},{"country":"France","visits_inf":1000,"visits_sup":1114,"color":"#B0DE09","tp_val":114},{"country":"India","visits_inf":900,"visits_sup":984,"color":"#04D215","tp_val":84},{"country":"Spain","visits_inf":0,"visits_sup":711,"color":"#0D8ECF","tp_val":711},{"country":"Netherlands","visits_inf":600,"visits_sup":665,"color":"#0D52D1","tp_val":65},{"country":"Russia","visits_inf":0,"visits_sup":580,"color":"#2A0CD0","tp_val":580},{"country":"South Korea","visits_inf":400,"visits_sup":443,"color":"#8A0CCF","tp_val":43},{"country":"Canada","visits_inf":0,"visits_sup":441,"color":"#CD0D74","tp_val":441}],"graphs":[{"fillColorsField":"color","fillAlphas":0.85,"lineAlpha":0.1,"openField":"visits_inf","labelText":"","balloonText":"<b>[[tp_val]]</b>","type":"column","valueField":"visits_sup"}],"titles":[{"color":"#68838B","text":"My Floating Barchart","size":25}],"type":"serial","valueAxes":[{"position":"left","title":""}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[]}</script></p>
+</div>
+<div id="theme" class="section level2">
+<h2>theme</h2>
+<pre class="r"><code>amFloatingBar(x = &quot;country&quot;, y_inf = &quot;visits_inf&quot;, y_sup = &quot;visits_sup&quot;,
+              data = data_fbar, labelRotation = -45,  
+              theme = &quot;patterns&quot;)
+#or
+amFloatingBar(x = &quot;country&quot;, y_inf = &quot;visits_inf&quot;, y_sup = &quot;visits_sup&quot;,
+              data = data_fbar, labelRotation = -45) %&gt;&gt;% 
+  amOptions(theme = &quot;patterns&quot;)</code></pre>
+<p><div id="htmlwidget-8011" style="width:100%;height:500px;" class="ramcharts_base"></div>
+<script type="application/json" data-for="htmlwidget-8011">{"x":{"chartData":{"rotate":false,"depth3D":0,"angle":0,"dataDateFormat":null,"categoryAxis":{"labelRotation":-45},"categoryField":"country","dataProvider":[{"country":"USA","visits_inf":3000,"visits_sup":3025,"color":"#FF0F00","tp_val":25},{"country":"China","visits_inf":1800,"visits_sup":1882,"color":"#FF6600","tp_val":82},{"country":"Japan","visits_inf":1000,"visits_sup":1809,"color":"#FF9E01","tp_val":809},{"country":"Germany","visits_inf":1300,"visits_sup":1322,"color":"#FCD202","tp_val":22},{"country":"UK","visits_inf":1100,"visits_sup":1122,"color":"#F8FF01","tp_val":22},{"country":"France","visits_inf":1000,"visits_sup":1114,"color":"#B0DE09","tp_val":114},{"country":"India","visits_inf":900,"visits_sup":984,"color":"#04D215","tp_val":84},{"country":"Spain","visits_inf":0,"visits_sup":711,"color":"#0D8ECF","tp_val":711},{"country":"Netherlands","visits_inf":600,"visits_sup":665,"color":"#0D52D1","tp_val":65},{"country":"Russia","visits_inf":0,"visits_sup":580,"color":"#2A0CD0","tp_val":580},{"country":"South Korea","visits_inf":400,"visits_sup":443,"color":"#8A0CCF","tp_val":43},{"country":"Canada","visits_inf":0,"visits_sup":441,"color":"#CD0D74","tp_val":441}],"graphs":[{"fillColorsField":"color","fillAlphas":0.85,"lineAlpha":0.1,"openField":"visits_inf","labelText":"","balloonText":"<b>[[tp_val]]</b>","type":"column","valueField":"visits_sup"}],"theme":"patterns","type":"serial","valueAxes":[{"position":"left","title":""}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[]}</script></p>
+</div>
+
+
+  </div><!-- end of main column -->
+  
+  <div class="col-xs-1 col-md-1" id="logo">
+    <a href="https://github.com/DataKnowledge/rAmCharts.git">
+      <img  src="www/img/github.png" title="View on Github" id="img-github"/>
+    </a>
+  </div>
+  
+  <script src="./www/js/navbar.js"> </script>
+  <script src="./www/js/logo.js"> </script>
+  <script src="./www/js/toggle.js"> </script>
+</div><!-- end of main row -->
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+$(document).ready(function () {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+});
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

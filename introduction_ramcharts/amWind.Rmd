@@ -1,0 +1,121 @@
+---
+pagetitle: rAmCharts - amWind
+---
+
+```{r,echo=FALSE, message=FALSE}
+require(package = "rAmCharts", quietly = TRUE)
+require(package = "pipeR", quietly = TRUE)
+```
+
+<h1>rAmCharts - amWind</h1>
+
+## Parameters
+  
+
+* __data__: data.frame columns are series of values from week wind(first column) to strong wind (last column), row are wind direction.
+* __col__: character, color(s) of serie(s) hexadecimal like "#00FF00"
+* __backTransparency__: numeric,  background transparency, between 0 and 1
+* __...__: see amOptions for more options
+
+
+```{r,echo=FALSE, message=FALSE}
+require(package = "rAmCharts", quietly = TRUE)
+require(package = "pipeR", quietly = TRUE)
+```
+
+## Reference example
+
+```{r}
+ data("data_wind")
+data_wind
+```
+
+## Basic exemple
+```{r}
+amWind(data = data_wind)
+```
+
+## Change color
+```{r}
+amWind(data = data_wind, col = c("#FF0000", "#00FF00", "#0000FF"))
+```
+
+## backTransparency
+```{r}
+amWind(data = data_wind, col = c("#FF0000", "#00FF00", "#0000FF"), backTransparency = c(0.1, 0.2, 0.5))
+```
+
+<h2 class="partdivtitle">amOptions</h2>
+
+## legend
+```{r, echo = TRUE, eval = FALSE}
+amWind(data = data_wind, col = c("#FF0000", "#00FF00", "#0000FF"), legend = TRUE)
+#or
+amWind(data = data_wind, col = c("#FF0000", "#00FF00", "#0000FF"))%>>% 
+  amOptions(legend = TRUE)
+```
+```{r, echo = FALSE}
+amWind(data = data_wind, col = c("#FF0000", "#00FF00", "#0000FF"), legend = TRUE)
+```
+
+## legendPosition
+```{r, echo = TRUE, eval = FALSE}
+amWind(data = data_wind, col = c("#FF0000", "#00FF00", "#0000FF"), legend = TRUE,
+        legendPosition = "left")
+#or
+amWind(data = data_wind, col = c("#FF0000", "#00FF00", "#0000FF")) %>>% 
+  amOptions(legend = TRUE, legendPosition = "left")
+```
+```{r, echo = FALSE}
+amWind(data = data_wind, col = c("#FF0000", "#00FF00", "#0000FF"), legend = TRUE,
+        legendPosition = "left")
+```
+
+## export
+```{r, echo = TRUE, eval = FALSE}
+amWind(data = data_wind, col = c("#FF0000", "#00FF00", "#0000FF"), export = TRUE)
+#or
+amWind(data = data_wind, col = c("#FF0000", "#00FF00", "#0000FF")) %>>% 
+  amOptions(export = TRUE)
+```
+```{r, echo = FALSE}
+amWind(data = data_wind, col = c("#FF0000", "#00FF00", "#0000FF"), export = TRUE)
+```
+
+## exportFormat
+```{r, echo = TRUE, eval = FALSE}
+amWind(data = data_wind, col = c("#FF0000", "#00FF00", "#0000FF"), export = TRUE, exportFormat = "JPG")
+#or
+amWind(data = data_wind, col = c("#FF0000", "#00FF00", "#0000FF")) %>>% 
+  amOptions(export = TRUE, exportFormat = "JPG")
+```
+```{r, echo = FALSE}
+amWind(data = data_wind, col = c("#FF0000", "#00FF00", "#0000FF"), export = TRUE, exportFormat = "JPG")
+```
+
+## main and creditsPosition
+```{r, echo = TRUE, eval = FALSE}
+amWind(data = data_wind, col = c("#FF0000", "#00FF00", "#0000FF"), main = "My Radar",
+        mainColor = "#68838B", mainSize = 25, creditsPosition = "bottom-right")
+#or
+amWind(data = data_wind, col = c("#FF0000", "#00FF00", "#0000FF")) %>>% 
+  amOptions( main = "My Radar",
+        mainColor = "#68838B", mainSize = 25, creditsPosition = "bottom-right")
+```
+```{r, echo = FALSE}
+amWind(data = data_wind, col = c("#FF0000", "#00FF00", "#0000FF"), main = "My Radar",
+        mainColor = "#68838B", mainSize = 25, creditsPosition = "bottom-right")
+```
+
+## theme
+```{r, echo = TRUE, eval = FALSE}
+amWind(data = data_wind, col = c("#FF0000", "#00FF00", "#0000FF"), theme = "patterns")
+#or
+amWind(data = data_wind, col = c("#FF0000", "#00FF00", "#0000FF")) %>>% 
+  amOptions(theme = "patterns")
+```
+```{r, echo = FALSE}
+amWind(data = data_wind, col = c("#FF0000", "#00FF00", "#0000FF"), theme = "patterns")
+```
+
+

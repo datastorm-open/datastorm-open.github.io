@@ -56,7 +56,7 @@ amOHLC(data = data_candleStick2, labelRotation = -45, names = c("min", "begin", 
 
 ## Horizontal chart
 ```{r}
-amOHLC(data = data_candleStick2, labelRotation = -45, horiz = TRUE)
+amOHLC(data = data_candleStick2, horiz = TRUE)
 ```
 
 ## Parse dates
@@ -100,26 +100,15 @@ amOHLC(data = data_candleStick2, labelRotation = -45, export = TRUE, exportForma
 
 ## main and creditsPosition
 ```{r, echo = TRUE, eval = FALSE}
-amOHLC(data = data_candleStick2, labelRotation = -45, main = "My Candlestick",
+amOHLC(data = data_candleStick2, labelRotation = -45, main = "My OHLC",
         mainColor = "#68838B", mainSize = 25, creditsPosition = "top-right")
 #or
 amOHLC(data = data_candleStick2, labelRotation = -45) %>>% 
-  amOptions( main = "My Candlestick",
+  amOptions( main = "My OHLC",
         mainColor = "#68838B", mainSize = 25, creditsPosition = "top-right")
 ```
 ```{r, echo = FALSE}
 amOHLC(data = data_candleStick2, labelRotation = -45, 
-       main = "My Candlestick",
+       main = "My OHLC",
         mainColor = "#68838B", mainSize = 25, creditsPosition = "top-right")
-```
-
-## theme
-```{r, echo = TRUE, eval = FALSE}
-amOHLC(data = data_candleStick2, labelRotation = -45, main = "My Candlestick", theme = "patterns")
-#or
-amOHLC(data = data_candleStick2, labelRotation = -45) %>>% 
-  amOptions(theme = "patterns")
-```
-```{r, echo = FALSE}
-amOHLC(data = data_candleStick2, labelRotation = -45, theme = "patterns")
 ```
