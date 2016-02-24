@@ -1032,13 +1032,9 @@ HTMLWidgets.widget({
         if (selectedItems.nodes.length !== 0) {
           selectNode = document.getElementById('nodeSelect'+el.id);
           if(x.idselection.values !== undefined){
-            console.info(x.idselection.values);
-            console.info(selectedItems.nodes[0]);
             if(indexOf.call(x.idselection.values, selectedItems.nodes[0], true) > -1){
-              console.info("a");
               selectNode.value = selectedItems.nodes;
             }else{
-              console.info("b");
               selectNode.value = "";
             }
           }else{

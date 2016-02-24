@@ -111,6 +111,8 @@ img {
       <a class="list-group-item" href="interaction.html">Interactions</a>
       <a class="list-group-item" href="physic.html">Physics</a>
       <a class="list-group-item" href="layout.html">Layout</a>
+      <a class="list-group-item" href="igraph.html">Igraph</a>
+      <a class="list-group-item" href="performance.html">Performance</a>
       <a class="list-group-item" href="shiny.html">Shiny</a>
       <a class="list-group-item" href="configure.html">Configure tools</a>
       <a class="list-group-item" href="more.html">More...</a>
@@ -168,7 +170,7 @@ img {
 
 nodes &lt;- data.frame(id = 1:10, group = c(&quot;A&quot;, &quot;B&quot;))</code></pre>
 <pre class="r"><code>visNetwork(nodes, edges, height = &quot;500px&quot;, width = &quot;100%&quot;)</code></pre>
-<p><div id="htmlwidget-7087" style="width:100%;height:500px;" class="visNetwork"></div>
+<p><div id="htmlwidget-7087" style="width:100%;height:500px;" class="visNetwork html-widget"></div>
 <script type="application/json" data-for="htmlwidget-7087">{
   "x": {
     "nodes": {
@@ -207,7 +209,8 @@ nodes &lt;- data.frame(id = 1:10, group = c(&quot;A&quot;, &quot;B&quot;))</code
       "enabled": false
     }
   },
-  "evals": []
+  "evals": [],
+  "jsHooks": []
 }</script></p>
 </div>
 <div id="global-configuration" class="section level2">
@@ -221,7 +224,7 @@ visNetwork(nodes, edges, width = &quot;100%&quot;) %&gt;%
            arrows =list(to = list(enabled = TRUE, scaleFactor = 2)),
            color = list(color = &quot;lightblue&quot;, highlight = &quot;red&quot;)) %&gt;%
   visLayout(randomSeed = 12) # to have always the same network           </code></pre>
-<p><div id="htmlwidget-3640" style="width:100%;height:216px;" class="visNetwork"></div>
+<p><div id="htmlwidget-3640" style="width:100%;height:216px;" class="visNetwork html-widget"></div>
 <script type="application/json" data-for="htmlwidget-3640">{
   "x": {
     "nodes": {
@@ -267,7 +270,8 @@ visNetwork(nodes, edges, width = &quot;100%&quot;) %&gt;%
       "enabled": false
     }
   },
-  "evals": []
+  "evals": [],
+  "jsHooks": []
 }</script></p>
 <p>Finally, you can also combine individual and global options :</p>
 <pre class="r"><code>nodes &lt;- data.frame(id = 1:4, label = 1:4)
@@ -280,7 +284,7 @@ visNetwork(nodes, edges, width = &quot;100%&quot;) %&gt;%
            arrows =list(to = list(enabled = TRUE, scaleFactor = 2)),
            color = list(color = &quot;lightblue&quot;, highlight = &quot;red&quot;)) %&gt;%
   visLayout(randomSeed = 12) # to have always the same network             </code></pre>
-<p><div id="htmlwidget-9715" style="width:100%;height:216px;" class="visNetwork"></div>
+<p><div id="htmlwidget-9715" style="width:100%;height:216px;" class="visNetwork html-widget"></div>
 <script type="application/json" data-for="htmlwidget-9715">{
   "x": {
     "nodes": {
@@ -328,7 +332,62 @@ visNetwork(nodes, edges, width = &quot;100%&quot;) %&gt;%
       "enabled": false
     }
   },
-  "evals": []
+  "evals": [],
+  "jsHooks": []
+}</script></p>
+</div>
+<div id="use-complex-configuration-individually-since-visnetwork_0.2.1" class="section level2">
+<h2>Use complex configuration individually (since <strong>visNetwork_0.2.1</strong>)</h2>
+<p>When options are available using a list, you can use it in a data.frame with specific notation like this :</p>
+<pre class="r"><code>nodes &lt;- data.frame(id = 1:3, 
+                    color.background = c(&quot;red&quot;, &quot;blue&quot;, &quot;green&quot;),
+                    color.highlight.background = c(&quot;red&quot;, NA, &quot;red&quot;), 
+                    shadow.size = c(5, 10, 15))
+
+edges &lt;- data.frame(from = c(1,2), to = c(1,3),
+                    label = LETTERS[1:2], 
+                    font.color =c (&quot;red&quot;, &quot;blue&quot;), 
+                    font.size = c(10,20))
+
+visNetwork(nodes, edges)  </code></pre>
+<p><div id="htmlwidget-8467" style="width:100%;height:216px;" class="visNetwork html-widget"></div>
+<script type="application/json" data-for="htmlwidget-8467">{
+  "x": {
+    "nodes": {
+      "id": [1, 2, 3],
+      "color.background": ["red", "blue", "green"],
+      "color.highlight.background": ["red", null, "red"],
+      "shadow.size": [5, 10, 15]
+    },
+    "edges": {
+      "from": [1, 2],
+      "to": [1, 3],
+      "label": ["A", "B"],
+      "font.color": ["red", "blue"],
+      "font.size": [10, 20]
+    },
+    "options": {
+      "width": "100%",
+      "height": "100%",
+      "nodes": {
+        "shape": "dot"
+      },
+      "manipulation": {
+        "enabled": false
+      }
+    },
+    "groups": null,
+    "width": null,
+    "height": null,
+    "idselection": {
+      "enabled": false
+    },
+    "byselection": {
+      "enabled": false
+    }
+  },
+  "evals": [],
+  "jsHooks": []
 }</script></p>
 </div>
 

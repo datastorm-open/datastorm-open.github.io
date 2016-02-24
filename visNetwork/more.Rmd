@@ -21,6 +21,8 @@ visNetwork(nodes, edges) %>%
 
 ## Export
 
+Since __visNetwork_0.2.1__, you can use ``visSave()`` for save network in .html file, and ``visExport()`` to save as .png with __shiny__ :
+
 ```{r, eval = FALSE}
 network <- visNetwork(nodes, edges, width = "100%")
 htmlwidgets::saveWidget(network, "network.html")

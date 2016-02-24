@@ -13,6 +13,7 @@ library(yaml, lib.loc ="C:/Users/Benoit/Documents/R/win-library/3.2")
 library(stringr, lib.loc ="C:/Users/Benoit/Documents/R/win-library/3.2")
 library(evaluate, lib.loc ="C:/Users/Benoit/Documents/R/win-library/3.2")
 library(curl, lib.loc ="C:/Users/Benoit/Documents/R/win-library/3.2")
+library(igraph, lib.loc ="C:/Users/Benoit/Documents/R/win-library/3.2")
 
 f = rmarkdown::render(commandArgs(TRUE))
 # remove version numbers in HTML

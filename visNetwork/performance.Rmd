@@ -1,0 +1,30 @@
+---
+pagetitle: Performance
+---
+
+```{r, eval=TRUE, echo = FALSE}
+require("visNetwork", quietly = TRUE)
+```
+
+### With default/some options, render network can be long. Here are some ways to improve the performance : 
+
+* By default, and if we don't pass any information about coordinates, [vis.js](http://visjs.org/) computes coordinates dynamically and wait for stabilization before rendering. You can disable or control stabilization using ``visPhysics`` : 
+
+```{r, eval = FALSE}
+visNetwork(nodes, edges) %>%
+  visPhysics(stabilization = FALSE)
+```
+
+* Another tips is to disabled smooth curve for edges. It's better for performance :
+
+```{r, eval = FALSE}
+visNetwork(nodes, edges) %>%
+  visEdges(smooth = FALSE)
+```
+
+* Since __visNetwork_0.2.1__, it's possible to make the link between the features of package [igraph](http://igraph.org/r/) and those of __visNetwork__. The best way to increace plotting time is actually to use [igraph](http://igraph.org/r/) layout to compute coordinates before with ``visIgraphLayout()`` :
+
+```{r, eval = FALSE}
+visNetwork(nodes, edges) %>%
+  visIgraphLayout()
+```

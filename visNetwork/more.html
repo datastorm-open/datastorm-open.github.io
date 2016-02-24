@@ -111,6 +111,8 @@ img {
       <a class="list-group-item" href="interaction.html">Interactions</a>
       <a class="list-group-item" href="physic.html">Physics</a>
       <a class="list-group-item" href="layout.html">Layout</a>
+      <a class="list-group-item" href="igraph.html">Igraph</a>
+      <a class="list-group-item" href="performance.html">Performance</a>
       <a class="list-group-item" href="shiny.html">Shiny</a>
       <a class="list-group-item" href="configure.html">Configure tools</a>
       <a class="list-group-item" href="more.html">More...</a>
@@ -137,7 +139,7 @@ edges &lt;- data.frame(from = c(1,2), to = c(1,3))
 visNetwork(nodes, edges) %&gt;%
  visEvents(selectNode = &quot;function(properties) {
       alert(&#39;selected nodes &#39; + this.body.data.nodes.get(properties.nodes[0]).id);}&quot;)</code></pre>
-<p><div id="htmlwidget-5716" style="width:100%;height:216px;" class="visNetwork"></div>
+<p><div id="htmlwidget-5716" style="width:100%;height:216px;" class="visNetwork html-widget"></div>
 <script type="application/json" data-for="htmlwidget-5716">{
   "x": {
     "nodes": {
@@ -171,11 +173,13 @@ visNetwork(nodes, edges) %&gt;%
       "selectNode": "function(properties) {\n      alert('selected nodes ' + this.body.data.nodes.get(properties.nodes[0]).id);}"
     }
   },
-  "evals": ["events.selectNode"]
+  "evals": ["events.selectNode"],
+  "jsHooks": []
 }</script></p>
 </div>
 <div id="export" class="section level2">
 <h2>Export</h2>
+<p>Since <strong>visNetwork_0.2.1</strong>, you can use <code>visSave()</code> for save network in .html file, and <code>visExport()</code> to save as .png with <strong>shiny</strong> :</p>
 <pre class="r"><code>network &lt;- visNetwork(nodes, edges, width = &quot;100%&quot;)
 htmlwidgets::saveWidget(network, &quot;network.html&quot;)</code></pre>
 </div>
@@ -183,7 +187,7 @@ htmlwidgets::saveWidget(network, &quot;network.html&quot;)</code></pre>
 <h2>Use DOT language data</h2>
 <pre class="r"><code>visNetwork(dot = &#39;dinetwork {1 -&gt; 1 -&gt; 2; 2 -&gt; 3; 2 -- 4; 2 -&gt; 1 }&#39;, 
            width = &quot;100%&quot;)</code></pre>
-<p><div id="htmlwidget-4929" style="width:100%;height:216px;" class="visNetwork"></div>
+<p><div id="htmlwidget-4929" style="width:100%;height:216px;" class="visNetwork html-widget"></div>
 <script type="application/json" data-for="htmlwidget-4929">{
   "x": {
     "dot": "dinetwork {1 -> 1 -> 2; 2 -> 3; 2 -- 4; 2 -> 1 }",
@@ -207,7 +211,8 @@ htmlwidgets::saveWidget(network, &quot;network.html&quot;)</code></pre>
       "enabled": false
     }
   },
-  "evals": []
+  "evals": [],
+  "jsHooks": []
 }</script></p>
 </div>
 <div id="use-gephi-json-export-file" class="section level2">
@@ -237,7 +242,7 @@ visNetwork(nodes, edges, height = &quot;400px&quot;, width = &quot;100%&quot;) %
   visClusteringByColor(colors = c(&quot;red&quot;)) %&gt;%
   visClusteringByGroup(groups = c(&quot;B&quot;)) %&gt;%
   visLegend()</code></pre>
-<p><div id="htmlwidget-8149" style="width:100%;height:400px;" class="visNetwork"></div>
+<p><div id="htmlwidget-8149" style="width:100%;height:400px;" class="visNetwork html-widget"></div>
 <script type="application/json" data-for="htmlwidget-8149">{
   "x": {
     "nodes": {
@@ -295,7 +300,8 @@ visNetwork(nodes, edges, height = &quot;400px&quot;, width = &quot;100%&quot;) %
       "position": "left"
     }
   },
-  "evals": []
+  "evals": [],
+  "jsHooks": []
 }</script></p>
 </div>
 

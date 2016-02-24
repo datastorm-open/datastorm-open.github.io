@@ -1,0 +1,60 @@
+---
+pagetitle: Igraph
+---
+
+```{r, eval=TRUE, echo = FALSE}
+require("visNetwork", quietly = TRUE)
+```
+
+### Since __visNetwork_0.2.1__, it's possible to make the link between the features of package [igraph](http://igraph.org/r/) and those of __visNetwork__ : 
+
+* Use [igraph](http://igraph.org/r/) layout to compute coordinates for fast rendering with ``visIgraphLayout()``
+* Transform [igraph](http://igraph.org/r/) network to __visNetwork__ network using ``visIgraph()`` or ``toVisNetworkData()``
+
+
+## Use [igraph](http://igraph.org/r/) layout
+
+With ``visIgraphLayout()``, you can use all available layouts in [igraph](http://igraph.org/r/) and calculate coordinates before the sending to [vis.js](http://visjs.org/) : 
+
+```{r, eval = TRUE}
+nnodes <- 100
+nnedges <- 200
+
+nodes <- data.frame(id = 1:nnodes)
+edges <- data.frame(from = sample(1:nnodes, nnedges, replace = T),
+                    to = sample(1:nnodes, nnedges, replace = T))
+
+# with defaut layout
+visNetwork(nodes, edges, height = "500px") %>%
+  visIgraphLayout() %>%
+  visNodes(size = 10)
+```
+
+```{r, eval = TRUE}
+# in circle ?
+visNetwork(nodes, edges, height = "500px") %>%
+  visIgraphLayout(layout = "layout_in_circle") %>%
+  visNodes(size = 10) %>%
+  visOptions(highlightNearest = T, nodesIdSelection = T)
+```
+
+## Use [igraph](http://igraph.org/r/) network 
+
+``visIgraph`` transform directly a [igraph](http://igraph.org/r/) network into a __visNetwork__. It's a little bit experimental (not perfect). You can also use ``toVisNetworkData`` to just get data into __visNetwork__ format : 
+
+
+```{r, eval = TRUE, fig.width = 10, fig.height = 10}
+library("igraph", quietly = TRUE, warn.conflicts = FALSE, verbose = FALSE)
+igraph_network <- graph.famous("Walther")
+
+plot(igraph_network)
+```
+
+```{r, eval = TRUE}
+# get data and plot :
+data <- toVisNetworkData(igraph_network)
+visNetwork(nodes = data$nodes, edges = data$edges, height = "500px")
+
+# or plot directly
+visIgraph(igraph_network)
+```
