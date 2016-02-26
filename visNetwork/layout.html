@@ -149,7 +149,7 @@ img {
 edges &lt;- data.frame(from = c(1,2,2,2,3,3),
  to = c(2,3,4,5,6,7))</code></pre>
 <pre class="r"><code>visNetwork(nodes, edges, width = &quot;100%&quot;) %&gt;% 
-  visEdges(arrow = &quot;from&quot;) %&gt;% 
+  visEdges(arrows = &quot;from&quot;) %&gt;% 
   visHierarchicalLayout() # same as   visLayout(hierarchical = TRUE) </code></pre>
 <p><div id="htmlwidget-5716" style="width:100%;height:216px;" class="visNetwork html-widget"></div>
 <script type="application/json" data-for="htmlwidget-5716">{
@@ -193,7 +193,7 @@ edges &lt;- data.frame(from = c(1,2,2,2,3,3),
   "jsHooks": []
 }</script></p>
 <pre class="r"><code>visNetwork(nodes, edges, width = &quot;100%&quot;) %&gt;% 
-  visEdges(arrow = &quot;from&quot;) %&gt;% 
+  visEdges(arrows = &quot;from&quot;) %&gt;% 
   visHierarchicalLayout(direction = &quot;LR&quot;, levelSeparation = 500)</code></pre>
 <p><div id="htmlwidget-4929" style="width:100%;height:216px;" class="visNetwork html-widget"></div>
 <script type="application/json" data-for="htmlwidget-4929">{
@@ -244,7 +244,7 @@ edges &lt;- data.frame(from = c(1, 1, 1),
  to = c(2,3,4))</code></pre>
 <pre class="r"><code>### with level
 visNetwork(nodes, edges, width = &quot;100%&quot;) %&gt;% 
-  visEdges(arrow = &quot;from&quot;) %&gt;% 
+  visEdges(arrows = &quot;from&quot;) %&gt;% 
   visHierarchicalLayout() # same as   visLayout(hierarchical = TRUE) </code></pre>
 <p><div id="htmlwidget-7837" style="width:100%;height:216px;" class="visNetwork html-widget"></div>
 <script type="application/json" data-for="htmlwidget-7837">{
@@ -291,7 +291,7 @@ visNetwork(nodes, edges, width = &quot;100%&quot;) %&gt;%
 <pre class="r"><code>### without level (vis.js choice)
 nodes$level &lt;- NULL
 visNetwork(nodes, edges, width = &quot;100%&quot;) %&gt;% 
-  visEdges(arrow = &quot;from&quot;) %&gt;% 
+  visEdges(arrows = &quot;from&quot;) %&gt;% 
   visHierarchicalLayout() # same as   visLayout(hierarchical = TRUE) </code></pre>
 <p><div id="htmlwidget-5403" style="width:100%;height:216px;" class="visNetwork html-widget"></div>
 <script type="application/json" data-for="htmlwidget-5403">{

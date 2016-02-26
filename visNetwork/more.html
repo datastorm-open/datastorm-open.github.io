@@ -181,6 +181,10 @@ visNetwork(nodes, edges) %&gt;%
 <h2>Export</h2>
 <p>Since <strong>visNetwork_0.2.1</strong>, you can use <code>visSave()</code> for save network in .html file, and <code>visExport()</code> to save as .png with <strong>shiny</strong> :</p>
 <pre class="r"><code>network &lt;- visNetwork(nodes, edges, width = &quot;100%&quot;)
+network %&gt;% visSave(file = &quot;network.html&quot;)
+# same as
+visSave(network, file = &quot;network.html&quot;)
+# or
 htmlwidgets::saveWidget(network, &quot;network.html&quot;)</code></pre>
 </div>
 <div id="use-dot-language-data" class="section level2">

@@ -25,6 +25,10 @@ Since __visNetwork_0.2.1__, you can use ``visSave()`` for save network in .html 
 
 ```{r, eval = FALSE}
 network <- visNetwork(nodes, edges, width = "100%")
+network %>% visSave(file = "network.html")
+# same as
+visSave(network, file = "network.html")
+# or
 htmlwidgets::saveWidget(network, "network.html")
 ```
 
