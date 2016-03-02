@@ -26,7 +26,7 @@ head(data_waterfall)
 ## Reference example
 
 ```{r}
-amWaterfall(data = data_waterfall)
+amWaterfall(data = data_waterfall, labelRotation = -45)
 ```
 
 ## Horizontal waterfall
@@ -36,56 +36,56 @@ amWaterfall(data = data_waterfall, horiz = TRUE)
 
 ## Display values
 ```{r}
-amWaterfall(data = data_waterfall, show_values = TRUE)
+amWaterfall(data = data_waterfall, show_values = TRUE, labelRotation = -45)
 ```
 
 <h2 class="partdivtitle">amOptions</h2>
 
 ## export
 ```{r, echo = TRUE, eval = FALSE}
-amWaterfall(data = data_waterfall, export = TRUE)
+amWaterfall(data = data_waterfall, export = TRUE, labelRotation = -45)
 #or
-amWaterfall(data = data_waterfall) %>>% 
+amWaterfall(data = data_waterfall, labelRotation = -45) %>>% 
   amOptions(export = TRUE)
 ```
 ```{r, echo = FALSE}
-amWaterfall(data = data_waterfall, export = TRUE)
+amWaterfall(data = data_waterfall, export = TRUE, labelRotation = -45)
 ```
   
 ## exportFormat
 ```{r, echo = TRUE, eval = FALSE}
-amWaterfall(data = data_waterfall, export = TRUE, exportFormat = "JPG")
+amWaterfall(data = data_waterfall, labelRotation = -45, export = TRUE, exportFormat = "JPG")
 #or
-amWaterfall(data = data_waterfall) %>>% 
+amWaterfall(data = data_waterfall, labelRotation = -45) %>>% 
   amOptions(export = TRUE, exportFormat = "CSV")
 ```
 ```{r, echo = FALSE}
-amWaterfall(data = data_waterfall, export = TRUE, 
+amWaterfall(data = data_waterfall, labelRotation = -45, export = TRUE, 
           exportFormat = "JPG")
 ```
 
 ## main and creditsPosition
 ```{r, echo = TRUE, eval = FALSE}
-amWaterfall(data = data_waterfall, main = "My Waterfall",
+amWaterfall(data = data_waterfall, labelRotation = -45, main = "My Waterfall",
         mainColor = "#68838B", mainSize = 25, creditsPosition = "top-right")
 #or
-amWaterfall(data = data_waterfall) %>>% 
+amWaterfall(data = data_waterfall, labelRotation = -45) %>>% 
   amOptions( main = "My Waterfall",
         mainColor = "#68838B", mainSize = 25, creditsPosition = "top-right")
 ```
 ```{r, echo = FALSE}
-amWaterfall(data = data_waterfall, 
+amWaterfall(data = data_waterfall, labelRotation = -45, 
        main = "My Waterfall",
         mainColor = "#68838B", mainSize = 25, creditsPosition = "top-right")
 ```
 
 ## theme
 ```{r, echo = TRUE, eval = FALSE}
-amWaterfall(data = data_waterfall, theme = "patterns")
+amWaterfall(data = data_waterfall, labelRotation = -45, theme = "patterns")
 #or
-amWaterfall(data = data_waterfall) %>>% 
+amWaterfall(data = data_waterfall, labelRotation = -45) %>>% 
   amOptions(theme = "patterns")
 ```
 ```{r, echo = FALSE}
-amWaterfall(data = data_waterfall, theme = "patterns")
+amWaterfall(data = data_waterfall, labelRotation = -45, theme = "patterns")
 ```

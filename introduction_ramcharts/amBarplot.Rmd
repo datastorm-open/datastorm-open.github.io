@@ -149,7 +149,7 @@ amBarplot(x = "country", y = "visits", data = data_bar, labelRotation = -45, exp
           exportFormat = "JPG")
 #or
 amBarplot(x = "country", y = "visits", data = data_bar, labelRotation = -45) %>>% 
-  amOptions(export = TRUE, exportFormat = "CSV")
+  amOptions(export = TRUE, exportFormat = "JPG")
 ```
 ```{r, echo = FALSE}
 amBarplot(x = "country", y = "visits", data = data_bar, labelRotation = -45, export = TRUE, 

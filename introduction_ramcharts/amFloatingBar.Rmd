@@ -69,7 +69,7 @@ amFloatingBar(x = "country", y_inf = "visits_inf", y_sup = "visits_sup",
 ```
 
 ## Parse dates - default label: first day of each year
-```{r}
+```{r, eval = FALSE}
 pipeR::pipeline(
   amFloatingBar(x = "year", y_inf = "expenses", y_sup = "income", data = data_gbar,
                 dataDateFormat = "YYYY", minPeriod = "YYYY"), 
