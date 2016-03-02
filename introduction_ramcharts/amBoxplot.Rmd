@@ -1,5 +1,5 @@
 ---
-pagetitle: amBoxplot
+pagetitle: rAmCharts - amBoxplot
 ---
 
 ```{r,echo=FALSE, message=FALSE}
@@ -9,11 +9,119 @@ require(package = "pipeR", quietly = TRUE)
 
 <h1>rAmCharts - amBoxplot</h1>
 
-## Basic example
+## Parameters
 
+* __object__: a vector, data.frame, a matrix, or a formula.
+* __data__: a data.frame, from which the variables in formula should be taken.
+* __use.cols__: a logical, for matrix only. Set to TRUE to display boxplot based on columns.
+* __xlab__: a character, label for x-axis.
+* __ylab__: a character, label for y-axis.
+* __ylim__: a numeric, y values range with sensible defaults.
+* __names__: a character, name on x-axis, if object is a vector.
+* __col__: a character, color(s) to be used to fill the boxplot.
+* __horiz__: a boolean, TRUE for an horizontal chart, FALSE for a vertical one.
+* __id__: a character, column name of id to identify outliers, if object is a dataframe.
+* __...__: other parameters called in amOptions. 
+
+
+## Basic example - formula
 ```{r}
 dataset <- get(x = "ChickWeight", pos = "package:datasets")
 amBoxplot(weight~Diet, data=dataset)
 ```
 
-#Coming: documentation
+## Basic example - dataframe
+```{r}
+don <- data.frame(a = 1:10, b = 1:5)
+amBoxplot(don, ylim = c(0,15))
+```
+
+## Basic example - matrix
+```{r}
+mat <- matrix(nrow = 10, ncol = 5, rnorm(50))
+amBoxplot(mat)
+```
+
+## Basic example - vector
+```{r}
+amBoxplot(rnorm(100))
+```
+
+## Horizontal boxplot
+```{r}
+amBoxplot(weight~Diet, data=dataset, horiz = TRUE)
+```
+
+## Display boxplot absed on matrix's rows
+```{r}
+mat <- matrix(nrow = 10, ncol = 5, rnorm(50))
+amBoxplot(mat, use.cols = FALSE)
+```
+
+## Naming axis
+```{r}
+amBoxplot(weight~Diet, data=dataset, xlab = "diet", ylab = "weight")
+```
+
+## Y limits 
+```{r}
+amBoxplot(weight~Diet, data=dataset, ylim = c(0, 100))
+```
+
+## Change color
+```{r}
+amBoxplot(weight~Diet, data=dataset, col = "#CD1076")
+```
+
+<h2 class="partdivtitle">amOptions</h2>
+
+## export
+```{r, echo = TRUE, eval = FALSE}
+amBoxplot(weight~Diet, data=dataset, labelRotation = -45, export = TRUE)
+#or
+amBoxplot(weight~Diet, data=dataset, labelRotation = -45) %>>% 
+  amOptions(export = TRUE)
+```
+```{r, echo = FALSE}
+amBoxplot(weight~Diet, data=dataset, labelRotation = -45, export = TRUE)
+```
+  
+## exportFormat
+```{r, echo = TRUE, eval = FALSE}
+amBoxplot(weight~Diet, data=dataset, labelRotation = -45, export = TRUE,
+          exportFormat = "JPG")
+#or
+amBoxplot(weight~Diet, data=dataset, labelRotation = -45) %>>% 
+  amOptions(export = TRUE, exportFormat = "JPG")
+```
+```{r, echo = FALSE}
+amBoxplot(weight~Diet, data=dataset, labelRotation = -45, export = TRUE, 
+          exportFormat = "JPG")
+```
+
+## main and creditsPosition
+```{r, echo = TRUE, eval = FALSE}
+amBoxplot(weight~Diet, data=dataset, labelRotation = -45, main = "My Barchart",
+        mainColor = "#68838B", mainSize = 25, creditsPosition = "top-right")
+#or
+amBoxplot(weight~Diet, data=dataset, labelRotation = -45) %>>% 
+  amOptions( main = "My Barchart",
+        mainColor = "#68838B", mainSize = 25, creditsPosition = "top-right")
+```
+```{r, echo = FALSE}
+amBoxplot(weight~Diet, data=dataset, labelRotation = -45, 
+       main = "My Barchart",
+        mainColor = "#68838B", mainSize = 25, creditsPosition = "top-right")
+```
+
+## theme
+```{r, echo = TRUE, eval = FALSE}
+amBoxplot(weight~Diet, data=dataset, 
+          theme = "dark")
+#or
+amBoxplot(weight~Diet, data=dataset) %>>% 
+  amOptions(theme = "dark")
+```
+```{r, echo = FALSE}
+amBoxplot(weight~Diet, data=dataset, theme = "dark")
+```
