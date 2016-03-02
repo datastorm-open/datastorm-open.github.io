@@ -1,0 +1,97 @@
+---
+pagetitle: rAmCharts - amWind
+---
+
+```{r,echo=FALSE, message=FALSE}
+require(package = "rAmCharts", quietly = TRUE)
+require(package = "pipeR", quietly = TRUE)
+```
+
+
+<h1>rAmCharts - amPlot</h1>
+
+## Parameters
+  
+* __x__:  numeric, data.frame, or formula, the coordinates of points in the plot.
+* __y__:  numeric, the y coordinates of points in the plot, optional if x is an appropriate structure.
+* __bullet__: character, point shape. Possible values are : "diamond", "square", "bubble", "yError", "xError", "round", "triangleLeft", "triangleRight", "triangleUp", "triangleDown". Default set to "round".
+* __type__: character, type of plot. Possible values are : "l" for a line, "sl" for a smoothed line, "st" for steps, "p" for points, and "b" for line and points. Default set to "p".
+* __col__: either a factor or a character, default set to "gray".
+* __weights__: numeric, weights for x/y charts only. Default set to rep(1, x).
+* __precision__: numeric, precision you wish to display. Default set to 2.
+* __id__: numeric, point id, for x/y charts only. Default 1:length(x).
+* __error__: numeric, only when type is "xError" "yError" default NULL,
+* __xlab__: character, label for x-axis.
+* __ylab__: character, label for y-axis.
+* __lty__: numeric, line type (dashes).
+* __cex__: numeric, bullet size.
+* __lwd__: numeric, line width.
+* __xlim__: numeric, x range.
+* __ylim__: numeric, y range.
+* __parseDates__: logical, default set to FALSE, if TRUE argument dataDateFormat has to be provided.
+* __dataDateFormat__: character, default set to NULL. Even if your chart parses dates, you can pass them as strings in your dataframe - all you need to do is to set data date format and the chart will parse dates to date objects. Check this page for available formats. Please note that two-digit years (YY) as well as literal month names (MMM) are NOT supported in this setting.
+* __columns__: (optional) either a vector of character containing the names of the series to draw, or a numeric vector of indices. By default all numeric columns will be drawn.
+* __data__: dataset
+* __...__: other parameters called in amOptions.
+
+
+## Reference example
+```{r}
+xc <- paste("cat.", 1:100)
+xf <- factor(xc)
+y <- rnorm(length(xc))
+x <- sort(rnorm(100))
+iris <- get("iris", "package:datasets")
+```
+```{r, echo = TRUE, eval = FALSE}
+amPlot(x = xc, y = y)
+```
+```{r, echo = FALSE, eval = TRUE}
+amPlot(x = xc, y = y)
+```
+
+	
+
+## Change type
+```{r, echo = TRUE, eval = FALSE}
+amPlot(x = xc, y = y, type = 'l')
+```
+```{r, echo = FALSE, eval = TRUE}
+amPlot(x = xc, y = y, type = 'l')
+```
+
+## Add a legend
+
+```{r, echo = TRUE, eval = FALSE}
+amPlot(x = x, y = y, type = "l") %>>%
+  setLegend(useGraphSettings = TRUE)
+```
+```{r, echo = FALSE, eval = TRUE}
+amPlot(x = x, y = y, type = "l") %>>%
+  setLegend(useGraphSettings = TRUE) 
+```
+
+## Add a scrollbar, lty and cex
+
+```{r, echo = TRUE, eval = FALSE}
+amPlot(x = x, y = y, scrollbar = TRUE, lty = 2,  type = "l")
+```
+```{r, echo = FALSE, eval = TRUE}
+amPlot(x = x, y = y, scrollbar = TRUE, lty = 2)
+```
+
+## Change color, main
+```{r, echo = TRUE, eval = FALSE}
+amPlot(x = x, y = y, col = "blue", main = "title")
+```
+```{r, echo = FALSE, eval = TRUE}
+amPlot(x = x, y = y, col = "blue", main = "title")
+```
+
+## Select the column
+```{r, echo = TRUE, eval = FALSE}
+amPlot(iris, col = colnames(iris)[1:2], type = c("l", "st"))
+```
+```{r, echo = FALSE, eval = TRUE}
+amPlot(iris, col = colnames(iris)[1:2], type = c("l", "st"))
+```
