@@ -42,7 +42,7 @@ amCandlestick(data = data_candleStick2, positiveColor = "black", negativeColor =
 
 ## Naming axis
 ```{r}
-amCandlestick(data = data_candleStick2, xlab = "categories", ylab = "values", 
+amCandlestick(data = data_candleStick2, ylab = "values", 
               labelRotation = -45)
 ```
 

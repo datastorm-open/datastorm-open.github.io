@@ -41,7 +41,7 @@ amOHLC(data = data_candleStick2, labelRotation = -45, positiveColor = "black", n
 
 ## Naming axis
 ```{r}
-amOHLC(data = data_candleStick2, labelRotation = -45, xlab = "categories", ylab = "values")
+amOHLC(data = data_candleStick2, labelRotation = -45, ylab = "values")
 ```
 
 ## Rotate x axis labels

@@ -43,17 +43,17 @@ amHist(x = data_hist, col = "#CECECE")
 amHist(x = data_hist, border = "#CECECE")
 ```
 
-## View frequency
+## View density
 ```{r}
 amHist(x = data_hist, freq = FALSE)
 ```
 
-## Labels
+## Naming axis
 ```{r}
 amHist(x = data_hist, xlab = "xlab", ylab = "ylab")
 ```
 
-## Add label on the top
+## Display values
 ```{r}
 amHist(x = data_hist, labels = TRUE)
 ```
@@ -81,7 +81,7 @@ amHist(x = data_hist, export = TRUE)
 amHist(x = data_hist, export = TRUE, exportFormat = "JPG")
 #or
 amHist(x = data_hist) %>>% 
-  amOptions(export = TRUE, exportFormat = "CSV")
+  amOptions(export = TRUE, exportFormat = "JPG")
 ```
 ```{r, echo = FALSE}
 amHist(x = data_hist, export = TRUE, exportFormat = "JPG")
