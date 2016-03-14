@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+<title>rAmCharts - amWind</title>
+
+<script src="libs/jquery/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="libs/bootstrap/css/cosmo.min.css" rel="stylesheet" />
+<script src="libs/bootstrap/js/bootstrap.min.js"></script>
+<script src="libs/bootstrap/shim/html5shiv.min.js"></script>
+<script src="libs/bootstrap/shim/respond.min.js"></script>
+<script src="libs/htmlwidgets/htmlwidgets.js"></script>
+<script src="libs/amcharts/amcharts.js"></script>
+<script src="libs/ramcharts_base-binding/ramcharts_base.js"></script>
+<script src="libs/amcharts/radar.js"></script>
+<link href="libs/amcharts_style/style.css" rel="stylesheet" />
+<link href="libs/amcharts_plugins_export/export.css" rel="stylesheet" />
+<script src="libs/amcharts_plugins_export/export.min.js"></script>
+<script src="libs/amcharts_themes_patterns/patterns.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Raleway:100' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+
+<style type="text/css">code{white-space: pre;}</style>
+<link rel="stylesheet"
+      href="libs/highlight/default.css"
+      type="text/css" />
+<script src="libs/highlight/highlight.js"></script>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs && document.readyState && document.readyState === "complete") {
+   window.setTimeout(function() {
+      hljs.initHighlighting();
+   }, 0);
+}
+</script>
+
+
+<link rel="stylesheet" href="www/css/styles.css" type="text/css" />
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img { 
+  max-width:100%; 
+  height: auto; 
+}
+</style>
+<div class="container-fluid main-container">
+
+
+<!-- bootstrap row container for all the content -->
+<div class="row"> <!-- main row -->
+  
+  <div class="col-xs-4 col-md-3 show" id="nav-content" style="padding-left:0;">
+    <nav id="navbar">
+      <br/>
+      <div id="title-toc"> rAmCharts</div>
+      <hr/>
+      
+      <b class="section-toc">Getting started</b>
+      <br/>
+
+      <ul class="toc" id="nav-intro">
+        <li class="litoc"><a class="toc-item" href="index.html">Introduction</a></li>
+        <li class="litoc"><a class="toc-item" href="convert.html">Quick tutorial</a></li>
+        <li class="litoc"><a class="toc-item" href="shiny.html">Use in shiny apps</a></li>
+        <li class="litoc"><a class="toc-item" href="advance.html">Advanced features</a></li>
+      </ul> 
+      
+      <b class="section-toc">Specific functions</b>
+      <br/>
+      
+      <ul class="toc" id="nav-amfunctions">
+        <li class="litoc"> <a class="toc-item" href="amAngularGauge.html">AngularGauge</a></li>   
+        <li class="litoc"> <a class="toc-item" href="amBarplot.html">Barplot</a></li>
+        <li class="litoc"><a class="toc-item" href="amBoxplot.html">Boxplot</a></li>
+        <li class="litoc"><a class="toc-item" href="amBullet.html">Bullet</a></li>
+        <li class="litoc"><a class="toc-item" href="amCandlestick.html">Candlestick</a></li>
+        <li class="litoc"><a class="toc-item" href="amFloatingBar.html">Floating Bar</a></li>
+        <li class="litoc"><a class="toc-item" href="amFunnel.html">Funnel</a></li>
+        <li class="litoc"><a class="toc-item" href="amHist.html">Histogram</a></li>
+        <li class="litoc"><a class="toc-item" href="amMekko.html">Mekko</a></li>
+        <li class="litoc"><a class="toc-item" href="amOHLC.html">OHLC</a></li>
+        <li class="litoc"><a class="toc-item" href="amPie.html">Pie</a></li>
+        <li class="litoc"><a class="toc-item" href="amRadar.html">Radar</a></li>
+        <li class="litoc"><a class="toc-item" href="amSolidGauge.html">SolidGauge</a></li>
+        <li class="litoc"><a class="toc-item" href="amWaterfall.html">Waterfall</a></li>
+        <li class="litoc"><a class="toc-item" href="amWind.html">Wind</a></li>
+      </ul>
+      
+      <footer>
+        <div class="copyrights"><small> © 2015-2016 DataKnowledge</small></div>
+      </footer>
+    
+    </nav>
+    
+  </div> <!-- end of left column -->
+  
+  <div class="col-xs-1 col-md-1"> <!-- colummn for toggle button -->
+    <i id="toggle" class="fa fa-bars fa-lg toggle-collapse" style="padding-top:10px;"></i>
+  </div>
+  
+  <div class="col-xs-6 col-md-7 show" id="main-content"> <!-- main column -->
+
+
+
+<h1>
+rAmCharts - amWind
+</h1>
+<div id="parameters" class="section level2">
+<h2>Parameters</h2>
+<ul>
+<li><strong>data</strong>: data.frame columns are series of values from week wind(first column) to strong wind (last column), row are wind direction.</li>
+<li><strong>col</strong>: character, color(s) of serie(s) hexadecimal like “#00FF00”</li>
+<li><strong>backTransparency</strong>: numeric, background transparency, between 0 and 1</li>
+<li><strong>…</strong>: see amOptions for more options</li>
+</ul>
+</div>
+<div id="reference-example" class="section level2">
+<h2>Reference example</h2>
+<pre class="r"><code> data(&quot;data_wind&quot;)
+data_wind</code></pre>
+<pre><code>##   weak middle strong
+## 1    1      2      1
+## 2    2      8      1
+## 3    3      1      2
+## 4    4      1      2
+## 5    1      2      1
+## 6    2      8      1
+## 7    1      1      1
+## 8    2      2      2</code></pre>
+</div>
+<div id="basic-exemple" class="section level2">
+<h2>Basic exemple</h2>
+<pre class="r"><code>amWind(data = data_wind)</code></pre>
+<p><div id="htmlwidget-7530" style="width:100%;height:500px;" class="ramcharts_base html-widget"></div>
+<script type="application/json" data-for="htmlwidget-7530">{"x":{"chartData":{"startDuration":1,"categoryField":"labels","dataProvider":[{"weak":1,"middle":3,"strong":4,"labels":"N","weaklab":"<b>1 \u003c/b>Observations <br><b>6.25%\u003c/b> of wind <b>weak\u003c/b>","middlelab":"<b>2 \u003c/b>Observations <br><b>8%\u003c/b> of wind <b>middle\u003c/b>","stronglab":"<b>1 \u003c/b>Observations <br><b>9.09%\u003c/b> of wind <b>strong\u003c/b>"},{"weak":2,"middle":10,"strong":11,"labels":"NE","weaklab":"<b>2 \u003c/b>Observations <br><b>12.5%\u003c/b> of wind <b>weak\u003c/b>","middlelab":"<b>8 \u003c/b>Observations <br><b>32%\u003c/b> of wind <b>middle\u003c/b>","stronglab":"<b>1 \u003c/b>Observations <br><b>9.09%\u003c/b> of wind <b>strong\u003c/b>"},{"weak":3,"middle":4,"strong":6,"labels":"E","weaklab":"<b>3 \u003c/b>Observations <br><b>18.75%\u003c/b> of wind <b>weak\u003c/b>","middlelab":"<b>1 \u003c/b>Observations <br><b>4%\u003c/b> of wind <b>middle\u003c/b>","stronglab":"<b>2 \u003c/b>Observations <br><b>18.18%\u003c/b> of wind <b>strong\u003c/b>"},{"weak":4,"middle":5,"strong":7,"labels":"SE","weaklab":"<b>4 \u003c/b>Observations <br><b>25%\u003c/b> of wind <b>weak\u003c/b>","middlelab":"<b>1 \u003c/b>Observations <br><b>4%\u003c/b> of wind <b>middle\u003c/b>","stronglab":"<b>2 \u003c/b>Observations <br><b>18.18%\u003c/b> of wind <b>strong\u003c/b>"},{"weak":1,"middle":3,"strong":4,"labels":"S","weaklab":"<b>1 \u003c/b>Observations <br><b>6.25%\u003c/b> of wind <b>weak\u003c/b>","middlelab":"<b>2 \u003c/b>Observations <br><b>8%\u003c/b> of wind <b>middle\u003c/b>","stronglab":"<b>1 \u003c/b>Observations <br><b>9.09%\u003c/b> of wind <b>strong\u003c/b>"},{"weak":2,"middle":10,"strong":11,"labels":"SW","weaklab":"<b>2 \u003c/b>Observations <br><b>12.5%\u003c/b> of wind <b>weak\u003c/b>","middlelab":"<b>8 \u003c/b>Observations <br><b>32%\u003c/b> of wind <b>middle\u003c/b>","stronglab":"<b>1 \u003c/b>Observations <br><b>9.09%\u003c/b> of wind <b>strong\u003c/b>"},{"weak":1,"middle":2,"strong":3,"labels":"W","weaklab":"<b>1 \u003c/b>Observations <br><b>6.25%\u003c/b> of wind <b>weak\u003c/b>","middlelab":"<b>1 \u003c/b>Observations <br><b>4%\u003c/b> of wind <b>middle\u003c/b>","stronglab":"<b>1 \u003c/b>Observations <br><b>9.09%\u003c/b> of wind <b>strong\u003c/b>"},{"weak":2,"middle":4,"strong":6,"labels":"NW","weaklab":"<b>2 \u003c/b>Observations <br><b>12.5%\u003c/b> of wind <b>weak\u003c/b>","middlelab":"<b>2 \u003c/b>Observations <br><b>8%\u003c/b> of wind <b>middle\u003c/b>","stronglab":"<b>2 \u003c/b>Observations <br><b>18.18%\u003c/b> of wind <b>strong\u003c/b>"}],"graphs":[{"lineThickness":2,"legendAlpha":1,"lineColor":"#000000","lineAlpha":1,"fillColors":"","fillAlphas":0.5,"bullet":"round","bulletAlpha":0,"legendColor":"","balloonText":"[[stronglab]]","title":"strong","valueField":"strong"},{"lineThickness":2,"legendAlpha":1,"lineColor":"#000000","lineAlpha":1,"fillColors":"","fillAlphas":0.5,"bullet":"round","bulletAlpha":0,"legendColor":"","balloonText":"[[middlelab]]","title":"middle","valueField":"middle"},{"lineThickness":2,"legendAlpha":1,"lineColor":"#000000","lineAlpha":1,"fillColors":"","fillAlphas":0.5,"bullet":"round","bulletAlpha":0,"legendColor":"","balloonText":"[[weaklab]]","title":"weak","valueField":"weak"}],"type":"radar","valueAxes":[{"gridType":"circle"}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[],"jsHooks":[]}</script></p>
+</div>
+<div id="change-color" class="section level2">
+<h2>Change color</h2>
+<pre class="r"><code>amWind(data = data_wind, col = c(&quot;#FF0000&quot;, &quot;#00FF00&quot;, &quot;#0000FF&quot;))</code></pre>
+<p><div id="htmlwidget-4730" style="width:100%;height:500px;" class="ramcharts_base html-widget"></div>
+<script type="application/json" data-for="htmlwidget-4730">{"x":{"chartData":{"startDuration":1,"categoryField":"labels","dataProvider":[{"weak":1,"middle":3,"strong":4,"labels":"N","weaklab":"<b>1 \u003c/b>Observations <br><b>6.25%\u003c/b> of wind <b>weak\u003c/b>","middlelab":"<b>2 \u003c/b>Observations <br><b>8%\u003c/b> of wind <b>middle\u003c/b>","stronglab":"<b>1 \u003c/b>Observations <br><b>9.09%\u003c/b> of wind <b>strong\u003c/b>"},{"weak":2,"middle":10,"strong":11,"labels":"NE","weaklab":"<b>2 \u003c/b>Observations <br><b>12.5%\u003c/b> of wind <b>weak\u003c/b>","middlelab":"<b>8 \u003c/b>Observations <br><b>32%\u003c/b> of wind <b>middle\u003c/b>","stronglab":"<b>1 \u003c/b>Observations <br><b>9.09%\u003c/b> of wind <b>strong\u003c/b>"},{"weak":3,"middle":4,"strong":6,"labels":"E","weaklab":"<b>3 \u003c/b>Observations <br><b>18.75%\u003c/b> of wind <b>weak\u003c/b>","middlelab":"<b>1 \u003c/b>Observations <br><b>4%\u003c/b> of wind <b>middle\u003c/b>","stronglab":"<b>2 \u003c/b>Observations <br><b>18.18%\u003c/b> of wind <b>strong\u003c/b>"},{"weak":4,"middle":5,"strong":7,"labels":"SE","weaklab":"<b>4 \u003c/b>Observations <br><b>25%\u003c/b> of wind <b>weak\u003c/b>","middlelab":"<b>1 \u003c/b>Observations <br><b>4%\u003c/b> of wind <b>middle\u003c/b>","stronglab":"<b>2 \u003c/b>Observations <br><b>18.18%\u003c/b> of wind <b>strong\u003c/b>"},{"weak":1,"middle":3,"strong":4,"labels":"S","weaklab":"<b>1 \u003c/b>Observations <br><b>6.25%\u003c/b> of wind <b>weak\u003c/b>","middlelab":"<b>2 \u003c/b>Observations <br><b>8%\u003c/b> of wind <b>middle\u003c/b>","stronglab":"<b>1 \u003c/b>Observations <br><b>9.09%\u003c/b> of wind <b>strong\u003c/b>"},{"weak":2,"middle":10,"strong":11,"labels":"SW","weaklab":"<b>2 \u003c/b>Observations <br><b>12.5%\u003c/b> of wind <b>weak\u003c/b>","middlelab":"<b>8 \u003c/b>Observations <br><b>32%\u003c/b> of wind <b>middle\u003c/b>","stronglab":"<b>1 \u003c/b>Observations <br><b>9.09%\u003c/b> of wind <b>strong\u003c/b>"},{"weak":1,"middle":2,"strong":3,"labels":"W","weaklab":"<b>1 \u003c/b>Observations <br><b>6.25%\u003c/b> of wind <b>weak\u003c/b>","middlelab":"<b>1 \u003c/b>Observations <br><b>4%\u003c/b> of wind <b>middle\u003c/b>","stronglab":"<b>1 \u003c/b>Observations <br><b>9.09%\u003c/b> of wind <b>strong\u003c/b>"},{"weak":2,"middle":4,"strong":6,"labels":"NW","weaklab":"<b>2 \u003c/b>Observations <br><b>12.5%\u003c/b> of wind <b>weak\u003c/b>","middlelab":"<b>2 \u003c/b>Observations <br><b>8%\u003c/b> of wind <b>middle\u003c/b>","stronglab":"<b>2 \u003c/b>Observations <br><b>18.18%\u003c/b> of wind <b>strong\u003c/b>"}],"graphs":[{"lineThickness":2,"legendAlpha":1,"lineColor":"#000000","lineAlpha":1,"fillColors":"#0000FF","fillAlphas":0.5,"bullet":"round","bulletAlpha":0,"legendColor":"#0000FF","balloonText":"[[stronglab]]","title":"strong","valueField":"strong"},{"lineThickness":2,"legendAlpha":1,"lineColor":"#000000","lineAlpha":1,"fillColors":"#00FF00","fillAlphas":0.5,"bullet":"round","bulletAlpha":0,"legendColor":"#00FF00","balloonText":"[[middlelab]]","title":"middle","valueField":"middle"},{"lineThickness":2,"legendAlpha":1,"lineColor":"#000000","lineAlpha":1,"fillColors":"#FF0000","fillAlphas":0.5,"bullet":"round","bulletAlpha":0,"legendColor":"#FF0000","balloonText":"[[weaklab]]","title":"weak","valueField":"weak"}],"type":"radar","valueAxes":[{"gridType":"circle"}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[],"jsHooks":[]}</script></p>
+</div>
+<div id="backtransparency" class="section level2">
+<h2>backTransparency</h2>
+<pre class="r"><code>amWind(data = data_wind, col = c(&quot;#FF0000&quot;, &quot;#00FF00&quot;, &quot;#0000FF&quot;), backTransparency = c(0.1, 0.2, 0.5))</code></pre>
+<p><div id="htmlwidget-1375" style="width:100%;height:500px;" class="ramcharts_base html-widget"></div>
+<script type="application/json" data-for="htmlwidget-1375">{"x":{"chartData":{"startDuration":1,"categoryField":"labels","dataProvider":[{"weak":1,"middle":3,"strong":4,"labels":"N","weaklab":"<b>1 \u003c/b>Observations <br><b>6.25%\u003c/b> of wind <b>weak\u003c/b>","middlelab":"<b>2 \u003c/b>Observations <br><b>8%\u003c/b> of wind <b>middle\u003c/b>","stronglab":"<b>1 \u003c/b>Observations <br><b>9.09%\u003c/b> of wind <b>strong\u003c/b>"},{"weak":2,"middle":10,"strong":11,"labels":"NE","weaklab":"<b>2 \u003c/b>Observations <br><b>12.5%\u003c/b> of wind <b>weak\u003c/b>","middlelab":"<b>8 \u003c/b>Observations <br><b>32%\u003c/b> of wind <b>middle\u003c/b>","stronglab":"<b>1 \u003c/b>Observations <br><b>9.09%\u003c/b> of wind <b>strong\u003c/b>"},{"weak":3,"middle":4,"strong":6,"labels":"E","weaklab":"<b>3 \u003c/b>Observations <br><b>18.75%\u003c/b> of wind <b>weak\u003c/b>","middlelab":"<b>1 \u003c/b>Observations <br><b>4%\u003c/b> of wind <b>middle\u003c/b>","stronglab":"<b>2 \u003c/b>Observations <br><b>18.18%\u003c/b> of wind <b>strong\u003c/b>"},{"weak":4,"middle":5,"strong":7,"labels":"SE","weaklab":"<b>4 \u003c/b>Observations <br><b>25%\u003c/b> of wind <b>weak\u003c/b>","middlelab":"<b>1 \u003c/b>Observations <br><b>4%\u003c/b> of wind <b>middle\u003c/b>","stronglab":"<b>2 \u003c/b>Observations <br><b>18.18%\u003c/b> of wind <b>strong\u003c/b>"},{"weak":1,"middle":3,"strong":4,"labels":"S","weaklab":"<b>1 \u003c/b>Observations <br><b>6.25%\u003c/b> of wind <b>weak\u003c/b>","middlelab":"<b>2 \u003c/b>Observations <br><b>8%\u003c/b> of wind <b>middle\u003c/b>","stronglab":"<b>1 \u003c/b>Observations <br><b>9.09%\u003c/b> of wind <b>strong\u003c/b>"},{"weak":2,"middle":10,"strong":11,"labels":"SW","weaklab":"<b>2 \u003c/b>Observations <br><b>12.5%\u003c/b> of wind <b>weak\u003c/b>","middlelab":"<b>8 \u003c/b>Observations <br><b>32%\u003c/b> of wind <b>middle\u003c/b>","stronglab":"<b>1 \u003c/b>Observations <br><b>9.09%\u003c/b> of wind <b>strong\u003c/b>"},{"weak":1,"middle":2,"strong":3,"labels":"W","weaklab":"<b>1 \u003c/b>Observations <br><b>6.25%\u003c/b> of wind <b>weak\u003c/b>","middlelab":"<b>1 \u003c/b>Observations <br><b>4%\u003c/b> of wind <b>middle\u003c/b>","stronglab":"<b>1 \u003c/b>Observations <br><b>9.09%\u003c/b> of wind <b>strong\u003c/b>"},{"weak":2,"middle":4,"strong":6,"labels":"NW","weaklab":"<b>2 \u003c/b>Observations <br><b>12.5%\u003c/b> of wind <b>weak\u003c/b>","middlelab":"<b>2 \u003c/b>Observations <br><b>8%\u003c/b> of wind <b>middle\u003c/b>","stronglab":"<b>2 \u003c/b>Observations <br><b>18.18%\u003c/b> of wind <b>strong\u003c/b>"}],"graphs":[{"lineThickness":2,"legendAlpha":1,"lineColor":"#000000","lineAlpha":1,"fillColors":"#0000FF","fillAlphas":0.1,"bullet":"round","bulletAlpha":0,"legendColor":"#0000FF","balloonText":"[[stronglab]]","title":"strong","valueField":"strong"},{"lineThickness":2,"legendAlpha":1,"lineColor":"#000000","lineAlpha":1,"fillColors":"#00FF00","fillAlphas":0.2,"bullet":"round","bulletAlpha":0,"legendColor":"#00FF00","balloonText":"[[middlelab]]","title":"middle","valueField":"middle"},{"lineThickness":2,"legendAlpha":1,"lineColor":"#000000","lineAlpha":1,"fillColors":"#FF0000","fillAlphas":0.5,"bullet":"round","bulletAlpha":0,"legendColor":"#FF0000","balloonText":"[[weaklab]]","title":"weak","valueField":"weak"}],"type":"radar","valueAxes":[{"gridType":"circle"}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[],"jsHooks":[]}</script></p>
+<h2 class="partdivtitle">
+amOptions
+</h2>
+</div>
+<div id="legend" class="section level2">
+<h2>legend</h2>
+<pre class="r"><code>amWind(data = data_wind, col = c(&quot;#FF0000&quot;, &quot;#00FF00&quot;, &quot;#0000FF&quot;), legend = TRUE)
+#or
+amWind(data = data_wind, col = c(&quot;#FF0000&quot;, &quot;#00FF00&quot;, &quot;#0000FF&quot;))%&gt;&gt;% 
+  amOptions(legend = TRUE)</code></pre>
+<p><div id="htmlwidget-2886" style="width:100%;height:500px;" class="ramcharts_base html-widget"></div>
+<script type="application/json" data-for="htmlwidget-2886">{"x":{"chartData":{"startDuration":1,"categoryField":"labels","dataProvider":[{"weak":1,"middle":3,"strong":4,"labels":"N","weaklab":"<b>1 \u003c/b>Observations <br><b>6.25%\u003c/b> of wind <b>weak\u003c/b>","middlelab":"<b>2 \u003c/b>Observations <br><b>8%\u003c/b> of wind <b>middle\u003c/b>","stronglab":"<b>1 \u003c/b>Observations <br><b>9.09%\u003c/b> of wind <b>strong\u003c/b>"},{"weak":2,"middle":10,"strong":11,"labels":"NE","weaklab":"<b>2 \u003c/b>Observations <br><b>12.5%\u003c/b> of wind <b>weak\u003c/b>","middlelab":"<b>8 \u003c/b>Observations <br><b>32%\u003c/b> of wind <b>middle\u003c/b>","stronglab":"<b>1 \u003c/b>Observations <br><b>9.09%\u003c/b> of wind <b>strong\u003c/b>"},{"weak":3,"middle":4,"strong":6,"labels":"E","weaklab":"<b>3 \u003c/b>Observations <br><b>18.75%\u003c/b> of wind <b>weak\u003c/b>","middlelab":"<b>1 \u003c/b>Observations <br><b>4%\u003c/b> of wind <b>middle\u003c/b>","stronglab":"<b>2 \u003c/b>Observations <br><b>18.18%\u003c/b> of wind <b>strong\u003c/b>"},{"weak":4,"middle":5,"strong":7,"labels":"SE","weaklab":"<b>4 \u003c/b>Observations <br><b>25%\u003c/b> of wind <b>weak\u003c/b>","middlelab":"<b>1 \u003c/b>Observations <br><b>4%\u003c/b> of wind <b>middle\u003c/b>","stronglab":"<b>2 \u003c/b>Observations <br><b>18.18%\u003c/b> of wind <b>strong\u003c/b>"},{"weak":1,"middle":3,"strong":4,"labels":"S","weaklab":"<b>1 \u003c/b>Observations <br><b>6.25%\u003c/b> of wind <b>weak\u003c/b>","middlelab":"<b>2 \u003c/b>Observations <br><b>8%\u003c/b> of wind <b>middle\u003c/b>","stronglab":"<b>1 \u003c/b>Observations <br><b>9.09%\u003c/b> of wind <b>strong\u003c/b>"},{"weak":2,"middle":10,"strong":11,"labels":"SW","weaklab":"<b>2 \u003c/b>Observations <br><b>12.5%\u003c/b> of wind <b>weak\u003c/b>","middlelab":"<b>8 \u003c/b>Observations <br><b>32%\u003c/b> of wind <b>middle\u003c/b>","stronglab":"<b>1 \u003c/b>Observations <br><b>9.09%\u003c/b> of wind <b>strong\u003c/b>"},{"weak":1,"middle":2,"strong":3,"labels":"W","weaklab":"<b>1 \u003c/b>Observations <br><b>6.25%\u003c/b> of wind <b>weak\u003c/b>","middlelab":"<b>1 \u003c/b>Observations <br><b>4%\u003c/b> of wind <b>middle\u003c/b>","stronglab":"<b>1 \u003c/b>Observations <br><b>9.09%\u003c/b> of wind <b>strong\u003c/b>"},{"weak":2,"middle":4,"strong":6,"labels":"NW","weaklab":"<b>2 \u003c/b>Observations <br><b>12.5%\u003c/b> of wind <b>weak\u003c/b>","middlelab":"<b>2 \u003c/b>Observations <br><b>8%\u003c/b> of wind <b>middle\u003c/b>","stronglab":"<b>2 \u003c/b>Observations <br><b>18.18%\u003c/b> of wind <b>strong\u003c/b>"}],"graphs":[{"lineThickness":2,"legendAlpha":1,"lineColor":"#000000","lineAlpha":1,"fillColors":"#0000FF","fillAlphas":0.5,"bullet":"round","bulletAlpha":0,"legendColor":"#0000FF","balloonText":"[[stronglab]]","title":"strong","valueField":"strong"},{"lineThickness":2,"legendAlpha":1,"lineColor":"#000000","lineAlpha":1,"fillColors":"#00FF00","fillAlphas":0.5,"bullet":"round","bulletAlpha":0,"legendColor":"#00FF00","balloonText":"[[middlelab]]","title":"middle","valueField":"middle"},{"lineThickness":2,"legendAlpha":1,"lineColor":"#000000","lineAlpha":1,"fillColors":"#FF0000","fillAlphas":0.5,"bullet":"round","bulletAlpha":0,"legendColor":"#FF0000","balloonText":"[[weaklab]]","title":"weak","valueField":"weak"}],"legend":{"position":"right","align":"left","useGraphSettings":true},"type":"radar","valueAxes":[{"gridType":"circle"}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[],"jsHooks":[]}</script></p>
+</div>
+<div id="legendposition" class="section level2">
+<h2>legendPosition</h2>
+<pre class="r"><code>amWind(data = data_wind, col = c(&quot;#FF0000&quot;, &quot;#00FF00&quot;, &quot;#0000FF&quot;), legend = TRUE,
+        legendPosition = &quot;left&quot;)
+#or
+amWind(data = data_wind, col = c(&quot;#FF0000&quot;, &quot;#00FF00&quot;, &quot;#0000FF&quot;)) %&gt;&gt;% 
+  amOptions(legend = TRUE, legendPosition = &quot;left&quot;)</code></pre>
+<p><div id="htmlwidget-8099" style="width:100%;height:500px;" class="ramcharts_base html-widget"></div>
+<script type="application/json" data-for="htmlwidget-8099">{"x":{"chartData":{"startDuration":1,"categoryField":"labels","dataProvider":[{"weak":1,"middle":3,"strong":4,"labels":"N","weaklab":"<b>1 \u003c/b>Observations <br><b>6.25%\u003c/b> of wind <b>weak\u003c/b>","middlelab":"<b>2 \u003c/b>Observations <br><b>8%\u003c/b> of wind <b>middle\u003c/b>","stronglab":"<b>1 \u003c/b>Observations <br><b>9.09%\u003c/b> of wind <b>strong\u003c/b>"},{"weak":2,"middle":10,"strong":11,"labels":"NE","weaklab":"<b>2 \u003c/b>Observations <br><b>12.5%\u003c/b> of wind <b>weak\u003c/b>","middlelab":"<b>8 \u003c/b>Observations <br><b>32%\u003c/b> of wind <b>middle\u003c/b>","stronglab":"<b>1 \u003c/b>Observations <br><b>9.09%\u003c/b> of wind <b>strong\u003c/b>"},{"weak":3,"middle":4,"strong":6,"labels":"E","weaklab":"<b>3 \u003c/b>Observations <br><b>18.75%\u003c/b> of wind <b>weak\u003c/b>","middlelab":"<b>1 \u003c/b>Observations <br><b>4%\u003c/b> of wind <b>middle\u003c/b>","stronglab":"<b>2 \u003c/b>Observations <br><b>18.18%\u003c/b> of wind <b>strong\u003c/b>"},{"weak":4,"middle":5,"strong":7,"labels":"SE","weaklab":"<b>4 \u003c/b>Observations <br><b>25%\u003c/b> of wind <b>weak\u003c/b>","middlelab":"<b>1 \u003c/b>Observations <br><b>4%\u003c/b> of wind <b>middle\u003c/b>","stronglab":"<b>2 \u003c/b>Observations <br><b>18.18%\u003c/b> of wind <b>strong\u003c/b>"},{"weak":1,"middle":3,"strong":4,"labels":"S","weaklab":"<b>1 \u003c/b>Observations <br><b>6.25%\u003c/b> of wind <b>weak\u003c/b>","middlelab":"<b>2 \u003c/b>Observations <br><b>8%\u003c/b> of wind <b>middle\u003c/b>","stronglab":"<b>1 \u003c/b>Observations <br><b>9.09%\u003c/b> of wind <b>strong\u003c/b>"},{"weak":2,"middle":10,"strong":11,"labels":"SW","weaklab":"<b>2 \u003c/b>Observations <br><b>12.5%\u003c/b> of wind <b>weak\u003c/b>","middlelab":"<b>8 \u003c/b>Observations <br><b>32%\u003c/b> of wind <b>middle\u003c/b>","stronglab":"<b>1 \u003c/b>Observations <br><b>9.09%\u003c/b> of wind <b>strong\u003c/b>"},{"weak":1,"middle":2,"strong":3,"labels":"W","weaklab":"<b>1 \u003c/b>Observations <br><b>6.25%\u003c/b> of wind <b>weak\u003c/b>","middlelab":"<b>1 \u003c/b>Observations <br><b>4%\u003c/b> of wind <b>middle\u003c/b>","stronglab":"<b>1 \u003c/b>Observations <br><b>9.09%\u003c/b> of wind <b>strong\u003c/b>"},{"weak":2,"middle":4,"strong":6,"labels":"NW","weaklab":"<b>2 \u003c/b>Observations <br><b>12.5%\u003c/b> of wind <b>weak\u003c/b>","middlelab":"<b>2 \u003c/b>Observations <br><b>8%\u003c/b> of wind <b>middle\u003c/b>","stronglab":"<b>2 \u003c/b>Observations <br><b>18.18%\u003c/b> of wind <b>strong\u003c/b>"}],"graphs":[{"lineThickness":2,"legendAlpha":1,"lineColor":"#000000","lineAlpha":1,"fillColors":"#0000FF","fillAlphas":0.5,"bullet":"round","bulletAlpha":0,"legendColor":"#0000FF","balloonText":"[[stronglab]]","title":"strong","valueField":"strong"},{"lineThickness":2,"legendAlpha":1,"lineColor":"#000000","lineAlpha":1,"fillColors":"#00FF00","fillAlphas":0.5,"bullet":"round","bulletAlpha":0,"legendColor":"#00FF00","balloonText":"[[middlelab]]","title":"middle","valueField":"middle"},{"lineThickness":2,"legendAlpha":1,"lineColor":"#000000","lineAlpha":1,"fillColors":"#FF0000","fillAlphas":0.5,"bullet":"round","bulletAlpha":0,"legendColor":"#FF0000","balloonText":"[[weaklab]]","title":"weak","valueField":"weak"}],"legend":{"position":"left","align":"left","useGraphSettings":true},"type":"radar","valueAxes":[{"gridType":"circle"}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[],"jsHooks":[]}</script></p>
+</div>
+<div id="export" class="section level2">
+<h2>export</h2>
+<pre class="r"><code>amWind(data = data_wind, col = c(&quot;#FF0000&quot;, &quot;#00FF00&quot;, &quot;#0000FF&quot;), export = TRUE)
+#or
+amWind(data = data_wind, col = c(&quot;#FF0000&quot;, &quot;#00FF00&quot;, &quot;#0000FF&quot;)) %&gt;&gt;% 
+  amOptions(export = TRUE)</code></pre>
+<p><div id="htmlwidget-9887" style="width:100%;height:500px;" class="ramcharts_base html-widget"></div>
+<script type="application/json" data-for="htmlwidget-9887">{"x":{"chartData":{"startDuration":1,"export":{"enabled":true},"categoryField":"labels","dataProvider":[{"weak":1,"middle":3,"strong":4,"labels":"N","weaklab":"<b>1 \u003c/b>Observations <br><b>6.25%\u003c/b> of wind <b>weak\u003c/b>","middlelab":"<b>2 \u003c/b>Observations <br><b>8%\u003c/b> of wind <b>middle\u003c/b>","stronglab":"<b>1 \u003c/b>Observations <br><b>9.09%\u003c/b> of wind <b>strong\u003c/b>"},{"weak":2,"middle":10,"strong":11,"labels":"NE","weaklab":"<b>2 \u003c/b>Observations <br><b>12.5%\u003c/b> of wind <b>weak\u003c/b>","middlelab":"<b>8 \u003c/b>Observations <br><b>32%\u003c/b> of wind <b>middle\u003c/b>","stronglab":"<b>1 \u003c/b>Observations <br><b>9.09%\u003c/b> of wind <b>strong\u003c/b>"},{"weak":3,"middle":4,"strong":6,"labels":"E","weaklab":"<b>3 \u003c/b>Observations <br><b>18.75%\u003c/b> of wind <b>weak\u003c/b>","middlelab":"<b>1 \u003c/b>Observations <br><b>4%\u003c/b> of wind <b>middle\u003c/b>","stronglab":"<b>2 \u003c/b>Observations <br><b>18.18%\u003c/b> of wind <b>strong\u003c/b>"},{"weak":4,"middle":5,"strong":7,"labels":"SE","weaklab":"<b>4 \u003c/b>Observations <br><b>25%\u003c/b> of wind <b>weak\u003c/b>","middlelab":"<b>1 \u003c/b>Observations <br><b>4%\u003c/b> of wind <b>middle\u003c/b>","stronglab":"<b>2 \u003c/b>Observations <br><b>18.18%\u003c/b> of wind <b>strong\u003c/b>"},{"weak":1,"middle":3,"strong":4,"labels":"S","weaklab":"<b>1 \u003c/b>Observations <br><b>6.25%\u003c/b> of wind <b>weak\u003c/b>","middlelab":"<b>2 \u003c/b>Observations <br><b>8%\u003c/b> of wind <b>middle\u003c/b>","stronglab":"<b>1 \u003c/b>Observations <br><b>9.09%\u003c/b> of wind <b>strong\u003c/b>"},{"weak":2,"middle":10,"strong":11,"labels":"SW","weaklab":"<b>2 \u003c/b>Observations <br><b>12.5%\u003c/b> of wind <b>weak\u003c/b>","middlelab":"<b>8 \u003c/b>Observations <br><b>32%\u003c/b> of wind <b>middle\u003c/b>","stronglab":"<b>1 \u003c/b>Observations <br><b>9.09%\u003c/b> of wind <b>strong\u003c/b>"},{"weak":1,"middle":2,"strong":3,"labels":"W","weaklab":"<b>1 \u003c/b>Observations <br><b>6.25%\u003c/b> of wind <b>weak\u003c/b>","middlelab":"<b>1 \u003c/b>Observations <br><b>4%\u003c/b> of wind <b>middle\u003c/b>","stronglab":"<b>1 \u003c/b>Observations <br><b>9.09%\u003c/b> of wind <b>strong\u003c/b>"},{"weak":2,"middle":4,"strong":6,"labels":"NW","weaklab":"<b>2 \u003c/b>Observations <br><b>12.5%\u003c/b> of wind <b>weak\u003c/b>","middlelab":"<b>2 \u003c/b>Observations <br><b>8%\u003c/b> of wind <b>middle\u003c/b>","stronglab":"<b>2 \u003c/b>Observations <br><b>18.18%\u003c/b> of wind <b>strong\u003c/b>"}],"graphs":[{"lineThickness":2,"legendAlpha":1,"lineColor":"#000000","lineAlpha":1,"fillColors":"#0000FF","fillAlphas":0.5,"bullet":"round","bulletAlpha":0,"legendColor":"#0000FF","balloonText":"[[stronglab]]","title":"strong","valueField":"strong"},{"lineThickness":2,"legendAlpha":1,"lineColor":"#000000","lineAlpha":1,"fillColors":"#00FF00","fillAlphas":0.5,"bullet":"round","bulletAlpha":0,"legendColor":"#00FF00","balloonText":"[[middlelab]]","title":"middle","valueField":"middle"},{"lineThickness":2,"legendAlpha":1,"lineColor":"#000000","lineAlpha":1,"fillColors":"#FF0000","fillAlphas":0.5,"bullet":"round","bulletAlpha":0,"legendColor":"#FF0000","balloonText":"[[weaklab]]","title":"weak","valueField":"weak"}],"type":"radar","valueAxes":[{"gridType":"circle"}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[],"jsHooks":[]}</script></p>
+</div>
+<div id="exportformat" class="section level2">
+<h2>exportFormat</h2>
+<pre class="r"><code>amWind(data = data_wind, col = c(&quot;#FF0000&quot;, &quot;#00FF00&quot;, &quot;#0000FF&quot;), export = TRUE, exportFormat = &quot;JPG&quot;)
+#or
+amWind(data = data_wind, col = c(&quot;#FF0000&quot;, &quot;#00FF00&quot;, &quot;#0000FF&quot;)) %&gt;&gt;% 
+  amOptions(export = TRUE, exportFormat = &quot;JPG&quot;)</code></pre>
+<p><div id="htmlwidget-7446" style="width:100%;height:500px;" class="ramcharts_base html-widget"></div>
+<script type="application/json" data-for="htmlwidget-7446">{"x":{"chartData":{"startDuration":1,"export":{"enabled":true,"menu":[{"class":"export-main","menu":[{"format":"JPG","label":"Download as JPG","title":"JPG"}]}]},"categoryField":"labels","dataProvider":[{"weak":1,"middle":3,"strong":4,"labels":"N","weaklab":"<b>1 \u003c/b>Observations <br><b>6.25%\u003c/b> of wind <b>weak\u003c/b>","middlelab":"<b>2 \u003c/b>Observations <br><b>8%\u003c/b> of wind <b>middle\u003c/b>","stronglab":"<b>1 \u003c/b>Observations <br><b>9.09%\u003c/b> of wind <b>strong\u003c/b>"},{"weak":2,"middle":10,"strong":11,"labels":"NE","weaklab":"<b>2 \u003c/b>Observations <br><b>12.5%\u003c/b> of wind <b>weak\u003c/b>","middlelab":"<b>8 \u003c/b>Observations <br><b>32%\u003c/b> of wind <b>middle\u003c/b>","stronglab":"<b>1 \u003c/b>Observations <br><b>9.09%\u003c/b> of wind <b>strong\u003c/b>"},{"weak":3,"middle":4,"strong":6,"labels":"E","weaklab":"<b>3 \u003c/b>Observations <br><b>18.75%\u003c/b> of wind <b>weak\u003c/b>","middlelab":"<b>1 \u003c/b>Observations <br><b>4%\u003c/b> of wind <b>middle\u003c/b>","stronglab":"<b>2 \u003c/b>Observations <br><b>18.18%\u003c/b> of wind <b>strong\u003c/b>"},{"weak":4,"middle":5,"strong":7,"labels":"SE","weaklab":"<b>4 \u003c/b>Observations <br><b>25%\u003c/b> of wind <b>weak\u003c/b>","middlelab":"<b>1 \u003c/b>Observations <br><b>4%\u003c/b> of wind <b>middle\u003c/b>","stronglab":"<b>2 \u003c/b>Observations <br><b>18.18%\u003c/b> of wind <b>strong\u003c/b>"},{"weak":1,"middle":3,"strong":4,"labels":"S","weaklab":"<b>1 \u003c/b>Observations <br><b>6.25%\u003c/b> of wind <b>weak\u003c/b>","middlelab":"<b>2 \u003c/b>Observations <br><b>8%\u003c/b> of wind <b>middle\u003c/b>","stronglab":"<b>1 \u003c/b>Observations <br><b>9.09%\u003c/b> of wind <b>strong\u003c/b>"},{"weak":2,"middle":10,"strong":11,"labels":"SW","weaklab":"<b>2 \u003c/b>Observations <br><b>12.5%\u003c/b> of wind <b>weak\u003c/b>","middlelab":"<b>8 \u003c/b>Observations <br><b>32%\u003c/b> of wind <b>middle\u003c/b>","stronglab":"<b>1 \u003c/b>Observations <br><b>9.09%\u003c/b> of wind <b>strong\u003c/b>"},{"weak":1,"middle":2,"strong":3,"labels":"W","weaklab":"<b>1 \u003c/b>Observations <br><b>6.25%\u003c/b> of wind <b>weak\u003c/b>","middlelab":"<b>1 \u003c/b>Observations <br><b>4%\u003c/b> of wind <b>middle\u003c/b>","stronglab":"<b>1 \u003c/b>Observations <br><b>9.09%\u003c/b> of wind <b>strong\u003c/b>"},{"weak":2,"middle":4,"strong":6,"labels":"NW","weaklab":"<b>2 \u003c/b>Observations <br><b>12.5%\u003c/b> of wind <b>weak\u003c/b>","middlelab":"<b>2 \u003c/b>Observations <br><b>8%\u003c/b> of wind <b>middle\u003c/b>","stronglab":"<b>2 \u003c/b>Observations <br><b>18.18%\u003c/b> of wind <b>strong\u003c/b>"}],"graphs":[{"lineThickness":2,"legendAlpha":1,"lineColor":"#000000","lineAlpha":1,"fillColors":"#0000FF","fillAlphas":0.5,"bullet":"round","bulletAlpha":0,"legendColor":"#0000FF","balloonText":"[[stronglab]]","title":"strong","valueField":"strong"},{"lineThickness":2,"legendAlpha":1,"lineColor":"#000000","lineAlpha":1,"fillColors":"#00FF00","fillAlphas":0.5,"bullet":"round","bulletAlpha":0,"legendColor":"#00FF00","balloonText":"[[middlelab]]","title":"middle","valueField":"middle"},{"lineThickness":2,"legendAlpha":1,"lineColor":"#000000","lineAlpha":1,"fillColors":"#FF0000","fillAlphas":0.5,"bullet":"round","bulletAlpha":0,"legendColor":"#FF0000","balloonText":"[[weaklab]]","title":"weak","valueField":"weak"}],"type":"radar","valueAxes":[{"gridType":"circle"}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[],"jsHooks":[]}</script></p>
+</div>
+<div id="main-and-creditsposition" class="section level2">
+<h2>main and creditsPosition</h2>
+<pre class="r"><code>amWind(data = data_wind, col = c(&quot;#FF0000&quot;, &quot;#00FF00&quot;, &quot;#0000FF&quot;), main = &quot;My Radar&quot;,
+        mainColor = &quot;#68838B&quot;, mainSize = 25, creditsPosition = &quot;bottom-right&quot;)
+#or
+amWind(data = data_wind, col = c(&quot;#FF0000&quot;, &quot;#00FF00&quot;, &quot;#0000FF&quot;)) %&gt;&gt;% 
+  amOptions( main = &quot;My Radar&quot;,
+        mainColor = &quot;#68838B&quot;, mainSize = 25, creditsPosition = &quot;bottom-right&quot;)</code></pre>
+<p><div id="htmlwidget-584" style="width:100%;height:500px;" class="ramcharts_base html-widget"></div>
+<script type="application/json" data-for="htmlwidget-584">{"x":{"chartData":{"startDuration":1,"categoryField":"labels","creditsPosition":"bottom-right","dataProvider":[{"weak":1,"middle":3,"strong":4,"labels":"N","weaklab":"<b>1 \u003c/b>Observations <br><b>6.25%\u003c/b> of wind <b>weak\u003c/b>","middlelab":"<b>2 \u003c/b>Observations <br><b>8%\u003c/b> of wind <b>middle\u003c/b>","stronglab":"<b>1 \u003c/b>Observations <br><b>9.09%\u003c/b> of wind <b>strong\u003c/b>"},{"weak":2,"middle":10,"strong":11,"labels":"NE","weaklab":"<b>2 \u003c/b>Observations <br><b>12.5%\u003c/b> of wind <b>weak\u003c/b>","middlelab":"<b>8 \u003c/b>Observations <br><b>32%\u003c/b> of wind <b>middle\u003c/b>","stronglab":"<b>1 \u003c/b>Observations <br><b>9.09%\u003c/b> of wind <b>strong\u003c/b>"},{"weak":3,"middle":4,"strong":6,"labels":"E","weaklab":"<b>3 \u003c/b>Observations <br><b>18.75%\u003c/b> of wind <b>weak\u003c/b>","middlelab":"<b>1 \u003c/b>Observations <br><b>4%\u003c/b> of wind <b>middle\u003c/b>","stronglab":"<b>2 \u003c/b>Observations <br><b>18.18%\u003c/b> of wind <b>strong\u003c/b>"},{"weak":4,"middle":5,"strong":7,"labels":"SE","weaklab":"<b>4 \u003c/b>Observations <br><b>25%\u003c/b> of wind <b>weak\u003c/b>","middlelab":"<b>1 \u003c/b>Observations <br><b>4%\u003c/b> of wind <b>middle\u003c/b>","stronglab":"<b>2 \u003c/b>Observations <br><b>18.18%\u003c/b> of wind <b>strong\u003c/b>"},{"weak":1,"middle":3,"strong":4,"labels":"S","weaklab":"<b>1 \u003c/b>Observations <br><b>6.25%\u003c/b> of wind <b>weak\u003c/b>","middlelab":"<b>2 \u003c/b>Observations <br><b>8%\u003c/b> of wind <b>middle\u003c/b>","stronglab":"<b>1 \u003c/b>Observations <br><b>9.09%\u003c/b> of wind <b>strong\u003c/b>"},{"weak":2,"middle":10,"strong":11,"labels":"SW","weaklab":"<b>2 \u003c/b>Observations <br><b>12.5%\u003c/b> of wind <b>weak\u003c/b>","middlelab":"<b>8 \u003c/b>Observations <br><b>32%\u003c/b> of wind <b>middle\u003c/b>","stronglab":"<b>1 \u003c/b>Observations <br><b>9.09%\u003c/b> of wind <b>strong\u003c/b>"},{"weak":1,"middle":2,"strong":3,"labels":"W","weaklab":"<b>1 \u003c/b>Observations <br><b>6.25%\u003c/b> of wind <b>weak\u003c/b>","middlelab":"<b>1 \u003c/b>Observations <br><b>4%\u003c/b> of wind <b>middle\u003c/b>","stronglab":"<b>1 \u003c/b>Observations <br><b>9.09%\u003c/b> of wind <b>strong\u003c/b>"},{"weak":2,"middle":4,"strong":6,"labels":"NW","weaklab":"<b>2 \u003c/b>Observations <br><b>12.5%\u003c/b> of wind <b>weak\u003c/b>","middlelab":"<b>2 \u003c/b>Observations <br><b>8%\u003c/b> of wind <b>middle\u003c/b>","stronglab":"<b>2 \u003c/b>Observations <br><b>18.18%\u003c/b> of wind <b>strong\u003c/b>"}],"graphs":[{"lineThickness":2,"legendAlpha":1,"lineColor":"#000000","lineAlpha":1,"fillColors":"#0000FF","fillAlphas":0.5,"bullet":"round","bulletAlpha":0,"legendColor":"#0000FF","balloonText":"[[stronglab]]","title":"strong","valueField":"strong"},{"lineThickness":2,"legendAlpha":1,"lineColor":"#000000","lineAlpha":1,"fillColors":"#00FF00","fillAlphas":0.5,"bullet":"round","bulletAlpha":0,"legendColor":"#00FF00","balloonText":"[[middlelab]]","title":"middle","valueField":"middle"},{"lineThickness":2,"legendAlpha":1,"lineColor":"#000000","lineAlpha":1,"fillColors":"#FF0000","fillAlphas":0.5,"bullet":"round","bulletAlpha":0,"legendColor":"#FF0000","balloonText":"[[weaklab]]","title":"weak","valueField":"weak"}],"titles":[{"color":"#68838B","text":"My Radar","size":25}],"type":"radar","valueAxes":[{"gridType":"circle"}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[],"jsHooks":[]}</script></p>
+</div>
+<div id="theme" class="section level2">
+<h2>theme</h2>
+<pre class="r"><code>amWind(data = data_wind, col = c(&quot;#FF0000&quot;, &quot;#00FF00&quot;, &quot;#0000FF&quot;), theme = &quot;patterns&quot;)
+#or
+amWind(data = data_wind, col = c(&quot;#FF0000&quot;, &quot;#00FF00&quot;, &quot;#0000FF&quot;)) %&gt;&gt;% 
+  amOptions(theme = &quot;patterns&quot;)</code></pre>
+<p><div id="htmlwidget-7955" style="width:100%;height:500px;" class="ramcharts_base html-widget"></div>
+<script type="application/json" data-for="htmlwidget-7955">{"x":{"chartData":{"startDuration":1,"categoryField":"labels","dataProvider":[{"weak":1,"middle":3,"strong":4,"labels":"N","weaklab":"<b>1 \u003c/b>Observations <br><b>6.25%\u003c/b> of wind <b>weak\u003c/b>","middlelab":"<b>2 \u003c/b>Observations <br><b>8%\u003c/b> of wind <b>middle\u003c/b>","stronglab":"<b>1 \u003c/b>Observations <br><b>9.09%\u003c/b> of wind <b>strong\u003c/b>"},{"weak":2,"middle":10,"strong":11,"labels":"NE","weaklab":"<b>2 \u003c/b>Observations <br><b>12.5%\u003c/b> of wind <b>weak\u003c/b>","middlelab":"<b>8 \u003c/b>Observations <br><b>32%\u003c/b> of wind <b>middle\u003c/b>","stronglab":"<b>1 \u003c/b>Observations <br><b>9.09%\u003c/b> of wind <b>strong\u003c/b>"},{"weak":3,"middle":4,"strong":6,"labels":"E","weaklab":"<b>3 \u003c/b>Observations <br><b>18.75%\u003c/b> of wind <b>weak\u003c/b>","middlelab":"<b>1 \u003c/b>Observations <br><b>4%\u003c/b> of wind <b>middle\u003c/b>","stronglab":"<b>2 \u003c/b>Observations <br><b>18.18%\u003c/b> of wind <b>strong\u003c/b>"},{"weak":4,"middle":5,"strong":7,"labels":"SE","weaklab":"<b>4 \u003c/b>Observations <br><b>25%\u003c/b> of wind <b>weak\u003c/b>","middlelab":"<b>1 \u003c/b>Observations <br><b>4%\u003c/b> of wind <b>middle\u003c/b>","stronglab":"<b>2 \u003c/b>Observations <br><b>18.18%\u003c/b> of wind <b>strong\u003c/b>"},{"weak":1,"middle":3,"strong":4,"labels":"S","weaklab":"<b>1 \u003c/b>Observations <br><b>6.25%\u003c/b> of wind <b>weak\u003c/b>","middlelab":"<b>2 \u003c/b>Observations <br><b>8%\u003c/b> of wind <b>middle\u003c/b>","stronglab":"<b>1 \u003c/b>Observations <br><b>9.09%\u003c/b> of wind <b>strong\u003c/b>"},{"weak":2,"middle":10,"strong":11,"labels":"SW","weaklab":"<b>2 \u003c/b>Observations <br><b>12.5%\u003c/b> of wind <b>weak\u003c/b>","middlelab":"<b>8 \u003c/b>Observations <br><b>32%\u003c/b> of wind <b>middle\u003c/b>","stronglab":"<b>1 \u003c/b>Observations <br><b>9.09%\u003c/b> of wind <b>strong\u003c/b>"},{"weak":1,"middle":2,"strong":3,"labels":"W","weaklab":"<b>1 \u003c/b>Observations <br><b>6.25%\u003c/b> of wind <b>weak\u003c/b>","middlelab":"<b>1 \u003c/b>Observations <br><b>4%\u003c/b> of wind <b>middle\u003c/b>","stronglab":"<b>1 \u003c/b>Observations <br><b>9.09%\u003c/b> of wind <b>strong\u003c/b>"},{"weak":2,"middle":4,"strong":6,"labels":"NW","weaklab":"<b>2 \u003c/b>Observations <br><b>12.5%\u003c/b> of wind <b>weak\u003c/b>","middlelab":"<b>2 \u003c/b>Observations <br><b>8%\u003c/b> of wind <b>middle\u003c/b>","stronglab":"<b>2 \u003c/b>Observations <br><b>18.18%\u003c/b> of wind <b>strong\u003c/b>"}],"graphs":[{"lineThickness":2,"legendAlpha":1,"lineColor":"#000000","lineAlpha":1,"fillColors":"#0000FF","fillAlphas":0.5,"bullet":"round","bulletAlpha":0,"legendColor":"#0000FF","balloonText":"[[stronglab]]","title":"strong","valueField":"strong"},{"lineThickness":2,"legendAlpha":1,"lineColor":"#000000","lineAlpha":1,"fillColors":"#00FF00","fillAlphas":0.5,"bullet":"round","bulletAlpha":0,"legendColor":"#00FF00","balloonText":"[[middlelab]]","title":"middle","valueField":"middle"},{"lineThickness":2,"legendAlpha":1,"lineColor":"#000000","lineAlpha":1,"fillColors":"#FF0000","fillAlphas":0.5,"bullet":"round","bulletAlpha":0,"legendColor":"#FF0000","balloonText":"[[weaklab]]","title":"weak","valueField":"weak"}],"theme":"patterns","type":"radar","valueAxes":[{"gridType":"circle"}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[],"jsHooks":[]}</script></p>
+</div>
+
+
+  </div><!-- end of main column -->
+  
+  <div class="col-xs-1 col-md-1" id="logo">
+    <a href="https://github.com/DataKnowledge/rAmCharts.git">
+      <img  src="www/img/github.png" title="View on Github" id="img-github"/>
+    </a>
+  </div>
+  
+  <script src="./www/js/navbar.js"> </script>
+  <script src="./www/js/logo.js"> </script>
+  <script src="./www/js/toggle.js"> </script>
+</div><!-- end of main row -->
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+$(document).ready(function () {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+});
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
