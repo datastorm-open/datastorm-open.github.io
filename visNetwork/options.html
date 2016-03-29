@@ -7,6 +7,7 @@
 <meta charset="utf-8">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
 
 
@@ -43,6 +44,7 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
 
 
 
+
 </head>
 
 <body>
@@ -57,12 +59,55 @@ code {
   color: inherit;
   background-color: rgba(0, 0, 0, 0.04);
 }
-img { 
-  max-width:100%; 
-  height: auto; 
+img {
+  max-width:100%;
+  height: auto;
+}
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
 }
 </style>
+
+
 <div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script src="libs/navigation/tabsets.js"></script>
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
 
 <style type="text/css">
   body {
@@ -128,6 +173,11 @@ img {
   </div>
   <div class="col-sm-9 content-body">
 
+<div class="fluid-row" id="header">
+
+
+
+</div>
 
 
 <div id="some-custom-options-are-available-using-visoptions." class="section level3">
@@ -549,9 +599,9 @@ visNetwork(nodes, edges, height = &quot;500px&quot;, width = &quot;100%&quot;) %
 </div>
 <div id="les-miserables-example" class="section level2">
 <h2>“Les miserables” example</h2>
-<pre class="r"><code>nodes &lt;- jsonlite::fromJSON(&quot;https://raw.githubusercontent.com/DataKnowledge/DataKnowledge.github.io/master/visNetwork/data/nodes_miserables.json&quot;)
+<pre class="r"><code>nodes &lt;- jsonlite::fromJSON(&quot;https://raw.githubusercontent.com/datastorm-open/datastorm-open.github.io/master/visNetwork/data/nodes_miserables.json&quot;)
 
-edges &lt;- jsonlite::fromJSON(&quot;https://raw.githubusercontent.com/DataKnowledge/DataKnowledge.github.io/master/visNetwork/data/edges_miserables.json&quot;)
+edges &lt;- jsonlite::fromJSON(&quot;https://raw.githubusercontent.com/datastorm-open/datastorm-open.github.io/master/visNetwork/data/edges_miserables.json&quot;)
 
 
 visNetwork(nodes, edges, height = &quot;700px&quot;, width = &quot;100%&quot;) %&gt;%
@@ -606,13 +656,15 @@ visNetwork(nodes, edges, height = &quot;700px&quot;, width = &quot;100%&quot;) %
 </div>
 
 <footer>
-<p><small> © 2015-2016 DataKnowledge</small></p>
+<p><small> © 2016-2017 DataStorm</small></p>
 </footer>
 
   </div>
 </div>
 
-<a href="https://github.com/DataKnowledge/visNetwork"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+<a href="https://github.com/datastorm-open/visNetwork"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+
+
 
 </div>
 

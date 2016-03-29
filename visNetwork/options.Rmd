@@ -114,9 +114,9 @@ visNetwork(nodes, edges, height = "500px", width = "100%") %>%
 ## "Les miserables" example
 
 ```{r}
-nodes <- jsonlite::fromJSON("https://raw.githubusercontent.com/DataKnowledge/DataKnowledge.github.io/master/visNetwork/data/nodes_miserables.json")
+nodes <- jsonlite::fromJSON("https://raw.githubusercontent.com/datastorm-open/datastorm-open.github.io/master/visNetwork/data/nodes_miserables.json")
 
-edges <- jsonlite::fromJSON("https://raw.githubusercontent.com/DataKnowledge/DataKnowledge.github.io/master/visNetwork/data/edges_miserables.json")
+edges <- jsonlite::fromJSON("https://raw.githubusercontent.com/datastorm-open/datastorm-open.github.io/master/visNetwork/data/edges_miserables.json")
 
 
 visNetwork(nodes, edges, height = "700px", width = "100%") %>%

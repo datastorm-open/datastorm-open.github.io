@@ -16,7 +16,7 @@ require("visNetwork", quietly = TRUE)
 * And you can use borders with ````shapeProperties```` and ````useBorderWithImage````
 
 ```{r}
-path_to_images <- "https://raw.githubusercontent.com/DataKnowledge/DataKnowledge.github.io/master/visNetwork/data/img/indonesia/"
+path_to_images <- "https://raw.githubusercontent.com/datastorm-open/datastorm-open.github.io/master/visNetwork/data/img/indonesia/"
  
 nodes <- data.frame(id = 1:4, 
                     shape = c("image", "circularImage"),
