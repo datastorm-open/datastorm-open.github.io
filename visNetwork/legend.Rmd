@@ -95,11 +95,14 @@ visNetwork(nodes, edges) %>%
 
 # # using a data.frame
 # addNodes <- data.frame(label = c("Group", "User"), shape = "icon",
-#  icon.code = c("f0c0", "f007"), icon.size = c(25, 50), icon.color = c(NA, "red"))
+#   icon.code = c("f0c0", "f007"), icon.size = c(25, 50), 
+#   icon.color = c(NA, "red"))
 # 
 # visNetwork(nodes, edges) %>%
-#  visGroups(groupname = "A", shape = "icon", icon = list(code = "f0c0", size = 75)) %>%
-#  visGroups(groupname = "B", shape = "icon", icon = list(code = "f007", color = "red")) %>%
+#  visGroups(groupname = "A", shape = "icon", 
+#     icon = list(code = "f0c0", size = 75)) %>%
+#  visGroups(groupname = "B", shape = "icon", 
+#     icon = list(code = "f007", color = "red")) %>%
 #  addFontAwesome() %>%
 #  visLegend(addNodes = addNodes,
 #    addEdges = data.frame(label = "link"), useGroups = FALSE)

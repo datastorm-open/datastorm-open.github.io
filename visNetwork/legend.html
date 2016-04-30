@@ -586,11 +586,14 @@ visNetwork(nodes, edges) %&gt;%
 }</script></p>
 <pre class="r"><code># # using a data.frame
 # addNodes &lt;- data.frame(label = c(&quot;Group&quot;, &quot;User&quot;), shape = &quot;icon&quot;,
-#  icon.code = c(&quot;f0c0&quot;, &quot;f007&quot;), icon.size = c(25, 50), icon.color = c(NA, &quot;red&quot;))
+#   icon.code = c(&quot;f0c0&quot;, &quot;f007&quot;), icon.size = c(25, 50), 
+#   icon.color = c(NA, &quot;red&quot;))
 # 
 # visNetwork(nodes, edges) %&gt;%
-#  visGroups(groupname = &quot;A&quot;, shape = &quot;icon&quot;, icon = list(code = &quot;f0c0&quot;, size = 75)) %&gt;%
-#  visGroups(groupname = &quot;B&quot;, shape = &quot;icon&quot;, icon = list(code = &quot;f007&quot;, color = &quot;red&quot;)) %&gt;%
+#  visGroups(groupname = &quot;A&quot;, shape = &quot;icon&quot;, 
+#     icon = list(code = &quot;f0c0&quot;, size = 75)) %&gt;%
+#  visGroups(groupname = &quot;B&quot;, shape = &quot;icon&quot;, 
+#     icon = list(code = &quot;f007&quot;, color = &quot;red&quot;)) %&gt;%
 #  addFontAwesome() %&gt;%
 #  visLegend(addNodes = addNodes,
 #    addEdges = data.frame(label = &quot;link&quot;), useGroups = FALSE)</code></pre>
