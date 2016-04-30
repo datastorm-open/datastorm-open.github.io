@@ -24,6 +24,7 @@
 <script src="libs/vis/vis.min.js"></script>
 <script src="libs/visNetwork-binding/visNetwork.js"></script>
 <link href="libs/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+<link href="libs/ionicons/css/ionicons.min.css" rel="stylesheet" />
 
 <style type="text/css">code{white-space: pre;}</style>
 <link rel="stylesheet"
@@ -151,15 +152,15 @@ $(document).ready(function () {
       <a class="list-group-item" href="nodes.html">Nodes</a>
       <a class="list-group-item" href="edges.html">Edges</a>
       <a class="list-group-item" href="groups.html">Groups</a>
-      <a class="list-group-item" href="legend.html">Legend</a>
+      <a class="list-group-item" href="legend.html">Legend & Title</a>
       <a class="list-group-item" href="image_icon.html">Use image & Icon</a>
       <a class="list-group-item" href="options.html">Options</a>
-      <a class="list-group-item" href="interaction.html">Interactions</a>
-      <a class="list-group-item" href="physic.html">Physics</a>
       <a class="list-group-item" href="layout.html">Layout</a>
       <a class="list-group-item" href="igraph.html">Igraph</a>
       <a class="list-group-item" href="performance.html">Performance</a>
       <a class="list-group-item" href="shiny.html">Shiny</a>
+      <a class="list-group-item" href="interaction.html">Interactions</a>
+      <a class="list-group-item" href="physic.html">Physics</a>
       <a class="list-group-item" href="configure.html">Configure tools</a>
       <a class="list-group-item" href="more.html">More...</a>
     </div>
@@ -241,7 +242,8 @@ visNetwork(nodes, edges, width = &quot;100%&quot;) %&gt;%
     },
     "byselection": {
       "enabled": false
-    }
+    },
+    "main": null
   },
   "evals": [],
   "jsHooks": []
@@ -249,10 +251,10 @@ visNetwork(nodes, edges, width = &quot;100%&quot;) %&gt;%
 </div>
 <div id="fontawesome-icons" class="section level2">
 <h2>fontAwesome icons</h2>
-<p>Actually, <strong>visNetwork</strong> supports <a href="http://fortawesome.github.io/Font-Awesome">fontAwesome</a> icons. Font-awesome is not part of default dependencies, but you can use <strong>addFontAwesome()</strong> if needed.</p>
+<p><strong>visNetwork</strong> supports <a href="http://fortawesome.github.io/Font-Awesome">fontAwesome</a> icons. Font-awesome is not part of default dependencies, but you can use <strong>addFontAwesome()</strong> if needed.</p>
 <ul>
 <li>For use icons in nodes, you first have to set <code>shape</code> to <strong>icon</strong>.</li>
-<li><strong>icon</strong> options must be a list, so you have to use <strong>visNodes</strong> or <strong>visGroups</strong>. (Can’t be use with data.frame…)</li>
+<li><strong>icon</strong> options must be a list, so you have to use <strong>visNodes</strong> or <strong>visGroups</strong>, or pass directly in <code>nodes data.frame</code>(see <strong>Ionicons example below</strong>)</li>
 <li>Choose the icon by his <code>code</code>, set <code>size</code> and <code>color</code></li>
 </ul>
 <pre class="r"><code>nodes &lt;- data.frame(id = 1:3, group = c(&quot;B&quot;, &quot;A&quot;, &quot;B&quot;))
@@ -289,7 +291,8 @@ visNetwork(nodes, edges, width = &quot;100%&quot;) %&gt;%
           "shape": "icon",
           "icon": {
             "code": "f0c0",
-            "size": 75
+            "size": 75,
+            "color": "#2B7CE9"
           }
         },
         "useDefaultGroups": true,
@@ -311,6 +314,55 @@ visNetwork(nodes, edges, width = &quot;100%&quot;) %&gt;%
     "byselection": {
       "enabled": false
     },
+    "main": null,
+    "iconsRedraw": true
+  },
+  "evals": [],
+  "jsHooks": []
+}</script></p>
+</div>
+<div id="ionicons" class="section level2">
+<h2>Ionicons</h2>
+<p>New since <strong>visNetwork_0.2.2</strong> : add <a href="http://ionicons.com/">Ionicons</a> icons support. For dependencies, you can use <strong>addIonicons()</strong> if needed. Definition process id the same as <a href="http://fortawesome.github.io/Font-Awesome">fontAwesome</a> icons, except you have to set <code>face = 'Ionicons'</code>.</p>
+<pre class="r"><code>nodes &lt;- data.frame(id = 1:3, shape = &quot;icon&quot;, icon.face = &#39;Ionicons&#39;,
+                    icon.code = c(&quot;f101&quot;, &quot;f100&quot;, &quot;f101&quot;))
+edges &lt;- data.frame(from = c(1,2), to = c(2,3))
+
+visNetwork(nodes, edges) %&gt;%
+  addIonicons()</code></pre>
+<p><div id="htmlwidget-7837" style="width:100%;height:216px;" class="visNetwork html-widget"></div>
+<script type="application/json" data-for="htmlwidget-7837">{
+  "x": {
+    "nodes": {
+      "id": [1, 2, 3],
+      "shape": ["icon", "icon", "icon"],
+      "icon.face": ["Ionicons", "Ionicons", "Ionicons"],
+      "icon.code": ["f101", "f100", "f101"]
+    },
+    "edges": {
+      "from": [1, 2],
+      "to": [2, 3]
+    },
+    "options": {
+      "width": "100%",
+      "height": "100%",
+      "nodes": {
+        "shape": "dot"
+      },
+      "manipulation": {
+        "enabled": false
+      }
+    },
+    "groups": null,
+    "width": null,
+    "height": null,
+    "idselection": {
+      "enabled": false
+    },
+    "byselection": {
+      "enabled": false
+    },
+    "main": null,
     "iconsRedraw": true
   },
   "evals": [],

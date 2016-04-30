@@ -150,15 +150,15 @@ $(document).ready(function () {
       <a class="list-group-item" href="nodes.html">Nodes</a>
       <a class="list-group-item" href="edges.html">Edges</a>
       <a class="list-group-item" href="groups.html">Groups</a>
-      <a class="list-group-item" href="legend.html">Legend</a>
+      <a class="list-group-item" href="legend.html">Legend & Title</a>
       <a class="list-group-item" href="image_icon.html">Use image & Icon</a>
       <a class="list-group-item" href="options.html">Options</a>
-      <a class="list-group-item" href="interaction.html">Interactions</a>
-      <a class="list-group-item" href="physic.html">Physics</a>
       <a class="list-group-item" href="layout.html">Layout</a>
       <a class="list-group-item" href="igraph.html">Igraph</a>
       <a class="list-group-item" href="performance.html">Performance</a>
       <a class="list-group-item" href="shiny.html">Shiny</a>
+      <a class="list-group-item" href="interaction.html">Interactions</a>
+      <a class="list-group-item" href="physic.html">Physics</a>
       <a class="list-group-item" href="configure.html">Configure tools</a>
       <a class="list-group-item" href="more.html">More...</a>
     </div>
@@ -240,6 +240,7 @@ visNetwork(nodes, edges, height = &quot;500px&quot;) %&gt;%
     "byselection": {
       "enabled": false
     },
+    "main": null,
     "igraphlayout": {
       "type": "square"
     }
@@ -251,7 +252,8 @@ visNetwork(nodes, edges, height = &quot;500px&quot;) %&gt;%
 visNetwork(nodes, edges, height = &quot;500px&quot;) %&gt;%
   visIgraphLayout(layout = &quot;layout_in_circle&quot;) %&gt;%
   visNodes(size = 10) %&gt;%
-  visOptions(highlightNearest = T, nodesIdSelection = T)</code></pre>
+  visOptions(highlightNearest = list(enabled = T, hover = T), 
+             nodesIdSelection = T)</code></pre>
 <p><div id="htmlwidget-4939" style="width:100%;height:500px;" class="visNetwork html-widget"></div>
 <script type="application/json" data-for="htmlwidget-4939">{
   "x": {
@@ -282,6 +284,9 @@ visNetwork(nodes, edges, height = &quot;500px&quot;) %&gt;%
       },
       "physics": {
         "stabilization": false
+      },
+      "interaction": {
+        "hover": true
       }
     },
     "groups": null,
@@ -293,12 +298,15 @@ visNetwork(nodes, edges, height = &quot;500px&quot;) %&gt;%
     },
     "byselection": {
       "enabled": false,
-      "style": "width: 150px; height: 26px"
+      "style": "width: 150px; height: 26px",
+      "multiple": false
     },
+    "main": null,
     "igraphlayout": {
       "type": "square"
     },
     "highlight": true,
+    "hoverNearest": true,
     "degree": 1
   },
   "evals": [],
@@ -345,7 +353,8 @@ visNetwork(nodes = data$nodes, edges = data$edges, height = &quot;500px&quot;)</
     },
     "byselection": {
       "enabled": false
-    }
+    },
+    "main": null
   },
   "evals": [],
   "jsHooks": []
@@ -391,6 +400,7 @@ visIgraph(igraph_network)</code></pre>
     "byselection": {
       "enabled": false
     },
+    "main": null,
     "igraphlayout": {
       "type": "square"
     }

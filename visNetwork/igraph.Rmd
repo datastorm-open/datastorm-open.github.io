@@ -35,7 +35,8 @@ visNetwork(nodes, edges, height = "500px") %>%
 visNetwork(nodes, edges, height = "500px") %>%
   visIgraphLayout(layout = "layout_in_circle") %>%
   visNodes(size = 10) %>%
-  visOptions(highlightNearest = T, nodesIdSelection = T)
+  visOptions(highlightNearest = list(enabled = T, hover = T), 
+             nodesIdSelection = T)
 ```
 
 ## Use [igraph](http://igraph.org/r/) network 

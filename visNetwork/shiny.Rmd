@@ -65,13 +65,22 @@ In order to not redraw the entire network, you can use ````visNetworkProxy```` f
 
 You can use almost all the functions available on a ````visNetworkProxy````, and even some functions special !
 
-* __classic functions__ : ````visNodes````, ````visEdges````, ````visGroups````, ````visPhysics````, ````visInteraction````, ````visLayout```` & ````visHierarchicalLayout````
+* __classic functions__ : ````visNodes````, ````visEdges````, ````visGroups````, ````visOptions```` (>=0.2.2), ````visPhysics````, ````visInteraction````, ````visLayout```` & ````visHierarchicalLayout````
 
-* __special functions__ : 
+* __special functions__ (**vis.js** methods) : 
 
     + ````visFocus```` : focus on one target node
     
     + ````visFit```` : fit view on one or several nodes
+    
+    + ````visUpdateNodes```` / ````visUpdateEdges```` : update / add data
+    
+    + ````visRemoveNodes```` / ````visRemoveEdges```` : remove data
+    
+    + ````visSelectNodes```` / ````visSelectEdges```` / ````visSetSelection````: selection
+    
+    + and also   ````visRedraw````, ````visStabilize````,````visSetData````, ````visGetPositions````,
+````visMoveNode````, ````visUnselectAll````
 
 ```{r, eval = FALSE}
 require(shiny)

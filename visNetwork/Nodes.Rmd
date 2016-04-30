@@ -10,7 +10,7 @@ require("visNetwork", quietly = TRUE)
 
 ## Individual configuration
 
-As seen in introduction, *nodes* must be a data.frame, with at least one column ```id```. You can add properties simply adding variables on data.frame. See **visNodes** for available options. 
+As seen in introduction, *nodes* must be a data.frame, with at least one column ```id```. You can add properties simply adding variables on data.frame. See **?visNodes** for available options. 
 
 The most used are presented in the following example :
 
@@ -64,7 +64,7 @@ visNetwork(nodes, edges, width = "100%") %>%
            color = list(background = "lightblue", 
                         border = "darkblue",
                         highlight = "yellow"),
-           shadow = list(enabled = TRUE, size = 50)) %>%
+           shadow = list(enabled = TRUE, size = 10)) %>%
   visLayout(randomSeed = 12) # to have always the same network         
 ```
 
@@ -80,13 +80,13 @@ visNetwork(nodes, edges, width = "100%") %>%
   visNodes(color = list(background = "lightblue", 
                         border = "darkblue",
                         highlight = "yellow"),
-           shadow = list(enabled = TRUE, size = 50))  %>%
+           shadow = list(enabled = TRUE, size = 10))  %>%
   visLayout(randomSeed = 12) # to have always the same network                     
 ```
 
-## Use complex configuration individually (since __visNetwork_0.2.1__)
+## Use complex configuration individually
 
-When options are available using a list, you can use it in a data.frame with specific notation like this : 
+Available since __visNetwork_0.2.1__. When options are available using a list, you can use it in a data.frame with specific notation like this (a dot per level): 
 
 
 ```{r}
