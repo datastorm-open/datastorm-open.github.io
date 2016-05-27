@@ -45,7 +45,7 @@ amWaterfall(data = data_waterfall, show_values = TRUE, labelRotation = -45)
 ```{r, echo = TRUE, eval = FALSE}
 amWaterfall(data = data_waterfall, export = TRUE, labelRotation = -45)
 #or
-amWaterfall(data = data_waterfall, labelRotation = -45) %>>% 
+amWaterfall(data = data_waterfall, labelRotation = -45, export = TRUE) %>>% 
   amOptions(export = TRUE)
 ```
 ```{r, echo = FALSE}

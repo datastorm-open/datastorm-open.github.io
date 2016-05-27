@@ -11,7 +11,7 @@ require(package = "pipeR", quietly = TRUE)
 
 You can easily include charts in your shiny apps with the functions `amChartsOutput(outputId)` and `renderAmCharts(expr)`.
 
-```{r, eval = FALSE}
+```{r, eval=FALSE}
 require(shiny)
 
 shinyApp(
@@ -46,7 +46,7 @@ function (event) {
 It is define a new input with the id='myValues', for which the result sent to the server are the chart values at the click.
 
 
-```{r, eval = FALSE}
+```{r, eval=FALSE}
 require(shiny)
 
 shinyApp(
