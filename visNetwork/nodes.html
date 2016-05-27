@@ -150,15 +150,15 @@ $(document).ready(function () {
       <a class="list-group-item" href="nodes.html">Nodes</a>
       <a class="list-group-item" href="edges.html">Edges</a>
       <a class="list-group-item" href="groups.html">Groups</a>
-      <a class="list-group-item" href="legend.html">Legend</a>
+      <a class="list-group-item" href="legend.html">Legend & Title</a>
       <a class="list-group-item" href="image_icon.html">Use image & Icon</a>
       <a class="list-group-item" href="options.html">Options</a>
-      <a class="list-group-item" href="interaction.html">Interactions</a>
-      <a class="list-group-item" href="physic.html">Physics</a>
       <a class="list-group-item" href="layout.html">Layout</a>
       <a class="list-group-item" href="igraph.html">Igraph</a>
       <a class="list-group-item" href="performance.html">Performance</a>
       <a class="list-group-item" href="shiny.html">Shiny</a>
+      <a class="list-group-item" href="interaction.html">Interactions</a>
+      <a class="list-group-item" href="physic.html">Physics</a>
       <a class="list-group-item" href="configure.html">Configure tools</a>
       <a class="list-group-item" href="more.html">More...</a>
     </div>
@@ -185,7 +185,7 @@ $(document).ready(function () {
 </div>
 <div id="individual-configuration" class="section level2">
 <h2>Individual configuration</h2>
-<p>As seen in introduction, <em>nodes</em> must be a data.frame, with at least one column <code>id</code>. You can add properties simply adding variables on data.frame. See <strong>visNodes</strong> for available options.</p>
+<p>As seen in introduction, <em>nodes</em> must be a data.frame, with at least one column <code>id</code>. You can add properties simply adding variables on data.frame. See <strong>?visNodes</strong> for available options.</p>
 <p>The most used are presented in the following example :</p>
 <pre class="r"><code>nodes &lt;- data.frame(id = 1:10,
                     
@@ -253,7 +253,8 @@ edges &lt;- data.frame(from = c(1,2,5,7,8,10), to = c(9,3,1,6,4,7))</code></pre>
     },
     "byselection": {
       "enabled": false
-    }
+    },
+    "main": null
   },
   "evals": [],
   "jsHooks": []
@@ -270,7 +271,7 @@ visNetwork(nodes, edges, width = &quot;100%&quot;) %&gt;%
            color = list(background = &quot;lightblue&quot;, 
                         border = &quot;darkblue&quot;,
                         highlight = &quot;yellow&quot;),
-           shadow = list(enabled = TRUE, size = 50)) %&gt;%
+           shadow = list(enabled = TRUE, size = 10)) %&gt;%
   visLayout(randomSeed = 12) # to have always the same network         </code></pre>
 <p><div id="htmlwidget-4929" style="width:100%;height:216px;" class="visNetwork html-widget"></div>
 <script type="application/json" data-for="htmlwidget-4929">{
@@ -294,7 +295,7 @@ visNetwork(nodes, edges, width = &quot;100%&quot;) %&gt;%
         },
         "shadow": {
           "enabled": true,
-          "size": 50
+          "size": 10
         }
       },
       "manipulation": {
@@ -312,7 +313,8 @@ visNetwork(nodes, edges, width = &quot;100%&quot;) %&gt;%
     },
     "byselection": {
       "enabled": false
-    }
+    },
+    "main": null
   },
   "evals": [],
   "jsHooks": []
@@ -327,7 +329,7 @@ visNetwork(nodes, edges, width = &quot;100%&quot;) %&gt;%
   visNodes(color = list(background = &quot;lightblue&quot;, 
                         border = &quot;darkblue&quot;,
                         highlight = &quot;yellow&quot;),
-           shadow = list(enabled = TRUE, size = 50))  %&gt;%
+           shadow = list(enabled = TRUE, size = 10))  %&gt;%
   visLayout(randomSeed = 12) # to have always the same network                     </code></pre>
 <p><div id="htmlwidget-7837" style="width:100%;height:216px;" class="visNetwork html-widget"></div>
 <script type="application/json" data-for="htmlwidget-7837">{
@@ -353,7 +355,7 @@ visNetwork(nodes, edges, width = &quot;100%&quot;) %&gt;%
         },
         "shadow": {
           "enabled": true,
-          "size": 50
+          "size": 10
         }
       },
       "manipulation": {
@@ -371,15 +373,16 @@ visNetwork(nodes, edges, width = &quot;100%&quot;) %&gt;%
     },
     "byselection": {
       "enabled": false
-    }
+    },
+    "main": null
   },
   "evals": [],
   "jsHooks": []
 }</script></p>
 </div>
-<div id="use-complex-configuration-individually-since-visnetwork_0.2.1" class="section level2">
-<h2>Use complex configuration individually (since <strong>visNetwork_0.2.1</strong>)</h2>
-<p>When options are available using a list, you can use it in a data.frame with specific notation like this :</p>
+<div id="use-complex-configuration-individually" class="section level2">
+<h2>Use complex configuration individually</h2>
+<p>Available since <strong>visNetwork_0.2.1</strong>. When options are available using a list, you can use it in a data.frame with specific notation like this (a dot per level):</p>
 <pre class="r"><code>nodes &lt;- data.frame(id = 1:3, 
                     color.background = c(&quot;red&quot;, &quot;blue&quot;, &quot;green&quot;),
                     color.highlight.background = c(&quot;red&quot;, NA, &quot;red&quot;), 
@@ -425,7 +428,8 @@ visNetwork(nodes, edges)  </code></pre>
     },
     "byselection": {
       "enabled": false
-    }
+    },
+    "main": null
   },
   "evals": [],
   "jsHooks": []
