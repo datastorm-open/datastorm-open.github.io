@@ -7,6 +7,7 @@
 <meta charset="utf-8">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
 
 
@@ -22,10 +23,9 @@
 <script src="libs/amcharts/amcharts.js"></script>
 <script src="libs/ramcharts_base-binding/ramcharts_base.js"></script>
 <script src="libs/amcharts/funnel.js"></script>
-<link href="libs/amcharts_style/style.css" rel="stylesheet" />
-<link href="libs/amcharts_plugins_export/export.css" rel="stylesheet" />
-<script src="libs/amcharts_plugins_export/export.min.js"></script>
-<script src="libs/amcharts_themes_patterns/patterns.js"></script>
+<link href="libs/amcharts_export/export.css" rel="stylesheet" />
+<script src="libs/amcharts_export/export.min.js"></script>
+<script src="libs/amcharts_themes_patterns.js/patterns.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Raleway:100' rel='stylesheet' type='text/css'>
@@ -50,6 +50,7 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
 </script>
 
 
+
 <link rel="stylesheet" href="www/css/styles.css" type="text/css" />
 
 </head>
@@ -66,12 +67,54 @@ code {
   color: inherit;
   background-color: rgba(0, 0, 0, 0.04);
 }
-img { 
-  max-width:100%; 
-  height: auto; 
+img {
+  max-width:100%;
+  height: auto;
+}
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
 }
 </style>
+
+
 <div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script src="libs/navigation/tabsets.js"></script>
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
 
 
 <!-- bootstrap row container for all the content -->
@@ -128,6 +171,11 @@ img {
   
   <div class="col-xs-6 col-md-7 show" id="main-content"> <!-- main column -->
 
+<div class="fluid-row" id="header">
+
+
+
+</div>
 
 
 <h1>
@@ -160,32 +208,32 @@ head(data_funnel)</code></pre>
 <div id="reference-example-pyramid-chart" class="section level2">
 <h2>Reference example : Pyramid chart</h2>
 <pre class="r"><code>amFunnel(data = data_funnel, inverse = TRUE)</code></pre>
-<p><div id="htmlwidget-9630" style="width:100%;height:500px;" class="ramcharts_base html-widget"></div>
-<script type="application/json" data-for="htmlwidget-9630">{"x":{"chartData":{"marginLeft":200,"marginRight":200,"titleField":"description","valueField":"value","labelPosition":"right","colorField":"color","rotate":true,"startDuration":0,"dataProvider":[{"description":"Website visits","value":300,"color":"#67b7dc"},{"description":"Downloads","value":123,"color":"#fdd400"},{"description":"Requested price list","value":98,"color":"#84b761"},{"description":"Contaced for more info","value":72,"color":"#cc4748"},{"description":"Purchased","value":80,"color":"#cd82ad"},{"description":"Contacted for support","value":15,"color":"#2f4074"},{"description":"Purchased additional products","value":8,"color":"#448e4d"}],"type":"funnel"},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":null},"evals":[],"jsHooks":[]}</script></p>
+<p><div id="htmlwidget-1375" style="width:100%;height:500px;" class="ramcharts_base html-widget"></div>
+<script type="application/json" data-for="htmlwidget-1375">{"x":{"chartData":{"marginLeft":200,"marginRight":200,"titleField":"description","valueField":"value","labelPosition":"right","colorField":"color","rotate":true,"startDuration":0,"dataProvider":[{"description":"Website visits","value":300,"color":"#67b7dc"},{"description":"Downloads","value":123,"color":"#fdd400"},{"description":"Requested price list","value":98,"color":"#84b761"},{"description":"Contaced for more info","value":72,"color":"#cc4748"},{"description":"Purchased","value":80,"color":"#cd82ad"},{"description":"Contacted for support","value":15,"color":"#2f4074"},{"description":"Purchased additional products","value":8,"color":"#448e4d"}],"type":"funnel"},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":null},"evals":[],"jsHooks":[]}</script></p>
 </div>
 <div id="reference-example-funnel-chart" class="section level2">
 <h2>Reference example : Funnel chart</h2>
 <pre class="r"><code>amFunnel(data = data_funnel, neck_height = 30, neck_width = 40)</code></pre>
-<p><div id="htmlwidget-4460" style="width:100%;height:500px;" class="ramcharts_base html-widget"></div>
-<script type="application/json" data-for="htmlwidget-4460">{"x":{"chartData":{"marginLeft":200,"marginRight":200,"titleField":"description","valueField":"value","labelPosition":"right","colorField":"color","neckHeight":"30%","neckWidth":"40%","rotate":false,"startDuration":0,"dataProvider":[{"description":"Website visits","value":300,"color":"#67b7dc"},{"description":"Downloads","value":123,"color":"#fdd400"},{"description":"Requested price list","value":98,"color":"#84b761"},{"description":"Contaced for more info","value":72,"color":"#cc4748"},{"description":"Purchased","value":80,"color":"#cd82ad"},{"description":"Contacted for support","value":15,"color":"#2f4074"},{"description":"Purchased additional products","value":8,"color":"#448e4d"}],"type":"funnel"},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":null},"evals":[],"jsHooks":[]}</script></p>
+<p><div id="htmlwidget-3294" style="width:100%;height:500px;" class="ramcharts_base html-widget"></div>
+<script type="application/json" data-for="htmlwidget-3294">{"x":{"chartData":{"marginLeft":200,"marginRight":200,"titleField":"description","valueField":"value","labelPosition":"right","colorField":"color","neckHeight":"30%","neckWidth":"40%","rotate":false,"startDuration":0,"dataProvider":[{"description":"Website visits","value":300,"color":"#67b7dc"},{"description":"Downloads","value":123,"color":"#fdd400"},{"description":"Requested price list","value":98,"color":"#84b761"},{"description":"Contaced for more info","value":72,"color":"#cc4748"},{"description":"Purchased","value":80,"color":"#cd82ad"},{"description":"Contacted for support","value":15,"color":"#2f4074"},{"description":"Purchased additional products","value":8,"color":"#448e4d"}],"type":"funnel"},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":null},"evals":[],"jsHooks":[]}</script></p>
 </div>
 <div id="inversed-pyramid-chart" class="section level2">
 <h2>Inversed Pyramid chart</h2>
 <pre class="r"><code>amFunnel(data = data_funnel, inverse = FALSE)</code></pre>
-<p><div id="htmlwidget-2769" style="width:100%;height:500px;" class="ramcharts_base html-widget"></div>
-<script type="application/json" data-for="htmlwidget-2769">{"x":{"chartData":{"marginLeft":200,"marginRight":200,"titleField":"description","valueField":"value","labelPosition":"right","colorField":"color","rotate":false,"startDuration":0,"dataProvider":[{"description":"Website visits","value":300,"color":"#67b7dc"},{"description":"Downloads","value":123,"color":"#fdd400"},{"description":"Requested price list","value":98,"color":"#84b761"},{"description":"Contaced for more info","value":72,"color":"#cc4748"},{"description":"Purchased","value":80,"color":"#cd82ad"},{"description":"Contacted for support","value":15,"color":"#2f4074"},{"description":"Purchased additional products","value":8,"color":"#448e4d"}],"type":"funnel"},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":null},"evals":[],"jsHooks":[]}</script></p>
+<p><div id="htmlwidget-8921" style="width:100%;height:500px;" class="ramcharts_base html-widget"></div>
+<script type="application/json" data-for="htmlwidget-8921">{"x":{"chartData":{"marginLeft":200,"marginRight":200,"titleField":"description","valueField":"value","labelPosition":"right","colorField":"color","rotate":false,"startDuration":0,"dataProvider":[{"description":"Website visits","value":300,"color":"#67b7dc"},{"description":"Downloads","value":123,"color":"#fdd400"},{"description":"Requested price list","value":98,"color":"#84b761"},{"description":"Contaced for more info","value":72,"color":"#cc4748"},{"description":"Purchased","value":80,"color":"#cd82ad"},{"description":"Contacted for support","value":15,"color":"#2f4074"},{"description":"Purchased additional products","value":8,"color":"#448e4d"}],"type":"funnel"},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":null},"evals":[],"jsHooks":[]}</script></p>
 </div>
 <div id="change-label-side" class="section level2">
 <h2>Change label side</h2>
 <pre class="r"><code>amFunnel(data = data_funnel, inverse = FALSE, label_side = &quot;left&quot;)</code></pre>
-<p><div id="htmlwidget-5072" style="width:100%;height:500px;" class="ramcharts_base html-widget"></div>
-<script type="application/json" data-for="htmlwidget-5072">{"x":{"chartData":{"marginLeft":200,"marginRight":200,"titleField":"description","valueField":"value","labelPosition":"left","colorField":"color","rotate":false,"startDuration":0,"dataProvider":[{"description":"Website visits","value":300,"color":"#67b7dc"},{"description":"Downloads","value":123,"color":"#fdd400"},{"description":"Requested price list","value":98,"color":"#84b761"},{"description":"Contaced for more info","value":72,"color":"#cc4748"},{"description":"Purchased","value":80,"color":"#cd82ad"},{"description":"Contacted for support","value":15,"color":"#2f4074"},{"description":"Purchased additional products","value":8,"color":"#448e4d"}],"type":"funnel"},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":null},"evals":[],"jsHooks":[]}</script></p>
+<p><div id="htmlwidget-5694" style="width:100%;height:500px;" class="ramcharts_base html-widget"></div>
+<script type="application/json" data-for="htmlwidget-5694">{"x":{"chartData":{"marginLeft":200,"marginRight":200,"titleField":"description","valueField":"value","labelPosition":"left","colorField":"color","rotate":false,"startDuration":0,"dataProvider":[{"description":"Website visits","value":300,"color":"#67b7dc"},{"description":"Downloads","value":123,"color":"#fdd400"},{"description":"Requested price list","value":98,"color":"#84b761"},{"description":"Contaced for more info","value":72,"color":"#cc4748"},{"description":"Purchased","value":80,"color":"#cd82ad"},{"description":"Contacted for support","value":15,"color":"#2f4074"},{"description":"Purchased additional products","value":8,"color":"#448e4d"}],"type":"funnel"},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":null},"evals":[],"jsHooks":[]}</script></p>
 </div>
 <div id="d-pyramid" class="section level2">
 <h2>3D pyramid</h2>
 <pre class="r"><code>amFunnel(data = data_funnel, depth = 50, inverse = TRUE)</code></pre>
-<p><div id="htmlwidget-4440" style="width:100%;height:500px;" class="ramcharts_base html-widget"></div>
-<script type="application/json" data-for="htmlwidget-4440">{"x":{"chartData":{"marginLeft":200,"marginRight":200,"titleField":"description","valueField":"value","labelPosition":"right","colorField":"color","depth3D":50,"angle":40,"rotate":true,"startDuration":0,"dataProvider":[{"description":"Website visits","value":300,"color":"#67b7dc"},{"description":"Downloads","value":123,"color":"#fdd400"},{"description":"Requested price list","value":98,"color":"#84b761"},{"description":"Contaced for more info","value":72,"color":"#cc4748"},{"description":"Purchased","value":80,"color":"#cd82ad"},{"description":"Contacted for support","value":15,"color":"#2f4074"},{"description":"Purchased additional products","value":8,"color":"#448e4d"}],"type":"funnel"},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":null},"evals":[],"jsHooks":[]}</script></p>
+<p><div id="htmlwidget-6242" style="width:100%;height:500px;" class="ramcharts_base html-widget"></div>
+<script type="application/json" data-for="htmlwidget-6242">{"x":{"chartData":{"marginLeft":200,"marginRight":200,"titleField":"description","valueField":"value","labelPosition":"right","colorField":"color","depth3D":50,"angle":40,"rotate":true,"startDuration":0,"dataProvider":[{"description":"Website visits","value":300,"color":"#67b7dc"},{"description":"Downloads","value":123,"color":"#fdd400"},{"description":"Requested price list","value":98,"color":"#84b761"},{"description":"Contaced for more info","value":72,"color":"#cc4748"},{"description":"Purchased","value":80,"color":"#cd82ad"},{"description":"Contacted for support","value":15,"color":"#2f4074"},{"description":"Purchased additional products","value":8,"color":"#448e4d"}],"type":"funnel"},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":null},"evals":[],"jsHooks":[]}</script></p>
 <h2 class="partdivtitle">
 amOptions
 </h2>
@@ -196,8 +244,8 @@ amOptions
 #or
 amFunnel(data = data_funnel, inverse = FALSE) %&gt;&gt;% 
   amOptions(export = TRUE)</code></pre>
-<p><div id="htmlwidget-6583" style="width:100%;height:500px;" class="ramcharts_base html-widget"></div>
-<script type="application/json" data-for="htmlwidget-6583">{"x":{"chartData":{"marginLeft":200,"marginRight":200,"titleField":"description","valueField":"value","labelPosition":"right","colorField":"color","rotate":false,"startDuration":0,"export":{"enabled":true},"dataProvider":[{"description":"Website visits","value":300,"color":"#67b7dc"},{"description":"Downloads","value":123,"color":"#fdd400"},{"description":"Requested price list","value":98,"color":"#84b761"},{"description":"Contaced for more info","value":72,"color":"#cc4748"},{"description":"Purchased","value":80,"color":"#cd82ad"},{"description":"Contacted for support","value":15,"color":"#2f4074"},{"description":"Purchased additional products","value":8,"color":"#448e4d"}],"type":"funnel"},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":null},"evals":[],"jsHooks":[]}</script></p>
+<p><div id="htmlwidget-4198" style="width:100%;height:500px;" class="ramcharts_base html-widget"></div>
+<script type="application/json" data-for="htmlwidget-4198">{"x":{"chartData":{"marginLeft":200,"marginRight":200,"titleField":"description","valueField":"value","labelPosition":"right","colorField":"color","rotate":false,"startDuration":0,"export":{"enabled":true},"dataProvider":[{"description":"Website visits","value":300,"color":"#67b7dc"},{"description":"Downloads","value":123,"color":"#fdd400"},{"description":"Requested price list","value":98,"color":"#84b761"},{"description":"Contaced for more info","value":72,"color":"#cc4748"},{"description":"Purchased","value":80,"color":"#cd82ad"},{"description":"Contacted for support","value":15,"color":"#2f4074"},{"description":"Purchased additional products","value":8,"color":"#448e4d"}],"type":"funnel"},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":null},"evals":[],"jsHooks":[]}</script></p>
 </div>
 <div id="exportformat" class="section level2">
 <h2>exportFormat</h2>
@@ -205,8 +253,8 @@ amFunnel(data = data_funnel, inverse = FALSE) %&gt;&gt;%
 #or
 amFunnel(data = data_funnel, inverse = FALSE) %&gt;&gt;% 
   amOptions(export = TRUE, exportFormat = &quot;JPG&quot;)</code></pre>
-<p><div id="htmlwidget-9499" style="width:100%;height:500px;" class="ramcharts_base html-widget"></div>
-<script type="application/json" data-for="htmlwidget-9499">{"x":{"chartData":{"marginLeft":200,"marginRight":200,"titleField":"description","valueField":"value","labelPosition":"right","colorField":"color","rotate":false,"startDuration":0,"export":{"enabled":true,"menu":[{"class":"export-main","menu":[{"format":"JPG","label":"Download as JPG","title":"JPG"}]}]},"dataProvider":[{"description":"Website visits","value":300,"color":"#67b7dc"},{"description":"Downloads","value":123,"color":"#fdd400"},{"description":"Requested price list","value":98,"color":"#84b761"},{"description":"Contaced for more info","value":72,"color":"#cc4748"},{"description":"Purchased","value":80,"color":"#cd82ad"},{"description":"Contacted for support","value":15,"color":"#2f4074"},{"description":"Purchased additional products","value":8,"color":"#448e4d"}],"type":"funnel"},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":null},"evals":[],"jsHooks":[]}</script></p>
+<p><div id="htmlwidget-1746" style="width:100%;height:500px;" class="ramcharts_base html-widget"></div>
+<script type="application/json" data-for="htmlwidget-1746">{"x":{"chartData":{"marginLeft":200,"marginRight":200,"titleField":"description","valueField":"value","labelPosition":"right","colorField":"color","rotate":false,"startDuration":0,"export":{"enabled":true,"menu":[{"class":"export-main","menu":[{"format":"JPG","label":"Download as JPG","title":"JPG"}]}]},"dataProvider":[{"description":"Website visits","value":300,"color":"#67b7dc"},{"description":"Downloads","value":123,"color":"#fdd400"},{"description":"Requested price list","value":98,"color":"#84b761"},{"description":"Contaced for more info","value":72,"color":"#cc4748"},{"description":"Purchased","value":80,"color":"#cd82ad"},{"description":"Contacted for support","value":15,"color":"#2f4074"},{"description":"Purchased additional products","value":8,"color":"#448e4d"}],"type":"funnel"},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":null},"evals":[],"jsHooks":[]}</script></p>
 </div>
 <div id="main-and-creditsposition" class="section level2">
 <h2>main and creditsPosition</h2>
@@ -216,8 +264,8 @@ amFunnel(data = data_funnel, inverse = FALSE) %&gt;&gt;%
 amFunnel(data = data_funnel, inverse = FALSE) %&gt;&gt;% 
   amOptions( main = &quot;My Pyramid&quot;,
         mainColor = &quot;#68838B&quot;, mainSize = 25, creditsPosition = &quot;bottom-left&quot;)</code></pre>
-<p><div id="htmlwidget-6320" style="width:100%;height:500px;" class="ramcharts_base html-widget"></div>
-<script type="application/json" data-for="htmlwidget-6320">{"x":{"chartData":{"marginLeft":200,"marginRight":200,"titleField":"description","valueField":"value","labelPosition":"right","colorField":"color","rotate":false,"startDuration":0,"creditsPosition":"bottom-left","dataProvider":[{"description":"Website visits","value":300,"color":"#67b7dc"},{"description":"Downloads","value":123,"color":"#fdd400"},{"description":"Requested price list","value":98,"color":"#84b761"},{"description":"Contaced for more info","value":72,"color":"#cc4748"},{"description":"Purchased","value":80,"color":"#cd82ad"},{"description":"Contacted for support","value":15,"color":"#2f4074"},{"description":"Purchased additional products","value":8,"color":"#448e4d"}],"titles":[{"color":"#68838B","text":"My Pyramid","size":25}],"type":"funnel"},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":null},"evals":[],"jsHooks":[]}</script></p>
+<p><div id="htmlwidget-979" style="width:100%;height:500px;" class="ramcharts_base html-widget"></div>
+<script type="application/json" data-for="htmlwidget-979">{"x":{"chartData":{"marginLeft":200,"marginRight":200,"titleField":"description","valueField":"value","labelPosition":"right","colorField":"color","rotate":false,"startDuration":0,"creditsPosition":"bottom-left","dataProvider":[{"description":"Website visits","value":300,"color":"#67b7dc"},{"description":"Downloads","value":123,"color":"#fdd400"},{"description":"Requested price list","value":98,"color":"#84b761"},{"description":"Contaced for more info","value":72,"color":"#cc4748"},{"description":"Purchased","value":80,"color":"#cd82ad"},{"description":"Contacted for support","value":15,"color":"#2f4074"},{"description":"Purchased additional products","value":8,"color":"#448e4d"}],"titles":[{"color":"#68838B","text":"My Pyramid","size":25}],"type":"funnel"},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":null},"evals":[],"jsHooks":[]}</script></p>
 </div>
 <div id="theme" class="section level2">
 <h2>theme</h2>
@@ -225,8 +273,8 @@ amFunnel(data = data_funnel, inverse = FALSE) %&gt;&gt;%
 #or
 amFunnel(data = data_funnel, inverse = FALSE) %&gt;&gt;% 
   amOptions(theme = &quot;patterns&quot;)</code></pre>
-<p><div id="htmlwidget-5080" style="width:100%;height:500px;" class="ramcharts_base html-widget"></div>
-<script type="application/json" data-for="htmlwidget-5080">{"x":{"chartData":{"marginLeft":200,"marginRight":200,"titleField":"description","valueField":"value","labelPosition":"right","colorField":"color","rotate":false,"startDuration":0,"dataProvider":[{"description":"Website visits","value":300,"color":"#67b7dc"},{"description":"Downloads","value":123,"color":"#fdd400"},{"description":"Requested price list","value":98,"color":"#84b761"},{"description":"Contaced for more info","value":72,"color":"#cc4748"},{"description":"Purchased","value":80,"color":"#cd82ad"},{"description":"Contacted for support","value":15,"color":"#2f4074"},{"description":"Purchased additional products","value":8,"color":"#448e4d"}],"theme":"patterns","type":"funnel"},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":null},"evals":[],"jsHooks":[]}</script></p>
+<p><div id="htmlwidget-7190" style="width:100%;height:500px;" class="ramcharts_base html-widget"></div>
+<script type="application/json" data-for="htmlwidget-7190">{"x":{"chartData":{"marginLeft":200,"marginRight":200,"titleField":"description","valueField":"value","labelPosition":"right","colorField":"color","rotate":false,"startDuration":0,"dataProvider":[{"description":"Website visits","value":300,"color":"#67b7dc"},{"description":"Downloads","value":123,"color":"#fdd400"},{"description":"Requested price list","value":98,"color":"#84b761"},{"description":"Contaced for more info","value":72,"color":"#cc4748"},{"description":"Purchased","value":80,"color":"#cd82ad"},{"description":"Contacted for support","value":15,"color":"#2f4074"},{"description":"Purchased additional products","value":8,"color":"#448e4d"}],"theme":"patterns","type":"funnel"},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":null},"evals":[],"jsHooks":[]}</script></p>
 </div>
 
 
@@ -242,6 +290,8 @@ amFunnel(data = data_funnel, inverse = FALSE) %&gt;&gt;%
   <script src="./www/js/logo.js"> </script>
   <script src="./www/js/toggle.js"> </script>
 </div><!-- end of main row -->
+
+
 
 </div>
 

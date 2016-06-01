@@ -7,6 +7,7 @@
 <meta charset="utf-8">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
 
 
@@ -22,10 +23,9 @@
 <script src="libs/amcharts/amcharts.js"></script>
 <script src="libs/ramcharts_base-binding/ramcharts_base.js"></script>
 <script src="libs/amcharts/serial.js"></script>
-<link href="libs/amcharts_style/style.css" rel="stylesheet" />
-<link href="libs/amcharts_plugins_export/export.css" rel="stylesheet" />
-<script src="libs/amcharts_plugins_export/export.min.js"></script>
-<script src="libs/amcharts_themes_patterns/patterns.js"></script>
+<link href="libs/amcharts_export/export.css" rel="stylesheet" />
+<script src="libs/amcharts_export/export.min.js"></script>
+<script src="libs/amcharts_themes_patterns.js/patterns.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Raleway:100' rel='stylesheet' type='text/css'>
@@ -50,6 +50,7 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
 </script>
 
 
+
 <link rel="stylesheet" href="www/css/styles.css" type="text/css" />
 
 </head>
@@ -66,12 +67,54 @@ code {
   color: inherit;
   background-color: rgba(0, 0, 0, 0.04);
 }
-img { 
-  max-width:100%; 
-  height: auto; 
+img {
+  max-width:100%;
+  height: auto;
+}
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
 }
 </style>
+
+
 <div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script src="libs/navigation/tabsets.js"></script>
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
 
 
 <!-- bootstrap row container for all the content -->
@@ -128,6 +171,11 @@ img {
   
   <div class="col-xs-6 col-md-7 show" id="main-content"> <!-- main column -->
 
+<div class="fluid-row" id="header">
+
+
+
+</div>
 
 
 <h1>
@@ -152,38 +200,38 @@ rAmCharts - amBullet
 <div id="reference-example" class="section level2">
 <h2>Reference example</h2>
 <pre class="r"><code>amBullet(value = 65)</code></pre>
-<p><div id="htmlwidget-1618" style="width:60%;height:150px;" class="ramcharts_base html-widget"></div>
-<script type="application/json" data-for="htmlwidget-1618">{"x":{"chartData":{"rotate":true,"columnWidth":1,"categoryField":"category","dataProvider":[{"category":"","excelent":20,"good":20,"average":20,"poor":20,"bad":20,"limit":85,"full":100,"bullet":65}],"graphs":[{"columnWidth":0.5,"lineColor":"#000000","lineThickness":3,"noStepRisers":true,"stackable":false,"type":"step","valueField":"limit"},{"fillAlphas":0.8,"lineColor":"#19d228","showBalloon":false,"columnWidth":1,"type":"column","valueField":"excelent"},{"fillAlphas":0.8,"lineColor":"#b4dd1e","showBalloon":false,"columnWidth":1,"type":"column","valueField":"good"},{"fillAlphas":0.8,"lineColor":"#f4fb16","showBalloon":false,"columnWidth":1,"type":"column","valueField":"average"},{"fillAlphas":0.8,"lineColor":"#f6d32b","showBalloon":false,"columnWidth":1,"type":"column","valueField":"poor"},{"fillAlphas":0.8,"lineColor":"#fb7116","showBalloon":false,"columnWidth":1,"type":"column","valueField":"bad"},{"columnWidth":0.3,"fillAlphas":1,"lineColor":"#000000","clustered":false,"stackable":false,"type":"column","valueField":"bullet"}],"type":"serial","valueAxes":[{"minimum":0,"maximum":100,"stackType":"regular","gridAlpha":0}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[],"jsHooks":[]}</script></p>
+<p><div id="htmlwidget-1720" style="width:60%;height:150px;" class="ramcharts_base html-widget"></div>
+<script type="application/json" data-for="htmlwidget-1720">{"x":{"chartData":{"rotate":true,"columnWidth":1,"categoryField":"category","dataProvider":[{"category":"","excelent":20,"good":20,"average":20,"poor":20,"bad":20,"limit":85,"full":100,"bullet":65}],"graphs":[{"animationPlayed":false,"columnWidth":0.5,"lineColor":"#000000","lineThickness":3,"noStepRisers":true,"stackable":false,"type":"step","valueField":"limit"},{"animationPlayed":false,"fillAlphas":0.8,"lineColor":"#19d228","showBalloon":false,"columnWidth":1,"type":"column","valueField":"excelent"},{"animationPlayed":false,"fillAlphas":0.8,"lineColor":"#b4dd1e","showBalloon":false,"columnWidth":1,"type":"column","valueField":"good"},{"animationPlayed":false,"fillAlphas":0.8,"lineColor":"#f4fb16","showBalloon":false,"columnWidth":1,"type":"column","valueField":"average"},{"animationPlayed":false,"fillAlphas":0.8,"lineColor":"#f6d32b","showBalloon":false,"columnWidth":1,"type":"column","valueField":"poor"},{"animationPlayed":false,"fillAlphas":0.8,"lineColor":"#fb7116","showBalloon":false,"columnWidth":1,"type":"column","valueField":"bad"},{"animationPlayed":false,"columnWidth":0.3,"fillAlphas":1,"lineColor":"#000000","clustered":false,"stackable":false,"type":"column","valueField":"bullet"}],"type":"serial","valueAxes":[{"minimum":0,"maximum":100,"stackType":"regular","gridAlpha":0}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[],"jsHooks":[]}</script></p>
 </div>
 <div id="remove-steps-from-backgroud" class="section level2">
 <h2>Remove steps from backgroud</h2>
 <pre class="r"><code>amBullet(value = 65, steps = FALSE)</code></pre>
-<p><div id="htmlwidget-3772" style="width:60%;height:150px;" class="ramcharts_base html-widget"></div>
-<script type="application/json" data-for="htmlwidget-3772">{"x":{"chartData":{"rotate":true,"columnWidth":1,"categoryField":"category","dataProvider":[{"category":"","excelent":20,"good":20,"average":20,"poor":20,"bad":20,"limit":85,"full":100,"bullet":65}],"graphs":[{"columnWidth":0.5,"lineColor":"#000000","lineThickness":3,"noStepRisers":true,"stackable":false,"type":"step","valueField":"limit"},{"lineAlpha":0,"fillAlphas":0.8,"fillColors":["#19d228","#b4dd1e","#f4fb16","#f6d32b","#fb7116"],"gradientOrientation":"horizontal","showBalloon":false,"type":"column","valueField":"full"},{"columnWidth":0.3,"fillAlphas":1,"lineColor":"#000000","clustered":false,"stackable":false,"type":"column","valueField":"bullet"}],"type":"serial","valueAxes":[{"minimum":0,"maximum":100,"stackType":"regular","gridAlpha":0}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[],"jsHooks":[]}</script></p>
+<p><div id="htmlwidget-1218" style="width:60%;height:150px;" class="ramcharts_base html-widget"></div>
+<script type="application/json" data-for="htmlwidget-1218">{"x":{"chartData":{"rotate":true,"columnWidth":1,"categoryField":"category","dataProvider":[{"category":"","excelent":20,"good":20,"average":20,"poor":20,"bad":20,"limit":85,"full":100,"bullet":65}],"graphs":[{"animationPlayed":false,"columnWidth":0.5,"lineColor":"#000000","lineThickness":3,"noStepRisers":true,"stackable":false,"type":"step","valueField":"limit"},{"animationPlayed":false,"lineAlpha":0,"fillAlphas":0.8,"fillColors":["#19d228","#b4dd1e","#f4fb16","#f6d32b","#fb7116"],"gradientOrientation":"horizontal","showBalloon":false,"type":"column","valueField":"full"},{"animationPlayed":false,"columnWidth":0.3,"fillAlphas":1,"lineColor":"#000000","clustered":false,"stackable":false,"type":"column","valueField":"bullet"}],"type":"serial","valueAxes":[{"minimum":0,"maximum":100,"stackType":"regular","gridAlpha":0}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[],"jsHooks":[]}</script></p>
 </div>
 <div id="tune-the-colors" class="section level2">
 <h2>Tune the colors</h2>
 <pre class="r"><code>amBullet(value = 65, val_color = &quot;purple&quot;, limit_color = &quot;#3c8dbc&quot;)</code></pre>
-<p><div id="htmlwidget-5850" style="width:60%;height:150px;" class="ramcharts_base html-widget"></div>
-<script type="application/json" data-for="htmlwidget-5850">{"x":{"chartData":{"rotate":true,"columnWidth":1,"categoryField":"category","dataProvider":[{"category":"","excelent":20,"good":20,"average":20,"poor":20,"bad":20,"limit":85,"full":100,"bullet":65}],"graphs":[{"columnWidth":0.5,"lineColor":"#3c8dbc","lineThickness":3,"noStepRisers":true,"stackable":false,"type":"step","valueField":"limit"},{"fillAlphas":0.8,"lineColor":"#19d228","showBalloon":false,"columnWidth":1,"type":"column","valueField":"excelent"},{"fillAlphas":0.8,"lineColor":"#b4dd1e","showBalloon":false,"columnWidth":1,"type":"column","valueField":"good"},{"fillAlphas":0.8,"lineColor":"#f4fb16","showBalloon":false,"columnWidth":1,"type":"column","valueField":"average"},{"fillAlphas":0.8,"lineColor":"#f6d32b","showBalloon":false,"columnWidth":1,"type":"column","valueField":"poor"},{"fillAlphas":0.8,"lineColor":"#fb7116","showBalloon":false,"columnWidth":1,"type":"column","valueField":"bad"},{"columnWidth":0.3,"fillAlphas":1,"lineColor":"purple","clustered":false,"stackable":false,"type":"column","valueField":"bullet"}],"type":"serial","valueAxes":[{"minimum":0,"maximum":100,"stackType":"regular","gridAlpha":0}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[],"jsHooks":[]}</script></p>
+<p><div id="htmlwidget-1747" style="width:60%;height:150px;" class="ramcharts_base html-widget"></div>
+<script type="application/json" data-for="htmlwidget-1747">{"x":{"chartData":{"rotate":true,"columnWidth":1,"categoryField":"category","dataProvider":[{"category":"","excelent":20,"good":20,"average":20,"poor":20,"bad":20,"limit":85,"full":100,"bullet":65}],"graphs":[{"animationPlayed":false,"columnWidth":0.5,"lineColor":"#3c8dbc","lineThickness":3,"noStepRisers":true,"stackable":false,"type":"step","valueField":"limit"},{"animationPlayed":false,"fillAlphas":0.8,"lineColor":"#19d228","showBalloon":false,"columnWidth":1,"type":"column","valueField":"excelent"},{"animationPlayed":false,"fillAlphas":0.8,"lineColor":"#b4dd1e","showBalloon":false,"columnWidth":1,"type":"column","valueField":"good"},{"animationPlayed":false,"fillAlphas":0.8,"lineColor":"#f4fb16","showBalloon":false,"columnWidth":1,"type":"column","valueField":"average"},{"animationPlayed":false,"fillAlphas":0.8,"lineColor":"#f6d32b","showBalloon":false,"columnWidth":1,"type":"column","valueField":"poor"},{"animationPlayed":false,"fillAlphas":0.8,"lineColor":"#fb7116","showBalloon":false,"columnWidth":1,"type":"column","valueField":"bad"},{"animationPlayed":false,"columnWidth":0.3,"fillAlphas":1,"lineColor":"purple","clustered":false,"stackable":false,"type":"column","valueField":"bullet"}],"type":"serial","valueAxes":[{"minimum":0,"maximum":100,"stackType":"regular","gridAlpha":0}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[],"jsHooks":[]}</script></p>
 </div>
 <div id="change-orientation" class="section level2">
 <h2>Change orientation</h2>
 <pre class="r"><code>amBullet(value = 65, horiz = FALSE)</code></pre>
-<p><div id="htmlwidget-3730" style="width:150px;height:500px;" class="ramcharts_base html-widget"></div>
-<script type="application/json" data-for="htmlwidget-3730">{"x":{"chartData":{"rotate":false,"columnWidth":1,"categoryField":"category","dataProvider":[{"category":"","excelent":20,"good":20,"average":20,"poor":20,"bad":20,"limit":85,"full":100,"bullet":65}],"graphs":[{"columnWidth":0.5,"lineColor":"#000000","lineThickness":3,"noStepRisers":true,"stackable":false,"type":"step","valueField":"limit"},{"fillAlphas":0.8,"lineColor":"#19d228","showBalloon":false,"columnWidth":1,"type":"column","valueField":"excelent"},{"fillAlphas":0.8,"lineColor":"#b4dd1e","showBalloon":false,"columnWidth":1,"type":"column","valueField":"good"},{"fillAlphas":0.8,"lineColor":"#f4fb16","showBalloon":false,"columnWidth":1,"type":"column","valueField":"average"},{"fillAlphas":0.8,"lineColor":"#f6d32b","showBalloon":false,"columnWidth":1,"type":"column","valueField":"poor"},{"fillAlphas":0.8,"lineColor":"#fb7116","showBalloon":false,"columnWidth":1,"type":"column","valueField":"bad"},{"columnWidth":0.3,"fillAlphas":1,"lineColor":"#000000","clustered":false,"stackable":false,"type":"column","valueField":"bullet"}],"type":"serial","valueAxes":[{"minimum":0,"maximum":100,"stackType":"regular","gridAlpha":0}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[],"jsHooks":[]}</script></p>
+<p><div id="htmlwidget-482" style="width:150px;height:500px;" class="ramcharts_base html-widget"></div>
+<script type="application/json" data-for="htmlwidget-482">{"x":{"chartData":{"rotate":false,"columnWidth":1,"categoryField":"category","dataProvider":[{"category":"","excelent":20,"good":20,"average":20,"poor":20,"bad":20,"limit":85,"full":100,"bullet":65}],"graphs":[{"animationPlayed":false,"columnWidth":0.5,"lineColor":"#000000","lineThickness":3,"noStepRisers":true,"stackable":false,"type":"step","valueField":"limit"},{"animationPlayed":false,"fillAlphas":0.8,"lineColor":"#19d228","showBalloon":false,"columnWidth":1,"type":"column","valueField":"excelent"},{"animationPlayed":false,"fillAlphas":0.8,"lineColor":"#b4dd1e","showBalloon":false,"columnWidth":1,"type":"column","valueField":"good"},{"animationPlayed":false,"fillAlphas":0.8,"lineColor":"#f4fb16","showBalloon":false,"columnWidth":1,"type":"column","valueField":"average"},{"animationPlayed":false,"fillAlphas":0.8,"lineColor":"#f6d32b","showBalloon":false,"columnWidth":1,"type":"column","valueField":"poor"},{"animationPlayed":false,"fillAlphas":0.8,"lineColor":"#fb7116","showBalloon":false,"columnWidth":1,"type":"column","valueField":"bad"},{"animationPlayed":false,"columnWidth":0.3,"fillAlphas":1,"lineColor":"#000000","clustered":false,"stackable":false,"type":"column","valueField":"bullet"}],"type":"serial","valueAxes":[{"minimum":0,"maximum":100,"stackType":"regular","gridAlpha":0}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[],"jsHooks":[]}</script></p>
 </div>
 <div id="add-label" class="section level2">
 <h2>Add label</h2>
 <pre class="r"><code>amBullet(value = 65, label = &quot;Evaluation&quot;)</code></pre>
-<p><div id="htmlwidget-3381" style="width:70%;height:150px;" class="ramcharts_base html-widget"></div>
-<script type="application/json" data-for="htmlwidget-3381">{"x":{"chartData":{"rotate":true,"columnWidth":1,"categoryField":"category","dataProvider":[{"category":"Evaluation","excelent":20,"good":20,"average":20,"poor":20,"bad":20,"limit":85,"full":100,"bullet":65}],"graphs":[{"columnWidth":0.5,"lineColor":"#000000","lineThickness":3,"noStepRisers":true,"stackable":false,"type":"step","valueField":"limit"},{"fillAlphas":0.8,"lineColor":"#19d228","showBalloon":false,"columnWidth":1,"type":"column","valueField":"excelent"},{"fillAlphas":0.8,"lineColor":"#b4dd1e","showBalloon":false,"columnWidth":1,"type":"column","valueField":"good"},{"fillAlphas":0.8,"lineColor":"#f4fb16","showBalloon":false,"columnWidth":1,"type":"column","valueField":"average"},{"fillAlphas":0.8,"lineColor":"#f6d32b","showBalloon":false,"columnWidth":1,"type":"column","valueField":"poor"},{"fillAlphas":0.8,"lineColor":"#fb7116","showBalloon":false,"columnWidth":1,"type":"column","valueField":"bad"},{"columnWidth":0.3,"fillAlphas":1,"lineColor":"#000000","clustered":false,"stackable":false,"type":"column","valueField":"bullet"}],"type":"serial","valueAxes":[{"minimum":0,"maximum":100,"stackType":"regular","gridAlpha":0}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[],"jsHooks":[]}</script></p>
+<p><div id="htmlwidget-6465" style="width:70%;height:150px;" class="ramcharts_base html-widget"></div>
+<script type="application/json" data-for="htmlwidget-6465">{"x":{"chartData":{"rotate":true,"columnWidth":1,"categoryField":"category","dataProvider":[{"category":"Evaluation","excelent":20,"good":20,"average":20,"poor":20,"bad":20,"limit":85,"full":100,"bullet":65}],"graphs":[{"animationPlayed":false,"columnWidth":0.5,"lineColor":"#000000","lineThickness":3,"noStepRisers":true,"stackable":false,"type":"step","valueField":"limit"},{"animationPlayed":false,"fillAlphas":0.8,"lineColor":"#19d228","showBalloon":false,"columnWidth":1,"type":"column","valueField":"excelent"},{"animationPlayed":false,"fillAlphas":0.8,"lineColor":"#b4dd1e","showBalloon":false,"columnWidth":1,"type":"column","valueField":"good"},{"animationPlayed":false,"fillAlphas":0.8,"lineColor":"#f4fb16","showBalloon":false,"columnWidth":1,"type":"column","valueField":"average"},{"animationPlayed":false,"fillAlphas":0.8,"lineColor":"#f6d32b","showBalloon":false,"columnWidth":1,"type":"column","valueField":"poor"},{"animationPlayed":false,"fillAlphas":0.8,"lineColor":"#fb7116","showBalloon":false,"columnWidth":1,"type":"column","valueField":"bad"},{"animationPlayed":false,"columnWidth":0.3,"fillAlphas":1,"lineColor":"#000000","clustered":false,"stackable":false,"type":"column","valueField":"bullet"}],"type":"serial","valueAxes":[{"minimum":0,"maximum":100,"stackType":"regular","gridAlpha":0}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[],"jsHooks":[]}</script></p>
 </div>
 <div id="change-mon-and-max" class="section level2">
 <h2>Change mon and max</h2>
 <pre class="r"><code>amBullet(value = 65, min = 20, max = 90)</code></pre>
-<p><div id="htmlwidget-5438" style="width:60%;height:150px;" class="ramcharts_base html-widget"></div>
-<script type="application/json" data-for="htmlwidget-5438">{"x":{"chartData":{"rotate":true,"columnWidth":1,"categoryField":"category","dataProvider":[{"category":"","excelent":20,"good":20,"average":20,"poor":20,"bad":20,"limit":85,"full":90,"bullet":65}],"graphs":[{"columnWidth":0.5,"lineColor":"#000000","lineThickness":3,"noStepRisers":true,"stackable":false,"type":"step","valueField":"limit"},{"fillAlphas":0.8,"lineColor":"#19d228","showBalloon":false,"columnWidth":1,"type":"column","valueField":"excelent"},{"fillAlphas":0.8,"lineColor":"#b4dd1e","showBalloon":false,"columnWidth":1,"type":"column","valueField":"good"},{"fillAlphas":0.8,"lineColor":"#f4fb16","showBalloon":false,"columnWidth":1,"type":"column","valueField":"average"},{"fillAlphas":0.8,"lineColor":"#f6d32b","showBalloon":false,"columnWidth":1,"type":"column","valueField":"poor"},{"fillAlphas":0.8,"lineColor":"#fb7116","showBalloon":false,"columnWidth":1,"type":"column","valueField":"bad"},{"columnWidth":0.3,"fillAlphas":1,"lineColor":"#000000","clustered":false,"stackable":false,"type":"column","valueField":"bullet"}],"type":"serial","valueAxes":[{"minimum":20,"maximum":90,"stackType":"regular","gridAlpha":0}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[],"jsHooks":[]}</script></p>
+<p><div id="htmlwidget-8218" style="width:60%;height:150px;" class="ramcharts_base html-widget"></div>
+<script type="application/json" data-for="htmlwidget-8218">{"x":{"chartData":{"rotate":true,"columnWidth":1,"categoryField":"category","dataProvider":[{"category":"","excelent":20,"good":20,"average":20,"poor":20,"bad":20,"limit":85,"full":90,"bullet":65}],"graphs":[{"animationPlayed":false,"columnWidth":0.5,"lineColor":"#000000","lineThickness":3,"noStepRisers":true,"stackable":false,"type":"step","valueField":"limit"},{"animationPlayed":false,"fillAlphas":0.8,"lineColor":"#19d228","showBalloon":false,"columnWidth":1,"type":"column","valueField":"excelent"},{"animationPlayed":false,"fillAlphas":0.8,"lineColor":"#b4dd1e","showBalloon":false,"columnWidth":1,"type":"column","valueField":"good"},{"animationPlayed":false,"fillAlphas":0.8,"lineColor":"#f4fb16","showBalloon":false,"columnWidth":1,"type":"column","valueField":"average"},{"animationPlayed":false,"fillAlphas":0.8,"lineColor":"#f6d32b","showBalloon":false,"columnWidth":1,"type":"column","valueField":"poor"},{"animationPlayed":false,"fillAlphas":0.8,"lineColor":"#fb7116","showBalloon":false,"columnWidth":1,"type":"column","valueField":"bad"},{"animationPlayed":false,"columnWidth":0.3,"fillAlphas":1,"lineColor":"#000000","clustered":false,"stackable":false,"type":"column","valueField":"bullet"}],"type":"serial","valueAxes":[{"minimum":20,"maximum":90,"stackType":"regular","gridAlpha":0}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[],"jsHooks":[]}</script></p>
 <h2 class="partdivtitle">
 amOptions
 </h2>
@@ -194,8 +242,8 @@ amOptions
 #or
 amBullet(value = 65) %&gt;&gt;% 
   amOptions(export = TRUE)</code></pre>
-<p><div id="htmlwidget-4744" style="width:60%;height:150px;" class="ramcharts_base html-widget"></div>
-<script type="application/json" data-for="htmlwidget-4744">{"x":{"chartData":{"rotate":true,"columnWidth":1,"export":{"enabled":true},"categoryField":"category","dataProvider":[{"category":"","excelent":20,"good":20,"average":20,"poor":20,"bad":20,"limit":85,"full":100,"bullet":65}],"graphs":[{"columnWidth":0.5,"lineColor":"#000000","lineThickness":3,"noStepRisers":true,"stackable":false,"type":"step","valueField":"limit"},{"fillAlphas":0.8,"lineColor":"#19d228","showBalloon":false,"columnWidth":1,"type":"column","valueField":"excelent"},{"fillAlphas":0.8,"lineColor":"#b4dd1e","showBalloon":false,"columnWidth":1,"type":"column","valueField":"good"},{"fillAlphas":0.8,"lineColor":"#f4fb16","showBalloon":false,"columnWidth":1,"type":"column","valueField":"average"},{"fillAlphas":0.8,"lineColor":"#f6d32b","showBalloon":false,"columnWidth":1,"type":"column","valueField":"poor"},{"fillAlphas":0.8,"lineColor":"#fb7116","showBalloon":false,"columnWidth":1,"type":"column","valueField":"bad"},{"columnWidth":0.3,"fillAlphas":1,"lineColor":"#000000","clustered":false,"stackable":false,"type":"column","valueField":"bullet"}],"type":"serial","valueAxes":[{"minimum":0,"maximum":100,"stackType":"regular","gridAlpha":0}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[],"jsHooks":[]}</script></p>
+<p><div id="htmlwidget-8211" style="width:60%;height:150px;" class="ramcharts_base html-widget"></div>
+<script type="application/json" data-for="htmlwidget-8211">{"x":{"chartData":{"rotate":true,"columnWidth":1,"export":{"enabled":true},"categoryField":"category","dataProvider":[{"category":"","excelent":20,"good":20,"average":20,"poor":20,"bad":20,"limit":85,"full":100,"bullet":65}],"graphs":[{"animationPlayed":false,"columnWidth":0.5,"lineColor":"#000000","lineThickness":3,"noStepRisers":true,"stackable":false,"type":"step","valueField":"limit"},{"animationPlayed":false,"fillAlphas":0.8,"lineColor":"#19d228","showBalloon":false,"columnWidth":1,"type":"column","valueField":"excelent"},{"animationPlayed":false,"fillAlphas":0.8,"lineColor":"#b4dd1e","showBalloon":false,"columnWidth":1,"type":"column","valueField":"good"},{"animationPlayed":false,"fillAlphas":0.8,"lineColor":"#f4fb16","showBalloon":false,"columnWidth":1,"type":"column","valueField":"average"},{"animationPlayed":false,"fillAlphas":0.8,"lineColor":"#f6d32b","showBalloon":false,"columnWidth":1,"type":"column","valueField":"poor"},{"animationPlayed":false,"fillAlphas":0.8,"lineColor":"#fb7116","showBalloon":false,"columnWidth":1,"type":"column","valueField":"bad"},{"animationPlayed":false,"columnWidth":0.3,"fillAlphas":1,"lineColor":"#000000","clustered":false,"stackable":false,"type":"column","valueField":"bullet"}],"type":"serial","valueAxes":[{"minimum":0,"maximum":100,"stackType":"regular","gridAlpha":0}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[],"jsHooks":[]}</script></p>
 </div>
 <div id="exportformat" class="section level2">
 <h2>exportFormat</h2>
@@ -203,8 +251,8 @@ amBullet(value = 65) %&gt;&gt;%
 #or
 amBullet(value = 65) %&gt;&gt;% 
   amOptions(export = TRUE, exportFormat = &quot;JPG&quot;)</code></pre>
-<p><div id="htmlwidget-5768" style="width:60%;height:150px;" class="ramcharts_base html-widget"></div>
-<script type="application/json" data-for="htmlwidget-5768">{"x":{"chartData":{"rotate":true,"columnWidth":1,"export":{"enabled":true,"menu":[{"class":"export-main","menu":[{"format":"JPG","label":"Download as JPG","title":"JPG"}]}]},"categoryField":"category","dataProvider":[{"category":"","excelent":20,"good":20,"average":20,"poor":20,"bad":20,"limit":85,"full":100,"bullet":65}],"graphs":[{"columnWidth":0.5,"lineColor":"#000000","lineThickness":3,"noStepRisers":true,"stackable":false,"type":"step","valueField":"limit"},{"fillAlphas":0.8,"lineColor":"#19d228","showBalloon":false,"columnWidth":1,"type":"column","valueField":"excelent"},{"fillAlphas":0.8,"lineColor":"#b4dd1e","showBalloon":false,"columnWidth":1,"type":"column","valueField":"good"},{"fillAlphas":0.8,"lineColor":"#f4fb16","showBalloon":false,"columnWidth":1,"type":"column","valueField":"average"},{"fillAlphas":0.8,"lineColor":"#f6d32b","showBalloon":false,"columnWidth":1,"type":"column","valueField":"poor"},{"fillAlphas":0.8,"lineColor":"#fb7116","showBalloon":false,"columnWidth":1,"type":"column","valueField":"bad"},{"columnWidth":0.3,"fillAlphas":1,"lineColor":"#000000","clustered":false,"stackable":false,"type":"column","valueField":"bullet"}],"type":"serial","valueAxes":[{"minimum":0,"maximum":100,"stackType":"regular","gridAlpha":0}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[],"jsHooks":[]}</script></p>
+<p><div id="htmlwidget-4205" style="width:60%;height:150px;" class="ramcharts_base html-widget"></div>
+<script type="application/json" data-for="htmlwidget-4205">{"x":{"chartData":{"rotate":true,"columnWidth":1,"export":{"enabled":true,"menu":[{"class":"export-main","menu":[{"format":"JPG","label":"Download as JPG","title":"JPG"}]}]},"categoryField":"category","dataProvider":[{"category":"","excelent":20,"good":20,"average":20,"poor":20,"bad":20,"limit":85,"full":100,"bullet":65}],"graphs":[{"animationPlayed":false,"columnWidth":0.5,"lineColor":"#000000","lineThickness":3,"noStepRisers":true,"stackable":false,"type":"step","valueField":"limit"},{"animationPlayed":false,"fillAlphas":0.8,"lineColor":"#19d228","showBalloon":false,"columnWidth":1,"type":"column","valueField":"excelent"},{"animationPlayed":false,"fillAlphas":0.8,"lineColor":"#b4dd1e","showBalloon":false,"columnWidth":1,"type":"column","valueField":"good"},{"animationPlayed":false,"fillAlphas":0.8,"lineColor":"#f4fb16","showBalloon":false,"columnWidth":1,"type":"column","valueField":"average"},{"animationPlayed":false,"fillAlphas":0.8,"lineColor":"#f6d32b","showBalloon":false,"columnWidth":1,"type":"column","valueField":"poor"},{"animationPlayed":false,"fillAlphas":0.8,"lineColor":"#fb7116","showBalloon":false,"columnWidth":1,"type":"column","valueField":"bad"},{"animationPlayed":false,"columnWidth":0.3,"fillAlphas":1,"lineColor":"#000000","clustered":false,"stackable":false,"type":"column","valueField":"bullet"}],"type":"serial","valueAxes":[{"minimum":0,"maximum":100,"stackType":"regular","gridAlpha":0}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[],"jsHooks":[]}</script></p>
 ## main and creditsPosition
 </h2>
 <pre class="r"><code>amBullet(value = 65, main = &quot;My Bullet&quot;,
@@ -213,8 +261,8 @@ amBullet(value = 65) %&gt;&gt;%
 amBullet(value = 65) %&gt;&gt;% 
   amOptions( main = &quot;My Bullet&quot;,
         mainColor = &quot;#68838B&quot;, mainSize = 25, creditsPosition = &quot;bottom-right&quot;)</code></pre>
-<p><div id="htmlwidget-3194" style="width:60%;height:200px;" class="ramcharts_base html-widget"></div>
-<script type="application/json" data-for="htmlwidget-3194">{"x":{"chartData":{"rotate":true,"columnWidth":1,"categoryField":"category","creditsPosition":"bottom-right","dataProvider":[{"category":"","excelent":20,"good":20,"average":20,"poor":20,"bad":20,"limit":85,"full":100,"bullet":65}],"graphs":[{"columnWidth":0.5,"lineColor":"#000000","lineThickness":3,"noStepRisers":true,"stackable":false,"type":"step","valueField":"limit"},{"fillAlphas":0.8,"lineColor":"#19d228","showBalloon":false,"columnWidth":1,"type":"column","valueField":"excelent"},{"fillAlphas":0.8,"lineColor":"#b4dd1e","showBalloon":false,"columnWidth":1,"type":"column","valueField":"good"},{"fillAlphas":0.8,"lineColor":"#f4fb16","showBalloon":false,"columnWidth":1,"type":"column","valueField":"average"},{"fillAlphas":0.8,"lineColor":"#f6d32b","showBalloon":false,"columnWidth":1,"type":"column","valueField":"poor"},{"fillAlphas":0.8,"lineColor":"#fb7116","showBalloon":false,"columnWidth":1,"type":"column","valueField":"bad"},{"columnWidth":0.3,"fillAlphas":1,"lineColor":"#000000","clustered":false,"stackable":false,"type":"column","valueField":"bullet"}],"titles":[{"color":"#68838B","text":"My Bullet","size":25}],"type":"serial","valueAxes":[{"minimum":0,"maximum":100,"stackType":"regular","gridAlpha":0}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[],"jsHooks":[]}</script></p>
+<p><div id="htmlwidget-3702" style="width:60%;height:200px;" class="ramcharts_base html-widget"></div>
+<script type="application/json" data-for="htmlwidget-3702">{"x":{"chartData":{"rotate":true,"columnWidth":1,"categoryField":"category","creditsPosition":"bottom-right","dataProvider":[{"category":"","excelent":20,"good":20,"average":20,"poor":20,"bad":20,"limit":85,"full":100,"bullet":65}],"graphs":[{"animationPlayed":false,"columnWidth":0.5,"lineColor":"#000000","lineThickness":3,"noStepRisers":true,"stackable":false,"type":"step","valueField":"limit"},{"animationPlayed":false,"fillAlphas":0.8,"lineColor":"#19d228","showBalloon":false,"columnWidth":1,"type":"column","valueField":"excelent"},{"animationPlayed":false,"fillAlphas":0.8,"lineColor":"#b4dd1e","showBalloon":false,"columnWidth":1,"type":"column","valueField":"good"},{"animationPlayed":false,"fillAlphas":0.8,"lineColor":"#f4fb16","showBalloon":false,"columnWidth":1,"type":"column","valueField":"average"},{"animationPlayed":false,"fillAlphas":0.8,"lineColor":"#f6d32b","showBalloon":false,"columnWidth":1,"type":"column","valueField":"poor"},{"animationPlayed":false,"fillAlphas":0.8,"lineColor":"#fb7116","showBalloon":false,"columnWidth":1,"type":"column","valueField":"bad"},{"animationPlayed":false,"columnWidth":0.3,"fillAlphas":1,"lineColor":"#000000","clustered":false,"stackable":false,"type":"column","valueField":"bullet"}],"titles":[{"color":"#68838B","text":"My Bullet","size":25}],"type":"serial","valueAxes":[{"minimum":0,"maximum":100,"stackType":"regular","gridAlpha":0}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[],"jsHooks":[]}</script></p>
 </div>
 <div id="theme" class="section level2">
 <h2>theme</h2>
@@ -222,8 +270,8 @@ amBullet(value = 65) %&gt;&gt;%
 #or
 amBullet(value = 65) %&gt;&gt;% 
   amOptions(theme = &quot;patterns&quot;)</code></pre>
-<p><div id="htmlwidget-6484" style="width:60%;height:150px;" class="ramcharts_base html-widget"></div>
-<script type="application/json" data-for="htmlwidget-6484">{"x":{"chartData":{"rotate":true,"columnWidth":1,"categoryField":"category","dataProvider":[{"category":"","excelent":20,"good":20,"average":20,"poor":20,"bad":20,"limit":85,"full":100,"bullet":65}],"graphs":[{"columnWidth":0.5,"lineColor":"#000000","lineThickness":3,"noStepRisers":true,"stackable":false,"type":"step","valueField":"limit"},{"fillAlphas":0.8,"lineColor":"#19d228","showBalloon":false,"columnWidth":1,"type":"column","valueField":"excelent"},{"fillAlphas":0.8,"lineColor":"#b4dd1e","showBalloon":false,"columnWidth":1,"type":"column","valueField":"good"},{"fillAlphas":0.8,"lineColor":"#f4fb16","showBalloon":false,"columnWidth":1,"type":"column","valueField":"average"},{"fillAlphas":0.8,"lineColor":"#f6d32b","showBalloon":false,"columnWidth":1,"type":"column","valueField":"poor"},{"fillAlphas":0.8,"lineColor":"#fb7116","showBalloon":false,"columnWidth":1,"type":"column","valueField":"bad"},{"columnWidth":0.3,"fillAlphas":1,"lineColor":"#000000","clustered":false,"stackable":false,"type":"column","valueField":"bullet"}],"theme":"patterns","type":"serial","valueAxes":[{"minimum":0,"maximum":100,"stackType":"regular","gridAlpha":0}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[],"jsHooks":[]}</script></p>
+<p><div id="htmlwidget-7457" style="width:60%;height:150px;" class="ramcharts_base html-widget"></div>
+<script type="application/json" data-for="htmlwidget-7457">{"x":{"chartData":{"rotate":true,"columnWidth":1,"categoryField":"category","dataProvider":[{"category":"","excelent":20,"good":20,"average":20,"poor":20,"bad":20,"limit":85,"full":100,"bullet":65}],"graphs":[{"animationPlayed":false,"columnWidth":0.5,"lineColor":"#000000","lineThickness":3,"noStepRisers":true,"stackable":false,"type":"step","valueField":"limit"},{"animationPlayed":false,"fillAlphas":0.8,"lineColor":"#19d228","showBalloon":false,"columnWidth":1,"type":"column","valueField":"excelent"},{"animationPlayed":false,"fillAlphas":0.8,"lineColor":"#b4dd1e","showBalloon":false,"columnWidth":1,"type":"column","valueField":"good"},{"animationPlayed":false,"fillAlphas":0.8,"lineColor":"#f4fb16","showBalloon":false,"columnWidth":1,"type":"column","valueField":"average"},{"animationPlayed":false,"fillAlphas":0.8,"lineColor":"#f6d32b","showBalloon":false,"columnWidth":1,"type":"column","valueField":"poor"},{"animationPlayed":false,"fillAlphas":0.8,"lineColor":"#fb7116","showBalloon":false,"columnWidth":1,"type":"column","valueField":"bad"},{"animationPlayed":false,"columnWidth":0.3,"fillAlphas":1,"lineColor":"#000000","clustered":false,"stackable":false,"type":"column","valueField":"bullet"}],"theme":"patterns","type":"serial","valueAxes":[{"minimum":0,"maximum":100,"stackType":"regular","gridAlpha":0}]},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":[]},"evals":[],"jsHooks":[]}</script></p>
 </div>
 
 
@@ -239,6 +287,8 @@ amBullet(value = 65) %&gt;&gt;%
   <script src="./www/js/logo.js"> </script>
   <script src="./www/js/toggle.js"> </script>
 </div><!-- end of main row -->
+
+
 
 </div>
 
