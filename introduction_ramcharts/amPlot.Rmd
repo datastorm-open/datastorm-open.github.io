@@ -1,5 +1,5 @@
 ---
-pagetitle: rAmCharts - amWind
+pagetitle: rAmCharts - amPlot
 ---
 
 ```{r,echo=FALSE, message=FALSE}
@@ -35,49 +35,49 @@ require(package = "pipeR", quietly = TRUE)
 * __...__: other parameters called in amOptions.
 
 
-## Reference example
+## Scatter plot
 ```{r}
 xc <- paste("cat.", 1:100)
-xf <- factor(xc)
 y <- rnorm(length(xc))
-x <- sort(rnorm(100))
-iris <- get("iris", "package:datasets")
 ```
-```{r, echo = TRUE, eval = FALSE}
-amPlot(x = xc, y = y)
-```
-```{r, echo = FALSE, eval = TRUE}
+
+```{r}
 amPlot(x = xc, y = y)
 ```
 
-	
+## Line and other types
+```{r}
+amPlot(x = xc, y = y, type = "b") # can also be "l", "sl"
+```
+
+```{r}
+amPlot(x = xc, y = y, type = "st")
+```
+
+## XY chart with optional weights (iif when x is numeric)
+```{r}
+x <- sort(rnorm(100))
+```
+
+```{r, eval = TRUE}
+amPlot(x = x, y = y, weights = runif(100, 4, 7), col="#663300")
+```
 
 ## Change type
-```{r, echo = TRUE, eval = FALSE}
-amPlot(x = xc, y = y, type = 'l')
-```
-```{r, echo = FALSE, eval = TRUE}
+```{r, eval = TRUE}
 amPlot(x = xc, y = y, type = 'l')
 ```
 
 ## Add a legend
 
-```{r, echo = TRUE, eval = FALSE}
-amPlot(x = x, y = y, type = "l") %>>%
-  setLegend(useGraphSettings = TRUE)
-```
-```{r, echo = FALSE, eval = TRUE}
-amPlot(x = x, y = y, type = "l") %>>%
-  setLegend(useGraphSettings = TRUE) 
+```{r}
+amPlot(x = x, y = y, type = "l", legend = TRUE)
 ```
 
 ## Add a scrollbar, lty and cex
 
-```{r, echo = TRUE, eval = FALSE}
+```{r}
 amPlot(x = x, y = y, scrollbar = TRUE, lty = 2,  type = "l")
-```
-```{r, echo = FALSE, eval = TRUE}
-amPlot(x = x, y = y, scrollbar = TRUE, lty = 2)
 ```
 
 ## Change color, main
