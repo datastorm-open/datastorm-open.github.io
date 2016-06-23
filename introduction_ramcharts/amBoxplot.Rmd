@@ -52,7 +52,7 @@ amBoxplot(rnorm(100))
 amBoxplot(weight~Diet, data=dataset, horiz = TRUE)
 ```
 
-## Display boxplot absed on matrix's rows
+## Display boxplot based on matrix's rows
 ```{r}
 mat <- matrix(nrow = 10, ncol = 5, rnorm(50))
 amBoxplot(mat, use.cols = FALSE)

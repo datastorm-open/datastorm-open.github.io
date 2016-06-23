@@ -23,7 +23,7 @@ Package is on CRAN.
 install.packages("rAmCharts")
 
 # can have new features in developpement version 
-devtools::install_github("dataknowledge/rAmCharts")
+devtools::install_github("datastorm-open/rAmCharts")
 ```
 
 ## Prerequisite

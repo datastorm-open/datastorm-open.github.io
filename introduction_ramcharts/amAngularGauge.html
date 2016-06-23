@@ -10,6 +10,7 @@
 
 
 
+
 <title>rAmCharts - amAngularGauge</title>
 
 <script src="libs/jquery/jquery.min.js"></script>
@@ -22,10 +23,9 @@
 <script src="libs/amcharts/amcharts.js"></script>
 <script src="libs/ramcharts_base-binding/ramcharts_base.js"></script>
 <script src="libs/amcharts/gauge.js"></script>
-<link href="libs/amcharts_style/style.css" rel="stylesheet" />
-<link href="libs/amcharts_plugins_export/export.css" rel="stylesheet" />
-<script src="libs/amcharts_plugins_export/export.min.js"></script>
-<script src="libs/amcharts_themes_patterns/patterns.js"></script>
+<link href="libs/amcharts_export/export.css" rel="stylesheet" />
+<script src="libs/amcharts_export/export.min.js"></script>
+<script src="libs/amcharts_themes_patterns.js/patterns.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Raleway:100' rel='stylesheet' type='text/css'>
@@ -50,6 +50,34 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
 </script>
 
 
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
 <link rel="stylesheet" href="www/css/styles.css" type="text/css" />
 
 </head>
@@ -66,12 +94,34 @@ code {
   color: inherit;
   background-color: rgba(0, 0, 0, 0.04);
 }
-img { 
-  max-width:100%; 
-  height: auto; 
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
 }
 </style>
+
+
 <div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script src="libs/navigation/tabsets.js"></script>
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
 
 
 <!-- bootstrap row container for all the content -->
@@ -128,6 +178,12 @@ img {
   
   <div class="col-xs-6 col-md-7 show" id="main-content"> <!-- main column -->
 
+<div class="fluid-row" id="header">
+
+
+
+
+</div>
 
 
 <h1>
@@ -153,8 +209,8 @@ rAmCharts - amAngularGauge
 <div id="reference-example" class="section level2">
 <h2>Reference example</h2>
 <pre class="r"><code>amAngularGauge(x = 25)</code></pre>
-<p><div id="htmlwidget-4929" style="width:40%;height:480px;" class="ramcharts_base html-widget"></div>
-<script type="application/json" data-for="htmlwidget-4929">{"x":{"chartData":{"startValue":0,"endValue":100,"valueInterval":20,"arrows":[{"alpha":1,"value":25}],"axes":[{"axisAlpha":1,"startValue":0,"endValue":100,"valueInterval":20,"bottomText":"25 ","bottomTextFontSize":25,"radius":"100%","bands":[{"alpha":1}]}],"type":"gauge"},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":[],"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":null},"evals":[],"jsHooks":[]}</script></p>
+<div id="htmlwidget-1454" style="width:40%;height:480px;" class="ramcharts_base html-widget"></div>
+<script type="application/json" data-for="htmlwidget-1454">{"x":{"chartData":{"startValue":0,"endValue":100,"valueInterval":20,"arrows":[{"alpha":1,"value":25}],"axes":[{"axisAlpha":1,"startValue":0,"endValue":100,"valueInterval":20,"bottomText":"25 ","bottomTextFontSize":25,"radius":"100%","bands":[{"alpha":1}]}],"type":"gauge"},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":[],"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":null},"evals":[],"jsHooks":[]}</script>
 </div>
 <div id="add-colored-bands" class="section level2">
 <h2>Add colored bands</h2>
@@ -162,14 +218,14 @@ rAmCharts - amAngularGauge
                    color = c(&quot;#00CC00&quot;, &quot;#ffac29&quot;, &quot;#ea3838&quot;),
                    stringsAsFactors = FALSE)
 amAngularGauge(x = 25, bands = bands)</code></pre>
-<p><div id="htmlwidget-1564" style="width:40%;height:480px;" class="ramcharts_base html-widget"></div>
-<script type="application/json" data-for="htmlwidget-1564">{"x":{"chartData":{"startValue":0,"endValue":100,"valueInterval":20,"arrows":[{"alpha":1,"value":25}],"axes":[{"axisAlpha":1,"startValue":0,"endValue":100,"valueInterval":20,"bottomText":"25 ","bottomTextFontSize":25,"radius":"100%","bands":[{"alpha":1,"startValue":0,"endValue":40,"color":"#00CC00","innerRadius":"97%"},{"alpha":1,"startValue":40,"endValue":60,"color":"#ffac29","innerRadius":"97%"},{"alpha":1,"startValue":60,"endValue":100,"color":"#ea3838","innerRadius":"97%"}]}],"type":"gauge"},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":[],"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":null},"evals":[],"jsHooks":[]}</script></p>
+<div id="htmlwidget-3074" style="width:40%;height:480px;" class="ramcharts_base html-widget"></div>
+<script type="application/json" data-for="htmlwidget-3074">{"x":{"chartData":{"startValue":0,"endValue":100,"valueInterval":20,"arrows":[{"alpha":1,"value":25}],"axes":[{"axisAlpha":1,"startValue":0,"endValue":100,"valueInterval":20,"bottomText":"25 ","bottomTextFontSize":25,"radius":"100%","bands":[{"alpha":1,"startValue":0,"endValue":40,"color":"#00CC00","innerRadius":"97%"},{"alpha":1,"startValue":40,"endValue":60,"color":"#ffac29","innerRadius":"97%"},{"alpha":1,"startValue":60,"endValue":100,"color":"#ea3838","innerRadius":"97%"}]}],"type":"gauge"},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":[],"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":null},"evals":[],"jsHooks":[]}</script>
 </div>
 <div id="add-text" class="section level2">
 <h2>Add text</h2>
 <pre class="r"><code>amAngularGauge(x = 25, text = &quot;km/h&quot;)</code></pre>
-<p><div id="htmlwidget-4537" style="width:40%;height:480px;" class="ramcharts_base html-widget"></div>
-<script type="application/json" data-for="htmlwidget-4537">{"x":{"chartData":{"startValue":0,"endValue":100,"valueInterval":20,"arrows":[{"alpha":1,"value":25}],"axes":[{"axisAlpha":1,"startValue":0,"endValue":100,"valueInterval":20,"bottomText":"25 km/h","bottomTextFontSize":25,"radius":"100%","bands":[{"alpha":1}]}],"type":"gauge"},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":[],"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":null},"evals":[],"jsHooks":[]}</script></p>
+<div id="htmlwidget-6410" style="width:40%;height:480px;" class="ramcharts_base html-widget"></div>
+<script type="application/json" data-for="htmlwidget-6410">{"x":{"chartData":{"startValue":0,"endValue":100,"valueInterval":20,"arrows":[{"alpha":1,"value":25}],"axes":[{"axisAlpha":1,"startValue":0,"endValue":100,"valueInterval":20,"bottomText":"25 km/h","bottomTextFontSize":25,"radius":"100%","bands":[{"alpha":1}]}],"type":"gauge"},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":[],"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":null},"evals":[],"jsHooks":[]}</script>
 </div>
 <div id="two-axis" class="section level2">
 <h2>Two axis</h2>
@@ -178,8 +234,8 @@ amAngularGauge(x = 25, bands = bands)</code></pre>
                    stringsAsFactors = FALSE)
 amAngularGauge(x = 25, start = 0, end = 100, bands = bands,
                secondAxe = TRUE, start2 = 100, end2 = 200, bands2 = bands2)</code></pre>
-<p><div id="htmlwidget-298" style="width:40%;height:480px;" class="ramcharts_base html-widget"></div>
-<script type="application/json" data-for="htmlwidget-298">{"x":{"chartData":{"startValue":0,"endValue":100,"valueInterval":20,"arrows":[{"alpha":1,"value":25}],"axes":[{"axisAlpha":1,"startValue":0,"endValue":100,"valueInterval":20,"bottomText":"25 ","bottomTextFontSize":25,"radius":"80%","bands":[{"alpha":1,"startValue":0,"endValue":40,"color":"#00CC00","innerRadius":"97%"},{"alpha":1,"startValue":40,"endValue":60,"color":"#ffac29","innerRadius":"97%"},{"alpha":1,"startValue":60,"endValue":100,"color":"#ea3838","innerRadius":"97%"}]},{"axisAlpha":1,"startValue":100,"endValue":200,"valueInterval":20,"inside":false,"gridInside":false,"radius":"100%","bands":[{"alpha":1,"startValue":100,"endValue":130,"color":"#00CC00","innerRadius":"100%"},{"alpha":1,"startValue":130,"endValue":170,"color":"#ffac29","innerRadius":"100%"},{"alpha":1,"startValue":170,"endValue":200,"color":"#ea3838","innerRadius":"100%"}]}],"type":"gauge"},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":[],"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":null},"evals":[],"jsHooks":[]}</script></p>
+<div id="htmlwidget-4370" style="width:40%;height:480px;" class="ramcharts_base html-widget"></div>
+<script type="application/json" data-for="htmlwidget-4370">{"x":{"chartData":{"startValue":0,"endValue":100,"valueInterval":20,"arrows":[{"alpha":1,"value":25}],"axes":[{"axisAlpha":1,"startValue":0,"endValue":100,"valueInterval":20,"bottomText":"25 ","bottomTextFontSize":25,"radius":"80%","bands":[{"alpha":1,"startValue":0,"endValue":40,"color":"#00CC00","innerRadius":"97%"},{"alpha":1,"startValue":40,"endValue":60,"color":"#ffac29","innerRadius":"97%"},{"alpha":1,"startValue":60,"endValue":100,"color":"#ea3838","innerRadius":"97%"}]},{"axisAlpha":1,"startValue":100,"endValue":200,"valueInterval":20,"inside":false,"gridInside":false,"radius":"100%","bands":[{"alpha":1,"startValue":100,"endValue":130,"color":"#00CC00","innerRadius":"100%"},{"alpha":1,"startValue":130,"endValue":170,"color":"#ffac29","innerRadius":"100%"},{"alpha":1,"startValue":170,"endValue":200,"color":"#ea3838","innerRadius":"100%"}]}],"type":"gauge"},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":[],"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":null},"evals":[],"jsHooks":[]}</script>
 <h2 class="partdivtitle">
 amOptions
 </h2>
@@ -190,8 +246,8 @@ amOptions
 #or
 amAngularGauge(x = 25) %&gt;&gt;% 
   amOptions(export = TRUE)</code></pre>
-<p><div id="htmlwidget-4939" style="width:40%;height:480px;" class="ramcharts_base html-widget"></div>
-<script type="application/json" data-for="htmlwidget-4939">{"x":{"chartData":{"startValue":0,"endValue":100,"valueInterval":20,"export":{"enabled":true},"arrows":[{"alpha":1,"value":25}],"axes":[{"axisAlpha":1,"startValue":0,"endValue":100,"valueInterval":20,"bottomText":"25 ","bottomTextFontSize":25,"radius":"100%","bands":[{"alpha":1}]}],"type":"gauge"},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":[],"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":null},"evals":[],"jsHooks":[]}</script></p>
+<div id="htmlwidget-7990" style="width:40%;height:480px;" class="ramcharts_base html-widget"></div>
+<script type="application/json" data-for="htmlwidget-7990">{"x":{"chartData":{"startValue":0,"endValue":100,"valueInterval":20,"export":{"enabled":true},"arrows":[{"alpha":1,"value":25}],"axes":[{"axisAlpha":1,"startValue":0,"endValue":100,"valueInterval":20,"bottomText":"25 ","bottomTextFontSize":25,"radius":"100%","bands":[{"alpha":1}]}],"type":"gauge"},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":[],"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":null},"evals":[],"jsHooks":[]}</script>
 </div>
 <div id="exportformat" class="section level2">
 <h2>exportFormat</h2>
@@ -199,8 +255,8 @@ amAngularGauge(x = 25) %&gt;&gt;%
 #or
 amAngularGauge(x = 25) %&gt;&gt;% 
   amOptions(export = TRUE, exportFormat = &quot;JPG&quot;)</code></pre>
-<p><div id="htmlwidget-697" style="width:40%;height:480px;" class="ramcharts_base html-widget"></div>
-<script type="application/json" data-for="htmlwidget-697">{"x":{"chartData":{"startValue":0,"endValue":100,"valueInterval":20,"export":{"enabled":true,"menu":[{"class":"export-main","menu":[{"format":"JPG","label":"Download as JPG","title":"JPG"}]}]},"arrows":[{"alpha":1,"value":25}],"axes":[{"axisAlpha":1,"startValue":0,"endValue":100,"valueInterval":20,"bottomText":"25 ","bottomTextFontSize":25,"radius":"100%","bands":[{"alpha":1}]}],"type":"gauge"},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":[],"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":null},"evals":[],"jsHooks":[]}</script></p>
+<div id="htmlwidget-4206" style="width:40%;height:480px;" class="ramcharts_base html-widget"></div>
+<script type="application/json" data-for="htmlwidget-4206">{"x":{"chartData":{"startValue":0,"endValue":100,"valueInterval":20,"export":{"enabled":true,"menu":[{"class":"export-main","menu":[{"format":"JPG","label":"Download as JPG","title":"JPG"}]}]},"arrows":[{"alpha":1,"value":25}],"axes":[{"axisAlpha":1,"startValue":0,"endValue":100,"valueInterval":20,"bottomText":"25 ","bottomTextFontSize":25,"radius":"100%","bands":[{"alpha":1}]}],"type":"gauge"},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":[],"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":null},"evals":[],"jsHooks":[]}</script>
 </div>
 <div id="main-and-creditsposition" class="section level2">
 <h2>main and creditsPosition</h2>
@@ -210,8 +266,8 @@ amAngularGauge(x = 25) %&gt;&gt;%
 amAngularGauge(x = 25) %&gt;&gt;% 
   amOptions( main = &quot;My Gauge&quot;,
         mainColor = &quot;#68838B&quot;, mainSize = 25, creditsPosition = &quot;bottom-right&quot;)</code></pre>
-<p><div id="htmlwidget-8866" style="width:40%;height:480px;" class="ramcharts_base html-widget"></div>
-<script type="application/json" data-for="htmlwidget-8866">{"x":{"chartData":{"startValue":0,"endValue":100,"valueInterval":20,"arrows":[{"alpha":1,"value":25}],"axes":[{"axisAlpha":1,"startValue":0,"endValue":100,"valueInterval":20,"bottomText":"25 ","bottomTextFontSize":25,"radius":"100%","bands":[{"alpha":1}]}],"creditsPosition":"bottom-right","titles":[{"color":"#68838B","text":"My Gauge","size":25}],"type":"gauge"},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":[],"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":null},"evals":[],"jsHooks":[]}</script></p>
+<div id="htmlwidget-9858" style="width:40%;height:480px;" class="ramcharts_base html-widget"></div>
+<script type="application/json" data-for="htmlwidget-9858">{"x":{"chartData":{"startValue":0,"endValue":100,"valueInterval":20,"arrows":[{"alpha":1,"value":25}],"axes":[{"axisAlpha":1,"startValue":0,"endValue":100,"valueInterval":20,"bottomText":"25 ","bottomTextFontSize":25,"radius":"100%","bands":[{"alpha":1}]}],"creditsPosition":"bottom-right","titles":[{"color":"#68838B","text":"My Gauge","size":25}],"type":"gauge"},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":[],"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":null},"evals":[],"jsHooks":[]}</script>
 </div>
 <div id="theme" class="section level2">
 <h2>theme</h2>
@@ -219,8 +275,8 @@ amAngularGauge(x = 25) %&gt;&gt;%
 #or
 amAngularGauge(x = 25) %&gt;&gt;% 
   amOptions(theme = &quot;patterns&quot;)</code></pre>
-<p><div id="htmlwidget-7629" style="width:40%;height:480px;" class="ramcharts_base html-widget"></div>
-<script type="application/json" data-for="htmlwidget-7629">{"x":{"chartData":{"startValue":0,"endValue":100,"valueInterval":20,"arrows":[{"alpha":1,"value":25}],"axes":[{"axisAlpha":1,"startValue":0,"endValue":100,"valueInterval":20,"bottomText":"25 ","bottomTextFontSize":25,"radius":"100%","bands":[{"alpha":1}]}],"theme":"patterns","type":"gauge"},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":[],"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":null},"evals":[],"jsHooks":[]}</script></p>
+<div id="htmlwidget-4390" style="width:40%;height:480px;" class="ramcharts_base html-widget"></div>
+<script type="application/json" data-for="htmlwidget-4390">{"x":{"chartData":{"startValue":0,"endValue":100,"valueInterval":20,"arrows":[{"alpha":1,"value":25}],"axes":[{"axisAlpha":1,"startValue":0,"endValue":100,"valueInterval":20,"bottomText":"25 ","bottomTextFontSize":25,"radius":"100%","bands":[{"alpha":1}]}],"theme":"patterns","type":"gauge"},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":[],"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":null,"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":null},"evals":[],"jsHooks":[]}</script>
 </div>
 
 
@@ -236,6 +292,8 @@ amAngularGauge(x = 25) %&gt;&gt;%
   <script src="./www/js/logo.js"> </script>
   <script src="./www/js/toggle.js"> </script>
 </div><!-- end of main row -->
+
+
 
 </div>
 

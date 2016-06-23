@@ -10,6 +10,7 @@
 
 
 
+
 <title>rAmCharts - introduction</title>
 
 <script src="libs/jquery/jquery.min.js"></script>
@@ -42,6 +43,34 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
 </script>
 
 
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
 <link rel="stylesheet" href="www/css/styles.css" type="text/css" />
 
 </head>
@@ -58,12 +87,34 @@ code {
   color: inherit;
   background-color: rgba(0, 0, 0, 0.04);
 }
-img { 
-  max-width:100%; 
-  height: auto; 
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
 }
 </style>
+
+
 <div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script src="libs/navigation/tabsets.js"></script>
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
 
 
 <!-- bootstrap row container for all the content -->
@@ -120,6 +171,12 @@ img {
   
   <div class="col-xs-6 col-md-7 show" id="main-content"> <!-- main column -->
 
+<div class="fluid-row" id="header">
+
+
+
+
+</div>
 
 
 <div id="use-the-javascript-features-for-your-r-charts" class="section level1">
@@ -135,7 +192,7 @@ img {
 <pre class="r"><code>install.packages(&quot;rAmCharts&quot;)
 
 # can have new features in developpement version 
-devtools::install_github(&quot;dataknowledge/rAmCharts&quot;)</code></pre>
+devtools::install_github(&quot;datastorm-open/rAmCharts&quot;)</code></pre>
 </div>
 <div id="prerequisite" class="section level2">
 <h2>Prerequisite</h2>
@@ -183,6 +240,8 @@ pipeline(
   <script src="./www/js/logo.js"> </script>
   <script src="./www/js/toggle.js"> </script>
 </div><!-- end of main row -->
+
+
 
 </div>
 
