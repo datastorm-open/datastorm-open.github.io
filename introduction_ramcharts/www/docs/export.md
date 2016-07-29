@@ -1,27 +1,44 @@
 # amCharts Export
 
-Version: 1.4.9
+Version: 1.4.33
 
 
 ## Description
 
 This plugin adds export capabilities to all amCharts products - charts and maps.
 
-It allows annotating and exporting chart or related data to various bitmap, 
-vector, document or data formats, such as PNG, JPG, PDF, SVG, JSON, XLSX and 
+It allows annotating and exporting chart or related data to various bitmap,
+vector, document or data formats, such as PNG, JPG, PDF, SVG, JSON, XLSX and
 many more.
 
 
 ## Important notice
 
-Please note that due to security measures implemented in modern browsers, some 
-or all export options might not work if the web page is loaded locally (via 
+Please note that due to security measures implemented in modern browsers, some
+or all export options might not work if the web page is loaded locally (via
 file:///) or contain images loaded from different host than the web page itself.
 
 
 ## Usage
 
-### Enable `export` with default options:
+### 1) Include the minified version of file of this plugin as well as the
+bundled CSS file. I.e.:
+
+```
+<script src="amcharts/plugins/export/export.min.js"></script>
+<link  type="text/css" href="amcharts/plugins/export/export.css" rel="stylesheet">
+```
+
+Or if you'd rather use amCharts CDN:
+
+```
+<script src="//cdn.amcharts.com/lib/3/plugins/export/export.min.js"></script>
+<link  type="text/css" href="//cdn.amcharts.com/lib/3/plugins/export/export.css" rel="stylesheet">
+```
+
+(this needs to go after all the other amCharts includes)
+
+### 2) Enable `export` with default options:
 
 ```
 AmCharts.makeChart( "chartdiv", {
@@ -60,7 +77,7 @@ AmCharts.makeChart( "chartdiv", {
 
 ## Loading external libraries needed for operation of this plugin
 
-The plugin relies on a number of different libraries, to export images, draw 
+The plugin relies on a number of different libraries, to export images, draw
 annotations or generate download files.
 
 Those libraries need to be loaded for the plugin to work properly.
@@ -69,15 +86,15 @@ There are two ways to load them. Choose the one that is right:
 
 ### 1) Automatic (preferred)
 
-All libraries required for plugin operation are included withing plugins */libs* 
+All libraries required for plugin operation are included withing plugins */libs*
 subdirectory.
 
-The plugin will automatically try to look in chart's [`path`](http://docs.amcharts.com/3/javascriptcharts/AmSerialChart#path) 
-property. If your plugin files are located within plugins folder under amcharts 
+The plugin will automatically try to look in chart's [`path`](http://docs.amcharts.com/3/javascriptcharts/AmSerialChart#path)
+property. If your plugin files are located within plugins folder under amcharts
 (as is the case with the default distributions), you don't need to do anything -
 the libraries will load on-demand.
 
-If you are using relative url, note that it is relative to the web page you are 
+If you are using relative url, note that it is relative to the web page you are
 displaying your chart on, not the export.js library.
 
 In case you've moved the libs folder you need to tell the plugin where it is
@@ -85,8 +102,8 @@ In case you've moved the libs folder you need to tell the plugin where it is
 
 ### 2) Manual
 
-You can also load all those JavaScript libraries by `<script>` tags. Since 
-loading of libraries is on by default you will need to turn it off by setting 
+You can also load all those JavaScript libraries by `<script>` tags. Since
+loading of libraries is on by default you will need to turn it off by setting
 `"libs": { "autoLoad": false }`
 
 Here is a full list of the files that need to be loaded for each operation:
@@ -128,19 +145,23 @@ keyListener | false | If true it observes the pressed keys to undo/redo the anno
 fileListener | false | If true it observes the drag and drop feature and loads the dropped image file into the annotation
 drawing | {} | Object which holds all possible settings for the annotation mode ([skip to chapter](#annotation-settings))
 overflow | true | Flag to overwrite the css attribute 'overflow' of the chart container to avoid cropping the menu on small container
+border | {} | An object of key/value pairs to define the overlaying border
+processData | | A function which can be used to change the dataProvider when exporting to CSV, XLSX, or JSON
+pageOrigin | true | A flag to show / hide the origin of the generated PDF ( pdf export only )
+forceRemoveImages | false | If true export removes all images
 
 
 ## Configuring export menu
 
-Plugin includes a way to completely control what is displayed on export menu. 
-You can set up menus, sub-menus, down to any level. You can even add custom 
-items there that execute your arbitrary code on click. It's so configurable 
+Plugin includes a way to completely control what is displayed on export menu.
+You can set up menus, sub-menus, down to any level. You can even add custom
+items there that execute your arbitrary code on click. It's so configurable
 it makes us sick with power ;)
 
-The top-level menu is configured via `menu` property under `export`. It should 
+The top-level menu is configured via `menu` property under `export`. It should
 always be an array, even if you have a single item in it.
 
-The array items could be either objects or format codes. Objects will allow you 
+The array items could be either objects or format codes. Objects will allow you
 to specify labels, action, icon, child items and even custom code to be executed
 on click.
 
@@ -160,7 +181,7 @@ Here's a sample of the simple menu setup that allows export to PNG, JPG and CSV:
 }
 ```
 
-The above will display a menu out of three options when you hover on export 
+The above will display a menu out of three options when you hover on export
 icon:
 
 * PNG
@@ -171,18 +192,18 @@ When clicked the plugin will trigger export to a respective format.
 
 If that is all you need, you're all set.
 
-Please note that we have wrapped out menu into another menu item, so that only 
+Please note that we have wrapped out menu into another menu item, so that only
 the icon is displayed until we roll over the icon. This means that technically
 we have a two-level hierarchical menu.
 
-If we opmitted that first step, the chart would simply display a format list 
+If we opmitted that first step, the chart would simply display a format list
 right there on the chart.
 
 ### Advanced menu setup
 
 However, you can do so much more with the menu.
 
-Let's add more formats and organize image and data formats into separate 
+Let's add more formats and organize image and data formats into separate
 submenus.
 
 To add a submenu to a menu item, simply add a `menu` array as its own property:
@@ -218,7 +239,7 @@ We can mix "string" and "object" formats the way we see fit, i.e.:
 ```
 "export": {
   "menu": [
-    "PNG", 
+    "PNG",
     { "label": "JPEG",
       "format": "JPG" },
     "SVG"
@@ -230,7 +251,7 @@ The magic does not end here, though.
 
 ### Adding custom click events to menu items
 
-Just like we set `label` and `format` properties for menu item, we can set 
+Just like we set `label` and `format` properties for menu item, we can set
 `click` as well.
 
 This needs to be a function reference. I.e.:
@@ -238,7 +259,7 @@ This needs to be a function reference. I.e.:
 ```
 "export": {
   "menu": [
-    "PNG", 
+    "PNG",
     { "label": "JPEG",
       "click": function () {
         alert( "Clicked JPEG. Wow cool!" );
@@ -263,10 +284,36 @@ By default it obtains the dimensions from the container but you can optionally o
 }
 ```
 
+### Changing the dataProvider when exporting
+
+If you want to change the dataProvider when exporting to CSV, XLSX, or JSON, you can use the `processData` option:
+
+```
+"export": {
+  "processData": function (data) {
+    return data.slice(1, -1);
+  }
+}
+```
+
+### Adding overlaying border
+
+In case you need a more visible separation of your chart for further processing you can add an overlaying border.
+
+```
+"export": {
+  "border": {
+    "stroke": "#000000",  // HEX-CODE to define the border color
+    "strokeWidth": 1,     // number which represents the width in pixel
+    "strokeOpacity": 1    // number which controls the opacity from 0 - 1
+  }
+}
+```
+
 ### Menu item reviver
 
-By passing the `menuReviver` callback function you can modify the resulting menu 
-item or relative container, before it gets appended to the list (`ul`). The 
+By passing the `menuReviver` callback function you can modify the resulting menu
+item or relative container, before it gets appended to the list (`ul`). The
 function takes two arguments and it needs to return a valid DOM element.
 
 ```
@@ -343,7 +390,7 @@ stringify | false | true/false | Convert all cell content to strings
 
 ### Menu walker
 
-In case you don't like our structure, go ahead and write your own recursive 
+In case you don't like our structure, go ahead and write your own recursive
 function to create the menu by the given list configured through `menu`.
 
 ```
@@ -356,13 +403,13 @@ function to create the menu by the given list configured through `menu`.
 
 ### Printing the chart
 
-Adding menu item to print the chart or map is as easy as adding export ones. You 
+Adding menu item to print the chart or map is as easy as adding export ones. You
 just use "PRINT" as `format`. I.e.:
 
 ```
 "export": {
   "menu": [
-    "PNG", 
+    "PNG",
     "SVG",
     "PRINT"
   ]
@@ -374,7 +421,7 @@ Or if you want to change the label:
 ```
 "export": {
   "menu": [
-    "PNG", 
+    "PNG",
     "SVG",
     {
       "format": "PRINT",
@@ -388,7 +435,7 @@ Or if you want to change the label:
 
 OK, this one is so cool, you'll need a class 700 insulation jacket.
 
-By default each menu item triggers some kind of export. You can trigger an 
+By default each menu item triggers some kind of export. You can trigger an
 "annotation" mode instead by including `"action": "draw"` instead.
 
 ```
@@ -406,8 +453,8 @@ By default each menu item triggers some kind of export. You can trigger an
 }
 ```
 
-Now, when you click on the "Annotate" item in the menu, the chart will turn into 
-an image editor which you can actual draw on and the menu gets replaced by the 
+Now, when you click on the "Annotate" item in the menu, the chart will turn into
+an image editor which you can actual draw on and the menu gets replaced by the
 default annotation menu.
 
 If you don't like the detault annotation menu, you can define your own:
@@ -431,11 +478,11 @@ If you don't like the detault annotation menu, you can define your own:
 }
 ```
 
-Now, when you turn on the annotation mode, your own submenu will display, 
+Now, when you turn on the annotation mode, your own submenu will display,
 allowing to export the image into either PNG, JPG, SVG or PDF.
 
-And that's not even the end of it. You can add menu items to cancel, undo, redo 
-and still be able to reuse the choices by using the actions `draw.modes`, 
+And that's not even the end of it. You can add menu items to cancel, undo, redo
+and still be able to reuse the choices by using the actions `draw.modes`,
 `draw.widths`, `draw.colors` or `draw.shapes`.
 
 ```
@@ -469,12 +516,12 @@ and still be able to reuse the choices by using the actions `draw.modes`,
 
 ### Annotation settings
 
-Since 1.2.1 it's also possible to set some of the annotation options without the 
-need to re-define the whole menu structure. You can easily adjust the choice of 
-modes, colors, widths or shapes, and set the defaults when entering the 
+Since 1.2.1 it's also possible to set some of the annotation options without the
+need to re-define the whole menu structure. You can easily adjust the choice of
+modes, colors, widths or shapes, and set the defaults when entering the
 annotation mode.
 
-Following setup shows you all available settings. If you don't have the 
+Following setup shows you all available settings. If you don't have the
 `drawing` property at all, it will falls back to the defaults.
 
 ```
@@ -503,9 +550,9 @@ Following setup shows you all available settings. If you don't have the
 }
 ```
 
-If you need to filter the drawn elements, you can pass the `reviver` method in 
-your global configuration, or pass it to the `capture` method if you export 
-manually. For example, to hide all free labels you can simply do something like 
+If you need to filter the drawn elements, you can pass the `reviver` method in
+your global configuration, or pass it to the `capture` method if you export
+manually. For example, to hide all free labels you can simply do something like
 the following:
 
 ```
@@ -521,8 +568,8 @@ the following:
 
 ### Delay the capturing before export
 
-In some cases you may want to delay the capturing of the current chart snapshot 
-to highlight the current value. For this you can simply define the 'delay' 
+In some cases you may want to delay the capturing of the current chart snapshot
+to highlight the current value. For this you can simply define the 'delay'
 property in your menu item:
 
 ```
@@ -541,9 +588,9 @@ property in your menu item:
 
 ### Events
 
-Since version 1.1.7 the plugin introduces some events you can use. For example 
-the `afterCapture` event allows you to add some texts or images which can't be 
-seen on the regular chart but only the generated export. Use it to watermark 
+Since version 1.1.7 the plugin introduces some events you can use. For example
+the `afterCapture` event allows you to add some texts or images which can't be
+seen on the regular chart but only the generated export. Use it to watermark
 your exported images.
 
 ```
@@ -553,7 +600,7 @@ your exported images.
         top: 50,
         left: 100,
         family: this.setup.chart.fontFamily,
-        size: this.setup.chart.fontSize * 2
+        fontSize: this.setup.chart.fontSize * 2
       });
       this.setup.fabric.add(text);
   },
@@ -568,11 +615,36 @@ your exported images.
           top: 50,
           left: 100,
           family: this.setup.chart.fontFamily,
-          size: this.setup.chart.fontSize * 2
+          fontSize: this.setup.chart.fontSize * 2
         });
         this.setup.fabric.add(text);
     }
-  }]
+  }],
+```
+
+Since version 1.4.29 we have added the `onReady` callback to get your stuff done
+right after the plugin or specific dependency is ready to use. Ensure to check the
+`timedout` flag to be sure the dependency got fully loaded.
+
+```
+"export": {
+  "onReady": function( type, timedout ) {
+
+    // Plugin ready for data exports
+    if ( type == "data" ) {
+      this.toCSV( {}, function( data ) {
+        // Exported to CSV
+      } );
+
+    // Plugin ready for image exports
+    } else if ( type == "fabric" && !timedout ) {
+      this.capture( {}, function() {
+        this.toPNG( {}, function( data ) {
+          // Exported to PNG
+        } );
+      } );
+    }
+  }
 }
 ```
 
@@ -613,6 +685,8 @@ columnNames | An object of key/value pairs to use as column names when exporting
 exportSelection | Exports the current data selection only ( data export only )
 dataDateFormat | Format to convert date strings to date objects, uses by default charts dataDateFormat ( data export only )
 dateFormat | Formats the category field in given date format ( data export only )
+border | An object of key/value pairs to define the overlaying border
+pageOrigin | A flag to show / hide the origin of the generated PDF ( pdf export only )
 
 Available `format` values:
 
@@ -627,20 +701,20 @@ Available `format` values:
 
 ### Exporting to PDF
 
-When exporting to PDF, you can set and modify the content of the resulting 
+When exporting to PDF, you can set and modify the content of the resulting
 document. I.e. add additional text and/or modify image size, etc.
 
 To do that, you can use menu item's `content` property.
 
-Each item in `content` represents either a text line (string) or an exported 
+Each item in `content` represents either a text line (string) or an exported
 image.
 
-To add a text line, simply use a string. It can even be a JavaScript variable or 
+To add a text line, simply use a string. It can even be a JavaScript variable or
 a function that returns a string.
 
 To include exported image, use `image: "reference"`.
 
-Additionally, you can add `fit` property which is an array of pixel dimensions, 
+Additionally, you can add `fit` property which is an array of pixel dimensions,
 you want the image to be scaled to fit into.
 
 Here's an example of such export menu item:
@@ -717,22 +791,22 @@ TABLOID | [792.00, 1224.00]
 
 ## Styling the export menu
 
-The plugin comes with a default CSS file `export.css`. You just need to include 
+The plugin comes with a default CSS file `export.css`. You just need to include
 it on your page.
 
-Feel free to override any styles defined in it, create your own version and 
+Feel free to override any styles defined in it, create your own version and
 modify as you see fit.
 
-If you choose to modify it, we suggest creating a copy so it does not get 
+If you choose to modify it, we suggest creating a copy so it does not get
 overwritten when you update amCharts or plugin.
 
 
 ## Plugin API
 
-We explained how you can define custom functions to be executed on click on 
+We explained how you can define custom functions to be executed on click on
 export menu items.
 
-Those functions can tap into plugin's methods to augment it with some custom 
+Those functions can tap into plugin's methods to augment it with some custom
 functionality.
 
 Here's an example:
@@ -752,10 +826,10 @@ Here's an example:
 }
 ```
 
-The above will use plugin's internal `capture` method to capture it's current 
+The above will use plugin's internal `capture` method to capture it's current
 state and `toJPG()` method to export the chart to JPEG format.
 
-Yes, you're right, it's the exact equivalent of just including "JPG" string. The 
+Yes, you're right, it's the exact equivalent of just including "JPG" string. The
 code is here for the explanatory purposes.
 
 Here's a full list of API functions available for your consumption:
@@ -774,20 +848,54 @@ toCanvas | (object) options, (function) callback | Prepares a Canvas and passes 
 toArray | (object) options, (function) callback | Prepares an Array and passes the data to the callback function
 toImage | (object) options, (function) callback | Generates an image element which holds the output in an embedded base64 data url
 
+## Annotation API
+
+Since version 1.4.27 we've introduced the functionality to manage the annotations on the fly. The setter returns an array of objects, where each element represents an annotation.
+On the other hand the setter processes the given annotations within options (options.data). Both methods support the reviver callback which allows you to modify the annotations if needed.
+
+Function | Parameters | Description
+-------- | ---------- | -----------
+getAnnotations | (object) options, (function) callback | Returns an array of objects where each element represents an annotation.
+setAnnotations | (object) options, (function) callback | Draws the given annotations (options.data).
+
+Here's an example how to insert annotations, please ensure your chart is in annotation mode:
+
+```
+chart.export.setAnnotations({
+
+  // Array of annotations, accepts this simple handwritten format or the detailed output of the getter
+  data: [{
+    top: 200,
+    left: 200,
+    text: "Test annotation",
+    type: "text"
+  }],
+
+  // Allows you to modify the annotation before it's being added into the canvas.
+  reviver: function(obj,index) {
+    obj.fill = "#FF00FF";
+  }
+
+
+},function() {
+  // Callback when finished 
+});
+```
+
 ## Fallback for IE9
 
-Unfortunately, Internet Explorer 9 has restrictions in place that prevent the 
-download of locally-generated files. In this case the plugin will place the 
+Unfortunately, Internet Explorer 9 has restrictions in place that prevent the
+download of locally-generated files. In this case the plugin will place the
 generated image along download instructions directly over the chart area.
 
-To avoid having a bigger payload by including senseless polyfills to your site, 
+To avoid having a bigger payload by including senseless polyfills to your site,
 you may need to add following metatag in your `<head>` of your HTML document.
 
 ```
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 ```
 
-This feature will kick in by default. If you want to disable it simply pass 
+This feature will kick in by default. If you want to disable it simply pass
 `false` to the `fallback` parameter.
 
 ```
@@ -796,7 +904,7 @@ This feature will kick in by default. If you want to disable it simply pass
 }
 ```
 
-In case you want to change our default messages you can modify it like 
+In case you want to change our default messages you can modify it like
 following.
 
 ```
@@ -862,6 +970,93 @@ http://www.apache.org/licenses/LICENSE-2.0
 
 
 ## Changelog
+
+### 1.4.33
+* Fixed: fill/stroke polyfilling issue on svg elements with color validation/preparation for fabric 
+
+### 1.4.32
+* Fixed: Issue polyfilling the color attributes with "rgba" color codes
+
+### 1.4.31
+* Changed: Included independent IE detection to handle specific IE10, IE11 svg image in canvas issue
+
+### 1.4.30
+* Fixed: Pattern loading, positioning issue, supports x,y offset now
+
+### 1.4.29
+* Added: `libs.loadTimeout` dependency namespace timeout used within onReady handler
+* Added: `fabric.loadTimeout` loading image timeout to avoid blocking the export process
+* Added: [onReady](#events) ready callback handler to get notified when the export or specific dependency is ready to use
+* Fixed: fill/stroke issue on SVG elements which caused a crash within the export process
+* Fixed: Image loader which freezed occasionally and caused an unexpected behaviour
+
+### 1.4.28
+* Fixed: Positioning / handling issue on multiline labels (injected modifed fabricJS snippet to handle it)
+* Fixed: Cursor issue on regular exports which flashed the crosshair cursor for a moment
+
+### 1.4.27
+* Added: [Annotations API](#annotations-api) to get or set annotations within drawing mode.
+
+### 1.4.26
+* Fixed: IE10 SVG image handing issue, caused by an internal bug of IE10 (removes SVGs automatically to avoid triggering the security policy)
+
+### 1.4.25
+* Fixed: `export.config.advanced.js` sample config issue with drawing callbacks
+* Fixed: `delay` property reset issue, did not get considered after first usage
+* Fixed: `drawing.enabled` propery issue after first usage, stayed on true
+* Changed: Updated fabric.js source to `1.6.2`
+* Added: Advanced sample using the advanced config
+
+### 1.4.24
+* Fixed: Issue with external legends in maps
+* Fixed: Resource dependency issue of xlsx with jszip
+* Fixed: Issue with `forceRemoveImages` in local enviroment (includes all ":\" and "file://" sources)
+* Changed: Resource loading order according to it's priority
+* Changed: Loading minified resource versions by default to improve the payload significantly
+
+### 1.4.23
+* Fixed: Issue with `forceRemoveImages` in local enviroment
+
+### 1.4.22
+* Fixed: Local time offset issue on XLSX exports
+* Added: `forceRemoveImages` to remove images regardless if they are tainted or not
+* Added: Used config ([processData](#changing-the-dataprovider-when-exporting)) as additional given parameter.
+
+### 1.4.21
+* Fixed: Issue with file:// image origin, forced removal as it does not fit to the CORS policy and blocks the image export.
+
+### 1.4.20
+* Fixed: Issue with disappearing images in PDFs caused by exceeding boundary box for images
+
+### 1.4.19
+* Fixed: Issue with radial gradient
+
+### 1.4.18
+* Fixed: Issue with the legend positioning on the left side
+
+### 1.4.17
+* Fixed: `clip-path` issue on XY serial charts which exposed the drawn line beyond the plotarea.
+
+### 1.4.16
+* Added: ([processData](#changing-the-dataprovider-when-exporting)) config-property to change the dataProvider when exporting.
+
+### 1.4.15
+* Fixed: Menu items obtain the global `multiplier` setting to scale the output image.
+
+### 1.4.14
+* Added: ([border](#adding-overlaying-border)) config-property to add an overlaying border on the output image.
+
+### 1.4.13
+* Fixed: Issue on balloons showing it's content as HTML added "textContent" as alternative getter
+
+### 1.4.12
+* Fixed: clipPath issue on SVG export (workaround until fabricJS handles that by themselves)
+
+### 1.4.11
+* Fixed: Depth issue on value labels on columns
+
+### 1.4.10
+* Fixed: potential vulnerability with anonymous function declaration
 
 ### 1.4.9
 * Added: Radial gradient support on pie charts (new feature in amCharts v3.18.0)
