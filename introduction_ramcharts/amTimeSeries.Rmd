@@ -58,14 +58,23 @@ amTimeSeries can be use to visualize times series which differents aggregation s
              linewidth = c(3, 1))
 ```
 
+## Confidence interval
+```{r}
+    data("data_stock_2")
+    data_stock_2 <- data_stock_2[1:50, ]
+    data_stock_2$ts1low <- data_stock_2$ts1-100
+    data_stock_2$ts1up <- data_stock_2$ts1+100
+    amTimeSeries(data_stock_2, "date", list(c("ts1low", "ts1", "ts1up"), "ts2"), 
+                color = c("red", "blue"), bullet = c("round", "square"))
+```
+
 ## Aggregation type, legend and number max of points before aggregate, group with next graph
 ```{r}
   data('data_stock_2')
   amTimeSeries(data_stock_2, 'date', c('ts1', 'ts2'), aggregation = 'Sum', legend = TRUE,
               maxSeries = 1300, group = 'a')
 ```
-
-
+ 
 ## More options..., group with previous graph
 ```{r}
   data('data_stock_2')
