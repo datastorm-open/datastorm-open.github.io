@@ -1,0 +1,78 @@
+---
+pagetitle: rAmCharts - amTimeSeries
+---
+
+```{r,echo=FALSE, message=FALSE}
+require(package = "rAmCharts", quietly = TRUE)
+require(package = "pipeR", quietly = TRUE)
+```
+
+<h1>rAmCharts - amTimeSeries</h1>
+
+## Usage
+amTimeSeries can be use to visualize times series which differents aggregation scale. You can pass minutes data and visualize your serie aggregate by hour or day for example. Three parameters control aggregation. **groupToPeriods** reference all periods or times series can be aggregated. **maxSeries** control maximum of points displayed before next period. **aggregation** control the type of aggregation, can be a sum, a mean ...
+
+## Parameters
+
+* __data__: a data.frame, data of graph. 
+* __col_date__: a character, name of date column.
+* __col_series__: a character, names of series columns.
+* __main__: a character, title of graph.
+* __ylab__: a character, value axis label.
+* __color__: a character, color of series (in hexadecimal).
+* __bullet__: a character, point shape. Possible values are : "diamond", "square", "bubble", "yError", "xError", "round", "triangleLeft", "triangleRight", "triangleUp".
+* __bullet__: a numeric, size of bullet.
+* __linetype__: a numeric, line type, 0 will draw a solid line, number will draw a dashed length.
+* __linewidth__: a numeric, line  width.
+* __fillAlphas__: a numeric, between 0 and 1.
+* __precision__: a numeric, default set to 1.
+* __export__: a logical, default set to FALSE. TRUE to display export feature.
+* __legend__: a logical, enabled or not legend ? Defaut to TRUE.
+* __legendPosition__: a character, legend position. Possible values are : "left", "right", "bottom", "top".
+* __aggregation__: a character, aggregation type. Possible values are : "Low", "High", "Average" and "Sum".
+* __maxSeries__: a numeric, Maximum series shown at a time. In case there are more data points in the selection than maxSeries, the chart will group data to longer periods, for example - you have 250 days in the selection, and maxSeries is 150 - the chart will group data to weeks.
+* __groupToPeriods__: a character, Periods to which data will be grouped in case there are more data items in the selected period than specified in maxSeries property. Possible value are : 'ss', 'mm', 'hh', 'DD', 'MM', 'YYYY'. It's also possible to add multiple like "30mm".
+* __ZoomButton__: a data.frame, 3 columns : Unit, times unit. multiple : multiple*unit. label : button's label
+* __ZoomButtonPosition__: a character, zoom button position. Possible values are : "left", "right", "bottom", "top".
+* __scrollbar__: a boolean, enabled or not scrollbar ? Defaut to TRUE.
+* __scrollbarPosition__: a character, scrollbar position. Possible values are : "left", "right", "bottom", "top".
+* __scrollbarHeight__: a numeric, height of scroll bar. Default : 40.
+* __creditsPosition__: a character, credits position. Possible values are : "top-right", "top-left", "bottom-right", "bottom-left".
+* __group__: a character, like in dygraphs, for synchronization in shiny or rmarkdown.
+* __...__: other first level attributes
+
+
+## Reference example
+
+```{r}
+   data('data_stock_2')
+   amTimeSeries(data_stock_2, 'date', c('ts1', 'ts2'))
+```
+
+
+## Style and aggregate period
+```{r}
+    data('data_stock_2')
+    amTimeSeries(data_stock_2, 'date', c('ts1', 'ts2'), bullet = 'round',
+             groupToPeriods = c('hh', 'DD', '10DD'),
+             linewidth = c(3, 1))
+```
+
+## Aggregation type, legend and number max of points before aggregate, group with next graph
+```{r}
+  data('data_stock_2')
+  amTimeSeries(data_stock_2, 'date', c('ts1', 'ts2'), aggregation = 'Sum', legend = TRUE,
+              maxSeries = 1300, group = 'a')
+```
+
+
+## More options..., group with previous graph
+```{r}
+  data('data_stock_2')
+    ZoomButton <- data.frame(Unit = c('DD', 'DD', 'MAX'), multiple = c(1, 10 ,1),
+                     label = c('Day','10 days', 'MAX'))
+    amTimeSeries(data_stock_2, 'date', c('ts1', 'ts2'), bullet = 'round',
+                ZoomButton = ZoomButton, main = 'My title',
+                ylab = 'Interest', export = TRUE,
+                creditsPosition = 'bottom-left', group = 'a')
+```
