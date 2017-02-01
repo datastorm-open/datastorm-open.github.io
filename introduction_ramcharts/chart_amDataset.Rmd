@@ -1,0 +1,42 @@
+---
+pagetitle: rAmCharts - amStockMultiSet
+---
+
+```{r,echo=FALSE, message=FALSE}
+require(package = "rAmCharts", quietly = TRUE)
+require(package = "pipeR", quietly = TRUE)
+```
+
+<h1>rAmCharts - amStockMultiSet</h1>
+
+
+* __data__: a list, list of data.frame (same structure) first column is date, others are values.
+* __panelColumn__: a numeric, control panel adding for selected series.
+* __ZoomButton__: a data.frame, 3 columns : Unit, times unit. multiple : multiple*unit. label : button's label
+* __color__: a character, color of series (in hexadecimal).
+* __precision__: a numeric, digits precision.
+* __export__: a logical, default set to FALSE. TRUE to display export feature.
+* __percentHeightPanel__: a numeric, vector of size panel, same length than data.
+* __creditsPosition__: a character, credits position. Possible values are : "top-right", "top-left", "bottom-right", "bottom-left".
+* __...__: other first level attributes
+
+## Reference example
+```{r}
+  data(data_stock_3)
+  amStockMultiSet(data = data_stock_3)
+``` 
+  
+## Multi pannels
+```{r}
+    data(data_stock_3)
+    amStockMultiSet(data = data_stock_3, panelColumn = c(1,2,1,1))
+``` 
+
+## ZoomButton, export and pannel height
+```{r}
+ data(data_stock_3)
+  ZoomButton <- data.frame(Unit = c('DD', 'DD', 'MAX'), multiple = c(10, 15 ,1),
+                          label = c('10 days','15 days', 'MAX'))
+  amStockMultiSet(data = data_stock_3, panelColumn = c(1,2,1,1), percentHeightPanel = c(3,1),
+                  ZoomButtonPosition = 'left', ZoomButton = ZoomButton, export = TRUE, precision = 0)
+``` 
