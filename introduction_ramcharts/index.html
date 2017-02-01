@@ -13,12 +13,12 @@
 
 <title>rAmCharts - introduction</title>
 
-<script src="libs/jquery/jquery.min.js"></script>
+<script src="libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="libs/bootstrap/css/cosmo.min.css" rel="stylesheet" />
-<script src="libs/bootstrap/js/bootstrap.min.js"></script>
-<script src="libs/bootstrap/shim/html5shiv.min.js"></script>
-<script src="libs/bootstrap/shim/respond.min.js"></script>
+<link href="libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
+<script src="libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="libs/bootstrap-3.3.5/shim/respond.min.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Raleway:100' rel='stylesheet' type='text/css'>
@@ -103,7 +103,7 @@ button.code-folding-btn:focus {
 <div class="container-fluid main-container">
 
 <!-- tabsets -->
-<script src="libs/navigation/tabsets.js"></script>
+<script src="libs/navigation-1.0/tabsets.js"></script>
 <script>
 $(document).ready(function () {
   window.buildTabsets("TOC");
@@ -158,7 +158,7 @@ $(document).ready(function () {
       </ul>
       
       <footer>
-        <div class="copyrights"><small> © 2015-2016 DataKnowledge</small></div>
+        <div class="copyrights"><small> © 2016-2017 Datastorm</small></div>
       </footer>
     
     </nav>
@@ -197,8 +197,7 @@ devtools::install_github(&quot;datastorm-open/rAmCharts&quot;)</code></pre>
 <div id="prerequisite" class="section level2">
 <h2>Prerequisite</h2>
 <ul>
-<li><p>Some functions import the package <strong>rlist</strong> refering to <a href="http://renkun.me/rlist" class="uri">http://renkun.me/rlist</a>.</p></li>
-<li><p>Besides, the package uses internally <strong>pipeR</strong> which is usefull to draw complex charts by keeping a certain level of readability in the code. The function mainly used is <code>%&gt;&gt;%</code> (or <code>pipeline()</code>) but the package allow to do many more, see the official tutorial at <a href="http://renkun.me/pipeR-tutorial" class="uri">http://renkun.me/pipeR-tutorial</a>.</p></li>
+<li>The package uses internally <strong>pipeR</strong> which is usefull to draw complex charts by keeping a certain level of readability in the code. The function mainly used is <code>%&gt;&gt;%</code> (or <code>pipeline()</code>) but the package allow to do many more, see the official tutorial at <a href="http://renkun.me/pipeR-tutorial" class="uri">http://renkun.me/pipeR-tutorial</a>.</li>
 </ul>
 <p>For those who are not familiar with the ‘pipe style’ the following lines are equivalent:</p>
 <pre class="r"><code>head(x = get(&quot;iris&quot;, &quot;package:datasets&quot;), n = 3)
@@ -221,7 +220,7 @@ pipeline(
 <div id="find-help" class="section level2">
 <h2>Find help</h2>
 <ul>
-<li><p>We have developped few examples in an app with <a href="http://shiny.rstudio.com">shiny</a> and <a href="https://rstudio.github.io/shinydashboard">shinydashboard</a>, run `runShinyExamples()’.</p></li>
+<li><p>We have developped few examples in an app with <a href="http://shiny.rstudio.com">shiny</a> and <a href="https://rstudio.github.io/shinydashboard">shinydashboard</a>, run `runExamples()’.</p></li>
 <li><p>If you have some questions about properties to custom a chart you may find solutions in the online amcharts API at <a href="https://docs.amcharts.com/3/" class="uri">https://docs.amcharts.com/3/</a></p></li>
 </ul>
 </div>
@@ -231,7 +230,7 @@ pipeline(
   </div><!-- end of main column -->
   
   <div class="col-xs-1 col-md-1" id="logo">
-    <a href="https://github.com/DataKnowledge/rAmCharts.git">
+    <a href="https://github.com/datastorm-open/rAmCharts.git">
       <img  src="www/img/github.png" title="View on Github" id="img-github"/>
     </a>
   </div>
