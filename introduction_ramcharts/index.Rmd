@@ -60,7 +60,7 @@ https://docs.amcharts.com/3/
 
 
 [htmlwidgets]:    http://www.htmlwidgets.org
-[github_page]:    https://github.com/DataKnowledge/rAmCharts
+[github_page]:    https://github.com/datastorm-open/rAmCharts
 [shiny]:          http://shiny.rstudio.com
 [shinydashboard]: https://rstudio.github.io/shinydashboard
 [rmarkdown]:      http://rmarkdown.rstudio.com
