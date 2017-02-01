@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<title>rAmCharts - amStockMultiSet</title>
+
+<script src="libs/jquery/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="libs/bootstrap/css/cosmo.min.css" rel="stylesheet" />
+<script src="libs/bootstrap/js/bootstrap.min.js"></script>
+<script src="libs/bootstrap/shim/html5shiv.min.js"></script>
+<script src="libs/bootstrap/shim/respond.min.js"></script>
+<script src="libs/htmlwidgets/htmlwidgets.js"></script>
+<script src="libs/amcharts/amcharts.js"></script>
+<script src="libs/ramcharts_base-binding/ramcharts_base.js"></script>
+<script src="libs/amcharts/serial.js"></script>
+<script src="libs/amcharts/amstock.js"></script>
+<link href="libs/amstockcharts_style/style.css" rel="stylesheet" />
+<link href="libs/amcharts_export/export.css" rel="stylesheet" />
+<script src="libs/amcharts_export/export.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Raleway:100' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+
+<style type="text/css">code{white-space: pre;}</style>
+<link rel="stylesheet"
+      href="libs/highlight/default.css"
+      type="text/css" />
+<script src="libs/highlight/highlight.js"></script>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs && document.readyState && document.readyState === "complete") {
+   window.setTimeout(function() {
+      hljs.initHighlighting();
+   }, 0);
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+<link rel="stylesheet" href="www/css/styles.css" type="text/css" />
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script src="libs/navigation/tabsets.js"></script>
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+
+
+<!-- bootstrap row container for all the content -->
+<div class="row"> <!-- main row -->
+  
+  <div class="col-xs-4 col-md-3 show" id="nav-content" style="padding-left:0;">
+    <nav id="navbar">
+      <br/>
+      <div id="title-toc"> rAmCharts</div>
+      <hr/>
+      
+      <b class="section-toc">Getting started</b>
+      <br/>
+
+      <ul class="toc" id="nav-intro">
+        <li class="litoc"><a class="toc-item" href="index.html">Introduction</a></li>
+        <li class="litoc"><a class="toc-item" href="convert.html">Quick tutorial</a></li>
+        <li class="litoc"><a class="toc-item" href="shiny.html">Use in shiny apps</a></li>
+        <li class="litoc"><a class="toc-item" href="advance.html">Advanced features</a></li>
+      </ul> 
+      
+      <b class="section-toc">Specific functions</b>
+      <br/>
+      
+      <ul class="toc" id="nav-amfunctions">
+        <li class="litoc"> <a class="toc-item" href="amAngularGauge.html">AngularGauge</a></li>   
+        <li class="litoc"> <a class="toc-item" href="amBarplot.html">Barplot</a></li>
+        <li class="litoc"><a class="toc-item" href="amBoxplot.html">Boxplot</a></li>
+        <li class="litoc"><a class="toc-item" href="amBullet.html">Bullet</a></li>
+        <li class="litoc"><a class="toc-item" href="amCandlestick.html">Candlestick</a></li>
+        <li class="litoc"><a class="toc-item" href="amFloatingBar.html">Floating Bar</a></li>
+        <li class="litoc"><a class="toc-item" href="amFunnel.html">Funnel</a></li>
+        <li class="litoc"><a class="toc-item" href="amHist.html">Histogram</a></li>
+        <li class="litoc"><a class="toc-item" href="amMekko.html">Mekko</a></li>
+        <li class="litoc"><a class="toc-item" href="amOHLC.html">OHLC</a></li>
+        <li class="litoc"><a class="toc-item" href="amPie.html">Pie</a></li>
+        <li class="litoc"><a class="toc-item" href="amRadar.html">Radar</a></li>
+        <li class="litoc"><a class="toc-item" href="amSolidGauge.html">SolidGauge</a></li>
+        <li class="litoc"><a class="toc-item" href="amStockMultiSet.html">Multi data sets</a></li>
+        <li class="litoc"><a class="toc-item" href="amTimeSeries.html">Time Series</a></li>
+        <li class="litoc"><a class="toc-item" href="amWaterfall.html">Waterfall</a></li>
+        <li class="litoc"><a class="toc-item" href="amWind.html">Wind</a></li>
+      </ul>
+      
+      <footer>
+        <div class="copyrights"><small> © 2016-2017 Datastorm</small></div>
+      </footer>
+    
+    </nav>
+    
+  </div> <!-- end of left column -->
+  
+  <div class="col-xs-1 col-md-1"> <!-- colummn for toggle button -->
+    <i id="toggle" class="fa fa-bars fa-lg toggle-collapse" style="padding-top:10px;"></i>
+  </div>
+  
+  <div class="col-xs-6 col-md-7 show" id="main-content"> <!-- main column -->
+
+<div class="fluid-row" id="header">
+
+
+
+
+</div>
+
+
+<h1>
+rAmCharts - amStockMultiSet
+</h1>
+
+
+<ul>
+<li><strong>data</strong>: a list, list of data.frame (same structure) first column is date, others are values.</li>
+<li><strong>panelColumn</strong>: a numeric, control panel adding for selected series.</li>
+<li><strong>ZoomButton</strong>: a data.frame, 3 columns : Unit, times unit. multiple : multiple*unit. label : button’s label</li>
+<li><strong>color</strong>: a character, color of series (in hexadecimal).</li>
+<li><strong>precision</strong>: a numeric, digits precision.</li>
+<li><strong>export</strong>: a logical, default set to FALSE. TRUE to display export feature.</li>
+<li><strong>percentHeightPanel</strong>: a numeric, vector of size panel, same length than data.</li>
+<li><strong>creditsPosition</strong>: a character, credits position. Possible values are : “top-right”, “top-left”, “bottom-right”, “bottom-left”.</li>
+<li><strong>…</strong>: other first level attributes</li>
+</ul>
+<div id="reference-example" class="section level2">
+<h2>Reference example</h2>
+<pre class="r"><code>  data(data_stock_3)
+  amStockMultiSet(data = data_stock_3)</code></pre>
+<div id="htmlwidget-7e91dde179abffa98fdc" style="width:100%;height:500px;" class="ramcharts_base html-widget"></div>
+<script type="application/json" data-for="htmlwidget-7e91dde179abffa98fdc">{"x":{"chartData":{"startDuration":0,"chartCursorSettings":{"valueBalloonsEnabled":true,"fullWidth":true,"cursorAlpha":0.1,"valueLineBalloonEnabled":true,"valueLineEnabled":true,"valueLineAlpha":0.5},"panelsSettings":{"recalculateToPercents":false,"creditsPosition":"top-right"},"export":{"enabled":false},"dataSets":[{"compared":false,"title":"chartData1","categoryField":"date","color":"#2E2EFE","dataProvider":[{"date":"01/06/2017","value":"108","volume":"853","value2":118,"value3":98},{"date":"01/07/2017","value":"106","volume":"821","value2":116,"value3":96},{"date":"01/08/2017","value":"118","volume":"660","value2":128,"value3":108},{"date":"01/09/2017","value":"127","volume":"585","value2":137,"value3":117},{"date":"01/10/2017","value":"130","volume":"519","value2":140,"value3":120},{"date":"01/11/2017","value":"146","volume":"1229","value2":156,"value3":136},{"date":"01/12/2017","value":"136","volume":"1167","value2":146,"value3":126},{"date":"01/13/2017","value":"142","volume":"1316","value2":152,"value3":132},{"date":"01/14/2017","value":"147","volume":"1156","value2":157,"value3":137},{"date":"01/15/2017","value":"149","volume":"1309","value2":159,"value3":139},{"date":"01/16/2017","value":"155","volume":"729","value2":165,"value3":145},{"date":"01/17/2017","value":"152","volume":"1120","value2":162,"value3":142},{"date":"01/18/2017","value":"161","volume":"810","value2":171,"value3":151},{"date":"01/19/2017","value":"155","volume":"1391","value2":165,"value3":145},{"date":"01/20/2017","value":"126","volume":"1276","value2":136,"value3":116},{"date":"01/21/2017","value":"163","volume":"1008","value2":173,"value3":153},{"date":"01/22/2017","value":"128","volume":"742","value2":138,"value3":118},{"date":"01/23/2017","value":"119","volume":"744","value2":129,"value3":109},{"date":"01/24/2017","value":"121","volume":"1386","value2":131,"value3":111},{"date":"01/25/2017","value":"173","volume":"781","value2":183,"value3":163},{"date":"01/26/2017","value":"172","volume":"676","value2":182,"value3":162}],"fieldMappings":[{"fromField":"value","toField":"value"},{"fromField":"volume","toField":"volume"},{"fromField":"value2","toField":"value2"},{"fromField":"value3","toField":"value3"}]},{"compared":false,"title":"chartData2","categoryField":"date","color":"#31B404","dataProvider":[{"date":"01/06/2017","value":"282","volume":"1159","value2":312,"value3":252},{"date":"01/07/2017","value":"300","volume":"1444","value2":330,"value3":270},{"date":"01/08/2017","value":"286","volume":"816","value2":316,"value3":256},{"date":"01/09/2017","value":"279","volume":"1286","value2":309,"value3":249},{"date":"01/10/2017","value":"263","volume":"1389","value2":293,"value3":233},{"date":"01/11/2017","value":"263","volume":"725","value2":293,"value3":233},{"date":"01/12/2017","value":"249","volume":"1004","value2":279,"value3":219},{"date":"01/13/2017","value":"275","volume":"971","value2":305,"value3":245},{"date":"01/14/2017","value":"275","volume":"1309","value2":305,"value3":245},{"date":"01/15/2017","value":"262","volume":"871","value2":292,"value3":232},{"date":"01/16/2017","value":"259","volume":"1398","value2":289,"value3":229},{"date":"01/17/2017","value":"239","volume":"624","value2":269,"value3":209},{"date":"01/18/2017","value":"312","volume":"1033","value2":342,"value3":282},{"date":"01/19/2017","value":"319","volume":"1555","value2":349,"value3":289},{"date":"01/20/2017","value":"262","volume":"973","value2":292,"value3":232},{"date":"01/21/2017","value":"314","volume":"1394","value2":344,"value3":284},{"date":"01/22/2017","value":"307","volume":"1203","value2":337,"value3":277},{"date":"01/23/2017","value":"276","volume":"950","value2":306,"value3":246},{"date":"01/24/2017","value":"323","volume":"857","value2":353,"value3":293},{"date":"01/25/2017","value":"317","volume":"916","value2":347,"value3":287},{"date":"01/26/2017","value":"289","volume":"793","value2":319,"value3":259}],"fieldMappings":[{"fromField":"value","toField":"value"},{"fromField":"volume","toField":"volume"},{"fromField":"value2","toField":"value2"},{"fromField":"value3","toField":"value3"}]},{"compared":false,"title":"chartData3","categoryField":"date","color":"#FF4000","dataProvider":[{"date":"01/06/2017","value":"243","volume":"1389","value2":303,"value3":218},{"date":"01/07/2017","value":"257","volume":"1587","value2":317,"value3":232},{"date":"01/08/2017","value":"259","volume":"852","value2":319,"value3":234},{"date":"01/09/2017","value":"283","volume":"930","value2":343,"value3":258},{"date":"01/10/2017","value":"223","volume":"723","value2":283,"value3":198},{"date":"01/11/2017","value":"236","volume":"873","value2":296,"value3":211},{"date":"01/12/2017","value":"212","volume":"827","value2":272,"value3":187},{"date":"01/13/2017","value":"218","volume":"775","value2":278,"value3":193},{"date":"01/14/2017","value":"290","volume":"1499","value2":350,"value3":265},{"date":"01/15/2017","value":"234","volume":"1230","value2":294,"value3":209},{"date":"01/16/2017","value":"287","volume":"1620","value2":347,"value3":262},{"date":"01/17/2017","value":"221","volume":"807","value2":281,"value3":196},{"date":"01/18/2017","value":"220","volume":"873","value2":280,"value3":195},{"date":"01/19/2017","value":"316","volume":"955","value2":376,"value3":291},{"date":"01/20/2017","value":"231","volume":"1278","value2":291,"value3":206},{"date":"01/21/2017","value":"217","volume":"969","value2":277,"value3":192},{"date":"01/22/2017","value":"252","volume":"1645","value2":312,"value3":227},{"date":"01/23/2017","value":"274","volume":"1050","value2":334,"value3":249},{"date":"01/24/2017","value":"225","volume":"1313","value2":285,"value3":200},{"date":"01/25/2017","value":"242","volume":"1444","value2":302,"value3":217},{"date":"01/26/2017","value":"272","volume":"1455","value2":332,"value3":247}],"fieldMappings":[{"fromField":"value","toField":"value"},{"fromField":"volume","toField":"volume"},{"fromField":"value2","toField":"value2"},{"fromField":"value3","toField":"value3"}]},{"compared":false,"title":"chartData4","categoryField":"date","color":"#2E2EFE","dataProvider":[{"date":"01/06/2017","value":"214","volume":"902","value2":294,"value3":159},{"date":"01/07/2017","value":"256","volume":"806","value2":336,"value3":201},{"date":"01/08/2017","value":"252","volume":"1349","value2":332,"value3":197},{"date":"01/09/2017","value":"275","volume":"652","value2":355,"value3":220},{"date":"01/10/2017","value":"280","volume":"1409","value2":360,"value3":225},{"date":"01/11/2017","value":"285","volume":"1060","value2":365,"value3":230},{"date":"01/12/2017","value":"298","volume":"666","value2":378,"value3":243},{"date":"01/13/2017","value":"230","volume":"1472","value2":310,"value3":175},{"date":"01/14/2017","value":"244","volume":"1088","value2":324,"value3":189},{"date":"01/15/2017","value":"289","volume":"730","value2":369,"value3":234},{"date":"01/16/2017","value":"210","volume":"664","value2":290,"value3":155},{"date":"01/17/2017","value":"235","volume":"826","value2":315,"value3":180},{"date":"01/18/2017","value":"212","volume":"1479","value2":292,"value3":157},{"date":"01/19/2017","value":"221","volume":"659","value2":301,"value3":166},{"date":"01/20/2017","value":"295","volume":"1009","value2":375,"value3":240},{"date":"01/21/2017","value":"289","volume":"1012","value2":369,"value3":234},{"date":"01/22/2017","value":"233","volume":"1408","value2":313,"value3":178},{"date":"01/23/2017","value":"244","volume":"1213","value2":324,"value3":189},{"date":"01/24/2017","value":"319","volume":"1416","value2":399,"value3":264},{"date":"01/25/2017","value":"262","volume":"1252","value2":342,"value3":207},{"date":"01/26/2017","value":"284","volume":"921","value2":364,"value3":229}],"fieldMappings":[{"fromField":"value","toField":"value"},{"fromField":"volume","toField":"volume"},{"fromField":"value2","toField":"value2"},{"fromField":"value3","toField":"value3"}]}],"dataSetSelector":{"position":"left"},"panels":[{"showCategoryAxis":false,"percentHeight":100,"precision":1,"stockGraphs":[{"animationPlayed":false,"id":"g1","compareField":"value","comparable":true,"compareGraphBalloonText":"[[title]] : value = <b>[[value]]\u003c/b>","balloonText":"[[title]] : value = <b>[[value]]\u003c/b>","valueField":"value"},{"animationPlayed":false,"id":"g2","compareField":"volume","comparable":true,"compareGraphBalloonText":"[[title]] : volume = <b>[[value]]\u003c/b>","balloonText":"[[title]] : volume = <b>[[value]]\u003c/b>","valueField":"volume"},{"animationPlayed":false,"id":"g3","compareField":"value2","comparable":true,"compareGraphBalloonText":"[[title]] : value2 = <b>[[value]]\u003c/b>","balloonText":"[[title]] : value2 = <b>[[value]]\u003c/b>","valueField":"value2"},{"animationPlayed":false,"id":"g4","compareField":"value3","comparable":true,"compareGraphBalloonText":"[[title]] : value3 = <b>[[value]]\u003c/b>","balloonText":"[[title]] : value3 = <b>[[value]]\u003c/b>","valueField":"value3"}]}],"periodSelector":{"position":"bottom","inputFieldsEnabled":false,"periods":[{"period":"MAX","selected":true,"count":1,"label":"All"}]},"type":"stock"},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":[],"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":null,"group":null},"evals":[],"jsHooks":[]}</script>
+</div>
+<div id="multi-pannels" class="section level2">
+<h2>Multi pannels</h2>
+<pre class="r"><code>    data(data_stock_3)
+    amStockMultiSet(data = data_stock_3, panelColumn = c(1,2,1,1))</code></pre>
+<div id="htmlwidget-9bd7d40adc2a2ba3fcf3" style="width:100%;height:500px;" class="ramcharts_base html-widget"></div>
+<script type="application/json" data-for="htmlwidget-9bd7d40adc2a2ba3fcf3">{"x":{"chartData":{"startDuration":0,"chartCursorSettings":{"valueBalloonsEnabled":true,"fullWidth":true,"cursorAlpha":0.1,"valueLineBalloonEnabled":true,"valueLineEnabled":true,"valueLineAlpha":0.5},"panelsSettings":{"recalculateToPercents":false,"creditsPosition":"top-right"},"export":{"enabled":false},"dataSets":[{"compared":false,"title":"chartData1","categoryField":"date","color":"#2E2EFE","dataProvider":[{"date":"01/06/2017","value":"108","volume":"853","value2":118,"value3":98},{"date":"01/07/2017","value":"106","volume":"821","value2":116,"value3":96},{"date":"01/08/2017","value":"118","volume":"660","value2":128,"value3":108},{"date":"01/09/2017","value":"127","volume":"585","value2":137,"value3":117},{"date":"01/10/2017","value":"130","volume":"519","value2":140,"value3":120},{"date":"01/11/2017","value":"146","volume":"1229","value2":156,"value3":136},{"date":"01/12/2017","value":"136","volume":"1167","value2":146,"value3":126},{"date":"01/13/2017","value":"142","volume":"1316","value2":152,"value3":132},{"date":"01/14/2017","value":"147","volume":"1156","value2":157,"value3":137},{"date":"01/15/2017","value":"149","volume":"1309","value2":159,"value3":139},{"date":"01/16/2017","value":"155","volume":"729","value2":165,"value3":145},{"date":"01/17/2017","value":"152","volume":"1120","value2":162,"value3":142},{"date":"01/18/2017","value":"161","volume":"810","value2":171,"value3":151},{"date":"01/19/2017","value":"155","volume":"1391","value2":165,"value3":145},{"date":"01/20/2017","value":"126","volume":"1276","value2":136,"value3":116},{"date":"01/21/2017","value":"163","volume":"1008","value2":173,"value3":153},{"date":"01/22/2017","value":"128","volume":"742","value2":138,"value3":118},{"date":"01/23/2017","value":"119","volume":"744","value2":129,"value3":109},{"date":"01/24/2017","value":"121","volume":"1386","value2":131,"value3":111},{"date":"01/25/2017","value":"173","volume":"781","value2":183,"value3":163},{"date":"01/26/2017","value":"172","volume":"676","value2":182,"value3":162}],"fieldMappings":[{"fromField":"value","toField":"value"},{"fromField":"volume","toField":"volume"},{"fromField":"value2","toField":"value2"},{"fromField":"value3","toField":"value3"}]},{"compared":false,"title":"chartData2","categoryField":"date","color":"#31B404","dataProvider":[{"date":"01/06/2017","value":"282","volume":"1159","value2":312,"value3":252},{"date":"01/07/2017","value":"300","volume":"1444","value2":330,"value3":270},{"date":"01/08/2017","value":"286","volume":"816","value2":316,"value3":256},{"date":"01/09/2017","value":"279","volume":"1286","value2":309,"value3":249},{"date":"01/10/2017","value":"263","volume":"1389","value2":293,"value3":233},{"date":"01/11/2017","value":"263","volume":"725","value2":293,"value3":233},{"date":"01/12/2017","value":"249","volume":"1004","value2":279,"value3":219},{"date":"01/13/2017","value":"275","volume":"971","value2":305,"value3":245},{"date":"01/14/2017","value":"275","volume":"1309","value2":305,"value3":245},{"date":"01/15/2017","value":"262","volume":"871","value2":292,"value3":232},{"date":"01/16/2017","value":"259","volume":"1398","value2":289,"value3":229},{"date":"01/17/2017","value":"239","volume":"624","value2":269,"value3":209},{"date":"01/18/2017","value":"312","volume":"1033","value2":342,"value3":282},{"date":"01/19/2017","value":"319","volume":"1555","value2":349,"value3":289},{"date":"01/20/2017","value":"262","volume":"973","value2":292,"value3":232},{"date":"01/21/2017","value":"314","volume":"1394","value2":344,"value3":284},{"date":"01/22/2017","value":"307","volume":"1203","value2":337,"value3":277},{"date":"01/23/2017","value":"276","volume":"950","value2":306,"value3":246},{"date":"01/24/2017","value":"323","volume":"857","value2":353,"value3":293},{"date":"01/25/2017","value":"317","volume":"916","value2":347,"value3":287},{"date":"01/26/2017","value":"289","volume":"793","value2":319,"value3":259}],"fieldMappings":[{"fromField":"value","toField":"value"},{"fromField":"volume","toField":"volume"},{"fromField":"value2","toField":"value2"},{"fromField":"value3","toField":"value3"}]},{"compared":false,"title":"chartData3","categoryField":"date","color":"#FF4000","dataProvider":[{"date":"01/06/2017","value":"243","volume":"1389","value2":303,"value3":218},{"date":"01/07/2017","value":"257","volume":"1587","value2":317,"value3":232},{"date":"01/08/2017","value":"259","volume":"852","value2":319,"value3":234},{"date":"01/09/2017","value":"283","volume":"930","value2":343,"value3":258},{"date":"01/10/2017","value":"223","volume":"723","value2":283,"value3":198},{"date":"01/11/2017","value":"236","volume":"873","value2":296,"value3":211},{"date":"01/12/2017","value":"212","volume":"827","value2":272,"value3":187},{"date":"01/13/2017","value":"218","volume":"775","value2":278,"value3":193},{"date":"01/14/2017","value":"290","volume":"1499","value2":350,"value3":265},{"date":"01/15/2017","value":"234","volume":"1230","value2":294,"value3":209},{"date":"01/16/2017","value":"287","volume":"1620","value2":347,"value3":262},{"date":"01/17/2017","value":"221","volume":"807","value2":281,"value3":196},{"date":"01/18/2017","value":"220","volume":"873","value2":280,"value3":195},{"date":"01/19/2017","value":"316","volume":"955","value2":376,"value3":291},{"date":"01/20/2017","value":"231","volume":"1278","value2":291,"value3":206},{"date":"01/21/2017","value":"217","volume":"969","value2":277,"value3":192},{"date":"01/22/2017","value":"252","volume":"1645","value2":312,"value3":227},{"date":"01/23/2017","value":"274","volume":"1050","value2":334,"value3":249},{"date":"01/24/2017","value":"225","volume":"1313","value2":285,"value3":200},{"date":"01/25/2017","value":"242","volume":"1444","value2":302,"value3":217},{"date":"01/26/2017","value":"272","volume":"1455","value2":332,"value3":247}],"fieldMappings":[{"fromField":"value","toField":"value"},{"fromField":"volume","toField":"volume"},{"fromField":"value2","toField":"value2"},{"fromField":"value3","toField":"value3"}]},{"compared":false,"title":"chartData4","categoryField":"date","color":"#2E2EFE","dataProvider":[{"date":"01/06/2017","value":"214","volume":"902","value2":294,"value3":159},{"date":"01/07/2017","value":"256","volume":"806","value2":336,"value3":201},{"date":"01/08/2017","value":"252","volume":"1349","value2":332,"value3":197},{"date":"01/09/2017","value":"275","volume":"652","value2":355,"value3":220},{"date":"01/10/2017","value":"280","volume":"1409","value2":360,"value3":225},{"date":"01/11/2017","value":"285","volume":"1060","value2":365,"value3":230},{"date":"01/12/2017","value":"298","volume":"666","value2":378,"value3":243},{"date":"01/13/2017","value":"230","volume":"1472","value2":310,"value3":175},{"date":"01/14/2017","value":"244","volume":"1088","value2":324,"value3":189},{"date":"01/15/2017","value":"289","volume":"730","value2":369,"value3":234},{"date":"01/16/2017","value":"210","volume":"664","value2":290,"value3":155},{"date":"01/17/2017","value":"235","volume":"826","value2":315,"value3":180},{"date":"01/18/2017","value":"212","volume":"1479","value2":292,"value3":157},{"date":"01/19/2017","value":"221","volume":"659","value2":301,"value3":166},{"date":"01/20/2017","value":"295","volume":"1009","value2":375,"value3":240},{"date":"01/21/2017","value":"289","volume":"1012","value2":369,"value3":234},{"date":"01/22/2017","value":"233","volume":"1408","value2":313,"value3":178},{"date":"01/23/2017","value":"244","volume":"1213","value2":324,"value3":189},{"date":"01/24/2017","value":"319","volume":"1416","value2":399,"value3":264},{"date":"01/25/2017","value":"262","volume":"1252","value2":342,"value3":207},{"date":"01/26/2017","value":"284","volume":"921","value2":364,"value3":229}],"fieldMappings":[{"fromField":"value","toField":"value"},{"fromField":"volume","toField":"volume"},{"fromField":"value2","toField":"value2"},{"fromField":"value3","toField":"value3"}]}],"dataSetSelector":{"position":"left"},"panels":[{"showCategoryAxis":false,"percentHeight":50,"precision":1,"stockGraphs":[{"animationPlayed":false,"id":"g1","compareField":"value","comparable":true,"compareGraphBalloonText":"[[title]] : value = <b>[[value]]\u003c/b>","balloonText":"[[title]] : value = <b>[[value]]\u003c/b>","valueField":"value"},{"animationPlayed":false,"id":"g2","compareField":"value2","comparable":true,"compareGraphBalloonText":"[[title]] : value2 = <b>[[value]]\u003c/b>","balloonText":"[[title]] : value2 = <b>[[value]]\u003c/b>","valueField":"value2"},{"animationPlayed":false,"id":"g3","compareField":"value3","comparable":true,"compareGraphBalloonText":"[[title]] : value3 = <b>[[value]]\u003c/b>","balloonText":"[[title]] : value3 = <b>[[value]]\u003c/b>","valueField":"value3"}]},{"showCategoryAxis":false,"percentHeight":50,"precision":1,"stockGraphs":[{"animationPlayed":false,"id":"g4","compareField":"volume","comparable":true,"compareGraphBalloonText":"[[title]] : volume = <b>[[value]]\u003c/b>","balloonText":"[[title]] : volume = <b>[[value]]\u003c/b>","valueField":"volume"}]}],"periodSelector":{"position":"bottom","inputFieldsEnabled":false,"periods":[{"period":"MAX","selected":true,"count":1,"label":"All"}]},"type":"stock"},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":[],"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":null,"group":null},"evals":[],"jsHooks":[]}</script>
+</div>
+<div id="zoombutton-export-and-pannel-height" class="section level2">
+<h2>ZoomButton, export and pannel height</h2>
+<pre class="r"><code> data(data_stock_3)
+  ZoomButton &lt;- data.frame(Unit = c(&#39;DD&#39;, &#39;DD&#39;, &#39;MAX&#39;), multiple = c(10, 15 ,1),
+                          label = c(&#39;10 days&#39;,&#39;15 days&#39;, &#39;MAX&#39;))
+  amStockMultiSet(data = data_stock_3, panelColumn = c(1,2,1,1), percentHeightPanel = c(3,1),
+                  ZoomButtonPosition = &#39;left&#39;, ZoomButton = ZoomButton, export = TRUE, precision = 0)</code></pre>
+<div id="htmlwidget-0ec1679d34ba4f630180" style="width:100%;height:500px;" class="ramcharts_base html-widget"></div>
+<script type="application/json" data-for="htmlwidget-0ec1679d34ba4f630180">{"x":{"chartData":{"startDuration":0,"chartCursorSettings":{"valueBalloonsEnabled":true,"fullWidth":true,"cursorAlpha":0.1,"valueLineBalloonEnabled":true,"valueLineEnabled":true,"valueLineAlpha":0.5},"panelsSettings":{"recalculateToPercents":false,"creditsPosition":"top-right"},"export":{"enabled":true},"dataSets":[{"compared":false,"title":"chartData1","categoryField":"date","color":"#2E2EFE","dataProvider":[{"date":"01/06/2017","value":"108","volume":"853","value2":118,"value3":98},{"date":"01/07/2017","value":"106","volume":"821","value2":116,"value3":96},{"date":"01/08/2017","value":"118","volume":"660","value2":128,"value3":108},{"date":"01/09/2017","value":"127","volume":"585","value2":137,"value3":117},{"date":"01/10/2017","value":"130","volume":"519","value2":140,"value3":120},{"date":"01/11/2017","value":"146","volume":"1229","value2":156,"value3":136},{"date":"01/12/2017","value":"136","volume":"1167","value2":146,"value3":126},{"date":"01/13/2017","value":"142","volume":"1316","value2":152,"value3":132},{"date":"01/14/2017","value":"147","volume":"1156","value2":157,"value3":137},{"date":"01/15/2017","value":"149","volume":"1309","value2":159,"value3":139},{"date":"01/16/2017","value":"155","volume":"729","value2":165,"value3":145},{"date":"01/17/2017","value":"152","volume":"1120","value2":162,"value3":142},{"date":"01/18/2017","value":"161","volume":"810","value2":171,"value3":151},{"date":"01/19/2017","value":"155","volume":"1391","value2":165,"value3":145},{"date":"01/20/2017","value":"126","volume":"1276","value2":136,"value3":116},{"date":"01/21/2017","value":"163","volume":"1008","value2":173,"value3":153},{"date":"01/22/2017","value":"128","volume":"742","value2":138,"value3":118},{"date":"01/23/2017","value":"119","volume":"744","value2":129,"value3":109},{"date":"01/24/2017","value":"121","volume":"1386","value2":131,"value3":111},{"date":"01/25/2017","value":"173","volume":"781","value2":183,"value3":163},{"date":"01/26/2017","value":"172","volume":"676","value2":182,"value3":162}],"fieldMappings":[{"fromField":"value","toField":"value"},{"fromField":"volume","toField":"volume"},{"fromField":"value2","toField":"value2"},{"fromField":"value3","toField":"value3"}]},{"compared":false,"title":"chartData2","categoryField":"date","color":"#31B404","dataProvider":[{"date":"01/06/2017","value":"282","volume":"1159","value2":312,"value3":252},{"date":"01/07/2017","value":"300","volume":"1444","value2":330,"value3":270},{"date":"01/08/2017","value":"286","volume":"816","value2":316,"value3":256},{"date":"01/09/2017","value":"279","volume":"1286","value2":309,"value3":249},{"date":"01/10/2017","value":"263","volume":"1389","value2":293,"value3":233},{"date":"01/11/2017","value":"263","volume":"725","value2":293,"value3":233},{"date":"01/12/2017","value":"249","volume":"1004","value2":279,"value3":219},{"date":"01/13/2017","value":"275","volume":"971","value2":305,"value3":245},{"date":"01/14/2017","value":"275","volume":"1309","value2":305,"value3":245},{"date":"01/15/2017","value":"262","volume":"871","value2":292,"value3":232},{"date":"01/16/2017","value":"259","volume":"1398","value2":289,"value3":229},{"date":"01/17/2017","value":"239","volume":"624","value2":269,"value3":209},{"date":"01/18/2017","value":"312","volume":"1033","value2":342,"value3":282},{"date":"01/19/2017","value":"319","volume":"1555","value2":349,"value3":289},{"date":"01/20/2017","value":"262","volume":"973","value2":292,"value3":232},{"date":"01/21/2017","value":"314","volume":"1394","value2":344,"value3":284},{"date":"01/22/2017","value":"307","volume":"1203","value2":337,"value3":277},{"date":"01/23/2017","value":"276","volume":"950","value2":306,"value3":246},{"date":"01/24/2017","value":"323","volume":"857","value2":353,"value3":293},{"date":"01/25/2017","value":"317","volume":"916","value2":347,"value3":287},{"date":"01/26/2017","value":"289","volume":"793","value2":319,"value3":259}],"fieldMappings":[{"fromField":"value","toField":"value"},{"fromField":"volume","toField":"volume"},{"fromField":"value2","toField":"value2"},{"fromField":"value3","toField":"value3"}]},{"compared":false,"title":"chartData3","categoryField":"date","color":"#FF4000","dataProvider":[{"date":"01/06/2017","value":"243","volume":"1389","value2":303,"value3":218},{"date":"01/07/2017","value":"257","volume":"1587","value2":317,"value3":232},{"date":"01/08/2017","value":"259","volume":"852","value2":319,"value3":234},{"date":"01/09/2017","value":"283","volume":"930","value2":343,"value3":258},{"date":"01/10/2017","value":"223","volume":"723","value2":283,"value3":198},{"date":"01/11/2017","value":"236","volume":"873","value2":296,"value3":211},{"date":"01/12/2017","value":"212","volume":"827","value2":272,"value3":187},{"date":"01/13/2017","value":"218","volume":"775","value2":278,"value3":193},{"date":"01/14/2017","value":"290","volume":"1499","value2":350,"value3":265},{"date":"01/15/2017","value":"234","volume":"1230","value2":294,"value3":209},{"date":"01/16/2017","value":"287","volume":"1620","value2":347,"value3":262},{"date":"01/17/2017","value":"221","volume":"807","value2":281,"value3":196},{"date":"01/18/2017","value":"220","volume":"873","value2":280,"value3":195},{"date":"01/19/2017","value":"316","volume":"955","value2":376,"value3":291},{"date":"01/20/2017","value":"231","volume":"1278","value2":291,"value3":206},{"date":"01/21/2017","value":"217","volume":"969","value2":277,"value3":192},{"date":"01/22/2017","value":"252","volume":"1645","value2":312,"value3":227},{"date":"01/23/2017","value":"274","volume":"1050","value2":334,"value3":249},{"date":"01/24/2017","value":"225","volume":"1313","value2":285,"value3":200},{"date":"01/25/2017","value":"242","volume":"1444","value2":302,"value3":217},{"date":"01/26/2017","value":"272","volume":"1455","value2":332,"value3":247}],"fieldMappings":[{"fromField":"value","toField":"value"},{"fromField":"volume","toField":"volume"},{"fromField":"value2","toField":"value2"},{"fromField":"value3","toField":"value3"}]},{"compared":false,"title":"chartData4","categoryField":"date","color":"#2E2EFE","dataProvider":[{"date":"01/06/2017","value":"214","volume":"902","value2":294,"value3":159},{"date":"01/07/2017","value":"256","volume":"806","value2":336,"value3":201},{"date":"01/08/2017","value":"252","volume":"1349","value2":332,"value3":197},{"date":"01/09/2017","value":"275","volume":"652","value2":355,"value3":220},{"date":"01/10/2017","value":"280","volume":"1409","value2":360,"value3":225},{"date":"01/11/2017","value":"285","volume":"1060","value2":365,"value3":230},{"date":"01/12/2017","value":"298","volume":"666","value2":378,"value3":243},{"date":"01/13/2017","value":"230","volume":"1472","value2":310,"value3":175},{"date":"01/14/2017","value":"244","volume":"1088","value2":324,"value3":189},{"date":"01/15/2017","value":"289","volume":"730","value2":369,"value3":234},{"date":"01/16/2017","value":"210","volume":"664","value2":290,"value3":155},{"date":"01/17/2017","value":"235","volume":"826","value2":315,"value3":180},{"date":"01/18/2017","value":"212","volume":"1479","value2":292,"value3":157},{"date":"01/19/2017","value":"221","volume":"659","value2":301,"value3":166},{"date":"01/20/2017","value":"295","volume":"1009","value2":375,"value3":240},{"date":"01/21/2017","value":"289","volume":"1012","value2":369,"value3":234},{"date":"01/22/2017","value":"233","volume":"1408","value2":313,"value3":178},{"date":"01/23/2017","value":"244","volume":"1213","value2":324,"value3":189},{"date":"01/24/2017","value":"319","volume":"1416","value2":399,"value3":264},{"date":"01/25/2017","value":"262","volume":"1252","value2":342,"value3":207},{"date":"01/26/2017","value":"284","volume":"921","value2":364,"value3":229}],"fieldMappings":[{"fromField":"value","toField":"value"},{"fromField":"volume","toField":"volume"},{"fromField":"value2","toField":"value2"},{"fromField":"value3","toField":"value3"}]}],"dataSetSelector":{"position":"left"},"panels":[{"showCategoryAxis":false,"percentHeight":75,"precision":0,"stockGraphs":[{"animationPlayed":false,"id":"g1","compareField":"value","comparable":true,"compareGraphBalloonText":"[[title]] : value = <b>[[value]]\u003c/b>","balloonText":"[[title]] : value = <b>[[value]]\u003c/b>","valueField":"value"},{"animationPlayed":false,"id":"g2","compareField":"value2","comparable":true,"compareGraphBalloonText":"[[title]] : value2 = <b>[[value]]\u003c/b>","balloonText":"[[title]] : value2 = <b>[[value]]\u003c/b>","valueField":"value2"},{"animationPlayed":false,"id":"g3","compareField":"value3","comparable":true,"compareGraphBalloonText":"[[title]] : value3 = <b>[[value]]\u003c/b>","balloonText":"[[title]] : value3 = <b>[[value]]\u003c/b>","valueField":"value3"}]},{"showCategoryAxis":false,"percentHeight":25,"precision":0,"stockGraphs":[{"animationPlayed":false,"id":"g4","compareField":"volume","comparable":true,"compareGraphBalloonText":"[[title]] : volume = <b>[[value]]\u003c/b>","balloonText":"[[title]] : volume = <b>[[value]]\u003c/b>","valueField":"volume"}]}],"periodSelector":{"position":"left","inputFieldsEnabled":false,"periods":[{"period":"DD","selected":true,"count":10,"label":"10 days"},{"period":"DD","count":15,"label":"15 days"},{"period":"MAX","count":1,"label":"MAX"}]},"type":"stock"},"background":"#ffffff","listeners":null,"axes_listeners":null,"axes_listenersIndices":null,"categoryAxis_listeners":null,"chartCursor_listeners":null,"dataSetSelector_listeners":null,"legend_listeners":null,"panels_listeners":null,"panels_listenersIndices":[],"periodSelector_listeners":null,"valueAxes_listeners":null,"valueAxes_listenersIndices":null,"group":null},"evals":[],"jsHooks":[]}</script>
+</div>
+
+
+  </div><!-- end of main column -->
+  
+  <div class="col-xs-1 col-md-1" id="logo">
+    <a target="_blank" href="https://github.com/datastorm-open/rAmCharts.git">
+      <img  src="www/img/github.png" title="View on Github" id="img-github"/>
+    </a>
+  </div>
+  
+  <script src="./www/js/navbar.js"> </script>
+  <script src="./www/js/logo.js"> </script>
+  <script src="./www/js/toggle.js"> </script>
+</div><!-- end of main row -->
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+$(document).ready(function () {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+});
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
