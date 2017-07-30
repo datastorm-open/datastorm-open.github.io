@@ -4,10 +4,10 @@
 
 <head>
 
-<meta charset="utf-8">
+<meta charset="utf-8" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
-<meta name="viewport" content="width=device-width, initial-scale=1">
+
 
 
 
@@ -19,16 +19,15 @@
 <script src="libs/bootstrap/js/bootstrap.min.js"></script>
 <script src="libs/bootstrap/shim/html5shiv.min.js"></script>
 <script src="libs/bootstrap/shim/respond.min.js"></script>
+<script src="libs/navigation/tabsets.js"></script>
+<link href="libs/highlightjs/default.css" rel="stylesheet" />
+<script src="libs/highlightjs/highlight.js"></script>
 <script src="libs/htmlwidgets/htmlwidgets.js"></script>
-<link href="libs/vis/vis.min.css" rel="stylesheet" />
+<link href="libs/vis/vis.css" rel="stylesheet" />
 <script src="libs/vis/vis.min.js"></script>
 <script src="libs/visNetwork-binding/visNetwork.js"></script>
 
 <style type="text/css">code{white-space: pre;}</style>
-<link rel="stylesheet"
-      href="libs/highlight/default.css"
-      type="text/css" />
-<script src="libs/highlight/highlight.js"></script>
 <style type="text/css">
   pre:not([class]) {
     background-color: white;
@@ -44,25 +43,7 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
 
 
 
-
-</head>
-
-<body>
-
-<style type = "text/css">
-.main-container {
-  max-width: 940px;
-  margin-left: auto;
-  margin-right: auto;
-}
-code {
-  color: inherit;
-  background-color: rgba(0, 0, 0, 0.04);
-}
-img {
-  max-width:100%;
-  height: auto;
-}
+<style type="text/css">
 h1 {
   font-size: 34px;
 }
@@ -84,6 +65,30 @@ h5 {
 h6 {
   font-size: 12px;
 }
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
 .tabbed-pane {
   padding-top: 12px;
 }
@@ -93,10 +98,10 @@ button.code-folding-btn:focus {
 </style>
 
 
+
 <div class="container-fluid main-container">
 
 <!-- tabsets -->
-<script src="libs/navigation/tabsets.js"></script>
 <script>
 $(document).ready(function () {
   window.buildTabsets("TOC");
@@ -156,6 +161,7 @@ $(document).ready(function () {
       <a class="list-group-item" href="layout.html">Layout</a>
       <a class="list-group-item" href="igraph.html">Igraph</a>
       <a class="list-group-item" href="performance.html">Performance</a>
+      <a class="list-group-item" href="tree.html">CART</a>
       <a class="list-group-item" href="shiny.html">Shiny</a>
       <a class="list-group-item" href="interaction.html">Interactions</a>
       <a class="list-group-item" href="physic.html">Physics</a>
@@ -174,6 +180,7 @@ $(document).ready(function () {
   <div class="col-sm-9 content-body">
 
 <div class="fluid-row" id="header">
+
 
 
 
@@ -201,8 +208,8 @@ edges &lt;- data.frame(from = c(1,2,2,2,3,3),
 <pre class="r"><code>visNetwork(nodes, edges, width = &quot;100%&quot;) %&gt;% 
   visEdges(arrows = &quot;from&quot;) %&gt;% 
   visHierarchicalLayout() # same as   visLayout(hierarchical = TRUE) </code></pre>
-<p><div id="htmlwidget-5716" style="width:100%;height:216px;" class="visNetwork html-widget"></div>
-<script type="application/json" data-for="htmlwidget-5716">{
+<div id="htmlwidget-927ec88a166bf954e46a" style="width:100%;height:216px;" class="visNetwork html-widget"></div>
+<script type="application/json" data-for="htmlwidget-927ec88a166bf954e46a">{
   "x": {
     "nodes": {
       "id": [1, 2, 3, 4, 5, 6, 7]
@@ -211,6 +218,8 @@ edges &lt;- data.frame(from = c(1,2,2,2,3,3),
       "from": [1, 2, 2, 2, 3, 3],
       "to": [2, 3, 4, 5, 6, 7]
     },
+    "nodesToDataframe": true,
+    "edgesToDataframe": true,
     "options": {
       "width": "100%",
       "height": "100%",
@@ -238,16 +247,18 @@ edges &lt;- data.frame(from = c(1,2,2,2,3,3),
     "byselection": {
       "enabled": false
     },
-    "main": null
+    "main": null,
+    "submain": null,
+    "footer": null
   },
   "evals": [],
   "jsHooks": []
-}</script></p>
+}</script>
 <pre class="r"><code>visNetwork(nodes, edges, width = &quot;100%&quot;) %&gt;% 
   visEdges(arrows = &quot;from&quot;) %&gt;% 
   visHierarchicalLayout(direction = &quot;LR&quot;, levelSeparation = 500)</code></pre>
-<p><div id="htmlwidget-4929" style="width:100%;height:216px;" class="visNetwork html-widget"></div>
-<script type="application/json" data-for="htmlwidget-4929">{
+<div id="htmlwidget-e2aad06f99e8b55df8d8" style="width:100%;height:216px;" class="visNetwork html-widget"></div>
+<script type="application/json" data-for="htmlwidget-e2aad06f99e8b55df8d8">{
   "x": {
     "nodes": {
       "id": [1, 2, 3, 4, 5, 6, 7]
@@ -256,6 +267,8 @@ edges &lt;- data.frame(from = c(1,2,2,2,3,3),
       "from": [1, 2, 2, 2, 3, 3],
       "to": [2, 3, 4, 5, 6, 7]
     },
+    "nodesToDataframe": true,
+    "edgesToDataframe": true,
     "options": {
       "width": "100%",
       "height": "100%",
@@ -285,11 +298,13 @@ edges &lt;- data.frame(from = c(1,2,2,2,3,3),
     "byselection": {
       "enabled": false
     },
-    "main": null
+    "main": null,
+    "submain": null,
+    "footer": null
   },
   "evals": [],
   "jsHooks": []
-}</script></p>
+}</script>
 <p>it’s also possible to define the <code>level</code> of each node :</p>
 <pre class="r"><code>nodes &lt;- data.frame(id = 1:4, level = c(2, 1, 1, 1))
 edges &lt;- data.frame(from = c(1, 1, 1),
@@ -298,8 +313,8 @@ edges &lt;- data.frame(from = c(1, 1, 1),
 visNetwork(nodes, edges, width = &quot;100%&quot;) %&gt;% 
   visEdges(arrows = &quot;from&quot;) %&gt;% 
   visHierarchicalLayout() # same as   visLayout(hierarchical = TRUE) </code></pre>
-<p><div id="htmlwidget-7837" style="width:100%;height:216px;" class="visNetwork html-widget"></div>
-<script type="application/json" data-for="htmlwidget-7837">{
+<div id="htmlwidget-ec9d8b9e435c1a666871" style="width:100%;height:216px;" class="visNetwork html-widget"></div>
+<script type="application/json" data-for="htmlwidget-ec9d8b9e435c1a666871">{
   "x": {
     "nodes": {
       "id": [1, 2, 3, 4],
@@ -309,6 +324,8 @@ visNetwork(nodes, edges, width = &quot;100%&quot;) %&gt;%
       "from": [1, 1, 1],
       "to": [2, 3, 4]
     },
+    "nodesToDataframe": true,
+    "edgesToDataframe": true,
     "options": {
       "width": "100%",
       "height": "100%",
@@ -336,18 +353,20 @@ visNetwork(nodes, edges, width = &quot;100%&quot;) %&gt;%
     "byselection": {
       "enabled": false
     },
-    "main": null
+    "main": null,
+    "submain": null,
+    "footer": null
   },
   "evals": [],
   "jsHooks": []
-}</script></p>
+}</script>
 <pre class="r"><code>### without level (vis.js choice)
 nodes$level &lt;- NULL
 visNetwork(nodes, edges, width = &quot;100%&quot;) %&gt;% 
   visEdges(arrows = &quot;from&quot;) %&gt;% 
   visHierarchicalLayout() # same as   visLayout(hierarchical = TRUE) </code></pre>
-<p><div id="htmlwidget-5403" style="width:100%;height:216px;" class="visNetwork html-widget"></div>
-<script type="application/json" data-for="htmlwidget-5403">{
+<div id="htmlwidget-65e60ed4f5440bdab363" style="width:100%;height:216px;" class="visNetwork html-widget"></div>
+<script type="application/json" data-for="htmlwidget-65e60ed4f5440bdab363">{
   "x": {
     "nodes": {
       "id": [1, 2, 3, 4]
@@ -356,6 +375,8 @@ visNetwork(nodes, edges, width = &quot;100%&quot;) %&gt;%
       "from": [1, 1, 1],
       "to": [2, 3, 4]
     },
+    "nodesToDataframe": true,
+    "edgesToDataframe": true,
     "options": {
       "width": "100%",
       "height": "100%",
@@ -383,11 +404,13 @@ visNetwork(nodes, edges, width = &quot;100%&quot;) %&gt;%
     "byselection": {
       "enabled": false
     },
-    "main": null
+    "main": null,
+    "submain": null,
+    "footer": null
   },
   "evals": [],
   "jsHooks": []
-}</script></p>
+}</script>
 </div>
 
 <footer>
@@ -406,9 +429,13 @@ visNetwork(nodes, edges, width = &quot;100%&quot;) %&gt;%
 <script>
 
 // add bootstrap table styles to pandoc tables
-$(document).ready(function () {
+function bootstrapStylePandocTables() {
   $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
 });
+
 
 </script>
 
@@ -417,7 +444,7 @@ $(document).ready(function () {
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
 </script>

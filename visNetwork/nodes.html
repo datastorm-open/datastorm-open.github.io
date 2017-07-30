@@ -4,10 +4,10 @@
 
 <head>
 
-<meta charset="utf-8">
+<meta charset="utf-8" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
-<meta name="viewport" content="width=device-width, initial-scale=1">
+
 
 
 
@@ -19,16 +19,15 @@
 <script src="libs/bootstrap/js/bootstrap.min.js"></script>
 <script src="libs/bootstrap/shim/html5shiv.min.js"></script>
 <script src="libs/bootstrap/shim/respond.min.js"></script>
+<script src="libs/navigation/tabsets.js"></script>
+<link href="libs/highlightjs/default.css" rel="stylesheet" />
+<script src="libs/highlightjs/highlight.js"></script>
 <script src="libs/htmlwidgets/htmlwidgets.js"></script>
-<link href="libs/vis/vis.min.css" rel="stylesheet" />
+<link href="libs/vis/vis.css" rel="stylesheet" />
 <script src="libs/vis/vis.min.js"></script>
 <script src="libs/visNetwork-binding/visNetwork.js"></script>
 
 <style type="text/css">code{white-space: pre;}</style>
-<link rel="stylesheet"
-      href="libs/highlight/default.css"
-      type="text/css" />
-<script src="libs/highlight/highlight.js"></script>
 <style type="text/css">
   pre:not([class]) {
     background-color: white;
@@ -44,25 +43,7 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
 
 
 
-
-</head>
-
-<body>
-
-<style type = "text/css">
-.main-container {
-  max-width: 940px;
-  margin-left: auto;
-  margin-right: auto;
-}
-code {
-  color: inherit;
-  background-color: rgba(0, 0, 0, 0.04);
-}
-img {
-  max-width:100%;
-  height: auto;
-}
+<style type="text/css">
 h1 {
   font-size: 34px;
 }
@@ -84,6 +65,30 @@ h5 {
 h6 {
   font-size: 12px;
 }
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
 .tabbed-pane {
   padding-top: 12px;
 }
@@ -93,10 +98,10 @@ button.code-folding-btn:focus {
 </style>
 
 
+
 <div class="container-fluid main-container">
 
 <!-- tabsets -->
-<script src="libs/navigation/tabsets.js"></script>
 <script>
 $(document).ready(function () {
   window.buildTabsets("TOC");
@@ -156,6 +161,7 @@ $(document).ready(function () {
       <a class="list-group-item" href="layout.html">Layout</a>
       <a class="list-group-item" href="igraph.html">Igraph</a>
       <a class="list-group-item" href="performance.html">Performance</a>
+      <a class="list-group-item" href="tree.html">CART</a>
       <a class="list-group-item" href="shiny.html">Shiny</a>
       <a class="list-group-item" href="interaction.html">Interactions</a>
       <a class="list-group-item" href="physic.html">Physics</a>
@@ -174,6 +180,7 @@ $(document).ready(function () {
   <div class="col-sm-9 content-body">
 
 <div class="fluid-row" id="header">
+
 
 
 
@@ -218,8 +225,8 @@ $(document).ready(function () {
 
 edges &lt;- data.frame(from = c(1,2,5,7,8,10), to = c(9,3,1,6,4,7))</code></pre>
 <pre class="r"><code>visNetwork(nodes, edges, height = &quot;500px&quot;, width = &quot;100%&quot;)</code></pre>
-<p><div id="htmlwidget-5716" style="width:100%;height:500px;" class="visNetwork html-widget"></div>
-<script type="application/json" data-for="htmlwidget-5716">{
+<div id="htmlwidget-927ec88a166bf954e46a" style="width:100%;height:500px;" class="visNetwork html-widget"></div>
+<script type="application/json" data-for="htmlwidget-927ec88a166bf954e46a">{
   "x": {
     "nodes": {
       "id": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
@@ -227,7 +234,7 @@ edges &lt;- data.frame(from = c(1,2,5,7,8,10), to = c(9,3,1,6,4,7))</code></pre>
       "group": ["GrA", "GrB", "GrA", "GrB", "GrA", "GrB", "GrA", "GrB", "GrA", "GrB"],
       "value": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
       "shape": ["square", "triangle", "box", "circle", "dot", "star", "ellipse", "database", "text", "diamond"],
-      "title": ["<p><b>1\u003c/b><br>Node !\u003c/p>", "<p><b>2\u003c/b><br>Node !\u003c/p>", "<p><b>3\u003c/b><br>Node !\u003c/p>", "<p><b>4\u003c/b><br>Node !\u003c/p>", "<p><b>5\u003c/b><br>Node !\u003c/p>", "<p><b>6\u003c/b><br>Node !\u003c/p>", "<p><b>7\u003c/b><br>Node !\u003c/p>", "<p><b>8\u003c/b><br>Node !\u003c/p>", "<p><b>9\u003c/b><br>Node !\u003c/p>", "<p><b>10\u003c/b><br>Node !\u003c/p>"],
+      "title": ["<p><b>1<\/b><br>Node !<\/p>", "<p><b>2<\/b><br>Node !<\/p>", "<p><b>3<\/b><br>Node !<\/p>", "<p><b>4<\/b><br>Node !<\/p>", "<p><b>5<\/b><br>Node !<\/p>", "<p><b>6<\/b><br>Node !<\/p>", "<p><b>7<\/b><br>Node !<\/p>", "<p><b>8<\/b><br>Node !<\/p>", "<p><b>9<\/b><br>Node !<\/p>", "<p><b>10<\/b><br>Node !<\/p>"],
       "color": ["darkred", "grey", "orange", "darkblue", "purple", "darkred", "grey", "orange", "darkblue", "purple"],
       "shadow": [false, true, false, true, true, false, true, false, true, true]
     },
@@ -235,6 +242,8 @@ edges &lt;- data.frame(from = c(1,2,5,7,8,10), to = c(9,3,1,6,4,7))</code></pre>
       "from": [1, 2, 5, 7, 8, 10],
       "to": [9, 3, 1, 6, 4, 7]
     },
+    "nodesToDataframe": true,
+    "edgesToDataframe": true,
     "options": {
       "width": "100%",
       "height": "100%",
@@ -254,11 +263,13 @@ edges &lt;- data.frame(from = c(1,2,5,7,8,10), to = c(9,3,1,6,4,7))</code></pre>
     "byselection": {
       "enabled": false
     },
-    "main": null
+    "main": null,
+    "submain": null,
+    "footer": null
   },
   "evals": [],
   "jsHooks": []
-}</script></p>
+}</script>
 </div>
 <div id="global-configuration" class="section level2">
 <h2>Global configuration</h2>
@@ -273,8 +284,8 @@ visNetwork(nodes, edges, width = &quot;100%&quot;) %&gt;%
                         highlight = &quot;yellow&quot;),
            shadow = list(enabled = TRUE, size = 10)) %&gt;%
   visLayout(randomSeed = 12) # to have always the same network         </code></pre>
-<p><div id="htmlwidget-4929" style="width:100%;height:216px;" class="visNetwork html-widget"></div>
-<script type="application/json" data-for="htmlwidget-4929">{
+<div id="htmlwidget-e2aad06f99e8b55df8d8" style="width:100%;height:216px;" class="visNetwork html-widget"></div>
+<script type="application/json" data-for="htmlwidget-e2aad06f99e8b55df8d8">{
   "x": {
     "nodes": {
       "id": [1, 2, 3, 4]
@@ -283,6 +294,8 @@ visNetwork(nodes, edges, width = &quot;100%&quot;) %&gt;%
       "from": [2, 4, 3, 3],
       "to": [1, 2, 4, 2]
     },
+    "nodesToDataframe": true,
+    "edgesToDataframe": true,
     "options": {
       "width": "100%",
       "height": "100%",
@@ -314,11 +327,13 @@ visNetwork(nodes, edges, width = &quot;100%&quot;) %&gt;%
     "byselection": {
       "enabled": false
     },
-    "main": null
+    "main": null,
+    "submain": null,
+    "footer": null
   },
   "evals": [],
   "jsHooks": []
-}</script></p>
+}</script>
 <p>Finally, you can also combine individual and global options :</p>
 <pre class="r"><code>nodes &lt;- data.frame(id = 1:4, 
                     shape = c(&quot;circle&quot;, &quot;square&quot;), 
@@ -331,8 +346,8 @@ visNetwork(nodes, edges, width = &quot;100%&quot;) %&gt;%
                         highlight = &quot;yellow&quot;),
            shadow = list(enabled = TRUE, size = 10))  %&gt;%
   visLayout(randomSeed = 12) # to have always the same network                     </code></pre>
-<p><div id="htmlwidget-7837" style="width:100%;height:216px;" class="visNetwork html-widget"></div>
-<script type="application/json" data-for="htmlwidget-7837">{
+<div id="htmlwidget-ec9d8b9e435c1a666871" style="width:100%;height:216px;" class="visNetwork html-widget"></div>
+<script type="application/json" data-for="htmlwidget-ec9d8b9e435c1a666871">{
   "x": {
     "nodes": {
       "id": [1, 2, 3, 4],
@@ -343,6 +358,8 @@ visNetwork(nodes, edges, width = &quot;100%&quot;) %&gt;%
       "from": [2, 4, 3, 3],
       "to": [1, 2, 4, 2]
     },
+    "nodesToDataframe": true,
+    "edgesToDataframe": true,
     "options": {
       "width": "100%",
       "height": "100%",
@@ -374,11 +391,13 @@ visNetwork(nodes, edges, width = &quot;100%&quot;) %&gt;%
     "byselection": {
       "enabled": false
     },
-    "main": null
+    "main": null,
+    "submain": null,
+    "footer": null
   },
   "evals": [],
   "jsHooks": []
-}</script></p>
+}</script>
 </div>
 <div id="use-complex-configuration-individually" class="section level2">
 <h2>Use complex configuration individually</h2>
@@ -394,8 +413,8 @@ edges &lt;- data.frame(from = c(1,2), to = c(1,3),
                     font.size = c(10,20))
 
 visNetwork(nodes, edges)  </code></pre>
-<p><div id="htmlwidget-5403" style="width:100%;height:216px;" class="visNetwork html-widget"></div>
-<script type="application/json" data-for="htmlwidget-5403">{
+<div id="htmlwidget-65e60ed4f5440bdab363" style="width:100%;height:216px;" class="visNetwork html-widget"></div>
+<script type="application/json" data-for="htmlwidget-65e60ed4f5440bdab363">{
   "x": {
     "nodes": {
       "id": [1, 2, 3],
@@ -410,6 +429,8 @@ visNetwork(nodes, edges)  </code></pre>
       "font.color": ["red", "blue"],
       "font.size": [10, 20]
     },
+    "nodesToDataframe": true,
+    "edgesToDataframe": true,
     "options": {
       "width": "100%",
       "height": "100%",
@@ -429,11 +450,13 @@ visNetwork(nodes, edges)  </code></pre>
     "byselection": {
       "enabled": false
     },
-    "main": null
+    "main": null,
+    "submain": null,
+    "footer": null
   },
   "evals": [],
   "jsHooks": []
-}</script></p>
+}</script>
 </div>
 
 <footer>
@@ -452,9 +475,13 @@ visNetwork(nodes, edges)  </code></pre>
 <script>
 
 // add bootstrap table styles to pandoc tables
-$(document).ready(function () {
+function bootstrapStylePandocTables() {
   $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
 });
+
 
 </script>
 
@@ -463,7 +490,7 @@ $(document).ready(function () {
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
 </script>

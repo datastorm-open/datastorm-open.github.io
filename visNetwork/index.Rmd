@@ -17,7 +17,17 @@ The package proposes all the features available in **vis.js** API, and even more
 * easy to use
 * custom shapes, styles, colors, sizes, ...
 * works smooth on any modern browser for up to a few thousand nodes and edges
-* interactivity controls (zoom, physics, movement of nodes, tooltip, events, ...)
+* interactivity controls (highlight, collapsed nodes, selection, zoom, physics, movement of nodes, tooltip, events, ...)
+* visualize ``rpart`` tree
+
+```{r, eval  = TRUE, echo = FALSE}
+require(visNetwork, quietly = TRUE)
+require(rpart, quietly = TRUE)
+
+# Basic regression tree
+res <- rpart(Petal.Length~., data=iris)
+visTree(res, edgesFontSize = 14, nodesFontSize = 16, width = "100%")
+```
 
 ## Installation
 

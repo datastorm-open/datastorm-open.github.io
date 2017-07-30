@@ -1,0 +1,37 @@
+---
+pagetitle: CART
+---
+
+```{r, eval=TRUE, echo = FALSE}
+require("visNetwork", quietly = TRUE)
+```
+
+### Since __visNetwork_2.0.0__, you can visualize Classification and Regression Trees from the output of the **rpart** package, simply using ``visTree`` : 
+
+## Classification Tree
+
+```{r, eval = TRUE}
+library(rpart)
+
+# Basic classification tree
+res <- rpart(Species~., data=iris)
+visTree(res, main = "Iris classification Tree", width = "100%")
+```
+
+## Regression tree
+
+```{r, eval = TRUE}
+res <- rpart(Petal.Length~., data=iris)
+visTree(res, edgesFontSize = 14, nodesFontSize = 16, width = "100%")
+```
+
+```{r, eval = TRUE}
+data("solder")
+res <- rpart(Opening~., data = solder, control = rpart.control(cp = 0.00005))
+visTree(res, height = "800px", nodesPopSize = TRUE, minNodeSize = 10, 
+        maxNodeSize = 30, width = "100%")
+```
+
+## Use in shiny
+
+Have a look to ``visTreeEditor`` to edity and get back network, and to ``visTreeModuleServer`` to use custom tree module in R

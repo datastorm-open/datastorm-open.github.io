@@ -1,5 +1,4 @@
 
-
 window.initializeCodeFolding = function(show) {
 
   // handlers for show-all and hide all
@@ -18,7 +17,7 @@ window.initializeCodeFolding = function(show) {
   var currentIndex = 1;
 
   // select all R code blocks
-  var rCodeBlocks = $('pre.r');
+  var rCodeBlocks = $('pre.r, pre.python, pre.bash, pre.sql, pre.cpp, pre.stan');
   rCodeBlocks.each(function() {
 
     // create a collapsable div to wrap the code in
@@ -31,15 +30,14 @@ window.initializeCodeFolding = function(show) {
     $(this).detach().appendTo(div);
 
     // add a show code button right above
-    var showCodeText = $('<span class="text-muted">' + (show ? 'Hide' : 'Code') + '</span>');
+    var showCodeText = $('<span>' + (show ? 'Hide' : 'Code') + '</span>');
     var showCodeButton = $('<button type="button" class="btn btn-default btn-xs code-folding-btn pull-right"></button>');
     showCodeButton.append(showCodeText);
     showCodeButton
         .attr('data-toggle', 'collapse')
         .attr('data-target', '#' + id)
-        .attr('aria-expanded', true)
-        .attr('aria-controls', id)
-        .css('margin-bottom', '4px');
+        .attr('aria-expanded', show)
+        .attr('aria-controls', id);
 
     var buttonRow = $('<div class="row"></div>');
     var buttonCol = $('<div class="col-md-12"></div>');

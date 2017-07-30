@@ -7,10 +7,10 @@ all: html
 html: $(HTML_FILES)
 
 %.html: %.Rmd _includes/* _output.yaml
-	Rscript compile.R "$<"
+	C:\Program Files\R\R-3.3.2\bin\x64\Rscript compile.R "$<"
 
 %.html: %.md
-	Rscript compile.R "$<"
+	C:\Program Files\R\R-3.3.2\bin\x64\Rscript compile.R "$<"
 
 .PHONY: clean
 clean:

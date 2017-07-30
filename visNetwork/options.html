@@ -4,10 +4,10 @@
 
 <head>
 
-<meta charset="utf-8">
+<meta charset="utf-8" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
-<meta name="viewport" content="width=device-width, initial-scale=1">
+
 
 
 
@@ -19,17 +19,16 @@
 <script src="libs/bootstrap/js/bootstrap.min.js"></script>
 <script src="libs/bootstrap/shim/html5shiv.min.js"></script>
 <script src="libs/bootstrap/shim/respond.min.js"></script>
+<script src="libs/navigation/tabsets.js"></script>
+<link href="libs/highlightjs/default.css" rel="stylesheet" />
+<script src="libs/highlightjs/highlight.js"></script>
 <script src="libs/htmlwidgets/htmlwidgets.js"></script>
-<link href="libs/vis/vis.min.css" rel="stylesheet" />
+<link href="libs/vis/vis.css" rel="stylesheet" />
 <script src="libs/vis/vis.min.js"></script>
 <script src="libs/visNetwork-binding/visNetwork.js"></script>
 <link href="libs/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
 
 <style type="text/css">code{white-space: pre;}</style>
-<link rel="stylesheet"
-      href="libs/highlight/default.css"
-      type="text/css" />
-<script src="libs/highlight/highlight.js"></script>
 <style type="text/css">
   pre:not([class]) {
     background-color: white;
@@ -45,25 +44,7 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
 
 
 
-
-</head>
-
-<body>
-
-<style type = "text/css">
-.main-container {
-  max-width: 940px;
-  margin-left: auto;
-  margin-right: auto;
-}
-code {
-  color: inherit;
-  background-color: rgba(0, 0, 0, 0.04);
-}
-img {
-  max-width:100%;
-  height: auto;
-}
+<style type="text/css">
 h1 {
   font-size: 34px;
 }
@@ -85,6 +66,30 @@ h5 {
 h6 {
   font-size: 12px;
 }
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
 .tabbed-pane {
   padding-top: 12px;
 }
@@ -94,10 +99,10 @@ button.code-folding-btn:focus {
 </style>
 
 
+
 <div class="container-fluid main-container">
 
 <!-- tabsets -->
-<script src="libs/navigation/tabsets.js"></script>
 <script>
 $(document).ready(function () {
   window.buildTabsets("TOC");
@@ -157,6 +162,7 @@ $(document).ready(function () {
       <a class="list-group-item" href="layout.html">Layout</a>
       <a class="list-group-item" href="igraph.html">Igraph</a>
       <a class="list-group-item" href="performance.html">Performance</a>
+      <a class="list-group-item" href="tree.html">CART</a>
       <a class="list-group-item" href="shiny.html">Shiny</a>
       <a class="list-group-item" href="interaction.html">Interactions</a>
       <a class="list-group-item" href="physic.html">Physics</a>
@@ -175,6 +181,7 @@ $(document).ready(function () {
   <div class="col-sm-9 content-body">
 
 <div class="fluid-row" id="header">
+
 
 
 
@@ -200,23 +207,25 @@ edges &lt;- data.frame(from = c(8,2,7,6,1,8,9,4,6,2),
 <pre class="r"><code>visNetwork(nodes, edges, height = &quot;500px&quot;, width = &quot;100%&quot;) %&gt;% 
   visOptions(highlightNearest = TRUE) %&gt;%
   visLayout(randomSeed = 123)</code></pre>
-<p><div id="htmlwidget-3973" style="width:100%;height:500px;" class="visNetwork html-widget"></div>
-<script type="application/json" data-for="htmlwidget-3973">{
+<div id="htmlwidget-65e60ed4f5440bdab363" style="width:100%;height:500px;" class="visNetwork html-widget"></div>
+<script type="application/json" data-for="htmlwidget-65e60ed4f5440bdab363">{
   "x": {
     "nodes": {
       "id": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
       "label": ["Label 1", "Label 2", "Label 3", "Label 4", "Label 5", "Label 6", "Label 7", "Label 8", "Label 9", "Label 10"],
       "group": ["B", "B", "C", "B", "A", "B", "C", "A", "C", "B"],
       "value": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-      "title": ["<p>1<br>Tooltip !\u003c/p>", "<p>2<br>Tooltip !\u003c/p>", "<p>3<br>Tooltip !\u003c/p>", "<p>4<br>Tooltip !\u003c/p>", "<p>5<br>Tooltip !\u003c/p>", "<p>6<br>Tooltip !\u003c/p>", "<p>7<br>Tooltip !\u003c/p>", "<p>8<br>Tooltip !\u003c/p>", "<p>9<br>Tooltip !\u003c/p>", "<p>10<br>Tooltip !\u003c/p>"]
+      "title": ["<p>1<br>Tooltip !<\/p>", "<p>2<br>Tooltip !<\/p>", "<p>3<br>Tooltip !<\/p>", "<p>4<br>Tooltip !<\/p>", "<p>5<br>Tooltip !<\/p>", "<p>6<br>Tooltip !<\/p>", "<p>7<br>Tooltip !<\/p>", "<p>8<br>Tooltip !<\/p>", "<p>9<br>Tooltip !<\/p>", "<p>10<br>Tooltip !<\/p>"]
     },
     "edges": {
       "from": [8, 2, 7, 6, 1, 8, 9, 4, 6, 2],
       "to": [3, 7, 2, 7, 9, 1, 5, 3, 2, 9],
       "value": [11.2006173961394, 10.8961498842131, 10.2536897550745, 10.5496003408587, 11.9033710510161, 11.4445336141903, 10.1152957581359, 9.37274591961818, 8.73051126961894, 9.77217985303943],
       "label": ["Edge 1", "Edge 2", "Edge 3", "Edge 4", "Edge 5", "Edge 6", "Edge 7", "Edge 8", "Edge 9", "Edge 10"],
-      "title": ["<p>1<br>Edge Tooltip !\u003c/p>", "<p>2<br>Edge Tooltip !\u003c/p>", "<p>3<br>Edge Tooltip !\u003c/p>", "<p>4<br>Edge Tooltip !\u003c/p>", "<p>5<br>Edge Tooltip !\u003c/p>", "<p>6<br>Edge Tooltip !\u003c/p>", "<p>7<br>Edge Tooltip !\u003c/p>", "<p>8<br>Edge Tooltip !\u003c/p>", "<p>9<br>Edge Tooltip !\u003c/p>", "<p>10<br>Edge Tooltip !\u003c/p>"]
+      "title": ["<p>1<br>Edge Tooltip !<\/p>", "<p>2<br>Edge Tooltip !<\/p>", "<p>3<br>Edge Tooltip !<\/p>", "<p>4<br>Edge Tooltip !<\/p>", "<p>5<br>Edge Tooltip !<\/p>", "<p>6<br>Edge Tooltip !<\/p>", "<p>7<br>Edge Tooltip !<\/p>", "<p>8<br>Edge Tooltip !<\/p>", "<p>9<br>Edge Tooltip !<\/p>", "<p>10<br>Edge Tooltip !<\/p>"]
     },
+    "nodesToDataframe": true,
+    "edgesToDataframe": true,
     "options": {
       "width": "100%",
       "height": "100%",
@@ -235,42 +244,59 @@ edges &lt;- data.frame(from = c(8,2,7,6,1,8,9,4,6,2),
     "height": "500px",
     "idselection": {
       "enabled": false,
-      "style": "width: 150px; height: 26px"
+      "style": "width: 150px; height: 26px",
+      "useLabels": true
     },
     "byselection": {
       "enabled": false,
       "style": "width: 150px; height: 26px",
-      "multiple": false
+      "multiple": false,
+      "hideColor": "rgba(200,200,200,0.5)"
     },
     "main": null,
-    "highlight": true,
-    "hoverNearest": false,
-    "degree": 1
+    "submain": null,
+    "footer": null,
+    "highlight": {
+      "enabled": true,
+      "hoverNearest": false,
+      "degree": 1,
+      "algorithm": "all",
+      "hideColor": "rgba(200,200,200,0.5)",
+      "labelOnly": true
+    },
+    "collapse": {
+      "enabled": false,
+      "fit": false,
+      "resetHighlight": true,
+      "clusterOptions": null
+    }
   },
   "evals": [],
   "jsHooks": []
-}</script></p>
+}</script>
 <p>It’s now possible to control the <code>degree</code> of depth (<strong>fix/improve performance in 1.0.0</strong>), and to enable this options also hovering nodes (<code>hover</code>, <strong>&gt;=1.0.0</strong>). Using <code>hover</code>, you can still use <code>click</code> to set a view :</p>
 <pre class="r"><code>visNetwork(nodes, edges, height = &quot;500px&quot;, width = &quot;100%&quot;) %&gt;% 
   visOptions(highlightNearest = list(enabled = T, degree = 2, hover = T)) %&gt;%
   visLayout(randomSeed = 123)</code></pre>
-<p><div id="htmlwidget-9004" style="width:100%;height:500px;" class="visNetwork html-widget"></div>
-<script type="application/json" data-for="htmlwidget-9004">{
+<div id="htmlwidget-c6a36a601760297b5cca" style="width:100%;height:500px;" class="visNetwork html-widget"></div>
+<script type="application/json" data-for="htmlwidget-c6a36a601760297b5cca">{
   "x": {
     "nodes": {
       "id": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
       "label": ["Label 1", "Label 2", "Label 3", "Label 4", "Label 5", "Label 6", "Label 7", "Label 8", "Label 9", "Label 10"],
       "group": ["B", "B", "C", "B", "A", "B", "C", "A", "C", "B"],
       "value": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-      "title": ["<p>1<br>Tooltip !\u003c/p>", "<p>2<br>Tooltip !\u003c/p>", "<p>3<br>Tooltip !\u003c/p>", "<p>4<br>Tooltip !\u003c/p>", "<p>5<br>Tooltip !\u003c/p>", "<p>6<br>Tooltip !\u003c/p>", "<p>7<br>Tooltip !\u003c/p>", "<p>8<br>Tooltip !\u003c/p>", "<p>9<br>Tooltip !\u003c/p>", "<p>10<br>Tooltip !\u003c/p>"]
+      "title": ["<p>1<br>Tooltip !<\/p>", "<p>2<br>Tooltip !<\/p>", "<p>3<br>Tooltip !<\/p>", "<p>4<br>Tooltip !<\/p>", "<p>5<br>Tooltip !<\/p>", "<p>6<br>Tooltip !<\/p>", "<p>7<br>Tooltip !<\/p>", "<p>8<br>Tooltip !<\/p>", "<p>9<br>Tooltip !<\/p>", "<p>10<br>Tooltip !<\/p>"]
     },
     "edges": {
       "from": [8, 2, 7, 6, 1, 8, 9, 4, 6, 2],
       "to": [3, 7, 2, 7, 9, 1, 5, 3, 2, 9],
       "value": [11.2006173961394, 10.8961498842131, 10.2536897550745, 10.5496003408587, 11.9033710510161, 11.4445336141903, 10.1152957581359, 9.37274591961818, 8.73051126961894, 9.77217985303943],
       "label": ["Edge 1", "Edge 2", "Edge 3", "Edge 4", "Edge 5", "Edge 6", "Edge 7", "Edge 8", "Edge 9", "Edge 10"],
-      "title": ["<p>1<br>Edge Tooltip !\u003c/p>", "<p>2<br>Edge Tooltip !\u003c/p>", "<p>3<br>Edge Tooltip !\u003c/p>", "<p>4<br>Edge Tooltip !\u003c/p>", "<p>5<br>Edge Tooltip !\u003c/p>", "<p>6<br>Edge Tooltip !\u003c/p>", "<p>7<br>Edge Tooltip !\u003c/p>", "<p>8<br>Edge Tooltip !\u003c/p>", "<p>9<br>Edge Tooltip !\u003c/p>", "<p>10<br>Edge Tooltip !\u003c/p>"]
+      "title": ["<p>1<br>Edge Tooltip !<\/p>", "<p>2<br>Edge Tooltip !<\/p>", "<p>3<br>Edge Tooltip !<\/p>", "<p>4<br>Edge Tooltip !<\/p>", "<p>5<br>Edge Tooltip !<\/p>", "<p>6<br>Edge Tooltip !<\/p>", "<p>7<br>Edge Tooltip !<\/p>", "<p>8<br>Edge Tooltip !<\/p>", "<p>9<br>Edge Tooltip !<\/p>", "<p>10<br>Edge Tooltip !<\/p>"]
     },
+    "nodesToDataframe": true,
+    "edgesToDataframe": true,
     "options": {
       "width": "100%",
       "height": "100%",
@@ -292,21 +318,38 @@ edges &lt;- data.frame(from = c(8,2,7,6,1,8,9,4,6,2),
     "height": "500px",
     "idselection": {
       "enabled": false,
-      "style": "width: 150px; height: 26px"
+      "style": "width: 150px; height: 26px",
+      "useLabels": true
     },
     "byselection": {
       "enabled": false,
       "style": "width: 150px; height: 26px",
-      "multiple": false
+      "multiple": false,
+      "hideColor": "rgba(200,200,200,0.5)"
     },
     "main": null,
-    "highlight": true,
-    "hoverNearest": true,
-    "degree": 2
+    "submain": null,
+    "footer": null,
+    "tooltipStay": 300,
+    "tooltipStyle": "position: fixed;visibility:hidden;padding: 5px;white-space: nowrap;font-family: verdana;font-size:14px;font-color:#000000;background-color: #f5f4ed;-moz-border-radius: 3px;-webkit-border-radius: 3px;border-radius: 3px;border: 1px solid #808074;box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);",
+    "highlight": {
+      "enabled": true,
+      "hoverNearest": true,
+      "degree": 2,
+      "algorithm": "all",
+      "hideColor": "rgba(200,200,200,0.5)",
+      "labelOnly": true
+    },
+    "collapse": {
+      "enabled": false,
+      "fit": false,
+      "resetHighlight": true,
+      "clusterOptions": null
+    }
   },
   "evals": [],
   "jsHooks": []
-}</script></p>
+}</script>
 <p>Since <strong>visNetwork_1.0.0</strong>, its now possible to use this feature with <strong>images</strong> and <strong>icons</strong> :</p>
 <pre class="r"><code>visNetwork(nodes, edges, height = &quot;500px&quot;, width = &quot;100%&quot;) %&gt;% 
   visGroups(groupname = &quot;A&quot;, shape = &quot;icon&quot;, 
@@ -318,23 +361,25 @@ edges &lt;- data.frame(from = c(8,2,7,6,1,8,9,4,6,2),
   visOptions(highlightNearest = list(enabled =TRUE, degree = 2, hover = T)) %&gt;%
   addFontAwesome() %&gt;%
   visLayout(randomSeed = 123)</code></pre>
-<p><div id="htmlwidget-578" style="width:100%;height:500px;" class="visNetwork html-widget"></div>
-<script type="application/json" data-for="htmlwidget-578">{
+<div id="htmlwidget-6d8788299161dc56faef" style="width:100%;height:500px;" class="visNetwork html-widget"></div>
+<script type="application/json" data-for="htmlwidget-6d8788299161dc56faef">{
   "x": {
     "nodes": {
       "id": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
       "label": ["Label 1", "Label 2", "Label 3", "Label 4", "Label 5", "Label 6", "Label 7", "Label 8", "Label 9", "Label 10"],
       "group": ["B", "B", "C", "B", "A", "B", "C", "A", "C", "B"],
       "value": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-      "title": ["<p>1<br>Tooltip !\u003c/p>", "<p>2<br>Tooltip !\u003c/p>", "<p>3<br>Tooltip !\u003c/p>", "<p>4<br>Tooltip !\u003c/p>", "<p>5<br>Tooltip !\u003c/p>", "<p>6<br>Tooltip !\u003c/p>", "<p>7<br>Tooltip !\u003c/p>", "<p>8<br>Tooltip !\u003c/p>", "<p>9<br>Tooltip !\u003c/p>", "<p>10<br>Tooltip !\u003c/p>"]
+      "title": ["<p>1<br>Tooltip !<\/p>", "<p>2<br>Tooltip !<\/p>", "<p>3<br>Tooltip !<\/p>", "<p>4<br>Tooltip !<\/p>", "<p>5<br>Tooltip !<\/p>", "<p>6<br>Tooltip !<\/p>", "<p>7<br>Tooltip !<\/p>", "<p>8<br>Tooltip !<\/p>", "<p>9<br>Tooltip !<\/p>", "<p>10<br>Tooltip !<\/p>"]
     },
     "edges": {
       "from": [8, 2, 7, 6, 1, 8, 9, 4, 6, 2],
       "to": [3, 7, 2, 7, 9, 1, 5, 3, 2, 9],
       "value": [11.2006173961394, 10.8961498842131, 10.2536897550745, 10.5496003408587, 11.9033710510161, 11.4445336141903, 10.1152957581359, 9.37274591961818, 8.73051126961894, 9.77217985303943],
       "label": ["Edge 1", "Edge 2", "Edge 3", "Edge 4", "Edge 5", "Edge 6", "Edge 7", "Edge 8", "Edge 9", "Edge 10"],
-      "title": ["<p>1<br>Edge Tooltip !\u003c/p>", "<p>2<br>Edge Tooltip !\u003c/p>", "<p>3<br>Edge Tooltip !\u003c/p>", "<p>4<br>Edge Tooltip !\u003c/p>", "<p>5<br>Edge Tooltip !\u003c/p>", "<p>6<br>Edge Tooltip !\u003c/p>", "<p>7<br>Edge Tooltip !\u003c/p>", "<p>8<br>Edge Tooltip !\u003c/p>", "<p>9<br>Edge Tooltip !\u003c/p>", "<p>10<br>Edge Tooltip !\u003c/p>"]
+      "title": ["<p>1<br>Edge Tooltip !<\/p>", "<p>2<br>Edge Tooltip !<\/p>", "<p>3<br>Edge Tooltip !<\/p>", "<p>4<br>Edge Tooltip !<\/p>", "<p>5<br>Edge Tooltip !<\/p>", "<p>6<br>Edge Tooltip !<\/p>", "<p>7<br>Edge Tooltip !<\/p>", "<p>8<br>Edge Tooltip !<\/p>", "<p>9<br>Edge Tooltip !<\/p>", "<p>10<br>Edge Tooltip !<\/p>"]
     },
+    "nodesToDataframe": true,
+    "edgesToDataframe": true,
     "options": {
       "width": "100%",
       "height": "100%",
@@ -381,22 +426,39 @@ edges &lt;- data.frame(from = c(8,2,7,6,1,8,9,4,6,2),
     "height": "500px",
     "idselection": {
       "enabled": false,
-      "style": "width: 150px; height: 26px"
+      "style": "width: 150px; height: 26px",
+      "useLabels": true
     },
     "byselection": {
       "enabled": false,
       "style": "width: 150px; height: 26px",
-      "multiple": false
+      "multiple": false,
+      "hideColor": "rgba(200,200,200,0.5)"
     },
     "main": null,
-    "highlight": true,
-    "hoverNearest": true,
-    "degree": 2,
+    "submain": null,
+    "footer": null,
+    "tooltipStay": 300,
+    "tooltipStyle": "position: fixed;visibility:hidden;padding: 5px;white-space: nowrap;font-family: verdana;font-size:14px;font-color:#000000;background-color: #f5f4ed;-moz-border-radius: 3px;-webkit-border-radius: 3px;border-radius: 3px;border: 1px solid #808074;box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);",
+    "highlight": {
+      "enabled": true,
+      "hoverNearest": true,
+      "degree": 2,
+      "algorithm": "all",
+      "hideColor": "rgba(200,200,200,0.5)",
+      "labelOnly": true
+    },
+    "collapse": {
+      "enabled": false,
+      "fit": false,
+      "resetHighlight": true,
+      "clusterOptions": null
+    },
     "iconsRedraw": true
   },
   "evals": [],
   "jsHooks": []
-}</script></p>
+}</script>
 </div>
 <div id="select-by-node-id" class="section level2">
 <h2>Select by node id</h2>
@@ -404,23 +466,25 @@ edges &lt;- data.frame(from = c(8,2,7,6,1,8,9,4,6,2),
 <pre class="r"><code>visNetwork(nodes, edges, height = &quot;500px&quot;, width = &quot;100%&quot;) %&gt;% 
   visOptions(highlightNearest = TRUE, nodesIdSelection = TRUE) %&gt;%
   visLayout(randomSeed = 123)</code></pre>
-<p><div id="htmlwidget-8316" style="width:100%;height:500px;" class="visNetwork html-widget"></div>
-<script type="application/json" data-for="htmlwidget-8316">{
+<div id="htmlwidget-e90b79b122bd7002e299" style="width:100%;height:500px;" class="visNetwork html-widget"></div>
+<script type="application/json" data-for="htmlwidget-e90b79b122bd7002e299">{
   "x": {
     "nodes": {
       "id": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
       "label": ["Label 1", "Label 2", "Label 3", "Label 4", "Label 5", "Label 6", "Label 7", "Label 8", "Label 9", "Label 10"],
       "group": ["B", "B", "C", "B", "A", "B", "C", "A", "C", "B"],
       "value": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-      "title": ["<p>1<br>Tooltip !\u003c/p>", "<p>2<br>Tooltip !\u003c/p>", "<p>3<br>Tooltip !\u003c/p>", "<p>4<br>Tooltip !\u003c/p>", "<p>5<br>Tooltip !\u003c/p>", "<p>6<br>Tooltip !\u003c/p>", "<p>7<br>Tooltip !\u003c/p>", "<p>8<br>Tooltip !\u003c/p>", "<p>9<br>Tooltip !\u003c/p>", "<p>10<br>Tooltip !\u003c/p>"]
+      "title": ["<p>1<br>Tooltip !<\/p>", "<p>2<br>Tooltip !<\/p>", "<p>3<br>Tooltip !<\/p>", "<p>4<br>Tooltip !<\/p>", "<p>5<br>Tooltip !<\/p>", "<p>6<br>Tooltip !<\/p>", "<p>7<br>Tooltip !<\/p>", "<p>8<br>Tooltip !<\/p>", "<p>9<br>Tooltip !<\/p>", "<p>10<br>Tooltip !<\/p>"]
     },
     "edges": {
       "from": [8, 2, 7, 6, 1, 8, 9, 4, 6, 2],
       "to": [3, 7, 2, 7, 9, 1, 5, 3, 2, 9],
       "value": [11.2006173961394, 10.8961498842131, 10.2536897550745, 10.5496003408587, 11.9033710510161, 11.4445336141903, 10.1152957581359, 9.37274591961818, 8.73051126961894, 9.77217985303943],
       "label": ["Edge 1", "Edge 2", "Edge 3", "Edge 4", "Edge 5", "Edge 6", "Edge 7", "Edge 8", "Edge 9", "Edge 10"],
-      "title": ["<p>1<br>Edge Tooltip !\u003c/p>", "<p>2<br>Edge Tooltip !\u003c/p>", "<p>3<br>Edge Tooltip !\u003c/p>", "<p>4<br>Edge Tooltip !\u003c/p>", "<p>5<br>Edge Tooltip !\u003c/p>", "<p>6<br>Edge Tooltip !\u003c/p>", "<p>7<br>Edge Tooltip !\u003c/p>", "<p>8<br>Edge Tooltip !\u003c/p>", "<p>9<br>Edge Tooltip !\u003c/p>", "<p>10<br>Edge Tooltip !\u003c/p>"]
+      "title": ["<p>1<br>Edge Tooltip !<\/p>", "<p>2<br>Edge Tooltip !<\/p>", "<p>3<br>Edge Tooltip !<\/p>", "<p>4<br>Edge Tooltip !<\/p>", "<p>5<br>Edge Tooltip !<\/p>", "<p>6<br>Edge Tooltip !<\/p>", "<p>7<br>Edge Tooltip !<\/p>", "<p>8<br>Edge Tooltip !<\/p>", "<p>9<br>Edge Tooltip !<\/p>", "<p>10<br>Edge Tooltip !<\/p>"]
     },
+    "nodesToDataframe": true,
+    "edgesToDataframe": true,
     "options": {
       "width": "100%",
       "height": "100%",
@@ -439,21 +503,36 @@ edges &lt;- data.frame(from = c(8,2,7,6,1,8,9,4,6,2),
     "height": "500px",
     "idselection": {
       "enabled": true,
-      "style": "width: 150px; height: 26px"
+      "style": "width: 150px; height: 26px",
+      "useLabels": true
     },
     "byselection": {
       "enabled": false,
       "style": "width: 150px; height: 26px",
-      "multiple": false
+      "multiple": false,
+      "hideColor": "rgba(200,200,200,0.5)"
     },
     "main": null,
-    "highlight": true,
-    "hoverNearest": false,
-    "degree": 1
+    "submain": null,
+    "footer": null,
+    "highlight": {
+      "enabled": true,
+      "hoverNearest": false,
+      "degree": 1,
+      "algorithm": "all",
+      "hideColor": "rgba(200,200,200,0.5)",
+      "labelOnly": true
+    },
+    "collapse": {
+      "enabled": false,
+      "fit": false,
+      "resetHighlight": true,
+      "clusterOptions": null
+    }
   },
   "evals": [],
   "jsHooks": []
-}</script></p>
+}</script>
 </div>
 <div id="select-by-a-column" class="section level2">
 <h2>Select by a column</h2>
@@ -462,23 +541,25 @@ edges &lt;- data.frame(from = c(8,2,7,6,1,8,9,4,6,2),
 visNetwork(nodes, edges, height = &quot;500px&quot;, width = &quot;100%&quot;) %&gt;%
   visOptions(selectedBy = &quot;group&quot;) %&gt;%
   visLayout(randomSeed = 123)</code></pre>
-<p><div id="htmlwidget-9603" style="width:100%;height:500px;" class="visNetwork html-widget"></div>
-<script type="application/json" data-for="htmlwidget-9603">{
+<div id="htmlwidget-fb93f5535b798302ff62" style="width:100%;height:500px;" class="visNetwork html-widget"></div>
+<script type="application/json" data-for="htmlwidget-fb93f5535b798302ff62">{
   "x": {
     "nodes": {
       "id": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
       "label": ["Label 1", "Label 2", "Label 3", "Label 4", "Label 5", "Label 6", "Label 7", "Label 8", "Label 9", "Label 10"],
       "group": ["B", "B", "C", "B", "A", "B", "C", "A", "C", "B"],
       "value": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-      "title": ["<p>1<br>Tooltip !\u003c/p>", "<p>2<br>Tooltip !\u003c/p>", "<p>3<br>Tooltip !\u003c/p>", "<p>4<br>Tooltip !\u003c/p>", "<p>5<br>Tooltip !\u003c/p>", "<p>6<br>Tooltip !\u003c/p>", "<p>7<br>Tooltip !\u003c/p>", "<p>8<br>Tooltip !\u003c/p>", "<p>9<br>Tooltip !\u003c/p>", "<p>10<br>Tooltip !\u003c/p>"]
+      "title": ["<p>1<br>Tooltip !<\/p>", "<p>2<br>Tooltip !<\/p>", "<p>3<br>Tooltip !<\/p>", "<p>4<br>Tooltip !<\/p>", "<p>5<br>Tooltip !<\/p>", "<p>6<br>Tooltip !<\/p>", "<p>7<br>Tooltip !<\/p>", "<p>8<br>Tooltip !<\/p>", "<p>9<br>Tooltip !<\/p>", "<p>10<br>Tooltip !<\/p>"]
     },
     "edges": {
       "from": [8, 2, 7, 6, 1, 8, 9, 4, 6, 2],
       "to": [3, 7, 2, 7, 9, 1, 5, 3, 2, 9],
       "value": [11.2006173961394, 10.8961498842131, 10.2536897550745, 10.5496003408587, 11.9033710510161, 11.4445336141903, 10.1152957581359, 9.37274591961818, 8.73051126961894, 9.77217985303943],
       "label": ["Edge 1", "Edge 2", "Edge 3", "Edge 4", "Edge 5", "Edge 6", "Edge 7", "Edge 8", "Edge 9", "Edge 10"],
-      "title": ["<p>1<br>Edge Tooltip !\u003c/p>", "<p>2<br>Edge Tooltip !\u003c/p>", "<p>3<br>Edge Tooltip !\u003c/p>", "<p>4<br>Edge Tooltip !\u003c/p>", "<p>5<br>Edge Tooltip !\u003c/p>", "<p>6<br>Edge Tooltip !\u003c/p>", "<p>7<br>Edge Tooltip !\u003c/p>", "<p>8<br>Edge Tooltip !\u003c/p>", "<p>9<br>Edge Tooltip !\u003c/p>", "<p>10<br>Edge Tooltip !\u003c/p>"]
+      "title": ["<p>1<br>Edge Tooltip !<\/p>", "<p>2<br>Edge Tooltip !<\/p>", "<p>3<br>Edge Tooltip !<\/p>", "<p>4<br>Edge Tooltip !<\/p>", "<p>5<br>Edge Tooltip !<\/p>", "<p>6<br>Edge Tooltip !<\/p>", "<p>7<br>Edge Tooltip !<\/p>", "<p>8<br>Edge Tooltip !<\/p>", "<p>9<br>Edge Tooltip !<\/p>", "<p>10<br>Edge Tooltip !<\/p>"]
     },
+    "nodesToDataframe": true,
+    "edgesToDataframe": true,
     "options": {
       "width": "100%",
       "height": "100%",
@@ -497,23 +578,38 @@ visNetwork(nodes, edges, height = &quot;500px&quot;, width = &quot;100%&quot;) %
     "height": "500px",
     "idselection": {
       "enabled": false,
-      "style": "width: 150px; height: 26px"
+      "style": "width: 150px; height: 26px",
+      "useLabels": true
     },
     "byselection": {
       "enabled": true,
       "style": "width: 150px; height: 26px",
       "multiple": false,
+      "hideColor": "rgba(200,200,200,0.5)",
       "variable": "group",
       "values": ["A", "B", "C"]
     },
     "main": null,
-    "highlight": false,
-    "hoverNearest": false,
-    "degree": 1
+    "submain": null,
+    "footer": null,
+    "highlight": {
+      "enabled": false,
+      "hoverNearest": false,
+      "degree": 1,
+      "algorithm": "all",
+      "hideColor": "rgba(200,200,200,0.5)",
+      "labelOnly": true
+    },
+    "collapse": {
+      "enabled": false,
+      "fit": false,
+      "resetHighlight": true,
+      "clusterOptions": null
+    }
   },
   "evals": [],
   "jsHooks": []
-}</script></p>
+}</script>
 <pre class="r"><code># or new column, with multiple groups
 nodes$sample &lt;- paste(sample(LETTERS[1:3], nrow(nodes), replace = TRUE),
                       sample(LETTERS[1:3], nrow(nodes), replace = TRUE), 
@@ -523,24 +619,26 @@ nodes$label &lt;- nodes$sample # for see groups
 visNetwork(nodes, edges, height = &quot;500px&quot;, width = &quot;100%&quot;) %&gt;%
   visOptions(selectedBy = list(variable = &quot;sample&quot;, multiple = T)) %&gt;%
   visLayout(randomSeed = 123)</code></pre>
-<p><div id="htmlwidget-3791" style="width:100%;height:500px;" class="visNetwork html-widget"></div>
-<script type="application/json" data-for="htmlwidget-3791">{
+<div id="htmlwidget-a81d84882e3b64c1a840" style="width:100%;height:500px;" class="visNetwork html-widget"></div>
+<script type="application/json" data-for="htmlwidget-a81d84882e3b64c1a840">{
   "x": {
     "nodes": {
       "id": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-      "label": ["A,B", "A,A", "C,B", "C,B", "B,C", "C,B", "B,B", "B,B", "B,A", "A,B"],
+      "label": ["B,C", "C,B", "A,B", "C,B", "C,A", "A,B", "A,A", "C,B", "C,B", "B,C"],
       "group": ["B", "B", "C", "B", "A", "B", "C", "A", "C", "B"],
       "value": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-      "title": ["<p>1<br>Tooltip !\u003c/p>", "<p>2<br>Tooltip !\u003c/p>", "<p>3<br>Tooltip !\u003c/p>", "<p>4<br>Tooltip !\u003c/p>", "<p>5<br>Tooltip !\u003c/p>", "<p>6<br>Tooltip !\u003c/p>", "<p>7<br>Tooltip !\u003c/p>", "<p>8<br>Tooltip !\u003c/p>", "<p>9<br>Tooltip !\u003c/p>", "<p>10<br>Tooltip !\u003c/p>"],
-      "sample": ["A,B", "A,A", "C,B", "C,B", "B,C", "C,B", "B,B", "B,B", "B,A", "A,B"]
+      "title": ["<p>1<br>Tooltip !<\/p>", "<p>2<br>Tooltip !<\/p>", "<p>3<br>Tooltip !<\/p>", "<p>4<br>Tooltip !<\/p>", "<p>5<br>Tooltip !<\/p>", "<p>6<br>Tooltip !<\/p>", "<p>7<br>Tooltip !<\/p>", "<p>8<br>Tooltip !<\/p>", "<p>9<br>Tooltip !<\/p>", "<p>10<br>Tooltip !<\/p>"],
+      "sample": ["B,C", "C,B", "A,B", "C,B", "C,A", "A,B", "A,A", "C,B", "C,B", "B,C"]
     },
     "edges": {
       "from": [8, 2, 7, 6, 1, 8, 9, 4, 6, 2],
       "to": [3, 7, 2, 7, 9, 1, 5, 3, 2, 9],
       "value": [11.2006173961394, 10.8961498842131, 10.2536897550745, 10.5496003408587, 11.9033710510161, 11.4445336141903, 10.1152957581359, 9.37274591961818, 8.73051126961894, 9.77217985303943],
       "label": ["Edge 1", "Edge 2", "Edge 3", "Edge 4", "Edge 5", "Edge 6", "Edge 7", "Edge 8", "Edge 9", "Edge 10"],
-      "title": ["<p>1<br>Edge Tooltip !\u003c/p>", "<p>2<br>Edge Tooltip !\u003c/p>", "<p>3<br>Edge Tooltip !\u003c/p>", "<p>4<br>Edge Tooltip !\u003c/p>", "<p>5<br>Edge Tooltip !\u003c/p>", "<p>6<br>Edge Tooltip !\u003c/p>", "<p>7<br>Edge Tooltip !\u003c/p>", "<p>8<br>Edge Tooltip !\u003c/p>", "<p>9<br>Edge Tooltip !\u003c/p>", "<p>10<br>Edge Tooltip !\u003c/p>"]
+      "title": ["<p>1<br>Edge Tooltip !<\/p>", "<p>2<br>Edge Tooltip !<\/p>", "<p>3<br>Edge Tooltip !<\/p>", "<p>4<br>Edge Tooltip !<\/p>", "<p>5<br>Edge Tooltip !<\/p>", "<p>6<br>Edge Tooltip !<\/p>", "<p>7<br>Edge Tooltip !<\/p>", "<p>8<br>Edge Tooltip !<\/p>", "<p>9<br>Edge Tooltip !<\/p>", "<p>10<br>Edge Tooltip !<\/p>"]
     },
+    "nodesToDataframe": true,
+    "edgesToDataframe": true,
     "options": {
       "width": "100%",
       "height": "100%",
@@ -559,23 +657,38 @@ visNetwork(nodes, edges, height = &quot;500px&quot;, width = &quot;100%&quot;) %
     "height": "500px",
     "idselection": {
       "enabled": false,
-      "style": "width: 150px; height: 26px"
+      "style": "width: 150px; height: 26px",
+      "useLabels": true
     },
     "byselection": {
       "enabled": true,
       "style": "width: 150px; height: 26px",
       "multiple": true,
+      "hideColor": "rgba(200,200,200,0.5)",
       "variable": "sample",
       "values": ["A", "B", "C"]
     },
     "main": null,
-    "highlight": false,
-    "hoverNearest": false,
-    "degree": 1
+    "submain": null,
+    "footer": null,
+    "highlight": {
+      "enabled": false,
+      "hoverNearest": false,
+      "degree": 1,
+      "algorithm": "all",
+      "hideColor": "rgba(200,200,200,0.5)",
+      "labelOnly": true
+    },
+    "collapse": {
+      "enabled": false,
+      "fit": false,
+      "resetHighlight": true,
+      "clusterOptions": null
+    }
   },
   "evals": [],
   "jsHooks": []
-}</script></p>
+}</script>
 </div>
 <div id="customize-options" class="section level2">
 <h2>Customize options</h2>
@@ -597,24 +710,26 @@ visNetwork(nodes, edges, height = &quot;500px&quot;, width = &quot;100%&quot;) %
                                  border:none;
                                  outline:none;&#39;)) %&gt;%
   visLayout(randomSeed = 123)</code></pre>
-<p><div id="htmlwidget-8626" style="width:100%;height:500px;" class="visNetwork html-widget"></div>
-<script type="application/json" data-for="htmlwidget-8626">{
+<div id="htmlwidget-2865ff85215eaa474969" style="width:100%;height:500px;" class="visNetwork html-widget"></div>
+<script type="application/json" data-for="htmlwidget-2865ff85215eaa474969">{
   "x": {
     "nodes": {
       "id": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
       "label": ["Label 1", "Label 2", "Label 3", "Label 4", "Label 5", "Label 6", "Label 7", "Label 8", "Label 9", "Label 10"],
       "group": ["B", "B", "C", "B", "A", "B", "C", "A", "C", "B"],
       "value": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-      "title": ["<p>1<br>Tooltip !\u003c/p>", "<p>2<br>Tooltip !\u003c/p>", "<p>3<br>Tooltip !\u003c/p>", "<p>4<br>Tooltip !\u003c/p>", "<p>5<br>Tooltip !\u003c/p>", "<p>6<br>Tooltip !\u003c/p>", "<p>7<br>Tooltip !\u003c/p>", "<p>8<br>Tooltip !\u003c/p>", "<p>9<br>Tooltip !\u003c/p>", "<p>10<br>Tooltip !\u003c/p>"],
-      "sample": ["A,B", "A,A", "C,B", "C,B", "B,C", "C,B", "B,B", "B,B", "B,A", "A,B"]
+      "title": ["<p>1<br>Tooltip !<\/p>", "<p>2<br>Tooltip !<\/p>", "<p>3<br>Tooltip !<\/p>", "<p>4<br>Tooltip !<\/p>", "<p>5<br>Tooltip !<\/p>", "<p>6<br>Tooltip !<\/p>", "<p>7<br>Tooltip !<\/p>", "<p>8<br>Tooltip !<\/p>", "<p>9<br>Tooltip !<\/p>", "<p>10<br>Tooltip !<\/p>"],
+      "sample": ["B,C", "C,B", "A,B", "C,B", "C,A", "A,B", "A,A", "C,B", "C,B", "B,C"]
     },
     "edges": {
       "from": [8, 2, 7, 6, 1, 8, 9, 4, 6, 2],
       "to": [3, 7, 2, 7, 9, 1, 5, 3, 2, 9],
       "value": [11.2006173961394, 10.8961498842131, 10.2536897550745, 10.5496003408587, 11.9033710510161, 11.4445336141903, 10.1152957581359, 9.37274591961818, 8.73051126961894, 9.77217985303943],
       "label": ["Edge 1", "Edge 2", "Edge 3", "Edge 4", "Edge 5", "Edge 6", "Edge 7", "Edge 8", "Edge 9", "Edge 10"],
-      "title": ["<p>1<br>Edge Tooltip !\u003c/p>", "<p>2<br>Edge Tooltip !\u003c/p>", "<p>3<br>Edge Tooltip !\u003c/p>", "<p>4<br>Edge Tooltip !\u003c/p>", "<p>5<br>Edge Tooltip !\u003c/p>", "<p>6<br>Edge Tooltip !\u003c/p>", "<p>7<br>Edge Tooltip !\u003c/p>", "<p>8<br>Edge Tooltip !\u003c/p>", "<p>9<br>Edge Tooltip !\u003c/p>", "<p>10<br>Edge Tooltip !\u003c/p>"]
+      "title": ["<p>1<br>Edge Tooltip !<\/p>", "<p>2<br>Edge Tooltip !<\/p>", "<p>3<br>Edge Tooltip !<\/p>", "<p>4<br>Edge Tooltip !<\/p>", "<p>5<br>Edge Tooltip !<\/p>", "<p>6<br>Edge Tooltip !<\/p>", "<p>7<br>Edge Tooltip !<\/p>", "<p>8<br>Edge Tooltip !<\/p>", "<p>9<br>Edge Tooltip !<\/p>", "<p>10<br>Edge Tooltip !<\/p>"]
     },
+    "nodesToDataframe": true,
+    "edgesToDataframe": true,
     "options": {
       "width": "100%",
       "height": "100%",
@@ -634,22 +749,119 @@ visNetwork(nodes, edges, height = &quot;500px&quot;, width = &quot;100%&quot;) %
     "idselection": {
       "enabled": true,
       "style": "width: 200px; height: 26px;\n                                 background: #f8f8f8;\n                                 color: darkblue;\n                                 border:none;\n                                 outline:none;",
+      "useLabels": true,
       "selected": "8",
       "values": [5, 6, 7, 8, 9, 10]
     },
     "byselection": {
       "enabled": false,
       "style": "width: 150px; height: 26px",
-      "multiple": false
+      "multiple": false,
+      "hideColor": "rgba(200,200,200,0.5)"
     },
     "main": null,
-    "highlight": true,
-    "hoverNearest": false,
-    "degree": 1
+    "submain": null,
+    "footer": null,
+    "highlight": {
+      "enabled": true,
+      "hoverNearest": false,
+      "degree": 1,
+      "algorithm": "all",
+      "hideColor": "rgba(200,200,200,0.5)",
+      "labelOnly": true
+    },
+    "collapse": {
+      "enabled": false,
+      "fit": false,
+      "resetHighlight": true,
+      "clusterOptions": null
+    }
   },
   "evals": [],
   "jsHooks": []
-}</script></p>
+}</script>
+</div>
+<div id="collapse-uncollapse-nodes" class="section level2">
+<h2>Collapse / Uncollapse Nodes</h2>
+<p>New in <strong>visNetwork_2.0.0</strong> ! :</p>
+<pre class="r"><code>nodes &lt;- data.frame(id = 1:15, label = paste(&quot;Label&quot;, 1:15),
+ group = sample(LETTERS[1:3], 15, replace = TRUE))
+
+edges &lt;- data.frame(from = trunc(runif(15)*(15-1))+1,
+ to = trunc(runif(15)*(15-1))+1)
+ 
+# keeping all parent node attributes  
+visNetwork(nodes, edges) %&gt;% visEdges(arrows = &quot;to&quot;) %&gt;%
+ visOptions(collapse = TRUE)</code></pre>
+<div id="htmlwidget-eb5bdc7f1bfa77cf3949" style="width:100%;height:216px;" class="visNetwork html-widget"></div>
+<script type="application/json" data-for="htmlwidget-eb5bdc7f1bfa77cf3949">{
+  "x": {
+    "nodes": {
+      "id": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
+      "label": ["Label 1", "Label 2", "Label 3", "Label 4", "Label 5", "Label 6", "Label 7", "Label 8", "Label 9", "Label 10", "Label 11", "Label 12", "Label 13", "Label 14", "Label 15"],
+      "group": ["B", "B", "B", "A", "B", "B", "C", "B", "C", "C", "C", "A", "B", "C", "A"]
+    },
+    "edges": {
+      "from": [11, 7, 1, 13, 9, 14, 9, 14, 5, 6, 7, 8, 1, 14, 6],
+      "to": [10, 2, 8, 8, 3, 4, 6, 11, 10, 4, 3, 6, 14, 8, 2]
+    },
+    "nodesToDataframe": true,
+    "edgesToDataframe": true,
+    "options": {
+      "width": "100%",
+      "height": "100%",
+      "nodes": {
+        "shape": "dot"
+      },
+      "manipulation": {
+        "enabled": false
+      },
+      "edges": {
+        "arrows": "to"
+      }
+    },
+    "groups": ["B", "A", "C"],
+    "width": null,
+    "height": null,
+    "idselection": {
+      "enabled": false,
+      "style": "width: 150px; height: 26px",
+      "useLabels": true
+    },
+    "byselection": {
+      "enabled": false,
+      "style": "width: 150px; height: 26px",
+      "multiple": false,
+      "hideColor": "rgba(200,200,200,0.5)"
+    },
+    "main": null,
+    "submain": null,
+    "footer": null,
+    "highlight": {
+      "enabled": false,
+      "hoverNearest": false,
+      "degree": 1,
+      "algorithm": "all",
+      "hideColor": "rgba(200,200,200,0.5)",
+      "labelOnly": true
+    },
+    "collapse": {
+      "enabled": true,
+      "fit": false,
+      "resetHighlight": true,
+      "clusterOptions": null
+    }
+  },
+  "evals": [],
+  "jsHooks": []
+}</script>
+<pre class="r"><code># setting some properties with clusterOptions
+# visNetwork(nodes, edges) %&gt;% visEdges(arrows = &quot;to&quot;) %&gt;%
+#  visOptions(collapse = list(enabled = TRUE, clusterOptions = list(shape = &quot;square&quot;))) 
+   
+# enable / disable open cluster (proxy only) : 
+# visEvents(type = &quot;off&quot;, doubleClick = &quot;networkOpenCluster&quot;)
+# visEvents(type = &quot;on&quot;, doubleClick = &quot;networkOpenCluster&quot;)</code></pre>
 </div>
 <div id="data-manipulation" class="section level2">
 <h2>Data Manipulation</h2>
@@ -661,24 +873,20 @@ visNetwork(nodes, edges, height = &quot;500px&quot;, width = &quot;100%&quot;) %
 <pre class="r"><code>visNetwork(nodes, edges, height = &quot;500px&quot;, width = &quot;100%&quot;) %&gt;% 
   visOptions(manipulation = TRUE) %&gt;%
   visLayout(randomSeed = 123)</code></pre>
-<p><div id="htmlwidget-3376" style="width:100%;height:500px;" class="visNetwork html-widget"></div>
-<script type="application/json" data-for="htmlwidget-3376">{
+<div id="htmlwidget-b316575cf157472f8301" style="width:100%;height:500px;" class="visNetwork html-widget"></div>
+<script type="application/json" data-for="htmlwidget-b316575cf157472f8301">{
   "x": {
     "nodes": {
-      "id": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-      "label": ["Label 1", "Label 2", "Label 3", "Label 4", "Label 5", "Label 6", "Label 7", "Label 8", "Label 9", "Label 10"],
-      "group": ["B", "B", "C", "B", "A", "B", "C", "A", "C", "B"],
-      "value": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-      "title": ["<p>1<br>Tooltip !\u003c/p>", "<p>2<br>Tooltip !\u003c/p>", "<p>3<br>Tooltip !\u003c/p>", "<p>4<br>Tooltip !\u003c/p>", "<p>5<br>Tooltip !\u003c/p>", "<p>6<br>Tooltip !\u003c/p>", "<p>7<br>Tooltip !\u003c/p>", "<p>8<br>Tooltip !\u003c/p>", "<p>9<br>Tooltip !\u003c/p>", "<p>10<br>Tooltip !\u003c/p>"],
-      "sample": ["A,B", "A,A", "C,B", "C,B", "B,C", "C,B", "B,B", "B,B", "B,A", "A,B"]
+      "id": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
+      "label": ["Label 1", "Label 2", "Label 3", "Label 4", "Label 5", "Label 6", "Label 7", "Label 8", "Label 9", "Label 10", "Label 11", "Label 12", "Label 13", "Label 14", "Label 15"],
+      "group": ["B", "B", "B", "A", "B", "B", "C", "B", "C", "C", "C", "A", "B", "C", "A"]
     },
     "edges": {
-      "from": [8, 2, 7, 6, 1, 8, 9, 4, 6, 2],
-      "to": [3, 7, 2, 7, 9, 1, 5, 3, 2, 9],
-      "value": [11.2006173961394, 10.8961498842131, 10.2536897550745, 10.5496003408587, 11.9033710510161, 11.4445336141903, 10.1152957581359, 9.37274591961818, 8.73051126961894, 9.77217985303943],
-      "label": ["Edge 1", "Edge 2", "Edge 3", "Edge 4", "Edge 5", "Edge 6", "Edge 7", "Edge 8", "Edge 9", "Edge 10"],
-      "title": ["<p>1<br>Edge Tooltip !\u003c/p>", "<p>2<br>Edge Tooltip !\u003c/p>", "<p>3<br>Edge Tooltip !\u003c/p>", "<p>4<br>Edge Tooltip !\u003c/p>", "<p>5<br>Edge Tooltip !\u003c/p>", "<p>6<br>Edge Tooltip !\u003c/p>", "<p>7<br>Edge Tooltip !\u003c/p>", "<p>8<br>Edge Tooltip !\u003c/p>", "<p>9<br>Edge Tooltip !\u003c/p>", "<p>10<br>Edge Tooltip !\u003c/p>"]
+      "from": [11, 7, 1, 13, 9, 14, 9, 14, 5, 6, 7, 8, 1, 14, 6],
+      "to": [10, 2, 8, 8, 3, 4, 6, 11, 10, 4, 3, 6, 14, 8, 2]
     },
+    "nodesToDataframe": true,
+    "edgesToDataframe": true,
     "options": {
       "width": "100%",
       "height": "100%",
@@ -692,27 +900,42 @@ visNetwork(nodes, edges, height = &quot;500px&quot;, width = &quot;100%&quot;) %
         "randomSeed": 123
       }
     },
-    "groups": ["B", "C", "A"],
+    "groups": ["B", "A", "C"],
     "width": "100%",
     "height": "500px",
     "idselection": {
       "enabled": false,
-      "style": "width: 150px; height: 26px"
+      "style": "width: 150px; height: 26px",
+      "useLabels": true
     },
     "byselection": {
       "enabled": false,
       "style": "width: 150px; height: 26px",
-      "multiple": false
+      "multiple": false,
+      "hideColor": "rgba(200,200,200,0.5)"
     },
     "main": null,
+    "submain": null,
+    "footer": null,
     "datacss": "table.legend_table {\n  font-size: 11px;\n  border-width:1px;\n  border-color:#d3d3d3;\n  border-style:solid;\n}\ntable.legend_table,td {\n  border-width:1px;\n  border-color:#d3d3d3;\n  border-style:solid;\n  padding: 2px;\n}\ndiv.table_content {\n  width:80px;\n  text-align:center;\n}\ndiv.table_description {\n  width:100px;\n}\n\n#operation {\n  font-size:28px;\n}\n#network-popUp {\n  display:none;\n  z-index:299;\n  width:250px;\n  height:150px;\n  background-color: #f9f9f9;\n  border-style:solid;\n  border-width:3px;\n  border-color: #5394ed;\n  padding:10px;\n  text-align: center;\n  position:fixed;\n  top:50%;  \n  left:50%;  \n  margin:-100px 0 0 -100px;  \n\n}",
-    "highlight": false,
-    "hoverNearest": false,
-    "degree": 1
+    "highlight": {
+      "enabled": false,
+      "hoverNearest": false,
+      "degree": 1,
+      "algorithm": "all",
+      "hideColor": "rgba(200,200,200,0.5)",
+      "labelOnly": true
+    },
+    "collapse": {
+      "enabled": false,
+      "fit": false,
+      "resetHighlight": true,
+      "clusterOptions": null
+    }
   },
   "evals": [],
   "jsHooks": []
-}</script></p>
+}</script>
 </div>
 <div id="les-miserables-example" class="section level2">
 <h2>“Les miserables” example</h2>
@@ -726,8 +949,8 @@ visNetwork(nodes, edges, height = &quot;700px&quot;, width = &quot;100%&quot;) %
              highlightNearest = TRUE, 
              nodesIdSelection = TRUE) %&gt;%
   visPhysics(stabilization = FALSE)</code></pre>
-<p><div id="htmlwidget-9778" style="width:100%;height:700px;" class="visNetwork html-widget"></div>
-<script type="application/json" data-for="htmlwidget-9778">{
+<div id="htmlwidget-3f5e488e9608f6a7f9e8" style="width:100%;height:700px;" class="visNetwork html-widget"></div>
+<script type="application/json" data-for="htmlwidget-3f5e488e9608f6a7f9e8">{
   "x": {
     "nodes": {
       "id": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76],
@@ -738,6 +961,8 @@ visNetwork(nodes, edges, height = &quot;700px&quot;, width = &quot;100%&quot;) %
       "from": [1, 2, 3, 3, 4, 5, 6, 7, 8, 9, 11, 11, 11, 11, 12, 13, 14, 15, 17, 18, 18, 19, 19, 19, 20, 20, 20, 20, 21, 21, 21, 21, 21, 22, 22, 22, 22, 22, 22, 23, 23, 23, 23, 23, 23, 23, 23, 23, 24, 24, 25, 25, 25, 26, 26, 26, 26, 27, 27, 27, 27, 27, 28, 28, 29, 29, 29, 30, 31, 31, 31, 31, 32, 33, 33, 34, 34, 35, 35, 35, 36, 36, 36, 36, 37, 37, 37, 37, 37, 38, 38, 38, 38, 38, 38, 39, 40, 41, 41, 42, 42, 42, 43, 43, 43, 44, 44, 45, 47, 48, 48, 48, 48, 49, 49, 50, 50, 51, 51, 51, 52, 52, 53, 54, 54, 54, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 56, 56, 57, 57, 57, 58, 58, 58, 58, 58, 59, 59, 59, 59, 60, 60, 60, 61, 61, 61, 61, 61, 61, 62, 62, 62, 62, 62, 62, 62, 62, 63, 63, 63, 63, 63, 63, 63, 63, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 66, 66, 66, 66, 66, 66, 66, 66, 66, 67, 68, 68, 68, 68, 68, 68, 69, 69, 69, 69, 69, 69, 69, 70, 70, 70, 70, 70, 70, 70, 70, 71, 71, 71, 71, 71, 71, 71, 71, 72, 72, 72, 73, 74, 74, 75, 75, 75, 75, 75, 75, 75, 76, 76, 76, 76, 76, 76, 76],
       "to": [0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 10, 3, 2, 0, 11, 11, 11, 11, 16, 16, 17, 16, 17, 18, 16, 17, 18, 19, 16, 17, 18, 19, 20, 16, 17, 18, 19, 20, 21, 16, 17, 18, 19, 20, 21, 22, 12, 11, 23, 11, 24, 23, 11, 24, 11, 16, 25, 11, 23, 25, 24, 26, 11, 27, 23, 27, 11, 23, 30, 11, 23, 27, 11, 11, 27, 11, 29, 11, 34, 29, 34, 35, 11, 29, 34, 35, 36, 11, 29, 34, 35, 36, 37, 11, 29, 25, 25, 24, 25, 41, 25, 24, 11, 26, 27, 28, 11, 28, 46, 47, 25, 27, 11, 26, 11, 49, 24, 49, 26, 11, 51, 39, 51, 51, 49, 26, 51, 49, 39, 54, 26, 11, 16, 25, 41, 48, 49, 55, 55, 41, 48, 55, 48, 27, 57, 11, 58, 55, 48, 57, 48, 58, 59, 48, 58, 60, 59, 57, 55, 55, 58, 59, 48, 57, 41, 61, 60, 59, 48, 62, 57, 58, 61, 60, 55, 55, 62, 48, 63, 58, 61, 60, 59, 57, 11, 63, 64, 48, 62, 58, 61, 60, 59, 57, 55, 64, 58, 59, 62, 65, 48, 63, 61, 60, 57, 25, 11, 24, 27, 48, 41, 25, 68, 11, 24, 27, 48, 41, 25, 69, 68, 11, 24, 27, 41, 58, 27, 69, 68, 70, 11, 48, 41, 25, 26, 27, 11, 48, 48, 73, 69, 68, 25, 48, 41, 70, 71, 64, 65, 66, 63, 62, 48, 58]
     },
+    "nodesToDataframe": true,
+    "edgesToDataframe": true,
     "options": {
       "width": "100%",
       "height": "100%",
@@ -756,23 +981,38 @@ visNetwork(nodes, edges, height = &quot;700px&quot;, width = &quot;100%&quot;) %
     "height": "700px",
     "idselection": {
       "enabled": true,
-      "style": "width: 150px; height: 26px"
+      "style": "width: 150px; height: 26px",
+      "useLabels": true
     },
     "byselection": {
       "enabled": true,
       "style": "width: 150px; height: 26px",
       "multiple": false,
+      "hideColor": "rgba(200,200,200,0.5)",
       "variable": "group",
       "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     },
     "main": null,
-    "highlight": true,
-    "hoverNearest": false,
-    "degree": 1
+    "submain": null,
+    "footer": null,
+    "highlight": {
+      "enabled": true,
+      "hoverNearest": false,
+      "degree": 1,
+      "algorithm": "all",
+      "hideColor": "rgba(200,200,200,0.5)",
+      "labelOnly": true
+    },
+    "collapse": {
+      "enabled": false,
+      "fit": false,
+      "resetHighlight": true,
+      "clusterOptions": null
+    }
   },
   "evals": [],
   "jsHooks": []
-}</script></p>
+}</script>
 </div>
 
 <footer>
@@ -791,9 +1031,13 @@ visNetwork(nodes, edges, height = &quot;700px&quot;, width = &quot;100%&quot;) %
 <script>
 
 // add bootstrap table styles to pandoc tables
-$(document).ready(function () {
+function bootstrapStylePandocTables() {
   $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
 });
+
 
 </script>
 
@@ -802,7 +1046,7 @@ $(document).ready(function () {
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
 </script>

@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<title>CART</title>
+
+<script src="libs/jquery/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="libs/bootstrap/css/cosmo.min.css" rel="stylesheet" />
+<script src="libs/bootstrap/js/bootstrap.min.js"></script>
+<script src="libs/bootstrap/shim/html5shiv.min.js"></script>
+<script src="libs/bootstrap/shim/respond.min.js"></script>
+<script src="libs/navigation/tabsets.js"></script>
+<link href="libs/highlightjs/default.css" rel="stylesheet" />
+<script src="libs/highlightjs/highlight.js"></script>
+<script src="libs/htmlwidgets/htmlwidgets.js"></script>
+<link href="libs/vis/vis.css" rel="stylesheet" />
+<script src="libs/vis/vis.min.js"></script>
+<script src="libs/visNetwork-binding/visNetwork.js"></script>
+<script src="libs/FileSaver/FileSaver.min.js"></script>
+<script src="libs/Blob/Blob.js"></script>
+<script src="libs/canvas-toBlob/canvas-toBlob.js"></script>
+<script src="libs/html2canvas/html2canvas.js"></script>
+<script src="libs/jspdf/jspdf.debug.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs && document.readyState && document.readyState === "complete") {
+   window.setTimeout(function() {
+      hljs.initHighlighting();
+   }, 0);
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+
+<style type="text/css">
+  body {
+    padding-top: 20px;
+  }
+  .navbar-brand {
+    font-weight: bold;
+  }
+  footer {
+    border-top: 1px solid #CCC;
+    margin-top: 60px;
+    margin-bottom: 48px;
+    opacity: 0.75;
+  }
+  .content-body>:first-child, .content-body>:first-child>:first-child {
+    margin-top: 0 !important;
+  }
+  p code {
+    white-space: inherit;
+  }
+</style>
+
+<div class="fluid-row">
+  <div class="col-sm-12">
+    <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <a class="navbar-brand" href="./">visNetwork, an R package for interactive network visualization</a>
+        </div>
+      </div>
+    </nav>
+  </div>
+</div>
+
+<div class="fluid-row">
+  <div class="col-sm-3">
+    <div class="list-group">
+      <a class="list-group-item" href="./">Introduction</a>
+      <a class="list-group-item" href="nodes.html">Nodes</a>
+      <a class="list-group-item" href="edges.html">Edges</a>
+      <a class="list-group-item" href="groups.html">Groups</a>
+      <a class="list-group-item" href="legend.html">Legend & Title</a>
+      <a class="list-group-item" href="image_icon.html">Use image & Icon</a>
+      <a class="list-group-item" href="options.html">Options</a>
+      <a class="list-group-item" href="layout.html">Layout</a>
+      <a class="list-group-item" href="igraph.html">Igraph</a>
+      <a class="list-group-item" href="performance.html">Performance</a>
+      <a class="list-group-item" href="tree.html">CART</a>
+      <a class="list-group-item" href="shiny.html">Shiny</a>
+      <a class="list-group-item" href="interaction.html">Interactions</a>
+      <a class="list-group-item" href="physic.html">Physics</a>
+      <a class="list-group-item" href="configure.html">Configure tools</a>
+      <a class="list-group-item" href="more.html">More...</a>
+    </div>
+    <script>
+      // manage active state of toc based on current page
+      var href = window.location.pathname;
+      href = href.substr(href.lastIndexOf('/') + 1);
+      if (href === "" || href === "index.html")
+        href = "./";
+      $('a.list-group-item[href="' + href + '"]').addClass('active');
+    </script>
+  </div>
+  <div class="col-sm-9 content-body">
+
+<div class="fluid-row" id="header">
+
+
+
+
+</div>
+
+
+<div id="since-visnetwork_2.0.0-you-can-visualize-classification-and-regression-trees-from-the-output-of-the-rpart-package-simply-using-vistree" class="section level3">
+<h3>Since <strong>visNetwork_2.0.0</strong>, you can visualize Classification and Regression Trees from the output of the <strong>rpart</strong> package, simply using <code>visTree</code> :</h3>
+</div>
+<div id="classification-tree" class="section level2">
+<h2>Classification Tree</h2>
+<pre class="r"><code>library(rpart)
+
+# Basic classification tree
+res &lt;- rpart(Species~., data=iris)
+visTree(res, main = &quot;Iris classification Tree&quot;, width = &quot;100%&quot;)</code></pre>
+<div id="htmlwidget-fa3e0f9670f171d96969" style="width:100%;height:600px;" class="visNetwork html-widget"></div>
+<script type="application/json" data-for="htmlwidget-fa3e0f9670f171d96969">{
+  "x": {
+    "nodes": {
+      "id": [1, 2, 3, 6, 7],
+      "label": ["Petal.Length", "setosa", "Petal.Width", "versicolor", "virginica"],
+      "level": [1, 2, 2, 3, 3],
+      "color": ["#F1B8C2", "#7D91B6", "#B4C7ED", "#AC83AE", "#B9828C"],
+      "value": [150, 50, 100, 54, 46],
+      "shape": ["dot", "square", "dot", "square", "square"],
+      "title": ["<div style=\"text-align:center;\">N% : <b>100%<\/b> (150)<br>Complexity : <b>0.5<\/b><br><hr> setosa : <b>33.3%<\/b> (50)<br>versicolor : <b>33.3%<\/b> (50)<br>virginica : <b>33.3%<\/b> (50)<\/div>", "<div style=\"text-align:center;\">N% : <b>33.3%<\/b> (50)<br>Complexity : <b>0.01<\/b><br><hr> setosa : <b>100%<\/b> (50)<br>versicolor : <b>0%<\/b> (0)<br>virginica : <b>0%<\/b> (0)<hr class=\"rPartvisNetwork\"><div class=\"rPartvisNetworkTooltipShowhim\" style=\"color:blue;\">\n          <U>RULES<\/U><div class=\"rPartvisNetworkTooltipShowme\" style=\"color:black;\"><b> Petal.Length <\/b> < 2.45<\/div><\/div><\/div>", "<div style=\"text-align:center;\">N% : <b>66.7%<\/b> (100)<br>Complexity : <b>0.44<\/b><br><hr> setosa : <b>0%<\/b> (0)<br>versicolor : <b>50%<\/b> (50)<br>virginica : <b>50%<\/b> (50)<hr class=\"rPartvisNetwork\"><div class=\"rPartvisNetworkTooltipShowhim\" style=\"color:blue;\">\n          <U>RULES<\/U><div class=\"rPartvisNetworkTooltipShowme\" style=\"color:black;\"><b> Petal.Length <\/b> >= 2.45<\/div><\/div><\/div>", "<div style=\"text-align:center;\">N% : <b>36%<\/b> (54)<br>Complexity : <b>0<\/b><br><hr> setosa : <b>0%<\/b> (0)<br>versicolor : <b>90.7%<\/b> (49)<br>virginica : <b>9.3%<\/b> (5)<hr class=\"rPartvisNetwork\"><div class=\"rPartvisNetworkTooltipShowhim\" style=\"color:blue;\">\n          <U>RULES<\/U><div class=\"rPartvisNetworkTooltipShowme\" style=\"color:black;\"><b> Petal.Length <\/b> >= 2.45<br><b> Petal.Width <\/b> < 1.75<\/div><\/div><\/div>", "<div style=\"text-align:center;\">N% : <b>30.7%<\/b> (46)<br>Complexity : <b>0.01<\/b><br><hr> setosa : <b>0%<\/b> (0)<br>versicolor : <b>2.2%<\/b> (1)<br>virginica : <b>97.8%<\/b> (45)<hr class=\"rPartvisNetwork\"><div class=\"rPartvisNetworkTooltipShowhim\" style=\"color:blue;\">\n          <U>RULES<\/U><div class=\"rPartvisNetworkTooltipShowme\" style=\"color:black;\"><b> Petal.Length <\/b> >= 2.45<br><b> Petal.Width <\/b> >= 1.75<\/div><\/div><\/div>"],
+      "fixed": [true, true, true, true, true],
+      "colorClust": ["#7D91B6", "#7D91B6", "#AC83AE", "#AC83AE", "#B9828C"],
+      "labelClust": ["setosa", "setosa", "versicolor", "versicolor", "virginica"],
+      "Leaf": [0, 1, 0, 1, 1],
+      "font.size": [16, 16, 16, 16, 16],
+      "scaling.min": [22.5, 22.5, 22.5, 22.5, 22.5],
+      "scaling.max": [22.5, 22.5, 22.5, 22.5, 22.5]
+    },
+    "edges": {
+      "id": ["edge1", "edge2", "edge3", "edge4"],
+      "from": [1, 1, 3, 3],
+      "to": [2, 3, 6, 7],
+      "label": ["< 2.45", ">= 2.45", "< 1.75", ">= 1.75"],
+      "value": [50, 100, 54, 46],
+      "title": ["<div style=\"text-align:center;\"><b>Petal.Length<\/b><\/div><div style=\"text-align:center;\"><2.45<\/div>", "<div style=\"text-align:center;\"><b>Petal.Length<\/b><\/div><div style=\"text-align:center;\">>=2.45<\/div>", "<div style=\"text-align:center;\"><b>Petal.Width<\/b><\/div><div style=\"text-align:center;\"><1.75<\/div>", "<div style=\"text-align:center;\"><b>Petal.Width<\/b><\/div><div style=\"text-align:center;\">>=1.75<\/div>"],
+      "color": ["#8181F7", "#8181F7", "#8181F7", "#8181F7"],
+      "font.size": [14, 14, 14, 14],
+      "font.align": ["horizontal", "horizontal", "horizontal", "horizontal"],
+      "smooth.enabled": [true, true, true, true],
+      "smooth.type": ["cubicBezier", "cubicBezier", "cubicBezier", "cubicBezier"],
+      "smooth.roundness": [0.5, 0.5, 0.5, 0.5]
+    },
+    "nodesToDataframe": true,
+    "edgesToDataframe": true,
+    "options": {
+      "width": "100%",
+      "height": "100%",
+      "nodes": {
+        "shape": "dot"
+      },
+      "manipulation": {
+        "enabled": false
+      },
+      "layout": {
+        "hierarchical": {
+          "enabled": true,
+          "direction": "UD"
+        }
+      },
+      "interaction": {
+        "dragNodes": false,
+        "selectConnectedEdges": false,
+        "tooltipDelay": 500
+      },
+      "edges": {
+        "scaling": {
+          "label": {
+            "enabled": false
+          }
+        }
+      }
+    },
+    "groups": null,
+    "width": "100%",
+    "height": "600px",
+    "idselection": {
+      "enabled": false,
+      "style": "width: 150px; height: 26px",
+      "useLabels": true
+    },
+    "byselection": {
+      "enabled": false,
+      "style": "width: 150px; height: 26px",
+      "multiple": false,
+      "hideColor": "rgba(200,200,200,0.5)"
+    },
+    "main": {
+      "text": "Iris classification Tree",
+      "style": "font-family:Georgia, Times New Roman, Times, serif;font-weight:bold;font-size:20px;text-align:center;"
+    },
+    "submain": {
+      "text": "",
+      "style": "font-family:Georgia, Times New Roman, Times, serif;font-size:12px;text-align:center;"
+    },
+    "footer": {
+      "text": "",
+      "style": "font-family:Georgia, Times New Roman, Times, serif;font-size:12px;text-align:center;"
+    },
+    "highlight": {
+      "enabled": true,
+      "hoverNearest": false,
+      "degree": {
+        "from": 50000,
+        "to": 0
+      },
+      "algorithm": "hierarchical",
+      "hideColor": "rgba(200,200,200,0.5)",
+      "labelOnly": true
+    },
+    "collapse": {
+      "enabled": true,
+      "fit": true,
+      "resetHighlight": true,
+      "clusterOptions": {
+        "fixed": true,
+        "physics": false
+      }
+    },
+    "tooltipStay": 300,
+    "tooltipStyle": "position: fixed;visibility:hidden;padding: 5px;\n                      white-space: nowrap;\n                      font-family: cursive;font-size:12px;font-color:purple;background-color: #E6E6E6;\n                      border-radius: 15px;",
+    "OnceEvents": {
+      "stabilized": "function() { \n        this.setOptions({layout:{hierarchical:false}, physics:{solver:'barnesHut', enabled:true, stabilization : false}, nodes : {physics : false, fixed : true}});\n    }"
+    },
+    "legend": {
+      "width": 0.1,
+      "useGroups": false,
+      "position": "left",
+      "ncol": 1,
+      "stepX": 100,
+      "stepY": 100,
+      "nodes": {
+        "label": ["Petal.Length", "Petal.Width", "setosa", "versicolor", "virginica"],
+        "color": ["#F1B8C2", "#B4C7ED", "#7D91B6", "#AC83AE", "#B9828C"],
+        "shape": ["dot", "dot", "square", "square", "square"],
+        "size": [22, 22, 22, 22, 22],
+        "Leaf": [0, 0, 1, 1, 1],
+        "font.size": [16, 16, 16, 16, 16],
+        "id": [10000, 10001, 10002, 10003, 10004]
+      },
+      "nodesToDataframe": true
+    },
+    "tree": {
+      "updateShape": true,
+      "shapeVar": "dot",
+      "shapeY": "square",
+      "colorVar": {
+        "variable": ["Petal.Length", "Petal.Width"],
+        "color": ["#F1B8C2", "#B4C7ED"]
+      },
+      "colorY": {
+        "colorY": {
+          "modality": ["setosa", "versicolor", "virginica"],
+          "color": ["#7D91B6", "#AC83AE", "#B9828C"]
+        },
+        "vardecidedClust": ["setosa", "setosa", "versicolor", "versicolor", "virginica"]
+      }
+    },
+    "export": {
+      "type": "png",
+      "css": "float:right;-webkit-border-radius: 10;\n                  -moz-border-radius: 10;\n                  border-radius: 10px;\n                  font-family: Arial;\n                  color: #ffffff;\n                  font-size: 12px;\n                  background: #090a0a;\n                  padding: 4px 8px 4px 4px;\n                  text-decoration: none;",
+      "background": "#fff",
+      "name": "network.png",
+      "label": "Export as png"
+    }
+  },
+  "evals": ["OnceEvents.stabilized"],
+  "jsHooks": []
+}</script>
+</div>
+<div id="regression-tree" class="section level2">
+<h2>Regression tree</h2>
+<pre class="r"><code>res &lt;- rpart(Petal.Length~., data=iris)
+visTree(res, edgesFontSize = 14, nodesFontSize = 16, width = &quot;100%&quot;)</code></pre>
+<div id="htmlwidget-84660aad0a6e65a9cd08" style="width:100%;height:600px;" class="visNetwork html-widget"></div>
+<script type="application/json" data-for="htmlwidget-84660aad0a6e65a9cd08">{
+  "x": {
+    "nodes": {
+      "id": [1, 2, 3, 6, 12, 13, 7, 14, 15],
+      "label": ["Species", "1.462", "Species", "Petal.Width", "3.61", "4.423", "Sepal.Length", "5.316", "6.3"],
+      "level": [1, 2, 2, 3, 4, 4, 3, 4, 4],
+      "color": ["#F1B8C2", "#E6E0F8", "#F1B8C2", "#A9D1A5", "#BC7ED8", "#AD59CC", "#B4C7ED", "#9B30BF", "#8904B1"],
+      "value": [150, 50, 100, 50, 10, 40, 50, 38, 12],
+      "shape": ["dot", "square", "dot", "dot", "square", "square", "dot", "square", "square"],
+      "title": ["<div style=\"text-align:center;\">N% : <b>100%<\/b> (150)<br>Complexity : <b>0.851<\/b><br>Mean : <b>3.758<\/b><br>Variance : <b>3.116<\/b><\/div>", "<div style=\"text-align:center;\">N% : <b>33.3%<\/b> (50)<br>Complexity : <b>0.01<\/b><br>Mean : <b>1.462<\/b><br>Variance : <b>0.03<\/b><hr class=\"rPartvisNetwork\"><div class=\"rPartvisNetworkTooltipShowhim\" style=\"color:blue;\">\n          <U>RULES<\/U><div class=\"rPartvisNetworkTooltipShowme\" style=\"color:black;\"><b> Species <\/b> setosa<\/div><\/div><\/div>", "<div style=\"text-align:center;\">N% : <b>66.7%<\/b> (100)<br>Complexity : <b>0.09<\/b><br>Mean : <b>4.906<\/b><br>Variance : <b>0.682<\/b><hr class=\"rPartvisNetwork\"><div class=\"rPartvisNetworkTooltipShowhim\" style=\"color:blue;\">\n          <U>RULES<\/U><div class=\"rPartvisNetworkTooltipShowme\" style=\"color:black;\"><b> Species <\/b> versicolor, virginica<\/div><\/div><\/div>", "<div style=\"text-align:center;\">N% : <b>33.3%<\/b> (50)<br>Complexity : <b>0.011<\/b><br>Mean : <b>4.26<\/b><br>Variance : <b>0.221<\/b><hr class=\"rPartvisNetwork\"><div class=\"rPartvisNetworkTooltipShowhim\" style=\"color:blue;\">\n          <U>RULES<\/U><div class=\"rPartvisNetworkTooltipShowme\" style=\"color:black;\"><b> Species <\/b> versicolor<\/div><\/div><\/div>", "<div style=\"text-align:center;\">N% : <b>6.7%<\/b> (10)<br>Complexity : <b>0.01<\/b><br>Mean : <b>3.61<\/b><br>Variance : <b>0.123<\/b><hr class=\"rPartvisNetwork\"><div class=\"rPartvisNetworkTooltipShowhim\" style=\"color:blue;\">\n          <U>RULES<\/U><div class=\"rPartvisNetworkTooltipShowme\" style=\"color:black;\"><b> Species <\/b> versicolor<br><b> Petal.Width <\/b> < 1.15<\/div><\/div><\/div>", "<div style=\"text-align:center;\">N% : <b>26.7%<\/b> (40)<br>Complexity : <b>0.01<\/b><br>Mean : <b>4.423<\/b><br>Variance : <b>0.114<\/b><hr class=\"rPartvisNetwork\"><div class=\"rPartvisNetworkTooltipShowhim\" style=\"color:blue;\">\n          <U>RULES<\/U><div class=\"rPartvisNetworkTooltipShowme\" style=\"color:black;\"><b> Species <\/b> versicolor<br><b> Petal.Width <\/b> >= 1.15<\/div><\/div><\/div>", "<div style=\"text-align:center;\">N% : <b>33.3%<\/b> (50)<br>Complexity : <b>0.019<\/b><br>Mean : <b>5.552<\/b><br>Variance : <b>0.305<\/b><hr class=\"rPartvisNetwork\"><div class=\"rPartvisNetworkTooltipShowhim\" style=\"color:blue;\">\n          <U>RULES<\/U><div class=\"rPartvisNetworkTooltipShowme\" style=\"color:black;\"><b> Species <\/b> virginica<\/div><\/div><\/div>", "<div style=\"text-align:center;\">N% : <b>25.3%<\/b> (38)<br>Complexity : <b>0.004<\/b><br>Mean : <b>5.316<\/b><br>Variance : <b>0.127<\/b><hr class=\"rPartvisNetwork\"><div class=\"rPartvisNetworkTooltipShowhim\" style=\"color:blue;\">\n          <U>RULES<\/U><div class=\"rPartvisNetworkTooltipShowme\" style=\"color:black;\"><b> Species <\/b> virginica<br><b> Sepal.Length <\/b> < 7<\/div><\/div><\/div>", "<div style=\"text-align:center;\">N% : <b>8%<\/b> (12)<br>Complexity : <b>0.01<\/b><br>Mean : <b>6.3<\/b><br>Variance : <b>0.127<\/b><hr class=\"rPartvisNetwork\"><div class=\"rPartvisNetworkTooltipShowhim\" style=\"color:blue;\">\n          <U>RULES<\/U><div class=\"rPartvisNetworkTooltipShowme\" style=\"color:black;\"><b> Species <\/b> virginica<br><b> Sepal.Length <\/b> >= 7<\/div><\/div><\/div>"],
+      "fixed": [true, true, true, true, true, true, true, true, true],
+      "colorClust": ["#B977D6", "#E6E0F8", "#A343C5", "#B060CE", "#BC7ED8", "#AD59CC", "#9726BB", "#9B30BF", "#8904B1"],
+      "labelClust": [3.758, 1.462, 4.906, 4.26, 3.61, 4.423, 5.552, 5.316, 6.3],
+      "Leaf": [0, 1, 0, 0, 1, 1, 0, 1, 1],
+      "font.size": [16, 16, 16, 16, 16, 16, 16, 16, 16],
+      "scaling.min": [22.5, 22.5, 22.5, 22.5, 22.5, 22.5, 22.5, 22.5, 22.5],
+      "scaling.max": [22.5, 22.5, 22.5, 22.5, 22.5, 22.5, 22.5, 22.5, 22.5]
+    },
+    "edges": {
+      "id": ["edge1", "edge2", "edge3", "edge4", "edge5", "edge6", "edge7", "edge8"],
+      "from": [1, 1, 3, 6, 6, 3, 7, 7],
+      "to": [2, 3, 6, 12, 13, 7, 14, 15],
+      "label": ["setosa", "versico...", "versicolor", "< 1.15", ">= 1.15", "virginica", "< 7", ">= 7"],
+      "value": [50, 100, 50, 10, 40, 50, 38, 12],
+      "title": ["<div style=\"text-align:center;\"><b>Species<\/b><\/div><div style=\"text-align:center;\">setosa<\/div>", "<div style=\"text-align:center;\"><b>Species<\/b><\/div><div style=\"text-align:center;\">versicolor<\/div><div style=\"text-align:center;\">virginica<\/div>", "<div style=\"text-align:center;\"><b>Species<\/b><\/div><div style=\"text-align:center;\">versicolor<\/div>", "<div style=\"text-align:center;\"><b>Petal.Width<\/b><\/div><div style=\"text-align:center;\"><1.15<\/div>", "<div style=\"text-align:center;\"><b>Petal.Width<\/b><\/div><div style=\"text-align:center;\">>=1.15<\/div>", "<div style=\"text-align:center;\"><b>Species<\/b><\/div><div style=\"text-align:center;\">virginica<\/div>", "<div style=\"text-align:center;\"><b>Sepal.Length<\/b><\/div><div style=\"text-align:center;\"><7<\/div>", "<div style=\"text-align:center;\"><b>Sepal.Length<\/b><\/div><div style=\"text-align:center;\">>=7<\/div>"],
+      "color": ["#8181F7", "#8181F7", "#8181F7", "#8181F7", "#8181F7", "#8181F7", "#8181F7", "#8181F7"],
+      "font.size": [14, 14, 14, 14, 14, 14, 14, 14],
+      "font.align": ["horizontal", "horizontal", "horizontal", "horizontal", "horizontal", "horizontal", "horizontal", "horizontal"],
+      "smooth.enabled": [true, true, true, true, true, true, true, true],
+      "smooth.type": ["cubicBezier", "cubicBezier", "cubicBezier", "cubicBezier", "cubicBezier", "cubicBezier", "cubicBezier", "cubicBezier"],
+      "smooth.roundness": [0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5]
+    },
+    "nodesToDataframe": true,
+    "edgesToDataframe": true,
+    "options": {
+      "width": "100%",
+      "height": "100%",
+      "nodes": {
+        "shape": "dot"
+      },
+      "manipulation": {
+        "enabled": false
+      },
+      "layout": {
+        "hierarchical": {
+          "enabled": true,
+          "direction": "UD"
+        }
+      },
+      "interaction": {
+        "dragNodes": false,
+        "selectConnectedEdges": false,
+        "tooltipDelay": 500
+      },
+      "edges": {
+        "scaling": {
+          "label": {
+            "enabled": false
+          }
+        }
+      }
+    },
+    "groups": null,
+    "width": "100%",
+    "height": "600px",
+    "idselection": {
+      "enabled": false,
+      "style": "width: 150px; height: 26px",
+      "useLabels": true
+    },
+    "byselection": {
+      "enabled": false,
+      "style": "width: 150px; height: 26px",
+      "multiple": false,
+      "hideColor": "rgba(200,200,200,0.5)"
+    },
+    "main": {
+      "text": "",
+      "style": "font-family:Georgia, Times New Roman, Times, serif;font-weight:bold;font-size:20px;text-align:center;"
+    },
+    "submain": {
+      "text": "",
+      "style": "font-family:Georgia, Times New Roman, Times, serif;font-size:12px;text-align:center;"
+    },
+    "footer": {
+      "text": "",
+      "style": "font-family:Georgia, Times New Roman, Times, serif;font-size:12px;text-align:center;"
+    },
+    "highlight": {
+      "enabled": true,
+      "hoverNearest": false,
+      "degree": {
+        "from": 50000,
+        "to": 0
+      },
+      "algorithm": "hierarchical",
+      "hideColor": "rgba(200,200,200,0.5)",
+      "labelOnly": true
+    },
+    "collapse": {
+      "enabled": true,
+      "fit": true,
+      "resetHighlight": true,
+      "clusterOptions": {
+        "fixed": true,
+        "physics": false
+      }
+    },
+    "tooltipStay": 300,
+    "tooltipStyle": "position: fixed;visibility:hidden;padding: 5px;\n                      white-space: nowrap;\n                      font-family: cursive;font-size:12px;font-color:purple;background-color: #E6E6E6;\n                      border-radius: 15px;",
+    "OnceEvents": {
+      "stabilized": "function() { \n        this.setOptions({layout:{hierarchical:false}, physics:{solver:'barnesHut', enabled:true, stabilization : false}, nodes : {physics : false, fixed : true}});\n    }"
+    },
+    "legend": {
+      "width": 0.1,
+      "useGroups": false,
+      "position": "left",
+      "ncol": 1,
+      "stepX": 100,
+      "stepY": 100,
+      "nodes": {
+        "label": ["Petal.Width", "Sepal.Length", "Species"],
+        "color": ["#A9D1A5", "#B4C7ED", "#F1B8C2"],
+        "shape": ["dot", "dot", "dot"],
+        "size": [22, 22, 22],
+        "Leaf": [0, 0, 0],
+        "font.size": [16, 16, 16],
+        "id": [10000, 10001, 10002]
+      },
+      "nodesToDataframe": true
+    },
+    "tree": {
+      "updateShape": true,
+      "shapeVar": "dot",
+      "shapeY": "square",
+      "colorVar": {
+        "variable": ["Species", "Petal.Width", "Sepal.Length"],
+        "color": ["#F1B8C2", "#A9D1A5", "#B4C7ED"]
+      },
+      "colorY": {
+        "colRamp": ["function (x) ", "roundcolor(cbind(palette[[1L]](x), palette[[2L]](x), palette[[3L]](x), ", "    if (alpha) palette[[4L]](x))) * 255"],
+        "colorTerm": ["#B977D6", "#E6E0F8", "#A343C5", "#B060CE", "#BC7ED8", "#AD59CC", "#9726BB", "#9B30BF", "#8904B1"],
+        "colorY": ["#E6E0F8", "#8904B1"],
+        "vardecidedClust": [3.758, 1.462, 4.906, 4.26, 3.61, 4.423, 5.552, 5.316, 6.3]
+      }
+    },
+    "export": {
+      "type": "png",
+      "css": "float:right;-webkit-border-radius: 10;\n                  -moz-border-radius: 10;\n                  border-radius: 10px;\n                  font-family: Arial;\n                  color: #ffffff;\n                  font-size: 12px;\n                  background: #090a0a;\n                  padding: 4px 8px 4px 4px;\n                  text-decoration: none;",
+      "background": "#fff",
+      "name": "network.png",
+      "label": "Export as png"
+    }
+  },
+  "evals": ["OnceEvents.stabilized"],
+  "jsHooks": []
+}</script>
+<pre class="r"><code>data(&quot;solder&quot;)
+res &lt;- rpart(Opening~., data = solder, control = rpart.control(cp = 0.00005))
+visTree(res, height = &quot;800px&quot;, nodesPopSize = TRUE, minNodeSize = 10, 
+        maxNodeSize = 30, width = &quot;100%&quot;)</code></pre>
+<div id="htmlwidget-60c5086c7ff63dd58e4a" style="width:100%;height:800px;" class="visNetwork html-widget"></div>
+<script type="application/json" data-for="htmlwidget-60c5086c7ff63dd58e4a">{
+  "x": {
+    "nodes": {
+      "id": [1, 2, 4, 8, 16, 17, 34, 35, 70, 71, 9, 18, 36, 72, 73, 37, 19, 38, 76, 77, 39, 78, 156, 157, 79, 5, 10, 20, 40, 80, 81, 162, 324, 325, 163, 41, 82, 164, 165, 330, 331, 83, 21, 42, 84, 168, 169, 85, 43, 11, 22, 44, 45, 90, 91, 23, 46, 92, 184, 185, 370, 371, 93, 47, 3, 6, 12, 24, 48, 49, 25, 13, 26, 52, 53, 27, 7],
+      "label": ["skips", "skips", "PadType", "Mask", "L", "PadType", "L", "Solder", "L", "M", "Mask", "Panel", "Panel", "L", "M", "M", "Solder", "Mask", "L", "M", "PadType", "Panel", "L", "M", "L", "Solder", "skips", "PadType", "skips", "L", "PadType", "Mask", "L", "M", "S", "PadType", "Panel", "L", "Panel", "L", "M", "M", "Mask", "PadType", "Mask", "L", "M", "M", "S", "Mask", "PadType", "M", "skips", "L", "S", "PadType", "Mask", "PadType", "M", "skips", "M", "S", "S", "S", "Mask", "skips", "Solder", "skips", "L", "M", "S", "skips", "PadType", "L", "S", "S", "S"],
+      "level": [1, 2, 3, 4, 5, 5, 6, 6, 7, 7, 4, 5, 6, 7, 7, 6, 5, 6, 7, 7, 6, 7, 8, 8, 7, 3, 4, 5, 6, 7, 7, 8, 9, 9, 8, 6, 7, 8, 8, 9, 9, 7, 5, 6, 7, 8, 8, 7, 6, 4, 5, 6, 6, 7, 7, 5, 6, 7, 8, 8, 9, 9, 7, 6, 2, 3, 4, 5, 6, 6, 5, 4, 5, 6, 6, 5, 3],
+      "color": ["#F1B8C2", "#F1B8C2", "#DAC49C", "#A9D1A5", "#7D91B6", "#DAC49C", "#7D91B6", "#8AD3D0", "#7D91B6", "#AC83AE", "#A9D1A5", "#B4C7ED", "#B4C7ED", "#7D91B6", "#AC83AE", "#AC83AE", "#8AD3D0", "#A9D1A5", "#7D91B6", "#AC83AE", "#DAC49C", "#B4C7ED", "#7D91B6", "#AC83AE", "#7D91B6", "#8AD3D0", "#F1B8C2", "#DAC49C", "#F1B8C2", "#7D91B6", "#DAC49C", "#A9D1A5", "#7D91B6", "#AC83AE", "#B9828C", "#DAC49C", "#B4C7ED", "#7D91B6", "#B4C7ED", "#7D91B6", "#AC83AE", "#AC83AE", "#A9D1A5", "#DAC49C", "#A9D1A5", "#7D91B6", "#AC83AE", "#AC83AE", "#B9828C", "#A9D1A5", "#DAC49C", "#AC83AE", "#F1B8C2", "#7D91B6", "#B9828C", "#DAC49C", "#A9D1A5", "#DAC49C", "#AC83AE", "#F1B8C2", "#AC83AE", "#B9828C", "#B9828C", "#B9828C", "#A9D1A5", "#F1B8C2", "#8AD3D0", "#F1B8C2", "#7D91B6", "#AC83AE", "#B9828C", "#F1B8C2", "#DAC49C", "#7D91B6", "#B9828C", "#B9828C", "#B9828C"],
+      "value": [720, 529, 242, 125, 19, 106, 60, 46, 33, 13, 117, 39, 27, 10, 17, 12, 78, 25, 12, 13, 53, 22, 14, 8, 31, 287, 150, 106, 56, 25, 31, 24, 11, 13, 7, 50, 32, 9, 23, 12, 11, 18, 44, 34, 25, 8, 17, 9, 10, 137, 71, 50, 21, 8, 13, 66, 53, 31, 10, 21, 11, 10, 22, 13, 191, 96, 41, 27, 9, 18, 14, 55, 22, 10, 12, 33, 95],
+      "shape": ["dot", "dot", "dot", "dot", "square", "dot", "square", "dot", "square", "square", "dot", "dot", "dot", "square", "square", "square", "dot", "dot", "square", "square", "dot", "dot", "square", "square", "square", "dot", "dot", "dot", "dot", "square", "dot", "dot", "square", "square", "square", "dot", "dot", "square", "dot", "square", "square", "square", "dot", "dot", "dot", "square", "square", "square", "square", "dot", "dot", "square", "dot", "square", "square", "dot", "dot", "dot", "square", "dot", "square", "square", "square", "square", "dot", "dot", "dot", "dot", "square", "square", "square", "dot", "dot", "square", "square", "square", "square"],
+      "title": ["<div style=\"text-align:center;\">N% : <b>100%<\/b> (720)<br>Complexity : <b>0.254<\/b><br><hr> L : <b>33.3%<\/b> (240)<br>M : <b>33.3%<\/b> (240)<br>S : <b>33.3%<\/b> (240)<\/div>", "<div style=\"text-align:center;\">N% : <b>73.5%<\/b> (529)<br>Complexity : <b>0.062<\/b><br><hr> L : <b>41.2%<\/b> (218)<br>M : <b>40.6%<\/b> (215)<br>S : <b>18.1%<\/b> (96)<hr class=\"rPartvisNetwork\"><div class=\"rPartvisNetworkTooltipShowhim\" style=\"color:blue;\">\n          <U>RULES<\/U><div class=\"rPartvisNetworkTooltipShowme\" style=\"color:black;\"><b> skips <\/b> < 5.5<\/div><\/div><\/div>", "<div style=\"text-align:center;\">N% : <b>33.6%<\/b> (242)<br>Complexity : <b>0.008<\/b><br><hr> L : <b>52.1%<\/b> (126)<br>M : <b>38.4%<\/b> (93)<br>S : <b>9.5%<\/b> (23)<hr class=\"rPartvisNetwork\"><div class=\"rPartvisNetworkTooltipShowhim\" style=\"color:blue;\">\n          <U>RULES<\/U><div class=\"rPartvisNetworkTooltipShowme\" style=\"color:black;\"><b> skips <\/b> < 0.5<\/div><\/div><\/div>", "<div style=\"text-align:center;\">N% : <b>17.4%<\/b> (125)<br>Complexity : <b>0.002<\/b><br><hr> L : <b>61.6%<\/b> (77)<br>M : <b>32%<\/b> (40)<br>S : <b>6.4%<\/b> (8)<hr class=\"rPartvisNetwork\"><div class=\"rPartvisNetworkTooltipShowhim\" style=\"color:blue;\">\n          <U>RULES<\/U><div class=\"rPartvisNetworkTooltipShowme\" style=\"color:black;\"><b> skips <\/b> < 0.5<br><b> PadType <\/b> D7, L4, L6, L7, L8, L9<\/div><\/div><\/div>", "<div style=\"text-align:center;\">N% : <b>2.6%<\/b> (19)<br>Complexity : <b>0<\/b><br><hr> L : <b>84.2%<\/b> (16)<br>M : <b>15.8%<\/b> (3)<br>S : <b>0%<\/b> (0)<hr class=\"rPartvisNetwork\"><div class=\"rPartvisNetworkTooltipShowhim\" style=\"color:blue;\">\n          <U>RULES<\/U><div class=\"rPartvisNetworkTooltipShowme\" style=\"color:black;\"><b> skips <\/b> < 0.5<br><b> PadType <\/b> D7, L4, L6, L7, L8, L9<br><b> Mask <\/b> B6<\/div><\/div><\/div>", "<div style=\"text-align:center;\">N% : <b>14.7%<\/b> (106)<br>Complexity : <b>0.002<\/b><br><hr> L : <b>57.5%<\/b> (61)<br>M : <b>34.9%<\/b> (37)<br>S : <b>7.5%<\/b> (8)<hr class=\"rPartvisNetwork\"><div class=\"rPartvisNetworkTooltipShowhim\" style=\"color:blue;\">\n          <U>RULES<\/U><div class=\"rPartvisNetworkTooltipShowme\" style=\"color:black;\"><b> skips <\/b> < 0.5<br><b> PadType <\/b> D7, L4, L6, L7, L8, L9<br><b> Mask <\/b> A1.5, A3, B3<\/div><\/div><\/div>", "<div style=\"text-align:center;\">N% : <b>8.3%<\/b> (60)<br>Complexity : <b>0<\/b><br><hr> L : <b>63.3%<\/b> (38)<br>M : <b>30%<\/b> (18)<br>S : <b>6.7%<\/b> (4)<hr class=\"rPartvisNetwork\"><div class=\"rPartvisNetworkTooltipShowhim\" style=\"color:blue;\">\n          <U>RULES<\/U><div class=\"rPartvisNetworkTooltipShowme\" style=\"color:black;\"><b> skips <\/b> < 0.5<br><b> PadType <\/b> D7, L8, L9<br><b> Mask <\/b> A1.5, A3, B3<\/div><\/div><\/div>", "<div style=\"text-align:center;\">N% : <b>6.4%<\/b> (46)<br>Complexity : <b>0.002<\/b><br><hr> L : <b>50%<\/b> (23)<br>M : <b>41.3%<\/b> (19)<br>S : <b>8.7%<\/b> (4)<hr class=\"rPartvisNetwork\"><div class=\"rPartvisNetworkTooltipShowhim\" style=\"color:blue;\">\n          <U>RULES<\/U><div class=\"rPartvisNetworkTooltipShowme\" style=\"color:black;\"><b> skips <\/b> < 0.5<br><b> PadType <\/b> L4, L6, L7<br><b> Mask <\/b> A1.5, A3, B3<\/div><\/div><\/div>", "<div style=\"text-align:center;\">N% : <b>4.6%<\/b> (33)<br>Complexity : <b>0<\/b><br><hr> L : <b>54.5%<\/b> (18)<br>M : <b>33.3%<\/b> (11)<br>S : <b>12.1%<\/b> (4)<hr class=\"rPartvisNetwork\"><div class=\"rPartvisNetworkTooltipShowhim\" style=\"color:blue;\">\n          <U>RULES<\/U><div class=\"rPartvisNetworkTooltipShowme\" style=\"color:black;\"><b> skips <\/b> < 0.5<br><b> PadType <\/b> L4, L6, L7<br><b> Mask <\/b> A1.5, A3, B3<br><b> Solder <\/b> Thick<\/div><\/div><\/div>", "<div style=\"text-align:center;\">N% : <b>1.8%<\/b> (13)<br>Complexity : <b>0<\/b><br><hr> L : <b>38.5%<\/b> (5)<br>M : <b>61.5%<\/b> (8)<br>S : <b>0%<\/b> (0)<hr class=\"rPartvisNetwork\"><div class=\"rPartvisNetworkTooltipShowhim\" style=\"color:blue;\">\n          <U>RULES<\/U><div class=\"rPartvisNetworkTooltipShowme\" style=\"color:black;\"><b> skips <\/b> < 0.5<br><b> PadType <\/b> L4, L6, L7<br><b> Mask <\/b> A1.5, A3, B3<br><b> Solder <\/b> Thin<\/div><\/div><\/div>", "<div style=\"text-align:center;\">N% : <b>16.2%<\/b> (117)<br>Complexity : <b>0.003<\/b><br><hr> L : <b>41.9%<\/b> (49)<br>M : <b>45.3%<\/b> (53)<br>S : <b>12.8%<\/b> (15)<hr class=\"rPartvisNetwork\"><div class=\"rPartvisNetworkTooltipShowhim\" style=\"color:blue;\">\n          <U>RULES<\/U><div class=\"rPartvisNetworkTooltipShowme\" style=\"color:black;\"><b> skips <\/b> < 0.5<br><b> PadType <\/b> D4, D6, W4, W9<\/div><\/div><\/div>", "<div style=\"text-align:center;\">N% : <b>5.4%<\/b> (39)<br>Complexity : <b>0.002<\/b><br><hr> L : <b>48.7%<\/b> (19)<br>M : <b>51.3%<\/b> (20)<br>S : <b>0%<\/b> (0)<hr class=\"rPartvisNetwork\"><div class=\"rPartvisNetworkTooltipShowhim\" style=\"color:blue;\">\n          <U>RULES<\/U><div class=\"rPartvisNetworkTooltipShowme\" style=\"color:black;\"><b> skips <\/b> < 0.5<br><b> PadType <\/b> D4, D6, W4, W9<br><b> Mask <\/b> B3, B6<\/div><\/div><\/div>", "<div style=\"text-align:center;\">N% : <b>3.8%<\/b> (27)<br>Complexity : <b>0.002<\/b><br><hr> L : <b>51.9%<\/b> (14)<br>M : <b>48.1%<\/b> (13)<br>S : <b>0%<\/b> (0)<hr class=\"rPartvisNetwork\"><div class=\"rPartvisNetworkTooltipShowhim\" style=\"color:blue;\">\n          <U>RULES<\/U><div class=\"rPartvisNetworkTooltipShowme\" style=\"color:black;\"><b> skips <\/b> < 0.5<br><b> PadType <\/b> D4, D6, W4, W9<br><b> Mask <\/b> B3, B6<br><b> Panel <\/b> < 2.5<\/div><\/div><\/div>", "<div style=\"text-align:center;\">N% : <b>1.4%<\/b> (10)<br>Complexity : <b>0<\/b><br><hr> L : <b>60%<\/b> (6)<br>M : <b>40%<\/b> (4)<br>S : <b>0%<\/b> (0)<hr class=\"rPartvisNetwork\"><div class=\"rPartvisNetworkTooltipShowhim\" style=\"color:blue;\">\n          <U>RULES<\/U><div class=\"rPartvisNetworkTooltipShowme\" style=\"color:black;\"><b> skips <\/b> < 0.5<br><b> PadType <\/b> D4, D6, W4, W9<br><b> Mask <\/b> B3, B6<br><b>  <\/b> 1.5 <= <b>Panel<\/b> < 2.5<\/div><\/div><\/div>", "<div style=\"text-align:center;\">N% : <b>2.4%<\/b> (17)<br>Complexity : <b>0<\/b><br><hr> L : <b>47.1%<\/b> (8)<br>M : <b>52.9%<\/b> (9)<br>S : <b>0%<\/b> (0)<hr class=\"rPartvisNetwork\"><div class=\"rPartvisNetworkTooltipShowhim\" style=\"color:blue;\">\n          <U>RULES<\/U><div class=\"rPartvisNetworkTooltipShowme\" style=\"color:black;\"><b> skips <\/b> < 0.5<br><b> PadType <\/b> D4, D6, W4, W9<br><b> Mask <\/b> B3, B6<br><b> Panel <\/b> < 1.5<\/div><\/div><\/div>", "<div style=\"text-align:center;\">N% : <b>1.7%<\/b> (12)<br>Complexity : <b>0<\/b><br><hr> L : <b>41.7%<\/b> (5)<br>M : <b>58.3%<\/b> (7)<br>S : <b>0%<\/b> (0)<hr class=\"rPartvisNetwork\"><div class=\"rPartvisNetworkTooltipShowhim\" style=\"color:blue;\">\n          <U>RULES<\/U><div class=\"rPartvisNetworkTooltipShowme\" style=\"color:black;\"><b> skips <\/b> < 0.5<br><b> PadType <\/b> D4, D6, W4, W9<br><b> Mask <\/b> B3, B6<br><b> Panel <\/b> >= 2.5<\/div><\/div><\/div>", "<div style=\"text-align:center;\">N% : <b>10.8%<\/b> (78)<br>Complexity : <b>0.003<\/b><br><hr> L : <b>38.5%<\/b> (30)<br>M : <b>42.3%<\/b> (33)<br>S : <b>19.2%<\/b> (15)<hr class=\"rPartvisNetwork\"><div class=\"rPartvisNetworkTooltipShowhim\" style=\"color:blue;\">\n          <U>RULES<\/U><div class=\"rPartvisNetworkTooltipShowme\" style=\"color:black;\"><b> skips <\/b> < 0.5<br><b> PadType <\/b> D4, D6, W4, W9<br><b> Mask <\/b> A1.5, A3<\/div><\/div><\/div>", "<div style=\"text-align:center;\">N% : <b>3.5%<\/b> (25)<br>Complexity : <b>0.003<\/b><br><hr> L : <b>32%<\/b> (8)<br>M : <b>56%<\/b> (14)<br>S : <b>12%<\/b> (3)<hr class=\"rPartvisNetwork\"><div class=\"rPartvisNetworkTooltipShowhim\" style=\"color:blue;\">\n          <U>RULES<\/U><div class=\"rPartvisNetworkTooltipShowme\" style=\"color:black;\"><b> skips <\/b> < 0.5<br><b> PadType <\/b> D4, D6, W4, W9<br><b> Mask <\/b> A1.5, A3<br><b> Solder <\/b> Thin<\/div><\/div><\/div>", "<div style=\"text-align:center;\">N% : <b>1.7%<\/b> (12)<br>Complexity : <b>0<\/b><br><hr> L : <b>50%<\/b> (6)<br>M : <b>33.3%<\/b> (4)<br>S : <b>16.7%<\/b> (2)<hr class=\"rPartvisNetwork\"><div class=\"rPartvisNetworkTooltipShowhim\" style=\"color:blue;\">\n          <U>RULES<\/U><div class=\"rPartvisNetworkTooltipShowme\" style=\"color:black;\"><b> skips <\/b> < 0.5<br><b> PadType <\/b> D4, D6, W4, W9<br><b> Mask <\/b> A3<br><b> Solder <\/b> Thin<\/div><\/div><\/div>", "<div style=\"text-align:center;\">N% : <b>1.8%<\/b> (13)<br>Complexity : <b>0<\/b><br><hr> L : <b>15.4%<\/b> (2)<br>M : <b>76.9%<\/b> (10)<br>S : <b>7.7%<\/b> (1)<hr class=\"rPartvisNetwork\"><div class=\"rPartvisNetworkTooltipShowhim\" style=\"color:blue;\">\n          <U>RULES<\/U><div class=\"rPartvisNetworkTooltipShowme\" style=\"color:black;\"><b> skips <\/b> < 0.5<br><b> PadType <\/b> D4, D6, W4, W9<br><b> Mask <\/b> A1.5<br><b> Solder <\/b> Thin<\/div><\/div><\/div>", "<div style=\"text-align:center;\">N% : <b>7.4%<\/b> (53)<br>Complexity : <b>0.001<\/b><br><hr> L : <b>41.5%<\/b> (22)<br>M : <b>35.8%<\/b> (19)<br>S : <b>22.6%<\/b> (12)<hr class=\"rPartvisNetwork\"><div class=\"rPartvisNetworkTooltipShowhim\" style=\"color:blue;\">\n          <U>RULES<\/U><div class=\"rPartvisNetworkTooltipShowme\" style=\"color:black;\"><b> skips <\/b> < 0.5<br><b> PadType <\/b> D4, D6, W4, W9<br><b> Mask <\/b> A1.5, A3<br><b> Solder <\/b> Thick<\/div><\/div><\/div>", "<div style=\"text-align:center;\">N% : <b>3.1%<\/b> (22)<br>Complexity : <b>0.001<\/b><br><hr> L : <b>45.5%<\/b> (10)<br>M : <b>40.9%<\/b> (9)<br>S : <b>13.6%<\/b> (3)<hr class=\"rPartvisNetwork\"><div class=\"rPartvisNetworkTooltipShowhim\" style=\"color:blue;\">\n          <U>RULES<\/U><div class=\"rPartvisNetworkTooltipShowme\" style=\"color:black;\"><b> skips <\/b> < 0.5<br><b> PadType <\/b> D4, W4<br><b> Mask <\/b> A1.5, A3<br><b> Solder <\/b> Thick<\/div><\/div><\/div>", "<div style=\"text-align:center;\">N% : <b>1.9%<\/b> (14)<br>Complexity : <b>0<\/b><br><hr> L : <b>50%<\/b> (7)<br>M : <b>35.7%<\/b> (5)<br>S : <b>14.3%<\/b> (2)<hr class=\"rPartvisNetwork\"><div class=\"rPartvisNetworkTooltipShowhim\" style=\"color:blue;\">\n          <U>RULES<\/U><div class=\"rPartvisNetworkTooltipShowme\" style=\"color:black;\"><b> skips <\/b> < 0.5<br><b> PadType <\/b> D4, W4<br><b> Mask <\/b> A1.5, A3<br><b> Solder <\/b> Thick<br><b> Panel <\/b> < 2.5<\/div><\/div><\/div>", "<div style=\"text-align:center;\">N% : <b>1.1%<\/b> (8)<br>Complexity : <b>0<\/b><br><hr> L : <b>37.5%<\/b> (3)<br>M : <b>50%<\/b> (4)<br>S : <b>12.5%<\/b> (1)<hr class=\"rPartvisNetwork\"><div class=\"rPartvisNetworkTooltipShowhim\" style=\"color:blue;\">\n          <U>RULES<\/U><div class=\"rPartvisNetworkTooltipShowme\" style=\"color:black;\"><b> skips <\/b> < 0.5<br><b> PadType <\/b> D4, W4<br><b> Mask <\/b> A1.5, A3<br><b> Solder <\/b> Thick<br><b> Panel <\/b> >= 2.5<\/div><\/div><\/div>", "<div style=\"text-align:center;\">N% : <b>4.3%<\/b> (31)<br>Complexity : <b>0<\/b><br><hr> L : <b>38.7%<\/b> (12)<br>M : <b>32.3%<\/b> (10)<br>S : <b>29%<\/b> (9)<hr class=\"rPartvisNetwork\"><div class=\"rPartvisNetworkTooltipShowhim\" style=\"color:blue;\">\n          <U>RULES<\/U><div class=\"rPartvisNetworkTooltipShowme\" style=\"color:black;\"><b> skips <\/b> < 0.5<br><b> PadType <\/b> D6, W9<br><b> Mask <\/b> A1.5, A3<br><b> Solder <\/b> Thick<\/div><\/div><\/div>", "<div style=\"text-align:center;\">N% : <b>39.9%<\/b> (287)<br>Complexity : <b>0.023<\/b><br><hr> L : <b>32.1%<\/b> (92)<br>M : <b>42.5%<\/b> (122)<br>S : <b>25.4%<\/b> (73)<hr class=\"rPartvisNetwork\"><div class=\"rPartvisNetworkTooltipShowhim\" style=\"color:blue;\">\n          <U>RULES<\/U><div class=\"rPartvisNetworkTooltipShowme\" style=\"color:black;\"><b>  <\/b> 0.5 <= <b>skips<\/b> < 5.5<\/div><\/div><\/div>", "<div style=\"text-align:center;\">N% : <b>20.8%<\/b> (150)<br>Complexity : <b>0.018<\/b><br><hr> L : <b>44.7%<\/b> (67)<br>M : <b>42%<\/b> (63)<br>S : <b>13.3%<\/b> (20)<hr class=\"rPartvisNetwork\"><div class=\"rPartvisNetworkTooltipShowhim\" style=\"color:blue;\">\n          <U>RULES<\/U><div class=\"rPartvisNetworkTooltipShowme\" style=\"color:black;\"><b>  <\/b> 0.5 <= <b>skips<\/b> < 5.5<br><b> Solder <\/b> Thin<\/div><\/div><\/div>", "<div style=\"text-align:center;\">N% : <b>14.7%<\/b> (106)<br>Complexity : <b>0.006<\/b><br><hr> L : <b>52.8%<\/b> (56)<br>M : <b>42.5%<\/b> (45)<br>S : <b>4.7%<\/b> (5)<hr class=\"rPartvisNetwork\"><div class=\"rPartvisNetworkTooltipShowhim\" style=\"color:blue;\">\n          <U>RULES<\/U><div class=\"rPartvisNetworkTooltipShowme\" style=\"color:black;\"><b>  <\/b> 0.5 <= <b>skips<\/b> < 3.5<br><b> Solder <\/b> Thin<\/div><\/div><\/div>", "<div style=\"text-align:center;\">N% : <b>7.8%<\/b> (56)<br>Complexity : <b>0.002<\/b><br><hr> L : <b>58.9%<\/b> (33)<br>M : <b>33.9%<\/b> (19)<br>S : <b>7.1%<\/b> (4)<hr class=\"rPartvisNetwork\"><div class=\"rPartvisNetworkTooltipShowhim\" style=\"color:blue;\">\n          <U>RULES<\/U><div class=\"rPartvisNetworkTooltipShowme\" style=\"color:black;\"><b>  <\/b> 0.5 <= <b>skips<\/b> < 3.5<br><b> Solder <\/b> Thin<br><b> PadType <\/b> D4, D6, L7, W4, W9<\/div><\/div><\/div>", "<div style=\"text-align:center;\">N% : <b>3.5%<\/b> (25)<br>Complexity : <b>0<\/b><br><hr> L : <b>72%<\/b> (18)<br>M : <b>28%<\/b> (7)<br>S : <b>0%<\/b> (0)<hr class=\"rPartvisNetwork\"><div class=\"rPartvisNetworkTooltipShowhim\" style=\"color:blue;\">\n          <U>RULES<\/U><div class=\"rPartvisNetworkTooltipShowme\" style=\"color:black;\"><b>  <\/b> 0.5 <= <b>skips<\/b> < 1.5<br><b> Solder <\/b> Thin<br><b> PadType <\/b> D4, D6, L7, W4, W9<\/div><\/div><\/div>", "<div style=\"text-align:center;\">N% : <b>4.3%<\/b> (31)<br>Complexity : <b>0.002<\/b><br><hr> L : <b>48.4%<\/b> (15)<br>M : <b>38.7%<\/b> (12)<br>S : <b>12.9%<\/b> (4)<hr class=\"rPartvisNetwork\"><div class=\"rPartvisNetworkTooltipShowhim\" style=\"color:blue;\">\n          <U>RULES<\/U><div class=\"rPartvisNetworkTooltipShowme\" style=\"color:black;\"><b>  <\/b> 1.5 <= <b>skips<\/b> < 3.5<br><b> Solder <\/b> Thin<br><b> PadType <\/b> D4, D6, L7, W4, W9<\/div><\/div><\/div>", "<div style=\"text-align:center;\">N% : <b>3.3%<\/b> (24)<br>Complexity : <b>0.002<\/b><br><hr> L : <b>54.2%<\/b> (13)<br>M : <b>41.7%<\/b> (10)<br>S : <b>4.2%<\/b> (1)<hr class=\"rPartvisNetwork\"><div class=\"rPartvisNetworkTooltipShowhim\" style=\"color:blue;\">\n          <U>RULES<\/U><div class=\"rPartvisNetworkTooltipShowme\" style=\"color:black;\"><b>  <\/b> 1.5 <= <b>skips<\/b> < 3.5<br><b> Solder <\/b> Thin<br><b> PadType <\/b> D6, L7, W4<\/div><\/div><\/div>", "<div style=\"text-align:center;\">N% : <b>1.5%<\/b> (11)<br>Complexity : <b>0<\/b><br><hr> L : <b>72.7%<\/b> (8)<br>M : <b>27.3%<\/b> (3)<br>S : <b>0%<\/b> (0)<hr class=\"rPartvisNetwork\"><div class=\"rPartvisNetworkTooltipShowhim\" style=\"color:blue;\">\n          <U>RULES<\/U><div class=\"rPartvisNetworkTooltipShowme\" style=\"color:black;\"><b>  <\/b> 1.5 <= <b>skips<\/b> < 3.5<br><b> Solder <\/b> Thin<br><b> PadType <\/b> D6, L7, W4<br><b> Mask <\/b> A3, B6<\/div><\/div><\/div>", "<div style=\"text-align:center;\">N% : <b>1.8%<\/b> (13)<br>Complexity : <b>0<\/b><br><hr> L : <b>38.5%<\/b> (5)<br>M : <b>53.8%<\/b> (7)<br>S : <b>7.7%<\/b> (1)<hr class=\"rPartvisNetwork\"><div class=\"rPartvisNetworkTooltipShowhim\" style=\"color:blue;\">\n          <U>RULES<\/U><div class=\"rPartvisNetworkTooltipShowme\" style=\"color:black;\"><b>  <\/b> 1.5 <= <b>skips<\/b> < 3.5<br><b> Solder <\/b> Thin<br><b> PadType <\/b> D6, L7, W4<br><b> Mask <\/b> A1.5, B3<\/div><\/div><\/div>", "<div style=\"text-align:center;\">N% : <b>1%<\/b> (7)<br>Complexity : <b>0<\/b><br><hr> L : <b>28.6%<\/b> (2)<br>M : <b>28.6%<\/b> (2)<br>S : <b>42.9%<\/b> (3)<hr class=\"rPartvisNetwork\"><div class=\"rPartvisNetworkTooltipShowhim\" style=\"color:blue;\">\n          <U>RULES<\/U><div class=\"rPartvisNetworkTooltipShowme\" style=\"color:black;\"><b>  <\/b> 1.5 <= <b>skips<\/b> < 3.5<br><b> Solder <\/b> Thin<br><b> PadType <\/b> D4, W9<\/div><\/div><\/div>", "<div style=\"text-align:center;\">N% : <b>6.9%<\/b> (50)<br>Complexity : <b>0.003<\/b><br><hr> L : <b>46%<\/b> (23)<br>M : <b>52%<\/b> (26)<br>S : <b>2%<\/b> (1)<hr class=\"rPartvisNetwork\"><div class=\"rPartvisNetworkTooltipShowhim\" style=\"color:blue;\">\n          <U>RULES<\/U><div class=\"rPartvisNetworkTooltipShowme\" style=\"color:black;\"><b>  <\/b> 0.5 <= <b>skips<\/b> < 3.5<br><b> Solder <\/b> Thin<br><b> PadType <\/b> D7, L4, L6, L8, L9<\/div><\/div><\/div>", "<div style=\"text-align:center;\">N% : <b>4.4%<\/b> (32)<br>Complexity : <b>0.003<\/b><br><hr> L : <b>50%<\/b> (16)<br>M : <b>46.9%<\/b> (15)<br>S : <b>3.1%<\/b> (1)<hr class=\"rPartvisNetwork\"><div class=\"rPartvisNetworkTooltipShowhim\" style=\"color:blue;\">\n          <U>RULES<\/U><div class=\"rPartvisNetworkTooltipShowme\" style=\"color:black;\"><b>  <\/b> 0.5 <= <b>skips<\/b> < 3.5<br><b> Solder <\/b> Thin<br><b> PadType <\/b> L4, L6, L9<\/div><\/div><\/div>", "<div style=\"text-align:center;\">N% : <b>1.2%<\/b> (9)<br>Complexity : <b>0<\/b><br><hr> L : <b>66.7%<\/b> (6)<br>M : <b>33.3%<\/b> (3)<br>S : <b>0%<\/b> (0)<hr class=\"rPartvisNetwork\"><div class=\"rPartvisNetworkTooltipShowhim\" style=\"color:blue;\">\n          <U>RULES<\/U><div class=\"rPartvisNetworkTooltipShowme\" style=\"color:black;\"><b>  <\/b> 0.5 <= <b>skips<\/b> < 3.5<br><b> Solder <\/b> Thin<br><b> PadType <\/b> L4, L6, L9<br><b> Panel <\/b> < 1.5<\/div><\/div><\/div>", "<div style=\"text-align:center;\">N% : <b>3.2%<\/b> (23)<br>Complexity : <b>0.003<\/b><br><hr> L : <b>43.5%<\/b> (10)<br>M : <b>52.2%<\/b> (12)<br>S : <b>4.3%<\/b> (1)<hr class=\"rPartvisNetwork\"><div class=\"rPartvisNetworkTooltipShowhim\" style=\"color:blue;\">\n          <U>RULES<\/U><div class=\"rPartvisNetworkTooltipShowme\" style=\"color:black;\"><b>  <\/b> 0.5 <= <b>skips<\/b> < 3.5<br><b> Solder <\/b> Thin<br><b> PadType <\/b> L4, L6, L9<br><b> Panel <\/b> >= 1.5<\/div><\/div><\/div>", "<div style=\"text-align:center;\">N% : <b>1.7%<\/b> (12)<br>Complexity : <b>0<\/b><br><hr> L : <b>58.3%<\/b> (7)<br>M : <b>41.7%<\/b> (5)<br>S : <b>0%<\/b> (0)<hr class=\"rPartvisNetwork\"><div class=\"rPartvisNetworkTooltipShowhim\" style=\"color:blue;\">\n          <U>RULES<\/U><div class=\"rPartvisNetworkTooltipShowme\" style=\"color:black;\"><b>  <\/b> 0.5 <= <b>skips<\/b> < 3.5<br><b> Solder <\/b> Thin<br><b> PadType <\/b> L4, L6, L9<br><b> Panel <\/b> >= 2.5<\/div><\/div><\/div>", "<div style=\"text-align:center;\">N% : <b>1.5%<\/b> (11)<br>Complexity : <b>0<\/b><br><hr> L : <b>27.3%<\/b> (3)<br>M : <b>63.6%<\/b> (7)<br>S : <b>9.1%<\/b> (1)<hr class=\"rPartvisNetwork\"><div class=\"rPartvisNetworkTooltipShowhim\" style=\"color:blue;\">\n          <U>RULES<\/U><div class=\"rPartvisNetworkTooltipShowme\" style=\"color:black;\"><b>  <\/b> 0.5 <= <b>skips<\/b> < 3.5<br><b> Solder <\/b> Thin<br><b> PadType <\/b> L4, L6, L9<br><b>  <\/b> 1.5 <= <b>Panel<\/b> < 2.5<\/div><\/div><\/div>", "<div style=\"text-align:center;\">N% : <b>2.5%<\/b> (18)<br>Complexity : <b>0<\/b><br><hr> L : <b>38.9%<\/b> (7)<br>M : <b>61.1%<\/b> (11)<br>S : <b>0%<\/b> (0)<hr class=\"rPartvisNetwork\"><div class=\"rPartvisNetworkTooltipShowhim\" style=\"color:blue;\">\n          <U>RULES<\/U><div class=\"rPartvisNetworkTooltipShowme\" style=\"color:black;\"><b>  <\/b> 0.5 <= <b>skips<\/b> < 3.5<br><b> Solder <\/b> Thin<br><b> PadType <\/b> D7, L8<\/div><\/div><\/div>", "<div style=\"text-align:center;\">N% : <b>6.1%<\/b> (44)<br>Complexity : <b>0.018<\/b><br><hr> L : <b>25%<\/b> (11)<br>M : <b>40.9%<\/b> (18)<br>S : <b>34.1%<\/b> (15)<hr class=\"rPartvisNetwork\"><div class=\"rPartvisNetworkTooltipShowhim\" style=\"color:blue;\">\n          <U>RULES<\/U><div class=\"rPartvisNetworkTooltipShowme\" style=\"color:black;\"><b>  <\/b> 3.5 <= <b>skips<\/b> < 5.5<br><b> Solder <\/b> Thin<\/div><\/div><\/div>", "<div style=\"text-align:center;\">N% : <b>4.7%<\/b> (34)<br>Complexity : <b>0.004<\/b><br><hr> L : <b>32.4%<\/b> (11)<br>M : <b>52.9%<\/b> (18)<br>S : <b>14.7%<\/b> (5)<hr class=\"rPartvisNetwork\"><div class=\"rPartvisNetworkTooltipShowhim\" style=\"color:blue;\">\n          <U>RULES<\/U><div class=\"rPartvisNetworkTooltipShowme\" style=\"color:black;\"><b>  <\/b> 3.5 <= <b>skips<\/b> < 5.5<br><b> Solder <\/b> Thin<br><b> Mask <\/b> A3, B3, B6<\/div><\/div><\/div>", "<div style=\"text-align:center;\">N% : <b>3.5%<\/b> (25)<br>Complexity : <b>0.004<\/b><br><hr> L : <b>44%<\/b> (11)<br>M : <b>48%<\/b> (12)<br>S : <b>8%<\/b> (2)<hr class=\"rPartvisNetwork\"><div class=\"rPartvisNetworkTooltipShowhim\" style=\"color:blue;\">\n          <U>RULES<\/U><div class=\"rPartvisNetworkTooltipShowme\" style=\"color:black;\"><b>  <\/b> 3.5 <= <b>skips<\/b> < 5.5<br><b> Solder <\/b> Thin<br><b> Mask <\/b> A3, B3, B6<br><b> PadType <\/b> D4, D7, L6, L7, L8, L9<\/div><\/div><\/div>", "<div style=\"text-align:center;\">N% : <b>1.1%<\/b> (8)<br>Complexity : <b>0<\/b><br><hr> L : <b>75%<\/b> (6)<br>M : <b>25%<\/b> (2)<br>S : <b>0%<\/b> (0)<hr class=\"rPartvisNetwork\"><div class=\"rPartvisNetworkTooltipShowhim\" style=\"color:blue;\">\n          <U>RULES<\/U><div class=\"rPartvisNetworkTooltipShowme\" style=\"color:black;\"><b>  <\/b> 3.5 <= <b>skips<\/b> < 5.5<br><b> Solder <\/b> Thin<br><b> Mask <\/b> B3<br><b> PadType <\/b> D4, D7, L6, L7, L8, L9<\/div><\/div><\/div>", "<div style=\"text-align:center;\">N% : <b>2.4%<\/b> (17)<br>Complexity : <b>0<\/b><br><hr> L : <b>29.4%<\/b> (5)<br>M : <b>58.8%<\/b> (10)<br>S : <b>11.8%<\/b> (2)<hr class=\"rPartvisNetwork\"><div class=\"rPartvisNetworkTooltipShowhim\" style=\"color:blue;\">\n          <U>RULES<\/U><div class=\"rPartvisNetworkTooltipShowme\" style=\"color:black;\"><b>  <\/b> 3.5 <= <b>skips<\/b> < 5.5<br><b> Solder <\/b> Thin<br><b> Mask <\/b> A3, B6<br><b> PadType <\/b> D4, D7, L6, L7, L8, L9<\/div><\/div><\/div>", "<div style=\"text-align:center;\">N% : <b>1.2%<\/b> (9)<br>Complexity : <b>0<\/b><br><hr> L : <b>0%<\/b> (0)<br>M : <b>66.7%<\/b> (6)<br>S : <b>33.3%<\/b> (3)<hr class=\"rPartvisNetwork\"><div class=\"rPartvisNetworkTooltipShowhim\" style=\"color:blue;\">\n          <U>RULES<\/U><div class=\"rPartvisNetworkTooltipShowme\" style=\"color:black;\"><b>  <\/b> 3.5 <= <b>skips<\/b> < 5.5<br><b> Solder <\/b> Thin<br><b> Mask <\/b> A3, B3, B6<br><b> PadType <\/b> D6, L4, W4, W9<\/div><\/div><\/div>", "<div style=\"text-align:center;\">N% : <b>1.4%<\/b> (10)<br>Complexity : <b>0<\/b><br><hr> L : <b>0%<\/b> (0)<br>M : <b>0%<\/b> (0)<br>S : <b>100%<\/b> (10)<hr class=\"rPartvisNetwork\"><div class=\"rPartvisNetworkTooltipShowhim\" style=\"color:blue;\">\n          <U>RULES<\/U><div class=\"rPartvisNetworkTooltipShowme\" style=\"color:black;\"><b>  <\/b> 3.5 <= <b>skips<\/b> < 5.5<br><b> Solder <\/b> Thin<br><b> Mask <\/b> A1.5<\/div><\/div><\/div>", "<div style=\"text-align:center;\">N% : <b>19%<\/b> (137)<br>Complexity : <b>0.023<\/b><br><hr> L : <b>18.2%<\/b> (25)<br>M : <b>43.1%<\/b> (59)<br>S : <b>38.7%<\/b> (53)<hr class=\"rPartvisNetwork\"><div class=\"rPartvisNetworkTooltipShowhim\" style=\"color:blue;\">\n          <U>RULES<\/U><div class=\"rPartvisNetworkTooltipShowme\" style=\"color:black;\"><b>  <\/b> 0.5 <= <b>skips<\/b> < 5.5<br><b> Solder <\/b> Thick<\/div><\/div><\/div>", "<div style=\"text-align:center;\">N% : <b>9.9%<\/b> (71)<br>Complexity : <b>0.006<\/b><br><hr> L : <b>29.6%<\/b> (21)<br>M : <b>52.1%<\/b> (37)<br>S : <b>18.3%<\/b> (13)<hr class=\"rPartvisNetwork\"><div class=\"rPartvisNetworkTooltipShowhim\" style=\"color:blue;\">\n          <U>RULES<\/U><div class=\"rPartvisNetworkTooltipShowme\" style=\"color:black;\"><b>  <\/b> 0.5 <= <b>skips<\/b> < 5.5<br><b> Solder <\/b> Thick<br><b> Mask <\/b> B3, B6<\/div><\/div><\/div>", "<div style=\"text-align:center;\">N% : <b>6.9%<\/b> (50)<br>Complexity : <b>0<\/b><br><hr> L : <b>30%<\/b> (15)<br>M : <b>62%<\/b> (31)<br>S : <b>8%<\/b> (4)<hr class=\"rPartvisNetwork\"><div class=\"rPartvisNetworkTooltipShowhim\" style=\"color:blue;\">\n          <U>RULES<\/U><div class=\"rPartvisNetworkTooltipShowme\" style=\"color:black;\"><b>  <\/b> 0.5 <= <b>skips<\/b> < 5.5<br><b> Solder <\/b> Thick<br><b> Mask <\/b> B3, B6<br><b> PadType <\/b> D4, D7, L4, L6, L7, L8, L9<\/div><\/div><\/div>", "<div style=\"text-align:center;\">N% : <b>2.9%<\/b> (21)<br>Complexity : <b>0.004<\/b><br><hr> L : <b>28.6%<\/b> (6)<br>M : <b>28.6%<\/b> (6)<br>S : <b>42.9%<\/b> (9)<hr class=\"rPartvisNetwork\"><div class=\"rPartvisNetworkTooltipShowhim\" style=\"color:blue;\">\n          <U>RULES<\/U><div class=\"rPartvisNetworkTooltipShowme\" style=\"color:black;\"><b>  <\/b> 0.5 <= <b>skips<\/b> < 5.5<br><b> Solder <\/b> Thick<br><b> Mask <\/b> B3, B6<br><b> PadType <\/b> D6, W4, W9<\/div><\/div><\/div>", "<div style=\"text-align:center;\">N% : <b>1.1%<\/b> (8)<br>Complexity : <b>0<\/b><br><hr> L : <b>50%<\/b> (4)<br>M : <b>25%<\/b> (2)<br>S : <b>25%<\/b> (2)<hr class=\"rPartvisNetwork\"><div class=\"rPartvisNetworkTooltipShowhim\" style=\"color:blue;\">\n          <U>RULES<\/U><div class=\"rPartvisNetworkTooltipShowme\" style=\"color:black;\"><b>  <\/b> 0.5 <= <b>skips<\/b> < 1.5<br><b> Solder <\/b> Thick<br><b> Mask <\/b> B3, B6<br><b> PadType <\/b> D6, W4, W9<\/div><\/div><\/div>", "<div style=\"text-align:center;\">N% : <b>1.8%<\/b> (13)<br>Complexity : <b>0<\/b><br><hr> L : <b>15.4%<\/b> (2)<br>M : <b>30.8%<\/b> (4)<br>S : <b>53.8%<\/b> (7)<hr class=\"rPartvisNetwork\"><div class=\"rPartvisNetworkTooltipShowhim\" style=\"color:blue;\">\n          <U>RULES<\/U><div class=\"rPartvisNetworkTooltipShowme\" style=\"color:black;\"><b>  <\/b> 1.5 <= <b>skips<\/b> < 5.5<br><b> Solder <\/b> Thick<br><b> Mask <\/b> B3, B6<br><b> PadType <\/b> D6, W4, W9<\/div><\/div><\/div>", "<div style=\"text-align:center;\">N% : <b>9.2%<\/b> (66)<br>Complexity : <b>0.002<\/b><br><hr> L : <b>6.1%<\/b> (4)<br>M : <b>33.3%<\/b> (22)<br>S : <b>60.6%<\/b> (40)<hr class=\"rPartvisNetwork\"><div class=\"rPartvisNetworkTooltipShowhim\" style=\"color:blue;\">\n          <U>RULES<\/U><div class=\"rPartvisNetworkTooltipShowme\" style=\"color:black;\"><b>  <\/b> 0.5 <= <b>skips<\/b> < 5.5<br><b> Solder <\/b> Thick<br><b> Mask <\/b> A1.5, A3<\/div><\/div><\/div>", "<div style=\"text-align:center;\">N% : <b>7.4%<\/b> (53)<br>Complexity : <b>0.002<\/b><br><hr> L : <b>7.5%<\/b> (4)<br>M : <b>37.7%<\/b> (20)<br>S : <b>54.7%<\/b> (29)<hr class=\"rPartvisNetwork\"><div class=\"rPartvisNetworkTooltipShowhim\" style=\"color:blue;\">\n          <U>RULES<\/U><div class=\"rPartvisNetworkTooltipShowme\" style=\"color:black;\"><b>  <\/b> 0.5 <= <b>skips<\/b> < 5.5<br><b> Solder <\/b> Thick<br><b> Mask <\/b> A1.5, A3<br><b> PadType <\/b> D7, L4, L7, L8, L9, W4, W9<\/div><\/div><\/div>", "<div style=\"text-align:center;\">N% : <b>4.3%<\/b> (31)<br>Complexity : <b>0.002<\/b><br><hr> L : <b>12.9%<\/b> (4)<br>M : <b>41.9%<\/b> (13)<br>S : <b>45.2%<\/b> (14)<hr class=\"rPartvisNetwork\"><div class=\"rPartvisNetworkTooltipShowhim\" style=\"color:blue;\">\n          <U>RULES<\/U><div class=\"rPartvisNetworkTooltipShowme\" style=\"color:black;\"><b>  <\/b> 0.5 <= <b>skips<\/b> < 5.5<br><b> Solder <\/b> Thick<br><b> Mask <\/b> A3<br><b> PadType <\/b> D7, L4, L7, L8, L9, W4, W9<\/div><\/div><\/div>", "<div style=\"text-align:center;\">N% : <b>1.4%<\/b> (10)<br>Complexity : <b>0<\/b><br><hr> L : <b>10%<\/b> (1)<br>M : <b>60%<\/b> (6)<br>S : <b>30%<\/b> (3)<hr class=\"rPartvisNetwork\"><div class=\"rPartvisNetworkTooltipShowhim\" style=\"color:blue;\">\n          <U>RULES<\/U><div class=\"rPartvisNetworkTooltipShowme\" style=\"color:black;\"><b>  <\/b> 0.5 <= <b>skips<\/b> < 5.5<br><b> Solder <\/b> Thick<br><b> Mask <\/b> A3<br><b> PadType <\/b> L4, L9, W9<\/div><\/div><\/div>", "<div style=\"text-align:center;\">N% : <b>2.9%<\/b> (21)<br>Complexity : <b>0.002<\/b><br><hr> L : <b>14.3%<\/b> (3)<br>M : <b>33.3%<\/b> (7)<br>S : <b>52.4%<\/b> (11)<hr class=\"rPartvisNetwork\"><div class=\"rPartvisNetworkTooltipShowhim\" style=\"color:blue;\">\n          <U>RULES<\/U><div class=\"rPartvisNetworkTooltipShowme\" style=\"color:black;\"><b>  <\/b> 0.5 <= <b>skips<\/b> < 5.5<br><b> Solder <\/b> Thick<br><b> Mask <\/b> A3<br><b> PadType <\/b> D7, L7, L8, W4<\/div><\/div><\/div>", "<div style=\"text-align:center;\">N% : <b>1.5%<\/b> (11)<br>Complexity : <b>0<\/b><br><hr> L : <b>18.2%<\/b> (2)<br>M : <b>45.5%<\/b> (5)<br>S : <b>36.4%<\/b> (4)<hr class=\"rPartvisNetwork\"><div class=\"rPartvisNetworkTooltipShowhim\" style=\"color:blue;\">\n          <U>RULES<\/U><div class=\"rPartvisNetworkTooltipShowme\" style=\"color:black;\"><b>  <\/b> 0.5 <= <b>skips<\/b> < 1.5<br><b> Solder <\/b> Thick<br><b> Mask <\/b> A3<br><b> PadType <\/b> D7, L7, L8, W4<\/div><\/div><\/div>", "<div style=\"text-align:center;\">N% : <b>1.4%<\/b> (10)<br>Complexity : <b>0<\/b><br><hr> L : <b>10%<\/b> (1)<br>M : <b>20%<\/b> (2)<br>S : <b>70%<\/b> (7)<hr class=\"rPartvisNetwork\"><div class=\"rPartvisNetworkTooltipShowhim\" style=\"color:blue;\">\n          <U>RULES<\/U><div class=\"rPartvisNetworkTooltipShowme\" style=\"color:black;\"><b>  <\/b> 1.5 <= <b>skips<\/b> < 5.5<br><b> Solder <\/b> Thick<br><b> Mask <\/b> A3<br><b> PadType <\/b> D7, L7, L8, W4<\/div><\/div><\/div>", "<div style=\"text-align:center;\">N% : <b>3.1%<\/b> (22)<br>Complexity : <b>0<\/b><br><hr> L : <b>0%<\/b> (0)<br>M : <b>31.8%<\/b> (7)<br>S : <b>68.2%<\/b> (15)<hr class=\"rPartvisNetwork\"><div class=\"rPartvisNetworkTooltipShowhim\" style=\"color:blue;\">\n          <U>RULES<\/U><div class=\"rPartvisNetworkTooltipShowme\" style=\"color:black;\"><b>  <\/b> 0.5 <= <b>skips<\/b> < 5.5<br><b> Solder <\/b> Thick<br><b> Mask <\/b> A1.5<br><b> PadType <\/b> D7, L4, L7, L8, L9, W4, W9<\/div><\/div><\/div>", "<div style=\"text-align:center;\">N% : <b>1.8%<\/b> (13)<br>Complexity : <b>0<\/b><br><hr> L : <b>0%<\/b> (0)<br>M : <b>15.4%<\/b> (2)<br>S : <b>84.6%<\/b> (11)<hr class=\"rPartvisNetwork\"><div class=\"rPartvisNetworkTooltipShowhim\" style=\"color:blue;\">\n          <U>RULES<\/U><div class=\"rPartvisNetworkTooltipShowme\" style=\"color:black;\"><b>  <\/b> 0.5 <= <b>skips<\/b> < 5.5<br><b> Solder <\/b> Thick<br><b> Mask <\/b> A1.5, A3<br><b> PadType <\/b> D4, D6, L6<\/div><\/div><\/div>", "<div style=\"text-align:center;\">N% : <b>26.5%<\/b> (191)<br>Complexity : <b>0.008<\/b><br><hr> L : <b>11.5%<\/b> (22)<br>M : <b>13.1%<\/b> (25)<br>S : <b>75.4%<\/b> (144)<hr class=\"rPartvisNetwork\"><div class=\"rPartvisNetworkTooltipShowhim\" style=\"color:blue;\">\n          <U>RULES<\/U><div class=\"rPartvisNetworkTooltipShowme\" style=\"color:black;\"><b> skips <\/b> >= 5.5<\/div><\/div><\/div>", "<div style=\"text-align:center;\">N% : <b>13.3%<\/b> (96)<br>Complexity : <b>0.008<\/b><br><hr> L : <b>19.8%<\/b> (19)<br>M : <b>20.8%<\/b> (20)<br>S : <b>59.4%<\/b> (57)<hr class=\"rPartvisNetwork\"><div class=\"rPartvisNetworkTooltipShowhim\" style=\"color:blue;\">\n          <U>RULES<\/U><div class=\"rPartvisNetworkTooltipShowme\" style=\"color:black;\"><b> skips <\/b> >= 5.5<br><b> Mask <\/b> B6<\/div><\/div><\/div>", "<div style=\"text-align:center;\">N% : <b>5.7%<\/b> (41)<br>Complexity : <b>0.008<\/b><br><hr> L : <b>36.6%<\/b> (15)<br>M : <b>36.6%<\/b> (15)<br>S : <b>26.8%<\/b> (11)<hr class=\"rPartvisNetwork\"><div class=\"rPartvisNetworkTooltipShowhim\" style=\"color:blue;\">\n          <U>RULES<\/U><div class=\"rPartvisNetworkTooltipShowme\" style=\"color:black;\"><b>  <\/b> 5.5 <= <b>skips<\/b> < 12.5<br><b> Mask <\/b> B6<\/div><\/div><\/div>", "<div style=\"text-align:center;\">N% : <b>3.8%<\/b> (27)<br>Complexity : <b>0.008<\/b><br><hr> L : <b>48.1%<\/b> (13)<br>M : <b>44.4%<\/b> (12)<br>S : <b>7.4%<\/b> (2)<hr class=\"rPartvisNetwork\"><div class=\"rPartvisNetworkTooltipShowhim\" style=\"color:blue;\">\n          <U>RULES<\/U><div class=\"rPartvisNetworkTooltipShowme\" style=\"color:black;\"><b>  <\/b> 5.5 <= <b>skips<\/b> < 12.5<br><b> Mask <\/b> B6<br><b> Solder <\/b> Thin<\/div><\/div><\/div>", "<div style=\"text-align:center;\">N% : <b>1.2%<\/b> (9)<br>Complexity : <b>0<\/b><br><hr> L : <b>66.7%<\/b> (6)<br>M : <b>11.1%<\/b> (1)<br>S : <b>22.2%<\/b> (2)<hr class=\"rPartvisNetwork\"><div class=\"rPartvisNetworkTooltipShowhim\" style=\"color:blue;\">\n          <U>RULES<\/U><div class=\"rPartvisNetworkTooltipShowme\" style=\"color:black;\"><b>  <\/b> 9.5 <= <b>skips<\/b> < 12.5<br><b> Mask <\/b> B6<br><b> Solder <\/b> Thin<\/div><\/div><\/div>", "<div style=\"text-align:center;\">N% : <b>2.5%<\/b> (18)<br>Complexity : <b>0<\/b><br><hr> L : <b>38.9%<\/b> (7)<br>M : <b>61.1%<\/b> (11)<br>S : <b>0%<\/b> (0)<hr class=\"rPartvisNetwork\"><div class=\"rPartvisNetworkTooltipShowhim\" style=\"color:blue;\">\n          <U>RULES<\/U><div class=\"rPartvisNetworkTooltipShowme\" style=\"color:black;\"><b>  <\/b> 5.5 <= <b>skips<\/b> < 9.5<br><b> Mask <\/b> B6<br><b> Solder <\/b> Thin<\/div><\/div><\/div>", "<div style=\"text-align:center;\">N% : <b>1.9%<\/b> (14)<br>Complexity : <b>0<\/b><br><hr> L : <b>14.3%<\/b> (2)<br>M : <b>21.4%<\/b> (3)<br>S : <b>64.3%<\/b> (9)<hr class=\"rPartvisNetwork\"><div class=\"rPartvisNetworkTooltipShowhim\" style=\"color:blue;\">\n          <U>RULES<\/U><div class=\"rPartvisNetworkTooltipShowme\" style=\"color:black;\"><b>  <\/b> 5.5 <= <b>skips<\/b> < 12.5<br><b> Mask <\/b> B6<br><b> Solder <\/b> Thick<\/div><\/div><\/div>", "<div style=\"text-align:center;\">N% : <b>7.6%<\/b> (55)<br>Complexity : <b>0.002<\/b><br><hr> L : <b>7.3%<\/b> (4)<br>M : <b>9.1%<\/b> (5)<br>S : <b>83.6%<\/b> (46)<hr class=\"rPartvisNetwork\"><div class=\"rPartvisNetworkTooltipShowhim\" style=\"color:blue;\">\n          <U>RULES<\/U><div class=\"rPartvisNetworkTooltipShowme\" style=\"color:black;\"><b> skips <\/b> >= 12.5<br><b> Mask <\/b> B6<\/div><\/div><\/div>", "<div style=\"text-align:center;\">N% : <b>3.1%<\/b> (22)<br>Complexity : <b>0.002<\/b><br><hr> L : <b>18.2%<\/b> (4)<br>M : <b>18.2%<\/b> (4)<br>S : <b>63.6%<\/b> (14)<hr class=\"rPartvisNetwork\"><div class=\"rPartvisNetworkTooltipShowhim\" style=\"color:blue;\">\n          <U>RULES<\/U><div class=\"rPartvisNetworkTooltipShowme\" style=\"color:black;\"><b>  <\/b> 12.5 <= <b>skips<\/b> < 17.5<br><b> Mask <\/b> B6<\/div><\/div><\/div>", "<div style=\"text-align:center;\">N% : <b>1.4%<\/b> (10)<br>Complexity : <b>0<\/b><br><hr> L : <b>40%<\/b> (4)<br>M : <b>40%<\/b> (4)<br>S : <b>20%<\/b> (2)<hr class=\"rPartvisNetwork\"><div class=\"rPartvisNetworkTooltipShowhim\" style=\"color:blue;\">\n          <U>RULES<\/U><div class=\"rPartvisNetworkTooltipShowme\" style=\"color:black;\"><b>  <\/b> 12.5 <= <b>skips<\/b> < 17.5<br><b> Mask <\/b> B6<br><b> PadType <\/b> D4, D7, L4, W4<\/div><\/div><\/div>", "<div style=\"text-align:center;\">N% : <b>1.7%<\/b> (12)<br>Complexity : <b>0<\/b><br><hr> L : <b>0%<\/b> (0)<br>M : <b>0%<\/b> (0)<br>S : <b>100%<\/b> (12)<hr class=\"rPartvisNetwork\"><div class=\"rPartvisNetworkTooltipShowhim\" style=\"color:blue;\">\n          <U>RULES<\/U><div class=\"rPartvisNetworkTooltipShowme\" style=\"color:black;\"><b>  <\/b> 12.5 <= <b>skips<\/b> < 17.5<br><b> Mask <\/b> B6<br><b> PadType <\/b> D6, L6, L7, L8, L9, W9<\/div><\/div><\/div>", "<div style=\"text-align:center;\">N% : <b>4.6%<\/b> (33)<br>Complexity : <b>0<\/b><br><hr> L : <b>0%<\/b> (0)<br>M : <b>3%<\/b> (1)<br>S : <b>97%<\/b> (32)<hr class=\"rPartvisNetwork\"><div class=\"rPartvisNetworkTooltipShowhim\" style=\"color:blue;\">\n          <U>RULES<\/U><div class=\"rPartvisNetworkTooltipShowme\" style=\"color:black;\"><b> skips <\/b> >= 17.5<br><b> Mask <\/b> B6<\/div><\/div><\/div>", "<div style=\"text-align:center;\">N% : <b>13.2%<\/b> (95)<br>Complexity : <b>0<\/b><br><hr> L : <b>3.2%<\/b> (3)<br>M : <b>5.3%<\/b> (5)<br>S : <b>91.6%<\/b> (87)<hr class=\"rPartvisNetwork\"><div class=\"rPartvisNetworkTooltipShowhim\" style=\"color:blue;\">\n          <U>RULES<\/U><div class=\"rPartvisNetworkTooltipShowme\" style=\"color:black;\"><b> skips <\/b> >= 5.5<br><b> Mask <\/b> A1.5, A3, B3<\/div><\/div><\/div>"],
+      "fixed": [true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true],
+      "colorClust": ["#7D91B6", "#7D91B6", "#7D91B6", "#7D91B6", "#7D91B6", "#7D91B6", "#7D91B6", "#7D91B6", "#7D91B6", "#AC83AE", "#AC83AE", "#AC83AE", "#7D91B6", "#7D91B6", "#AC83AE", "#AC83AE", "#AC83AE", "#AC83AE", "#7D91B6", "#AC83AE", "#7D91B6", "#7D91B6", "#7D91B6", "#AC83AE", "#7D91B6", "#AC83AE", "#7D91B6", "#7D91B6", "#7D91B6", "#7D91B6", "#7D91B6", "#7D91B6", "#7D91B6", "#AC83AE", "#B9828C", "#AC83AE", "#7D91B6", "#7D91B6", "#AC83AE", "#7D91B6", "#AC83AE", "#AC83AE", "#AC83AE", "#AC83AE", "#AC83AE", "#7D91B6", "#AC83AE", "#AC83AE", "#B9828C", "#AC83AE", "#AC83AE", "#AC83AE", "#B9828C", "#7D91B6", "#B9828C", "#B9828C", "#B9828C", "#B9828C", "#AC83AE", "#B9828C", "#AC83AE", "#B9828C", "#B9828C", "#B9828C", "#B9828C", "#B9828C", "#7D91B6", "#7D91B6", "#7D91B6", "#AC83AE", "#B9828C", "#B9828C", "#B9828C", "#7D91B6", "#B9828C", "#B9828C", "#B9828C"],
+      "labelClust": ["L", "L", "L", "L", "L", "L", "L", "L", "L", "M", "M", "M", "L", "L", "M", "M", "M", "M", "L", "M", "L", "L", "L", "M", "L", "M", "L", "L", "L", "L", "L", "L", "L", "M", "S", "M", "L", "L", "M", "L", "M", "M", "M", "M", "M", "L", "M", "M", "S", "M", "M", "M", "S", "L", "S", "S", "S", "S", "M", "S", "M", "S", "S", "S", "S", "S", "L", "L", "L", "M", "S", "S", "S", "L", "S", "S", "S"],
+      "Leaf": [0, 0, 0, 0, 1, 0, 1, 0, 1, 1, 0, 0, 0, 1, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 1, 0, 0, 0, 0, 1, 0, 0, 1, 1, 1, 0, 0, 1, 0, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 0, 0, 1, 0, 1, 1, 0, 0, 0, 1, 0, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 0, 0, 1, 1, 1, 1],
+      "font.size": [16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16],
+      "scaling.min": [10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10],
+      "scaling.max": [30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30]
+    },
+    "edges": {
+      "id": ["edge1", "edge2", "edge3", "edge4", "edge5", "edge6", "edge7", "edge8", "edge9", "edge10", "edge11", "edge12", "edge13", "edge14", "edge15", "edge16", "edge17", "edge18", "edge19", "edge20", "edge21", "edge22", "edge23", "edge24", "edge25", "edge26", "edge27", "edge28", "edge29", "edge30", "edge31", "edge32", "edge33", "edge34", "edge35", "edge36", "edge37", "edge38", "edge39", "edge40", "edge41", "edge42", "edge43", "edge44", "edge45", "edge46", "edge47", "edge48", "edge49", "edge50", "edge51", "edge52", "edge53", "edge54", "edge55", "edge56", "edge57", "edge58", "edge59", "edge60", "edge61", "edge62", "edge63", "edge64", "edge65", "edge66", "edge67", "edge68", "edge69", "edge70", "edge71", "edge72", "edge73", "edge74", "edge75", "edge76"],
+      "from": [1, 2, 4, 8, 8, 17, 17, 35, 35, 4, 9, 18, 36, 36, 18, 9, 19, 38, 38, 19, 39, 78, 78, 39, 2, 5, 10, 20, 40, 40, 81, 162, 162, 81, 20, 41, 82, 82, 165, 165, 41, 10, 21, 42, 84, 84, 42, 21, 5, 11, 22, 22, 45, 45, 11, 23, 46, 92, 92, 185, 185, 46, 23, 1, 3, 6, 12, 24, 24, 12, 6, 13, 26, 26, 13, 3],
+      "to": [2, 4, 8, 16, 17, 34, 35, 70, 71, 9, 18, 36, 72, 73, 37, 19, 38, 76, 77, 39, 78, 156, 157, 79, 5, 10, 20, 40, 80, 81, 162, 324, 325, 163, 41, 82, 164, 165, 330, 331, 83, 21, 42, 84, 168, 169, 85, 43, 11, 22, 44, 45, 90, 91, 23, 46, 92, 184, 185, 370, 371, 93, 47, 3, 6, 12, 24, 48, 49, 25, 13, 26, 52, 53, 27, 7],
+      "label": ["< 5.5", "< 0.5", "D7, L4,...", "B6", "A1.5, A...", "D7, L8, L9", "L4, L6, L7", "Thick", "Thin", "D4, D6,...", "B3, B6", "< 2.5", ">= 1.5", "< 1.5", ">= 2.5", "A1.5, A3", "Thin", "A3", "A1.5", "Thick", "D4, W4", "< 2.5", ">= 2.5", "D6, W9", ">= 0.5", "Thin", "< 3.5", "D4, D6,...", "< 1.5", ">= 1.5", "D6, L7, W4", "A3, B6", "A1.5, B3", "D4, W9", "D7, L4,...", "L4, L6, L9", "< 1.5", ">= 1.5", ">= 2.5", "< 2.5", "D7, L8", ">= 3.5", "A3, B3, B6", "D4, D7,...", "B3", "A3, B6", "D6, L4,...", "A1.5", "Thick", "B3, B6", "D4, D7,...", "D6, W4, W9", "< 1.5", ">= 1.5", "A1.5, A3", "D7, L4,...", "A3", "L4, L9, W9", "D7, L7,...", "< 1.5", ">= 1.5", "A1.5", "D4, D6, L6", ">= 5.5", "B6", "< 12.5", "Thin", ">= 9.5", "< 9.5", "Thick", ">= 12.5", "< 17.5", "D4, D7,...", "D6, L6,...", ">= 17.5", "A1.5, A..."],
+      "value": [529, 242, 125, 19, 106, 60, 46, 33, 13, 117, 39, 27, 10, 17, 12, 78, 25, 12, 13, 53, 22, 14, 8, 31, 287, 150, 106, 56, 25, 31, 24, 11, 13, 7, 50, 32, 9, 23, 12, 11, 18, 44, 34, 25, 8, 17, 9, 10, 137, 71, 50, 21, 8, 13, 66, 53, 31, 10, 21, 11, 10, 22, 13, 191, 96, 41, 27, 9, 18, 14, 55, 22, 10, 12, 33, 95],
+      "title": ["<div style=\"text-align:center;\"><b>skips<\/b><\/div><div style=\"text-align:center;\"><5.5<\/div>", "<div style=\"text-align:center;\"><b>skips<\/b><\/div><div style=\"text-align:center;\"><0.5<\/div>", "<div style=\"text-align:center;\"><b>PadType<\/b><\/div><div style=\"text-align:center;\">D7<\/div><div style=\"text-align:center;\">L4<\/div><div style=\"text-align:center;\">L6<\/div><div style=\"text-align:center;\">L7<\/div><div style=\"text-align:center;\">L8<\/div><div style=\"text-align:center;\">L9<\/div>", "<div style=\"text-align:center;\"><b>Mask<\/b><\/div><div style=\"text-align:center;\">B6<\/div>", "<div style=\"text-align:center;\"><b>Mask<\/b><\/div><div style=\"text-align:center;\">A1.5<\/div><div style=\"text-align:center;\">A3<\/div><div style=\"text-align:center;\">B3<\/div>", "<div style=\"text-align:center;\"><b>PadType<\/b><\/div><div style=\"text-align:center;\">D7<\/div><div style=\"text-align:center;\">L8<\/div><div style=\"text-align:center;\">L9<\/div>", "<div style=\"text-align:center;\"><b>PadType<\/b><\/div><div style=\"text-align:center;\">L4<\/div><div style=\"text-align:center;\">L6<\/div><div style=\"text-align:center;\">L7<\/div>", "<div style=\"text-align:center;\"><b>Solder<\/b><\/div><div style=\"text-align:center;\">Thick<\/div>", "<div style=\"text-align:center;\"><b>Solder<\/b><\/div><div style=\"text-align:center;\">Thin<\/div>", "<div style=\"text-align:center;\"><b>PadType<\/b><\/div><div style=\"text-align:center;\">D4<\/div><div style=\"text-align:center;\">D6<\/div><div style=\"text-align:center;\">W4<\/div><div style=\"text-align:center;\">W9<\/div>", "<div style=\"text-align:center;\"><b>Mask<\/b><\/div><div style=\"text-align:center;\">B3<\/div><div style=\"text-align:center;\">B6<\/div>", "<div style=\"text-align:center;\"><b>Panel<\/b><\/div><div style=\"text-align:center;\"><2.5<\/div>", "<div style=\"text-align:center;\"><b>Panel<\/b><\/div><div style=\"text-align:center;\">>=1.5<\/div>", "<div style=\"text-align:center;\"><b>Panel<\/b><\/div><div style=\"text-align:center;\"><1.5<\/div>", "<div style=\"text-align:center;\"><b>Panel<\/b><\/div><div style=\"text-align:center;\">>=2.5<\/div>", "<div style=\"text-align:center;\"><b>Mask<\/b><\/div><div style=\"text-align:center;\">A1.5<\/div><div style=\"text-align:center;\">A3<\/div>", "<div style=\"text-align:center;\"><b>Solder<\/b><\/div><div style=\"text-align:center;\">Thin<\/div>", "<div style=\"text-align:center;\"><b>Mask<\/b><\/div><div style=\"text-align:center;\">A3<\/div>", "<div style=\"text-align:center;\"><b>Mask<\/b><\/div><div style=\"text-align:center;\">A1.5<\/div>", "<div style=\"text-align:center;\"><b>Solder<\/b><\/div><div style=\"text-align:center;\">Thick<\/div>", "<div style=\"text-align:center;\"><b>PadType<\/b><\/div><div style=\"text-align:center;\">D4<\/div><div style=\"text-align:center;\">W4<\/div>", "<div style=\"text-align:center;\"><b>Panel<\/b><\/div><div style=\"text-align:center;\"><2.5<\/div>", "<div style=\"text-align:center;\"><b>Panel<\/b><\/div><div style=\"text-align:center;\">>=2.5<\/div>", "<div style=\"text-align:center;\"><b>PadType<\/b><\/div><div style=\"text-align:center;\">D6<\/div><div style=\"text-align:center;\">W9<\/div>", "<div style=\"text-align:center;\"><b>skips<\/b><\/div><div style=\"text-align:center;\">>=0.5<\/div>", "<div style=\"text-align:center;\"><b>Solder<\/b><\/div><div style=\"text-align:center;\">Thin<\/div>", "<div style=\"text-align:center;\"><b>skips<\/b><\/div><div style=\"text-align:center;\"><3.5<\/div>", "<div style=\"text-align:center;\"><b>PadType<\/b><\/div><div style=\"text-align:center;\">D4<\/div><div style=\"text-align:center;\">D6<\/div><div style=\"text-align:center;\">L7<\/div><div style=\"text-align:center;\">W4<\/div><div style=\"text-align:center;\">W9<\/div>", "<div style=\"text-align:center;\"><b>skips<\/b><\/div><div style=\"text-align:center;\"><1.5<\/div>", "<div style=\"text-align:center;\"><b>skips<\/b><\/div><div style=\"text-align:center;\">>=1.5<\/div>", "<div style=\"text-align:center;\"><b>PadType<\/b><\/div><div style=\"text-align:center;\">D6<\/div><div style=\"text-align:center;\">L7<\/div><div style=\"text-align:center;\">W4<\/div>", "<div style=\"text-align:center;\"><b>Mask<\/b><\/div><div style=\"text-align:center;\">A3<\/div><div style=\"text-align:center;\">B6<\/div>", "<div style=\"text-align:center;\"><b>Mask<\/b><\/div><div style=\"text-align:center;\">A1.5<\/div><div style=\"text-align:center;\">B3<\/div>", "<div style=\"text-align:center;\"><b>PadType<\/b><\/div><div style=\"text-align:center;\">D4<\/div><div style=\"text-align:center;\">W9<\/div>", "<div style=\"text-align:center;\"><b>PadType<\/b><\/div><div style=\"text-align:center;\">D7<\/div><div style=\"text-align:center;\">L4<\/div><div style=\"text-align:center;\">L6<\/div><div style=\"text-align:center;\">L8<\/div><div style=\"text-align:center;\">L9<\/div>", "<div style=\"text-align:center;\"><b>PadType<\/b><\/div><div style=\"text-align:center;\">L4<\/div><div style=\"text-align:center;\">L6<\/div><div style=\"text-align:center;\">L9<\/div>", "<div style=\"text-align:center;\"><b>Panel<\/b><\/div><div style=\"text-align:center;\"><1.5<\/div>", "<div style=\"text-align:center;\"><b>Panel<\/b><\/div><div style=\"text-align:center;\">>=1.5<\/div>", "<div style=\"text-align:center;\"><b>Panel<\/b><\/div><div style=\"text-align:center;\">>=2.5<\/div>", "<div style=\"text-align:center;\"><b>Panel<\/b><\/div><div style=\"text-align:center;\"><2.5<\/div>", "<div style=\"text-align:center;\"><b>PadType<\/b><\/div><div style=\"text-align:center;\">D7<\/div><div style=\"text-align:center;\">L8<\/div>", "<div style=\"text-align:center;\"><b>skips<\/b><\/div><div style=\"text-align:center;\">>=3.5<\/div>", "<div style=\"text-align:center;\"><b>Mask<\/b><\/div><div style=\"text-align:center;\">A3<\/div><div style=\"text-align:center;\">B3<\/div><div style=\"text-align:center;\">B6<\/div>", "<div style=\"text-align:center;\"><b>PadType<\/b><\/div><div style=\"text-align:center;\">D4<\/div><div style=\"text-align:center;\">D7<\/div><div style=\"text-align:center;\">L6<\/div><div style=\"text-align:center;\">L7<\/div><div style=\"text-align:center;\">L8<\/div><div style=\"text-align:center;\">L9<\/div>", "<div style=\"text-align:center;\"><b>Mask<\/b><\/div><div style=\"text-align:center;\">B3<\/div>", "<div style=\"text-align:center;\"><b>Mask<\/b><\/div><div style=\"text-align:center;\">A3<\/div><div style=\"text-align:center;\">B6<\/div>", "<div style=\"text-align:center;\"><b>PadType<\/b><\/div><div style=\"text-align:center;\">D6<\/div><div style=\"text-align:center;\">L4<\/div><div style=\"text-align:center;\">W4<\/div><div style=\"text-align:center;\">W9<\/div>", "<div style=\"text-align:center;\"><b>Mask<\/b><\/div><div style=\"text-align:center;\">A1.5<\/div>", "<div style=\"text-align:center;\"><b>Solder<\/b><\/div><div style=\"text-align:center;\">Thick<\/div>", "<div style=\"text-align:center;\"><b>Mask<\/b><\/div><div style=\"text-align:center;\">B3<\/div><div style=\"text-align:center;\">B6<\/div>", "<div style=\"text-align:center;\"><b>PadType<\/b><\/div><div style=\"text-align:center;\">D4<\/div><div style=\"text-align:center;\">D7<\/div><div style=\"text-align:center;\">L4<\/div><div style=\"text-align:center;\">L6<\/div><div style=\"text-align:center;\">L7<\/div><div style=\"text-align:center;\">L8<\/div><div style=\"text-align:center;\">L9<\/div>", "<div style=\"text-align:center;\"><b>PadType<\/b><\/div><div style=\"text-align:center;\">D6<\/div><div style=\"text-align:center;\">W4<\/div><div style=\"text-align:center;\">W9<\/div>", "<div style=\"text-align:center;\"><b>skips<\/b><\/div><div style=\"text-align:center;\"><1.5<\/div>", "<div style=\"text-align:center;\"><b>skips<\/b><\/div><div style=\"text-align:center;\">>=1.5<\/div>", "<div style=\"text-align:center;\"><b>Mask<\/b><\/div><div style=\"text-align:center;\">A1.5<\/div><div style=\"text-align:center;\">A3<\/div>", "<div style=\"text-align:center;\"><b>PadType<\/b><\/div><div style=\"text-align:center;\">D7<\/div><div style=\"text-align:center;\">L4<\/div><div style=\"text-align:center;\">L7<\/div><div style=\"text-align:center;\">L8<\/div><div style=\"text-align:center;\">L9<\/div><div style=\"text-align:center;\">W4<\/div><div style=\"text-align:center;\">W9<\/div>", "<div style=\"text-align:center;\"><b>Mask<\/b><\/div><div style=\"text-align:center;\">A3<\/div>", "<div style=\"text-align:center;\"><b>PadType<\/b><\/div><div style=\"text-align:center;\">L4<\/div><div style=\"text-align:center;\">L9<\/div><div style=\"text-align:center;\">W9<\/div>", "<div style=\"text-align:center;\"><b>PadType<\/b><\/div><div style=\"text-align:center;\">D7<\/div><div style=\"text-align:center;\">L7<\/div><div style=\"text-align:center;\">L8<\/div><div style=\"text-align:center;\">W4<\/div>", "<div style=\"text-align:center;\"><b>skips<\/b><\/div><div style=\"text-align:center;\"><1.5<\/div>", "<div style=\"text-align:center;\"><b>skips<\/b><\/div><div style=\"text-align:center;\">>=1.5<\/div>", "<div style=\"text-align:center;\"><b>Mask<\/b><\/div><div style=\"text-align:center;\">A1.5<\/div>", "<div style=\"text-align:center;\"><b>PadType<\/b><\/div><div style=\"text-align:center;\">D4<\/div><div style=\"text-align:center;\">D6<\/div><div style=\"text-align:center;\">L6<\/div>", "<div style=\"text-align:center;\"><b>skips<\/b><\/div><div style=\"text-align:center;\">>=5.5<\/div>", "<div style=\"text-align:center;\"><b>Mask<\/b><\/div><div style=\"text-align:center;\">B6<\/div>", "<div style=\"text-align:center;\"><b>skips<\/b><\/div><div style=\"text-align:center;\"><12.5<\/div>", "<div style=\"text-align:center;\"><b>Solder<\/b><\/div><div style=\"text-align:center;\">Thin<\/div>", "<div style=\"text-align:center;\"><b>skips<\/b><\/div><div style=\"text-align:center;\">>=9.5<\/div>", "<div style=\"text-align:center;\"><b>skips<\/b><\/div><div style=\"text-align:center;\"><9.5<\/div>", "<div style=\"text-align:center;\"><b>Solder<\/b><\/div><div style=\"text-align:center;\">Thick<\/div>", "<div style=\"text-align:center;\"><b>skips<\/b><\/div><div style=\"text-align:center;\">>=12.5<\/div>", "<div style=\"text-align:center;\"><b>skips<\/b><\/div><div style=\"text-align:center;\"><17.5<\/div>", "<div style=\"text-align:center;\"><b>PadType<\/b><\/div><div style=\"text-align:center;\">D4<\/div><div style=\"text-align:center;\">D7<\/div><div style=\"text-align:center;\">L4<\/div><div style=\"text-align:center;\">W4<\/div>", "<div style=\"text-align:center;\"><b>PadType<\/b><\/div><div style=\"text-align:center;\">D6<\/div><div style=\"text-align:center;\">L6<\/div><div style=\"text-align:center;\">L7<\/div><div style=\"text-align:center;\">L8<\/div><div style=\"text-align:center;\">L9<\/div><div style=\"text-align:center;\">W9<\/div>", "<div style=\"text-align:center;\"><b>skips<\/b><\/div><div style=\"text-align:center;\">>=17.5<\/div>", "<div style=\"text-align:center;\"><b>Mask<\/b><\/div><div style=\"text-align:center;\">A1.5<\/div><div style=\"text-align:center;\">A3<\/div><div style=\"text-align:center;\">B3<\/div>"],
+      "color": ["#8181F7", "#8181F7", "#8181F7", "#8181F7", "#8181F7", "#8181F7", "#8181F7", "#8181F7", "#8181F7", "#8181F7", "#8181F7", "#8181F7", "#8181F7", "#8181F7", "#8181F7", "#8181F7", "#8181F7", "#8181F7", "#8181F7", "#8181F7", "#8181F7", "#8181F7", "#8181F7", "#8181F7", "#8181F7", "#8181F7", "#8181F7", "#8181F7", "#8181F7", "#8181F7", "#8181F7", "#8181F7", "#8181F7", "#8181F7", "#8181F7", "#8181F7", "#8181F7", "#8181F7", "#8181F7", "#8181F7", "#8181F7", "#8181F7", "#8181F7", "#8181F7", "#8181F7", "#8181F7", "#8181F7", "#8181F7", "#8181F7", "#8181F7", "#8181F7", "#8181F7", "#8181F7", "#8181F7", "#8181F7", "#8181F7", "#8181F7", "#8181F7", "#8181F7", "#8181F7", "#8181F7", "#8181F7", "#8181F7", "#8181F7", "#8181F7", "#8181F7", "#8181F7", "#8181F7", "#8181F7", "#8181F7", "#8181F7", "#8181F7", "#8181F7", "#8181F7", "#8181F7", "#8181F7"],
+      "font.size": [14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14],
+      "font.align": ["horizontal", "horizontal", "horizontal", "horizontal", "horizontal", "horizontal", "horizontal", "horizontal", "horizontal", "horizontal", "horizontal", "horizontal", "horizontal", "horizontal", "horizontal", "horizontal", "horizontal", "horizontal", "horizontal", "horizontal", "horizontal", "horizontal", "horizontal", "horizontal", "horizontal", "horizontal", "horizontal", "horizontal", "horizontal", "horizontal", "horizontal", "horizontal", "horizontal", "horizontal", "horizontal", "horizontal", "horizontal", "horizontal", "horizontal", "horizontal", "horizontal", "horizontal", "horizontal", "horizontal", "horizontal", "horizontal", "horizontal", "horizontal", "horizontal", "horizontal", "horizontal", "horizontal", "horizontal", "horizontal", "horizontal", "horizontal", "horizontal", "horizontal", "horizontal", "horizontal", "horizontal", "horizontal", "horizontal", "horizontal", "horizontal", "horizontal", "horizontal", "horizontal", "horizontal", "horizontal", "horizontal", "horizontal", "horizontal", "horizontal", "horizontal", "horizontal"],
+      "smooth.enabled": [true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true],
+      "smooth.type": ["cubicBezier", "cubicBezier", "cubicBezier", "cubicBezier", "cubicBezier", "cubicBezier", "cubicBezier", "cubicBezier", "cubicBezier", "cubicBezier", "cubicBezier", "cubicBezier", "cubicBezier", "cubicBezier", "cubicBezier", "cubicBezier", "cubicBezier", "cubicBezier", "cubicBezier", "cubicBezier", "cubicBezier", "cubicBezier", "cubicBezier", "cubicBezier", "cubicBezier", "cubicBezier", "cubicBezier", "cubicBezier", "cubicBezier", "cubicBezier", "cubicBezier", "cubicBezier", "cubicBezier", "cubicBezier", "cubicBezier", "cubicBezier", "cubicBezier", "cubicBezier", "cubicBezier", "cubicBezier", "cubicBezier", "cubicBezier", "cubicBezier", "cubicBezier", "cubicBezier", "cubicBezier", "cubicBezier", "cubicBezier", "cubicBezier", "cubicBezier", "cubicBezier", "cubicBezier", "cubicBezier", "cubicBezier", "cubicBezier", "cubicBezier", "cubicBezier", "cubicBezier", "cubicBezier", "cubicBezier", "cubicBezier", "cubicBezier", "cubicBezier", "cubicBezier", "cubicBezier", "cubicBezier", "cubicBezier", "cubicBezier", "cubicBezier", "cubicBezier", "cubicBezier", "cubicBezier", "cubicBezier", "cubicBezier", "cubicBezier", "cubicBezier"],
+      "smooth.roundness": [0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5]
+    },
+    "nodesToDataframe": true,
+    "edgesToDataframe": true,
+    "options": {
+      "width": "100%",
+      "height": "100%",
+      "nodes": {
+        "shape": "dot"
+      },
+      "manipulation": {
+        "enabled": false
+      },
+      "layout": {
+        "hierarchical": {
+          "enabled": true,
+          "direction": "UD"
+        }
+      },
+      "interaction": {
+        "dragNodes": false,
+        "selectConnectedEdges": false,
+        "tooltipDelay": 500
+      },
+      "edges": {
+        "scaling": {
+          "label": {
+            "enabled": false
+          }
+        }
+      }
+    },
+    "groups": null,
+    "width": "100%",
+    "height": "800px",
+    "idselection": {
+      "enabled": false,
+      "style": "width: 150px; height: 26px",
+      "useLabels": true
+    },
+    "byselection": {
+      "enabled": false,
+      "style": "width: 150px; height: 26px",
+      "multiple": false,
+      "hideColor": "rgba(200,200,200,0.5)"
+    },
+    "main": {
+      "text": "",
+      "style": "font-family:Georgia, Times New Roman, Times, serif;font-weight:bold;font-size:20px;text-align:center;"
+    },
+    "submain": {
+      "text": "",
+      "style": "font-family:Georgia, Times New Roman, Times, serif;font-size:12px;text-align:center;"
+    },
+    "footer": {
+      "text": "",
+      "style": "font-family:Georgia, Times New Roman, Times, serif;font-size:12px;text-align:center;"
+    },
+    "highlight": {
+      "enabled": true,
+      "hoverNearest": false,
+      "degree": {
+        "from": 50000,
+        "to": 0
+      },
+      "algorithm": "hierarchical",
+      "hideColor": "rgba(200,200,200,0.5)",
+      "labelOnly": true
+    },
+    "collapse": {
+      "enabled": true,
+      "fit": true,
+      "resetHighlight": true,
+      "clusterOptions": {
+        "fixed": true,
+        "physics": false
+      }
+    },
+    "tooltipStay": 300,
+    "tooltipStyle": "position: fixed;visibility:hidden;padding: 5px;\n                      white-space: nowrap;\n                      font-family: cursive;font-size:12px;font-color:purple;background-color: #E6E6E6;\n                      border-radius: 15px;",
+    "OnceEvents": {
+      "stabilized": "function() { \n        this.setOptions({layout:{hierarchical:false}, physics:{solver:'barnesHut', enabled:true, stabilization : false}, nodes : {physics : false, fixed : true}});\n    }"
+    },
+    "legend": {
+      "width": 0.1,
+      "useGroups": false,
+      "position": "left",
+      "ncol": 1,
+      "stepX": 100,
+      "stepY": 100,
+      "nodes": {
+        "label": ["Mask", "PadType", "Panel", "skips", "Solder", "L", "M", "S"],
+        "color": ["#A9D1A5", "#DAC49C", "#B4C7ED", "#F1B8C2", "#8AD3D0", "#7D91B6", "#AC83AE", "#B9828C"],
+        "shape": ["dot", "dot", "dot", "dot", "dot", "square", "square", "square"],
+        "size": [22, 22, 22, 22, 22, 22, 22, 22],
+        "Leaf": [0, 0, 0, 0, 0, 1, 1, 1],
+        "font.size": [16, 16, 16, 16, 16, 16, 16, 16],
+        "id": [10000, 10001, 10002, 10003, 10004, 10005, 10006, 10007]
+      },
+      "nodesToDataframe": true
+    },
+    "tree": {
+      "updateShape": true,
+      "shapeVar": "dot",
+      "shapeY": "square",
+      "colorVar": {
+        "variable": ["skips", "PadType", "Mask", "Solder", "Panel"],
+        "color": ["#F1B8C2", "#DAC49C", "#A9D1A5", "#8AD3D0", "#B4C7ED"]
+      },
+      "colorY": {
+        "colorY": {
+          "modality": ["L", "M", "S"],
+          "color": ["#7D91B6", "#AC83AE", "#B9828C"]
+        },
+        "vardecidedClust": ["L", "L", "L", "L", "L", "L", "L", "L", "L", "M", "M", "M", "L", "L", "M", "M", "M", "M", "L", "M", "L", "L", "L", "M", "L", "M", "L", "L", "L", "L", "L", "L", "L", "M", "S", "M", "L", "L", "M", "L", "M", "M", "M", "M", "M", "L", "M", "M", "S", "M", "M", "M", "S", "L", "S", "S", "S", "S", "M", "S", "M", "S", "S", "S", "S", "S", "L", "L", "L", "M", "S", "S", "S", "L", "S", "S", "S"]
+      }
+    },
+    "export": {
+      "type": "png",
+      "css": "float:right;-webkit-border-radius: 10;\n                  -moz-border-radius: 10;\n                  border-radius: 10px;\n                  font-family: Arial;\n                  color: #ffffff;\n                  font-size: 12px;\n                  background: #090a0a;\n                  padding: 4px 8px 4px 4px;\n                  text-decoration: none;",
+      "background": "#fff",
+      "name": "network.png",
+      "label": "Export as png"
+    }
+  },
+  "evals": ["OnceEvents.stabilized"],
+  "jsHooks": []
+}</script>
+</div>
+<div id="use-in-shiny" class="section level2">
+<h2>Use in shiny</h2>
+<p>Have a look to <code>visTreeEditor</code> to edity and get back network, and to <code>visTreeModuleServer</code> to use custom tree module in R</p>
+</div>
+
+<footer>
+<p><small> © 2016-2017 DataStorm</small></p>
+</footer>
+
+  </div>
+</div>
+
+<a href="https://github.com/datastorm-open/visNetwork"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

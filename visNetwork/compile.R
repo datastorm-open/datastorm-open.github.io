@@ -1,20 +1,23 @@
 # setwd(paste(getwd(), "visNetwork", sep = "/"))
 set.seed(0102)
-# Sys.setenv(R_LIBS_USER = "C:/Users/Benoit/Documents/R/win-library/3.2")
+# Sys.setenv(R_LIBS_USER = "C:/Users/Datastorm/Documents/R/win-library/3.3")
 # Sys.getenv()
-library(knitr, lib.loc ="C:/Users/Benoit/Documents/R/win-library/3.2")
+library(knitr, lib.loc ="C:/Users/Datastorm/Documents/R/win-library/3.3")
 options(htmlwidgets.TOJSON_ARGS = list(pretty = TRUE))
 Sys.setenv(R_KNITR_OPTIONS = 'knitr.chunk.tidy = FALSE')
+Sys.setenv(RSTUDIO_PANDOC = "C:/Program Files/RStudio/bin/pandoc")
+
 knitr::opts_chunk$set(out.width = '100%')
 
-library(visNetwork, lib.loc ="C:/Users/Benoit/Documents/R/win-library/3.2")
-library(rmarkdown, lib.loc ="C:/Users/Benoit/Documents/R/win-library/3.2")
-library(yaml, lib.loc ="C:/Users/Benoit/Documents/R/win-library/3.2")
-library(stringr, lib.loc ="C:/Users/Benoit/Documents/R/win-library/3.2")
-library(evaluate, lib.loc ="C:/Users/Benoit/Documents/R/win-library/3.2")
-library(curl, lib.loc ="C:/Users/Benoit/Documents/R/win-library/3.2")
-library(igraph, lib.loc ="C:/Users/Benoit/Documents/R/win-library/3.2")
+library(visNetwork, lib.loc ="C:/Users/Datastorm/Documents/R/win-library/3.3")
+library(rmarkdown, lib.loc ="C:/Users/Datastorm/Documents/R/win-library/3.3")
+library(yaml, lib.loc ="C:/Users/Datastorm/Documents/R/win-library/3.3")
+library(stringr, lib.loc ="C:/Users/Datastorm/Documents/R/win-library/3.3")
+library(evaluate, lib.loc ="C:/Users/Datastorm/Documents/R/win-library/3.3")
+library(curl, lib.loc ="C:/Users/Datastorm/Documents/R/win-library/3.3")
+library(igraph, lib.loc ="C:/Users/Datastorm/Documents/R/win-library/3.3")
 
+print(pandoc_version())
 f = rmarkdown::render(commandArgs(TRUE))
 # remove version numbers in HTML
 r = '-\\d+[.]\\d+([.]\\d+)?$'
