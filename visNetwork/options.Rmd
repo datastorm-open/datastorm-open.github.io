@@ -24,8 +24,8 @@ edges <- data.frame(from = c(8,2,7,6,1,8,9,4,6,2),
 
 ## Highlight nearest
 
-You can highlight nearest nodes and edges clicking on a node with ````highlightNearest````.
-Just click everywhere except on nodes to reset network : 
+You can highlight nearest nodes and edges by clicking on a node with ````highlightNearest````.
+Just click everywhere except on nodes to reset the network : 
 
 ```{r}
 visNetwork(nodes, edges, height = "500px", width = "100%") %>% 
@@ -33,7 +33,7 @@ visNetwork(nodes, edges, height = "500px", width = "100%") %>%
   visLayout(randomSeed = 123)
 ```
 
-It's now possible to control the ````degree```` of depth (**fix/improve performance in 1.0.0**), and to enable this options also hovering nodes (``hover``, **>=1.0.0**). Using ``hover``, you can still use ``click`` to set a view :
+It's now possible to control the ````degree```` of depth (**fix/improve performance in 1.0.0**), and to enable this option also hovering nodes (``hover``, **>=1.0.0**). Using ``hover``, you can still use ``click`` to set a view :
 
 ```{r}
 visNetwork(nodes, edges, height = "500px", width = "100%") %>% 
@@ -93,7 +93,7 @@ visNetwork(nodes, edges, height = "500px", width = "100%") %>%
 
 ## Customize options
 
-New features are available in __visNetwork_0.2.0__ for customize ````selectedBy```` & ````nodesIdSelection```` : 
+New features are available in __visNetwork_0.2.0__ to customize ````selectedBy```` & ````nodesIdSelection```` : 
 
 * ````values```` : control the available values in the list
 * ````selected```` : initialize a selection

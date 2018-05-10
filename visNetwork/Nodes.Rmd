@@ -10,7 +10,7 @@ require("visNetwork", quietly = TRUE)
 
 ## Individual configuration
 
-As seen in introduction, *nodes* must be a data.frame, with at least one column ```id```. You can add properties simply adding variables on data.frame. See **?visNodes** for available options. 
+As seen in the introduction, *nodes* must be a data.frame, with at least one column ```id```. You can add properties simply by adding variables on data.frame. See **?visNodes** for available options. 
 
 The most used are presented in the following example :
 
@@ -53,7 +53,7 @@ visNetwork(nodes, edges, height = "500px", width = "100%")
 
 ## Global configuration
 
-If you want to set some configuration for all nodes, it's possible in a simpler way, using directly **visNodes** function :
+If you want to set some configuration for all nodes, it's possible in a simpler way, using the **visNodes** function directly :
 
 ```{r}
 nodes <- data.frame(id = 1:4)

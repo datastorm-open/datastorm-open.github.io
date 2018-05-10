@@ -8,7 +8,7 @@ require("visNetwork", quietly = TRUE)
 
 ## Title
 
-since __visNetwork_0.2.2__, you can add a title (``main``) to your network :
+Since __visNetwork_0.2.2__, you can add a title (``main``) to your network :
 
 ```{r}
 nodes <- data.frame(id = 1:3, group = c("B", "A", "B"))
@@ -62,7 +62,7 @@ visNetwork(nodes, edges, width = "100%") %>%
   visLegend(addEdges = ledges, addNodes = lnodes, useGroups = FALSE)
 ```
 
-Finally, it's possible to use definition of the groups (````useGroups = TRUE #default````) with  custom nodes (````addNodes````) and/or edges (````addEdges````) : 
+Finally, it's possible to use the definition of the groups (````useGroups = TRUE #default````) with custom nodes (````addNodes````) and/or edges (````addEdges````) : 
 
 ```{r}
 ledges <- data.frame(color = c("lightblue", "red"),

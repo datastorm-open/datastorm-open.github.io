@@ -8,7 +8,7 @@ require("visNetwork", quietly = TRUE)
 
 ## Define groups of nodes
 
-You can affect a group to a node using the ```group``` column in the node data.frame, and then add a configuration per group using **visGroups** function. And so, you can transfer less data to ``javascript``...
+You can affect a group to a node using the ```group``` column in the node data.frame, and then add a configuration per group using the **visGroups** function. And therefore, you can transfer less data to ``javascript``...
 
 ```{r}
 nodes <- data.frame(id = 1:5, group = c(rep("A", 2), rep("B", 3)))

@@ -6,11 +6,11 @@ pagetitle: Edges
 require("visNetwork", quietly = TRUE)
 ```
 
-### We can also customize edges with a lot of options, and by the same ways as nodes.
+### We can also customize edges with a lot of options, and in the same ways as nodes.
 
 ## Individual configuration
 
-As seen in introduction, *edges* mut be a data.frame, with at least ```from``` and ```to``` columns, which make the link with ```id``` of nodes. You can add properties simply adding variables on data.frame. See **?visEdges** for available options. 
+As seen in the introduction, *edges* must be a data.frame, with at least ```from``` and ```to``` columns, which make the link with ```id``` of nodes. You can add properties simply by adding variables on data.frame. See **?visEdges** for available options. 
 
 The most used are presented in the following example :
 
@@ -55,7 +55,7 @@ visNetwork(nodes, edges, height = "500px", width = "100%")
 
 ## Global configuration
 
-If you want to set some configuration for all edges, it's possible in a simpler way, using directly **visEdges** function :
+If you want to set some configuration for all edges, it's possible in a simpler way, using the **visEdges** function directly :
 
 ```{r}
 nodes <- data.frame(id = 1:4)

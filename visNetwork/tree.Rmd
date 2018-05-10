@@ -34,4 +34,4 @@ visTree(res, height = "800px", nodesPopSize = TRUE, minNodeSize = 10,
 
 ## Use in shiny
 
-Have a look to ``visTreeEditor`` to edity and get back network, and to ``visTreeModuleServer`` to use custom tree module in R
+Have a look at ``visTreeEditor`` to edit and get back to the network, and at ``visTreeModuleServer`` to use custom tree module in R.

@@ -10,8 +10,8 @@ require("visNetwork", quietly = TRUE)
 
 ## Images
 
-* For use images in nodes, you first have to set ````shape```` to **image** or **circularImage**.
-* Then, set the path relative or absolute on ````image```` value
+* To use images in nodes, you first have to set ````shape```` to **image** or **circularImage**.
+* Then, set the relative or absolute path on ````image```` value
 * An option is available in case of wrong path : ````brokenImage````
 * And you can use borders with ````shapeProperties```` and ````useBorderWithImage````
 
@@ -35,9 +35,9 @@ visNetwork(nodes, edges, width = "100%") %>%
 
 **visNetwork** supports [fontAwesome](http://fortawesome.github.io/Font-Awesome) icons. Font-awesome is not part of default dependencies, but you can use **addFontAwesome()** if needed.
 
-* For use icons in nodes, you first have to set ````shape```` to **icon**.
+* To use icons in nodes, you first have to set ````shape```` to **icon**.
 * **icon** options must be a list, so you have to use **visNodes** or **visGroups**, or pass directly in ``nodes data.frame``(see **Ionicons example below**)
-* Choose the icon by his ````code````, set ````size```` and ````color````
+* Choose the icon by the ````code````, set ````size```` and ````color````
 
 
 ```{r}
@@ -55,7 +55,7 @@ visNetwork(nodes, edges, width = "100%") %>%
 
 ## Ionicons
 
-New since __visNetwork_0.2.2__ : add [Ionicons](http://ionicons.com/) icons support. For dependencies, you can use **addIonicons()** if needed. Definition process id the same as [fontAwesome](http://fortawesome.github.io/Font-Awesome) icons, except you have to set ``face = 'Ionicons'``.
+New since __visNetwork_0.2.2__ : add [Ionicons](http://ionicons.com/) icons support. For dependencies, you can use **addIonicons()** if needed. Definition process is the same as [fontAwesome](http://fortawesome.github.io/Font-Awesome) icons, except you have to set ``face = 'Ionicons'``.
 
 
 ```{r}

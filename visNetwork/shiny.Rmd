@@ -31,7 +31,7 @@ shinyApp(ui = ui, server = server)
 
 ## Shiny interactions
 
-* with ````nodesIdSelection````, you can access to new input with current selection value :
+* with ````nodesIdSelection````, you can access new input with current selection value :
 
 ```{r, eval = FALSE}
 output$mynetwork <- renderVisNetwork({
@@ -40,7 +40,7 @@ output$mynetwork <- renderVisNetwork({
 # created input$mynetwork_selected
 ```
 
-* with ````selectedBy````, you can access to new input : 
+* with ````selectedBy````, you can access new input : 
 
 ```{r, eval = FALSE}
 output$mynetwork <- renderVisNetwork({
@@ -49,7 +49,7 @@ output$mynetwork <- renderVisNetwork({
 # created input$mynetwork_selectedBy
 ```
 
-* with ````manipulation````, you can access to new input with informations about manipulation
+* with ````manipulation````, you can access new input with information about manipulation :
 
 ```{r, eval = FALSE}
 output$mynetwork <- renderVisNetwork({
@@ -63,7 +63,7 @@ output$mynetwork <- renderVisNetwork({
 In order to not redraw the entire network, you can use ````visNetworkProxy```` function in __shiny__ and then change the configuration of your network without redrawing it.
 
 
-You can use almost all the functions available on a ````visNetworkProxy````, and even some functions special !
+You can use almost all the functions available on a ````visNetworkProxy````, and even some special functions!
 
 * __classic functions__ : ````visNodes````, ````visEdges````, ````visGroups````, ````visOptions```` (>=0.2.2), ````visPhysics````, ````visInteraction````, ````visLayout```` & ````visHierarchicalLayout````
 
@@ -129,7 +129,7 @@ shinyApp(ui = ui, server = server)
 
 ## Build your own input
 
-With great [htmlwidgets](http://www.htmlwidgets.org/), it's also possible to build custom shiny input from **visNetwork**. For this, just use ````Shiny.onInputChange```` function in javascript event. This is an example passing the node id when hover it : 
+With great [htmlwidgets](http://www.htmlwidgets.org/), it's also possible to build custom shiny input from **visNetwork**. For this, just use ````Shiny.onInputChange```` function in javascript event. This is an example of passing the node id when you hover over it : 
 
 ```{r, eval = FALSE}
 library(visNetwork)
@@ -167,7 +167,7 @@ shinyApp(ui = ui, server = server)
 
 ## Need some examples ?
 
-Have a look to the "demonstration" shiny apps : 
+Have a look at the "demonstration" shiny apps : 
 
 ```{r, eval = FALSE}
 shiny::runApp(system.file("shiny", package = "visNetwork"))

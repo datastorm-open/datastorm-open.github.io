@@ -41,7 +41,7 @@ visNetwork(nodes, edges, height = "500px") %>%
 
 ## Use [igraph](http://igraph.org/r/) network 
 
-``visIgraph`` transform directly a [igraph](http://igraph.org/r/) network into a __visNetwork__. It's a little bit experimental (not perfect). You can also use ``toVisNetworkData`` to just get data into __visNetwork__ format : 
+``visIgraph`` directly transforms an [igraph](http://igraph.org/r/) network into a __visNetwork__. It's a little bit experimental (not perfect). You can also use ``toVisNetworkData`` to just get data into __visNetwork__ format : 
 
 
 ```{r, eval = TRUE, fig.width = 10, fig.height = 10}
