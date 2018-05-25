@@ -36,10 +36,12 @@
   }
 </style>
 <script type="text/javascript">
-if (window.hljs && document.readyState && document.readyState === "complete") {
-   window.setTimeout(function() {
-      hljs.initHighlighting();
-   }, 0);
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
 }
 </script>
 
@@ -195,8 +197,8 @@ $(document).ready(function () {
 <div id="images" class="section level2">
 <h2>Images</h2>
 <ul>
-<li>For use images in nodes, you first have to set <code>shape</code> to <strong>image</strong> or <strong>circularImage</strong>.</li>
-<li>Then, set the path relative or absolute on <code>image</code> value</li>
+<li>To use images in nodes, you first have to set <code>shape</code> to <strong>image</strong> or <strong>circularImage</strong>.</li>
+<li>Then, set the relative or absolute path on <code>image</code> value</li>
 <li>An option is available in case of wrong path : <code>brokenImage</code></li>
 <li>And you can use borders with <code>shapeProperties</code> and <code>useBorderWithImage</code></li>
 </ul>
@@ -254,7 +256,8 @@ visNetwork(nodes, edges, width = &quot;100%&quot;) %&gt;%
     },
     "main": null,
     "submain": null,
-    "footer": null
+    "footer": null,
+    "background": "rgba(0, 0, 0, 0)"
   },
   "evals": [],
   "jsHooks": []
@@ -264,9 +267,9 @@ visNetwork(nodes, edges, width = &quot;100%&quot;) %&gt;%
 <h2>fontAwesome icons</h2>
 <p><strong>visNetwork</strong> supports <a href="http://fortawesome.github.io/Font-Awesome">fontAwesome</a> icons. Font-awesome is not part of default dependencies, but you can use <strong>addFontAwesome()</strong> if needed.</p>
 <ul>
-<li>For use icons in nodes, you first have to set <code>shape</code> to <strong>icon</strong>.</li>
+<li>To use icons in nodes, you first have to set <code>shape</code> to <strong>icon</strong>.</li>
 <li><strong>icon</strong> options must be a list, so you have to use <strong>visNodes</strong> or <strong>visGroups</strong>, or pass directly in <code>nodes data.frame</code>(see <strong>Ionicons example below</strong>)</li>
-<li>Choose the icon by his <code>code</code>, set <code>size</code> and <code>color</code></li>
+<li>Choose the icon by the <code>code</code>, set <code>size</code> and <code>color</code></li>
 </ul>
 <pre class="r"><code>nodes &lt;- data.frame(id = 1:3, group = c(&quot;B&quot;, &quot;A&quot;, &quot;B&quot;))
 edges &lt;- data.frame(from = c(1,2), to = c(2,3))
@@ -330,6 +333,7 @@ visNetwork(nodes, edges, width = &quot;100%&quot;) %&gt;%
     "main": null,
     "submain": null,
     "footer": null,
+    "background": "rgba(0, 0, 0, 0)",
     "iconsRedraw": true
   },
   "evals": [],
@@ -338,7 +342,7 @@ visNetwork(nodes, edges, width = &quot;100%&quot;) %&gt;%
 </div>
 <div id="ionicons" class="section level2">
 <h2>Ionicons</h2>
-<p>New since <strong>visNetwork_0.2.2</strong> : add <a href="http://ionicons.com/">Ionicons</a> icons support. For dependencies, you can use <strong>addIonicons()</strong> if needed. Definition process id the same as <a href="http://fortawesome.github.io/Font-Awesome">fontAwesome</a> icons, except you have to set <code>face = 'Ionicons'</code>.</p>
+<p>New since <strong>visNetwork_0.2.2</strong> : add <a href="http://ionicons.com/">Ionicons</a> icons support. For dependencies, you can use <strong>addIonicons()</strong> if needed. Definition process is the same as <a href="http://fortawesome.github.io/Font-Awesome">fontAwesome</a> icons, except you have to set <code>face = 'Ionicons'</code>.</p>
 <pre class="r"><code>nodes &lt;- data.frame(id = 1:3, shape = &quot;icon&quot;, icon.face = &#39;Ionicons&#39;,
                     icon.code = c(&quot;f101&quot;, &quot;f100&quot;, &quot;f101&quot;))
 edges &lt;- data.frame(from = c(1,2), to = c(2,3))
@@ -382,6 +386,7 @@ visNetwork(nodes, edges) %&gt;%
     "main": null,
     "submain": null,
     "footer": null,
+    "background": "rgba(0, 0, 0, 0)",
     "iconsRedraw": true
   },
   "evals": [],

@@ -34,10 +34,12 @@
   }
 </style>
 <script type="text/javascript">
-if (window.hljs && document.readyState && document.readyState === "complete") {
-   window.setTimeout(function() {
-      hljs.initHighlighting();
-   }, 0);
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
 }
 </script>
 
@@ -188,14 +190,14 @@ $(document).ready(function () {
 
 
 <div id="its-possible-to-control-the-interactions-of-the-network-with-visinteraction" class="section level3">
-<h3>It’s possible to control The interactions of the network with <strong>visInteraction()</strong> :</h3>
+<h3>It’s possible to control the interactions of the network with <strong>visInteraction()</strong> :</h3>
 </div>
 <div id="frozen-network" class="section level2">
 <h2>Frozen network</h2>
 <ul>
-<li><code>dragNodes</code> : enabled or not the selection and movement of nodes (click on a node, and move your mouse)?</li>
-<li><code>dragView</code> : enabled or not the movement of the full network (click everywhere except node, and move your mouse) ?</li>
-<li><code>zoomView</code> : enabled or not the zoom (use mouse scroll) ?</li>
+<li><code>dragNodes</code> : enable or not the selection and movement of nodes (click on a node, and move your mouse)?</li>
+<li><code>dragView</code> : enable or not the movement of the full network (click everywhere except node, and move your mouse) ?</li>
+<li><code>zoomView</code> : enable or not the zoom (use mouse scroll) ?</li>
 </ul>
 <pre class="r"><code>visNetwork(nodes, edges, height = &quot;500px&quot;, width = &quot;100%&quot;) %&gt;% 
   visInteraction(dragNodes = FALSE, 
@@ -251,6 +253,7 @@ $(document).ready(function () {
     "main": null,
     "submain": null,
     "footer": null,
+    "background": "rgba(0, 0, 0, 0)",
     "tooltipStay": 300,
     "tooltipStyle": "position: fixed;visibility:hidden;padding: 5px;white-space: nowrap;font-family: verdana;font-size:14px;font-color:#000000;background-color: #f5f4ed;-moz-border-radius: 3px;-webkit-border-radius: 3px;border-radius: 3px;border: 1px solid #808074;box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);"
   },
@@ -315,6 +318,7 @@ $(document).ready(function () {
     "main": null,
     "submain": null,
     "footer": null,
+    "background": "rgba(0, 0, 0, 0)",
     "tooltipStay": 300,
     "tooltipStyle": "position: fixed;visibility:hidden;padding: 5px;white-space: nowrap;font-family: verdana;font-size:14px;font-color:#000000;background-color: #f5f4ed;-moz-border-radius: 3px;-webkit-border-radius: 3px;border-radius: 3px;border: 1px solid #808074;box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);"
   },
@@ -324,7 +328,7 @@ $(document).ready(function () {
 </div>
 <div id="navigation-buttons" class="section level2">
 <h2>Navigation buttons</h2>
-<p>We can navigation buttons with <code>navigationButtons</code> :</p>
+<p>We can show navigation buttons with <code>navigationButtons</code> :</p>
 <pre class="r"><code>visNetwork(nodes, edges, height = &quot;500px&quot;, width = &quot;100%&quot;) %&gt;% 
   visInteraction(navigationButtons = TRUE)</code></pre>
 <div id="htmlwidget-6d8788299161dc56faef" style="width:100%;height:500px;" class="visNetwork html-widget"></div>
@@ -371,6 +375,7 @@ $(document).ready(function () {
     "main": null,
     "submain": null,
     "footer": null,
+    "background": "rgba(0, 0, 0, 0)",
     "tooltipStay": 300,
     "tooltipStyle": "position: fixed;visibility:hidden;padding: 5px;white-space: nowrap;font-family: verdana;font-size:14px;font-color:#000000;background-color: #f5f4ed;-moz-border-radius: 3px;-webkit-border-radius: 3px;border-radius: 3px;border: 1px solid #808074;box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);"
   },
@@ -381,9 +386,9 @@ $(document).ready(function () {
 <div id="and-also" class="section level2">
 <h2>And also…</h2>
 <ul>
-<li><code>keyboard</code> : enabled keyboard manipulation rather than mouse (click on network before)</li>
+<li><code>keyboard</code> : enable keyboard manipulation rather than mouse (click on network before)</li>
 <li><code>hover</code> and <code>hoverConnectedEdges</code> : control hover</li>
-<li><code>selectable</code> : disabled nodes and edges selection</li>
+<li><code>selectable</code> : disable nodes and edges selection</li>
 <li><code>tooltipDelay</code> : set delay before show pop-up</li>
 <li>…</li>
 </ul>
@@ -434,6 +439,7 @@ $(document).ready(function () {
     "main": null,
     "submain": null,
     "footer": null,
+    "background": "rgba(0, 0, 0, 0)",
     "tooltipStay": 300,
     "tooltipStyle": "position: fixed;visibility:hidden;padding: 5px;white-space: nowrap;font-family: verdana;font-size:14px;font-color:#000000;background-color: #f5f4ed;-moz-border-radius: 3px;-webkit-border-radius: 3px;border-radius: 3px;border: 1px solid #808074;box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);"
   },

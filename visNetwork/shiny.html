@@ -30,10 +30,12 @@
   }
 </style>
 <script type="text/javascript">
-if (window.hljs && document.readyState && document.readyState === "complete") {
-   window.setTimeout(function() {
-      hljs.initHighlighting();
-   }, 0);
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
 }
 </script>
 
@@ -207,21 +209,21 @@ shinyApp(ui = ui, server = server)</code></pre>
 <div id="shiny-interactions" class="section level2">
 <h2>Shiny interactions</h2>
 <ul>
-<li>with <code>nodesIdSelection</code>, you can access to new input with current selection value :</li>
+<li>with <code>nodesIdSelection</code>, you can access new input with current selection value :</li>
 </ul>
 <pre class="r"><code>output$mynetwork &lt;- renderVisNetwork({
   ... visOptions(nodesIdSelection = TRUE)
   }) 
 # created input$mynetwork_selected</code></pre>
 <ul>
-<li>with <code>selectedBy</code>, you can access to new input :</li>
+<li>with <code>selectedBy</code>, you can access new input :</li>
 </ul>
 <pre class="r"><code>output$mynetwork &lt;- renderVisNetwork({
   ... visOptions(selectedBy = &quot;group&quot;)
   }) 
 # created input$mynetwork_selectedBy</code></pre>
 <ul>
-<li>with <code>manipulation</code>, you can access to new input with informations about manipulation</li>
+<li>with <code>manipulation</code>, you can access new input with information about manipulation :</li>
 </ul>
 <pre class="r"><code>output$mynetwork &lt;- renderVisNetwork({
   ... visOptions(manipulation = TRUE)
@@ -231,7 +233,7 @@ shinyApp(ui = ui, server = server)</code></pre>
 <div id="modify-your-network-with-visnetworkproxy" class="section level2">
 <h2>Modify your network with <code>visNetworkProxy</code></h2>
 <p>In order to not redraw the entire network, you can use <code>visNetworkProxy</code> function in <strong>shiny</strong> and then change the configuration of your network without redrawing it.</p>
-<p>You can use almost all the functions available on a <code>visNetworkProxy</code>, and even some functions special !</p>
+<p>You can use almost all the functions available on a <code>visNetworkProxy</code>, and even some special functions!</p>
 <ul>
 <li><p><strong>classic functions</strong> : <code>visNodes</code>, <code>visEdges</code>, <code>visGroups</code>, <code>visOptions</code> (&gt;=0.2.2), <code>visPhysics</code>, <code>visInteraction</code>, <code>visLayout</code> &amp; <code>visHierarchicalLayout</code></p></li>
 <li><p><strong>special functions</strong> (<strong>vis.js</strong> methods) :</p>
@@ -289,7 +291,7 @@ shinyApp(ui = ui, server = server)</code></pre>
 </div>
 <div id="build-your-own-input" class="section level2">
 <h2>Build your own input</h2>
-<p>With great <a href="http://www.htmlwidgets.org/">htmlwidgets</a>, it’s also possible to build custom shiny input from <strong>visNetwork</strong>. For this, just use <code>Shiny.onInputChange</code> function in javascript event. This is an example passing the node id when hover it :</p>
+<p>With great <a href="http://www.htmlwidgets.org/">htmlwidgets</a>, it’s also possible to build custom shiny input from <strong>visNetwork</strong>. For this, just use <code>Shiny.onInputChange</code> function in javascript event. This is an example of passing the node id when you hover over it :</p>
 <pre class="r"><code>library(visNetwork)
 library(shiny)
 
@@ -323,7 +325,7 @@ shinyApp(ui = ui, server = server)</code></pre>
 </div>
 <div id="need-some-examples" class="section level2">
 <h2>Need some examples ?</h2>
-<p>Have a look to the “demonstration” shiny apps :</p>
+<p>Have a look at the “demonstration” shiny apps :</p>
 <pre class="r"><code>shiny::runApp(system.file(&quot;shiny&quot;, package = &quot;visNetwork&quot;))</code></pre>
 </div>
 

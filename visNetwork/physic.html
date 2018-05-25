@@ -34,10 +34,12 @@
   }
 </style>
 <script type="text/javascript">
-if (window.hljs && document.readyState && document.readyState === "complete") {
-   window.setTimeout(function() {
-      hljs.initHighlighting();
-   }, 0);
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
 }
 </script>
 
@@ -194,7 +196,7 @@ $(document).ready(function () {
 <li><p>choose the <code>solver</code> (‘barnesHut’, ‘repulsion’, ‘hierarchicalRepulsion’, ‘forceAtlas2Based’), and set options</p></li>
 <li><p>control the <code>stabilization</code> processus :</p>
 <ul>
-<li><p>playing with <code>maxVelocity</code> and <code>minVelocity</code></p></li>
+<li><p>play with <code>maxVelocity</code> and <code>minVelocity</code></p></li>
 <li><p>disable stabilization for rendering initial network and see stabilization processes</p></li>
 <li><p>….</p></li>
 </ul></li>
@@ -244,7 +246,8 @@ visNetwork(nodes, edges, height = &quot;500px&quot;, width = &quot;100%&quot;) %
     },
     "main": null,
     "submain": null,
-    "footer": null
+    "footer": null,
+    "background": "rgba(0, 0, 0, 0)"
   },
   "evals": [],
   "jsHooks": []
@@ -287,7 +290,8 @@ visNetwork(nodes, edges, height = &quot;500px&quot;, width = &quot;100%&quot;) %
     },
     "main": null,
     "submain": null,
-    "footer": null
+    "footer": null,
+    "background": "rgba(0, 0, 0, 0)"
   },
   "evals": [],
   "jsHooks": []

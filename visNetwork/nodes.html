@@ -34,10 +34,12 @@
   }
 </style>
 <script type="text/javascript">
-if (window.hljs && document.readyState && document.readyState === "complete") {
-   window.setTimeout(function() {
-      hljs.initHighlighting();
-   }, 0);
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
 }
 </script>
 
@@ -192,7 +194,7 @@ $(document).ready(function () {
 </div>
 <div id="individual-configuration" class="section level2">
 <h2>Individual configuration</h2>
-<p>As seen in introduction, <em>nodes</em> must be a data.frame, with at least one column <code>id</code>. You can add properties simply adding variables on data.frame. See <strong>?visNodes</strong> for available options.</p>
+<p>As seen in the introduction, <em>nodes</em> must be a data.frame, with at least one column <code>id</code>. You can add properties simply by adding variables on data.frame. See <strong>?visNodes</strong> for available options.</p>
 <p>The most used are presented in the following example :</p>
 <pre class="r"><code>nodes &lt;- data.frame(id = 1:10,
                     
@@ -265,7 +267,8 @@ edges &lt;- data.frame(from = c(1,2,5,7,8,10), to = c(9,3,1,6,4,7))</code></pre>
     },
     "main": null,
     "submain": null,
-    "footer": null
+    "footer": null,
+    "background": "rgba(0, 0, 0, 0)"
   },
   "evals": [],
   "jsHooks": []
@@ -273,7 +276,7 @@ edges &lt;- data.frame(from = c(1,2,5,7,8,10), to = c(9,3,1,6,4,7))</code></pre>
 </div>
 <div id="global-configuration" class="section level2">
 <h2>Global configuration</h2>
-<p>If you want to set some configuration for all nodes, it’s possible in a simpler way, using directly <strong>visNodes</strong> function :</p>
+<p>If you want to set some configuration for all nodes, it’s possible in a simpler way, using the <strong>visNodes</strong> function directly :</p>
 <pre class="r"><code>nodes &lt;- data.frame(id = 1:4)
 edges &lt;- data.frame(from = c(2,4,3,3), to = c(1,2,4,2))
 
@@ -329,7 +332,8 @@ visNetwork(nodes, edges, width = &quot;100%&quot;) %&gt;%
     },
     "main": null,
     "submain": null,
-    "footer": null
+    "footer": null,
+    "background": "rgba(0, 0, 0, 0)"
   },
   "evals": [],
   "jsHooks": []
@@ -393,7 +397,8 @@ visNetwork(nodes, edges, width = &quot;100%&quot;) %&gt;%
     },
     "main": null,
     "submain": null,
-    "footer": null
+    "footer": null,
+    "background": "rgba(0, 0, 0, 0)"
   },
   "evals": [],
   "jsHooks": []
@@ -452,7 +457,8 @@ visNetwork(nodes, edges)  </code></pre>
     },
     "main": null,
     "submain": null,
-    "footer": null
+    "footer": null,
+    "background": "rgba(0, 0, 0, 0)"
   },
   "evals": [],
   "jsHooks": []

@@ -35,10 +35,12 @@
   }
 </style>
 <script type="text/javascript">
-if (window.hljs && document.readyState && document.readyState === "complete") {
-   window.setTimeout(function() {
-      hljs.initHighlighting();
-   }, 0);
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
 }
 </script>
 
@@ -190,7 +192,7 @@ $(document).ready(function () {
 
 <div id="title" class="section level2">
 <h2>Title</h2>
-<p>since <strong>visNetwork_0.2.2</strong>, you can add a title (<code>main</code>) to your network :</p>
+<p>Since <strong>visNetwork_0.2.2</strong>, you can add a title (<code>main</code>) to your network :</p>
 <pre class="r"><code>nodes &lt;- data.frame(id = 1:3, group = c(&quot;B&quot;, &quot;A&quot;, &quot;B&quot;))
 edges &lt;- data.frame(from = c(1,2), to = c(2,3))
 
@@ -233,7 +235,8 @@ visNetwork(nodes, edges, main = &quot;A really simple example&quot;, width = &qu
       "style": "font-family:Georgia, Times New Roman, Times, serif;font-weight:bold;font-size:20px;text-align:center;"
     },
     "submain": null,
-    "footer": null
+    "footer": null,
+    "background": "rgba(0, 0, 0, 0)"
   },
   "evals": [],
   "jsHooks": []
@@ -291,13 +294,15 @@ visNetwork(nodes, edges, width = &quot;100%&quot;) %&gt;%
     "main": null,
     "submain": null,
     "footer": null,
+    "background": "rgba(0, 0, 0, 0)",
     "legend": {
       "width": 0.2,
       "useGroups": true,
       "position": "left",
       "ncol": 1,
       "stepX": 100,
-      "stepY": 100
+      "stepY": 100,
+      "zoom": true
     }
   },
   "evals": [],
@@ -355,6 +360,7 @@ visNetwork(nodes, edges, width = &quot;100%&quot;) %&gt;%
     "main": null,
     "submain": null,
     "footer": null,
+    "background": "rgba(0, 0, 0, 0)",
     "legend": {
       "width": 0.1,
       "useGroups": true,
@@ -362,6 +368,7 @@ visNetwork(nodes, edges, width = &quot;100%&quot;) %&gt;%
       "ncol": 1,
       "stepX": 100,
       "stepY": 100,
+      "zoom": true,
       "main": {
         "text": "Group",
         "style": "font-family:Georgia, Times New Roman, Times, serif;font-weight:bold;font-size:14px;text-align:center;"
@@ -432,6 +439,7 @@ visNetwork(nodes, edges, width = &quot;100%&quot;) %&gt;%
     "main": null,
     "submain": null,
     "footer": null,
+    "background": "rgba(0, 0, 0, 0)",
     "legend": {
       "width": 0.2,
       "useGroups": false,
@@ -439,6 +447,7 @@ visNetwork(nodes, edges, width = &quot;100%&quot;) %&gt;%
       "ncol": 1,
       "stepX": 100,
       "stepY": 100,
+      "zoom": true,
       "edges": {
         "color": ["lightblue", "red"],
         "label": ["reverse", "depends"],
@@ -458,7 +467,7 @@ visNetwork(nodes, edges, width = &quot;100%&quot;) %&gt;%
   "evals": [],
   "jsHooks": []
 }</script>
-<p>Finally, it’s possible to use definition of the groups (<code>useGroups = TRUE #default</code>) with custom nodes (<code>addNodes</code>) and/or edges (<code>addEdges</code>) :</p>
+<p>Finally, it’s possible to use the definition of the groups (<code>useGroups = TRUE #default</code>) with custom nodes (<code>addNodes</code>) and/or edges (<code>addEdges</code>) :</p>
 <pre class="r"><code>ledges &lt;- data.frame(color = c(&quot;lightblue&quot;, &quot;red&quot;),
  label = c(&quot;reverse&quot;, &quot;depends&quot;), arrows =c(&quot;to&quot;, &quot;from&quot;))
  
@@ -510,6 +519,7 @@ visNetwork(nodes, edges, width = &quot;100%&quot;) %&gt;%
     "main": null,
     "submain": null,
     "footer": null,
+    "background": "rgba(0, 0, 0, 0)",
     "legend": {
       "width": 0.2,
       "useGroups": true,
@@ -517,6 +527,7 @@ visNetwork(nodes, edges, width = &quot;100%&quot;) %&gt;%
       "ncol": 1,
       "stepX": 100,
       "stepY": 100,
+      "zoom": true,
       "edges": {
         "color": ["lightblue", "red"],
         "label": ["reverse", "depends"],
@@ -597,6 +608,7 @@ visNetwork(nodes, edges) %&gt;%
     "main": null,
     "submain": null,
     "footer": null,
+    "background": "rgba(0, 0, 0, 0)",
     "iconsRedraw": true,
     "legend": {
       "width": 0.2,
@@ -605,6 +617,7 @@ visNetwork(nodes, edges) %&gt;%
       "ncol": 1,
       "stepX": 100,
       "stepY": 100,
+      "zoom": true,
       "nodes": [
         {
           "label": "Group",

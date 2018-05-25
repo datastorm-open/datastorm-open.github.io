@@ -35,10 +35,12 @@
   }
 </style>
 <script type="text/javascript">
-if (window.hljs && document.readyState && document.readyState === "complete") {
-   window.setTimeout(function() {
-      hljs.initHighlighting();
-   }, 0);
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
 }
 </script>
 
@@ -203,7 +205,7 @@ edges &lt;- data.frame(from = c(8,2,7,6,1,8,9,4,6,2),
 </div>
 <div id="highlight-nearest" class="section level2">
 <h2>Highlight nearest</h2>
-<p>You can highlight nearest nodes and edges clicking on a node with <code>highlightNearest</code>. Just click everywhere except on nodes to reset network :</p>
+<p>You can highlight nearest nodes and edges by clicking on a node with <code>highlightNearest</code>. Just click everywhere except on nodes to reset the network :</p>
 <pre class="r"><code>visNetwork(nodes, edges, height = &quot;500px&quot;, width = &quot;100%&quot;) %&gt;% 
   visOptions(highlightNearest = TRUE) %&gt;%
   visLayout(randomSeed = 123)</code></pre>
@@ -245,7 +247,8 @@ edges &lt;- data.frame(from = c(8,2,7,6,1,8,9,4,6,2),
     "idselection": {
       "enabled": false,
       "style": "width: 150px; height: 26px",
-      "useLabels": true
+      "useLabels": true,
+      "main": "Select by id"
     },
     "byselection": {
       "enabled": false,
@@ -256,6 +259,7 @@ edges &lt;- data.frame(from = c(8,2,7,6,1,8,9,4,6,2),
     "main": null,
     "submain": null,
     "footer": null,
+    "background": "rgba(0, 0, 0, 0)",
     "highlight": {
       "enabled": true,
       "hoverNearest": false,
@@ -274,7 +278,7 @@ edges &lt;- data.frame(from = c(8,2,7,6,1,8,9,4,6,2),
   "evals": [],
   "jsHooks": []
 }</script>
-<p>It’s now possible to control the <code>degree</code> of depth (<strong>fix/improve performance in 1.0.0</strong>), and to enable this options also hovering nodes (<code>hover</code>, <strong>&gt;=1.0.0</strong>). Using <code>hover</code>, you can still use <code>click</code> to set a view :</p>
+<p>It’s now possible to control the <code>degree</code> of depth (<strong>fix/improve performance in 1.0.0</strong>), and to enable this option also hovering nodes (<code>hover</code>, <strong>&gt;=1.0.0</strong>). Using <code>hover</code>, you can still use <code>click</code> to set a view :</p>
 <pre class="r"><code>visNetwork(nodes, edges, height = &quot;500px&quot;, width = &quot;100%&quot;) %&gt;% 
   visOptions(highlightNearest = list(enabled = T, degree = 2, hover = T)) %&gt;%
   visLayout(randomSeed = 123)</code></pre>
@@ -319,7 +323,8 @@ edges &lt;- data.frame(from = c(8,2,7,6,1,8,9,4,6,2),
     "idselection": {
       "enabled": false,
       "style": "width: 150px; height: 26px",
-      "useLabels": true
+      "useLabels": true,
+      "main": "Select by id"
     },
     "byselection": {
       "enabled": false,
@@ -330,6 +335,7 @@ edges &lt;- data.frame(from = c(8,2,7,6,1,8,9,4,6,2),
     "main": null,
     "submain": null,
     "footer": null,
+    "background": "rgba(0, 0, 0, 0)",
     "tooltipStay": 300,
     "tooltipStyle": "position: fixed;visibility:hidden;padding: 5px;white-space: nowrap;font-family: verdana;font-size:14px;font-color:#000000;background-color: #f5f4ed;-moz-border-radius: 3px;-webkit-border-radius: 3px;border-radius: 3px;border: 1px solid #808074;box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);",
     "highlight": {
@@ -427,7 +433,8 @@ edges &lt;- data.frame(from = c(8,2,7,6,1,8,9,4,6,2),
     "idselection": {
       "enabled": false,
       "style": "width: 150px; height: 26px",
-      "useLabels": true
+      "useLabels": true,
+      "main": "Select by id"
     },
     "byselection": {
       "enabled": false,
@@ -438,6 +445,7 @@ edges &lt;- data.frame(from = c(8,2,7,6,1,8,9,4,6,2),
     "main": null,
     "submain": null,
     "footer": null,
+    "background": "rgba(0, 0, 0, 0)",
     "tooltipStay": 300,
     "tooltipStyle": "position: fixed;visibility:hidden;padding: 5px;white-space: nowrap;font-family: verdana;font-size:14px;font-color:#000000;background-color: #f5f4ed;-moz-border-radius: 3px;-webkit-border-radius: 3px;border-radius: 3px;border: 1px solid #808074;box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);",
     "highlight": {
@@ -504,7 +512,8 @@ edges &lt;- data.frame(from = c(8,2,7,6,1,8,9,4,6,2),
     "idselection": {
       "enabled": true,
       "style": "width: 150px; height: 26px",
-      "useLabels": true
+      "useLabels": true,
+      "main": "Select by id"
     },
     "byselection": {
       "enabled": false,
@@ -515,6 +524,7 @@ edges &lt;- data.frame(from = c(8,2,7,6,1,8,9,4,6,2),
     "main": null,
     "submain": null,
     "footer": null,
+    "background": "rgba(0, 0, 0, 0)",
     "highlight": {
       "enabled": true,
       "hoverNearest": false,
@@ -579,7 +589,8 @@ visNetwork(nodes, edges, height = &quot;500px&quot;, width = &quot;100%&quot;) %
     "idselection": {
       "enabled": false,
       "style": "width: 150px; height: 26px",
-      "useLabels": true
+      "useLabels": true,
+      "main": "Select by id"
     },
     "byselection": {
       "enabled": true,
@@ -587,11 +598,13 @@ visNetwork(nodes, edges, height = &quot;500px&quot;, width = &quot;100%&quot;) %
       "multiple": false,
       "hideColor": "rgba(200,200,200,0.5)",
       "variable": "group",
+      "main": "Select by group",
       "values": ["A", "B", "C"]
     },
     "main": null,
     "submain": null,
     "footer": null,
+    "background": "rgba(0, 0, 0, 0)",
     "highlight": {
       "enabled": false,
       "hoverNearest": false,
@@ -658,7 +671,8 @@ visNetwork(nodes, edges, height = &quot;500px&quot;, width = &quot;100%&quot;) %
     "idselection": {
       "enabled": false,
       "style": "width: 150px; height: 26px",
-      "useLabels": true
+      "useLabels": true,
+      "main": "Select by id"
     },
     "byselection": {
       "enabled": true,
@@ -666,11 +680,13 @@ visNetwork(nodes, edges, height = &quot;500px&quot;, width = &quot;100%&quot;) %
       "multiple": true,
       "hideColor": "rgba(200,200,200,0.5)",
       "variable": "sample",
+      "main": "Select by sample",
       "values": ["A", "B", "C"]
     },
     "main": null,
     "submain": null,
     "footer": null,
+    "background": "rgba(0, 0, 0, 0)",
     "highlight": {
       "enabled": false,
       "hoverNearest": false,
@@ -692,7 +708,7 @@ visNetwork(nodes, edges, height = &quot;500px&quot;, width = &quot;100%&quot;) %
 </div>
 <div id="customize-options" class="section level2">
 <h2>Customize options</h2>
-<p>New features are available in <strong>visNetwork_0.2.0</strong> for customize <code>selectedBy</code> &amp; <code>nodesIdSelection</code> :</p>
+<p>New features are available in <strong>visNetwork_0.2.0</strong> to customize <code>selectedBy</code> &amp; <code>nodesIdSelection</code> :</p>
 <ul>
 <li><code>values</code> : control the available values in the list</li>
 <li><code>selected</code> : initialize a selection</li>
@@ -750,6 +766,7 @@ visNetwork(nodes, edges, height = &quot;500px&quot;, width = &quot;100%&quot;) %
       "enabled": true,
       "style": "width: 200px; height: 26px;\n                                 background: #f8f8f8;\n                                 color: darkblue;\n                                 border:none;\n                                 outline:none;",
       "useLabels": true,
+      "main": "Select by id",
       "selected": "8",
       "values": [5, 6, 7, 8, 9, 10]
     },
@@ -762,6 +779,7 @@ visNetwork(nodes, edges, height = &quot;500px&quot;, width = &quot;100%&quot;) %
     "main": null,
     "submain": null,
     "footer": null,
+    "background": "rgba(0, 0, 0, 0)",
     "highlight": {
       "enabled": true,
       "hoverNearest": false,
@@ -826,7 +844,8 @@ visNetwork(nodes, edges) %&gt;% visEdges(arrows = &quot;to&quot;) %&gt;%
     "idselection": {
       "enabled": false,
       "style": "width: 150px; height: 26px",
-      "useLabels": true
+      "useLabels": true,
+      "main": "Select by id"
     },
     "byselection": {
       "enabled": false,
@@ -837,6 +856,7 @@ visNetwork(nodes, edges) %&gt;% visEdges(arrows = &quot;to&quot;) %&gt;%
     "main": null,
     "submain": null,
     "footer": null,
+    "background": "rgba(0, 0, 0, 0)",
     "highlight": {
       "enabled": false,
       "hoverNearest": false,
@@ -906,7 +926,8 @@ visNetwork(nodes, edges) %&gt;% visEdges(arrows = &quot;to&quot;) %&gt;%
     "idselection": {
       "enabled": false,
       "style": "width: 150px; height: 26px",
-      "useLabels": true
+      "useLabels": true,
+      "main": "Select by id"
     },
     "byselection": {
       "enabled": false,
@@ -917,6 +938,7 @@ visNetwork(nodes, edges) %&gt;% visEdges(arrows = &quot;to&quot;) %&gt;%
     "main": null,
     "submain": null,
     "footer": null,
+    "background": "rgba(0, 0, 0, 0)",
     "datacss": "table.legend_table {\n  font-size: 11px;\n  border-width:1px;\n  border-color:#d3d3d3;\n  border-style:solid;\n}\ntable.legend_table,td {\n  border-width:1px;\n  border-color:#d3d3d3;\n  border-style:solid;\n  padding: 2px;\n}\ndiv.table_content {\n  width:80px;\n  text-align:center;\n}\ndiv.table_description {\n  width:100px;\n}\n\n#operation {\n  font-size:28px;\n}\n#network-popUp {\n  display:none;\n  z-index:299;\n  width:250px;\n  height:150px;\n  background-color: #f9f9f9;\n  border-style:solid;\n  border-width:3px;\n  border-color: #5394ed;\n  padding:10px;\n  text-align: center;\n  position:fixed;\n  top:50%;  \n  left:50%;  \n  margin:-100px 0 0 -100px;  \n\n}",
     "highlight": {
       "enabled": false,
@@ -982,7 +1004,8 @@ visNetwork(nodes, edges, height = &quot;700px&quot;, width = &quot;100%&quot;) %
     "idselection": {
       "enabled": true,
       "style": "width: 150px; height: 26px",
-      "useLabels": true
+      "useLabels": true,
+      "main": "Select by id"
     },
     "byselection": {
       "enabled": true,
@@ -990,11 +1013,13 @@ visNetwork(nodes, edges, height = &quot;700px&quot;, width = &quot;100%&quot;) %
       "multiple": false,
       "hideColor": "rgba(200,200,200,0.5)",
       "variable": "group",
+      "main": "Select by group",
       "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     },
     "main": null,
     "submain": null,
     "footer": null,
+    "background": "rgba(0, 0, 0, 0)",
     "highlight": {
       "enabled": true,
       "hoverNearest": false,

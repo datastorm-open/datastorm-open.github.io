@@ -34,10 +34,12 @@
   }
 </style>
 <script type="text/javascript">
-if (window.hljs && document.readyState && document.readyState === "complete") {
-   window.setTimeout(function() {
-      hljs.initHighlighting();
-   }, 0);
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
 }
 </script>
 
@@ -189,7 +191,7 @@ $(document).ready(function () {
 
 <div id="define-groups-of-nodes" class="section level2">
 <h2>Define groups of nodes</h2>
-<p>You can affect a group to a node using the <code>group</code> column in the node data.frame, and then add a configuration per group using <strong>visGroups</strong> function. And so, you can transfer less data to <code>javascript</code>…</p>
+<p>You can affect a group to a node using the <code>group</code> column in the node data.frame, and then add a configuration per group using the <strong>visGroups</strong> function. And therefore, you can transfer less data to <code>javascript</code>…</p>
 <pre class="r"><code>nodes &lt;- data.frame(id = 1:5, group = c(rep(&quot;A&quot;, 2), rep(&quot;B&quot;, 3)))
 edges &lt;- data.frame(from = c(2,5,3,3), to = c(1,2,4,2))
 
@@ -247,7 +249,8 @@ visNetwork(nodes, edges, width = &quot;100%&quot;) %&gt;%
     },
     "main": null,
     "submain": null,
-    "footer": null
+    "footer": null,
+    "background": "rgba(0, 0, 0, 0)"
   },
   "evals": [],
   "jsHooks": []

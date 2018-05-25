@@ -30,10 +30,12 @@
   }
 </style>
 <script type="text/javascript">
-if (window.hljs && document.readyState && document.readyState === "complete") {
-   window.setTimeout(function() {
-      hljs.initHighlighting();
-   }, 0);
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
 }
 </script>
 
@@ -183,15 +185,15 @@ $(document).ready(function () {
 </div>
 
 
-<div id="with-defaultsome-options-render-network-can-be-long.-here-are-some-ways-to-improve-the-performance" class="section level3">
-<h3>With default/some options, render network can be long. Here are some ways to improve the performance :</h3>
+<div id="with-defaultsome-options-render-network-can-take-a-long-time.-here-are-some-ways-to-improve-the-performance" class="section level3">
+<h3>With default/some options, render network can take a long time. Here are some ways to improve the performance :</h3>
 <ul>
-<li>By default, and if we don’t pass any information about coordinates, <a href="http://visjs.org/">vis.js</a> computes coordinates dynamically and wait for stabilization before rendering. You can disable or control stabilization using <code>visPhysics</code> :</li>
+<li>By default, and if we don’t pass any information about coordinates, <a href="http://visjs.org/">vis.js</a> computes coordinates dynamically and waits for stabilization before rendering. You can disable or control stabilization using <code>visPhysics</code> :</li>
 </ul>
 <pre class="r"><code>visNetwork(nodes, edges) %&gt;%
   visPhysics(stabilization = FALSE)</code></pre>
 <ul>
-<li>Another tips is to disabled smooth curve for edges. It’s better for performance :</li>
+<li>Another tip is to disable smooth curve for edges. It’s better for performance :</li>
 </ul>
 <pre class="r"><code>visNetwork(nodes, edges) %&gt;%
   visEdges(smooth = FALSE)</code></pre>

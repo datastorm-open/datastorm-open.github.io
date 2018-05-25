@@ -34,10 +34,12 @@
   }
 </style>
 <script type="text/javascript">
-if (window.hljs && document.readyState && document.readyState === "complete") {
-   window.setTimeout(function() {
-      hljs.initHighlighting();
-   }, 0);
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
 }
 </script>
 
@@ -192,7 +194,7 @@ $(document).ready(function () {
 </div>
 <div id="set-seed" class="section level2">
 <h2>Set seed</h2>
-<p>The nodes are randomly positioned initially. This means that the settled result is different every time. You can provide a random seed manually (<code>randomSeed</code>), then the layout will be the same every time.</p>
+<p>The nodes are randomly positioned initially. This means that the settled result is different every time. If you provide a random seed manually (<code>randomSeed</code>), then the layout will be the same every time.</p>
 </div>
 <div id="hierarchical-layout" class="section level2">
 <h2>Hierarchical Layout</h2>
@@ -249,7 +251,8 @@ edges &lt;- data.frame(from = c(1,2,2,2,3,3),
     },
     "main": null,
     "submain": null,
-    "footer": null
+    "footer": null,
+    "background": "rgba(0, 0, 0, 0)"
   },
   "evals": [],
   "jsHooks": []
@@ -300,12 +303,13 @@ edges &lt;- data.frame(from = c(1,2,2,2,3,3),
     },
     "main": null,
     "submain": null,
-    "footer": null
+    "footer": null,
+    "background": "rgba(0, 0, 0, 0)"
   },
   "evals": [],
   "jsHooks": []
 }</script>
-<p>it’s also possible to define the <code>level</code> of each node :</p>
+<p>It’s also possible to define the <code>level</code> of each node :</p>
 <pre class="r"><code>nodes &lt;- data.frame(id = 1:4, level = c(2, 1, 1, 1))
 edges &lt;- data.frame(from = c(1, 1, 1),
  to = c(2,3,4))</code></pre>
@@ -355,7 +359,8 @@ visNetwork(nodes, edges, width = &quot;100%&quot;) %&gt;%
     },
     "main": null,
     "submain": null,
-    "footer": null
+    "footer": null,
+    "background": "rgba(0, 0, 0, 0)"
   },
   "evals": [],
   "jsHooks": []
@@ -406,7 +411,8 @@ visNetwork(nodes, edges, width = &quot;100%&quot;) %&gt;%
     },
     "main": null,
     "submain": null,
-    "footer": null
+    "footer": null,
+    "background": "rgba(0, 0, 0, 0)"
   },
   "evals": [],
   "jsHooks": []

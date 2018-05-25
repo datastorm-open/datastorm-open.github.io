@@ -34,10 +34,12 @@
   }
 </style>
 <script type="text/javascript">
-if (window.hljs && document.readyState && document.readyState === "complete") {
-   window.setTimeout(function() {
-      hljs.initHighlighting();
-   }, 0);
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
 }
 </script>
 
@@ -231,6 +233,7 @@ visNetwork(nodes, edges) %&gt;%
     "main": null,
     "submain": null,
     "footer": null,
+    "background": "rgba(0, 0, 0, 0)",
     "events": {
       "selectNode": "function(properties) {\n      alert('selected nodes ' + this.body.data.nodes.get(properties.nodes[0]).id);}"
     }
@@ -278,7 +281,8 @@ htmlwidgets::saveWidget(network, &quot;network.html&quot;)</code></pre>
     },
     "main": null,
     "submain": null,
-    "footer": null
+    "footer": null,
+    "background": "rgba(0, 0, 0, 0)"
   },
   "evals": [],
   "jsHooks": []
@@ -358,6 +362,7 @@ visNetwork(nodes, edges, height = &quot;400px&quot;, width = &quot;100%&quot;) %
     "main": null,
     "submain": null,
     "footer": null,
+    "background": "rgba(0, 0, 0, 0)",
     "clusteringColor": {
       "colors": [
         "red"
@@ -381,7 +386,8 @@ visNetwork(nodes, edges, height = &quot;400px&quot;, width = &quot;100%&quot;) %
       "position": "left",
       "ncol": 1,
       "stepX": 100,
-      "stepY": 100
+      "stepY": 100,
+      "zoom": true
     }
   },
   "evals": [],

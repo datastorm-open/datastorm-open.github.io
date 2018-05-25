@@ -34,10 +34,12 @@
   }
 </style>
 <script type="text/javascript">
-if (window.hljs && document.readyState && document.readyState === "complete") {
-   window.setTimeout(function() {
-      hljs.initHighlighting();
-   }, 0);
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
 }
 </script>
 
@@ -252,6 +254,7 @@ visNetwork(nodes, edges, height = &quot;500px&quot;) %&gt;%
     "main": null,
     "submain": null,
     "footer": null,
+    "background": "rgba(0, 0, 0, 0)",
     "igraphlayout": {
       "type": "square"
     }
@@ -307,7 +310,8 @@ visNetwork(nodes, edges, height = &quot;500px&quot;) %&gt;%
     "idselection": {
       "enabled": true,
       "style": "width: 150px; height: 26px",
-      "useLabels": true
+      "useLabels": true,
+      "main": "Select by id"
     },
     "byselection": {
       "enabled": false,
@@ -318,6 +322,7 @@ visNetwork(nodes, edges, height = &quot;500px&quot;) %&gt;%
     "main": null,
     "submain": null,
     "footer": null,
+    "background": "rgba(0, 0, 0, 0)",
     "igraphlayout": {
       "type": "square"
     },
@@ -344,7 +349,7 @@ visNetwork(nodes, edges, height = &quot;500px&quot;) %&gt;%
 </div>
 <div id="use-igraph-network" class="section level2">
 <h2>Use <a href="http://igraph.org/r/">igraph</a> network</h2>
-<p><code>visIgraph</code> transform directly a <a href="http://igraph.org/r/">igraph</a> network into a <strong>visNetwork</strong>. It’s a little bit experimental (not perfect). You can also use <code>toVisNetworkData</code> to just get data into <strong>visNetwork</strong> format :</p>
+<p><code>visIgraph</code> directly transforms an <a href="http://igraph.org/r/">igraph</a> network into a <strong>visNetwork</strong>. It’s a little bit experimental (not perfect). You can also use <code>toVisNetworkData</code> to just get data into <strong>visNetwork</strong> format :</p>
 <pre class="r"><code>library(&quot;igraph&quot;, quietly = TRUE, warn.conflicts = FALSE, verbose = FALSE)
 igraph_network &lt;- graph.famous(&quot;Walther&quot;)
 
@@ -387,7 +392,8 @@ visNetwork(nodes = data$nodes, edges = data$edges, height = &quot;500px&quot;)</
     },
     "main": null,
     "submain": null,
-    "footer": null
+    "footer": null,
+    "background": "rgba(0, 0, 0, 0)"
   },
   "evals": [],
   "jsHooks": []
@@ -438,6 +444,7 @@ visIgraph(igraph_network)</code></pre>
     "main": null,
     "submain": null,
     "footer": null,
+    "background": "rgba(0, 0, 0, 0)",
     "igraphlayout": {
       "type": "square"
     }
