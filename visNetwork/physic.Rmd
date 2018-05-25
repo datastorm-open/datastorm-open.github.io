@@ -14,7 +14,7 @@ Using **visPhysics()** function, you can play with the physics of the network :
 
 * control the ````stabilization```` processus : 
 
-    + playing with ````maxVelocity```` and ````minVelocity````
+    + play with ````maxVelocity```` and ````minVelocity````
   
     + disable stabilization for rendering initial network and see stabilization processes
   

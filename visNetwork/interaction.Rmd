@@ -6,7 +6,7 @@ pagetitle: Interactions
 require("visNetwork", quietly = TRUE)
 ```
 
-### It's possible to control The interactions of the network with **visInteraction()** :
+### It's possible to control the interactions of the network with **visInteraction()** :
 
 ```{r, echo=FALSE}
 nb <- 10
@@ -23,9 +23,9 @@ edges <- data.frame(from = c(8,2,7,6,1,8,9,4,6,2),
 
 ## Frozen network
 
-* ````dragNodes```` : enabled or not the selection and movement of nodes (click on a node, and move your mouse)?
-* ````dragView```` : enabled or not the movement of the full network (click everywhere except node, and move your mouse) ?
-* ````zoomView```` : enabled or not the zoom (use mouse scroll) ?
+* ````dragNodes```` : enable or not the selection and movement of nodes (click on a node, and move your mouse)?
+* ````dragView```` : enable or not the movement of the full network (click everywhere except node, and move your mouse) ?
+* ````zoomView```` : enable or not the zoom (use mouse scroll) ?
 
 ```{r}
 visNetwork(nodes, edges, height = "500px", width = "100%") %>% 
@@ -50,7 +50,7 @@ visNetwork(nodes, edges, height = "500px", width = "100%") %>%
 
 ## Navigation buttons
 
-We can navigation buttons with ````navigationButtons```` :
+We can show navigation buttons with ````navigationButtons```` :
 
 ```{r}
 visNetwork(nodes, edges, height = "500px", width = "100%") %>% 
@@ -59,9 +59,9 @@ visNetwork(nodes, edges, height = "500px", width = "100%") %>%
 
 ## And also...
 
-* ````keyboard```` : enabled keyboard manipulation rather than mouse (click on network before)
+* ````keyboard```` : enable keyboard manipulation rather than mouse (click on network before)
 * ````hover```` and ````hoverConnectedEdges```` : control hover 
-* ````selectable```` : disabled nodes and edges selection
+* ````selectable```` : disable nodes and edges selection
 * ````tooltipDelay```` : set delay before show pop-up
 * ...
 
