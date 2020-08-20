@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Simple password generation — generate_pwd • shinymanager</title>
+<title>Modify shinymanager labels to use custom text — custom-labels • shinymanager</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,9 @@
 
 
 
-<meta property="og:title" content="Simple password generation — generate_pwd" />
-<meta property="og:description" content="Simple password generation" />
+<meta property="og:title" content="Modify shinymanager labels to use custom text — custom-labels" />
+<meta property="og:description" content="See all labels registered with get_labels(),
+ then set custom text with set_labels()." />
 
 
 
@@ -123,33 +124,46 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Simple password generation</h1>
-    <small class="dont-index">Source: <a href='https://github.com/datastorm-open/shinymanager/blob/master/R/utils.R'><code>R/utils.R</code></a></small>
-    <div class="hidden name"><code>generate_pwd.Rd</code></div>
+    <h1>Modify shinymanager labels to use custom text</h1>
+    <small class="dont-index">Source: <a href='https://github.com/datastorm-open/shinymanager/blob/master/R/language.R'><code>R/language.R</code></a></small>
+    <div class="hidden name"><code>custom-labels.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Simple password generation</p>
+    <p>See all labels registered with <code>get_labels()</code>,
+ then set custom text with <code>set_labels()</code>.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>generate_pwd</span>(<span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>1</span>)</pre>
+    <pre class="usage"><span class='fu'>set_labels</span>(<span class='no'>language</span>, <span class='no'>...</span>)
+
+<span class='fu'>get_labels</span>(<span class='kw'>language</span> <span class='kw'>=</span> <span class='st'>"en"</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>n</th>
-      <td><p>Number of password(s)</p></td>
+      <th>language</th>
+      <td><p>Language to use for labels, supported values are : "en", "fr", "pt-BR".</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>A named list with labels to replace.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>a <code>character</code></p>
+    <p><code>get_labels()</code> return a named list with all labels registered.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>generate_pwd</span>()</div><div class='output co'>#&gt; [1] "ALqORzdl"</div><div class='input'>
-<span class='fu'>generate_pwd</span>(<span class='fl'>3</span>)</div><div class='output co'>#&gt; [1] "jSz8CNfN" "Tkk2oUj8" "uIQn87rM"</div></pre>
+    <pre class="examples"><div class='input'>
+<span class='co'># In global.R for example:</span>
+<span class='fu'>set_labels</span>(
+  <span class='kw'>language</span> <span class='kw'>=</span> <span class='st'>"en"</span>,
+  <span class='st'>"Please authenticate"</span> <span class='kw'>=</span> <span class='st'>"You have to login"</span>,
+  <span class='st'>"Username:"</span> <span class='kw'>=</span> <span class='st'>"What's your name:"</span>,
+  <span class='st'>"Password:"</span> <span class='kw'>=</span> <span class='st'>"Enter your password:"</span>
+)</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
