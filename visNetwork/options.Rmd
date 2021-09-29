@@ -33,7 +33,7 @@ visNetwork(nodes, edges, height = "500px", width = "100%") %>%
   visLayout(randomSeed = 123)
 ```
 
-It's now possible to control the ````degree```` of depth (**fix/improve performance in 1.0.0**), and to enable this option also hovering nodes (``hover``, **>=1.0.0**). Using ``hover``, you can still use ``click`` to set a view :
+It's now possible to control the ````degree```` of depth, and to enable this option also hovering nodes (``hover``). Using ``hover``, you can still use ``click`` to set a view :
 
 ```{r}
 visNetwork(nodes, edges, height = "500px", width = "100%") %>% 
@@ -41,7 +41,7 @@ visNetwork(nodes, edges, height = "500px", width = "100%") %>%
   visLayout(randomSeed = 123)
 ```
 
-Since __visNetwork_1.0.0__, its now possible to use this feature with __images__ and __icons__ :
+This feature is available also with __images__ and __icons__ :
 
 ```{r}
 visNetwork(nodes, edges, height = "500px", width = "100%") %>% 
@@ -70,7 +70,7 @@ visNetwork(nodes, edges, height = "500px", width = "100%") %>%
 
 ## Select by a column
 
-Since __visNetwork_0.1.2__ : select subset of nodes by the values of a column using ````selectedBy````, and node can have mutliple groups since __visNetwork_0.2.2__ :
+Select subset of nodes by the values of a column using ````selectedBy````. Nodes can have multiple groups  using comma-separated values :
 
 ```{r}
 # on "authorised" column
@@ -93,7 +93,7 @@ visNetwork(nodes, edges, height = "500px", width = "100%") %>%
 
 ## Customize options
 
-New features are available in __visNetwork_0.2.0__ to customize ````selectedBy```` & ````nodesIdSelection```` : 
+Many features are available to customize ````selectedBy```` & ````nodesIdSelection````, for example : 
 
 * ````values```` : control the available values in the list
 * ````selected```` : initialize a selection
@@ -120,8 +120,6 @@ visNetwork(nodes, edges, height = "500px", width = "100%") %>%
 ```
 
 ## Collapse / Uncollapse Nodes
-
-New in __visNetwork_2.0.0__ ! :
 
 ```{r}
 nodes <- data.frame(id = 1:15, label = paste("Label", 1:15),

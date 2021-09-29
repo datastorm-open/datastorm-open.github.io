@@ -1,38 +1,52 @@
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 
 <head>
 
 <meta charset="utf-8" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
 
 
 <title>Edges</title>
 
+<script src="libs/header-attrs/header-attrs.js"></script>
 <script src="libs/jquery/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="libs/bootstrap/css/cosmo.min.css" rel="stylesheet" />
 <script src="libs/bootstrap/js/bootstrap.min.js"></script>
 <script src="libs/bootstrap/shim/html5shiv.min.js"></script>
 <script src="libs/bootstrap/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
 <script src="libs/navigation/tabsets.js"></script>
 <link href="libs/highlightjs/default.css" rel="stylesheet" />
 <script src="libs/highlightjs/highlight.js"></script>
 <script src="libs/htmlwidgets/htmlwidgets.js"></script>
-<link href="libs/vis/vis.css" rel="stylesheet" />
-<script src="libs/vis/vis.min.js"></script>
+<link href="libs/vis/vis-network.min.css" rel="stylesheet" />
+<script src="libs/vis/vis-network.min.js"></script>
 <script src="libs/visNetwork-binding/visNetwork.js"></script>
 
-<style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
-  pre:not([class]) {
-    background-color: white;
-  }
-</style>
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
 <script type="text/javascript">
 if (window.hljs) {
   hljs.configure({languages: []});
@@ -45,37 +59,10 @@ if (window.hljs) {
 
 
 
-<style type="text/css">
-h1 {
-  font-size: 34px;
-}
-h1.title {
-  font-size: 38px;
-}
-h2 {
-  font-size: 30px;
-}
-h3 {
-  font-size: 24px;
-}
-h4 {
-  font-size: 18px;
-}
-h5 {
-  font-size: 16px;
-}
-h6 {
-  font-size: 12px;
-}
-.table th:not([align]) {
-  text-align: left;
-}
-</style>
 
 
-</head>
 
-<body>
+
 
 <style type = "text/css">
 .main-container {
@@ -83,36 +70,95 @@ h6 {
   margin-left: auto;
   margin-right: auto;
 }
-code {
-  color: inherit;
-  background-color: rgba(0, 0, 0, 0.04);
-}
 img {
   max-width:100%;
-  height: auto;
 }
 .tabbed-pane {
   padding-top: 12px;
 }
+.html-widget {
+  margin-bottom: 20px;
+}
 button.code-folding-btn:focus {
   outline: none;
+}
+summary {
+  display: list-item;
+}
+pre code {
+  padding: 0;
 }
 </style>
 
 
 
-<div class="container-fluid main-container">
-
 <!-- tabsets -->
-<script>
-$(document).ready(function () {
-  window.buildTabsets("TOC");
-});
-</script>
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
 
 <!-- code folding -->
 
 
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
 
 
 
@@ -181,7 +227,7 @@ $(document).ready(function () {
   </div>
   <div class="col-sm-9 content-body">
 
-<div class="fluid-row" id="header">
+<div id="header">
 
 
 
@@ -229,16 +275,16 @@ $(document).ready(function () {
 
 nodes &lt;- data.frame(id = 1:10, group = c(&quot;A&quot;, &quot;B&quot;))</code></pre>
 <pre class="r"><code>visNetwork(nodes, edges, height = &quot;500px&quot;, width = &quot;100%&quot;)</code></pre>
-<div id="htmlwidget-b55df8d8ec9d8b9e435c" style="width:100%;height:500px;" class="visNetwork html-widget"></div>
-<script type="application/json" data-for="htmlwidget-b55df8d8ec9d8b9e435c">{
+<div id="htmlwidget-e7202586eee1b182c7e3" style="width:100%;height:500px;" class="visNetwork html-widget"></div>
+<script type="application/json" data-for="htmlwidget-e7202586eee1b182c7e3">{
   "x": {
     "nodes": {
       "id": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
       "group": ["A", "B", "A", "B", "A", "B", "A", "B", "A", "B"]
     },
     "edges": {
-      "from": [6, 5, 7, 4, 1, 3, 8, 10],
-      "to": [9, 4, 8, 5, 7, 3, 6, 10],
+      "from": [7, 1, 4, 10, 9, 2, 8, 3],
+      "to": [5, 3, 7, 6, 10, 4, 8, 1],
       "label": ["Edge 1", "Edge 2", "Edge 3", "Edge 4", "Edge 5", "Edge 6", "Edge 7", "Edge 8"],
       "length": [100, 500, 100, 500, 100, 500, 100, 500],
       "width": [4, 1, 4, 1, 4, 1, 4, 1],
@@ -289,8 +335,8 @@ visNetwork(nodes, edges, width = &quot;100%&quot;) %&gt;%
            arrows =list(to = list(enabled = TRUE, scaleFactor = 2)),
            color = list(color = &quot;lightblue&quot;, highlight = &quot;red&quot;)) %&gt;%
   visLayout(randomSeed = 12) # to have always the same network           </code></pre>
-<div id="htmlwidget-1a66687165e60ed4f544" style="width:100%;height:216px;" class="visNetwork html-widget"></div>
-<script type="application/json" data-for="htmlwidget-1a66687165e60ed4f544">{
+<div id="htmlwidget-d7d2f09bcc5e2e17ae06" style="width:100%;height:216px;" class="visNetwork html-widget"></div>
+<script type="application/json" data-for="htmlwidget-d7d2f09bcc5e2e17ae06">{
   "x": {
     "nodes": {
       "id": [1, 2, 3, 4]
@@ -355,8 +401,8 @@ visNetwork(nodes, edges, width = &quot;100%&quot;) %&gt;%
            arrows =list(to = list(enabled = TRUE, scaleFactor = 2)),
            color = list(color = &quot;lightblue&quot;, highlight = &quot;red&quot;)) %&gt;%
   visLayout(randomSeed = 12) # to have always the same network             </code></pre>
-<div id="htmlwidget-0bdab363c6a36a601760" style="width:100%;height:216px;" class="visNetwork html-widget"></div>
-<script type="application/json" data-for="htmlwidget-0bdab363c6a36a601760">{
+<div id="htmlwidget-f223c72250d92f386608" style="width:100%;height:216px;" class="visNetwork html-widget"></div>
+<script type="application/json" data-for="htmlwidget-f223c72250d92f386608">{
   "x": {
     "nodes": {
       "id": [1, 2, 3, 4],
@@ -415,7 +461,7 @@ visNetwork(nodes, edges, width = &quot;100%&quot;) %&gt;%
 </div>
 <div id="use-complex-configuration-individually" class="section level2">
 <h2>Use complex configuration individually</h2>
-<p>Available since <strong>visNetwork_0.2.1</strong>. When options are available using a list, you can use it in a data.frame with specific notation like this :</p>
+<p>When options are available using a list, you can use it in a data.frame with specific notation like this :</p>
 <pre class="r"><code>nodes &lt;- data.frame(id = 1:3, 
                     color.background = c(&quot;red&quot;, &quot;blue&quot;, &quot;green&quot;),
                     color.highlight.background = c(&quot;red&quot;, NA, &quot;red&quot;), 
@@ -427,8 +473,8 @@ edges &lt;- data.frame(from = c(1,2), to = c(1,3),
                     font.size = c(10,20))
 
 visNetwork(nodes, edges)  </code></pre>
-<div id="htmlwidget-297b5cca6d8788299161" style="width:100%;height:216px;" class="visNetwork html-widget"></div>
-<script type="application/json" data-for="htmlwidget-297b5cca6d8788299161">{
+<div id="htmlwidget-a10ed269577be92079a3" style="width:100%;height:216px;" class="visNetwork html-widget"></div>
+<script type="application/json" data-for="htmlwidget-a10ed269577be92079a3">{
   "x": {
     "nodes": {
       "id": [1, 2, 3],
@@ -475,7 +521,7 @@ visNetwork(nodes, edges)  </code></pre>
 </div>
 
 <footer>
-<p><small> © 2016-2017 DataStorm</small></p>
+<p><small> © 2020-2021 DataStorm</small></p>
 </footer>
 
   </div>
@@ -491,7 +537,7 @@ visNetwork(nodes, edges)  </code></pre>
 
 // add bootstrap table styles to pandoc tables
 function bootstrapStylePandocTables() {
-  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
 }
 $(document).ready(function () {
   bootstrapStylePandocTables();
@@ -499,6 +545,23 @@ $(document).ready(function () {
 
 
 </script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>

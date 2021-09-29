@@ -1,38 +1,52 @@
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 
 <head>
 
 <meta charset="utf-8" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
 
 
 <title>Interactions</title>
 
+<script src="libs/header-attrs/header-attrs.js"></script>
 <script src="libs/jquery/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="libs/bootstrap/css/cosmo.min.css" rel="stylesheet" />
 <script src="libs/bootstrap/js/bootstrap.min.js"></script>
 <script src="libs/bootstrap/shim/html5shiv.min.js"></script>
 <script src="libs/bootstrap/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
 <script src="libs/navigation/tabsets.js"></script>
 <link href="libs/highlightjs/default.css" rel="stylesheet" />
 <script src="libs/highlightjs/highlight.js"></script>
 <script src="libs/htmlwidgets/htmlwidgets.js"></script>
-<link href="libs/vis/vis.css" rel="stylesheet" />
-<script src="libs/vis/vis.min.js"></script>
+<link href="libs/vis/vis-network.min.css" rel="stylesheet" />
+<script src="libs/vis/vis-network.min.js"></script>
 <script src="libs/visNetwork-binding/visNetwork.js"></script>
 
-<style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
-  pre:not([class]) {
-    background-color: white;
-  }
-</style>
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
 <script type="text/javascript">
 if (window.hljs) {
   hljs.configure({languages: []});
@@ -45,37 +59,10 @@ if (window.hljs) {
 
 
 
-<style type="text/css">
-h1 {
-  font-size: 34px;
-}
-h1.title {
-  font-size: 38px;
-}
-h2 {
-  font-size: 30px;
-}
-h3 {
-  font-size: 24px;
-}
-h4 {
-  font-size: 18px;
-}
-h5 {
-  font-size: 16px;
-}
-h6 {
-  font-size: 12px;
-}
-.table th:not([align]) {
-  text-align: left;
-}
-</style>
 
 
-</head>
 
-<body>
+
 
 <style type = "text/css">
 .main-container {
@@ -83,36 +70,95 @@ h6 {
   margin-left: auto;
   margin-right: auto;
 }
-code {
-  color: inherit;
-  background-color: rgba(0, 0, 0, 0.04);
-}
 img {
   max-width:100%;
-  height: auto;
 }
 .tabbed-pane {
   padding-top: 12px;
 }
+.html-widget {
+  margin-bottom: 20px;
+}
 button.code-folding-btn:focus {
   outline: none;
+}
+summary {
+  display: list-item;
+}
+pre code {
+  padding: 0;
 }
 </style>
 
 
 
-<div class="container-fluid main-container">
-
 <!-- tabsets -->
-<script>
-$(document).ready(function () {
-  window.buildTabsets("TOC");
-});
-</script>
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
 
 <!-- code folding -->
 
 
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
 
 
 
@@ -181,7 +227,7 @@ $(document).ready(function () {
   </div>
   <div class="col-sm-9 content-body">
 
-<div class="fluid-row" id="header">
+<div id="header">
 
 
 
@@ -204,20 +250,20 @@ $(document).ready(function () {
                  dragView = FALSE, 
                  zoomView = FALSE) %&gt;%
   visLayout(randomSeed = 123)</code></pre>
-<div id="htmlwidget-65e60ed4f5440bdab363" style="width:100%;height:500px;" class="visNetwork html-widget"></div>
-<script type="application/json" data-for="htmlwidget-65e60ed4f5440bdab363">{
+<div id="htmlwidget-d7d2f09bcc5e2e17ae06" style="width:100%;height:500px;" class="visNetwork html-widget"></div>
+<script type="application/json" data-for="htmlwidget-d7d2f09bcc5e2e17ae06">{
   "x": {
     "nodes": {
       "id": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
       "label": ["Label 1", "Label 2", "Label 3", "Label 4", "Label 5", "Label 6", "Label 7", "Label 8", "Label 9", "Label 10"],
-      "group": ["B", "B", "C", "B", "A", "B", "C", "A", "C", "B"],
+      "group": ["C", "B", "A", "C", "A", "B", "C", "C", "C", "A"],
       "value": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
       "title": ["<p>1<br>Tooltip !<\/p>", "<p>2<br>Tooltip !<\/p>", "<p>3<br>Tooltip !<\/p>", "<p>4<br>Tooltip !<\/p>", "<p>5<br>Tooltip !<\/p>", "<p>6<br>Tooltip !<\/p>", "<p>7<br>Tooltip !<\/p>", "<p>8<br>Tooltip !<\/p>", "<p>9<br>Tooltip !<\/p>", "<p>10<br>Tooltip !<\/p>"]
     },
     "edges": {
       "from": [8, 2, 7, 6, 1, 8, 9, 4, 6, 2],
       "to": [3, 7, 2, 7, 9, 1, 5, 3, 2, 9],
-      "value": [11.2006173961394, 10.8961498842131, 10.2536897550745, 10.5496003408587, 11.9033710510161, 11.4445336141903, 10.1152957581359, 9.37274591961818, 8.73051126961894, 9.77217985303943],
+      "value": [10.2536897550745, 10.5496003408587, 11.9033710510161, 11.4445336141903, 10.1152957581359, 9.37274591961818, 8.73051126961894, 9.77217985303943, 9.73951172956003, 8.42585671912768],
       "label": ["Edge 1", "Edge 2", "Edge 3", "Edge 4", "Edge 5", "Edge 6", "Edge 7", "Edge 8", "Edge 9", "Edge 10"],
       "title": ["<p>1<br>Edge Tooltip !<\/p>", "<p>2<br>Edge Tooltip !<\/p>", "<p>3<br>Edge Tooltip !<\/p>", "<p>4<br>Edge Tooltip !<\/p>", "<p>5<br>Edge Tooltip !<\/p>", "<p>6<br>Edge Tooltip !<\/p>", "<p>7<br>Edge Tooltip !<\/p>", "<p>8<br>Edge Tooltip !<\/p>", "<p>9<br>Edge Tooltip !<\/p>", "<p>10<br>Edge Tooltip !<\/p>"]
     },
@@ -235,13 +281,14 @@ $(document).ready(function () {
       "interaction": {
         "dragNodes": false,
         "dragView": false,
-        "zoomView": false
+        "zoomView": false,
+        "zoomSpeed": 1
       },
       "layout": {
         "randomSeed": 123
       }
     },
-    "groups": ["B", "C", "A"],
+    "groups": ["C", "B", "A"],
     "width": "100%",
     "height": "500px",
     "idselection": {
@@ -271,20 +318,20 @@ $(document).ready(function () {
 <pre class="r"><code>visNetwork(nodes, edges, height = &quot;500px&quot;, width = &quot;100%&quot;) %&gt;% 
   visInteraction(hideEdgesOnDrag = TRUE) %&gt;%
   visLayout(randomSeed = 123)</code></pre>
-<div id="htmlwidget-c6a36a601760297b5cca" style="width:100%;height:500px;" class="visNetwork html-widget"></div>
-<script type="application/json" data-for="htmlwidget-c6a36a601760297b5cca">{
+<div id="htmlwidget-f223c72250d92f386608" style="width:100%;height:500px;" class="visNetwork html-widget"></div>
+<script type="application/json" data-for="htmlwidget-f223c72250d92f386608">{
   "x": {
     "nodes": {
       "id": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
       "label": ["Label 1", "Label 2", "Label 3", "Label 4", "Label 5", "Label 6", "Label 7", "Label 8", "Label 9", "Label 10"],
-      "group": ["B", "B", "C", "B", "A", "B", "C", "A", "C", "B"],
+      "group": ["C", "B", "A", "C", "A", "B", "C", "C", "C", "A"],
       "value": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
       "title": ["<p>1<br>Tooltip !<\/p>", "<p>2<br>Tooltip !<\/p>", "<p>3<br>Tooltip !<\/p>", "<p>4<br>Tooltip !<\/p>", "<p>5<br>Tooltip !<\/p>", "<p>6<br>Tooltip !<\/p>", "<p>7<br>Tooltip !<\/p>", "<p>8<br>Tooltip !<\/p>", "<p>9<br>Tooltip !<\/p>", "<p>10<br>Tooltip !<\/p>"]
     },
     "edges": {
       "from": [8, 2, 7, 6, 1, 8, 9, 4, 6, 2],
       "to": [3, 7, 2, 7, 9, 1, 5, 3, 2, 9],
-      "value": [11.2006173961394, 10.8961498842131, 10.2536897550745, 10.5496003408587, 11.9033710510161, 11.4445336141903, 10.1152957581359, 9.37274591961818, 8.73051126961894, 9.77217985303943],
+      "value": [10.2536897550745, 10.5496003408587, 11.9033710510161, 11.4445336141903, 10.1152957581359, 9.37274591961818, 8.73051126961894, 9.77217985303943, 9.73951172956003, 8.42585671912768],
       "label": ["Edge 1", "Edge 2", "Edge 3", "Edge 4", "Edge 5", "Edge 6", "Edge 7", "Edge 8", "Edge 9", "Edge 10"],
       "title": ["<p>1<br>Edge Tooltip !<\/p>", "<p>2<br>Edge Tooltip !<\/p>", "<p>3<br>Edge Tooltip !<\/p>", "<p>4<br>Edge Tooltip !<\/p>", "<p>5<br>Edge Tooltip !<\/p>", "<p>6<br>Edge Tooltip !<\/p>", "<p>7<br>Edge Tooltip !<\/p>", "<p>8<br>Edge Tooltip !<\/p>", "<p>9<br>Edge Tooltip !<\/p>", "<p>10<br>Edge Tooltip !<\/p>"]
     },
@@ -300,13 +347,14 @@ $(document).ready(function () {
         "enabled": false
       },
       "interaction": {
-        "hideEdgesOnDrag": true
+        "hideEdgesOnDrag": true,
+        "zoomSpeed": 1
       },
       "layout": {
         "randomSeed": 123
       }
     },
-    "groups": ["B", "C", "A"],
+    "groups": ["C", "B", "A"],
     "width": "100%",
     "height": "500px",
     "idselection": {
@@ -331,20 +379,20 @@ $(document).ready(function () {
 <p>We can show navigation buttons with <code>navigationButtons</code> :</p>
 <pre class="r"><code>visNetwork(nodes, edges, height = &quot;500px&quot;, width = &quot;100%&quot;) %&gt;% 
   visInteraction(navigationButtons = TRUE)</code></pre>
-<div id="htmlwidget-6d8788299161dc56faef" style="width:100%;height:500px;" class="visNetwork html-widget"></div>
-<script type="application/json" data-for="htmlwidget-6d8788299161dc56faef">{
+<div id="htmlwidget-a10ed269577be92079a3" style="width:100%;height:500px;" class="visNetwork html-widget"></div>
+<script type="application/json" data-for="htmlwidget-a10ed269577be92079a3">{
   "x": {
     "nodes": {
       "id": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
       "label": ["Label 1", "Label 2", "Label 3", "Label 4", "Label 5", "Label 6", "Label 7", "Label 8", "Label 9", "Label 10"],
-      "group": ["B", "B", "C", "B", "A", "B", "C", "A", "C", "B"],
+      "group": ["C", "B", "A", "C", "A", "B", "C", "C", "C", "A"],
       "value": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
       "title": ["<p>1<br>Tooltip !<\/p>", "<p>2<br>Tooltip !<\/p>", "<p>3<br>Tooltip !<\/p>", "<p>4<br>Tooltip !<\/p>", "<p>5<br>Tooltip !<\/p>", "<p>6<br>Tooltip !<\/p>", "<p>7<br>Tooltip !<\/p>", "<p>8<br>Tooltip !<\/p>", "<p>9<br>Tooltip !<\/p>", "<p>10<br>Tooltip !<\/p>"]
     },
     "edges": {
       "from": [8, 2, 7, 6, 1, 8, 9, 4, 6, 2],
       "to": [3, 7, 2, 7, 9, 1, 5, 3, 2, 9],
-      "value": [11.2006173961394, 10.8961498842131, 10.2536897550745, 10.5496003408587, 11.9033710510161, 11.4445336141903, 10.1152957581359, 9.37274591961818, 8.73051126961894, 9.77217985303943],
+      "value": [10.2536897550745, 10.5496003408587, 11.9033710510161, 11.4445336141903, 10.1152957581359, 9.37274591961818, 8.73051126961894, 9.77217985303943, 9.73951172956003, 8.42585671912768],
       "label": ["Edge 1", "Edge 2", "Edge 3", "Edge 4", "Edge 5", "Edge 6", "Edge 7", "Edge 8", "Edge 9", "Edge 10"],
       "title": ["<p>1<br>Edge Tooltip !<\/p>", "<p>2<br>Edge Tooltip !<\/p>", "<p>3<br>Edge Tooltip !<\/p>", "<p>4<br>Edge Tooltip !<\/p>", "<p>5<br>Edge Tooltip !<\/p>", "<p>6<br>Edge Tooltip !<\/p>", "<p>7<br>Edge Tooltip !<\/p>", "<p>8<br>Edge Tooltip !<\/p>", "<p>9<br>Edge Tooltip !<\/p>", "<p>10<br>Edge Tooltip !<\/p>"]
     },
@@ -360,10 +408,11 @@ $(document).ready(function () {
         "enabled": false
       },
       "interaction": {
-        "navigationButtons": true
+        "navigationButtons": true,
+        "zoomSpeed": 1
       }
     },
-    "groups": ["B", "C", "A"],
+    "groups": ["C", "B", "A"],
     "width": "100%",
     "height": "500px",
     "idselection": {
@@ -394,20 +443,20 @@ $(document).ready(function () {
 </ul>
 <pre class="r"><code>visNetwork(nodes, edges, height = &quot;500px&quot;, width = &quot;100%&quot;) %&gt;% 
   visInteraction(keyboard = TRUE, tooltipDelay = 0)</code></pre>
-<div id="htmlwidget-e90b79b122bd7002e299" style="width:100%;height:500px;" class="visNetwork html-widget"></div>
-<script type="application/json" data-for="htmlwidget-e90b79b122bd7002e299">{
+<div id="htmlwidget-c1d734b37e449dda01f0" style="width:100%;height:500px;" class="visNetwork html-widget"></div>
+<script type="application/json" data-for="htmlwidget-c1d734b37e449dda01f0">{
   "x": {
     "nodes": {
       "id": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
       "label": ["Label 1", "Label 2", "Label 3", "Label 4", "Label 5", "Label 6", "Label 7", "Label 8", "Label 9", "Label 10"],
-      "group": ["B", "B", "C", "B", "A", "B", "C", "A", "C", "B"],
+      "group": ["C", "B", "A", "C", "A", "B", "C", "C", "C", "A"],
       "value": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
       "title": ["<p>1<br>Tooltip !<\/p>", "<p>2<br>Tooltip !<\/p>", "<p>3<br>Tooltip !<\/p>", "<p>4<br>Tooltip !<\/p>", "<p>5<br>Tooltip !<\/p>", "<p>6<br>Tooltip !<\/p>", "<p>7<br>Tooltip !<\/p>", "<p>8<br>Tooltip !<\/p>", "<p>9<br>Tooltip !<\/p>", "<p>10<br>Tooltip !<\/p>"]
     },
     "edges": {
       "from": [8, 2, 7, 6, 1, 8, 9, 4, 6, 2],
       "to": [3, 7, 2, 7, 9, 1, 5, 3, 2, 9],
-      "value": [11.2006173961394, 10.8961498842131, 10.2536897550745, 10.5496003408587, 11.9033710510161, 11.4445336141903, 10.1152957581359, 9.37274591961818, 8.73051126961894, 9.77217985303943],
+      "value": [10.2536897550745, 10.5496003408587, 11.9033710510161, 11.4445336141903, 10.1152957581359, 9.37274591961818, 8.73051126961894, 9.77217985303943, 9.73951172956003, 8.42585671912768],
       "label": ["Edge 1", "Edge 2", "Edge 3", "Edge 4", "Edge 5", "Edge 6", "Edge 7", "Edge 8", "Edge 9", "Edge 10"],
       "title": ["<p>1<br>Edge Tooltip !<\/p>", "<p>2<br>Edge Tooltip !<\/p>", "<p>3<br>Edge Tooltip !<\/p>", "<p>4<br>Edge Tooltip !<\/p>", "<p>5<br>Edge Tooltip !<\/p>", "<p>6<br>Edge Tooltip !<\/p>", "<p>7<br>Edge Tooltip !<\/p>", "<p>8<br>Edge Tooltip !<\/p>", "<p>9<br>Edge Tooltip !<\/p>", "<p>10<br>Edge Tooltip !<\/p>"]
     },
@@ -424,10 +473,11 @@ $(document).ready(function () {
       },
       "interaction": {
         "keyboard": true,
-        "tooltipDelay": 0
+        "tooltipDelay": 0,
+        "zoomSpeed": 1
       }
     },
-    "groups": ["B", "C", "A"],
+    "groups": ["C", "B", "A"],
     "width": "100%",
     "height": "500px",
     "idselection": {
@@ -449,7 +499,7 @@ $(document).ready(function () {
 </div>
 
 <footer>
-<p><small> © 2016-2017 DataStorm</small></p>
+<p><small> © 2020-2021 DataStorm</small></p>
 </footer>
 
   </div>
@@ -465,7 +515,7 @@ $(document).ready(function () {
 
 // add bootstrap table styles to pandoc tables
 function bootstrapStylePandocTables() {
-  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
 }
 $(document).ready(function () {
   bootstrapStylePandocTables();
@@ -473,6 +523,23 @@ $(document).ready(function () {
 
 
 </script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>

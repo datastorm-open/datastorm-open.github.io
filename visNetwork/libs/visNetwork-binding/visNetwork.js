@@ -1,3 +1,134 @@
+// Production steps of ECMA-262, Edition 6, 22.1.2.1
+// Référence : https://people.mozilla.org/~jorendorff/es6-draft.html#sec-array.from
+if (!Array.from) {
+  Array.from = (function () {
+    var toStr = Object.prototype.toString;
+    var isCallable = function (fn) { 
+      return typeof fn === 'function' || toStr.call(fn) === '[object Function]';
+    };
+    var toInteger = function (value) { 
+      var number = Number(value); 
+      if (isNaN(number)) { return 0; }
+      if (number === 0 || !isFinite(number)) { return number; }
+      return (number > 0 ? 1 : -1) * Math.floor(Math.abs(number)); 
+    };
+    var maxSafeInteger = Math.pow(2, 53) - 1;
+    var toLength = function (value) { 
+      var len = toInteger(value);
+      return Math.min(Math.max(len, 0), maxSafeInteger);
+    }; 
+  
+    // La propriété length de la méthode vaut 1.
+    return function from(arrayLike/*, mapFn, thisArg */) { 
+      // 1. Soit C, la valeur this
+      var C = this;
+      
+      // 2. Soit items le ToObject(arrayLike).
+      var items = Object(arrayLike); 
+      
+      // 3. ReturnIfAbrupt(items).
+      if (arrayLike == null) { 
+        throw new TypeError("Array.from doit utiliser un objet semblable à un tableau - null ou undefined ne peuvent pas être utilisés");
+      }
+    
+      // 4. Si mapfn est undefined, le mapping sera false.
+      var mapFn = arguments.length > 1 ? arguments[1] : void undefined;
+      var T;
+      if (typeof mapFn !== 'undefined') {  
+        // 5. sinon      
+        // 5. a. si IsCallable(mapfn) est false, on lève une TypeError.
+        if (!isCallable(mapFn)) { 
+          throw new TypeError('Array.from: lorsqu il est utilisé le deuxième argument doit être une fonction'); 
+        }
+     
+        // 5. b. si thisArg a été fourni, T sera thisArg ; sinon T sera undefined.
+        if (arguments.length > 2) { 
+          T = arguments[2];
+        }
+      }
+    
+      // 10. Soit lenValue pour Get(items, "length").
+      // 11. Soit len pour ToLength(lenValue).
+      var len = toLength(items.length);  
+     
+      // 13. Si IsConstructor(C) vaut true, alors
+      // 13. a. Soit A le résultat de l'appel à la méthode interne [[Construct]] avec une liste en argument qui contient l'élément len.
+      // 14. a. Sinon, soit A le résultat de ArrayCreate(len).
+      var A = isCallable(C) ? Object(new C(len)) : new Array(len);
+   
+      // 16. Soit k égal à 0.
+      var k = 0;  // 17. On répète tant que k < len… 
+      var kValue;
+      while (k < len) {
+        kValue = items[k]; 
+        if (mapFn) {
+          A[k] = typeof T === 'undefined' ? mapFn(kValue, k) : mapFn.call(T, kValue, k); 
+        } else {
+          A[k] = kValue;
+        }
+        k += 1;
+      }
+      // 18. Soit putStatus égal à Put(A, "length", len, true).
+      A.length = len;  // 20. On renvoie A.
+      return A;
+    };
+  }());
+};
+
+
+// https://tc39.github.io/ecma262/#sec-array.prototype.includes
+if (!Array.prototype.includes) {
+  Object.defineProperty(Array.prototype, 'includes', {
+    value: function(searchElement, fromIndex) {
+
+      if (this == null) {
+        throw new TypeError('"this" est nul ou non défini');
+      }
+
+      // 1. Soit o égal à ? Object(cette valeur).
+      var o = Object(this);
+
+      // 2. Soit len égal à ? Length(? Get(o, "length")).
+      var len = o.length >>> 0;
+
+      // 3. Si len = 0, renvoyer "false".
+      if (len === 0) {
+        return false;
+      }
+
+      // 4. Soit n = ? ToInteger(fromIndex).
+      // Pour la cohérence du code, on gardera le nom anglais "fromIndex" pour la variable auparavant appelée "indiceDépart"
+      //    (Si fromIndex n'est pas défini, cette étape produit la valeur 0.)
+      var n = fromIndex | 0;
+
+      // 5. Si n ≥ 0,
+      //  a. Alors k = n.
+      // 6. Sinon, si n < 0,
+      //  a. Alors k = len + n.
+      //  b. Si k < 0, alors k = 0.
+      var k = Math.max(n >= 0 ? n : len - Math.abs(n), 0);
+
+      function sameValueZero(x, y) {
+        return x === y || (typeof x === 'number' && typeof y === 'number' && isNaN(x) && isNaN(y));
+      }
+
+      // 7. Répéter tant que k < len
+      while (k < len) {
+        // a. Soit elementK le résultat de ? Get(O, ! ToString(k)).
+        // b. Si SameValueZero(searchElement, elementK) est vrai, renvoyer "true".
+        if (sameValueZero(o[k], searchElement)) {
+          return true;
+        }
+        // c. Augmenter la valeur de k de 1. 
+        k++;
+      }
+
+      // 8. Renvoyer "false"
+      return false;
+    }
+  });
+}
+
 // Add shim for Function.prototype.bind() from:
 // https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function/bind#Compatibility
 // for fix some RStudio viewer bug (Desktop / windows)
@@ -59,7 +190,9 @@ function edgeAsHardToRead(edge, hideColor1, hideColor2, network, type){
       //network.clustering.updateEdge(edge.id, {hiddenColor : edge.color});
       edge.hiddenColor = edge.color;
     }
-    network.clustering.updateEdge(edge.id, {color : hideColor1});
+    // set "hard to read" color
+    edge.color = hideColor1;
+    //network.clustering.updateEdge(edge.id, {color : hideColor1});
     //edge.color = hideColor1;
     // reset and save label
     if (edge.hiddenLabel === undefined) {
@@ -284,7 +417,7 @@ function simpleImageResetNode(node, imageType, type){
 }
 
 // Global function to reset one cluster
-function resetOneCluster(node, groups, options, network){
+function resetOneCluster(node, options, network){
   if(node !== undefined){
     if(node.options.isHardToRead !== undefined){ // we have to reset this node
       if(node.options.isHardToRead){
@@ -292,10 +425,10 @@ function resetOneCluster(node, groups, options, network){
         var shape_group = false;
         var is_group = false;
   	  // have a group information & a shape defined in group ?
-        if(node.options.group !== undefined){
-          if(groups.groups[node.options.group] !== undefined){
+        if(node.options.group !== undefined && options.groups !== undefined){
+          if(options.groups[node.options.group] !== undefined){
             is_group = true;
-            if(groups.groups[node.options.group].shape !== undefined){
+            if(options.groups[node.options.group].shape !== undefined){
               shape_group = true;
             }
           }
@@ -313,7 +446,7 @@ function resetOneCluster(node, groups, options, network){
         } else if(node.options.shape !== undefined){
           final_shape = node.options.shape;
         } else if(shape_group){
-          final_shape = groups.groups[node.options.group].shape;
+          final_shape = options.groups[node.options.group].shape;
         } else if(shape_options){
           final_shape = options.nodes.shape;
         }
@@ -340,7 +473,7 @@ function resetOneCluster(node, groups, options, network){
 }
 
 // Global function to reset one node
-function resetOneNode(node, groups, options, network){
+function resetOneNode(node, options, network){
   if(node !== undefined){
     if(node.isHardToRead !== undefined){ // we have to reset this node
       if(node.isHardToRead){
@@ -348,10 +481,10 @@ function resetOneNode(node, groups, options, network){
         var shape_group = false;
         var is_group = false;
   	  // have a group information & a shape defined in group ?
-        if(node.group !== undefined){
-          if(groups.groups[node.group] !== undefined){
+        if(node.group !== undefined && options.groups !== undefined){
+          if(options.groups[node.group] !== undefined){
             is_group = true;
-            if(groups.groups[node.group].shape !== undefined){
+            if(options.groups[node.group].shape !== undefined){
               shape_group = true;
             }
           }
@@ -369,7 +502,7 @@ function resetOneNode(node, groups, options, network){
         } else if(node.shape !== undefined){
           final_shape = node.shape;
         } else if(shape_group){
-          final_shape = groups.groups[node.group].shape;
+          final_shape = options.groups[node.group].shape;
         } else if(shape_options){
           final_shape = options.nodes.shape;
         }
@@ -399,7 +532,7 @@ function resetOneNode(node, groups, options, network){
 }
 
 // Global function to reset all node
-function resetAllNodes(nodes, update, groups, options, network){
+function resetAllNodes(nodes, update, options, network){
   var nodesToReset = nodes.get({
     filter: function (item) {
       return item.isHardToRead === true;
@@ -420,7 +553,7 @@ function resetAllNodes(nodes, update, groups, options, network){
   }
 
   for (var i = 0; i < nodesToReset.length; i++) {
-    resetOneNode(nodesToReset[i], groups, options, network, type = "node");
+    resetOneNode(nodesToReset[i], options, network, type = "node");
 	// reset coordinates
     nodesToReset[i].x = undefined;
     nodesToReset[i].y = undefined;
@@ -429,7 +562,7 @@ function resetAllNodes(nodes, update, groups, options, network){
         var tmp_cluster_id = network.clustering.findNode(nodesToReset[i].id);
         // in case of multiple cluster...
         for(var j = 0; j < (tmp_cluster_id.length-1); j++) {
-          resetOneCluster(network.body.nodes[tmp_cluster_id[j]], groups, options, network);
+          resetOneCluster(network.body.nodes[tmp_cluster_id[j]], options, network);
         }
       }
     }
@@ -568,18 +701,19 @@ function imageNodeAsHardToRead(node, imageType, hideColor1, hideColor2, type){
 }
 
 // Global function to set one node as hard to read
-function nodeAsHardToRead(node, groups, options, hideColor1, hideColor2, network, type){
+function nodeAsHardToRead(node, options, hideColor1, hideColor2, network, type){
   var final_shape;
   var shape_group = false;
   var is_group = false;
 
+
   if(node.isHardToRead === false || node.isHardToRead === undefined){
 
     // have a group information & a shape defined in group ?
-    if(node.group !== undefined){
-      if(groups.groups[node.group] !== undefined){
+    if(node.group !== undefined && options.groups !== undefined){
+      if(options.groups[node.group] !== undefined){
         is_group = true;
-        if(groups.groups[node.group].shape !== undefined){
+        if(options.groups[node.group].shape !== undefined){
           shape_group = true;
         }
       }
@@ -595,7 +729,7 @@ function nodeAsHardToRead(node, groups, options, hideColor1, hideColor2, network
     if(node.shape !== undefined){
       final_shape = node.shape;
     } else if(shape_group){
-      final_shape = groups.groups[node.group].shape;
+      final_shape = options.groups[node.group].shape;
     } else if(shape_options){
       final_shape = options.nodes.shape;
     }
@@ -620,9 +754,9 @@ function nodeAsHardToRead(node, groups, options, hideColor1, hideColor2, network
         }
       } 
       // or in group ?
-      if(find_color === false && is_group && groups.groups[node.group].icon !== undefined){
-        if(groups.groups[node.group].icon.color !== undefined){
-          icon_color = groups.groups[node.group].icon.color;
+      if(find_color === false && is_group && options.groups !== undefined && options.groups[node.group].icon !== undefined){
+        if(options.groups[node.group].icon.color !== undefined){
+          icon_color = options.groups[node.group].icon.color;
           find_color = true;
         }
       }
@@ -665,8 +799,8 @@ function nodeAsHardToRead(node, groups, options, hideColor1, hideColor2, network
 function visNetworkdataframeToD3(df, type) {
 
   // variables we have specially to control
-  var nodesctrl = ["color", "fixed", "font", "icon", "shadow", "scaling", "shapeProperties", "chosen", "heightConstraint", "image", "margin", "widthConstraint"];
-  var edgesctrl = ["color", "font", "arrows", "shadow", "smooth", "scaling", "chosen", "widthConstraint"];
+  /*var nodesctrl = ["color", "fixed", "font", "icon", "shadow", "scaling", "shapeProperties", "chosen", "heightConstraint", "image", "margin", "widthConstraint"];
+  var edgesctrl = ["color", "font", "arrows", "shadow", "smooth", "scaling", "chosen", "widthConstraint"];*/
   
   var names = [];
   var colnames = [];
@@ -681,16 +815,16 @@ function visNetworkdataframeToD3(df, type) {
       if(ctrlname.length === 1){
         names.push( new Array(name));
       } else {
-        if(type === "nodes"){
+        /*if(type === "nodes"){
          toctrl = indexOf.call(nodesctrl, ctrlname[0], true);
         } else if(type === "edges"){
          toctrl = indexOf.call(edgesctrl, ctrlname[0], true);
         }
-        if(toctrl > -1){
+        if(toctrl > -1){*/
           names.push(ctrlname);
-        } else {
+        /*} else {
           names.push(new Array(name));
-        }
+        }*/
       }
       if (typeof(df[name]) !== "object" || typeof(df[name].length) === "undefined") {
           throw new Error("All fields must be arrays");
@@ -720,6 +854,11 @@ function visNetworkdataframeToD3(df, type) {
               item[names[col][0]][names[col][1]] = JSON.parse( '"'+'\\u' + df[colnames[col]][row] + '"');
             } else if(names[col][0] === "icon" && names[col][1] === "color"){
               item.color = df[colnames[col]][row];
+              item[names[col][0]][names[col][1]] = df[colnames[col]][row];
+            } else if(names[col][0] === "icon" && names[col][1] === "face"){
+              if(df[colnames[col]][row] === "'Font Awesome 5 Free'"){
+                item.icon.weight = "bold";
+              }
               item[names[col][0]][names[col][1]] = df[colnames[col]][row];
             } else{
               item[names[col][0]][names[col][1]] = df[colnames[col]][row];
@@ -770,6 +909,12 @@ function uniqueArray(arr, exclude_cluster, network) {
 
   return a;
 }
+
+function uniqueShiny(arr) {
+  return arr.filter(function (value, index, self) { 
+    return self.indexOf(value) === index;
+  });
+};
 // clone an object
 function clone(obj) {
     if(obj === null || typeof(obj) != 'object')
@@ -886,7 +1031,17 @@ function networkOpenCluster(params){
       var elid = this.body.container.id.substring(5);
       var fit = document.getElementById(elid).collapseFit;
       var resetHighlight = document.getElementById(elid).collapseResetHighlight;
-      this.openCluster(params.nodes[0]);
+      
+      if(document.getElementById(elid).collapseKeepCoord){
+        this.openCluster(params.nodes[0], 
+        {releaseFunction : function(clusterPosition, containedNodesPositions) {
+              return containedNodesPositions;
+            }
+        });
+      } else {
+        this.openCluster(params.nodes[0]);
+      }
+
       
       if(resetHighlight){
         document.getElementById("nodeSelect"+elid).value = "";
@@ -899,7 +1054,7 @@ function networkOpenCluster(params){
   }
 }
 
-function collapsedNetwork(nodes, fit, resetHighlight, clusterParams, treeParams, network, elid) {
+function collapsedNetwork(nodes, fit, resetHighlight, clusterParams, labelSuffix, treeParams, network, elid) {
   
   var set_position = true;
   var selectedNode;
@@ -936,7 +1091,9 @@ function collapsedNetwork(nodes, fit, resetHighlight, clusterParams, treeParams,
             },
             returnType :'Array'
           });
-              
+          
+          
+          
           for (j = 0; j < connectedToNodes.length; j++) {
             firstLevelNodes = firstLevelNodes.concat(connectedToNodes[j].to);
           }
@@ -979,7 +1136,7 @@ function collapsedNetwork(nodes, fit, resetHighlight, clusterParams, treeParams,
               finalClusterNodes = finalClusterNodes.concat(findnode[0]);
             }
           }
-    
+
           if(set_position){ 
             network.storePositions();
           }
@@ -1024,9 +1181,9 @@ function collapsedNetwork(nodes, fit, resetHighlight, clusterParams, treeParams,
                 }
                         
                 if(clusterOptions.label !== undefined){
-                  clusterOptions.label = clusterOptions.label + ' (cluster)'
+                  clusterOptions.label = clusterOptions.label + " " + labelSuffix;
                 } else {
-                  clusterOptions.label =  '(cluster)'
+                  clusterOptions.label =  labelSuffix;
                 }
                         
                 if(clusterOptions.borderWidth !== undefined){
@@ -1053,7 +1210,7 @@ function collapsedNetwork(nodes, fit, resetHighlight, clusterParams, treeParams,
               return clusterOptions;
             },
             clusterNodeProperties: {
-              allowSingleNodeCluster: false,
+              allowSingleNodeCluster: false
             }
           }
           network.cluster(clusterOptions);
@@ -1071,7 +1228,7 @@ function collapsedNetwork(nodes, fit, resetHighlight, clusterParams, treeParams,
   }
 };
 
-function uncollapsedNetwork(nodes, fit, resetHighlight, network, elid) {
+function uncollapsedNetwork(nodes, fit, resetHighlight, keepCoord, network, elid) {
   var selectedNode;
   var j;
   var arr_nodes = [];
@@ -1094,14 +1251,30 @@ function uncollapsedNetwork(nodes, fit, resetHighlight, network, elid) {
     selectedNode = '' + arr_nodes[inodes];
     if(selectedNode !== undefined){
         if(network.isCluster(selectedNode)){
-          network.openCluster(selectedNode)
+          if(keepCoord){
+            network.openCluster(selectedNode, 
+              {releaseFunction : function(clusterPosition, containedNodesPositions) {
+                    return containedNodesPositions;
+                  }
+              });
+          } else {
+            network.openCluster(selectedNode)
+          }
         } else {
           if(indexOf.call(nodes_in_clusters, selectedNode, true) > -1){
             // not a cluster into a cluster...
             if(selectedNode.search(/^cluster/i) === -1){
               cluster_node = network.clustering.findNode(selectedNode)[0];
               if(network.isCluster(cluster_node)){
-                network.openCluster(cluster_node)
+                if(keepCoord){
+                  network.openCluster(cluster_node, 
+                    {releaseFunction : function(clusterPosition, containedNodesPositions) {
+                          return containedNodesPositions;
+                        }
+                    });
+                } else {
+                  network.openCluster(cluster_node)
+                }
               }
             }
           }
@@ -1127,7 +1300,7 @@ if (HTMLWidgets.shinyMode){
       // get container id
       var el = document.getElementById("graph"+data.id);
       if(el){
-        collapsedNetwork(data.nodes, data.fit, data.resetHighlight, data.clusterOptions, undefined, el.chart, data.id)
+        collapsedNetwork(data.nodes, data.fit, data.resetHighlight, data.clusterOptions, data.labelSuffix, undefined, el.chart, data.id)
       }
   });
   
@@ -1136,7 +1309,7 @@ if (HTMLWidgets.shinyMode){
       // get container id
       var el = document.getElementById("graph"+data.id);
       if(el){
-        uncollapsedNetwork(data.nodes, data.fit, data.resetHighlight, el.chart, data.id)
+        uncollapsedNetwork(data.nodes, data.fit, data.resetHighlight, data.keepCoord, el.chart, data.id)
       }
   });
 
@@ -1197,6 +1370,7 @@ if (HTMLWidgets.shinyMode){
   Shiny.addCustomMessageHandler('visShinyOptions', function(data){
       // get container id
       var el = document.getElementById("graph"+data.id);
+      
       if(el){
         var network = el.chart;
         var options = el.options;
@@ -1212,6 +1386,44 @@ if (HTMLWidgets.shinyMode){
           }
         }
     
+        //*************************
+        // pre-treatment for icons (unicode)
+        //*************************
+        if(data.options.groups){
+          for (var gr in data.options.groups){
+            if(data.options.groups[gr].icon){
+              if(data.options.groups[gr].icon.code){
+                data.options.groups[gr].icon.code = JSON.parse( '"'+'\\u' + data.options.groups[gr].icon.code + '"');
+              }
+              if(data.options.groups[gr].icon.face){
+                if(data.options.groups[gr].icon.face === "'Font Awesome 5 Free'"){
+                  data.options.groups[gr].icon.weight = "bold"
+                }
+              }
+              if(data.options.groups[gr].icon.color){
+                data.options.groups[gr].color = data.options.groups[gr].icon.color;
+              }
+            }
+          }
+        }
+        
+        if(data.options.nodes){
+          if(data.options.nodes.icon){
+            if(data.options.nodes.icon.code){
+              data.options.nodes.icon.code = JSON.parse( '"'+'\\u' + data.options.nodes.icon.code + '"');
+            }
+            if(data.options.nodes.icon.face){
+              if(data.options.nodes.icon.face === "'Font Awesome 5 Free'"){
+                  data.options.nodes.icon.weight = "bold"
+              }
+            }
+            if(data.options.nodes.icon.color){
+              data.options.nodes.color = data.options.nodes.icon.color;
+            }
+          }
+        }
+
+        
         update(options, data.options);
         network.setOptions(options);
       }
@@ -1309,9 +1521,8 @@ if (HTMLWidgets.shinyMode){
       // get container id
       var el = document.getElementById("graph"+data.id);
       if(el){
-        var current_edges = el.edges.getDataSet();
         // return data in shiny
-        Shiny.onInputChange(data.input, current_edges._data);
+        Shiny.onInputChange(data.input, el.edges.get({returnType:"Object"}));
       }
   });
   
@@ -1323,9 +1534,8 @@ if (HTMLWidgets.shinyMode){
         if(data.addCoordinates){
           el.chart.storePositions();
         }
-        var current_nodes = el.nodes.getDataSet();
         // return data in shiny
-        Shiny.onInputChange(data.input, current_nodes._data);
+        Shiny.onInputChange(data.input, el.nodes.get({returnType:"Object"}));
       }
   });
   
@@ -1542,6 +1752,8 @@ if (HTMLWidgets.shinyMode){
             el.collapse = data.options.collapse.enabled;
             el.collapseFit = data.options.collapse.fit;
             el.collapseResetHighlight = data.options.collapse.resetHighlight;
+            el.collapseKeepCoord = data.options.collapse.keepCoord;
+            el.collapseLabelSuffix = data.options.collapse.labelSuffix;
             el.clusterOptions = data.options.collapse.clusterOptions;
           }
           
@@ -1563,6 +1775,9 @@ if (HTMLWidgets.shinyMode){
             }
             if(data.options.byselection.hideColor){
               el.byselectionColor = data.options.byselection.hideColor;
+            }
+            if(data.options.byselection.highlight !== undefined){
+              el.byselectionHighlight = data.options.byselection.highlight;
             }
           }
           
@@ -1679,8 +1894,10 @@ if (HTMLWidgets.shinyMode){
           
           // reset some parameters / data before
           if (main_el.selectActive === true | main_el.highlightActive === true) {
+
             //reset nodes
-            resetAllNodes(el.nodes, true, el.chart.groups, el.options, el.chart);
+            resetAllEdges(el.edges, el.highlightColor, el.byselectionColor, el.chart);
+            resetAllNodes(el.nodes, true, el.options, el.chart);
             
             if (main_el.selectActive === true){
               main_el.selectActive = false;
@@ -1765,7 +1982,7 @@ if (HTMLWidgets.shinyMode){
           // reset some parameters / date before
           if (main_el.selectActive === true | main_el.highlightActive === true) {
             //reset nodes
-            resetAllNodes(el.nodes, true, el.chart.groups, el.options, el.chart);
+            resetAllNodes(el.nodes, true, el.options, el.chart);
             
             if (main_el.selectActive === true){
               main_el.selectActive = false;
@@ -1921,14 +2138,16 @@ if (HTMLWidgets.shinyMode){
       // get container id
       var el = document.getElementById(data.id);
       if(el){
-        if(data.tree.updateShape != undefined){
-          el.tree.updateShape = data.tree.updateShape
-        }
-        if(data.tree.shapeVar != undefined){
-          el.tree.shapeVar = data.tree.shapeVar
-        }
-        if(data.tree.shapeY != undefined){
-          el.tree.shapeY = data.tree.shapeY
+      if(el.tree){
+          if(data.tree.updateShape != undefined){
+            el.tree.updateShape = data.tree.updateShape
+          }
+          if(data.tree.shapeVar != undefined){
+            el.tree.shapeVar = data.tree.shapeVar
+          }
+          if(data.tree.shapeY != undefined){
+            el.tree.shapeY = data.tree.shapeY
+          }
         }
       }
   });
@@ -1997,8 +2216,10 @@ HTMLWidgets.widget({
 
     if(x.byselection.enabled){
       el_id.byselectionColor = x.byselection.hideColor;
+      el_id.byselectionHighlight = x.byselection.highlight;
     } else {
       el_id.byselectionColor = 'rgba(200,200,200,0.5)';
+      el_id.byselectionHighlight = false;
     }
     
     if(x.idselection.enabled){
@@ -2012,12 +2233,16 @@ HTMLWidgets.widget({
         el_id.collapse = true;
         el_id.collapseFit = x.collapse.fit;
         el_id.collapseResetHighlight = x.collapse.resetHighlight;
+        el_id.collapseKeepCoord = x.collapse.keepCoord;
+        el_id.collapseLabelSuffix = x.collapse.labelSuffix;
         el_id.clusterOptions = x.collapse.clusterOptions;
       }
     } else {
       el_id.collapse = false;
       el_id.collapseFit = false;
       el_id.collapseResetHighlight = false;
+      el_id.collapseKeepCoord = true;
+      el_id.collapseLabelSuffix = " (cluster)";
       el_id.clusterOptions = undefined;
     }
     
@@ -2079,7 +2304,7 @@ HTMLWidgets.widget({
         instance.network.selectNodes([id]);
       }
       if(el_id.highlight){
-        neighbourhoodHighlight(instance.network.getSelection().nodes, "click", el_id.highlightAlgorithm);
+        neighbourhoodHighlight(instance.network.getSelection().nodes, "click", el_id.highlightAlgorithm, true);
       }else{
         if(init){
           selectNode = document.getElementById('nodeSelect'+el.id);
@@ -2192,6 +2417,11 @@ HTMLWidgets.widget({
           if(x.options.groups[gr].icon.code){
             x.options.groups[gr].icon.code = JSON.parse( '"'+'\\u' + x.options.groups[gr].icon.code + '"');
           }
+          if(x.options.groups[gr].icon.face){
+            if(x.options.groups[gr].icon.face === "'Font Awesome 5 Free'"){
+                x.options.groups[gr].icon.weight = "bold"
+            }
+          }
           if(x.options.groups[gr].icon.color){
             x.options.groups[gr].color = x.options.groups[gr].icon.color;
           }
@@ -2202,6 +2432,11 @@ HTMLWidgets.widget({
     if(x.options.nodes.icon){
         if(x.options.nodes.icon.code){
           x.options.nodes.icon.code = JSON.parse( '"'+'\\u' + x.options.nodes.icon.code + '"');
+        }
+        if(x.options.nodes.icon.face){
+          if(x.options.nodes.icon.face === "'Font Awesome 5 Free'"){
+              x.options.nodes.icon.weight = "bold"
+          }
         }
         if(x.options.nodes.icon.color){
           x.options.nodes.color = x.options.nodes.icon.color;
@@ -2373,6 +2608,11 @@ HTMLWidgets.widget({
         for (var nd in tmpnodes){
           if(tmpnodes[nd].icon  && !x.legend.nodesToDataframe){
             tmpnodes[nd].icon.code = JSON.parse( '"'+'\\u' + tmpnodes[nd].icon.code + '"');
+          }
+          if(tmpnodes[nd].icon  && tmpnodes[nd].icon.face){
+            if(tmpnodes[nd].icon.face === "'Font Awesome 5 Free'"){
+              tmpnodes[nd].icon.weight = "bold"
+            }
           }
         }
         // group control for y
@@ -2581,79 +2821,220 @@ HTMLWidgets.widget({
 
       var style = document.createElement('style');
       style.type = 'text/css';
-      style.appendChild(document.createTextNode(x.datacss));
+      style.appendChild(document.createTextNode(x.opts_manipulation.datacss));
       document.getElementsByTagName("head")[0].appendChild(style);
 
-      var div = document.createElement('div');
-      div.id = 'network-popUp';
+      var div_addnode = document.createElement('div');
+      div_addnode.id = 'addnode-popUp';
+      div_addnode.classList.add('network-popUp');
+      div_addnode.innerHTML = x.opts_manipulation.tab_add_node;
+      el_id.appendChild(div_addnode);
 
-      div.innerHTML = '<span id="operation">node</span> <br>\
-      <table style="margin:auto;"><tr>\
-      <td>id</td><td><input id="node-id" value="new value" disabled = true></td>\
-      </tr>\
-      <tr>\
-      <td>label</td><td><input id="node-label" value="new value"> </td>\
-      </tr></table>\
-      <input type="button" value="save" id="saveButton"></button>\
-      <input type="button" value="cancel" id="cancelButton"></button>';
-
-      el_id.appendChild(div);
-
-      options.manipulation.addNode = function(data, callback) {
-        document.getElementById('operation').innerHTML = "Add Node";
-        document.getElementById('node-id').value = data.id;
-        document.getElementById('node-label').value = data.label;
-        document.getElementById('saveButton').onclick = saveNode.bind(this, data, callback, "addNode");
-        document.getElementById('cancelButton').onclick = clearPopUp.bind();
-        document.getElementById('network-popUp').style.display = 'block';
-      };
-
-      options.manipulation.editNode = function(data, callback) {
-        document.getElementById('operation').innerHTML = "Edit Node";
-        document.getElementById('node-id').value = data.id;
-        document.getElementById('node-label').value = data.label;
-        document.getElementById('saveButton').onclick = saveNode.bind(this, data, callback, "editNode");
-        document.getElementById('cancelButton').onclick = cancelEdit.bind(this,callback);
-        document.getElementById('network-popUp').style.display = 'block';
-      };
-
-      options.manipulation.deleteNode = function(data, callback) {
-          var r = confirm("Do you want to delete " + data.nodes.length + " node(s) and " + data.edges.length + " edges ?");
-          if (r === true) {
-            deleteSubGraph(data, callback);
+      var div_editnode = document.createElement('div');
+      div_editnode.id = 'editnode-popUp';
+      div_editnode.classList.add('network-popUp');
+      div_editnode.innerHTML = x.opts_manipulation.tab_edit_node;
+      el_id.appendChild(div_editnode);
+      
+      var div_editedge = document.createElement('div');
+      div_editedge.id = 'editedge-popUp';
+      div_editedge.classList.add('network-popUp');
+      div_editedge.innerHTML = x.opts_manipulation.tab_edit_edge;
+      el_id.appendChild(div_editedge);
+      
+      if(x.options.manipulation.addNode === undefined){
+        options.manipulation.addNode = function(data, callback) {
+          document.getElementById('addnode-operation').innerHTML = "Add Node";
+          for (var nodecol = 0; nodecol < x.opts_manipulation.addNodeCols.length; nodecol++){
+            document.getElementById('addnode-' + x.opts_manipulation.addNodeCols[nodecol]).value = data[x.opts_manipulation.addNodeCols[nodecol]];
           }
-      };
+          document.getElementById('addnode-saveButton').onclick = saveNode.bind(this, data, callback, "addNode");
+          document.getElementById('addnode-cancelButton').onclick = clearPopUp.bind();
+          document.getElementById('addnode-popUp').style.display = 'block';
+        };
+      } else if(typeof(x.options.manipulation.addNode) === typeof(true)){
+        if(x.options.manipulation.addNode){
+          options.manipulation.addNode = function(data, callback) {
+            document.getElementById('addnode-operation').innerHTML = "Add Node";
+            for (var nodecol = 0; nodecol < x.opts_manipulation.addNodeCols.length; nodecol++){
+              document.getElementById('addnode-' + x.opts_manipulation.addNodeCols[nodecol]).value = data[x.opts_manipulation.addNodeCols[nodecol]];
+            }
+            document.getElementById('addnode-saveButton').onclick = saveNode.bind(this, data, callback, "addNode");
+            document.getElementById('addnode-cancelButton').onclick = clearPopUp.bind();
+            document.getElementById('addnode-popUp').style.display = 'block';
+          };
+        } else {
+          options.manipulation.addNode = false;
+        }
+      } else {
+        options.manipulation.addNode = x.options.manipulation.addNode;
+      }
 
-      options.manipulation.deleteEdge = function(data, callback) {
-          var r = confirm("Do you want to delete " + data.edges.length + " edges ?");
-          if (r === true) {
-            deleteSubGraph(data, callback);
+      if(x.options.manipulation.editNode === undefined){
+        options.manipulation.editNode = function(data, callback) {
+            var node_data = nodes.get(data.id);
+            document.getElementById('editnode-operation').innerHTML = "Edit Node";
+            for (var nodecol = 0; nodecol < x.opts_manipulation.editNodeCols.length; nodecol++){
+              document.getElementById('editnode-' + x.opts_manipulation.editNodeCols[nodecol]).value = node_data[x.opts_manipulation.editNodeCols[nodecol]];
+            }
+            document.getElementById('editnode-saveButton').onclick = saveNode.bind(this, data, callback, "editNode");
+            document.getElementById('editnode-cancelButton').onclick = cancelEdit.bind(this,callback);
+            document.getElementById('editnode-popUp').style.display = 'block';
+          };
+      } else if(typeof(x.options.manipulation.editNode) === typeof(true)){
+        if(x.options.manipulation.editNode){
+          options.manipulation.editNode = function(data, callback) {
+            var node_data = nodes.get(data.id);
+            document.getElementById('editnode-operation').innerHTML = "Edit Node";
+            for (var nodecol = 0; nodecol < x.opts_manipulation.editNodeCols.length; nodecol++){
+              document.getElementById('editnode-' + x.opts_manipulation.editNodeCols[nodecol]).value = node_data[x.opts_manipulation.editNodeCols[nodecol]];
+            }
+            document.getElementById('editnode-saveButton').onclick = saveNode.bind(this, data, callback, "editNode");
+            document.getElementById('editnode-cancelButton').onclick = cancelEdit.bind(this,callback);
+            document.getElementById('editnode-popUp').style.display = 'block';
+            };
+        } else {
+          options.manipulation.editNode = false;
+        }
+      } else {
+        options.manipulation.editNode = x.options.manipulation.editNode;
+      }
+  
+      if(x.options.manipulation.deleteNode === undefined){
+        options.manipulation.deleteNode = function(data, callback) {
+            var r = confirm("Do you want to delete " + data.nodes.length + " node(s) and " + data.edges.length + " edges ?");
+            if (r === true) {
+              deleteSubGraph(data, callback);
+            } else { clearPopUp(); callback(null); }
+        };
+      } else if(typeof(x.options.manipulation.deleteNode) === typeof(true)){
+        if(x.options.manipulation.deleteNode){
+          options.manipulation.deleteNode = function(data, callback) {
+              var r = confirm("Do you want to delete " + data.nodes.length + " node(s) and " + data.edges.length + " edges ?");
+              if (r === true) {
+                deleteSubGraph(data, callback);
+              } else { clearPopUp(); callback(null); }
+          };
+        } else {
+          options.manipulation.deleteNode = false;
+        }
+      } else {
+        options.manipulation.deleteNode = x.options.manipulation.deleteNode;
+      }
+
+      if(x.options.manipulation.deleteEdge === undefined){
+        options.manipulation.deleteEdge = function(data, callback) {
+            var r = confirm("Do you want to delete " + data.edges.length + " edges ?");
+            if (r === true) {
+              deleteSubGraph(data, callback);
+            } else { clearPopUp(); callback(null); }
+        };
+      } else if(typeof(x.options.manipulation.deleteEdge) === typeof(true)){
+        if(x.options.manipulation.deleteEdge){
+          options.manipulation.deleteEdge = function(data, callback) {
+              var r = confirm("Do you want to delete " + data.edges.length + " edges ?");
+              if (r === true) {
+                deleteSubGraph(data, callback);
+              } else { clearPopUp(); callback(null); }
+          };
+        } else {
+          options.manipulation.deleteEdge = false;
+        }
+      } else {
+        options.manipulation.deleteEdge = x.options.manipulation.deleteEdge;
+      }
+
+      if(x.options.manipulation.addEdge === undefined){
+        options.manipulation.addEdge = function(data, callback) {
+          if (data.from == data.to) {
+            var r = confirm("Do you want to connect the node to itself?");
+            if (r === true) {
+              saveEdge(data, callback, "addEdge");
+            }
           }
-      };
-
-      options.manipulation.addEdge = function(data, callback) {
-        if (data.from == data.to) {
-          var r = confirm("Do you want to connect the node to itself?");
-          if (r === true) {
+          else {
             saveEdge(data, callback, "addEdge");
           }
+        };
+      } else if(typeof(x.options.manipulation.addEdge) === typeof(true)){
+        if(x.options.manipulation.addEdge){
+          options.manipulation.addEdge = function(data, callback) {
+            if (data.from == data.to) {
+              var r = confirm("Do you want to connect the node to itself?");
+              if (r === true) {
+                saveEdge(data, callback, "addEdge");
+              }
+            }
+            else {
+              saveEdge(data, callback, "addEdge");
+            }
+          };
+        } else {
+          options.manipulation.addEdge = false;
         }
-        else {
-          saveEdge(data, callback, "addEdge");
-        }
-      };
-      
-      options.manipulation.editEdge = function(data, callback) {
-        if (data.from == data.to) {
-          var r = confirm("Do you want to connect the node to itself?");
-          if (r === true) {
-            saveEdge(data, callback, "editEdge");
+      } else {
+        options.manipulation.addEdge = x.options.manipulation.addEdge;
+      }
+
+      if(x.options.manipulation.editEdge === undefined){
+          if(x.opts_manipulation.tab_edit_edge){
+            options.manipulation.editEdge = {editWithoutDrag : function(data, callback) {
+              var edge_data = edges.get(data.id);
+              document.getElementById('editedge-operation').innerHTML = "Edit Edge";
+              for (var edgecol = 0; edgecol < x.opts_manipulation.editEdgeCols.length; edgecol++){
+                document.getElementById('editedge-' + x.opts_manipulation.editEdgeCols[edgecol]).value = edge_data[x.opts_manipulation.editEdgeCols[edgecol]];
+              }
+              document.getElementById('editedge-saveButton').onclick = saveEdge.bind(this, data, callback, "editEdgeCols");
+              document.getElementById('editedge-cancelButton').onclick = cancelEdit.bind(this,callback);
+              document.getElementById('editedge-popUp').style.display = 'block';
+            }
+            }
+          } else {
+            options.manipulation.editEdge = function(data, callback) {
+              if (data.from == data.to) {
+                var r = confirm("Do you want to connect the node to itself?");
+                if (r === true) {
+                  saveEdge(data, callback, "editEdge");
+                }
+              }
+              else {
+                saveEdge(data, callback, "editEdge");
+              }
+            };
           }
+      } else if(typeof(x.options.manipulation.editEdge) === typeof(true)){
+        if(x.options.manipulation.editEdge){
+          if(x.opts_manipulation.tab_edit_edge){
+            options.manipulation.editEdge = {editWithoutDrag : function(data, callback) {
+              var edge_data = edges.get(data.id);
+              document.getElementById('editedge-operation').innerHTML = "Edit Edge";
+              for (var edgecol = 0; edgecol < x.opts_manipulation.editEdgeCols.length; edgecol++){
+                document.getElementById('editedge-' + x.opts_manipulation.editEdgeCols[edgecol]).value = edge_data[x.opts_manipulation.editEdgeCols[edgecol]];
+              }
+              document.getElementById('editedge-saveButton').onclick = saveEdge.bind(this, data, callback, "editEdgeCols");
+              document.getElementById('editedge-cancelButton').onclick = cancelEdit.bind(this,callback);
+              document.getElementById('editedge-popUp').style.display = 'block';
+            }
+            }
+          } else {
+            options.manipulation.editEdge = function(data, callback) {
+              if (data.from == data.to) {
+                var r = confirm("Do you want to connect the node to itself?");
+                if (r === true) {
+                  saveEdge(data, callback, "editEdge");
+                }
+              }
+              else {
+                saveEdge(data, callback, "editEdge");
+              }
+            };
+          }
+        } else {
+          options.manipulation.editEdge = false;
         }
-        else {
-          saveEdge(data, callback, "editEdge");
-        }
-      };
+      } else {
+        options.manipulation.editEdge = x.options.manipulation.editEdge;
+      }
     }
     
     // create network
@@ -2675,6 +3056,7 @@ HTMLWidgets.widget({
       }
     }
       
+    //console.info(instance.network)  
     //save data for re-use and update
     document.getElementById("graph"+el.id).chart = instance.network;
     document.getElementById("graph"+el.id).options = options;
@@ -2711,7 +3093,7 @@ HTMLWidgets.widget({
     style.innerHTML = 'div.vis-tooltip {display : none}';
     document.getElementsByTagName('head')[0].appendChild(style);
 
-    var popupStyle = 'position: fixed;visibility:hidden;padding: 5px;white-space: nowrap;font-family: verdana;font-size:14px;font-color:#000000;background-color: #f5f4ed;-moz-border-radius: 3px;-webkit-border-radius: 3px;border-radius: 3px;border: 1px solid #808074;box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2)'
+    var popupStyle = 'position: fixed;visibility:hidden;padding: 5px;font-family: verdana;font-size:14px;font-color:#000000;background-color: #f5f4ed;-moz-border-radius: 3px;-webkit-border-radius: 3px;border-radius: 3px;border: 1px solid #808074;box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);max-width:400px;word-break: break-all'
     
     if(x.tooltipStyle !== undefined){
       popupStyle = x.tooltipStyle
@@ -2874,10 +3256,10 @@ HTMLWidgets.widget({
             }
           }
           if(value_in === false){ // not in selection, so as hard to read
-            nodeAsHardToRead(allNodes[nodeId], instance.network.groups, options, el_id.byselectionColor, el_id.highlightColor, instance.network, "node");
+            nodeAsHardToRead(allNodes[nodeId], options, el_id.byselectionColor, el_id.highlightColor, instance.network, "node");
           } else { // in selection, so reset if needed
             connectedNodes = connectedNodes.concat(allNodes[nodeId].id);
-            resetOneNode(allNodes[nodeId], instance.network.groups, options, instance.network);
+            resetOneNode(allNodes[nodeId], options, instance.network);
           }
           allNodes[nodeId].x = undefined;
           allNodes[nodeId].y = undefined;
@@ -2903,11 +3285,17 @@ HTMLWidgets.widget({
           edges.update(edgesHardToRead);
             
           nodes.update(updateArray);
+          
+          // select for highlight
+          if(el_id.highlight && x.nodes && el_id.byselectionHighlight){
+              neighbourhoodHighlight(connectedNodes, "click", el_id.highlightAlgorithm, false);
+              instance.network.selectNodes(connectedNodes)
+          }
         }
       }
       else if (el_id.selectActive === true) {
         //reset nodes
-        resetAllNodes(nodes, update, instance.network.groups, options, instance.network)
+        resetAllNodes(nodes, update, options, instance.network)
         el_id.selectActive = false
       }
     } 
@@ -2918,7 +3306,7 @@ HTMLWidgets.widget({
     var is_hovered = false;
     var is_clicked = false;
     
-    function neighbourhoodHighlight(params, action_type, algorithm) {
+    function neighbourhoodHighlight(params, action_type, algorithm, reset_selectedBy) {
 
       var nodes_in_clusters = instance.network.body.modules.clustering.clusteredNodes;
       var have_cluster_nodes = false;
@@ -2982,11 +3370,11 @@ HTMLWidgets.widget({
           // mark all nodes as hard to read.
           for (var nodeId in instance.network.body.nodes) {
             if(instance.network.isCluster(nodeId)){
-              nodeAsHardToRead(instance.network.body.nodes[nodeId], instance.network.groups, options, el_id.highlightColor, el_id.byselectionColor, instance.network, "cluster");
+              nodeAsHardToRead(instance.network.body.nodes[nodeId], options, el_id.highlightColor, el_id.byselectionColor, instance.network, "cluster");
             }else {
               var tmp_node = allNodes[nodeId];
               if(tmp_node !== undefined){
-                nodeAsHardToRead(tmp_node, instance.network.groups, options, el_id.highlightColor, el_id.byselectionColor, instance.network, "node");
+                nodeAsHardToRead(tmp_node, options, el_id.highlightColor, el_id.byselectionColor, instance.network, "node");
                 tmp_node.x = undefined;
                 tmp_node.y = undefined;
               }
@@ -3049,20 +3437,30 @@ HTMLWidgets.widget({
 
             // all in degree nodes get their own color and their label back + main nodes
             connectedNodes = connectedNodes.concat(selectedNode);
+            
+            if (window.Shiny){
+              Shiny.onInputChange(el.id + '_highlight_color_id', uniqueShiny(connectedNodes));
+            }
+            if(el_id.highlightLabelOnly === true){
+              if (window.Shiny){
+                Shiny.onInputChange(el.id + '_highlight_label_id', allConnectedNodes.filter(function(x){ return !connectedNodes.includes(x)}));
+              }
+            }  
+   
             array_cluster_id = [];
             for (i = 0; i < connectedNodes.length; i++) {
-              resetOneNode(allNodes[connectedNodes[i]], instance.network.groups, options, instance.network);
+              resetOneNode(allNodes[connectedNodes[i]], options, instance.network);
               if(have_cluster_nodes){
                 if(indexOf.call(nodes_in_clusters, connectedNodes[i], true) > -1){
                   array_cluster_id = array_cluster_id.concat(instance.network.clustering.findNode(connectedNodes[i])[0]);
                 }
               }
             }
-
+            
             if(array_cluster_id.length > 0){
               array_cluster_id = uniqueArray(array_cluster_id, false, instance.network);
               for (i = 0; i < array_cluster_id.length; i++) {
-                resetOneCluster(instance.network.body.nodes[array_cluster_id[i]], instance.network.groups, options, instance.network);
+                resetOneCluster(instance.network.body.nodes[array_cluster_id[i]], options, instance.network);
               }
             }
             
@@ -3097,7 +3495,6 @@ HTMLWidgets.widget({
               }
             }
             edges.update(edgesHardToRead);
-            
           } else if(algorithm === "hierarchical"){
             
             var degree_from = degrees.from;
@@ -3232,7 +3629,7 @@ HTMLWidgets.widget({
             // all in degree nodes get their own color and their label back
             array_cluster_id = [];
             for (i = 0; i < allConnectedNodes.length; i++) {
-              resetOneNode(allNodes[allConnectedNodes[i]], instance.network.groups, options, instance.network);
+              resetOneNode(allNodes[allConnectedNodes[i]], options, instance.network);
               if(have_cluster_nodes){
                 if(indexOf.call(nodes_in_clusters, allConnectedNodes[i], true) > -1){
                   array_cluster_id = array_cluster_id.concat(instance.network.clustering.findNode(allConnectedNodes[i])[0]);
@@ -3243,10 +3640,19 @@ HTMLWidgets.widget({
             if(array_cluster_id.length > 0){
               array_cluster_id = uniqueArray(array_cluster_id, false, instance.network);
               for (i = 0; i < array_cluster_id.length; i++) {
-                 resetOneCluster(instance.network.body.nodes[array_cluster_id[i]], instance.network.groups, options, instance.network);
+                 resetOneCluster(instance.network.body.nodes[array_cluster_id[i]], options, instance.network);
               }
             }
              
+            if (window.Shiny){ 
+              Shiny.onInputChange(el.id + '_highlight_color_id', uniqueShiny(allConnectedNodes));
+            }
+            if(el_id.highlightLabelOnly === true){
+              if (window.Shiny){
+                Shiny.onInputChange(el.id + '_highlight_label_id', nodesWithLabel.filter(function(x) {return !allConnectedNodes.includes(x)}));
+              }
+            }  
+            
             // set some edges as hard to read
             var edgesHardToRead = edges.get({
               fields: ['id', 'color', 'hiddenColor', 'hiddenLabel', 'label'],
@@ -3303,13 +3709,18 @@ HTMLWidgets.widget({
             resetList("nodeSelect", el.id, 'selected');
           }
           //reset nodes
-          resetAllNodes(nodes, update, instance.network.groups, options, instance.network)
+          resetAllNodes(nodes, update, options, instance.network)
           el_id.highlightActive = false;
           is_clicked = false;
+          
+          if (window.Shiny){
+            Shiny.onInputChange(el.id + '_highlight_label_id', null)
+            Shiny.onInputChange(el.id + '_highlight_color_id', null)
+          }
         }
       }
       // reset selectedBy list if actived
-      if(el_id.byselection){
+      if(el_id.byselection && reset_selectedBy){
         resetList("selectedBy", el.id, 'selectedBy');
       }
     }
@@ -3347,16 +3758,16 @@ HTMLWidgets.widget({
     // shared click function (selectedNodes)
     document.getElementById("graph"+el.id).myclick = function(params){
         if(el_id.highlight && x.nodes){
-          neighbourhoodHighlight(params.nodes, "click", el_id.highlightAlgorithm);
+          neighbourhoodHighlight(params.nodes, "click", el_id.highlightAlgorithm, true);
         }else if((el_id.idselection || el_id.byselection) && x.nodes){
           onClickIDSelection(params)
-        } 
+        }
     };
     
     // Set event in relation with highlightNearest      
     instance.network.on("click", function(params){
         if(el_id.highlight && x.nodes){
-          neighbourhoodHighlight(params.nodes, "click", el_id.highlightAlgorithm);
+          neighbourhoodHighlight(params.nodes, "click", el_id.highlightAlgorithm, true);
         }else if((el_id.idselection || el_id.byselection) && x.nodes){
           onClickIDSelection(params)
         } 
@@ -3364,13 +3775,13 @@ HTMLWidgets.widget({
     
     instance.network.on("hoverNode", function(params){
       if(el_id.hoverNearest && x.nodes){
-        neighbourhoodHighlight([params.node], "hover", el_id.highlightAlgorithm);
+        neighbourhoodHighlight([params.node], "hover", el_id.highlightAlgorithm, true);
       } 
     });
 
     instance.network.on("blurNode", function(params){
       if(el_id.hoverNearest && x.nodes){
-        neighbourhoodHighlight([], "hover", el_id.highlightAlgorithm);
+        neighbourhoodHighlight([], "hover", el_id.highlightAlgorithm, true);
       }      
     });
     
@@ -3379,8 +3790,9 @@ HTMLWidgets.widget({
     //*************************
     instance.network.on("doubleClick", function(params){
       if(el_id.collapse){
-        collapsedNetwork(params.nodes, el_id.collapseFit, el_id.collapseResetHighlight, el_id.clusterOptions, 
-        el_id.tree, instance.network, el.id) 
+        collapsedNetwork(params.nodes, el_id.collapseFit, el_id.collapseResetHighlight, 
+          el_id.clusterOptions, el_id.collapseLabelSuffix,
+          el_id.tree, instance.network, el.id) 
       }
     }); 
     
@@ -3395,6 +3807,7 @@ HTMLWidgets.widget({
     div_footer.id = "footer"+el.id;
     div_footer.setAttribute('style',  'font-family:Georgia, Times New Roman, Times, serif;font-size:12px;text-align:center;background-color: inherit;');
     div_footer.style.display = 'none';
+
     document.getElementById("graph" + el.id).appendChild(div_footer);  
     if(x.footer !== null){
       div_footer.innerHTML = x.footer.text;
@@ -3478,29 +3891,96 @@ HTMLWidgets.widget({
     // dataManipulation
     //*************************
     function clearPopUp() {
-      document.getElementById('saveButton').onclick = null;
-      document.getElementById('cancelButton').onclick = null;
-      document.getElementById('network-popUp').style.display = 'none';
+      if(x.opts_manipulation.tab_add_node){
+        document.getElementById('addnode-saveButton').onclick = null;
+        document.getElementById('addnode-cancelButton').onclick = null;
+        document.getElementById('addnode-popUp').style.display = 'none';
+      }
+
+      if(x.opts_manipulation.tab_edit_node){
+        document.getElementById('editnode-saveButton').onclick = null;
+        document.getElementById('editnode-cancelButton').onclick = null;
+        document.getElementById('editnode-popUp').style.display = 'none';
+      }
+      
+      if(x.opts_manipulation.tab_edit_edge){
+        document.getElementById('editedge-saveButton').onclick = null;
+        document.getElementById('editedge-cancelButton').onclick = null;
+        document.getElementById('editedge-popUp').style.display = 'none';
+      }
     }
 
     function saveNode(data, callback, cmd) {
-      data.id = document.getElementById('node-id').value;
-      data.label = document.getElementById('node-label').value;
+      var iname;
+      var prediv;
+      if(cmd === "addNode"){
+        iname = "addNodeCols";
+        prediv = 'addnode-';
+      } else  {
+        iname = "editNodeCols";
+        prediv = 'editnode-';
+      }
+      var obj = {id : data.id}
+      for (var nodecol = 0; nodecol < x.opts_manipulation[iname].length; nodecol++){
+        var add_node_val = document.getElementById(prediv + x.opts_manipulation[iname][nodecol]).value;
+        var add_node_type = document.getElementById(prediv + x.opts_manipulation[iname][nodecol]).type;
+        if(add_node_type && add_node_type === "number"){
+          add_node_val = parseFloat(add_node_val)
+        }
+        if(add_node_val !== "undefined"){
+          obj[x.opts_manipulation[iname][nodecol]] = add_node_val
+        }
+      }
+
+      var update_obj = clone(obj);
+      update_obj.x = data.x;
+      update_obj.y = data.y;
+      nodes.update(update_obj);
+      
       if (window.Shiny){
-        var obj = {cmd: cmd, id: data.id, label: data.label}
+        obj.cmd = cmd;
         Shiny.onInputChange(el.id + '_graphChange', obj);
       }
       clearPopUp();
-      callback(data);
+      callback(null);
     }
 
     function saveEdge(data, callback, cmd) {
-      callback(data); //must be first called for egde id !
-      if (window.Shiny){
-        var obj = {cmd: cmd, id: data.id, from: data.from, to: data.to};
-        Shiny.onInputChange(el.id + '_graphChange', obj);
+      if(cmd === "editEdge"){
+        callback(data); //must be first called for egde id !
+        if (window.Shiny){
+          var obj = {cmd: cmd, id: data.id, from: data.from, to: data.to};
+          Shiny.onInputChange(el.id + '_graphChange', obj);
+        }
+      } else if(cmd === "addEdge"){
+        callback(data); //must be first called for egde id !
+        if (window.Shiny){
+          var obj = {cmd: cmd, id: data.id, from: data.from, to: data.to};
+          Shiny.onInputChange(el.id + '_graphChange', obj);
+        }
+      } else if(cmd === "editEdgeCols"){
+        for (var edgecol = 0; edgecol < x.opts_manipulation.editEdgeCols.length; edgecol++){
+          var add_edge_val = document.getElementById("editedge-" + x.opts_manipulation.editEdgeCols[edgecol]).value;
+          var add_edge_type = document.getElementById("editedge-" + x.opts_manipulation.editEdgeCols[edgecol]).type;
+          if(add_edge_type && add_edge_type === "number"){
+            add_edge_val = parseFloat(add_edge_val)
+          }
+          if(add_edge_val !== "undefined"){
+            data[x.opts_manipulation.editEdgeCols[edgecol]] = add_edge_val
+          }
+        }
+        if (window.Shiny){
+          var obj = {cmd: "editEdge", id : data.id}
+          for (var edgecol = 0; edgecol < x.opts_manipulation.editEdgeCols.length; edgecol++){
+            if(data[x.opts_manipulation.editEdgeCols[edgecol]] !== "undefined"){
+              obj[x.opts_manipulation.editEdgeCols[edgecol]] = data[x.opts_manipulation.editEdgeCols[edgecol]];
+            }
+          }
+          Shiny.onInputChange(el.id + '_graphChange', obj);
+        }
+        callback(data);
+        clearPopUp();
       }
-      
     }
 
     function deleteSubGraph(data, callback) {
@@ -3529,12 +4009,25 @@ HTMLWidgets.widget({
       el_id.appendChild(clusterbutton);
       
       clusterbutton.onclick =  function(){
-        instance.network.setData(data);
+        // reset some parameters / data before
+        if (el_id.selectActive === true | el_id.highlightActive === true) {
+          //reset nodes
+          neighbourhoodHighlight([], "click", el_id.highlightAlgorithm, true);
+          if (el_id.selectActive === true){
+            el_id.selectActive = false;
+            resetList('selectedBy',el.id, 'selectedBy');
+          }
+          if (el_id.highlightActive === true){
+            el_id.highlightActive = false;
+            resetList('nodeSelect', el.id, 'selected');
+          }
+        }
+        //instance.network.setData(data);
         if(x.clusteringColor){
           clusterByColor();
         }
         if(x.clusteringGroup){
-          clusterByGroup();
+          clusterByGroup(x.clusteringGroup.groups);
         }
         if(x.clusteringHubsize){
           clusterByHubsize();
@@ -3549,11 +4042,25 @@ HTMLWidgets.widget({
     if(x.clusteringGroup || x.clusteringColor || x.clusteringOutliers || x.clusteringHubsize || x.clusteringConnection){
       // if we click on a node, we want to open it up!
       instance.network.on("doubleClick", function (params){
+        
         if (params.nodes.length === 1) {
           if (instance.network.isCluster(params.nodes[0]) === true) {
+            is_clicked = false;
             instance.network.openCluster(params.nodes[0], {releaseFunction : function(clusterPosition, containedNodesPositions) {
               return containedNodesPositions;
             }});
+          } else {
+            if(x.clusteringGroup){
+              var array_group = nodes.get({
+                fields: ['group'],
+                filter: function (item) {
+                  return  item.id === params.nodes[0] ;
+                },
+                returnType :'Array'
+              });
+            
+              clusterByGroup([array_group[0].group]);
+            }
           }
         }
       });
@@ -3579,8 +4086,12 @@ HTMLWidgets.widget({
       function clusterByHubsize() {
         var clusterOptionsByData = {
           processProperties: function(clusterOptions, childNodes) {
+            var cluster_level = 9999999
                   for (var i = 0; i < childNodes.length; i++) {
                       //totalMass += childNodes[i].mass;
+                      if(childNodes[i].level){
+                        cluster_level = Math.min(cluster_level, childNodes[i].level)
+                      }
                       if(i === 0){
                         //clusterOptions.shape =  childNodes[i].shape;
                         clusterOptions.color =  childNodes[i].color.background;
@@ -3594,6 +4105,9 @@ HTMLWidgets.widget({
                       }
                   }
             clusterOptions.label = "[" + childNodes.length + "]";
+            if(cluster_level !== 9999999){
+              clusterOptions.level = cluster_level
+            }
             return clusterOptions;
           },
           clusterNodeProperties: {borderWidth:3, shape:'box', font:{size:30}}
@@ -3618,28 +4132,37 @@ HTMLWidgets.widget({
         var clusterOptionsByData;
         for (var i = 0; i < colors.length; i++) {
           var color = colors[i];
+          var sh = x.clusteringColor.shape[i];
+          var force = x.clusteringColor.force[i];
           clusterOptionsByData = {
               joinCondition: function (childOptions) {
                   return childOptions.color.background == color; // the color is fully defined in the node.
               },
               processProperties: function (clusterOptions, childNodes, childEdges) {
                   var totalMass = 0;
+                  var cluster_level = 9999999;
                   for (var i = 0; i < childNodes.length; i++) {
                       totalMass += childNodes[i].mass;
-                      if(x.clusteringColor.force === false){
+                      if(childNodes[i].level){
+                        cluster_level = Math.min(cluster_level, childNodes[i].level)
+                      }
+                      if(force === false){
                         if(i === 0){
                           clusterOptions.shape =  childNodes[i].shape;
                         }else{
                           if(childNodes[i].shape !== clusterOptions.shape){
-                            clusterOptions.shape = x.clusteringColor.shape;
+                            clusterOptions.shape = sh;
                           }
                         }
                       } else {
-                        clusterOptions.shape = x.clusteringColor.shape;
+                        clusterOptions.shape = sh;
                       }
 
                   }
                   clusterOptions.value = totalMass;
+                  if(cluster_level !== 9999999){
+                    clusterOptions.level = cluster_level
+                  }
                   return clusterOptions;
               },
               clusterNodeProperties: {id: 'cluster:' + color, borderWidth: 3, color:color, label: x.clusteringColor.label + color}
@@ -3656,46 +4179,62 @@ HTMLWidgets.widget({
     //*************************
     if(x.clusteringGroup){
       
-      function clusterByGroup() {
-        var groups = x.clusteringGroup.groups;
+      function clusterByGroup(groups) {
         var clusterOptionsByData;
         for (var i = 0; i < groups.length; i++) {
           var group = groups[i];
-          clusterOptionsByData = {
-              joinCondition: function (childOptions) {
-                  return childOptions.group == group; //
-              },
-              processProperties: function (clusterOptions, childNodes, childEdges) {
-                //console.info(clusterOptions);
-                  var totalMass = 0;
-                  for (var i = 0; i < childNodes.length; i++) {
-                      totalMass += childNodes[i].mass;
-                      if(x.clusteringGroup.force === false){
-                        if(i === 0){
-                          clusterOptions.shape =  childNodes[i].shape;
-                          clusterOptions.color =  childNodes[i].color.background;
-                        }else{
-                          if(childNodes[i].shape !== clusterOptions.shape){
-                            clusterOptions.shape = x.clusteringGroup.shape;
-                          }
-                          if(childNodes[i].color.background !== clusterOptions.color){
-                            clusterOptions.color = x.clusteringGroup.color;
-                          }
+          var j = x.clusteringGroup.groups.indexOf(group);
+          if(j !== -1) {
+            var col = x.clusteringGroup.color[j];
+            var sh = x.clusteringGroup.shape[j];
+            var force = x.clusteringGroup.force[j];
+            var sc_size = x.clusteringGroup.scale_size[j];
+            
+            clusterOptionsByData = {
+                joinCondition: function (childOptions) {
+                    return childOptions.group == group; //
+                },
+                processProperties: function (clusterOptions, childNodes, childEdges) {
+                    var totalMass = 0;
+                    var cluster_level = 9999999;
+                    for (var i = 0; i < childNodes.length; i++) {
+                        totalMass += childNodes[i].mass;
+                        if(childNodes[i].level){
+                          cluster_level = Math.min(cluster_level, childNodes[i].level)
                         }
-                      } else {
-                        clusterOptions.shape = x.clusteringGroup.shape;
-                        clusterOptions.color = x.clusteringGroup.color;
-                      }
-                  }
-                  clusterOptions.value = totalMass;
-                  return clusterOptions;
-              },
-              clusterNodeProperties: {id: 'cluster:' + group, borderWidth: 3, label:x.clusteringGroup.label + group}
+                        if(force === false){
+                          if(i === 0){
+                            clusterOptions.shape =  childNodes[i].shape;
+                            clusterOptions.color =  childNodes[i].color.background;
+                          }else{
+                            if(childNodes[i].shape !== clusterOptions.shape){
+                              clusterOptions.shape = sh;
+                            }
+                            if(childNodes[i].color.background !== clusterOptions.color){
+                              clusterOptions.color = col;
+                            }
+                          }
+                        } else {
+                          clusterOptions.shape = sh;
+                          clusterOptions.color = col;
+                        }
+                    }
+                    if(sc_size){
+                       clusterOptions.value = totalMass;
+                    }
+                    if(cluster_level !== 9999999){
+                      clusterOptions.level = cluster_level
+                    }
+                    return clusterOptions;
+                },
+                clusterNodeProperties: {id: 'cluster:' + group, borderWidth: 3, label:x.clusteringGroup.label + group}
+            }
+            instance.network.cluster(clusterOptionsByData);
           }
-          instance.network.cluster(clusterOptionsByData);
+
         }
       }
-      clusterByGroup();
+      clusterByGroup(x.clusteringGroup.groups);
     }
   
     //*************************
@@ -3735,14 +4274,22 @@ HTMLWidgets.widget({
             processProperties: function (clusterOptions, childNodes) {
                 clusterIndex = clusterIndex + 1;
                 var childrenCount = 0;
+                var cluster_level = 9999999;
                 for (var i = 0; i < childNodes.length; i++) {
                     childrenCount += childNodes[i].childrenCount || 1;
+                    if(childNodes[i].level){
+                      cluster_level = Math.min(cluster_level, childNodes[i].level)
+                    }
                 }
                 clusterOptions.childrenCount = childrenCount;
                 clusterOptions.label = "# " + childrenCount + "";
                 clusterOptions.font = {size: childrenCount*5+30}
                 clusterOptions.id = 'cluster:' + clusterIndex;
                 clusters.push({id:'cluster:' + clusterIndex, scale:scale});
+                
+                if(cluster_level !== 9999999){
+                  clusterOptions.level = cluster_level
+                }
                 return clusterOptions;
             },
             clusterNodeProperties: {borderWidth: 3, shape: 'database', font: {size: 30}}
@@ -3796,10 +4343,12 @@ HTMLWidgets.widget({
           instance.network.redraw();
         if(instance.legend)
           instance.legend.redraw();
-      }, 200);
-    }
+      }, 250);
+    };
+    
     if(x.iconsRedraw !== undefined){
       if(x.iconsRedraw){
+        iconsRedraw();
         instance.network.once("stabilized", function(){iconsRedraw();})
       }
     }

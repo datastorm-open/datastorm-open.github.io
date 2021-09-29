@@ -60,6 +60,7 @@ visNetwork(nodes, edges, width = "100%")
 Besides the help R functions, a vignette is available, and you can access and read the full javascript API from R using  **visDocumentation()**:
 
 ```{r, eval = FALSE}
+# javascrtip api
 visDocumentation()
 vignette("Introduction-to-visNetwork") # with CRAN version
 # shiny example

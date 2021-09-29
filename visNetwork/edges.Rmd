@@ -85,7 +85,7 @@ visNetwork(nodes, edges, width = "100%") %>%
 
 ## Use complex configuration individually
 
-Available since __visNetwork_0.2.1__. When options are available using a list, you can use it in a data.frame with specific notation like this : 
+When options are available using a list, you can use it in a data.frame with specific notation like this : 
 
 
 ```{r}
