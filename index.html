@@ -1,4 +1,79 @@
-<a href="DependenciesGraphs/index.html">DependenciesGraphs</a> - 
-<a href="introduction_ramcharts/index.html">rAmCharts3</a> - 
-<a href="shinymanager/index.html">shinymanageer</a> -
-<a href="visNetwork/index.html">visNetwork</a>
+<HEAD>
+  <title>L'Open-Source de Datastorm</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="src/base_w3.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</HEAD>
+<BODY>
+  <div class="w3-bar w3-border w3-light-grey">
+   <!-- <a href="/" class="w3-bar-item w3-button">Retour à l'accueil</a>-->
+   <a href="#" class="w3-bar-item w3-button">Nous contacter</a>
+   <a href="https://github.com/datastorm-open" class="w3-bar-item w3-button">Nous suivre sur GitHub</a>
+   <a href="https://www.linkedin.com/company/12612427" class="w3-bar-item w3-button">Nous suivre sur LinkedIn</a>
+   <a href="#" class="w3-bar-item w3-button w3-green w3-right">Plus d'infos sur Datastorm</a>
+ </div>
+
+  <!-- START NAV BAR -->
+ <div class="w3-sidebar w3-bar-block w3-light-grey w3-card" style="width:20%">
+   <script>
+     function accordionHandler(elemID) {
+       var x = document.getElementById(elemID);
+       if (x.className.indexOf("w3-show") == -1) {
+         x.className += " w3-show";
+         x.previousElementSibling.className += " w3-green";
+       } else {
+         x.className = x.className.replace(" w3-show", "");
+         x.previousElementSibling.className =
+         x.previousElementSibling.className.replace(" w3-green", "");
+       }
+     }
+   </script>
+
+   <button class="w3-button w3-block w3-left-align" onclick="accordionHandler('demoAcc')">
+   Nos apps de démo <i class="fa fa-caret-down"></i>
+   </button>
+   <div id="demoAcc" class="w3-hide w3-white w3-card">
+     <a href="#overview_demo" class="w3-bar-item w3-button">Vue d'ensemble</a>
+     <a href="https://github.com/datastorm-open/demo_speech2text" class="w3-bar-item w3-button">Démo Speech2Text</a>
+     <a href="https://github.com/datastorm-open/demo_webinar_anonymization" class="w3-bar-item w3-button">Webinaire anonymisation</a>
+     <a href="https://github.com/datastorm-open/demo_webinar_mlops" class="w3-bar-item w3-button">Webinaire MLOps</a>
+   </div>
+
+   <button class="w3-button w3-block w3-left-align" onclick="accordionHandler('rprojAcc')">
+   Nos packages Python <i class="fa fa-caret-down"></i>
+   </button>
+   <div id="rprojAcc" class="w3-hide w3-white w3-card">
+     <a href="#overview_pkg_py" class="w3-bar-item w3-button">Vue d'ensemble</a>
+   </div>
+
+  <button class="w3-button w3-block w3-left-align" onclick="accordionHandler('pyProjAcc')">
+  Nos packages R <i class="fa fa-caret-down"></i>
+  </button>
+  <div id="pyProjAcc" class="w3-hide w3-white w3-card">
+    <a href="#overview_pkg_r" class="w3-bar-item w3-button">Vue d'ensemble</a>
+    <a href="DependenciesGraphs/index.html" class="w3-bar-item w3-button">DependenciesGraphs</a>
+    <a href="introduction_ramcharts/index.html" class="w3-bar-item w3-button">rAmCharts3</a>
+    <a href="shinymanager/index.html" class="w3-bar-item w3-button">shinymanager</a>
+    <a href="visNetwork/index.html" class="w3-bar-item w3-button">visNetwork</a>
+  </div>
+</div>
+<!-- END NAV BAR -->
+
+<div style="margin-left:23%">
+
+<h1>L'Open-Source de Datastorm</h1>
+<p>... paragraphe 1: intro ds ...</p>
+<p>... paragraphe 2: intro open-source ds ...</p>
+
+<h2 id="overview_demo">Nos apps de démo</h2>
+<p>... paragraphe 3: overview app demo ...</p>
+
+<h2 id="overview_pkg_py">Nos packages Python</h2>
+<p>... paragraphe 4: overview pkg py ...</p>
+
+<h2 id="overview_pkg_r">Nos packages R</h2>
+<p>... paragraphe 5: overview pkg r ...</p>
+
+</div>
+
+</BODY>
