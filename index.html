@@ -64,7 +64,8 @@
 <h1>L'Open-Source de Datastorm</h1>
 <p>Datastorm délivre une expertise et des services data aux entreprises et aux organismes publics.</p>
 <p>Son modèle unique associe l’ingénierie d’une équipe de data scientists à l’expertise scientifique des chercheurs de l’ENSAE Paris, de l’ENSAI, des laboratoires associés de l’Institut Polytechnique de Paris et d’autres laboratoires de recherche spécialisés.</p>
-<p>... paragraphe 2: intro open-source ds ...</p>
+<p>Datastorm met de l’open source dans tous ses projets data. Mais pas seulement. Ses équipes apportent aussi leur contribution à la communauté en développant notamment des packages R.</p>
+<!-- reprendre https://www.datastorm.fr/open-source-pour-la-data-science-les-solutions-shiny-de-datastorm/ -->
 
 <h2 id="overview_demo">Nos apps de démo</h2>
 <p>... paragraphe 3: overview app demo ...</p>
@@ -74,6 +75,49 @@
 
 <h2 id="overview_pkg_r">Nos packages R</h2>
 <p>... paragraphe 5: overview pkg r ...</p>
+
+<h3>shinyManager</h3>
+
+<p>Chez Datastorm, la question de la sécurisation de l’accès à nos applications shiny est primordiale. Face à cette problématique, nous avons développé shinymanager, une solution gratuite et simple d’utilisation. Un best seller téléchargé plus de 2000 fois par mois. Le package shinymanager est sur le CRAN depuis juin 2019, et il a naturellement trouvé assez rapidement son public. Lequel a d’ailleurs contribué a son enrichissement puisque six langues sont maintenant disponibles dans le package : français, anglais, allemand, espagnol, portugais et polonais.</p>
+
+<p>Shinymanager utilise des requêtes http couplées à des tokens sha256 temporaires afin de garantir l’accès à l’application. Avec ce système, le code source de l’application est totalement protégé. En complément,
+la base de données d’authentification SQLite est chiffrée à l’aide d’openssl et d’une clé de chiffrement et les mots de passe sont hashés avec scrypt,
+ce qui garantie leur confidentialité.</p>
+
+<h3>shinymodules</h3>
+
+<p>Ce package est constitué de 4 modules permettant d’explorer rapidement un set de données. Certes, Shinymodules peut paraître un peu « fourre-tout » car il est né de notre besoin de mutualiser les différents développements réalisés pour nos projets… et ne pas réinventer la roue en permanence.  Mais attention, on trouve dans Shinymodules des fonctionnalités très utiles que nous utilisons au quotidien dans les applications développées pour les équipes métier de nos clients. Bref, un must have !</p>
+
+<h3>ShinyBatch</h3>
+
+<p> Shinybatch est la solution idéale lorsqu’un utilisateur métier a besoin de paramétrer et lancer un calcul gros consommateur de ressources (temps, CPU, RAM, …) sans surcharger le serveur et bloquer les autres utilisateurs.Et oui, on a tous connu cette situation : Si on lance le calcul directement dans la session shiny, l’utilisateur devra attendre la fin de son exécution pour pouvoir continuer à explorer l’application. En prime, il risque
+de bloquer les autres utilisateurs potentiels… On peut aussi utiliser de la programmation asynchrone avec les packages promise et future. On déporte le calcul en dehors de l’application shiny,
+l’utilisateur peut alors continuer à travailler en attendant de récupérer son résultat sans bloquer les autres utilisateurs. C’est donc très pertinent pour des calculs qui nécessitent quelques secondes voir quelques minutes.</p>
+  
+<p>Au-delà, il faut trouver une alternative. Shinybatch a donc été développé pour faciliter la gestion de ce type de calcul, avec :</p>
+
+  <ul>
+    <li>Un module pour configurer une tâche (configure_task_server)</li>
+    <li>Un batch configurable (heure(s) de lancement, nombre maximal de tâches pouvant être exécuter en même temps) pour lancer les tâches (scheduler_add, launcher)</li>
+    <li>Un module pour voir l’état des tâches et récupérer les résultats (tasks_overview_server & tasks_overview_UI)</li>
+  </ul>
+  
+<h3>Shinypivottabler</h3>
+
+Shinypivottabler propose un module shiny permettant aux utilisateurs de construire, visualiser, et télécharger le tableau croisé de leurs rêves. Rien que ça !
+
+Shinypivottabler est basé sur le package pivottabler (http://www.pivottabler.org.uk/), en amenant une surcouche pour son intégration et son utilisation en clique-bouton depuis une application shiny.
+
+<h3>shinydrive</h3>
+
+<p>Le package shinydrive a été développé pour répondre à un besoin simple : faciliter le partage de fichiers entre différents utilisateurs d’une application R/shiny.</p>
+  
+<h3>visNetwork</h3>
+  
+<p>
+  visNetwork, une interface entre R et la librairie vis.js qui permet une visualisation dynamique des réseaux. Facilement configurable, manipulable directement depuis R Shiny, visNetwork est notamment utilisé en biologie et en génomique.  (voir les articles : Digging into the low molecular weight peptidome with the OligoNet web server et Unraveling the evolution and coevolution of small regulatory RNAs and coding genes in Listeria, publiés sur le site du National Center for Biotechnology Information).
+  Largement reconnu, visNetwork, mis en ligne en 2015, est téléchargé en moyenne 1000 fois par jour depuis le CRAN RStudio.
+</p>
 
 </div>
 
